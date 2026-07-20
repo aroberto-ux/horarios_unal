@@ -1,24 +1,51 @@
 # ============================================================
 #  Snapshot automático de cupos del SIA en GitHub Actions
 #
+#  ¿DÓNDE QUEDAN LOS DATOS? En el repositorio mismo. Cada
+#  corrida hace un commit con los archivos actualizados, así
+#  que el repo es tu base de datos Y su historial de versiones.
+#
 #  Cómo usarlo:
-#   1. Crea un repositorio en github.com (puede ser privado)
+#   1. Crea un repositorio en github.com
+#      >>> HAZLO PÚBLICO <<< (ver nota de minutos abajo)
 #   2. Sube sia_scraper.py a la raíz del repositorio
 #   3. Guarda este archivo como .github/workflows/snapshot_cupos.yml
 #   4. En Settings > Actions > General > Workflow permissions,
 #      marca "Read and write permissions"
+#   5. (Opcional) Settings > Pages > Source: "Deploy from a branch",
+#      rama main, carpeta / (root). Así verás tus estadísticas en
+#      https://TU-USUARIO.github.io/TU-REPO/estadisticas.html
 #
-#  Desde ese momento corre solo en la nube (tu PC puede estar
-#  apagado) y cada medición queda guardada como un commit, con
-#  todo el historial de versiones gratis.
+#  NOTA SOBRE MINUTOS:
+#   Con UNA corrida diaria (~12 min) el consumo es de unos
+#   360 minutos al mes, así que cabe de sobra incluso en un
+#   repositorio privado (límite gratuito: 2.000 min/mes).
+#   Los repositorios públicos tienen Actions ilimitadas.
+#   Si más adelante subes la frecuencia a cada 4 horas o menos,
+#   pásalo a público para no chocar con el límite.
 # ============================================================
 name: Snapshot de cupos SIA
 
 on:
   schedule:
-    # Cada 6 horas (la hora es UTC; Colombia es UTC-5).
+    # ── 8:15 p. m. hora de Colombia, todos los días ──
+    # El cron de GitHub va en UTC y Colombia es UTC-5, así que
+    # 20:15 COT = 01:15 UTC DEL DÍA SIGUIENTE.
+    # Por eso los commits aparecerán fechados un día después en UTC:
+    # es normal, corresponde a la noche anterior en Colombia.
+    #
+    #        ┌─ minuto (15)
+    #        │  ┌─ hora UTC (1 = 01:15 UTC = 20:15 Colombia)
+    #        │  │ ┌─ día del mes (todos)
+    #        │  │ │ ┌─ mes (todos)
+    #        │  │ │ │ ┌─ día de la semana (todos)
+    - cron: "15 1 * * *"
+    #
+    # Otras opciones (recuerda: hora Colombia + 5 = UTC)
+    #   - cron: "15 1,13 * * *"   # 8:15 p.m. y 8:15 a.m.
+    #   - cron: "0 */2 * * *"     # cada 2 h (semana de inscripciones)
     # OJO: no bajes de cada 1-2 horas por respeto al servidor del SIA.
-    - cron: "0 */6 * * *"
+
   # Permite lanzarlo a mano desde la pestaña Actions
   workflow_dispatch:
 
