@@ -1,68 +1,5 @@
 [
   {
-    "codigo": "2015229",
-    "nombre": "Colombia Contemporánea",
-    "tipologia": "DISCIPLINAR OPTATIVA",
-    "creditos": "3",
-    "facultad": "FACULTAD DE INGENIERÍA",
-    "planes": [
-      "2542 INGENIERÍA CIVIL"
-    ],
-    "grupos": [
-      {
-        "grupo": "(BCA_318) cierre anticipado grupo 1",
-        "actividad": "CLASE TEORICA",
-        "profesores": "EDWUARD NICOLAS PEDRAZA GONZALEZ",
-        "cupos_disponibles": "0",
-        "fecha": "",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": []
-      },
-      {
-        "grupo": "(CARI) Grupo 1 PEAMA Caribe",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Adriana Isabel Orjuela Martinez",
-        "cupos_disponibles": "2",
-        "fecha": "02/02/2026 - 30/05/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "05",
-            "salon_nombre": "AULA ARQUITECTURA",
-            "edificio": "EDIFICIO PRINCIPAL SEDE CARIBE",
-            "tipo_espacio": "",
-            "lugar_raw": "AULA ARQUITECTURA. 05. EDIFICIO PRINCIPAL SEDE CARIBE. ."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "05",
-            "salon_nombre": "AULA ARQUITECTURA",
-            "edificio": "EDIFICIO PRINCIPAL SEDE CARIBE",
-            "tipo_espacio": "",
-            "lugar_raw": "AULA ARQUITECTURA. 05. EDIFICIO PRINCIPAL SEDE CARIBE. ."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "14:00",
-            "hora_fin": "17:00",
-            "salon": "AULA 5",
-            "salon_nombre": "AULA DE CLASE ORINOQUIA 5",
-            "edificio": "AULAS DE CLASE ORINOQUIA",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "AULA DE CLASE ORINOQUIA 5. AULA 5. AULAS DE CLASE ORINOQUIA. SALON."
-          }
-        ]
-      }
-    ]
-  },
-  {
     "codigo": "1000044-B",
     "nombre": "Inglés I- Semestral",
     "tipologia": "NIVELACIÓN",
@@ -883,7 +820,7 @@
         "grupo": "(15) Grupo 15",
         "actividad": "CLASE TEORICA",
         "profesores": "Edwin Yesid Leon Silva",
-        "cupos_disponibles": "14",
+        "cupos_disponibles": "15",
         "fecha": "02/02/2026 - 23/05/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1027,7 +964,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
         "profesores": "Olga Lucia Ruiz Convers",
-        "cupos_disponibles": "12",
+        "cupos_disponibles": "13",
         "fecha": "02/02/2026 - 23/05/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1543,7 +1480,7 @@
         "grupo": "(16) Grupo 16",
         "actividad": "CLASE TEORICA",
         "profesores": "JOSE JONATHAN MAESTRE HERRERA",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "2",
         "fecha": "02/02/2026 - 23/05/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3347,7 +3284,7 @@
         "grupo": "(2) Grupo 2 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Ruth Andrea Cortés Suárez",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "fecha": "02/02/2026 - 30/05/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3388,7 +3325,7 @@
         "grupo": "(3) Grupo 3 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Adriana Patricia Díaz Cuevas",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "fecha": "02/02/2026 - 30/05/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
