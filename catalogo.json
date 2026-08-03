@@ -2950,7 +2950,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3043,7 +3043,7 @@
         "grupo": "(5) Grupo 5",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "25",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3677,21 +3677,21 @@
             "dia": "MARTES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "401-306",
+            "salon_nombre": "SALÓN DE CLASE 401-306",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-306. 401-306. 401 - Julio Garavito Armero. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "401-306",
+            "salon_nombre": "SALÓN DE CLASE 401-306",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-306. 401-306. 401 - Julio Garavito Armero. SALON."
           }
         ]
       }
@@ -4624,7 +4624,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Erika Lorena Rosero Alzate",
         "cupos_disponibles": "0",
-        "fecha": "24/08/2026 - 12/12/2026",
+        "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
         "sesiones": [
@@ -4637,6 +4637,26 @@
             "edificio": "404 - Yu Takeuchi",
             "tipo_espacio": "LABORATORIO",
             "lugar_raw": "LABORATORIO DE MECANICA - SF. 404-102. 404 - Yu Takeuchi. LABORATORIO."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "A-2A",
+            "salon_nombre": "AULA MODULAR 2A",
+            "edificio": "AULAS MODULARES",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA MODULAR 2A. A-2A. AULAS MODULARES. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "A-2A",
+            "salon_nombre": "AULA MODULAR 2A",
+            "edificio": "AULAS MODULARES",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA MODULAR 2A. A-2A. AULAS MODULARES. SALON."
           }
         ]
       },
@@ -5850,7 +5870,7 @@
       {
         "grupo": "(9) Grupo 9",
         "actividad": "CLASE MAGISTRAL",
-        "profesores": "No informado",
+        "profesores": "Fredy Angel Jimenez Giraldo",
         "cupos_disponibles": "10",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -7419,7 +7439,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "Angela Maria Arboleda Restrepo",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "40",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7512,7 +7532,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "",
         "profesores": "Osman Benjamin Giovanny Vargas Rozo",
-        "cupos_disponibles": "50",
+        "cupos_disponibles": "40",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7655,11 +7675,11 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "454-402",
-            "salon_nombre": "SALON DE INFORMATICA 454-402",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALON DE INFORMATICA 454-402. 454-402. 454 - Luis Carlos Sarmiento Angulo. SALA DE INFORMATICA Y/O DE COMPUTO."
+            "salon": "453-113",
+            "salon_nombre": "SALON DE CLASE 453-113",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-113. 453-113. 453 - Guillermina Uribe Bone. SALON."
           }
         ]
       },
@@ -7667,7 +7687,7 @@
         "grupo": "(7) Grupo 7",
         "actividad": "",
         "profesores": "JAVIER RICARDO OJEDA SANCHEZ",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "20",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7676,21 +7696,21 @@
             "dia": "LUNES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "406-104",
-            "salon_nombre": "SALA DE COMPUTO 406-104",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "salon": "453-224",
+            "salon_nombre": "SALA DE INFORMATICA 453-224",
+            "edificio": "453 - Guillermina Uribe Bone",
             "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
+            "lugar_raw": "SALA DE INFORMATICA 453-224. 453-224. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "406-104",
-            "salon_nombre": "SALA DE COMPUTO 406-104",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "salon": "453-224",
+            "salon_nombre": "SALA DE INFORMATICA 453-224",
+            "edificio": "453 - Guillermina Uribe Bone",
             "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
+            "lugar_raw": "SALA DE INFORMATICA 453-224. 453-224. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
           }
         ]
       },
@@ -11079,7 +11099,7 @@
         "grupo": "(3) Grupo 3 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Adriana Patricia Díaz Cuevas",
-        "cupos_disponibles": "3",
+        "cupos_disponibles": "0",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11120,7 +11140,7 @@
         "grupo": "(4) Grupo 4 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Adriana Patricia Díaz Cuevas",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11161,7 +11181,7 @@
         "grupo": "(5) Grupo 5 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Andres Felipe Escovar Barreto",
-        "cupos_disponibles": "4",
+        "cupos_disponibles": "0",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12788,11 +12808,11 @@
             "dia": "LUNES",
             "hora_inicio": "08:00",
             "hora_fin": "09:00",
-            "salon": "409-306",
-            "salon_nombre": "PASA A SER 309",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
             "edificio": "409 - Luis Enrique Orduz Espinosa",
             "tipo_espacio": "SALON",
-            "lugar_raw": "PASA A SER 309. 409-306. 409 - Luis Enrique Orduz Espinosa. SALON."
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
           },
           {
             "dia": "MIÉRCOLES",
@@ -12808,11 +12828,11 @@
             "dia": "VIERNES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "409-306",
-            "salon_nombre": "PASA A SER 309",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
             "edificio": "409 - Luis Enrique Orduz Espinosa",
             "tipo_espacio": "SALON",
-            "lugar_raw": "PASA A SER 309. 409-306. 409 - Luis Enrique Orduz Espinosa. SALON."
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
           }
         ]
       },
@@ -12839,21 +12859,21 @@
             "dia": "MARTES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "409-306",
-            "salon_nombre": "PASA A SER 309",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
             "edificio": "409 - Luis Enrique Orduz Espinosa",
             "tipo_espacio": "SALON",
-            "lugar_raw": "PASA A SER 309. 409-306. 409 - Luis Enrique Orduz Espinosa. SALON."
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "409-306",
-            "salon_nombre": "PASA A SER 309",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
             "edificio": "409 - Luis Enrique Orduz Espinosa",
             "tipo_espacio": "SALON",
-            "lugar_raw": "PASA A SER 309. 409-306. 409 - Luis Enrique Orduz Espinosa. SALON."
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
           }
         ]
       },
@@ -13592,7 +13612,132 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": []
+    "grupos": [
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE PRACTICA",
+        "profesores": "Helga Duarte",
+        "cupos_disponibles": "30",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-104",
+            "salon_nombre": "SALA DE COMPUTO 406-104",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-104",
+            "salon_nombre": "SALA DE COMPUTO 406-104",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(5) Grupo 5",
+        "actividad": "CLASE PRACTICA",
+        "profesores": "Oswaldo Rojas Camacho",
+        "cupos_disponibles": "45",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "401-303",
+            "salon_nombre": "SALA DE SISTEMAS 401-303",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE SISTEMAS 401-303. 401-303. 401 - Julio Garavito Armero. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "401-303",
+            "salon_nombre": "SALA DE SISTEMAS 401-303",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE SISTEMAS 401-303. 401-303. 401 - Julio Garavito Armero. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(8) Grupo 8",
+        "actividad": "CLASE PRACTICA",
+        "profesores": "Helga Duarte",
+        "cupos_disponibles": "30",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "406-104",
+            "salon_nombre": "SALA DE COMPUTO 406-104",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "406-104",
+            "salon_nombre": "SALA DE COMPUTO 406-104",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(9) Grupo 9",
+        "actividad": "CLASE PRACTICA",
+        "profesores": "Oswaldo Rojas Camacho",
+        "cupos_disponibles": "45",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "401-103",
+            "salon_nombre": "SALA DE SISTEMAS 401-103",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE SISTEMAS 401-103. 401-103. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "401-103",
+            "salon_nombre": "SALA DE SISTEMAS 401-103",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE SISTEMAS 401-103. 401-103. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      }
+    ]
   },
   {
     "codigo": "2017293",
@@ -13942,88 +14087,6 @@
     ],
     "grupos": [
       {
-        "grupo": "(10) Grupo 10",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Jesus Sigifredo Valencia Rios",
-        "cupos_disponibles": "15",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "12:00",
-            "hora_fin": "13:00",
-            "salon": "453-115",
-            "salon_nombre": "SALON DE CLASE 453-115",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "453-109",
-            "salon_nombre": "SALON DE CLASE 453-109",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-109. 453-109. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "453-115",
-            "salon_nombre": "SALON DE CLASE 453-115",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          }
-        ]
-      },
-      {
-        "grupo": "(11) Grupo 11",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Marco Fidel Suarez Herrera",
-        "cupos_disponibles": "3",
-        "fecha": "27/08/2026 - 16/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "14:00",
-            "hora_fin": "15:00",
-            "salon": "451-235",
-            "salon_nombre": "SALON DE CLASE 235",
-            "edificio": "451 - Antonio García Banús",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 235. 451-235. 451 - Antonio García Banús. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "451-235",
-            "salon_nombre": "SALON DE CLASE 235",
-            "edificio": "451 - Antonio García Banús",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 235. 451-235. 451 - Antonio García Banús. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "451-235",
-            "salon_nombre": "SALON DE CLASE 235",
-            "edificio": "451 - Antonio García Banús",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 235. 451-235. 451 - Antonio García Banús. SALON."
-          }
-        ]
-      },
-      {
         "grupo": "(12) Grupo 12",
         "actividad": "CLASE TEORICA",
         "profesores": "Edgar Delgado Mejia",
@@ -14108,9 +14171,9 @@
       {
         "grupo": "(14) Grupo 14",
         "actividad": "CLASE TEORICA",
-        "profesores": "Edgar Delgado Mejia",
-        "cupos_disponibles": "35",
-        "fecha": "27/08/2026 - 16/12/2026",
+        "profesores": "Jhon Jairo Aragón Arias",
+        "cupos_disponibles": "10",
+        "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
         "sesiones": [
@@ -14143,47 +14206,6 @@
             "edificio": "451 - Antonio García Banús",
             "tipo_espacio": "SALON",
             "lugar_raw": "SALON DE CLASE 306. 451-306. 451 - Antonio García Banús. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(9) Grupo 9",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Jhon Jairo Aragón Arias",
-        "cupos_disponibles": "10",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "11:00",
-            "hora_fin": "12:00",
-            "salon": "564-105",
-            "salon_nombre": "SALON 105",
-            "edificio": "564 - Gloria Amparo Galeano Garcés",
-            "tipo_espacio": "",
-            "lugar_raw": "SALON 105. 564-105. 564 - Gloria Amparo Galeano Garcés. ."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "451-305",
-            "salon_nombre": "SALON DE CLASE 305",
-            "edificio": "451 - Antonio García Banús",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 305. 451-305. 451 - Antonio García Banús. SALON."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "451-305",
-            "salon_nombre": "SALON DE CLASE 305",
-            "edificio": "451 - Antonio García Banús",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 305. 451-305. 451 - Antonio García Banús. SALON."
           },
           {
             "dia": "MIÉRCOLES",
@@ -14704,6 +14726,409 @@
     ],
     "grupos": [
       {
+        "grupo": "(1) Grupo 1",
+        "actividad": "",
+        "profesores": "Fernando Salazar Delgado",
+        "cupos_disponibles": "6",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-224",
+            "salon_nombre": "SALA DE INFORMATICA 453-224",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE INFORMATICA 453-224. 453-224. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-224",
+            "salon_nombre": "SALA DE INFORMATICA 453-224",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE INFORMATICA 453-224. 453-224. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(10) Grupo 10",
+        "actividad": "",
+        "profesores": "Tito Florez Calderon",
+        "cupos_disponibles": "4",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "453-224",
+            "salon_nombre": "SALA DE INFORMATICA 453-224",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE INFORMATICA 453-224. 453-224. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "453-224",
+            "salon_nombre": "SALA DE INFORMATICA 453-224",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE INFORMATICA 453-224. 453-224. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(11) Grupo 11",
+        "actividad": "",
+        "profesores": "DAVID ALBERTO HERRERA ALVAREZ",
+        "cupos_disponibles": "0",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-403",
+            "salon_nombre": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE INFORMATICA Y/O DE COMPUTO. 454-403. 454 - Luis Carlos Sarmiento Angulo. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-403",
+            "salon_nombre": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE INFORMATICA Y/O DE COMPUTO. 454-403. 454 - Luis Carlos Sarmiento Angulo. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(12) Grupo 12",
+        "actividad": "",
+        "profesores": "FABIEL NATÁN ESPINOSA CASTAÑEDA",
+        "cupos_disponibles": "1",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-221",
+            "salon_nombre": "SALA DE POSTGRADO 453-221A (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "OFICINA",
+            "lugar_raw": "SALA DE POSTGRADO 453-221A (SALA TIC). 453-221. 453 - Guillermina Uribe Bone. OFICINA."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-221",
+            "salon_nombre": "SALA DE POSTGRADO 453-221A (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "OFICINA",
+            "lugar_raw": "SALA DE POSTGRADO 453-221A (SALA TIC). 453-221. 453 - Guillermina Uribe Bone. OFICINA."
+          }
+        ]
+      },
+      {
+        "grupo": "(13) Grupo 13",
+        "actividad": "",
+        "profesores": "SERGIO CAMILO ESPINOSA BOTERO",
+        "cupos_disponibles": "4",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "453-224",
+            "salon_nombre": "SALA DE INFORMATICA 453-224",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE INFORMATICA 453-224. 453-224. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "453-224",
+            "salon_nombre": "SALA DE INFORMATICA 453-224",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE INFORMATICA 453-224. 453-224. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(14) Grupo 14",
+        "actividad": "",
+        "profesores": "Felipe Gonzalez Roldan",
+        "cupos_disponibles": "0",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-104",
+            "salon_nombre": "SALA DE COMPUTO 406-104",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "454-402",
+            "salon_nombre": "SALON DE INFORMATICA 454-402",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALON DE INFORMATICA 454-402. 454-402. 454 - Luis Carlos Sarmiento Angulo. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "",
+        "profesores": "Fernando Salazar Delgado",
+        "cupos_disponibles": "16",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "454-403",
+            "salon_nombre": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE INFORMATICA Y/O DE COMPUTO. 454-403. 454 - Luis Carlos Sarmiento Angulo. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "454-403",
+            "salon_nombre": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE INFORMATICA Y/O DE COMPUTO. 454-403. 454 - Luis Carlos Sarmiento Angulo. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "",
+        "profesores": "Jhoan Sebastian Restrepo Mendoza",
+        "cupos_disponibles": "0",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "454-401",
+            "salon_nombre": "SALON DE INFORMATICA 454-401",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALON DE INFORMATICA 454-401. 454-401. 454 - Luis Carlos Sarmiento Angulo. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "454-401",
+            "salon_nombre": "SALON DE INFORMATICA 454-401",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALON DE INFORMATICA 454-401. 454-401. 454 - Luis Carlos Sarmiento Angulo. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "",
+        "profesores": "Sandra Liliana Rojas Martinez",
+        "cupos_disponibles": "0",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "401-103",
+            "salon_nombre": "SALA DE SISTEMAS 401-103",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE SISTEMAS 401-103. 401-103. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "401-103",
+            "salon_nombre": "SALA DE SISTEMAS 401-103",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE SISTEMAS 401-103. 401-103. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(5) Grupo 5",
+        "actividad": "",
+        "profesores": "Jhoan Sebastian Restrepo Mendoza",
+        "cupos_disponibles": "0",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-404",
+            "salon_nombre": "LABORATORIO DE REDES DE COMPUTADORES",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "LABORATORIO DE REDES DE COMPUTADORES. 454-404. 454 - Luis Carlos Sarmiento Angulo. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-404",
+            "salon_nombre": "LABORATORIO DE REDES DE COMPUTADORES",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "LABORATORIO DE REDES DE COMPUTADORES. 454-404. 454 - Luis Carlos Sarmiento Angulo. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(6) Grupo 6",
+        "actividad": "",
+        "profesores": "SERGIO CAMILO ESPINOSA BOTERO",
+        "cupos_disponibles": "8",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "401-103",
+            "salon_nombre": "SALA DE SISTEMAS 401-103",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE SISTEMAS 401-103. 401-103. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "401-103",
+            "salon_nombre": "SALA DE SISTEMAS 401-103",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE SISTEMAS 401-103. 401-103. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(7) Grupo 7",
+        "actividad": "",
+        "profesores": "No informado",
+        "cupos_disponibles": "3",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-303",
+            "salon_nombre": "SALA DE SISTEMAS 401-303",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE SISTEMAS 401-303. 401-303. 401 - Julio Garavito Armero. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-303",
+            "salon_nombre": "SALA DE SISTEMAS 401-303",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE SISTEMAS 401-303. 401-303. 401 - Julio Garavito Armero. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(8) Grupo 8 - Virtual",
+        "actividad": "",
+        "profesores": "FABIEL NATÁN ESPINOSA CASTAÑEDA",
+        "cupos_disponibles": "30",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "06:00",
+            "hora_fin": "08:00",
+            "salon": "B_AULAVIRTUAL",
+            "salon_nombre": "Aula Virtual Bogotá",
+            "edificio": "Bogotá - Edificio Virtual",
+            "tipo_espacio": "",
+            "lugar_raw": "Aula Virtual Bogotá. B_AULAVIRTUAL. Bogotá - Edificio Virtual. ."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "06:00",
+            "hora_fin": "08:00",
+            "salon": "B_AULAVIRTUAL",
+            "salon_nombre": "Aula Virtual Bogotá",
+            "edificio": "Bogotá - Edificio Virtual",
+            "tipo_espacio": "",
+            "lugar_raw": "Aula Virtual Bogotá. B_AULAVIRTUAL. Bogotá - Edificio Virtual. ."
+          }
+        ]
+      },
+      {
         "grupo": "(9) Grupo 9",
         "actividad": "",
         "profesores": "Alvaro Reynel Córdoba",
@@ -14805,287 +15230,7 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": [
-      {
-        "grupo": "(1) Grupo 1",
-        "actividad": "CLASE PRACTICA-POO",
-        "profesores": "Jorge Enrique Amaya Cala",
-        "cupos_disponibles": "40",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "B_AULAVIRTUAL",
-            "salon_nombre": "Aula Virtual Bogotá",
-            "edificio": "Bogotá - Edificio Virtual",
-            "tipo_espacio": "",
-            "lugar_raw": "Aula Virtual Bogotá. B_AULAVIRTUAL. Bogotá - Edificio Virtual. ."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "454-404",
-            "salon_nombre": "LABORATORIO DE REDES DE COMPUTADORES",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "LABORATORIO DE REDES DE COMPUTADORES. 454-404. 454 - Luis Carlos Sarmiento Angulo. SALA DE INFORMATICA Y/O DE COMPUTO."
-          }
-        ]
-      },
-      {
-        "grupo": "(2) Grupo 2",
-        "actividad": "CLASE PRACTICA-POO",
-        "profesores": "Andrés Felipe Cantor Albarracín",
-        "cupos_disponibles": "40",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "406-104",
-            "salon_nombre": "SALA DE COMPUTO 406-104",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "406-104",
-            "salon_nombre": "SALA DE COMPUTO 406-104",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
-          }
-        ]
-      },
-      {
-        "grupo": "(3) Grupo 3",
-        "actividad": "CLASE PRACTICA-POO",
-        "profesores": "RAFAEL ANTONIO ACOSTA RODRÍGUEZ",
-        "cupos_disponibles": "30",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "453-203",
-            "salon_nombre": "SALA DE INFORMATICA 453-203",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE INFORMATICA 453-203. 453-203. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "453-203",
-            "salon_nombre": "SALA DE INFORMATICA 453-203",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE INFORMATICA 453-203. 453-203. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          }
-        ]
-      },
-      {
-        "grupo": "(4) Grupo 4",
-        "actividad": "CLASE PRACTICA-POO",
-        "profesores": "Jean Pierre Charalambos Hernandez",
-        "cupos_disponibles": "33",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "09:00",
-            "hora_fin": "11:00",
-            "salon": "453-119",
-            "salon_nombre": "SALA DE INFORMATICA 453-119",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE INFORMATICA 453-119. 453-119. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "09:00",
-            "hora_fin": "11:00",
-            "salon": "453-119",
-            "salon_nombre": "SALA DE INFORMATICA 453-119",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE INFORMATICA 453-119. 453-119. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          }
-        ]
-      },
-      {
-        "grupo": "(5) Grupo 5",
-        "actividad": "CLASE PRACTICA-POO",
-        "profesores": "PAULA XIMENA RODRIGUEZ NEMPEQUE",
-        "cupos_disponibles": "30",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "09:00",
-            "hora_fin": "11:00",
-            "salon": "453-119",
-            "salon_nombre": "SALA DE INFORMATICA 453-119",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE INFORMATICA 453-119. 453-119. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "09:00",
-            "hora_fin": "11:00",
-            "salon": "453-119",
-            "salon_nombre": "SALA DE INFORMATICA 453-119",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE INFORMATICA 453-119. 453-119. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          }
-        ]
-      },
-      {
-        "grupo": "(6) Grupo 6 - Virtual",
-        "actividad": "CLASE PRACTICA-POO",
-        "profesores": "PAULA XIMENA RODRIGUEZ NEMPEQUE",
-        "cupos_disponibles": "50",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "06:00",
-            "hora_fin": "08:00",
-            "salon": "B_AULAVIRTUAL",
-            "salon_nombre": "Aula Virtual Bogotá",
-            "edificio": "Bogotá - Edificio Virtual",
-            "tipo_espacio": "",
-            "lugar_raw": "Aula Virtual Bogotá. B_AULAVIRTUAL. Bogotá - Edificio Virtual. ."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "06:00",
-            "hora_fin": "08:00",
-            "salon": "B_AULAVIRTUAL",
-            "salon_nombre": "Aula Virtual Bogotá",
-            "edificio": "Bogotá - Edificio Virtual",
-            "tipo_espacio": "",
-            "lugar_raw": "Aula Virtual Bogotá. B_AULAVIRTUAL. Bogotá - Edificio Virtual. ."
-          }
-        ]
-      },
-      {
-        "grupo": "(7) Grupo 7",
-        "actividad": "CLASE PRACTICA-POO",
-        "profesores": "Jorge Enrique Amaya Cala",
-        "cupos_disponibles": "30",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "B_AULAVIRTUAL",
-            "salon_nombre": "Aula Virtual Bogotá",
-            "edificio": "Bogotá - Edificio Virtual",
-            "tipo_espacio": "",
-            "lugar_raw": "Aula Virtual Bogotá. B_AULAVIRTUAL. Bogotá - Edificio Virtual. ."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "406-104",
-            "salon_nombre": "SALA DE COMPUTO 406-104",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
-          }
-        ]
-      },
-      {
-        "grupo": "(8) Grupo 8",
-        "actividad": "CLASE PRACTICA-POO",
-        "profesores": "Jean Pierre Charalambos Hernandez",
-        "cupos_disponibles": "33",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "453-119",
-            "salon_nombre": "SALA DE INFORMATICA 453-119",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE INFORMATICA 453-119. 453-119. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "453-119",
-            "salon_nombre": "SALA DE INFORMATICA 453-119",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE INFORMATICA 453-119. 453-119. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          }
-        ]
-      },
-      {
-        "grupo": "(9) Grupo 9",
-        "actividad": "CLASE PRACTICA-POO",
-        "profesores": "No informado",
-        "cupos_disponibles": "6",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "454-403",
-            "salon_nombre": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE INFORMATICA Y/O DE COMPUTO. 454-403. 454 - Luis Carlos Sarmiento Angulo. SALA DE INFORMATICA Y/O DE COMPUTO."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "454-403",
-            "salon_nombre": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALA DE INFORMATICA Y/O DE COMPUTO. 454-403. 454 - Luis Carlos Sarmiento Angulo. SALA DE INFORMATICA Y/O DE COMPUTO."
-          }
-        ]
-      }
-    ]
+    "grupos": []
   },
   {
     "codigo": "2015973",
