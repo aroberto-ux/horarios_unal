@@ -1349,11 +1349,11 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "17:00",
             "hora_fin": "19:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "15",
+            "salon_nombre": "TIC 3B",
+            "edificio": "EDIFICIO AULAS DE CLASE",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "TIC 3B. 15. EDIFICIO AULAS DE CLASE. ."
           },
           {
             "dia": "LUNES",
@@ -8834,9 +8834,9 @@
             "lugar_raw": ""
           },
           {
-            "dia": "LUNES",
-            "hora_inicio": "15:00",
-            "hora_fin": "17:00",
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
             "salon": "",
             "salon_nombre": "",
             "edificio": "",
@@ -8845,8 +8845,8 @@
           },
           {
             "dia": "VIERNES",
-            "hora_inicio": "15:00",
-            "hora_fin": "17:00",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
             "salon": "",
             "salon_nombre": "",
             "edificio": "",
@@ -8854,9 +8854,9 @@
             "lugar_raw": ""
           },
           {
-            "dia": "LUNES",
-            "hora_inicio": "15:00",
-            "hora_fin": "17:00",
+            "dia": "MARTES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
             "salon": "",
             "salon_nombre": "",
             "edificio": "",
@@ -8864,9 +8864,9 @@
             "lugar_raw": ""
           },
           {
-            "dia": "VIERNES",
-            "hora_inicio": "15:00",
-            "hora_fin": "17:00",
+            "dia": "JUEVES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
             "salon": "",
             "salon_nombre": "",
             "edificio": "",
@@ -9505,7 +9505,7 @@
             "lugar_raw": ""
           },
           {
-            "dia": "LUNES",
+            "dia": "MIÉRCOLES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
             "salon": "17",
