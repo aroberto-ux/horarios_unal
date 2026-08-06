@@ -52,7 +52,7 @@ on:
 jobs:
   snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 25
     steps:
       - name: Descargar el repositorio
         uses: actions/checkout@v4
