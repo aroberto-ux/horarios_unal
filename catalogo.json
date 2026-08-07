@@ -5251,8 +5251,8 @@
       {
         "grupo": "(9) Grupo 9",
         "actividad": "CLASE TALLER",
-        "profesores": "Javier Alexander Tenorio Quiñones",
-        "cupos_disponibles": "15",
+        "profesores": "No informado",
+        "cupos_disponibles": "10",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8056,6 +8056,66 @@
             "lugar_raw": ""
           },
           {
+            "dia": "MARTES",
+            "hora_inicio": "13:00",
+            "hora_fin": "15:00",
+            "salon": "16",
+            "salon_nombre": "TIC 4C",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 4C. 16. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "13:00",
+            "hora_fin": "15:00",
+            "salon": "16",
+            "salon_nombre": "TIC 4C",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 4C. 16. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "LUNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
             "dia": "MIÉRCOLES",
             "hora_inicio": "17:00",
             "hora_fin": "19:00",
@@ -8074,6 +8134,66 @@
             "edificio": "EDIFICIO PRINCIPAL SEDE CARIBE",
             "tipo_espacio": "",
             "lugar_raw": "AULA DE INNOVACION Y PENSAMIENTO CRITICO. 06. EDIFICIO PRINCIPAL SEDE CARIBE. ."
+          },
+          {
+            "dia": "LUNES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
+            "salon": "15",
+            "salon_nombre": "TIC 3B",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 3B. 15. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
+            "salon": "11",
+            "salon_nombre": "TIC 4A",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 4A. 11. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
+            "salon": "19",
+            "salon_nombre": "TIC 5C",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 5C. 19. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
+            "salon": "19",
+            "salon_nombre": "TIC 5C",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 5C. 19. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "LUNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "14",
+            "salon_nombre": "TIC 3A",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 3A. 14. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "14",
+            "salon_nombre": "TIC 3A",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 3A. 14. EDIFICIO AULAS DE CLASE. ."
           },
           {
             "dia": "LUNES",
@@ -8154,126 +8274,6 @@
             "edificio": "AULAS MODULARES",
             "tipo_espacio": "SALON",
             "lugar_raw": "AULA MODULAR 3B. A-3B. AULAS MODULARES. SALON."
-          },
-          {
-            "dia": "LUNES",
-            "hora_inicio": "17:00",
-            "hora_fin": "19:00",
-            "salon": "15",
-            "salon_nombre": "TIC 3B",
-            "edificio": "EDIFICIO AULAS DE CLASE",
-            "tipo_espacio": "",
-            "lugar_raw": "TIC 3B. 15. EDIFICIO AULAS DE CLASE. ."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "17:00",
-            "hora_fin": "19:00",
-            "salon": "11",
-            "salon_nombre": "TIC 4A",
-            "edificio": "EDIFICIO AULAS DE CLASE",
-            "tipo_espacio": "",
-            "lugar_raw": "TIC 4A. 11. EDIFICIO AULAS DE CLASE. ."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "17:00",
-            "hora_fin": "19:00",
-            "salon": "19",
-            "salon_nombre": "TIC 5C",
-            "edificio": "EDIFICIO AULAS DE CLASE",
-            "tipo_espacio": "",
-            "lugar_raw": "TIC 5C. 19. EDIFICIO AULAS DE CLASE. ."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "17:00",
-            "hora_fin": "19:00",
-            "salon": "19",
-            "salon_nombre": "TIC 5C",
-            "edificio": "EDIFICIO AULAS DE CLASE",
-            "tipo_espacio": "",
-            "lugar_raw": "TIC 5C. 19. EDIFICIO AULAS DE CLASE. ."
-          },
-          {
-            "dia": "LUNES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "14",
-            "salon_nombre": "TIC 3A",
-            "edificio": "EDIFICIO AULAS DE CLASE",
-            "tipo_espacio": "",
-            "lugar_raw": "TIC 3A. 14. EDIFICIO AULAS DE CLASE. ."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "14",
-            "salon_nombre": "TIC 3A",
-            "edificio": "EDIFICIO AULAS DE CLASE",
-            "tipo_espacio": "",
-            "lugar_raw": "TIC 3A. 14. EDIFICIO AULAS DE CLASE. ."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "13:00",
-            "hora_fin": "15:00",
-            "salon": "16",
-            "salon_nombre": "TIC 4C",
-            "edificio": "EDIFICIO AULAS DE CLASE",
-            "tipo_espacio": "",
-            "lugar_raw": "TIC 4C. 16. EDIFICIO AULAS DE CLASE. ."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "13:00",
-            "hora_fin": "15:00",
-            "salon": "16",
-            "salon_nombre": "TIC 4C",
-            "edificio": "EDIFICIO AULAS DE CLASE",
-            "tipo_espacio": "",
-            "lugar_raw": "TIC 4C. 16. EDIFICIO AULAS DE CLASE. ."
-          },
-          {
-            "dia": "LUNES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
           },
           {
             "dia": "MARTES",
@@ -10783,26 +10783,6 @@
             "lugar_raw": "AULA MULTIPLE. 299. EDIFICIO PRINCIPAL SEDE CARIBE. ."
           },
           {
-            "dia": "LUNES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "A-3A",
-            "salon_nombre": "AULA MODULAR 3A",
-            "edificio": "AULAS MODULARES",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "AULA MODULAR 3A. A-3A. AULAS MODULARES. SALON."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "A-3A",
-            "salon_nombre": "AULA MODULAR 3A",
-            "edificio": "AULAS MODULARES",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "AULA MODULAR 3A. A-3A. AULAS MODULARES. SALON."
-          },
-          {
             "dia": "MARTES",
             "hora_inicio": "18:00",
             "hora_fin": "20:00",
@@ -10821,6 +10801,26 @@
             "edificio": "",
             "tipo_espacio": "",
             "lugar_raw": ""
+          },
+          {
+            "dia": "LUNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "A-3A",
+            "salon_nombre": "AULA MODULAR 3A",
+            "edificio": "AULAS MODULARES",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA MODULAR 3A. A-3A. AULAS MODULARES. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "A-3A",
+            "salon_nombre": "AULA MODULAR 3A",
+            "edificio": "AULAS MODULARES",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA MODULAR 3A. A-3A. AULAS MODULARES. SALON."
           },
           {
             "dia": "MIÉRCOLES",
