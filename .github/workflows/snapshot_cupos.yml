@@ -39,7 +39,7 @@ on:
     #        │  │ ┌─ día del mes (todos)
     #        │  │ │ ┌─ mes (todos)
     #        │  │ │ │ ┌─ día de la semana (todos)
-    - cron: "45, 20 * * * *"
+    - cron: "/30 * * * *"
     #
     # Otras opciones (recuerda: hora Colombia + 5 = UTC)
     #   - cron: "15 1,13 * * *"   # 8:15 p.m. y 8:15 a.m.
@@ -52,7 +52,7 @@ on:
 jobs:
   snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 5
     steps:
       - name: Descargar el repositorio
         uses: actions/checkout@v4
