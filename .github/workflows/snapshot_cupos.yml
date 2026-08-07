@@ -39,7 +39,7 @@ on:
     #        │  │ ┌─ día del mes (todos)
     #        │  │ │ ┌─ mes (todos)
     #        │  │ │ │ ┌─ día de la semana (todos)
-    - cron: "/30 * * * *"
+    - cron: "*/30 * * * *"
     #
     # Otras opciones (recuerda: hora Colombia + 5 = UTC)
     #   - cron: "15 1,13 * * *"   # 8:15 p.m. y 8:15 a.m.
