@@ -520,21 +520,15 @@ function prepararTendencias(){
 }
 
 function seriesPara(claves){
-  const tiempos=new Set();
-  for(const k of claves) (HISTORIAL.get(k)||[]).forEach(p=>tiempos.add(+p.t));
-  const eje=[...tiempos].sort((a,b)=>a-b);
-  const etiquetas=eje.map(t=>fmtFecha(new Date(t)));
-  const datasets=claves.map((k,i)=>{
-    const mapa=new Map((HISTORIAL.get(k)||[]).map(p=>[+p.t,p.cupos]));
+  return claves.map((k,i)=>{
     const [c,g]=k.split("|"); const m=MATERIAS.get(c);
     return {
       label:`${m?m.nombre:c} · ${g}`,
-      data:eje.map(t=>mapa.has(t)?mapa.get(t):null),
+      data:(HISTORIAL.get(k)||[]).map(p=>({x:+p.t, y:p.cupos})),
       borderColor:PALETA[i%PALETA.length], backgroundColor:PALETA[i%PALETA.length],
-      spanGaps:true, tension:.25, pointRadius:2, borderWidth:2
+      tension:.25, pointRadius:2.5, borderWidth:2
     };
-  });
-  return {etiquetas, datasets};
+  }).filter(d=>d.data.length);
 }
 
 function msjLienzo(txt){
@@ -556,7 +550,7 @@ function pintarGrafico(){
   const claves = modoTend==="mis"
     ? seleccion
     : [...(MATERIAS.get($("#selMateria").value)?.grupos.keys()||[])].map(g=>`${$("#selMateria").value}|${g}`);
-  const {etiquetas, datasets}=seriesPara(claves);
+  const datasets=seriesPara(claves);
   msjLienzo(datasets.length? null :
     (modoTend==="mis" ? "Agrega grupos a tu horario para ver su tendencia."
                       : "Esta asignatura no tiene historial de cupos todavía."));
@@ -565,16 +559,22 @@ function pintarGrafico(){
   if(!datasets.length){ grafico=null; return; }
   grafico=new Chart(ctx,{
     type:"line",
-    data:{labels:etiquetas, datasets},
+    data:{datasets},
     options:{
       maintainAspectRatio:false, animation:false,
       interaction:{mode:"nearest", intersect:false},
       plugins:{
         legend:{labels:{font:{family:"Archivo", size:11}, boxWidth:14}},
-        tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y} cupos`}}
+        tooltip:{callbacks:{
+          title:its=>fmtFecha(new Date(its[0].parsed.x)),
+          label:c=>` ${c.dataset.label}: ${c.parsed.y} cupos`
+        }}
       },
       scales:{
-        x:{ticks:{font:{family:"IBM Plex Mono", size:10}, maxRotation:60, autoSkip:true, maxTicksLimit:14}, grid:{color:"#EEF2EA"}},
+        x:{type:"linear",
+           ticks:{font:{family:"IBM Plex Mono", size:10}, maxRotation:60, autoSkip:true, maxTicksLimit:10,
+                  callback:v=>fmtFecha(new Date(v))},
+           grid:{color:"#EEF2EA"}},
         y:{beginAtZero:true, title:{display:true, text:"Cupos disponibles", font:{family:"Archivo", size:11}},
            ticks:{font:{family:"IBM Plex Mono", size:10}, precision:0}, grid:{color:"#E4EADF"}}
       }
