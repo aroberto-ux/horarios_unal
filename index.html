@@ -124,6 +124,8 @@ section.panel{
 .cupos.ok{background:var(--verde-claro); color:var(--verde)}
 .cupos.pocos{background:var(--ambar-claro); color:var(--ambar)}
 .cupos.cero{background:var(--rojo-claro); color:var(--rojo)}
+.vel{font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:var(--rojo); white-space:nowrap}
+.vel.sube{color:var(--verde)}
 .spark{width:84px; height:22px}
 .btnAdd{
   font:600 .78rem "Archivo",sans-serif; letter-spacing:.04em;
@@ -234,6 +236,7 @@ footer a{color:var(--azul)}
       <div class="modo" role="tablist">
         <button id="modoMis" class="activo" role="tab">Mis grupos</button>
         <button id="modoMateria" role="tab">Por asignatura</button>
+        <button id="modoDoc" role="tab">Docentes</button>
       </div>
       <select id="selMateria" aria-label="Asignatura para graficar" hidden></select>
     </div>
@@ -403,6 +406,14 @@ function pintarLista(){
       const enSel=seleccion.includes(k);
       const fila=document.createElement("div"); fila.className="grupo";
       const hor=g.sesiones.map(s=>`${s.dia.slice(0,3)} ${deMin(s.ini)}–${deMin(s.fin)}${s.salon?" · "+s.salon:""}`).join("\n");
+      const st=statsGrupo(k);
+      let vel="";
+      if(st && st.vel7>0){
+        const dias=st.actual>0? Math.max(1, Math.ceil(st.actual/(st.vel7/7))) : 0;
+        vel=`<span class="vel" title="Cupos tomados en los últimos 7 días">▼${st.vel7} en 7d${(st.actual>0&&dias<=30)?` · ~${dias}d`:""}</span>`;
+      }else if(st && st.vel7<0){
+        vel=`<span class="vel sube" title="Cupos liberados en los últimos 7 días">▲${-st.vel7} en 7d</span>`;
+      }
       fila.innerHTML=`
         <div>
           <div class="g-nom">${g.grupo}</div>
@@ -411,6 +422,7 @@ function pintarLista(){
         </div>
         <div class="g-der">
           <span class="cupos ${claseCupos(g.cupos)}">${g.cupos} cupos</span>
+          ${vel}
           <canvas class="spark" aria-hidden="true"></canvas>
           <button class="btnAdd ${enSel?"quitar":""}" type="button">${enSel?"Quitar":"Agregar"}</button>
         </div>`;
@@ -519,6 +531,72 @@ function prepararTendencias(){
   }
 }
 
+/* ================= Estadísticas de cupos ================= */
+function statsGrupo(k){
+  const h=HISTORIAL.get(k)||[];
+  if(!h.length) return null;
+  const actual=h[h.length-1].cupos;
+  const maxHist=Math.max(...h.map(p=>p.cupos));
+  const corte=+h[h.length-1].t - 7*864e5;
+  let ref=h[0];
+  for(const p of h){ if(+p.t<=corte) ref=p; else break; }
+  const vel7=ref.cupos-actual; // >0: se está llenando; <0: liberó cupos
+  return {actual, maxHist, inscritos:Math.max(0,maxHist-actual), vel7};
+}
+
+function docentesDe(cod){
+  const m=MATERIAS.get(cod); if(!m) return [];
+  const por=new Map();
+  for(const g of m.grupos.values()){
+    const st=statsGrupo(`${cod}|${g.grupo}`); if(!st) continue;
+    const nom=g.profesores||"Sin docente asignado";
+    if(!por.has(nom)) por.set(nom,{nombre:nom,grupos:0,inscritos:0,actual:0,cap:0,vel7:0});
+    const d=por.get(nom);
+    d.grupos++; d.inscritos+=st.inscritos; d.actual+=st.actual; d.cap+=st.maxHist; d.vel7+=st.vel7;
+  }
+  return [...por.values()].map(d=>({...d, ocup:d.cap? d.inscritos/d.cap : 0}));
+}
+
+function pintarDocentes(){
+  const cod=$("#selMateria").value;
+  const filas=docentesDe(cod).sort((a,b)=>b.ocup-a.ocup || b.inscritos-a.inscritos);
+  msjLienzo(filas.length? null : "Esta asignatura no tiene historial de cupos todavía.");
+  const ctx=$("#grafico");
+  if(grafico) grafico.destroy();
+  if(!filas.length){ grafico=null; return; }
+  const et=filas.map(f=>{
+    const n=f.nombre.length>34? f.nombre.slice(0,32)+"…" : f.nombre;
+    return `${n} · ${Math.round(f.ocup*100)}%`;
+  });
+  grafico=new Chart(ctx,{
+    type:"bar",
+    data:{labels:et, datasets:[
+      {label:"Inscritos (aprox.)", data:filas.map(f=>f.inscritos), backgroundColor:"#2B5DA8"},
+      {label:"Cupos disponibles", data:filas.map(f=>f.actual), backgroundColor:"#B7CDBB"}
+    ]},
+    options:{
+      indexAxis:"y", maintainAspectRatio:false, animation:false,
+      plugins:{
+        legend:{labels:{font:{family:"Archivo", size:11}, boxWidth:14}},
+        tooltip:{callbacks:{
+          afterBody:its=>{
+            const f=filas[its[0].dataIndex];
+            const t=f.vel7>0? `Se llenaron ${f.vel7} cupos en los últimos 7 días`
+                  : f.vel7<0? `Se liberaron ${-f.vel7} cupos en los últimos 7 días`
+                  : "Sin cambios en los últimos 7 días";
+            return [`Ocupación aprox.: ${Math.round(f.ocup*100)}% · ${f.grupos} grupo(s)`, t];
+          }
+        }}
+      },
+      scales:{
+        x:{stacked:true, beginAtZero:true, title:{display:true, text:"Cupos", font:{family:"Archivo", size:11}},
+           ticks:{font:{family:"IBM Plex Mono", size:10}, precision:0}, grid:{color:"#EEF2EA"}},
+        y:{stacked:true, ticks:{font:{family:"Archivo", size:11}}, grid:{display:false}}
+      }
+    }
+  });
+}
+
 function seriesPara(claves){
   return claves.map((k,i)=>{
     const [c,g]=k.split("|"); const m=MATERIAS.get(c);
@@ -547,6 +625,7 @@ function pintarGrafico(){
     return;
   }
   esperaChart=0;
+  if(modoTend==="doc"){ pintarDocentes(); return; }
   const claves = modoTend==="mis"
     ? seleccion
     : [...(MATERIAS.get($("#selMateria").value)?.grupos.keys()||[])].map(g=>`${$("#selMateria").value}|${g}`);
@@ -584,8 +663,16 @@ function pintarGrafico(){
 
 /* ================= Eventos ================= */
 $("#busqueda").addEventListener("input", pintarLista);
-$("#modoMis").addEventListener("click",()=>{ modoTend="mis"; $("#modoMis").classList.add("activo"); $("#modoMateria").classList.remove("activo"); $("#selMateria").hidden=true; pintarGrafico(); });
-$("#modoMateria").addEventListener("click",()=>{ modoTend="materia"; $("#modoMateria").classList.add("activo"); $("#modoMis").classList.remove("activo"); $("#selMateria").hidden=false; pintarGrafico(); });
+function fijarModo(modo){
+  modoTend=modo;
+  const mapa={mis:"#modoMis", materia:"#modoMateria", doc:"#modoDoc"};
+  for(const [m,sel] of Object.entries(mapa)) $(sel).classList.toggle("activo", m===modo);
+  $("#selMateria").hidden = (modo==="mis");
+  pintarGrafico();
+}
+$("#modoMis").addEventListener("click",()=>fijarModo("mis"));
+$("#modoMateria").addEventListener("click",()=>fijarModo("materia"));
+$("#modoDoc").addEventListener("click",()=>fijarModo("doc"));
 $("#selMateria").addEventListener("change", pintarGrafico);
 
 cargarDatos();
