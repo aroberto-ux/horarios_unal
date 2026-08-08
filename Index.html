@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planilla de horario · UNAL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<style>
+:root{
+  --papel:#FAFBF7;          /* papel de planilla */
+  --cuadricula:#E4EADF;     /* línea de cuadrícula */
+  --tinta:#182720;          /* tinta principal */
+  --tinta-suave:#5C6B60;    /* anotaciones */
+  --verde:#147A46;          /* cupos disponibles */
+  --verde-claro:#E4F2E9;
+  --ambar:#B36F06;          /* pocos cupos */
+  --ambar-claro:#F7ECD8;
+  --rojo:#B3372E;           /* sin cupos / conflicto */
+  --rojo-claro:#F8E5E3;
+  --azul:#2B5DA8;           /* trazo de selección */
+  --azul-claro:#E7EEF9;
+  --blanco:#FFFFFF;
+  --radio:6px;
+  --sombra:0 1px 2px rgba(24,39,32,.08), 0 4px 14px rgba(24,39,32,.06);
+}
+*{box-sizing:border-box; margin:0; padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important; animation:none!important} }
+
+body{
+  font-family:"Archivo", system-ui, sans-serif;
+  background:
+    linear-gradient(var(--cuadricula) 1px, transparent 1px) 0 0/100% 28px,
+    linear-gradient(90deg, var(--cuadricula) 1px, transparent 1px) 0 0/28px 100%,
+    var(--papel);
+  color:var(--tinta);
+  line-height:1.5;
+}
+.mono{font-family:"IBM Plex Mono", ui-monospace, monospace}
+
+/* ---------- Cabecera ---------- */
+header{
+  background:var(--tinta); color:var(--papel);
+  padding:20px clamp(16px,4vw,40px) 22px;
+  border-bottom:4px solid var(--verde);
+}
+.head-top{display:flex; flex-wrap:wrap; gap:12px 24px; align-items:baseline; justify-content:space-between; max-width:1400px; margin:0 auto}
+h1{
+  font-variation-settings:"wdth" 115;
+  font-weight:900; font-size:clamp(1.35rem,3.2vw,2rem);
+  letter-spacing:.01em; text-transform:uppercase;
+}
+h1 small{display:block; font-weight:400; font-size:.72rem; letter-spacing:.28em; color:#9DB3A5; margin-bottom:2px}
+.estado{font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:#C9D6CD; text-align:right}
+.estado .punto{display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--verde); margin-right:6px; vertical-align:middle}
+.estado .punto.err{background:var(--rojo)}
+.estado button{
+  margin-left:10px; background:none; border:1px solid #52645A; color:#C9D6CD;
+  font:inherit; padding:2px 10px; border-radius:99px; cursor:pointer;
+}
+.estado button:hover{border-color:var(--papel); color:var(--papel)}
+
+/* ---------- Layout ---------- */
+.marco{max-width:1400px; margin:0 auto; padding:22px clamp(12px,3vw,32px); display:grid; grid-template-columns:400px 1fr; gap:22px}
+@media (max-width:980px){ .marco{grid-template-columns:1fr} }
+
+section.panel{
+  background:var(--blanco); border:1px solid var(--cuadricula);
+  border-radius:var(--radio); box-shadow:var(--sombra); overflow:hidden;
+}
+.panel > .titulo{
+  display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+  padding:12px 16px; border-bottom:1px solid var(--cuadricula);
+}
+.panel > .titulo h2{
+  font-size:.8rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--tinta-suave);
+}
+.panel > .titulo .dato{font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:var(--tinta-suave)}
+
+/* ---------- Buscador y lista de materias ---------- */
+.buscador{padding:12px 16px; border-bottom:1px solid var(--cuadricula)}
+.buscador input{
+  width:100%; font:500 .95rem "Archivo",sans-serif; color:var(--tinta);
+  padding:10px 12px; border:1.5px solid var(--cuadricula); border-radius:var(--radio);
+  background:var(--papel); outline:none;
+}
+.buscador input:focus{border-color:var(--azul); box-shadow:0 0 0 3px var(--azul-claro)}
+#listaMaterias{max-height:72vh; overflow-y:auto}
+.materia{border-bottom:1px solid var(--cuadricula)}
+.materia:last-child{border-bottom:none}
+.materia > button{
+  width:100%; text-align:left; background:none; border:none; cursor:pointer;
+  padding:12px 16px; display:flex; gap:12px; align-items:baseline; font-family:inherit;
+}
+.materia > button:hover{background:var(--papel)}
+.materia > button:focus-visible, .grupo .btnAdd:focus-visible, button:focus-visible, select:focus-visible{
+  outline:2px solid var(--azul); outline-offset:2px;
+}
+.materia .cod{font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--tinta-suave); white-space:nowrap}
+.materia .nom{font-weight:600; font-size:.95rem; flex:1}
+.materia .cred{font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--tinta-suave); white-space:nowrap}
+.materia .flecha{color:var(--tinta-suave); font-size:.8rem; transition:transform .15s}
+.materia.abierta .flecha{transform:rotate(90deg)}
+.grupos{display:none; background:var(--papel); border-top:1px dashed var(--cuadricula)}
+.materia.abierta .grupos{display:block}
+
+.grupo{
+  display:grid; grid-template-columns:1fr auto; gap:4px 12px;
+  padding:10px 16px 12px; border-bottom:1px dashed var(--cuadricula);
+}
+.grupo:last-child{border-bottom:none}
+.grupo .g-nom{font-weight:600; font-size:.88rem}
+.grupo .g-prof{font-size:.8rem; color:var(--tinta-suave)}
+.grupo .g-hor{font-family:"IBM Plex Mono",monospace; font-size:.74rem; color:var(--tinta); margin-top:2px; white-space:pre-line}
+.grupo .g-der{display:flex; flex-direction:column; align-items:flex-end; gap:6px}
+.cupos{
+  font-family:"IBM Plex Mono",monospace; font-size:.74rem; font-weight:600;
+  padding:2px 8px; border-radius:99px; white-space:nowrap;
+}
+.cupos.ok{background:var(--verde-claro); color:var(--verde)}
+.cupos.pocos{background:var(--ambar-claro); color:var(--ambar)}
+.cupos.cero{background:var(--rojo-claro); color:var(--rojo)}
+.spark{width:84px; height:22px}
+.btnAdd{
+  font:600 .78rem "Archivo",sans-serif; letter-spacing:.04em;
+  border:1.5px solid var(--azul); color:var(--azul); background:var(--blanco);
+  border-radius:var(--radio); padding:5px 12px; cursor:pointer;
+}
+.btnAdd:hover{background:var(--azul-claro)}
+.btnAdd.quitar{border-color:var(--rojo); color:var(--rojo)}
+.btnAdd.quitar:hover{background:var(--rojo-claro)}
+
+/* ---------- Grilla semanal ---------- */
+.resumen{display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; padding:12px 16px; border-bottom:1px solid var(--cuadricula); font-size:.85rem}
+.resumen .chip{
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:"IBM Plex Mono",monospace; font-size:.75rem;
+  background:var(--papel); border:1px solid var(--cuadricula); border-radius:99px; padding:3px 10px;
+}
+.resumen .chip i{width:10px; height:10px; border-radius:3px; display:inline-block}
+.resumen .chip button{border:none; background:none; cursor:pointer; color:var(--tinta-suave); font-size:.85rem; padding:0 0 0 2px}
+.resumen .chip button:hover{color:var(--rojo)}
+#avisoConflicto{display:none; margin:12px 16px 0; padding:10px 14px; border-radius:var(--radio);
+  background:var(--rojo-claro); color:var(--rojo); font-size:.85rem; font-weight:600}
+#avisoConflicto.visible{display:block}
+
+.grilla-envoltura{padding:16px; overflow-x:auto}
+.grilla{
+  display:grid; grid-template-columns:52px repeat(6, minmax(96px,1fr));
+  min-width:640px; border:1.5px solid var(--tinta); border-radius:4px; overflow:hidden; background:var(--blanco);
+}
+.grilla .esquina, .grilla .dia{
+  background:var(--tinta); color:var(--papel); font-family:"IBM Plex Mono",monospace;
+  font-size:.72rem; font-weight:600; letter-spacing:.08em; text-align:center; padding:7px 4px;
+}
+.reglilla{position:relative; border-right:1px solid var(--cuadricula)}
+.reglilla span{
+  position:absolute; right:6px; transform:translateY(-55%);
+  font-family:"IBM Plex Mono",monospace; font-size:.68rem; color:var(--tinta-suave);
+}
+.columna{
+  position:relative; border-right:1px solid var(--cuadricula);
+  background:linear-gradient(var(--cuadricula) 1px, transparent 1px) 0 1px / 100% var(--paso-hora);
+}
+.columna:last-child, .reglilla:last-child{border-right:none}
+.bloque{
+  position:absolute; left:4px; right:4px; border-radius:4px; padding:4px 6px;
+  border:1.5px solid; overflow:hidden; cursor:default;
+  font-size:.7rem; line-height:1.25; box-shadow:1px 1px 0 rgba(24,39,32,.12);
+}
+.bloque b{display:block; font-size:.72rem}
+.bloque .mono{font-size:.64rem; opacity:.85}
+.bloque.choque{border-color:var(--rojo)!important; background:var(--rojo-claro)!important; color:var(--rojo)!important}
+.vacio{padding:40px 20px; text-align:center; color:var(--tinta-suave); font-size:.9rem}
+
+/* ---------- Tendencias ---------- */
+#panelTendencias{grid-column:1 / -1}
+.controles-tend{display:flex; flex-wrap:wrap; gap:10px; padding:14px 16px; border-bottom:1px solid var(--cuadricula); align-items:center}
+.controles-tend select{
+  font:500 .88rem "Archivo",sans-serif; color:var(--tinta);
+  padding:8px 10px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel);
+}
+.controles-tend .modo{display:flex; border:1.5px solid var(--cuadricula); border-radius:var(--radio); overflow:hidden}
+.controles-tend .modo button{
+  font:600 .8rem "Archivo",sans-serif; padding:8px 14px; border:none; background:var(--blanco);
+  color:var(--tinta-suave); cursor:pointer;
+}
+.controles-tend .modo button.activo{background:var(--tinta); color:var(--papel)}
+.lienzo{position:relative; height:min(52vh,420px); padding:12px 16px 18px}
+footer{max-width:1400px; margin:0 auto; padding:10px clamp(12px,3vw,32px) 30px; color:var(--tinta-suave); font-size:.78rem}
+footer a{color:var(--azul)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-top">
+    <h1><small>SIA · Ingeniería · UNAL</small>Planilla de horario</h1>
+    <div class="estado mono" id="estado"><span class="punto"></span>Cargando datos…</div>
+  </div>
+</header>
+
+<div class="marco">
+
+  <!-- Catálogo de materias -->
+  <section class="panel" id="panelMaterias" aria-label="Catálogo de asignaturas">
+    <div class="titulo"><h2>Asignaturas</h2><span class="dato" id="conteoMaterias"></span></div>
+    <div class="buscador">
+      <input id="busqueda" type="search" placeholder="Buscar por nombre, código o profesor…" autocomplete="off">
+    </div>
+    <div id="listaMaterias"></div>
+  </section>
+
+  <!-- Grilla semanal -->
+  <section class="panel" id="panelHorario" aria-label="Mi horario semanal">
+    <div class="titulo"><h2>Mi horario</h2><span class="dato" id="totalCreditos">0 créditos</span></div>
+    <div class="resumen" id="chips"></div>
+    <div id="avisoConflicto" role="alert"></div>
+    <div class="grilla-envoltura"><div class="grilla" id="grilla"></div></div>
+  </section>
+
+  <!-- Tendencias de cupos -->
+  <section class="panel" id="panelTendencias" aria-label="Tendencia de cupos por grupo">
+    <div class="titulo"><h2>Tendencia de cupos</h2><span class="dato" id="infoSnapshots"></span></div>
+    <div class="controles-tend">
+      <div class="modo" role="tablist">
+        <button id="modoMis" class="activo" role="tab">Mis grupos</button>
+        <button id="modoMateria" role="tab">Por asignatura</button>
+      </div>
+      <select id="selMateria" aria-label="Asignatura para graficar" hidden></select>
+    </div>
+    <div class="lienzo"><canvas id="grafico"></canvas></div>
+  </section>
+
+</div>
+
+<footer>
+  Datos tomados del SIA por <a href="https://github.com/aroberto-ux/horarios_unal">horarios_unal</a>.
+  La página lee <span class="mono">horarios.csv</span> y <span class="mono">cupos_historial.csv</span> del repositorio en cada carga,
+  así que se actualiza sola con cada snapshot del workflow.
+</footer>
+
+<script>
+/* ================= Utilidades ================= */
+const $ = s => document.querySelector(s);
+const REPO_RAW = "https://raw.githubusercontent.com/aroberto-ux/horarios_unal/main/";
+const DIAS = ["LUNES","MARTES","MIÉRCOLES","JUEVES","VIERNES","SÁBADO"];
+const PALETA = ["#2B5DA8","#147A46","#8A4FBF","#B36F06","#0E7C86","#A63D6F","#5A6B2F","#7A4A21"];
+
+function parseCSV(texto){
+  texto = texto.replace(/^\uFEFF/,"");
+  const filas=[]; let fila=[], campo="", enComillas=false;
+  for(let i=0;i<texto.length;i++){
+    const c=texto[i];
+    if(enComillas){
+      if(c==='"'){ if(texto[i+1]==='"'){campo+='"';i++;} else enComillas=false; }
+      else campo+=c;
+    }else{
+      if(c==='"') enComillas=true;
+      else if(c===','){ fila.push(campo); campo=""; }
+      else if(c==='\n'){ fila.push(campo); filas.push(fila); fila=[]; campo=""; }
+      else if(c!=='\r') campo+=c;
+    }
+  }
+  if(campo!==""||fila.length){ fila.push(campo); filas.push(fila); }
+  const cab=filas.shift();
+  return filas.filter(f=>f.length>1).map(f=>Object.fromEntries(cab.map((h,i)=>[h.trim(),(f[i]||"").trim()])));
+}
+
+async function cargarCSV(nombre){
+  const ts = Date.now();
+  try{
+    const r = await fetch(`${nombre}?ts=${ts}`, {cache:"no-store"});
+    if(r.ok) return parseCSV(await r.text());
+    throw 0;
+  }catch(e){
+    const r = await fetch(`${REPO_RAW}${nombre}?ts=${ts}`, {cache:"no-store"});
+    if(!r.ok) throw new Error(`No pude leer ${nombre}`);
+    return parseCSV(await r.text());
+  }
+}
+
+const aMin = h => { const [a,b]=h.split(":").map(Number); return a*60+b; };
+const deMin = m => `${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`;
+const fmtFecha = d => d.toLocaleString("es-CO",{timeZone:"America/Bogota",day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"});
+
+const almacen = {
+  leer(){ try{ return JSON.parse(localStorage.getItem("miHorarioUNAL")||"[]"); }catch(e){ return []; } },
+  guardar(v){ try{ localStorage.setItem("miHorarioUNAL", JSON.stringify(v)); }catch(e){} }
+};
+
+/* ================= Estado ================= */
+let MATERIAS = new Map();   // codigo -> {codigo,nombre,creditos,tipologia,grupos:Map}
+let HISTORIAL = new Map();  // "codigo|grupo" -> [{t:Date, cupos:Number}]
+let seleccion = almacen.leer(); // ["codigo|grupo", ...]
+let grafico = null;
+let modoTend = "mis";
+
+/* ================= Carga y modelo ================= */
+async function cargarDatos(){
+  const estado = $("#estado");
+  estado.innerHTML = '<span class="punto"></span>Cargando datos…';
+  try{
+    const [hor, hist] = await Promise.all([cargarCSV("horarios.csv"), cargarCSV("cupos_historial.csv")]);
+
+    MATERIAS = new Map();
+    for(const f of hor){
+      const cod=f.codigo_asignatura; if(!cod) continue;
+      if(!MATERIAS.has(cod)) MATERIAS.set(cod,{codigo:cod,nombre:f.asignatura,creditos:f.creditos,tipologia:f.tipologia,grupos:new Map()});
+      const m=MATERIAS.get(cod);
+      if(!m.grupos.has(f.grupo)) m.grupos.set(f.grupo,{grupo:f.grupo,profesores:f.profesores,cupos:Number(f.cupos_disponibles||0),sesiones:[]});
+      const g=m.grupos.get(f.grupo);
+      if(f.dia && f.hora_inicio) g.sesiones.push({dia:f.dia.toUpperCase(),ini:aMin(f.hora_inicio),fin:aMin(f.hora_fin),salon:f.salon_nombre||f.salon||""});
+    }
+
+    HISTORIAL = new Map();
+    for(const f of hist){
+      const k=`${f.codigo}|${f.grupo}`;
+      if(!HISTORIAL.has(k)) HISTORIAL.set(k,[]);
+      HISTORIAL.get(k).push({t:new Date(f.fecha_hora), cupos:Number(f.cupos_disponibles)});
+    }
+    for(const v of HISTORIAL.values()) v.sort((a,b)=>a.t-b.t);
+
+    // cupos vigentes = último snapshot si existe
+    for(const m of MATERIAS.values()) for(const g of m.grupos.values()){
+      const h=HISTORIAL.get(`${m.codigo}|${g.grupo}`);
+      if(h && h.length) g.cupos = h[h.length-1].cupos;
+    }
+
+    // limpiar selecciones que ya no existen
+    seleccion = seleccion.filter(k=>{ const [c,g]=k.split("|"); return MATERIAS.has(c) && MATERIAS.get(c).grupos.has(g); });
+    almacen.guardar(seleccion);
+
+    let ult=null; for(const v of HISTORIAL.values()){ const f=v[v.length-1].t; if(!ult||f>ult) ult=f; }
+    const nSnap = new Set([].concat(...[...HISTORIAL.values()].map(v=>v.map(p=>+p.t)))).size;
+    estado.innerHTML = `<span class="punto"></span>Actualizado: ${ult?fmtFecha(ult):"—"} <button id="btnRecargar" type="button">recargar</button>`;
+    $("#btnRecargar").addEventListener("click", cargarDatos);
+    $("#infoSnapshots").textContent = `${nSnap} snapshots · cada 30 min`;
+    $("#conteoMaterias").textContent = `${MATERIAS.size} materias`;
+
+    pintarLista(); pintarHorario(); prepararTendencias(); pintarGrafico();
+  }catch(e){
+    estado.innerHTML = '<span class="punto err"></span>Error al leer los CSV <button id="btnRecargar" type="button">reintentar</button>';
+    $("#btnRecargar").addEventListener("click", cargarDatos);
+  }
+}
+
+/* ================= Lista de materias ================= */
+function colorDe(codigo){
+  const cods=[...MATERIAS.keys()].sort();
+  return PALETA[cods.indexOf(codigo) % PALETA.length];
+}
+function claseCupos(n){ return n<=0?"cero":(n<=3?"pocos":"ok"); }
+
+function sparkline(canvas, datos){
+  const ctx=canvas.getContext("2d"), W=canvas.width=84*2, H=canvas.height=22*2;
+  canvas.style.width="84px"; canvas.style.height="22px";
+  if(!datos||datos.length<2) return;
+  const xs=datos.map(p=>+p.t), ys=datos.map(p=>p.cupos);
+  const x0=Math.min(...xs), x1=Math.max(...xs), y1=Math.max(...ys,1);
+  ctx.lineWidth=2.5; ctx.strokeStyle="#2B5DA8"; ctx.beginPath();
+  datos.forEach((p,i)=>{
+    const x=4+(W-8)*((+p.t-x0)/((x1-x0)||1));
+    const y=H-4-(H-8)*(p.cupos/y1);
+    i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+  });
+  ctx.stroke();
+  const u=datos[datos.length-1];
+  ctx.fillStyle=u.cupos<=0?"#B3372E":"#147A46";
+  ctx.beginPath(); ctx.arc(W-4,H-4-(H-8)*(u.cupos/y1),4,0,7); ctx.fill();
+}
+
+function pintarLista(){
+  const q = $("#busqueda").value.trim().toLowerCase();
+  const cont = $("#listaMaterias"); cont.innerHTML="";
+  const abiertaAntes = new Set([...cont.querySelectorAll(".materia.abierta")].map(x=>x.dataset.cod));
+
+  for(const m of [...MATERIAS.values()].sort((a,b)=>a.nombre.localeCompare(b.nombre))){
+    const texto=`${m.nombre} ${m.codigo} ${[...m.grupos.values()].map(g=>g.profesores).join(" ")}`.toLowerCase();
+    if(q && !texto.includes(q)) continue;
+
+    const div=document.createElement("div");
+    div.className="materia"; div.dataset.cod=m.codigo;
+    if(q || abiertaAntes.has(m.codigo)) div.classList.add("abierta");
+
+    const btn=document.createElement("button");
+    btn.innerHTML=`<span class="flecha">▸</span><span class="cod">${m.codigo}</span><span class="nom">${m.nombre}</span><span class="cred">${m.creditos} cr</span>`;
+    btn.addEventListener("click",()=>div.classList.toggle("abierta"));
+    div.appendChild(btn);
+
+    const caja=document.createElement("div"); caja.className="grupos";
+    for(const g of m.grupos.values()){
+      const k=`${m.codigo}|${g.grupo}`;
+      const enSel=seleccion.includes(k);
+      const fila=document.createElement("div"); fila.className="grupo";
+      const hor=g.sesiones.map(s=>`${s.dia.slice(0,3)} ${deMin(s.ini)}–${deMin(s.fin)}${s.salon?" · "+s.salon:""}`).join("\n");
+      fila.innerHTML=`
+        <div>
+          <div class="g-nom">${g.grupo}</div>
+          <div class="g-prof">${g.profesores||"Sin profesor asignado"}</div>
+          <div class="g-hor">${hor||"Sin horario publicado"}</div>
+        </div>
+        <div class="g-der">
+          <span class="cupos ${claseCupos(g.cupos)}">${g.cupos} cupos</span>
+          <canvas class="spark" aria-hidden="true"></canvas>
+          <button class="btnAdd ${enSel?"quitar":""}" type="button">${enSel?"Quitar":"Agregar"}</button>
+        </div>`;
+      sparkline(fila.querySelector("canvas"), HISTORIAL.get(k));
+      fila.querySelector(".btnAdd").addEventListener("click",()=>alternar(k));
+      caja.appendChild(fila);
+    }
+    div.appendChild(caja);
+    cont.appendChild(div);
+  }
+  if(!cont.children.length) cont.innerHTML='<div class="vacio">Ninguna materia coincide con la búsqueda.</div>';
+}
+
+function alternar(k){
+  const [cod]=k.split("|");
+  if(seleccion.includes(k)) seleccion=seleccion.filter(x=>x!==k);
+  else{
+    // solo un grupo por materia
+    seleccion=seleccion.filter(x=>x.split("|")[0]!==cod);
+    seleccion.push(k);
+  }
+  almacen.guardar(seleccion);
+  pintarLista(); pintarHorario(); if(modoTend==="mis") pintarGrafico();
+}
+
+/* ================= Grilla semanal ================= */
+function sesionesSeleccion(){
+  const out=[];
+  for(const k of seleccion){
+    const [c,gn]=k.split("|"); const m=MATERIAS.get(c); if(!m) continue;
+    const g=m.grupos.get(gn); if(!g) continue;
+    for(const s of g.sesiones) out.push({...s, k, nombre:m.nombre, grupo:gn, color:colorDe(c)});
+  }
+  return out;
+}
+
+function pintarHorario(){
+  const ses=sesionesSeleccion();
+  // créditos
+  const cred=[...new Set(seleccion.map(k=>k.split("|")[0]))].reduce((t,c)=>t+Number(MATERIAS.get(c)?.creditos||0),0);
+  $("#totalCreditos").textContent=`${cred} créditos`;
+
+  // chips
+  const chips=$("#chips"); chips.innerHTML="";
+  if(!seleccion.length) chips.innerHTML='<span style="color:var(--tinta-suave);font-size:.85rem">Agrega grupos desde la lista de asignaturas.</span>';
+  for(const k of seleccion){
+    const [c,g]=k.split("|"); const m=MATERIAS.get(c); if(!m) continue;
+    const chip=document.createElement("span"); chip.className="chip";
+    chip.innerHTML=`<i style="background:${colorDe(c)}"></i>${m.nombre} · ${g}<button type="button" aria-label="Quitar ${m.nombre}">✕</button>`;
+    chip.querySelector("button").addEventListener("click",()=>alternar(k));
+    chips.appendChild(chip);
+  }
+
+  // conflictos
+  const choques=new Set(); const pares=[];
+  for(let i=0;i<ses.length;i++) for(let j=i+1;j<ses.length;j++){
+    const a=ses[i],b=ses[j];
+    if(a.k!==b.k && a.dia===b.dia && a.ini<b.fin && b.ini<a.fin){
+      choques.add(i); choques.add(j);
+      pares.push(`${a.nombre} y ${b.nombre} se cruzan el ${a.dia.toLowerCase()} ${deMin(Math.max(a.ini,b.ini))}–${deMin(Math.min(a.fin,b.fin))}`);
+    }
+  }
+  const aviso=$("#avisoConflicto");
+  aviso.classList.toggle("visible",pares.length>0);
+  aviso.textContent = pares.length? "⚠ Conflicto de horario: "+[...new Set(pares)].join(" · ") : "";
+
+  // rango horario
+  let minH=7*60, maxH=17*60;
+  for(const s of ses){ minH=Math.min(minH,s.ini); maxH=Math.max(maxH,s.fin); }
+  minH=Math.floor(minH/60)*60; maxH=Math.ceil(maxH/60)*60;
+  const total=maxH-minH, ALTO=Math.max(440, total/60*44);
+
+  const gr=$("#grilla"); gr.innerHTML="";
+  gr.insertAdjacentHTML("beforeend",'<div class="esquina">HORA</div>'+DIAS.map(d=>`<div class="dia">${d.slice(0,3)}</div>`).join(""));
+
+  const regla=document.createElement("div"); regla.className="reglilla"; regla.style.height=ALTO+"px";
+  for(let h=minH+60; h<maxH; h+=60){
+    const s=document.createElement("span"); s.textContent=deMin(h); s.style.top=((h-minH)/total*100)+"%"; regla.appendChild(s);
+  }
+  gr.appendChild(regla);
+
+  for(const d of DIAS){
+    const col=document.createElement("div"); col.className="columna";
+    col.style.height=ALTO+"px";
+    col.style.setProperty("--paso-hora",(60/total*ALTO)+"px");
+    ses.forEach((s,i)=>{
+      if(s.dia!==d) return;
+      const b=document.createElement("div"); b.className="bloque"+(choques.has(i)?" choque":"");
+      b.style.top=((s.ini-minH)/total*100)+"%";
+      b.style.height=((s.fin-s.ini)/total*100)+"%";
+      b.style.borderColor=s.color; b.style.background=s.color+"1A"; b.style.color=s.color;
+      b.title=`${s.nombre} ${s.grupo} · ${deMin(s.ini)}–${deMin(s.fin)}${s.salon?" · "+s.salon:""}`;
+      b.innerHTML=`<b>${s.nombre}</b><span class="mono">${deMin(s.ini)}–${deMin(s.fin)}${s.salon?"<br>"+s.salon:""}</span>`;
+      col.appendChild(b);
+    });
+    gr.appendChild(col);
+  }
+}
+
+/* ================= Tendencias (Chart.js) ================= */
+function prepararTendencias(){
+  const sel=$("#selMateria"); sel.innerHTML="";
+  for(const m of [...MATERIAS.values()].sort((a,b)=>a.nombre.localeCompare(b.nombre))){
+    const o=document.createElement("option"); o.value=m.codigo; o.textContent=`${m.nombre} (${m.codigo})`;
+    sel.appendChild(o);
+  }
+}
+
+function seriesPara(claves){
+  const tiempos=new Set();
+  for(const k of claves) (HISTORIAL.get(k)||[]).forEach(p=>tiempos.add(+p.t));
+  const eje=[...tiempos].sort((a,b)=>a-b);
+  const etiquetas=eje.map(t=>fmtFecha(new Date(t)));
+  const datasets=claves.map((k,i)=>{
+    const mapa=new Map((HISTORIAL.get(k)||[]).map(p=>[+p.t,p.cupos]));
+    const [c,g]=k.split("|"); const m=MATERIAS.get(c);
+    return {
+      label:`${m?m.nombre:c} · ${g}`,
+      data:eje.map(t=>mapa.has(t)?mapa.get(t):null),
+      borderColor:PALETA[i%PALETA.length], backgroundColor:PALETA[i%PALETA.length],
+      spanGaps:true, tension:.25, pointRadius:2, borderWidth:2
+    };
+  });
+  return {etiquetas, datasets};
+}
+
+function pintarGrafico(){
+  const claves = modoTend==="mis"
+    ? seleccion
+    : [...(MATERIAS.get($("#selMateria").value)?.grupos.keys()||[])].map(g=>`${$("#selMateria").value}|${g}`);
+  const {etiquetas, datasets}=seriesPara(claves);
+  const ctx=$("#grafico");
+  if(grafico) grafico.destroy();
+  grafico=new Chart(ctx,{
+    type:"line",
+    data:{labels:etiquetas, datasets},
+    options:{
+      maintainAspectRatio:false, animation:false,
+      interaction:{mode:"nearest", intersect:false},
+      plugins:{
+        legend:{labels:{font:{family:"Archivo", size:11}, boxWidth:14}},
+        tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y} cupos`}}
+      },
+      scales:{
+        x:{ticks:{font:{family:"IBM Plex Mono", size:10}, maxRotation:60, autoSkip:true, maxTicksLimit:14}, grid:{color:"#EEF2EA"}},
+        y:{beginAtZero:true, title:{display:true, text:"Cupos disponibles", font:{family:"Archivo", size:11}},
+           ticks:{font:{family:"IBM Plex Mono", size:10}, precision:0}, grid:{color:"#E4EADF"}}
+      }
+    }
+  });
+  if(!datasets.length){
+    const c=ctx.getContext("2d");
+    c.font="14px Archivo"; c.fillStyle="#5C6B60"; c.textAlign="center";
+    c.fillText(modoTend==="mis"?"Agrega grupos a tu horario para ver su tendencia.":"Esta asignatura no tiene historial todavía.", ctx.width/2, ctx.height/2);
+  }
+}
+
+/* ================= Eventos ================= */
+$("#busqueda").addEventListener("input", pintarLista);
+$("#modoMis").addEventListener("click",()=>{ modoTend="mis"; $("#modoMis").classList.add("activo"); $("#modoMateria").classList.remove("activo"); $("#selMateria").hidden=true; pintarGrafico(); });
+$("#modoMateria").addEventListener("click",()=>{ modoTend="materia"; $("#modoMateria").classList.add("activo"); $("#modoMis").classList.remove("activo"); $("#selMateria").hidden=false; pintarGrafico(); });
+$("#selMateria").addEventListener("change", pintarGrafico);
+
+cargarDatos();
+setInterval(cargarDatos, 10*60*1000); // refresca cada 10 minutos sin recargar la página
+</script>
+</body>
+</html>
