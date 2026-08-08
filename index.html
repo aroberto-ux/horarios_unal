@@ -7,7 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"
+  onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js';document.head.appendChild(s);"></script>
 <style>
 :root{
   --papel:#FAFBF7;          /* papel de planilla */
@@ -190,6 +191,10 @@ section.panel{
 }
 .controles-tend .modo button.activo{background:var(--tinta); color:var(--papel)}
 .lienzo{position:relative; height:min(52vh,420px); padding:12px 16px 18px}
+.lienzo .msj{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:20px; color:var(--tinta-suave); font-size:.9rem; background:var(--blanco);
+}
 footer{max-width:1400px; margin:0 auto; padding:10px clamp(12px,3vw,32px) 30px; color:var(--tinta-suave); font-size:.78rem}
 footer a{color:var(--azul)}
 </style>
@@ -341,7 +346,8 @@ async function cargarDatos(){
     $("#infoSnapshots").textContent = `${nSnap} snapshots · cada 30 min`;
     $("#conteoMaterias").textContent = `${MATERIAS.size} materias`;
 
-    pintarLista(); pintarHorario(); prepararTendencias(); pintarGrafico();
+    pintarLista(); pintarHorario(); prepararTendencias();
+    try{ pintarGrafico(); }catch(e){ msjLienzo("La gráfica falló al dibujarse. Recarga la página para intentar de nuevo."); }
   }catch(e){
     estado.innerHTML = '<span class="punto err"></span>Error al leer los CSV <button id="btnRecargar" type="button">reintentar</button>';
     $("#btnRecargar").addEventListener("click", cargarDatos);
@@ -531,13 +537,32 @@ function seriesPara(claves){
   return {etiquetas, datasets};
 }
 
+function msjLienzo(txt){
+  const l=document.querySelector(".lienzo");
+  let m=l.querySelector(".msj");
+  if(!txt){ if(m) m.remove(); return; }
+  if(!m){ m=document.createElement("div"); m.className="msj"; l.appendChild(m); }
+  m.textContent=txt;
+}
+
+let esperaChart=0;
 function pintarGrafico(){
+  if(typeof Chart==="undefined"){
+    if(esperaChart++<24){ msjLienzo("Cargando el módulo de gráficas…"); setTimeout(pintarGrafico,500); }
+    else msjLienzo("No se pudo cargar la librería de gráficas (Chart.js). Revisa tu conexión y recarga la página.");
+    return;
+  }
+  esperaChart=0;
   const claves = modoTend==="mis"
     ? seleccion
     : [...(MATERIAS.get($("#selMateria").value)?.grupos.keys()||[])].map(g=>`${$("#selMateria").value}|${g}`);
   const {etiquetas, datasets}=seriesPara(claves);
+  msjLienzo(datasets.length? null :
+    (modoTend==="mis" ? "Agrega grupos a tu horario para ver su tendencia."
+                      : "Esta asignatura no tiene historial de cupos todavía."));
   const ctx=$("#grafico");
   if(grafico) grafico.destroy();
+  if(!datasets.length){ grafico=null; return; }
   grafico=new Chart(ctx,{
     type:"line",
     data:{labels:etiquetas, datasets},
@@ -555,11 +580,6 @@ function pintarGrafico(){
       }
     }
   });
-  if(!datasets.length){
-    const c=ctx.getContext("2d");
-    c.font="14px Archivo"; c.fillStyle="#5C6B60"; c.textAlign="center";
-    c.fillText(modoTend==="mis"?"Agrega grupos a tu horario para ver su tendencia.":"Esta asignatura no tiene historial todavía.", ctx.width/2, ctx.height/2);
-  }
 }
 
 /* ================= Eventos ================= */
