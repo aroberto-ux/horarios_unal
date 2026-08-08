@@ -52,7 +52,7 @@ on:
 jobs:
   snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 20
     steps:
       - name: Descargar el repositorio
         uses: actions/checkout@v4
@@ -69,6 +69,17 @@ jobs:
 
       - name: Tomar el snapshot de cupos
         run: python sia_scraper.py cupos
+
+      - name: Proteger contra raspados incompletos
+        run: |
+          contar() { tail -n +2 "$1" 2>/dev/null | cut -d, -f1 | sort -u | wc -l; }
+          nuevas=$(contar horarios.csv)
+          previas=$(git show HEAD:horarios.csv 2>/dev/null | tail -n +2 | cut -d, -f1 | sort -u | wc -l)
+          echo "Materias: antes=$previas, ahora=$nuevas"
+          if [ "$previas" -gt 0 ] && [ $((nuevas * 10)) -lt $((previas * 8)) ]; then
+            echo "::warning::Raspado incompleto ($nuevas de $previas materias). Conservo los archivos anteriores; solo se guarda el historial de cupos."
+            git checkout -- horarios.csv grupos.csv catalogo.json estadisticas.html horario.html 2>/dev/null || true
+          fi
 
       - name: Guardar los resultados como commit
         run: |
