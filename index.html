@@ -124,6 +124,7 @@ section.panel{
 .cupos.ok{background:var(--verde-claro); color:var(--verde)}
 .cupos.pocos{background:var(--ambar-claro); color:var(--ambar)}
 .cupos.cero{background:var(--rojo-claro); color:var(--rojo)}
+.cupos.sindato{background:#EEE; color:#777}
 .vel{font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:var(--rojo); white-space:nowrap}
 .vel.sube{color:var(--verde)}
 .spark{width:84px; height:22px}
@@ -292,6 +293,15 @@ async function cargarCSV(nombre){
 }
 
 const aMin = h => { const [a,b]=h.split(":").map(Number); return a*60+b; };
+/* Cupos -> número, o null si el scraper no pudo leerlos ("NA").
+   Ojo: "NA" NO es 0. Un 0 significa "grupo agotado" y es un dato real;
+   un NA significa "no se sabe" y debe omitirse de las series. */
+const numCupos = v => {
+  const s = String(v ?? "").trim();
+  if(!s || s === "NA") return null;
+  const n = Number(s);
+  return Number.isFinite(n) ? n : null;
+};
 const deMin = m => `${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`;
 const fmtFecha = d => d.toLocaleString("es-CO",{timeZone:"America/Bogota",day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"});
 
@@ -319,17 +329,39 @@ async function cargarDatos(){
       const cod=f.codigo_asignatura; if(!cod) continue;
       if(!MATERIAS.has(cod)) MATERIAS.set(cod,{codigo:cod,nombre:f.asignatura,creditos:f.creditos,tipologia:f.tipologia,grupos:new Map()});
       const m=MATERIAS.get(cod);
-      if(!m.grupos.has(f.grupo)) m.grupos.set(f.grupo,{grupo:f.grupo,profesores:f.profesores,cupos:Number(f.cupos_disponibles||0),sesiones:[]});
+      if(!m.grupos.has(f.grupo)) m.grupos.set(f.grupo,{grupo:f.grupo,profesores:f.profesores,cupos:numCupos(f.cupos_disponibles),sesiones:[]});
       const g=m.grupos.get(f.grupo);
       if(f.dia && f.hora_inicio) g.sesiones.push({dia:f.dia.toUpperCase(),ini:aMin(f.hora_inicio),fin:aMin(f.hora_fin),salon:f.salon_nombre||f.salon||""});
     }
 
-    HISTORIAL = new Map();
+    /* Historial de cupos.
+       Esquema v2: run_id, ts_lectura, codigo, actividad, grupo, ...
+       Esquema v1 (archivos viejos): fecha_hora, codigo, asignatura, grupo, ...
+       Se leen ambos para que la página no dependa de cuál esté publicado.
+
+       Un grupo puede aparecer varias veces en el mismo snapshot, una por
+       actividad (magistral/taller/laboratorio son la MISMA inscripción:
+       comparten cupo). Si se apilaran tal cual, la serie tendría puntos
+       repetidos en el mismo instante. Se colapsan por corrida tomando el
+       mínimo, que es el cupo que de verdad restringe. */
+    const porGrupo = new Map();               // "cod|grupo" -> Map(corrida -> punto)
     for(const f of hist){
-      const k=`${f.codigo}|${f.grupo}`;
-      if(!HISTORIAL.has(k)) HISTORIAL.set(k,[]);
-      HISTORIAL.get(k).push({t:new Date(f.fecha_hora), cupos:Number(f.cupos_disponibles)});
+      const cupos = numCupos(f.cupos_disponibles);
+      if(cupos===null) continue;              // "NA" = lectura fallida, no es un 0
+      const ts = f.ts_lectura || f.fecha_hora;
+      const t = new Date(ts);
+      if(isNaN(+t)) continue;                 // fila con fecha ilegible
+      const k = `${f.codigo}|${f.grupo}`;
+      const corrida = f.run_id || ts;         // v1 no tiene run_id: sirve la marca
+      if(!porGrupo.has(k)) porGrupo.set(k, new Map());
+      const puntos = porGrupo.get(k);
+      const previo = puntos.get(corrida);
+      // dentro de una corrida: el menor cupo y el instante más temprano
+      if(!previo) puntos.set(corrida, {t, cupos});
+      else { previo.cupos = Math.min(previo.cupos, cupos); if(t < previo.t) previo.t = t; }
     }
+    HISTORIAL = new Map();
+    for(const [k, puntos] of porGrupo) HISTORIAL.set(k, [...puntos.values()]);
     for(const v of HISTORIAL.values()) v.sort((a,b)=>a.t-b.t);
 
     // cupos vigentes = último snapshot si existe
@@ -343,7 +375,10 @@ async function cargarDatos(){
     almacen.guardar(seleccion);
 
     let ult=null; for(const v of HISTORIAL.values()){ const f=v[v.length-1].t; if(!ult||f>ult) ult=f; }
-    const nSnap = new Set([].concat(...[...HISTORIAL.values()].map(v=>v.map(p=>+p.t)))).size;
+    /* Un snapshot = una CORRIDA del scraper. No sirve contar marcas de
+       tiempo distintas: en el esquema v2 cada asignatura lleva la suya
+       (un barrido tarda minutos), así que eso contaría cientos por corrida. */
+    const nSnap = new Set(hist.map(f=>f.run_id||f.ts_lectura||f.fecha_hora)).size;
     estado.innerHTML = `<span class="punto"></span>Actualizado: ${ult?fmtFecha(ult):"—"} <button id="btnRecargar" type="button">recargar</button>`;
     $("#btnRecargar").addEventListener("click", cargarDatos);
     $("#infoSnapshots").textContent = `${nSnap} snapshots · cada 30 min`;
@@ -362,7 +397,8 @@ function colorDe(codigo){
   const cods=[...MATERIAS.keys()].sort();
   return PALETA[cods.indexOf(codigo) % PALETA.length];
 }
-function claseCupos(n){ return n<=0?"cero":(n<=3?"pocos":"ok"); }
+function claseCupos(n){ return n===null?"sindato":(n<=0?"cero":(n<=3?"pocos":"ok")); }
+const textoCupos = n => n===null ? "sin dato" : `${n} cupos`;
 
 function sparkline(canvas, datos){
   const ctx=canvas.getContext("2d"), W=canvas.width=84*2, H=canvas.height=22*2;
@@ -421,7 +457,7 @@ function pintarLista(){
           <div class="g-hor">${hor||"Sin horario publicado"}</div>
         </div>
         <div class="g-der">
-          <span class="cupos ${claseCupos(g.cupos)}">${g.cupos} cupos</span>
+          <span class="cupos ${claseCupos(g.cupos)}">${textoCupos(g.cupos)}</span>
           ${vel}
           <canvas class="spark" aria-hidden="true"></canvas>
           <button class="btnAdd ${enSel?"quitar":""}" type="button">${enSel?"Quitar":"Agregar"}</button>
