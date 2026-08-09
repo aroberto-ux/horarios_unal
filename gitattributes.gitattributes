@@ -1,17 +1,1 @@
-# Guardar este contenido como .gitattributes en la RAÍZ del repo
-# (con el punto delante) y commitearlo a main ANTES que nada: durante
-# un rebase git lee los atributos de la rama de destino, así que si no
-# está ya en main, no sirve de nada.
-#
-# "merge=union" = ante un conflicto, quedarse con las líneas de AMBOS
-# lados en vez de detener el rebase. Es exactamente lo correcto para
-# archivos append-only: dos corridas que añaden filas al final no se
-# contradicen, se suman. Sin esto, cada carrera entre dos escrituras
-# rompe el push y tumba el job.
 
-cupos_historial.csv     merge=union
-cupos_historial_v1.csv  merge=union
-runs.csv                merge=union
-
-# Los .gz son binarios: que git no intente ni diff ni merge.
-textos/*.jsonl.gz       binary
