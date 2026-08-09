@@ -2,57 +2,80 @@
 #  Snapshot automático de cupos del SIA en GitHub Actions
 #
 #  ¿DÓNDE QUEDAN LOS DATOS? En el repositorio mismo. Cada
-#  corrida hace un commit con los archivos actualizados, así
-#  que el repo es tu base de datos Y su historial de versiones.
+#  corrida hace un commit con los archivos actualizados.
+#
+#  Archivos que produce cada corrida en modo cupos:
+#    cupos_historial.csv  una fila por grupo por medición (append-only)
+#    runs.csv             una fila por corrida con conteos; completo=0
+#                         o run_id ausente => barrido incompleto,
+#                         trátalo aparte en el análisis
+#    textos/run-*.jsonl.gz  texto crudo de cada página, por si el SIA
+#                         cambia de formato y hay que re-parsear
+#                         (desactivable con SIA_GUARDAR_TEXTO=0)
 #
 #  Cómo usarlo:
-#   1. Crea un repositorio en github.com
-#      >>> HAZLO PÚBLICO <<< (ver nota de minutos abajo)
-#   2. Sube sia_scraper.py a la raíz del repositorio
-#   3. Guarda este archivo como .github/workflows/snapshot_cupos.yml
-#   4. En Settings > Actions > General > Workflow permissions,
-#      marca "Read and write permissions"
-#   5. (Opcional) Settings > Pages > Source: "Deploy from a branch",
-#      rama main, carpeta / (root). Así verás tus estadísticas en
-#      https://TU-USUARIO.github.io/TU-REPO/estadisticas.html
+#   1. Repositorio PÚBLICO (Actions ilimitadas; ver nota de minutos)
+#   2. sia_scraper.py en la raíz
+#   3. Este archivo en .github/workflows/snapshot_cupos.yml
+#   4. Settings > Actions > General > Workflow permissions:
+#      "Read and write permissions"
+#   5. (Opcional) Settings > Pages para ver estadisticas.html
 #
-#  NOTA SOBRE MINUTOS:
-#   Con UNA corrida diaria (~12 min) el consumo es de unos
-#   360 minutos al mes, así que cabe de sobra incluso en un
-#   repositorio privado (límite gratuito: 2.000 min/mes).
-#   Los repositorios públicos tienen Actions ilimitadas.
-#   Si más adelante subes la frecuencia a cada 4 horas o menos,
-#   pásalo a público para no chocar con el límite.
+#  NOTA SOBRE MINUTOS: cada 30 min x ~15 min por corrida son
+#  ~21.000 min/mes: SOLO cabe en un repositorio público (los
+#  privados gratuitos tienen 2.000/mes).
+#
+#  ¡OJO! GitHub DESACTIVA los workflows programados tras 60 días
+#  sin actividad humana en el repo, y los commits del propio bot
+#  no siempre cuentan. Si la semana de inscripción es dentro de
+#  varias semanas, entra a la pestaña Actions unos días antes y
+#  verifica que el workflow siga habilitado (y haz una corrida
+#  manual de prueba con "Run workflow").
+#
+#  REDUNDANCIA: el cron de Actions es "mejor esfuerzo", no una
+#  garantía. Durante la semana de inscripción mantén también la
+#  Raspberry (u otra máquina) corriendo en paralelo sobre su
+#  propia copia del repo. Dos fuentes que se cotejan valen más
+#  que una perfecta.
 # ============================================================
 name: Snapshot de cupos SIA
 
 on:
   schedule:
-    # ── 8:15 p. m. hora de Colombia, todos los días ──
-    # El cron de GitHub va en UTC y Colombia es UTC-5, así que
-    # 20:15 COT = 01:15 UTC DEL DÍA SIGUIENTE.
-    # Por eso los commits aparecerán fechados un día después en UTC:
-    # es normal, corresponde a la noche anterior en Colombia.
+    # Minutos 7 y 37, no 0 y 30: los :00 y :30 son los minutos más
+    # congestionados de GitHub y los cron programados ahí se retrasan
+    # (10-30 min) o directamente se saltan. Con turnos de media hora,
+    # ese retraso arruina la resolución temporal.
     #
-    #        ┌─ minuto (15)
-    #        │  ┌─ hora UTC (1 = 01:15 UTC = 20:15 Colombia)
-    #        │  │ ┌─ día del mes (todos)
-    #        │  │ │ ┌─ mes (todos)
-    #        │  │ │ │ ┌─ día de la semana (todos)
-    - cron: "*/30 * * * *"
+    #        ┌─ minutos (7 y 37 de cada hora)
+    #        │    ┌─ todas las horas (UTC; Colombia es UTC-5)
+    - cron: "7,37 * * * *"
     #
-    # Otras opciones (recuerda: hora Colombia + 5 = UTC)
-    #   - cron: "15 1,13 * * *"   # 8:15 p.m. y 8:15 a.m.
-    #   - cron: "0 */2 * * *"     # cada 2 h (semana de inscripciones)
-    # OJO: no bajes de cada 1-2 horas por respeto al servidor del SIA.
+    # Fuera de la semana de inscripciones baja la frecuencia:
+    #   - cron: "7 1 * * *"      # una vez al día, 8:07 p.m. Colombia
+    #   - cron: "7 */4 * * *"    # cada 4 horas
+    # Por respeto al servidor del SIA, cada 30 min SOLO durante la
+    # semana crítica.
 
-  # Permite lanzarlo a mano desde la pestaña Actions
+  # Permite lanzarlo a mano desde la pestaña Actions (úsalo esta
+  # semana para medir cuánto tarda un barrido real).
   workflow_dispatch:
+
+# Si una corrida se demora más que el intervalo, la siguiente ESPERA
+# en la cola en vez de arrancar encima y pelearse por el git push.
+# cancel-in-progress en false: jamás matar un barrido a medias.
+concurrency:
+  group: snapshot-cupos
+  cancel-in-progress: false
 
 jobs:
   snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # Techo de seguridad del job COMPLETO. El timeout fino va en el
+    # paso del scraper (abajo): si el timeout fuera solo del job,
+    # al agotarse mataría también los pasos de commit y se perdería
+    # todo lo raspado.
+    timeout-minutes: 28
     steps:
       - name: Descargar el repositorio
         uses: actions/checkout@v4
@@ -64,20 +87,33 @@ jobs:
 
       - name: Instalar dependencias
         run: pip install selenium
-        # Chrome ya viene instalado en ubuntu-latest y Selenium 4.6+
-        # descarga el chromedriver correcto automáticamente.
+        # Chrome ya viene en ubuntu-latest; Selenium 4.6+ resuelve el
+        # chromedriver automáticamente.
 
       - name: Tomar el snapshot de cupos
+        # Timeout A NIVEL DE PASO: al agotarse, el runner manda SIGTERM,
+        # el scraper lo captura, cierra el historial (que se escribe
+        # incrementalmente, asignatura por asignatura) y anota la
+        # corrida como incompleta en runs.csv. Los pasos siguientes
+        # commitean lo que alcanzó a escribirse.
+        timeout-minutes: 22
+        continue-on-error: true
+        env:
+          SIA_GUARDAR_TEXTO: "1"   # pon "0" después de la semana crítica
         run: python sia_scraper.py cupos
 
-      - name: Proteger contra raspados incompletos
+      - name: Proteger catálogo contra raspados incompletos
+        # Esto protege los archivos DERIVADOS (catálogo, horarios, html)
+        # de quedar medio vacíos. El historial y runs.csv NO se tocan:
+        # sus filas parciales son valiosas y quedan marcadas con su
+        # run_id, que runs.csv delata como incompleto.
         run: |
           contar() { tail -n +2 "$1" 2>/dev/null | cut -d, -f1 | sort -u | wc -l; }
           nuevas=$(contar horarios.csv)
           previas=$(git show HEAD:horarios.csv 2>/dev/null | tail -n +2 | cut -d, -f1 | sort -u | wc -l)
           echo "Materias: antes=$previas, ahora=$nuevas"
           if [ "$previas" -gt 0 ] && [ $((nuevas * 10)) -lt $((previas * 8)) ]; then
-            echo "::warning::Raspado incompleto ($nuevas de $previas materias). Conservo los archivos anteriores; solo se guarda el historial de cupos."
+            echo "::warning::Raspado incompleto ($nuevas de $previas materias). Se restauran los archivos derivados; el historial conserva las mediciones parciales con su run_id."
             git checkout -- horarios.csv grupos.csv catalogo.json estadisticas.html horario.html 2>/dev/null || true
           fi
 
@@ -85,8 +121,26 @@ jobs:
         run: |
           git config user.name "sia-bot"
           git config user.email "sia-bot@users.noreply.github.com"
-          git add -A cupos_historial.csv estadisticas.html catalogo.json \
-                     grupos.csv horarios.csv horario.html || true
+
+          # Añadir solo lo que exista (el glob cubre también los
+          # respaldos cupos_historial_v1*.csv de la migración)
+          for f in cupos_historial*.csv runs.csv estadisticas.html \
+                   catalogo.json grupos.csv horarios.csv horario.html; do
+            [ -e "$f" ] && git add "$f"
+          done
+          [ -d textos ] && git add textos
+
           git commit -m "snapshot de cupos $(date -u +'%Y-%m-%d %H:%M UTC')" \
-            || echo "Sin cambios que guardar"
-          git push
+            || { echo "Sin cambios que guardar"; exit 0; }
+
+          # Push con rebase y reintentos: si otra corrida (o un commit
+          # tuyo) llegó primero, un push simple falla y se perdería el
+          # snapshot entero.
+          for intento in 1 2 3; do
+            git push && exit 0
+            echo "Push rechazado (intento $intento/3); rebase y reintento..."
+            git pull --rebase --autostash || true
+            sleep 10
+          done
+          echo "::error::No se pudo hacer push tras 3 intentos"
+          exit 1
