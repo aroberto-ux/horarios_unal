@@ -34,8 +34,11 @@ Reanudación:
 """
 
 import csv
+import gzip
 import json
 import os
+import signal
+from datetime import datetime, timezone
 from pathlib import Path
 import re
 import time
@@ -100,6 +103,71 @@ OUTPUT_HTML = CARPETA_SALIDA / "horario.html"
 OUTPUT_HISTORIAL = CARPETA_SALIDA / "cupos_historial.csv"
 OUTPUT_STATS = CARPETA_SALIDA / "estadisticas.html"
 
+# Bitácora de corridas: una fila por ejecución en modo cupos, con conteos de
+# asignaturas esperadas/leídas/fallidas. En el análisis, TODA corrida cuyo
+# run_id aparezca en cupos_historial.csv pero NO tenga fila aquí (o la tenga
+# con completo=0) debe tratarse como barrido incompleto: el scraper recorre
+# las asignaturas en orden, así que lo que falta no es aleatorio.
+OUTPUT_RUNS = CARPETA_SALIDA / "runs.csv"
+
+# Texto crudo de cada página de detalle, comprimido, un .jsonl.gz por corrida.
+# La semana de inscripción no se repite: si el SIA cambia de formato y el
+# parser falla en silencio, con esto se puede re-parsear después.
+# Desactivable con la variable de entorno SIA_GUARDAR_TEXTO=0.
+CARPETA_TEXTOS = CARPETA_SALIDA / "textos"
+GUARDAR_TEXTO_CRUDO = os.environ.get("SIA_GUARDAR_TEXTO", "1") != "0"
+
+# Sharding opcional para paralelizar: SIA_SHARD="1/4" procesa solo la 1.ª de
+# cada 4 asignaturas, "2/4" la 2.ª, etc. Sirve para repartir el barrido entre
+# varios procesos o máquinas y comprimir la ventana temporal del snapshot.
+# Cada shard debe escribir en su propia copia del repo para no pisarse.
+SIA_SHARD = os.environ.get("SIA_SHARD", "").strip()
+
+
+def _calcular_run_id() -> str:
+    """Identificador único de esta ejecución, común a todas sus filas."""
+    base = os.environ.get("GITHUB_RUN_ID")
+    if base:
+        rid = f"gh-{base}"
+        intento = os.environ.get("GITHUB_RUN_ATTEMPT")
+        if intento and intento != "1":
+            rid += f".{intento}"
+    else:
+        rid = "local-" + datetime.now().strftime("%Y%m%dT%H%M%S")
+    if SIA_SHARD:
+        rid += "-s" + SIA_SHARD.replace("/", "de")
+    return rid
+
+
+RUN_ID = _calcular_run_id()
+
+
+def _tz_bogota():
+    try:
+        from zoneinfo import ZoneInfo
+        return ZoneInfo("America/Bogota")
+    except Exception:
+        return None  # sin tzdata: se usa la zona local con offset explícito
+
+
+def ahora_iso() -> str:
+    """Instante actual en ISO 8601 CON offset (p. ej. 2026-08-10T14:32:07-05:00).
+
+    Los runners de GitHub corren en UTC y Bogotá es UTC-5; guardar el offset
+    hace las marcas inambiguas se corran donde se corran."""
+    tz = _tz_bogota()
+    dt = datetime.now(tz) if tz else datetime.now().astimezone()
+    return dt.isoformat(timespec="seconds")
+
+
+def _parse_ts(ts: str) -> datetime:
+    """Parsea marcas viejas ('2026-07-21T04:35+00:00') y nuevas. Ordenar por
+    texto NO sirve cuando se mezclan offsets +00:00 y -05:00."""
+    try:
+        return datetime.fromisoformat(ts)
+    except (ValueError, TypeError):
+        return datetime.min.replace(tzinfo=timezone.utc)
+
 # Modo snapshot de cupos (python sia_scraper.py cupos): raspa TODO de nuevo
 # (ignora la reanudación, porque el punto es medir los cupos frescos), corre
 # sin ventana, y añade una fila por grupo al historial con fecha y hora.
@@ -157,7 +225,13 @@ class Grupo:
     grupo: str = ""
     actividad: str = ""        # CLASE TEORICA / LABORATORIO / TALLER / ...
     profesores: str = "No informado"
-    cupos_disponibles: str = ""
+    # "NA" = no se pudo leer (distinto de "0", que es un agotado legítimo)
+    cupos_disponibles: str = "NA"
+    # El SIA público normalmente solo muestra disponibles; si algún día
+    # expone el total, el parser lo captura. Mientras tanto, la capacidad
+    # se estima como el máximo observado en la serie (con el barrido de
+    # línea base ANTES del primer turno como referencia principal).
+    cupos_totales: str = "NA"
     fecha: str = ""
     duracion: str = ""
     jornada: str = ""
@@ -173,6 +247,11 @@ class Asignatura:
     facultad: str = ""
     planes: List[str] = field(default_factory=list)
     grupos: List[Grupo] = field(default_factory=list)
+    # Momento EXACTO en que se leyó esta página y posición dentro del
+    # barrido. Un barrido completo tarda muchos minutos: sin esto, la
+    # primera y la última asignatura parecerían medidas al mismo tiempo.
+    ts_lectura: str = ""
+    orden_lectura: int = -1
 
 
 # ---------------------------------------------------------------------------
@@ -1104,9 +1183,13 @@ def parsear_texto_detalle(body_text: str, codigo: str) -> Asignatura:
         elif limpia.startswith("Fecha"):
             grupo_actual.fecha = _limpiar(
                 limpia.split(":", 1)[1] if ":" in limpia else "")
+        elif limpia.startswith(("Cupos totales", "Cupos total")):
+            m2 = re.search(r"(\d+)", limpia)
+            grupo_actual.cupos_totales = m2.group(1) if m2 else "NA"
         elif limpia.startswith("Cupos disponibles"):
             m2 = re.search(r"(\d+)", limpia)
-            grupo_actual.cupos_disponibles = m2.group(1) if m2 else ""
+            # "NA" y no "": un fallo de lectura debe ser distinguible de 0
+            grupo_actual.cupos_disponibles = m2.group(1) if m2 else "NA"
         elif limpia.startswith(("Duración", "Duracion")):
             grupo_actual.duracion = _limpiar(
                 limpia.split(":", 1)[1] if ":" in limpia else "")
@@ -1120,6 +1203,9 @@ def parsear_texto_detalle(body_text: str, codigo: str) -> Asignatura:
 def parsear_detalle(driver, codigo: str) -> Asignatura:
     body_text = driver.find_element(By.TAG_NAME, "body").text
     asig = parsear_texto_detalle(body_text, codigo)
+    # Atributo transitorio (no es campo del dataclass, así que no entra al
+    # JSON): el texto crudo para archivarlo comprimido en modo cupos.
+    asig._texto_crudo = body_text
 
     if not asig.grupos:
         # O la asignatura no tiene grupos programados este semestre, o el
@@ -1250,7 +1336,8 @@ def cargar_previo() -> Dict[str, Asignatura]:
                     grupo=g.get("grupo", ""),
                     actividad=g.get("actividad", ""),
                     profesores=g.get("profesores", "No informado"),
-                    cupos_disponibles=g.get("cupos_disponibles", ""),
+                    cupos_disponibles=g.get("cupos_disponibles", "NA"),
+                    cupos_totales=g.get("cupos_totales", "NA"),
                     fecha=g.get("fecha", ""),
                     duracion=g.get("duracion", ""),
                     jornada=g.get("jornada", ""),
@@ -1821,23 +1908,212 @@ def generar_html(asignaturas: List[Asignatura]):
 # en modo "cupos" añade una fila por grupo con la fecha/hora de la medición.
 # estadisticas.html se regenera leyendo ese historial completo.
 
-def registrar_historial(asignaturas: List[Asignatura]):
-    from datetime import datetime
-    ts = datetime.now().astimezone().isoformat(timespec="minutes")
+# Esquema v2 del historial. Cambios frente al v1
+# (fecha_hora,codigo,asignatura,grupo,cupos_disponibles):
+#   run_id          identifica la corrida; cruzar con runs.csv para saber si
+#                   el barrido fue completo.
+#   ts_lectura      instante de lectura de ESA asignatura, no de la corrida.
+#   actividad       (codigo, grupo) NO es clave única: "Grupo 1" de CLASE
+#                   TEORICA y "Grupo 1" de LABORATORIO son series distintas.
+#   profesores_raw  quién dictaba el grupo EN ESE MOMENTO. grupos.csv se
+#                   sobrescribe en cada corrida; si reasignan un docente a
+#                   mitad de semana, solo el historial conserva el vínculo.
+#   profesores_norm sin tildes, minúsculas, orden alfabético, separados por
+#                   ";" — para cruzar con la página de calificaciones.
+#   cupos_totales   "NA" mientras el SIA no lo exponga; la capacidad se
+#                   estima con el barrido de línea base.
+#   orden_lectura   posición dentro del barrido, para estimar y corregir el
+#                   desfase entre la primera y la última asignatura.
+# Se eliminó "asignatura" (el nombre): es redundante con codigo (está en
+# catalogo.json) y solo infla el archivo.
+HIST_CAMPOS = [
+    "run_id", "ts_lectura", "codigo", "actividad", "grupo",
+    "profesores_raw", "profesores_norm", "cupos_disponibles",
+    "cupos_totales", "orden_lectura",
+]
 
+HIST_CAMPOS_V1 = ["fecha_hora", "codigo", "asignatura", "grupo",
+                  "cupos_disponibles"]
+
+
+def normalizar_profesores(profesores: str) -> str:
+    """'María PÉREZ; juan lopez' -> 'juan lopez;maria perez' (clave de cruce)."""
+    nombres = [normalizar(p) for p in (profesores or "").split(";")]
+    nombres = sorted(n for n in nombres if n and n != "no informado")
+    return ";".join(nombres) if nombres else "NA"
+
+
+def _leer_encabezado_historial() -> Optional[List[str]]:
+    if not OUTPUT_HISTORIAL.exists():
+        return None
+    with open(OUTPUT_HISTORIAL, encoding="utf-8-sig", newline="") as f:
+        fila = next(csv.reader(f), None)
+    return [c.strip() for c in fila] if fila else None
+
+
+def _indice_actividad_catalogo() -> Dict[tuple, dict]:
+    """(codigo, grupo) -> {actividad, profesores} desde catalogo.json, para
+    retro-llenar el historial v1. Si un (codigo, grupo) existe en varias
+    actividades, se marca AMBIGUA en vez de adivinar."""
+    indice: Dict[tuple, dict] = {}
+    if not OUTPUT_JSON.exists():
+        return indice
+    try:
+        with open(OUTPUT_JSON, encoding="utf-8") as f:
+            datos = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return indice
+    for a in datos:
+        for g in a.get("grupos", []):
+            clave = (a.get("codigo", ""), g.get("grupo", ""))
+            info = {"actividad": g.get("actividad") or "NA",
+                    "profesores": g.get("profesores") or "NA"}
+            if clave in indice and indice[clave]["actividad"] != info["actividad"]:
+                indice[clave] = {"actividad": "AMBIGUA", "profesores": "AMBIGUA"}
+            else:
+                indice.setdefault(clave, info)
+    return indice
+
+
+def migrar_historial_v1() -> bool:
+    """Convierte cupos_historial.csv del esquema v1 al v2, respaldando el
+    original como cupos_historial_v1.csv. Retro-llena actividad y profesores
+    desde catalogo.json cuando el mapeo es inequívoco.
+
+    Limitaciones honestas de los datos viejos (quedan marcadas como tal):
+    - ts_lectura hereda la marca única de la corrida (no había una por fila);
+    - run_id se reconstruye agrupando por esa marca ("legacy-...");
+    - profesores reflejan la asignación ACTUAL del catálogo, no la histórica.
+    """
+    encabezado = _leer_encabezado_historial()
+    if encabezado is None or encabezado == HIST_CAMPOS:
+        return False
+    if encabezado != HIST_CAMPOS_V1:
+        raise RuntimeError(
+            f"{OUTPUT_HISTORIAL} tiene un encabezado desconocido: {encabezado}. "
+            "Revísalo a mano antes de seguir (no se toca nada).")
+
+    respaldo = CARPETA_SALIDA / "cupos_historial_v1.csv"
+    n_resp = 2
+    while respaldo.exists():
+        respaldo = CARPETA_SALIDA / f"cupos_historial_v1_{n_resp}.csv"
+        n_resp += 1
+
+    indice = _indice_actividad_catalogo()
+    filas_v2, orden_por_run, avisos = [], {}, 0
+    with open(OUTPUT_HISTORIAL, encoding="utf-8-sig", newline="") as f:
+        for fila in csv.DictReader(f):
+            ts = (fila.get("fecha_hora") or "").strip()
+            run = "legacy-" + re.sub(r"[^0-9T]", "", ts)
+            codigo = (fila.get("codigo") or "").strip()
+            grupo = (fila.get("grupo") or "").strip()
+            orden = orden_por_run.setdefault(run, {})
+            if codigo not in orden:
+                orden[codigo] = len(orden)
+            extra = indice.get((codigo, grupo),
+                               {"actividad": "NA", "profesores": "NA"})
+            if extra["actividad"] in ("NA", "AMBIGUA"):
+                avisos += 1
+            cupos = (fila.get("cupos_disponibles") or "").strip() or "NA"
+            filas_v2.append({
+                "run_id": run, "ts_lectura": ts, "codigo": codigo,
+                "actividad": extra["actividad"], "grupo": grupo,
+                "profesores_raw": extra["profesores"],
+                "profesores_norm": normalizar_profesores(
+                    extra["profesores"] if extra["profesores"] not in
+                    ("NA", "AMBIGUA") else ""),
+                "cupos_disponibles": cupos, "cupos_totales": "NA",
+                "orden_lectura": orden[codigo],
+            })
+
+    os.replace(OUTPUT_HISTORIAL, respaldo)
+    with open(OUTPUT_HISTORIAL, "w", newline="", encoding="utf-8-sig") as f:
+        w = csv.DictWriter(f, fieldnames=HIST_CAMPOS)
+        w.writeheader()
+        w.writerows(filas_v2)
+    print(f"  -> Historial migrado a v2: {len(filas_v2)} filas, "
+          f"{len(orden_por_run)} corridas legacy. Original respaldado en "
+          f"{respaldo.name}.")
+    if avisos:
+        print(f"     ({avisos} filas quedaron con actividad NA/AMBIGUA: "
+              f"grupos que ya no están en catalogo.json o que existen en "
+              f"varias actividades)")
+    return True
+
+
+def _asegurar_esquema_historial():
+    """Antes de escribir: si el archivo está en v1, se migra solo (con
+    respaldo). En Actions nadie corre comandos a mano, así que esto tiene
+    que ser automático."""
+    encabezado = _leer_encabezado_historial()
+    if encabezado is not None and encabezado != HIST_CAMPOS:
+        print("  ! cupos_historial.csv está en el esquema viejo; migrando...")
+        migrar_historial_v1()
+
+
+def registrar_historial_asignatura(asig: Asignatura) -> int:
+    """Añade al historial las filas de UNA asignatura, en el momento en que
+    se leyó. Escribir incrementalmente (y no todo al final) garantiza que un
+    timeout o una caída dejen datos parciales identificables por run_id, en
+    vez de perder el barrido entero."""
+    _asegurar_esquema_historial()
     nuevo = not OUTPUT_HISTORIAL.exists()
     n = 0
     with open(OUTPUT_HISTORIAL, "a", newline="", encoding="utf-8-sig") as f:
-        w = csv.writer(f)
+        w = csv.DictWriter(f, fieldnames=HIST_CAMPOS)
         if nuevo:
-            w.writerow(["fecha_hora", "codigo", "asignatura", "grupo",
-                        "cupos_disponibles"])
-        for a in asignaturas:
-            for g in a.grupos:
-                w.writerow([ts, a.codigo, a.nombre, g.grupo,
-                            g.cupos_disponibles])
-                n += 1
-    print(f"  -> Historial: +{n} mediciones ({ts})")
+            w.writeheader()
+        for g in asig.grupos:
+            w.writerow({
+                "run_id": RUN_ID,
+                "ts_lectura": asig.ts_lectura,
+                "codigo": asig.codigo,
+                "actividad": g.actividad or "NA",
+                "grupo": g.grupo,
+                "profesores_raw": g.profesores,
+                "profesores_norm": normalizar_profesores(g.profesores),
+                "cupos_disponibles": g.cupos_disponibles or "NA",
+                "cupos_totales": g.cupos_totales or "NA",
+                "orden_lectura": asig.orden_lectura,
+            })
+            n += 1
+    return n
+
+
+def guardar_texto_crudo(codigo: str, ts: str, texto: str):
+    """Archiva el texto de la página en textos/run-<RUN_ID>.jsonl.gz.
+    gzip en modo 'at' concatena miembros válidos, así que se puede añadir
+    asignatura por asignatura sin releer el archivo."""
+    if not GUARDAR_TEXTO_CRUDO:
+        return
+    try:
+        CARPETA_TEXTOS.mkdir(exist_ok=True)
+        ruta = CARPETA_TEXTOS / f"run-{RUN_ID}.jsonl.gz"
+        linea = json.dumps({"codigo": codigo, "ts": ts, "texto": texto},
+                           ensure_ascii=False)
+        with gzip.open(ruta, "at", encoding="utf-8") as f:
+            f.write(linea + "\n")
+    except OSError as e:
+        print(f"  ! No se pudo archivar el texto crudo de {codigo}: {e}")
+
+
+RUNS_CAMPOS = ["run_id", "ts_inicio", "ts_fin", "planes", "shard",
+               "n_esperadas", "n_leidas", "n_fallidas", "codigos_fallidos",
+               "completo"]
+
+
+def registrar_run(info: dict):
+    """Añade la fila de esta corrida a runs.csv."""
+    nuevo = not OUTPUT_RUNS.exists()
+    with open(OUTPUT_RUNS, "a", newline="", encoding="utf-8-sig") as f:
+        w = csv.DictWriter(f, fieldnames=RUNS_CAMPOS)
+        if nuevo:
+            w.writeheader()
+        w.writerow({c: info.get(c, "") for c in RUNS_CAMPOS})
+    estado = "COMPLETO" if info.get("completo") == 1 else "INCOMPLETO"
+    print(f"  -> runs.csv: {info.get('run_id')} {estado} "
+          f"({info.get('n_leidas')}/{info.get('n_esperadas')} asignaturas, "
+          f"{info.get('n_fallidas')} fallidas)")
 
 
 def _sparkline_svg(valores: List[int], ancho=110, alto=26) -> str:
@@ -1869,26 +2145,48 @@ def generar_estadisticas():
         print("No hay historial todavía; corre primero: python sia_scraper.py cupos")
         return
 
-    series: Dict[tuple, list] = {}
+    # nombres de asignatura desde el catálogo (el historial v2 ya no los trae)
     nombres: Dict[str, str] = {}
-    marcas = []
+    if OUTPUT_JSON.exists():
+        try:
+            with open(OUTPUT_JSON, encoding="utf-8") as f:
+                for a in json.load(f):
+                    nombres[a.get("codigo", "")] = a.get("nombre", "")
+        except (json.JSONDecodeError, OSError):
+            pass
+
+    series: Dict[tuple, list] = {}
+    marcas = set()
     with open(OUTPUT_HISTORIAL, encoding="utf-8-sig") as f:
         for fila in csv.DictReader(f):
             try:
-                cupos = int(fila["cupos_disponibles"] or 0)
-            except ValueError:
+                # "NA" (fallo de lectura) se salta aquí; en el análisis serio
+                # se cuenta aparte, no se confunde con 0
+                cupos = int(fila["cupos_disponibles"])
+            except (ValueError, TypeError):
                 continue
-            clave = (fila["codigo"], fila["grupo"])
-            series.setdefault(clave, []).append((fila["fecha_hora"], cupos))
-            nombres[fila["codigo"]] = fila["asignatura"]
-            if fila["fecha_hora"] not in marcas:
-                marcas.append(fila["fecha_hora"])
+            # compatible con v1 (fecha_hora, sin actividad) y v2
+            ts = fila.get("ts_lectura") or fila.get("fecha_hora") or ""
+            actividad = fila.get("actividad") or ""
+            if fila.get("asignatura"):
+                nombres.setdefault(fila["codigo"], fila["asignatura"])
+            clave = (fila["codigo"], actividad, fila["grupo"])
+            series.setdefault(clave, []).append((ts, cupos))
+            marcas.add(fila.get("run_id") or ts)
+    todas_ts = sorted({ts for s in series.values() for ts, _ in s},
+                      key=_parse_ts)
 
     filas_html = []
     agotados = 0
-    for (cod, grupo), serie in sorted(
-            series.items(), key=lambda kv: (nombres.get(kv[0][0], ""), kv[0][1])):
-        serie.sort(key=lambda p: p[0])
+    for (cod, actividad, grupo), serie in sorted(
+            series.items(), key=lambda kv: (nombres.get(kv[0][0], ""), kv[0])):
+        # ordenar por instante REAL: mezclar offsets +00:00 (historial viejo)
+        # y -05:00 (nuevo) rompe el orden lexicográfico
+        serie.sort(key=lambda p: _parse_ts(p[0]))
+        etiqueta_grupo = grupo
+        if actividad and actividad not in ("NA", "AMBIGUA", "CLASE TEORICA"):
+            etiqueta_grupo = f"{grupo} · {actividad.title()}"
+        grupo = etiqueta_grupo
         vals = [v for _, v in serie]
         actual, inicial = vals[-1], vals[0]
         delta = actual - (vals[-2] if len(vals) > 1 else inicial)
@@ -1912,8 +2210,8 @@ def generar_estadisticas():
     html = html.replace("__N_MEDICIONES__", str(len(marcas)))
     html = html.replace("__AGOTADOS__", str(agotados))
     html = html.replace("__RANGO__",
-        f"{marcas[0][:16].replace('T',' ')} → {marcas[-1][:16].replace('T',' ')}"
-        if marcas else "—")
+        f"{todas_ts[0][:16].replace('T',' ')} → {todas_ts[-1][:16].replace('T',' ')}"
+        if todas_ts else "—")
     OUTPUT_STATS.write_text(html, encoding="utf-8")
     print(f"  -> Estadísticas regeneradas: {OUTPUT_STATS}")
 
@@ -1993,6 +2291,26 @@ def main():
     reinicios = 0
     plan_actual = PLANES_ESTUDIOS[0]
 
+    # Bitácora de la corrida (se escribe en runs.csv pase lo que pase)
+    run = {
+        "run_id": RUN_ID, "ts_inicio": ahora_iso(), "ts_fin": "",
+        "planes": " | ".join(PLANES_ESTUDIOS), "shard": SIA_SHARD or "1/1",
+        "n_esperadas": 0, "n_leidas": 0, "n_fallidas": 0,
+        "codigos_fallidos": [], "completo": 0,
+    }
+    orden_global = 0
+    termino_normal = False
+
+    # El timeout de GitHub Actions manda SIGTERM: convertirlo en
+    # KeyboardInterrupt para que el guardado de emergencia y runs.csv
+    # alcancen a ejecutarse antes de morir.
+    def _sigterm(_señal, _marco):
+        raise KeyboardInterrupt("SIGTERM")
+    try:
+        signal.signal(signal.SIGTERM, _sigterm)
+    except (ValueError, OSError):
+        pass  # p. ej. si no estamos en el hilo principal
+
     def nuevo_driver():
         nonlocal driver
         if driver is not None:
@@ -2038,6 +2356,18 @@ def main():
                 print(f"{len(codigos) - len(pendientes)} ya estaban procesadas; "
                       f"quedan {len(pendientes)}.\n")
 
+            if SIA_SHARD:
+                m = re.match(r"^(\d+)/(\d+)$", SIA_SHARD)
+                if not m or not (1 <= int(m.group(1)) <= int(m.group(2))):
+                    raise SystemExit(f"SIA_SHARD inválido: '{SIA_SHARD}' "
+                                     f"(formato esperado: '2/4')")
+                idx, total = int(m.group(1)) - 1, int(m.group(2))
+                pendientes = [c for i, c in enumerate(pendientes)
+                              if i % total == idx]
+                print(f"Shard {SIA_SHARD}: este proceso toma "
+                      f"{len(pendientes)} asignaturas.\n")
+
+            run["n_esperadas"] += len(pendientes)
             procesadas = 0
             for i, codigo in enumerate(pendientes, 1):
                 print(f"[{i}/{len(pendientes)}] Procesando {codigo}...")
@@ -2058,8 +2388,20 @@ def main():
                     try:
                         click_asignatura_por_codigo(driver, codigo)
                         asig = parsear_detalle(driver, codigo)
+                        # instante y posición de ESTA lectura, no de la corrida
+                        asig.ts_lectura = ahora_iso()
+                        asig.orden_lectura = orden_global
+                        orden_global += 1
                         asig.planes = [plan]
                         resultados[codigo] = asig
+                        run["n_leidas"] += 1
+                        if MODO_CUPOS:
+                            # escritura incremental: si el proceso muere, lo
+                            # ya leído queda en disco con su run_id
+                            registrar_historial_asignatura(asig)
+                            guardar_texto_crudo(
+                                codigo, asig.ts_lectura,
+                                getattr(asig, "_texto_crudo", ""))
                         n_ses = sum(len(g.sesiones) for g in asig.grupos)
                         print(f"    {asig.nombre or codigo}: {len(asig.grupos)} grupos, "
                               f"{n_ses} sesiones")
@@ -2090,6 +2432,8 @@ def main():
 
                 if not exito:
                     print(f"  ! No se pudo procesar {codigo}, se omite.")
+                    run["n_fallidas"] += 1
+                    run["codigos_fallidos"].append(codigo)
 
                 procesadas += 1
                 if procesadas % CHECKPOINT_EVERY == 0:
@@ -2098,8 +2442,10 @@ def main():
             guardar(list(resultados.values()))
             print()
 
+        termino_normal = True
         if MODO_CUPOS:
-            registrar_historial(list(resultados.values()))
+            # el historial ya se escribió incrementalmente; aquí solo se
+            # regenera la visualización
             generar_estadisticas()
 
         print("Proceso terminado.")
@@ -2107,15 +2453,31 @@ def main():
         print(f"Armador de horario: abre {OUTPUT_HTML} en tu navegador.")
         if MODO_CUPOS:
             print(f"Historial de cupos: {OUTPUT_HISTORIAL}")
+            print(f"Bitácora de corridas: {OUTPUT_RUNS}")
             print(f"Estadísticas: abre {OUTPUT_STATS} en tu navegador.")
 
     except KeyboardInterrupt:
-        print("\nInterrumpido; guardando lo que se alcanzó a extraer...")
+        print("\nInterrumpido (Ctrl-C o SIGTERM); guardando lo extraído...")
         guardar(list(resultados.values()))
         if MODO_CUPOS and resultados:
-            registrar_historial(list(resultados.values()))
             generar_estadisticas()
     finally:
+        # runs.csv se escribe SIEMPRE (fin normal, interrupción o excepción).
+        # completo=1 exige: terminar sin interrupciones, cero fallidas y
+        # tantas leídas como esperadas. Si el proceso muere tan fuerte que ni
+        # esto corre (SIGKILL), la corrida queda en el historial sin fila en
+        # runs.csv — que es, a propósito, la otra señal de "incompleto".
+        if MODO_CUPOS:
+            run["ts_fin"] = ahora_iso()
+            run["completo"] = int(
+                termino_normal and run["n_fallidas"] == 0
+                and run["n_leidas"] == run["n_esperadas"]
+                and run["n_esperadas"] > 0)
+            run["codigos_fallidos"] = ";".join(run["codigos_fallidos"])
+            try:
+                registrar_run(run)
+            except OSError as e:
+                print(f"  ! No se pudo escribir runs.csv: {e}")
         if driver is not None:
             try:
                 driver.quit()
@@ -2134,6 +2496,14 @@ if __name__ == "__main__":
     elif modo in ("stats", "estadisticas"):
         # Regenera estadisticas.html desde el historial, sin raspar.
         generar_estadisticas()
+    elif modo == "migrar":
+        # Convierte cupos_historial.csv del esquema v1 al v2 (con respaldo).
+        # También ocurre automáticamente en la primera corrida en modo cupos.
+        if migrar_historial_v1():
+            generar_estadisticas()
+        else:
+            print("El historial ya está en el esquema v2 (o no existe); "
+                  "no hay nada que migrar.")
     elif modo == "html":
         # Regenera horario.html desde catalogo.json sin volver a raspar:
         #     python sia_scraper.py html
