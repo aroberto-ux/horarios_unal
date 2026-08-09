@@ -1454,6 +1454,7 @@ aside{width:340px;min-width:280px;border-right:2px solid var(--tinta);
 .grupo .g-hor{font-family:var(--mono);font-size:11px;color:var(--tinta-suave);margin-top:3px}
 .tag{font-family:var(--mono);font-size:10px;padding:1px 6px;border:1px solid currentColor;white-space:nowrap}
 .tag.cupos{color:var(--verde)}
+.tag.sindato{color:#888}
 .tag.agotado{color:var(--tinta-suave)}
 .tag.cruce{color:var(--rojo);background:var(--rojo-claro)}
 .grupo.agotado .g-cab,.grupo.agotado .g-hor{opacity:.5}
@@ -1686,14 +1687,16 @@ function pintarLista(){
       const otros = sel.filter(s=>s.a.c!==a.c);
       const conflicto = !yo && otros.find(s=>cruceEntre(s.g,g));
       const cupos=+g.cu||0;
+      const sinDato = g.cu==="NA" || g.cu===""||g.cu==null;  // "NA" = no leído, no es 0
+      const etiqCupos = sinDato ? "sin dato" : (cupos?cupos+" cupos":"sin cupos");
       const hor = sesiones(g).map(s=>`${DIA_CORTO[s.dia]} ${fMin(s.ini)}–${fMin(s.fin)}`).join(" · ")
                   || "sin horario informado";
-      return `<div class="grupo${yo?" sel":""}${cupos?"":" agotado"}" tabindex="0" role="button"
+      return `<div class="grupo${yo?" sel":""}${(cupos||sinDato)?"":" agotado"}" tabindex="0" role="button"
           onclick="alternar('${a.c}',${i})" onkeydown="if(event.key==='Enter')alternar('${a.c}',${i})">
         <div class="g-cab"><span class="g-num">${g.g}</span>
           <span class="g-prof">${(g.p||"").split(";")[0]||"—"}</span>
           ${conflicto?`<span class="tag cruce">cruce</span>`:""}
-          <span class="tag ${cupos?"cupos":"agotado"}">${cupos?cupos+" cupos":"sin cupos"}</span></div>
+          <span class="tag ${sinDato?"sindato":(cupos?"cupos":"agotado")}">${etiqCupos}</span></div>
         <div class="g-hor">${hor}</div></div>`;
     }).join("");
 
