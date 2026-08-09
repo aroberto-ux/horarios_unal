@@ -193,6 +193,11 @@ section.panel{
   color:var(--tinta-suave); cursor:pointer;
 }
 .controles-tend .modo button.activo{background:var(--tinta); color:var(--papel)}
+.controles-tend .modo[hidden]{display:none}
+.controles-tend .rango button{padding:8px 11px; font:600 .76rem "IBM Plex Mono",monospace; letter-spacing:.02em}
+.controles-tend .rango button+button{border-left:1px solid var(--cuadricula)}
+.controles-tend .rango button.corto{opacity:.45}
+.controles-tend .periodo{font:500 .76rem "IBM Plex Mono",monospace; color:var(--tinta-suave)}
 .lienzo{position:relative; height:min(52vh,420px); padding:12px 16px 18px}
 .lienzo .msj{
   position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
@@ -240,6 +245,14 @@ footer a{color:var(--azul)}
         <button id="modoDoc" role="tab">Docentes</button>
       </div>
       <select id="selMateria" aria-label="Asignatura para graficar" hidden></select>
+      <div class="modo rango" id="rangoTend" role="group" aria-label="Rango de tiempo">
+        <button type="button" data-r="1D">1D</button>
+        <button type="button" data-r="1S">1S</button>
+        <button type="button" data-r="1M">1M</button>
+        <button type="button" data-r="4M">4M</button>
+        <button type="button" data-r="max">Máx</button>
+      </div>
+      <span class="periodo" id="periodoTend"></span>
     </div>
     <div class="lienzo"><canvas id="grafico"></canvas></div>
   </section>
@@ -317,6 +330,71 @@ let seleccion = almacen.leer(); // ["codigo|grupo", ...]
 let grafico = null;
 let modoTend = "mis";
 
+/* ================= Rango de tiempo =================
+   Igual que en las gráficas del dólar: los datos crudos no se tocan, solo se
+   recorta la ventana que se dibuja. Todo se mide contra la ÚLTIMA lectura del
+   historial (no contra Date.now()), para que el rango no se vacíe cuando el
+   workflow lleva un rato sin correr. */
+const RANGOS = {"1D":864e5, "1S":7*864e5, "1M":30*864e5, "4M":120*864e5, "max":Infinity};
+let rangoTend = (()=>{ try{ const v=localStorage.getItem("rangoTendUNAL"); return RANGOS[v]?v:"1M"; }catch(e){ return "1M"; } })();
+let T_INI = null, T_FIN = null;   // extremos del historial completo
+
+function ventana(){
+  const hasta = T_FIN ?? Date.now();
+  const span  = RANGOS[rangoTend];
+  let desde = span===Infinity ? (T_INI ?? hasta-864e5) : hasta-span;
+  if(!(desde < hasta)) desde = hasta - 864e5;   // un solo snapshot: evita min==max
+  return {desde, hasta};
+}
+
+/* Recorta una serie a la ventana activa.
+   Si el grupo no tuvo lecturas dentro del rango pero sí antes, se ancla un
+   punto al inicio de la ventana con el último valor conocido; si no, la línea
+   arrancaría en el aire o desaparecería. Hacia la derecha NO se extrapola: una
+   lectura que faltó (NA) no es lo mismo que un cupo que no cambió. */
+function recortar(serie){
+  if(!serie || !serie.length) return [];
+  const {desde} = ventana();
+  if(desde <= +serie[0].t) return serie;
+  const dentro = serie.filter(p => +p.t >= desde);
+  let previo = null;
+  for(const p of serie){ if(+p.t < desde) previo = p; else break; }
+  if(previo) dentro.unshift({t:new Date(desde), cupos:previo.cupos, anclado:+previo.t});
+  return dentro;
+}
+
+/* Etiqueta del eje X según lo ancho que sea el rango. */
+function fmtEje(v){
+  const d = new Date(v), span = RANGOS[rangoTend]===Infinity ? (T_FIN-T_INI) : RANGOS[rangoTend];
+  const o = span <= 2*864e5  ? {hour:"2-digit", minute:"2-digit"}
+          : span <= 10*864e5 ? {day:"2-digit", month:"short", hour:"2-digit"}
+          :                    {day:"2-digit", month:"short"};
+  return d.toLocaleString("es-CO", {timeZone:"America/Bogota", ...o});
+}
+
+function marcarRangos(){
+  const disp = (T_FIN!=null && T_INI!=null) ? T_FIN-T_INI : 0;
+  for(const b of document.querySelectorAll("#rangoTend button")){
+    const r = b.dataset.r, span = RANGOS[r];
+    b.classList.toggle("activo", r===rangoTend);
+    const corto = span!==Infinity && disp>0 && span>disp;
+    b.classList.toggle("corto", corto);
+    b.title = corto ? `El historial solo cubre ${Math.max(1,Math.round(disp/864e5))} d\u00eda(s); se ve todo lo que hay.` : "";
+  }
+  const {desde, hasta} = ventana();
+  const p = $("#periodoTend");
+  if(p) p.textContent = (T_FIN==null) ? "" : `${fmtFecha(new Date(desde))} \u2192 ${fmtFecha(new Date(hasta))}`;
+}
+
+function fijarRango(r){
+  if(!RANGOS[r]) return;
+  rangoTend = r;
+  try{ localStorage.setItem("rangoTendUNAL", r); }catch(e){}
+  marcarRangos();
+  refrescarSparklines();
+  pintarGrafico();
+}
+
 /* ================= Carga y modelo ================= */
 async function cargarDatos(){
   const estado = $("#estado");
@@ -375,6 +453,9 @@ async function cargarDatos(){
     almacen.guardar(seleccion);
 
     let ult=null; for(const v of HISTORIAL.values()){ const f=v[v.length-1].t; if(!ult||f>ult) ult=f; }
+    let pri=null; for(const v of HISTORIAL.values()){ const f=v[0].t; if(!pri||f<pri) pri=f; }
+    T_FIN = ult ? +ult : null;  T_INI = pri ? +pri : null;
+    marcarRangos();
     /* Un snapshot = una CORRIDA del scraper. No sirve contar marcas de
        tiempo distintas: en el esquema v2 cada asignatura lleva la suya
        (un barrido tarda minutos), así que eso contaría cientos por corrida. */
@@ -400,9 +481,19 @@ function colorDe(codigo){
 function claseCupos(n){ return n===null?"sindato":(n<=0?"cero":(n<=3?"pocos":"ok")); }
 const textoCupos = n => n===null ? "sin dato" : `${n} cupos`;
 
+/* Redibuja solo los mini-gráficos: cambiar de rango no debe re-renderizar la
+   lista entera (se perdería el scroll y el texto del buscador). */
+function refrescarSparklines(){
+  for(const c of document.querySelectorAll("#listaMaterias canvas.spark")){
+    const fila = c.closest(".grupo");
+    if(fila && fila.dataset.k) sparkline(c, recortar(HISTORIAL.get(fila.dataset.k)));
+  }
+}
+
 function sparkline(canvas, datos){
   const ctx=canvas.getContext("2d"), W=canvas.width=84*2, H=canvas.height=22*2;
   canvas.style.width="84px"; canvas.style.height="22px";
+  ctx.clearRect(0,0,W,H);
   if(!datos||datos.length<2) return;
   const xs=datos.map(p=>+p.t), ys=datos.map(p=>p.cupos);
   const x0=Math.min(...xs), x1=Math.max(...xs), y1=Math.max(...ys,1);
@@ -440,7 +531,7 @@ function pintarLista(){
     for(const g of m.grupos.values()){
       const k=`${m.codigo}|${g.grupo}`;
       const enSel=seleccion.includes(k);
-      const fila=document.createElement("div"); fila.className="grupo";
+      const fila=document.createElement("div"); fila.className="grupo"; fila.dataset.k=k;
       const hor=g.sesiones.map(s=>`${s.dia.slice(0,3)} ${deMin(s.ini)}–${deMin(s.fin)}${s.salon?" · "+s.salon:""}`).join("\n");
       const st=statsGrupo(k);
       let vel="";
@@ -462,7 +553,7 @@ function pintarLista(){
           <canvas class="spark" aria-hidden="true"></canvas>
           <button class="btnAdd ${enSel?"quitar":""}" type="button">${enSel?"Quitar":"Agregar"}</button>
         </div>`;
-      sparkline(fila.querySelector("canvas"), HISTORIAL.get(k));
+      sparkline(fila.querySelector("canvas"), recortar(HISTORIAL.get(k)));
       fila.querySelector(".btnAdd").addEventListener("click",()=>alternar(k));
       caja.appendChild(fila);
     }
@@ -638,7 +729,7 @@ function seriesPara(claves){
     const [c,g]=k.split("|"); const m=MATERIAS.get(c);
     return {
       label:`${m?m.nombre:c} · ${g}`,
-      data:(HISTORIAL.get(k)||[]).map(p=>({x:+p.t, y:p.cupos})),
+      data:recortar(HISTORIAL.get(k)).map(p=>({x:+p.t, y:p.cupos, anc:p.anclado||0})),
       borderColor:PALETA[i%PALETA.length], backgroundColor:PALETA[i%PALETA.length],
       tension:.25, pointRadius:2.5, borderWidth:2
     };
@@ -666,12 +757,14 @@ function pintarGrafico(){
     ? seleccion
     : [...(MATERIAS.get($("#selMateria").value)?.grupos.keys()||[])].map(g=>`${$("#selMateria").value}|${g}`);
   const datasets=seriesPara(claves);
+  const sufRango = rangoTend==="max" ? "" : ` en el rango ${rangoTend}`;
   msjLienzo(datasets.length? null :
     (modoTend==="mis" ? "Agrega grupos a tu horario para ver su tendencia."
-                      : "Esta asignatura no tiene historial de cupos todavía."));
+                      : `Esta asignatura no tiene historial de cupos${sufRango}.`));
   const ctx=$("#grafico");
   if(grafico) grafico.destroy();
   if(!datasets.length){ grafico=null; return; }
+  const vent=ventana();
   grafico=new Chart(ctx,{
     type:"line",
     data:{datasets},
@@ -682,13 +775,13 @@ function pintarGrafico(){
         legend:{labels:{font:{family:"Archivo", size:11}, boxWidth:14}},
         tooltip:{callbacks:{
           title:its=>fmtFecha(new Date(its[0].parsed.x)),
-          label:c=>` ${c.dataset.label}: ${c.parsed.y} cupos`
+          label:c=>` ${c.dataset.label}: ${c.parsed.y} cupos` + (c.raw && c.raw.anc ? ` (sin lecturas en el rango; \u00faltima: ${fmtFecha(new Date(c.raw.anc))})` : "")
         }}
       },
       scales:{
-        x:{type:"linear",
+        x:{type:"linear", min:vent.desde, max:vent.hasta,
            ticks:{font:{family:"IBM Plex Mono", size:10}, maxRotation:60, autoSkip:true, maxTicksLimit:10,
-                  callback:v=>fmtFecha(new Date(v))},
+                  callback:fmtEje},
            grid:{color:"#EEF2EA"}},
         y:{beginAtZero:true, title:{display:true, text:"Cupos disponibles", font:{family:"Archivo", size:11}},
            ticks:{font:{family:"IBM Plex Mono", size:10}, precision:0}, grid:{color:"#E4EADF"}}
@@ -704,12 +797,20 @@ function fijarModo(modo){
   const mapa={mis:"#modoMis", materia:"#modoMateria", doc:"#modoDoc"};
   for(const [m,sel] of Object.entries(mapa)) $(sel).classList.toggle("activo", m===modo);
   $("#selMateria").hidden = (modo==="mis");
+  // El modo Docentes es un barrido agregado sobre todo el historial, no una
+  // serie de tiempo: el selector de rango no aplica ahí.
+  $("#rangoTend").hidden = (modo==="doc");
+  $("#periodoTend").hidden = (modo==="doc");
   pintarGrafico();
 }
 $("#modoMis").addEventListener("click",()=>fijarModo("mis"));
 $("#modoMateria").addEventListener("click",()=>fijarModo("materia"));
 $("#modoDoc").addEventListener("click",()=>fijarModo("doc"));
 $("#selMateria").addEventListener("change", pintarGrafico);
+for(const b of document.querySelectorAll("#rangoTend button")){
+  b.addEventListener("click", ()=>fijarRango(b.dataset.r));
+}
+marcarRangos();
 
 cargarDatos();
 setInterval(cargarDatos, 10*60*1000); // refresca cada 10 minutos sin recargar la página
