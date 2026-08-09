@@ -14,6 +14,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Maria Alejandra Caicedo Londoño",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -45,6 +46,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Maria Alejandra Caicedo Londoño",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -76,6 +78,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "JOSE LUIS DIAZ AREVALO",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -107,6 +110,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "JOSE LUIS DIAZ AREVALO",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -133,7 +137,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:09-05:00",
+    "orden_lectura": 0
   },
   {
     "codigo": "2015939",
@@ -150,6 +156,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "ALVARO MARTIN GUTIERREZ MALAXECHEBARRIA",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -181,6 +188,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "ALVARO MARTIN GUTIERREZ MALAXECHEBARRIA",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -212,6 +220,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Edder Alexander Velandia Duran",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -243,6 +252,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -269,7 +279,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:11-05:00",
+    "orden_lectura": 1
   },
   {
     "codigo": "1000003-B",
@@ -280,7 +292,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": []
+    "grupos": [],
+    "ts_lectura": "2026-08-09T00:53:12-05:00",
+    "orden_lectura": 2
   },
   {
     "codigo": "2015940",
@@ -297,6 +311,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Maritzabel Molina Herrera",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -328,6 +343,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Gabriel Andres Bernal Granados",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -359,6 +375,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -385,7 +402,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:13-05:00",
+    "orden_lectura": 3
   },
   {
     "codigo": "2015941",
@@ -402,6 +421,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Patricia Luna Tamayo",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -433,6 +453,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -464,6 +485,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Carlos Ramiro Vallecilla Bahena",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -495,6 +517,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -521,7 +544,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:15-05:00",
+    "orden_lectura": 4
   },
   {
     "codigo": "1000004-B",
@@ -538,6 +563,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "53",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -569,6 +595,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -600,6 +627,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -631,6 +659,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "16",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -662,6 +691,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "90",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -693,6 +723,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "27",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -724,6 +755,7 @@
         "actividad": "",
         "profesores": "Hernan Garzon Gutierrez",
         "cupos_disponibles": "39",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -755,6 +787,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "59",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -786,6 +819,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -817,6 +851,7 @@
         "actividad": "",
         "profesores": "Hernan Garzon Gutierrez",
         "cupos_disponibles": "10",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -848,6 +883,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -879,6 +915,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -910,6 +947,7 @@
         "actividad": "",
         "profesores": "Ricardo Ariel Pastran Ramirez",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -941,6 +979,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -972,6 +1011,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "51",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1003,6 +1043,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1034,6 +1075,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1065,6 +1107,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1096,6 +1139,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "90",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1127,6 +1171,7 @@
         "actividad": "",
         "profesores": "Myriam Leonor Campos Florez",
         "cupos_disponibles": "37",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1158,6 +1203,7 @@
         "actividad": "",
         "profesores": "Oscar Javier Lopez Alfonso",
         "cupos_disponibles": "84",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1189,6 +1235,7 @@
         "actividad": "",
         "profesores": "Anderson Arley Vera Arboleda",
         "cupos_disponibles": "64",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1220,6 +1267,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1251,6 +1299,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "18",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1437,7 +1486,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:16-05:00",
+    "orden_lectura": 5
   },
   {
     "codigo": "1000006-B",
@@ -1454,6 +1505,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1485,6 +1537,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "100",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1516,6 +1569,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1547,6 +1601,7 @@
         "actividad": "",
         "profesores": "Leonid Lebedev",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1578,6 +1633,7 @@
         "actividad": "",
         "profesores": "Juan Carlos Hernandez Rincon",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1609,6 +1665,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1640,6 +1697,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "112",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1671,6 +1729,7 @@
         "actividad": "",
         "profesores": "EDIXON MANUEL ROJAS SANTANA",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1702,6 +1761,7 @@
         "actividad": "",
         "profesores": "Cesar Augusto Gomez Sierra",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1733,6 +1793,7 @@
         "actividad": "",
         "profesores": "Agustin Moreno Canadas",
         "cupos_disponibles": "100",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1764,6 +1825,7 @@
         "actividad": "",
         "profesores": "German Eduardo Fonseca Buitrago",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1795,6 +1857,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "70",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1826,6 +1889,7 @@
         "actividad": "",
         "profesores": "Epifanio Lozano Ayala",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1857,6 +1921,7 @@
         "actividad": "",
         "profesores": "Orlando Vanegas Canro",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1883,7 +1948,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:18-05:00",
+    "orden_lectura": 6
   },
   {
     "codigo": "1000005-B",
@@ -1900,6 +1967,7 @@
         "actividad": "",
         "profesores": "Orlando Vanegas Canro",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1931,6 +1999,7 @@
         "actividad": "",
         "profesores": "Epifanio Lozano Ayala",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1962,6 +2031,7 @@
         "actividad": "",
         "profesores": "Mohammed EL AIDI",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -1993,6 +2063,7 @@
         "actividad": "",
         "profesores": "Alina Fedosova",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2024,6 +2095,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "70",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2055,6 +2127,7 @@
         "actividad": "",
         "profesores": "Hernan Garzon Gutierrez",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2086,6 +2159,7 @@
         "actividad": "",
         "profesores": "RENE ERLIN CASTILLO",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2117,6 +2191,7 @@
         "actividad": "",
         "profesores": "Franqui Solis Cardenas Poloche",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2148,6 +2223,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2179,6 +2255,7 @@
         "actividad": "",
         "profesores": "Eduardo Cardenas Gomez",
         "cupos_disponibles": "70",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2210,6 +2287,7 @@
         "actividad": "",
         "profesores": "Edward Samuel Becerra Rojas",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2241,6 +2319,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2272,6 +2351,7 @@
         "actividad": "",
         "profesores": "Franqui Solis Cardenas Poloche",
         "cupos_disponibles": "100",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2303,6 +2383,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2334,6 +2415,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "10",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2410,7 +2492,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:19-05:00",
+    "orden_lectura": 7
   },
   {
     "codigo": "2015229",
@@ -2421,7 +2505,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": []
+    "grupos": [],
+    "ts_lectura": "2026-08-09T00:53:20-05:00",
+    "orden_lectura": 8
   },
   {
     "codigo": "2015943",
@@ -2438,6 +2524,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Carlos Orlando Robles Roa",
         "cupos_disponibles": "15",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2464,7 +2551,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:21-05:00",
+    "orden_lectura": 9
   },
   {
     "codigo": "2015944",
@@ -2481,6 +2570,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "SANTIAGO RAMIREZ ECHEVERRI",
         "cupos_disponibles": "15",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2507,7 +2597,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:22-05:00",
+    "orden_lectura": 10
   },
   {
     "codigo": "2015711",
@@ -2524,6 +2616,7 @@
         "actividad": "",
         "profesores": "Ariel Augusto Amaya Avila",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2555,6 +2648,7 @@
         "actividad": "",
         "profesores": "Cesar Augusto Bacca Gonzalez",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2586,6 +2680,7 @@
         "actividad": "",
         "profesores": "Cristian Felipe Morales Suárez",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2617,6 +2712,7 @@
         "actividad": "",
         "profesores": "DAVID FELIPE TORRES ARCE",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2648,6 +2744,7 @@
         "actividad": "",
         "profesores": "Cristian Felipe Morales Suárez",
         "cupos_disponibles": "9",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2679,6 +2776,7 @@
         "actividad": "",
         "profesores": "Sebastian Achury Ortiz",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2710,6 +2808,7 @@
         "actividad": "",
         "profesores": "Cesar Augusto Bacca Gonzalez",
         "cupos_disponibles": "20",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2741,6 +2840,7 @@
         "actividad": "",
         "profesores": "Miguel Angel Baquero Cortes",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2772,6 +2872,7 @@
         "actividad": "",
         "profesores": "EDWIN CAMILO REINA BELTRAN",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2798,7 +2899,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:24-05:00",
+    "orden_lectura": 11
   },
   {
     "codigo": "2015948",
@@ -2815,6 +2918,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2846,6 +2950,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Mauricio Alberto Tapias Camacho",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2877,6 +2982,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2903,7 +3009,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:25-05:00",
+    "orden_lectura": 12
   },
   {
     "codigo": "2015950",
@@ -2920,6 +3028,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2951,6 +3060,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -2982,6 +3092,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Daniel Ricardo Lozano Monsalve",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3013,6 +3124,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3044,6 +3156,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3070,7 +3183,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:26-05:00",
+    "orden_lectura": 13
   },
   {
     "codigo": "2015949",
@@ -3087,6 +3202,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Mario Javier Cardozo Chaux",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3118,6 +3234,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Wilson Ernesto Vargas Vargas",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3149,6 +3266,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3175,7 +3293,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:27-05:00",
+    "orden_lectura": 14
   },
   {
     "codigo": "1000007-B",
@@ -3192,6 +3312,7 @@
         "actividad": "",
         "profesores": "German Eduardo Fonseca Buitrago",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3223,6 +3344,7 @@
         "actividad": "",
         "profesores": "Leonid Lebedev",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3254,6 +3376,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3285,6 +3408,7 @@
         "actividad": "",
         "profesores": "Omar Duque Gomez",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3316,6 +3440,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "100",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3347,6 +3472,7 @@
         "actividad": "",
         "profesores": "Serafin Bautista Diaz",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3378,6 +3504,7 @@
         "actividad": "",
         "profesores": "EDIXON MANUEL ROJAS SANTANA",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3409,6 +3536,7 @@
         "actividad": "",
         "profesores": "Alexander Caviedes Castro",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3440,6 +3568,7 @@
         "actividad": "",
         "profesores": "Oscar Guillermo Riaño Castañeda",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3471,6 +3600,7 @@
         "actividad": "",
         "profesores": "Orlando Vanegas Canro",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3497,7 +3627,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:29-05:00",
+    "orden_lectura": 15
   },
   {
     "codigo": "2026134",
@@ -3514,6 +3646,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3545,6 +3678,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Juan Manuel Lizarazo Marriaga",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3576,6 +3710,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Maritzabel Molina Herrera",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3607,6 +3742,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Carlos Ramiro Vallecilla Bahena",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3638,6 +3774,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Fernando Lozano Osorno",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3669,6 +3806,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3695,7 +3833,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:30-05:00",
+    "orden_lectura": 16
   },
   {
     "codigo": "2015954",
@@ -3712,6 +3852,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Erasmo Alfredo Rodriguez Sandoval",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3743,6 +3884,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Mario Enrique Moreno Castiblanco",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3774,6 +3916,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Alejandro Morales Marin",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3800,7 +3943,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:31-05:00",
+    "orden_lectura": 17
   },
   {
     "codigo": "2015955",
@@ -3817,6 +3962,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Giovanni Andres Cortes Tovar",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3848,6 +3994,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Angela Barrera Puerto",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3879,6 +4026,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Giovanni Andres Cortes Tovar",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3905,7 +4053,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:33-05:00",
+    "orden_lectura": 18
   },
   {
     "codigo": "1000011-B",
@@ -3922,6 +4072,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Ernesto Javier Puertas Dellepianes",
         "cupos_disponibles": "118",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -3953,6 +4104,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Néstor Fernando Perez Buitrago",
         "cupos_disponibles": "12",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4019,7 +4171,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:34-05:00",
+    "orden_lectura": 19
   },
   {
     "codigo": "1000019-B",
@@ -4036,6 +4190,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Gustavo Martinez Tamayo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4057,6 +4212,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "LUIS AGULLES PEDROS",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4078,6 +4234,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "EVER DAVID ALCALA CAJAR",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4099,6 +4256,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "FABIAN FELIPE QUEVEDO FARIETA",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4120,6 +4278,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Alvaro Marino Camargo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4141,6 +4300,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Alvaro Marino Camargo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4162,6 +4322,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "JULIAN MATEO DE MENDOZA GUTIERREZ",
         "cupos_disponibles": "32",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4183,6 +4344,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Alvaro Marino Camargo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4204,6 +4366,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "JULIAN MATEO DE MENDOZA GUTIERREZ",
         "cupos_disponibles": "34",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4225,6 +4388,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Jaime Villalobos Velasco",
         "cupos_disponibles": "34",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4246,6 +4410,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "JULY PAOLA GARZÓN LOPEZ",
         "cupos_disponibles": "32",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4267,6 +4432,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Gustavo Martinez Tamayo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4288,6 +4454,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "JOSE ALFREDO GOMEZ MATEUS",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4309,6 +4476,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Pedro Hernan Sanchez Machet",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4330,6 +4498,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Pedro Hernan Sanchez Machet",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4351,6 +4520,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Pedro Hernan Sanchez Machet",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4372,6 +4542,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Pedro Hernan Sanchez Machet",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4393,6 +4564,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "45",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4414,6 +4586,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4435,6 +4608,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4456,6 +4630,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4477,6 +4652,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4498,6 +4674,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Gustavo Martinez Tamayo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4519,6 +4696,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "No informado",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4540,6 +4718,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "FABIAN FELIPE QUEVEDO FARIETA",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4561,6 +4740,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Jaime Villalobos Velasco",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4582,6 +4762,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Jaime Villalobos Velasco",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4603,6 +4784,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Jaime Villalobos Velasco",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4624,6 +4806,7 @@
         "actividad": "CLASE LABORATORIO",
         "profesores": "Erika Lorena Rosero Alzate",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4665,6 +4848,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "FABIAN FELIPE QUEVEDO FARIETA",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4686,6 +4870,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Jhon Morales Aponte",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4707,6 +4892,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "JULIAN MATEO DE MENDOZA GUTIERREZ",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4728,6 +4914,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "EVER DAVID ALCALA CAJAR",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4749,6 +4936,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "MIGUEL ENRIQUE GÁMEZ LÓPEZ",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4770,6 +4958,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "No informado",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4791,6 +4980,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "EVER DAVID ALCALA CAJAR",
         "cupos_disponibles": "32",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4812,6 +5002,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Edna Carolina Pinilla Beltran",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4833,6 +5024,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Jereson Silva Valencia",
         "cupos_disponibles": "34",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4854,6 +5046,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Jereson Silva Valencia",
         "cupos_disponibles": "34",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4875,6 +5068,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Jereson Silva Valencia",
         "cupos_disponibles": "32",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4896,6 +5090,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Gustavo Martinez Tamayo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4917,6 +5112,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Jereson Silva Valencia",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4938,6 +5134,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "JOSE ALFREDO GOMEZ MATEUS",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4959,6 +5156,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "JULY PAOLA GARZÓN LOPEZ",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -4980,6 +5178,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Edna Carolina Pinilla Beltran",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5001,6 +5200,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Diego Alejandro Torres Galindo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5022,6 +5222,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "45",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5043,6 +5244,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5064,6 +5266,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5085,6 +5288,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5106,6 +5310,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5127,6 +5332,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Gustavo Martinez Tamayo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5148,6 +5354,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Jaime Villalobos Velasco",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5169,6 +5376,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Jaime Villalobos Velasco",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5190,6 +5398,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Ramiro Cardona Cardona",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5211,6 +5420,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Ramiro Cardona Cardona",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5232,6 +5442,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "Edna Carolina Pinilla Beltran",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5253,6 +5464,7 @@
         "actividad": "CLASE TALLER",
         "profesores": "No informado",
         "cupos_disponibles": "10",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5284,6 +5496,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Erika Lorena Rosero Alzate; Daniel Camilo Padilla González",
         "cupos_disponibles": "8",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5305,6 +5518,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Gustavo Martinez Tamayo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5326,6 +5540,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Ovidio Amado Almanza Montero",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5347,6 +5562,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Ovidio Amado Almanza Montero",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5368,6 +5584,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Ovidio Amado Almanza Montero",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5389,6 +5606,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Alvaro Marino Camargo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5410,6 +5628,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Alvaro Marino Camargo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5431,6 +5650,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Alvaro Marino Camargo",
         "cupos_disponibles": "32",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5452,6 +5672,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Jereson Silva Valencia",
         "cupos_disponibles": "34",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5473,6 +5694,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Jereson Silva Valencia",
         "cupos_disponibles": "34",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5494,6 +5716,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Jereson Silva Valencia",
         "cupos_disponibles": "32",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5515,6 +5738,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Gustavo Martinez Tamayo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5536,6 +5760,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Jereson Silva Valencia",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5557,6 +5782,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Diego Alejandro Torres Galindo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5578,6 +5804,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Diego Alejandro Torres Galindo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5599,6 +5826,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Diego Alejandro Torres Galindo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5620,6 +5848,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Diego Alejandro Torres Galindo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5641,6 +5870,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "45",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5662,6 +5892,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5683,6 +5914,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5704,6 +5936,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5725,6 +5958,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Plinio Del Carmen Teheran Sermeno",
         "cupos_disponibles": "50",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5746,6 +5980,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Gustavo Martinez Tamayo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5767,6 +6002,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Gustavo Martinez Tamayo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5788,6 +6024,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Ramiro Cardona Cardona",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5809,6 +6046,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Ramiro Cardona Cardona",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5830,6 +6068,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Ramiro Cardona Cardona",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5851,6 +6090,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Ramiro Cardona Cardona",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5872,6 +6112,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Fredy Angel Jimenez Giraldo",
         "cupos_disponibles": "10",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5908,7 +6149,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:37-05:00",
+    "orden_lectura": 20
   },
   {
     "codigo": "2015956",
@@ -5925,6 +6168,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Modesto Portilla Gamboa; Fernando Eli Romero Ordoñez",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5956,6 +6200,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Jennifer Angel Amaya",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -5987,6 +6232,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Jennifer Angel Amaya",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6018,6 +6264,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Fernando Eli Romero Ordoñez; Modesto Portilla Gamboa",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6044,7 +6291,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:38-05:00",
+    "orden_lectura": 21
   },
   {
     "codigo": "2015957",
@@ -6061,6 +6310,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6092,6 +6342,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Samuel Fernando Mesa Giraldo",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6123,6 +6374,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Rose Marie Aldana Boutin",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6154,6 +6406,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Rose Marie Aldana Boutin",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6180,7 +6433,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:39-05:00",
+    "orden_lectura": 22
   },
   {
     "codigo": "2015958",
@@ -6197,6 +6452,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "William Castro Garcia",
         "cupos_disponibles": "20",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6218,6 +6474,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "William Castro Garcia",
         "cupos_disponibles": "20",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6239,6 +6496,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Carlos Alfonso Gomez Guacaneme",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6260,6 +6518,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Mario Arturo Rincon Villalba",
         "cupos_disponibles": "20",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6281,6 +6540,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Mario Arturo Rincon Villalba",
         "cupos_disponibles": "20",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6302,6 +6562,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Fausto Alejandro Silva España",
         "cupos_disponibles": "20",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6323,6 +6584,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Fausto Alejandro Silva España",
         "cupos_disponibles": "20",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6344,6 +6606,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Fausto Alejandro Silva España",
         "cupos_disponibles": "20",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6365,6 +6628,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Fausto Alejandro Silva España",
         "cupos_disponibles": "20",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6386,6 +6650,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "William Castro Garcia",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6417,6 +6682,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Carlos Alfonso Gomez Guacaneme",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6448,6 +6714,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Mario Arturo Rincon Villalba",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6479,6 +6746,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Cesar Andres Cortes Bello",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6510,6 +6778,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Cesar Andres Cortes Bello",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6536,7 +6805,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:41-05:00",
+    "orden_lectura": 23
   },
   {
     "codigo": "2015959",
@@ -6553,6 +6824,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Carlos Eduardo Rodriguez Pineda",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6584,6 +6856,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Guillermo Eduardo Avila Alvarez",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6615,6 +6888,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Livaniel Viveros Rosero",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6646,6 +6920,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6672,7 +6947,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:42-05:00",
+    "orden_lectura": 24
   },
   {
     "codigo": "2022760",
@@ -6683,7 +6960,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": []
+    "grupos": [],
+    "ts_lectura": "2026-08-09T00:53:43-05:00",
+    "orden_lectura": 25
   },
   {
     "codigo": "2015961",
@@ -6700,6 +6979,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Rafael Orland Ortiz Mosquera",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6741,6 +7021,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Adriana Patricia Piña Fulano",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6782,6 +7063,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Gelber Norberto Gutierrez Palacios",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6823,6 +7105,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6864,6 +7147,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6905,6 +7189,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Leonardo David Donado Garzon",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6941,7 +7226,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:44-05:00",
+    "orden_lectura": 26
   },
   {
     "codigo": "2015978",
@@ -6958,6 +7245,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -6989,6 +7277,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Erasmo Alfredo Rodriguez Sandoval",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7020,6 +7309,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7051,6 +7341,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7082,6 +7373,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7108,7 +7400,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:45-05:00",
+    "orden_lectura": 27
   },
   {
     "codigo": "2026135",
@@ -7125,6 +7419,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "NICOLAS ESCALANTE MORA",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7156,6 +7451,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Leonel Vega Mora",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7187,6 +7483,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Leonel Vega Mora",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7213,7 +7510,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:47-05:00",
+    "orden_lectura": 28
   },
   {
     "codigo": "2015963",
@@ -7230,6 +7529,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7261,6 +7561,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7292,6 +7593,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "William Castro Garcia",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7318,7 +7620,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:48-05:00",
+    "orden_lectura": 29
   },
   {
     "codigo": "2026138",
@@ -7335,6 +7639,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Ivan Dario Serrano Arrieta",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7366,6 +7671,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Ivan Dario Serrano Arrieta",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7397,6 +7703,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Pedro Luis Jimenez Poveda",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7423,7 +7730,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:49-05:00",
+    "orden_lectura": 30
   },
   {
     "codigo": "2015703",
@@ -7440,6 +7749,7 @@
         "actividad": "",
         "profesores": "Angela Maria Arboleda Restrepo",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7471,6 +7781,7 @@
         "actividad": "",
         "profesores": "Diego Alejandro Hernandez Castañeda",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7502,6 +7813,7 @@
         "actividad": "",
         "profesores": "Julio Cesar Cañon Rodriguez",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7533,6 +7845,7 @@
         "actividad": "",
         "profesores": "Osman Benjamin Giovanny Vargas Rozo",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7564,6 +7877,7 @@
         "actividad": "",
         "profesores": "Hugo Alberto Herrera Fonseca",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7595,6 +7909,7 @@
         "actividad": "",
         "profesores": "LINA JULIANA BULLA CASAS",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7626,6 +7941,7 @@
         "actividad": "",
         "profesores": "Cesar Augusto Roa Lemus",
         "cupos_disponibles": "60",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7657,6 +7973,7 @@
         "actividad": "",
         "profesores": "JAVIER RICARDO OJEDA SANCHEZ",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7688,6 +8005,7 @@
         "actividad": "",
         "profesores": "JAVIER RICARDO OJEDA SANCHEZ",
         "cupos_disponibles": "20",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7719,6 +8037,7 @@
         "actividad": "",
         "profesores": "Diego Alejandro Hernandez Castañeda",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7750,6 +8069,7 @@
         "actividad": "",
         "profesores": "LINA JULIANA BULLA CASAS",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7776,7 +8096,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:50-05:00",
+    "orden_lectura": 31
   },
   {
     "codigo": "1000044-B",
@@ -7793,6 +8115,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Beatriz Elena Urrutia Sanchez",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7824,6 +8147,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Yaneli Niño Osorio",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7855,6 +8179,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Gabriel Peña Ortiz",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7876,6 +8201,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Liliana Marcela Guzman Aricapa",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7907,6 +8233,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Beatriz Elena Urrutia Sanchez",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7938,6 +8265,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Cesar Augusto Romero",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -7969,6 +8297,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "JOSE JONATHAN MAESTRE HERRERA",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8000,6 +8329,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Beymar Leonardo Solorzano Alviz",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8031,6 +8361,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Claudia Marcela Arevalo Gomez",
         "cupos_disponibles": "7",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8317,7 +8648,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:52-05:00",
+    "orden_lectura": 32
   },
   {
     "codigo": "1000045-B",
@@ -8334,6 +8667,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Claudia Marcela Arevalo Gomez",
         "cupos_disponibles": "10",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8385,6 +8719,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Jesica paola Rendon Alfonso",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8416,6 +8751,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "JOSE JONATHAN MAESTRE HERRERA",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8447,6 +8783,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "LINDA JOHANA RUIZ GOMEZ",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8478,6 +8815,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Narly Yadira Pardo Cadena",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8509,6 +8847,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Angelica Saenz Fonseca",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8540,6 +8879,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Narly Yadira Pardo Cadena",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8571,6 +8911,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Gabriel Peña Ortiz",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8602,6 +8943,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Cesar Augusto Romero",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8633,6 +8975,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Jesica paola Rendon Alfonso",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8664,6 +9007,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Adriana Marlen Sanchez Riaño",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8685,6 +9029,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Cesar Augusto Romero",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8716,6 +9061,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Sara Elisa Monsalve Patino",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8747,6 +9093,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Gabriel Peña Ortiz",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8778,6 +9125,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Johnatan Martinez Hernandez",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8809,6 +9157,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Maureen Elizabeth Hooker Oneill",
         "cupos_disponibles": "15",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8935,7 +9284,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:54-05:00",
+    "orden_lectura": 33
   },
   {
     "codigo": "1000049-B",
@@ -8946,7 +9297,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": []
+    "grupos": [],
+    "ts_lectura": "2026-08-09T00:53:55-05:00",
+    "orden_lectura": 34
   },
   {
     "codigo": "1000046-B",
@@ -8963,6 +9316,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Johnatan Martinez Hernandez",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -8994,6 +9348,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Jennly Angelica Gomez Rodriguez",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9025,6 +9380,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Angelica Saenz Fonseca",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9056,6 +9412,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Liliana Marcela Guzman Aricapa",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9087,6 +9444,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "ALBA LUCIA RIAÑO RODRIGUEZ",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9118,6 +9476,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Angelica Saenz Fonseca",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9149,6 +9508,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Gabriel Peña Ortiz",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/10/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9180,6 +9540,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Olga Lucia Ruiz Convers",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9211,6 +9572,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Gabriel Peña Ortiz",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9242,6 +9604,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Narly Yadira Pardo Cadena",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9273,6 +9636,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Jesica paola Rendon Alfonso",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9304,6 +9668,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "JESUS DAVID TORRES RODRIGUEZ",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9335,6 +9700,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Claudia Patricia Cortes Lora",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9356,6 +9722,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Johnatan Martinez Hernandez",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9387,6 +9754,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Johnatan Martinez Hernandez",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9418,6 +9786,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Jesica paola Rendon Alfonso",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9449,6 +9818,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Beatriz Elena Urrutia Sanchez",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9480,6 +9850,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Maureen Elizabeth Hooker Oneill",
         "cupos_disponibles": "10",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9566,7 +9937,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:56-05:00",
+    "orden_lectura": 35
   },
   {
     "codigo": "1000050-B",
@@ -9577,7 +9950,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": []
+    "grupos": [],
+    "ts_lectura": "2026-08-09T00:53:58-05:00",
+    "orden_lectura": 36
   },
   {
     "codigo": "1000052-B",
@@ -9594,6 +9969,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Liliana Marcela Guzman Aricapa",
         "cupos_disponibles": "28",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9645,6 +10021,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "JOSE JONATHAN MAESTRE HERRERA",
         "cupos_disponibles": "28",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9696,6 +10073,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Aida Elena Monsalve Solorzano",
         "cupos_disponibles": "28",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9742,7 +10120,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:53:59-05:00",
+    "orden_lectura": 37
   },
   {
     "codigo": "1000053-B",
@@ -9759,6 +10139,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Jennly Angelica Gomez Rodriguez",
         "cupos_disponibles": "28",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9810,6 +10191,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Yaneli Niño Osorio",
         "cupos_disponibles": "28",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9861,6 +10243,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Javier Rodriguez Gomez",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9912,6 +10295,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Javier Rodriguez Gomez",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -9963,6 +10347,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "LINDA JOHANA RUIZ GOMEZ",
         "cupos_disponibles": "28",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10014,6 +10399,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Olga Lucia Ruiz Convers",
         "cupos_disponibles": "28",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10060,7 +10446,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:00-05:00",
+    "orden_lectura": 38
   },
   {
     "codigo": "1000047-B",
@@ -10077,6 +10465,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Cesar Augusto Romero",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10108,6 +10497,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Monica Alexandra Riaño Orjuela",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10139,6 +10529,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Jennly Angelica Gomez Rodriguez",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10170,6 +10561,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Claudia Patricia Cortes Lora",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10201,6 +10593,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Angelica Saenz Fonseca",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10232,6 +10625,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "LINDA JOHANA RUIZ GOMEZ",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10263,6 +10657,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Claudia Patricia Cortes Lora",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10294,6 +10689,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Narly Yadira Pardo Cadena",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10325,6 +10721,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Angelica Saenz Fonseca",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10356,6 +10753,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "ALBA LUCIA RIAÑO RODRIGUEZ",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10387,6 +10785,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Aida Elena Monsalve Solorzano",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10418,6 +10817,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Yaneli Niño Osorio",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10449,6 +10849,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "ALBA LUCIA RIAÑO RODRIGUEZ",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10480,6 +10881,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Edwin Yesid Leon Silva",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10511,6 +10913,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "LINDA JOHANA RUIZ GOMEZ",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10542,6 +10945,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Monica Alexandra Riaño Orjuela",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10573,6 +10977,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Claudia Patricia Cortes Lora",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10604,6 +11009,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Olga Lucia Ruiz Convers",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10625,6 +11031,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Monica Alexandra Riaño Orjuela",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10656,6 +11063,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Cesar Augusto Romero",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10687,6 +11095,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Beatriz Elena Urrutia Sanchez",
         "cupos_disponibles": "26",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10718,6 +11127,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Keshia Hilary Howard Livingston",
         "cupos_disponibles": "15",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10844,7 +11254,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:02-05:00",
+    "orden_lectura": 39
   },
   {
     "codigo": "1000051-B",
@@ -10855,7 +11267,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": []
+    "grupos": [],
+    "ts_lectura": "2026-08-09T00:54:03-05:00",
+    "orden_lectura": 40
   },
   {
     "codigo": "2026186",
@@ -10872,6 +11286,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Carol Andrea Murillo Feo",
         "cupos_disponibles": "7",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10903,6 +11318,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Leonel Vega Mora",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10934,6 +11350,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Carlos Orlando Robles Roa",
         "cupos_disponibles": "10",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -10960,7 +11377,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:04-05:00",
+    "orden_lectura": 41
   },
   {
     "codigo": "1000002-B",
@@ -10977,6 +11396,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Ruth Andrea Cortés Suárez",
         "cupos_disponibles": "1",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11018,6 +11438,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Karen Johanna Castelblanco Villamil",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11059,6 +11480,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Ruth Andrea Cortés Suárez",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11100,6 +11522,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Adriana Patricia Díaz Cuevas",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11141,6 +11564,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Adriana Patricia Díaz Cuevas",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11182,6 +11606,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Andres Felipe Escovar Barreto",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11223,6 +11648,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Ruth Andrea Cortés Suárez",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11264,6 +11690,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Karen Johanna Castelblanco Villamil",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11305,6 +11732,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Adriana Patricia Díaz Cuevas",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11346,6 +11774,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Carlas Lucia Castilla Lara",
         "cupos_disponibles": "10",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11702,7 +12131,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:06-05:00",
+    "orden_lectura": 42
   },
   {
     "codigo": "1000001-B",
@@ -11719,6 +12150,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11740,6 +12172,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -11761,6 +12194,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "10",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12102,6 +12536,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Ibeth Marcela Rubio Perilla",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12133,6 +12568,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "No informado",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12164,6 +12600,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Herbert Alonso Dueñas Ruiz",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12195,6 +12632,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Jeanneth Galeano Penaloza",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12226,6 +12664,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Gustavo Adolfo Nieto Clavijo",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12257,6 +12696,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Natalia Camila Pinzon Cortes",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12288,6 +12728,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Martha Cecilia Moreno Penagos",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12319,6 +12760,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Claudio Rodriguez Beltran",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12350,6 +12792,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Gabriel Ignacio Padilla Leon",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12381,6 +12824,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "No informado",
         "cupos_disponibles": "10",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12607,7 +13051,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:07-05:00",
+    "orden_lectura": 43
   },
   {
     "codigo": "2015965",
@@ -12624,6 +13070,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "CAMILO RIOS FRESNEDA",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12665,6 +13112,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Julian David Puerto Suarez; Vladimir Buelvas Hernández",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12706,6 +13154,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Ferney Betancourt Cardozo; Juan Manuel Lizarazo Marriaga",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12747,6 +13196,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12783,7 +13233,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:09-05:00",
+    "orden_lectura": 44
   },
   {
     "codigo": "2015966",
@@ -12800,6 +13252,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12841,6 +13294,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Adriana Patricia Piña Fulano",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12882,6 +13336,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Rafael Orland Ortiz Mosquera",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12923,6 +13378,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -12964,6 +13420,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13005,6 +13462,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Alejandro Morales Marin",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13046,6 +13504,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13087,6 +13546,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13123,7 +13583,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:10-05:00",
+    "orden_lectura": 45
   },
   {
     "codigo": "2015967",
@@ -13140,6 +13602,7 @@
         "actividad": "",
         "profesores": "Vladimir Buelvas Hernández",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13166,7 +13629,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:11-05:00",
+    "orden_lectura": 46
   },
   {
     "codigo": "2015968",
@@ -13183,6 +13648,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Ricardo Parra Arango",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13224,6 +13690,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Juan David Oliveros Salazar",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13265,6 +13732,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13306,6 +13774,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Ricardo Parra Arango",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13347,6 +13816,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Julian David Puerto Suarez",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13388,6 +13858,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Dorian Luis Linero Segrera",
         "cupos_disponibles": "24",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13429,6 +13900,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13465,7 +13937,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:13-05:00",
+    "orden_lectura": 47
   },
   {
     "codigo": "2015969",
@@ -13482,6 +13956,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Julio Esteban Colmenares Montañez",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13513,6 +13988,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Guillermo Eduardo Avila Alvarez",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13544,6 +14020,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Livaniel Viveros Rosero",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13575,6 +14052,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13601,7 +14079,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:14-05:00",
+    "orden_lectura": 48
   },
   {
     "codigo": "2015970",
@@ -13618,6 +14098,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Helga Duarte",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13649,6 +14130,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Oswaldo Rojas Camacho",
         "cupos_disponibles": "45",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13680,6 +14162,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Helga Duarte",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13711,6 +14194,7 @@
         "actividad": "CLASE PRACTICA",
         "profesores": "Oswaldo Rojas Camacho",
         "cupos_disponibles": "45",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13737,7 +14221,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:15-05:00",
+    "orden_lectura": 49
   },
   {
     "codigo": "2017293",
@@ -13754,6 +14240,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "JUAN SEBASTIÁN HINCAPIÉ MONTES",
         "cupos_disponibles": "34",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/10/2026",
         "duracion": "Asignaturas semestrales con duración entre 17 y 20 semanas",
         "jornada": "DIURNO",
@@ -13785,6 +14272,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "JUAN SEBASTIÁN HINCAPIÉ MONTES",
         "cupos_disponibles": "34",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/10/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13816,6 +14304,7 @@
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Carlos Alberto Duque Daza",
         "cupos_disponibles": "80",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/10/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13842,7 +14331,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:16-05:00",
+    "orden_lectura": 50
   },
   {
     "codigo": "2025970",
@@ -13853,7 +14344,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": []
+    "grupos": [],
+    "ts_lectura": "2026-08-09T00:54:18-05:00",
+    "orden_lectura": 51
   },
   {
     "codigo": "2025971",
@@ -13864,7 +14357,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": []
+    "grupos": [],
+    "ts_lectura": "2026-08-09T00:54:19-05:00",
+    "orden_lectura": 52
   },
   {
     "codigo": "2015971",
@@ -13881,6 +14376,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13912,6 +14408,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Ferney Betancourt Cardozo",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13943,6 +14440,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -13969,7 +14467,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:20-05:00",
+    "orden_lectura": 53
   },
   {
     "codigo": "2015972",
@@ -13986,6 +14486,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Carlos Alberto Moncada Aristizabal",
         "cupos_disponibles": "15",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14017,6 +14518,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "SANTIAGO RAMIREZ ECHEVERRI",
         "cupos_disponibles": "15",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14048,6 +14550,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "15",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14074,7 +14577,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:21-05:00",
+    "orden_lectura": 54
   },
   {
     "codigo": "1000024-B",
@@ -14091,6 +14596,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Edgar Delgado Mejia",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14132,6 +14638,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Jesus Sigifredo Valencia Rios",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "26/10/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14173,6 +14680,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Jhon Jairo Aragón Arias",
         "cupos_disponibles": "10",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14329,7 +14837,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:22-05:00",
+    "orden_lectura": 55
   },
   {
     "codigo": "1000013-B",
@@ -14346,6 +14856,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "JHONIER SEBASTIAN RANGEL GUTIERREZ",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14377,6 +14888,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Sandra Vergara Cardozo",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14408,6 +14920,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "DIEGO ALBERTO MARTINEZ SIMBAQUEVA",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14439,6 +14952,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "DIEGO ALBERTO MARTINEZ SIMBAQUEVA",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14470,6 +14984,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "DIEGO ALBERTO MARTINEZ SIMBAQUEVA",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14501,6 +15016,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Andrea Catalina Garcia Montoya",
         "cupos_disponibles": "45",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14532,6 +15048,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Sergio Alejandro Calderon Villanueva",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14563,6 +15080,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Guillermo Diaz Monroy",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14594,6 +15112,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Hanwen Zhang",
         "cupos_disponibles": "45",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14625,6 +15144,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "ULPIANO LARA CRISTANCHO",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14656,6 +15176,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Diana Carolina Franco Soto",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14687,6 +15208,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Diana Carolina Franco Soto",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14718,6 +15240,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Darwin Eduardo Martínez Riaño",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14749,6 +15272,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Darwin Eduardo Martínez Riaño",
         "cupos_disponibles": "35",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14780,6 +15304,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "Camilo Jose Torres Jimenez",
         "cupos_disponibles": "40",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14806,7 +15331,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:24-05:00",
+    "orden_lectura": 56
   },
   {
     "codigo": "2015734",
@@ -14823,6 +15350,7 @@
         "actividad": "",
         "profesores": "Fernando Salazar Delgado",
         "cupos_disponibles": "6",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14854,6 +15382,7 @@
         "actividad": "",
         "profesores": "Tito Florez Calderon",
         "cupos_disponibles": "4",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14885,6 +15414,7 @@
         "actividad": "",
         "profesores": "DAVID ALBERTO HERRERA ALVAREZ",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14916,6 +15446,7 @@
         "actividad": "",
         "profesores": "FABIEL NATÁN ESPINOSA CASTAÑEDA",
         "cupos_disponibles": "1",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14947,6 +15478,7 @@
         "actividad": "",
         "profesores": "SERGIO CAMILO ESPINOSA BOTERO",
         "cupos_disponibles": "4",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -14978,6 +15510,7 @@
         "actividad": "",
         "profesores": "Felipe Gonzalez Roldan",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15009,6 +15542,7 @@
         "actividad": "",
         "profesores": "Fernando Salazar Delgado",
         "cupos_disponibles": "16",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15040,6 +15574,7 @@
         "actividad": "",
         "profesores": "Jhoan Sebastian Restrepo Mendoza",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15071,6 +15606,7 @@
         "actividad": "",
         "profesores": "Sandra Liliana Rojas Martinez",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15102,6 +15638,7 @@
         "actividad": "",
         "profesores": "Jhoan Sebastian Restrepo Mendoza",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15133,6 +15670,7 @@
         "actividad": "",
         "profesores": "SERGIO CAMILO ESPINOSA BOTERO",
         "cupos_disponibles": "8",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15164,6 +15702,7 @@
         "actividad": "",
         "profesores": "No informado",
         "cupos_disponibles": "3",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15195,6 +15734,7 @@
         "actividad": "",
         "profesores": "FABIEL NATÁN ESPINOSA CASTAÑEDA",
         "cupos_disponibles": "30",
+        "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15226,6 +15766,7 @@
         "actividad": "",
         "profesores": "Alvaro Reynel Córdoba",
         "cupos_disponibles": "18",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15312,7 +15853,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:25-05:00",
+    "orden_lectura": 57
   },
   {
     "codigo": "2016375",
@@ -15323,7 +15866,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": []
+    "grupos": [],
+    "ts_lectura": "2026-08-09T00:54:26-05:00",
+    "orden_lectura": 58
   },
   {
     "codigo": "2015973",
@@ -15340,6 +15885,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15371,6 +15917,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "GABRIELA ARRIETA LOYO",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15402,6 +15949,7 @@
         "actividad": "CLASE TEORICA",
         "profesores": "NICOLAS ESCALANTE MORA",
         "cupos_disponibles": "25",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15428,7 +15976,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:27-05:00",
+    "orden_lectura": 59
   },
   {
     "codigo": "2022761",
@@ -15445,6 +15995,7 @@
         "actividad": "",
         "profesores": "Servio Javier Contreras Guerrero",
         "cupos_disponibles": "15",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15476,6 +16027,7 @@
         "actividad": "",
         "profesores": "Servio Javier Contreras Guerrero",
         "cupos_disponibles": "15",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15507,6 +16059,7 @@
         "actividad": "",
         "profesores": "Samuel Fernando Mesa Giraldo",
         "cupos_disponibles": "15",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15533,7 +16086,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:29-05:00",
+    "orden_lectura": 60
   },
   {
     "codigo": "2024045",
@@ -15544,7 +16099,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": []
+    "grupos": [],
+    "ts_lectura": "2026-08-09T00:54:30-05:00",
+    "orden_lectura": 61
   },
   {
     "codigo": "2015296",
@@ -15561,6 +16118,7 @@
         "actividad": "",
         "profesores": "Leonardo David Donado Garzon",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15582,6 +16140,7 @@
         "actividad": "",
         "profesores": "Juan Manuel Lizarazo Marriaga",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15603,6 +16162,7 @@
         "actividad": "",
         "profesores": "Octavio Coronado Garcia",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15624,6 +16184,7 @@
         "actividad": "",
         "profesores": "Carol Andrea Murillo Feo",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15645,6 +16206,7 @@
         "actividad": "",
         "profesores": "CAMILO RIOS FRESNEDA",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15666,6 +16228,7 @@
         "actividad": "",
         "profesores": "William Castro Garcia",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15687,6 +16250,7 @@
         "actividad": "",
         "profesores": "Luis Alejandro Morales Marin",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15708,6 +16272,7 @@
         "actividad": "",
         "profesores": "Ferney Betancourt Cardozo",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15729,6 +16294,7 @@
         "actividad": "",
         "profesores": "Maria Alejandra Caicedo Londoño",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15750,6 +16316,7 @@
         "actividad": "",
         "profesores": "Guillermo Eduardo Avila Alvarez",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15771,6 +16338,7 @@
         "actividad": "",
         "profesores": "Carlos Alfonso Gomez Guacaneme",
         "cupos_disponibles": "0",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15792,6 +16360,7 @@
         "actividad": "",
         "profesores": "Carlos Orlando Robles Roa",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15813,6 +16382,7 @@
         "actividad": "",
         "profesores": "Angela Barrera Puerto",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15834,6 +16404,7 @@
         "actividad": "",
         "profesores": "Mauricio Alberto Tapias Camacho",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15855,6 +16426,7 @@
         "actividad": "",
         "profesores": "Maritzabel Molina Herrera",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15876,6 +16448,7 @@
         "actividad": "",
         "profesores": "Rodolfo Rodriguez Baracaldo",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15897,6 +16470,7 @@
         "actividad": "",
         "profesores": "SANTIAGO RAMIREZ ECHEVERRI",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15918,6 +16492,7 @@
         "actividad": "",
         "profesores": "Jose Ricardo Martinez Vargas",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15939,6 +16514,7 @@
         "actividad": "",
         "profesores": "GABRIELA ARRIETA LOYO",
         "cupos_disponibles": "5",
+        "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
@@ -15955,7 +16531,9 @@
           }
         ]
       }
-    ]
+    ],
+    "ts_lectura": "2026-08-09T00:54:32-05:00",
+    "orden_lectura": 62
   },
   {
     "codigo": "2015299",
@@ -15966,7 +16544,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": []
+    "grupos": [],
+    "ts_lectura": "2026-08-09T00:54:33-05:00",
+    "orden_lectura": 63
   },
   {
     "codigo": "2015977",
@@ -15977,6 +16557,8 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": []
+    "grupos": [],
+    "ts_lectura": "2026-08-09T00:54:34-05:00",
+    "orden_lectura": 64
   }
 ]
