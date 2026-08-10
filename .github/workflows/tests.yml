@@ -1,0 +1,44 @@
+# Corre la suite del parser en cada cambio. No necesita Chrome ni red: los
+# tests trabajan sobre los textos crudos ya archivados en textos/*.jsonl.gz.
+# selenium se instala solo porque sia_scraper.py lo importa al cargarse.
+name: Tests
+
+on:
+  push:
+    branches: [main]
+    # Los snapshots del bot tocan solo datos; no hace falta correr CI 48
+    # veces al día por eso.
+    paths-ignore:
+      - "cupos_historial*.csv"
+      - "runs.csv"
+      - "series.json"
+      - "estadisticas.html"
+      - "textos/**"
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install selenium pytest
+
+      - name: Correr los tests
+        run: python -m pytest tests/ -q
+
+      - name: Comprobar que series.json se regenera sin errores
+        run: |
+          python sia_scraper.py stats
+          python - <<'EOF'
+          import json, pathlib
+          d = json.loads(pathlib.Path("series.json").read_text(encoding="utf-8"))
+          assert d["series"], "series.json quedó vacío"
+          print(f"OK: {len(d['series'])} series, {d['n_snapshots']} snapshots")
+          EOF
