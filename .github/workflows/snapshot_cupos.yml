@@ -33,26 +33,30 @@ jobs:
     timeout-minutes: 350          # tope de GitHub: 360
     steps:
       - name: Descargar el repositorio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Vigilante — ¿ya hay un bucle vivo?
         id: guard
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # Si hay varias corridas activas, solo sobrevive la más
-          # antigua (id más bajo). Determinista: sin carreras.
-          ids=$(gh run list --repo "$GITHUB_REPOSITORY" \
-                  --workflow snapshot_cupos.yml \
-                  --status in_progress \
-                  --json databaseId --jq 'map(.databaseId) | min')
-          echo "corrida más antigua activa: $ids / yo soy: $GITHUB_RUN_ID"
-          if [ -n "$ids" ] && [ "$ids" != "$GITHUB_RUN_ID" ]; then
-            echo "Ya hay un bucle vivo. Salgo sin hacer nada."
-            echo "seguir=no" >> $GITHUB_OUTPUT
-          else
-            echo "seguir=si" >> $GITHUB_OUTPUT
-          fi
+          # Solo me retiro si existe una corrida ESTRICTAMENTE más
+          # antigua que la mía. Si la lista viene vacía, si jq devuelve
+          # "null" o si gh falla, arranco igual: el peor caso debe ser
+          # dos bucles solapados, nunca cero bucles.
+          activas=$(gh run list --repo "$GITHUB_REPOSITORY" \
+                      --workflow snapshot_cupos.yml \
+                      --status in_progress --limit 50 \
+                      --json databaseId --jq '.[].databaseId' || echo "")
+          echo "activas: [$activas] | yo: $GITHUB_RUN_ID"
+          seguir=si
+          for id in $activas; do
+            if [ "$id" -lt "$GITHUB_RUN_ID" ]; then
+              echo "La corrida $id es más antigua y sigue viva. Salgo."
+              seguir=no
+            fi
+          done
+          echo "seguir=$seguir" >> $GITHUB_OUTPUT
 
       - name: Instalar Python
         if: steps.guard.outputs.seguir == 'si'
