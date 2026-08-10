@@ -1,0 +1,63 @@
+# ============================================================
+#  Publicación en GitHub Pages
+#
+#  SOLO hace falta si pones Settings > Pages > Source = "GitHub
+#  Actions". Existe porque los pushes hechos con el GITHUB_TOKEN
+#  NO disparan workflows, y en el modo "Deploy from a branch" el
+#  que reconstruye el sitio es precisamente un workflow
+#  (pages-build-deployment). Resultado: el bot commitea, pero la
+#  página servida se queda congelada.
+#
+#  Este workflow se lanza a mano, por cron de respaldo, y sobre
+#  todo desde el bucle de snapshots vía workflow_dispatch (que sí
+#  funciona con el GITHUB_TOKEN). Para eso pon DESPLEGAR_PAGES: "1"
+#  en snapshot_cupos.yml.
+#
+#  Alternativa sin este archivo: deja Pages en "Deploy from a
+#  branch" y crea un PAT de grano fino (solo este repo, permiso
+#  Contents: Read and write) guardado como secreto PAT_PUSH. Al
+#  empujar con un PAT, Pages sí reconstruye.
+# ============================================================
+name: Publicar en Pages
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Red de seguridad: si el bucle no alcanzó a lanzarlo.
+    - cron: "8,38 * * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  desplegar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Armar el sitio
+        run: |
+          mkdir -p _sitio
+          # Solo lo que la página lee. textos/ y los respaldos v1 pesan
+          # mucho y nadie los descarga desde el navegador.
+          for f in index.html horario.html estadisticas.html series.json \
+                   horarios.csv grupos.csv catalogo.json cupos_historial.csv; do
+            [ -e "$f" ] && cp "$f" _sitio/ || true
+          done
+          ls -lh _sitio
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _sitio
+
+      - id: despliegue
+        uses: actions/deploy-pages@v4
