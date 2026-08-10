@@ -1,0 +1,184 @@
+# ============================================================
+#  Recuperar historial — workflow de UN SOLO USO
+#
+#  Re-parsea los textos crudos de textos/*.jsonl.gz y añade al
+#  historial las mediciones que el parser no supo leer en su
+#  momento (las asignaturas sin el rótulo "Contenido de la
+#  asignatura"). No toca el SIA: solo lee lo ya archivado.
+#
+#  No tiene cron ni se dispara con push: SOLO con el botón
+#  "Run workflow" en la pestaña Actions.
+#
+#  CÓMO USARLO
+#    1. Actions > Recuperar historial > Run workflow
+#       con modo = simulacro. Mirá el resumen. No commitea nada.
+#    2. Si el resumen te convence, repetí con modo = aplicar.
+#    3. BORRÁ ESTE ARCHIVO. Ya cumplió.
+#
+#  Es idempotente: si lo corrés dos veces, la segunda no añade
+#  nada. Y si algo sale mal, el commit se revierte como cualquier
+#  otro — el historial viejo sigue en el git log.
+# ============================================================
+name: Recuperar historial (un solo uso)
+
+on:
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "simulacro = solo mostrar qué haría | aplicar = commitear"
+        type: choice
+        required: true
+        default: simulacro
+        options:
+          - simulacro
+          - aplicar
+
+permissions:
+  contents: write      # para commitear el historial recuperado
+  actions: write       # para cancelar el bucle de snapshots
+
+jobs:
+  recuperar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v5
+
+      # El bucle de snapshots también escribe cupos_historial.csv. Si los dos
+      # commitean a la vez, el rebase choca sobre el mismo archivo. Más
+      # simple que resolver la carrera: pararlo. El vigilante levanta uno
+      # nuevo en <=15 min, y ese ya arranca con el historial completo.
+      - name: Detener el bucle de snapshots
+        if: github.event.inputs.modo == 'aplicar'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          activas=$(gh run list --repo "$GITHUB_REPOSITORY" \
+                      --workflow snapshot_cupos.yml \
+                      --status in_progress --limit 20 \
+                      --json databaseId --jq '.[].databaseId' || echo "")
+          if [ -z "$activas" ]; then
+            echo "No hay ningún bucle vivo."
+          else
+            for id in $activas; do
+              echo "Cancelando la corrida $id..."
+              gh run cancel "$id" --repo "$GITHUB_REPOSITORY" || true
+            done
+            echo "Esperando 60 s a que suelte el repositorio..."
+            sleep 60
+          fi
+
+      - name: Traer los últimos commits del bot
+        if: github.event.inputs.modo == 'aplicar'
+        run: git pull --rebase --autostash
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install selenium
+
+      - name: Guardar el estado previo
+        run: |
+          cp cupos_historial.csv /tmp/historial_antes.csv
+          echo "FILAS_ANTES=$(tail -n +2 cupos_historial.csv | wc -l)" >> $GITHUB_ENV
+
+      - name: Re-parsear los textos archivados
+        run: python sia_scraper.py reparsear | tee /tmp/salida.txt
+
+      - name: Comprobar que el resultado es coherente
+        run: |
+          python - <<'EOF'
+          import csv, json, collections, sys
+
+          def leer(ruta):
+              with open(ruta, encoding="utf-8-sig") as f:
+                  return list(csv.DictReader(f))
+
+          antes = leer("/tmp/historial_antes.csv")
+          ahora = leer("cupos_historial.csv")
+          fallos = []
+
+          # 1. El historial solo puede crecer. Nunca encogerse.
+          if len(ahora) < len(antes):
+              fallos.append(f"el historial encogió: {len(antes)} -> {len(ahora)}")
+
+          # 2. Ninguna fila previa puede haber cambiado ni desaparecido.
+          def firma(f):
+              return (f["run_id"], f["ts_lectura"], f["codigo"],
+                      f["grupo"], f["cupos_disponibles"])
+          faltan = collections.Counter(map(firma, antes)) - collections.Counter(map(firma, ahora))
+          if faltan:
+              fallos.append(f"{sum(faltan.values())} filas previas se perdieron o cambiaron")
+
+          # 3. Lo añadido no puede duplicar una medición ya existente.
+          clave = lambda f: (f["run_id"], f["codigo"], f["ts_lectura"], f["grupo"])
+          dup_antes = sum(v - 1 for v in collections.Counter(map(clave, antes)).values() if v > 1)
+          dup_ahora = sum(v - 1 for v in collections.Counter(map(clave, ahora)).values() if v > 1)
+          if dup_ahora > dup_antes:
+              fallos.append(f"aparecieron {dup_ahora - dup_antes} duplicados")
+
+          # 4. Las vistas derivadas tienen que haberse regenerado bien.
+          try:
+              d = json.load(open("series.json"))
+              assert d["series"], "series.json quedó vacío"
+          except Exception as e:
+              fallos.append(f"series.json: {e}")
+
+          if fallos:
+              for x in fallos:
+                  print(f"::error::{x}")
+              sys.exit(1)
+          print(f"OK: {len(antes)} -> {len(ahora)} filas (+{len(ahora)-len(antes)}), "
+                f"{len(d['series'])} series")
+          EOF
+
+      - name: Resumen
+        if: always()
+        run: |
+          {
+            echo "## Recuperación de historial"
+            echo ""
+            echo "Modo: **${{ github.event.inputs.modo }}**"
+            echo ""
+            echo '```'
+            cat /tmp/salida.txt 2>/dev/null || echo "(el paso de re-parseo no llegó a correr)"
+            echo '```'
+            if [ "${{ github.event.inputs.modo }}" = "simulacro" ]; then
+              echo ""
+              echo "> Simulacro: **no se commiteó nada**. Volvé a lanzarlo con \`aplicar\` si el resultado te convence."
+            fi
+          } >> $GITHUB_STEP_SUMMARY
+
+      - name: Commitear el historial recuperado
+        if: github.event.inputs.modo == 'aplicar'
+        run: |
+          git config user.name  "sia-bot"
+          git config user.email "sia-bot@users.noreply.github.com"
+          git add cupos_historial.csv series.json estadisticas.html
+          if git diff --cached --quiet; then
+            echo "Sin cambios que guardar."
+            exit 0
+          fi
+          git commit -m "recuperar historial re-parseando los textos archivados"
+          for intento in 1 2 3; do
+            git push && exit 0
+            echo "Push rechazado ($intento/3); rebase y reintento..."
+            git pull --rebase --autostash || true
+            sleep 10
+          done
+          echo "::error::No se pudo hacer push tras 3 intentos"
+          exit 1
+
+      - name: Siguiente paso
+        if: github.event.inputs.modo == 'aplicar' && success()
+        run: |
+          {
+            echo ""
+            echo "### Ya está"
+            echo "Podés **borrar \`.github/workflows/recuperar_historial.yml\`**: cumplió su función."
+            echo "El bucle de snapshots lo relanza el cron vigilante en menos de 15 minutos."
+          } >> $GITHUB_STEP_SUMMARY
