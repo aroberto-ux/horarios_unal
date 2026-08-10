@@ -101,6 +101,34 @@ Jornada: DIURNO
 """
 
 
+# Recortada de la página real de 2024045 (Taller de proyectos
+# interdisciplinarios). Dos rarezas juntas: NO trae la línea "Contenido de la
+# asignatura" y la cabecera de actividad viene sin sangría. El parser
+# devolvía cero grupos y la materia desaparecía de la página.
+PAGINA_SIN_ANCLA = """PORTAL DE SERVICIOS ACADÉMICOS
+Información de la asignatura
+    Volver
+Taller de proyectos interdisciplinarios (2024045)
+Tipología: DISCIPLINAR OPTATIVA
+Créditos:3
+INGENIERÍA CIVIL
+Facultad: FACULTAD DE INGENIERÍA
+CLASE TEORICA (2024045)
+  (1) 2024045-1 Taller de proyectos interdisciplinarios
+  Profesor: No informado
+Facultad: FACULTAD DE INGENIERÍA
+Horarios/Aula: No informado
+Fecha:27/08/2026 - 17/12/2026
+LUNES de 14:00 a 15:00.
+SALON DE CLASE 454-207. 454-207. 454 - Luis Carlos Sarmiento Angulo. SALON.
+MIÉRCOLES de 15:00 a 16:00.
+SALON DE CLASE 454-207. 454-207. 454 - Luis Carlos Sarmiento Angulo. SALON.
+Duración: Semestral
+Jornada: DIURNO
+Cupos disponibles: 0
+"""
+
+
 # ---------------------------------------------------------------------------
 # Cabecera de la asignatura
 # ---------------------------------------------------------------------------
@@ -162,6 +190,48 @@ def test_corta_en_prerrequisitos():
     """Lo que viene tras 'Prerrequisitos' no debe leerse como grupos."""
     a = sia.parsear_texto_detalle(PAGINA_DOS_ACTIVIDADES, "2015951")
     assert all("Física" not in g.grupo for g in a.grupos)
+
+
+def test_grupos_sin_el_rotulo_contenido_de_la_asignatura():
+    """No todas las páginas traen 'Contenido de la asignatura'. Si falta, hay
+    que localizar los grupos igual — si no, la materia entera se pierde."""
+    a = sia.parsear_texto_detalle(PAGINA_SIN_ANCLA, "2024045")
+    assert "Contenido de la asignatura" not in PAGINA_SIN_ANCLA
+    assert len(a.grupos) == 1
+    assert a.grupos[0].actividad == "CLASE TEORICA"
+    assert a.grupos[0].grupo.startswith("(1) 2024045-1")
+    assert a.grupos[0].cupos_disponibles == "0"
+    assert len(a.grupos[0].sesiones) == 2
+    assert a.grupos[0].sesiones[0].salon == "454-207"
+
+
+def test_la_cabecera_no_se_cuela_como_grupo():
+    """El respaldo empieza a leer antes de lo normal; 'Tipología:' y compañía
+    no deben terminar convertidas en grupos o sesiones."""
+    a = sia.parsear_texto_detalle(PAGINA_SIN_ANCLA, "2024045")
+    assert a.tipologia == "DISCIPLINAR OPTATIVA"
+    assert all("Tipolog" not in g.grupo for g in a.grupos)
+    assert all("Crédito" not in g.grupo for g in a.grupos)
+
+
+def test_el_ancla_normal_sigue_teniendo_prioridad():
+    """Cuando el rótulo está, se usa: es más preciso que la heurística."""
+    assert sia._inicio_de_los_grupos(PAGINA_MINIMA) == \
+        PAGINA_MINIMA.find("Contenido de la asignatura")
+
+
+def test_pagina_sin_grupos_de_verdad_sigue_dando_cero():
+    """El respaldo no debe inventar grupos donde no los hay."""
+    texto = """    Volver
+Materia Fantasma (9999999)
+Tipología: DISCIPLINAR OPTATIVA
+Créditos:3
+Facultad: FACULTAD DE INGENIERÍA
+No hay grupos programados para este periodo.
+"""
+    a = sia.parsear_texto_detalle(texto, "9999999")
+    assert a.grupos == []
+    assert a.nombre == "Materia Fantasma"
 
 
 # ---------------------------------------------------------------------------
