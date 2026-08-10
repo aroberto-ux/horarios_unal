@@ -17,6 +17,7 @@ Dos capas:
 Correr:  pytest -q
 """
 
+import csv
 import gzip
 import json
 import sys
@@ -371,3 +372,98 @@ def test_el_parser_es_determinista():
     assert [g.grupo for g in a.grupos] == [g.grupo for g in b.grupos]
     assert [g.cupos_disponibles for g in a.grupos] == \
            [g.cupos_disponibles for g in b.grupos]
+
+
+# ---------------------------------------------------------------------------
+# Verificación del listado de resultados
+#
+# El scraper recolectaba el listado del SIA sin comprobarlo. Cuando ADF
+# devolvía el conjunto equivocado —posgrado, u otra facultad— el barrido
+# entero se perdía: recolectaba códigos que un instante después ya no
+# estaban en la tabla. En runs.csv, las corridas con un listado ajeno al
+# plan tenían un 0% de éxito; las que recolectaban el plan correcto, 100%.
+# ---------------------------------------------------------------------------
+
+PLAN = {f"20159{i:02d}" for i in range(38, 60)}          # 22 códigos "del plan"
+POSGRADO = {f"10000{i:02d}-P" for i in range(1, 40)}     # otro plan entero
+
+
+def _solape(listado, conocidos):
+    return len(set(listado) & conocidos) / len(conocidos)
+
+
+def test_umbrales_configurados():
+    assert 0 < sia.UMBRAL_SOLAPE < 1
+    assert 0 < sia.UMBRAL_LISTADO <= 1
+
+
+def test_listado_de_otro_plan_no_pasa_el_umbral():
+    """El caso real: el SIA devolvió el listado de posgrado."""
+    assert _solape(sorted(POSGRADO), PLAN) < sia.UMBRAL_SOLAPE
+
+
+def test_listado_correcto_pasa_el_umbral():
+    assert _solape(sorted(PLAN), PLAN) >= sia.UMBRAL_SOLAPE
+
+
+def test_una_oferta_que_cambia_sigue_pasando():
+    """Que se caigan o se agreguen unas cuantas asignaturas no puede
+    confundirse con un listado del plan equivocado."""
+    recortado = sorted(PLAN)[:-4] + ["2099001", "2099002"]
+    assert _solape(recortado, PLAN) >= sia.UMBRAL_SOLAPE
+
+
+def test_referencia_ignora_las_corridas_incompletas(tmp_path, monkeypatch):
+    """n_esperadas de una corrida fallida no sirve de referencia: justamente
+    esas son las que traen 4 o 101 asignaturas."""
+    runs = tmp_path / "runs.csv"
+    with open(runs, "w", newline="", encoding="utf-8-sig") as f:
+        w = csv.DictWriter(f, fieldnames=sia.RUNS_CAMPOS)
+        w.writeheader()
+        w.writerow({"run_id": "a", "n_esperadas": 65, "completo": "1"})
+        w.writerow({"run_id": "b", "n_esperadas": 101, "completo": "0"})
+        w.writerow({"run_id": "c", "n_esperadas": 4, "completo": "0"})
+    monkeypatch.setattr(sia, "OUTPUT_RUNS", runs)
+    assert sia._n_asignaturas_de_referencia() == 65
+
+
+def test_referencia_ausente_no_explota(tmp_path, monkeypatch):
+    monkeypatch.setattr(sia, "OUTPUT_RUNS", tmp_path / "no_existe.csv")
+    monkeypatch.setattr(sia, "OUTPUT_JSON", tmp_path / "tampoco.json")
+    assert sia._n_asignaturas_de_referencia() is None
+    assert sia._codigos_de_referencia() is None
+
+
+def test_no_se_compara_el_solape_con_varios_planes(tmp_path, monkeypatch):
+    """Con varios planes, catalogo.json mezcla códigos y el solape deja de
+    discriminar; hay que desactivarlo, no dar un veredicto malo."""
+    cat = tmp_path / "catalogo.json"
+    cat.write_text(json.dumps([{"codigo": "2015938"}]), encoding="utf-8")
+    monkeypatch.setattr(sia, "OUTPUT_JSON", cat)
+    monkeypatch.setattr(sia, "PLANES_ESTUDIOS", ["PLAN A", "PLAN B"])
+    assert sia._codigos_de_referencia() is None
+    monkeypatch.setattr(sia, "PLANES_ESTUDIOS", ["PLAN A"])
+    assert sia._codigos_de_referencia() == {"2015938"}
+
+
+def test_migracion_de_runs_conserva_los_datos(tmp_path, monkeypatch):
+    """runs.csv viejo tiene 10 columnas y el nuevo 12. Escribir 12 valores
+    bajo una cabecera de 10 corrompería el archivo en silencio."""
+    viejas = [c for c in sia.RUNS_CAMPOS
+              if c not in ("n_paginas", "intentos_listado")]
+    runs = tmp_path / "runs.csv"
+    with open(runs, "w", newline="", encoding="utf-8-sig") as f:
+        w = csv.DictWriter(f, fieldnames=viejas)
+        w.writeheader()
+        w.writerow({c: "x" for c in viejas} | {"run_id": "vieja", "completo": "1"})
+    monkeypatch.setattr(sia, "OUTPUT_RUNS", runs)
+
+    sia._asegurar_esquema_runs()
+    sia._asegurar_esquema_runs()          # idempotente
+
+    with open(runs, encoding="utf-8-sig") as f:
+        filas = list(csv.DictReader(f))
+    assert len(filas) == 1
+    assert filas[0]["run_id"] == "vieja"
+    assert filas[0]["n_paginas"] == ""     # dato que no tenemos: vacío, no 0
+    assert list(filas[0]) == sia.RUNS_CAMPOS
