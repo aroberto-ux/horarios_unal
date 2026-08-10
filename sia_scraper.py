@@ -103,6 +103,12 @@ OUTPUT_HTML = CARPETA_SALIDA / "horario.html"
 OUTPUT_HISTORIAL = CARPETA_SALIDA / "cupos_historial.csv"
 OUTPUT_STATS = CARPETA_SALIDA / "estadisticas.html"
 
+# Series ya colapsadas y compactadas para la página web. El historial crudo
+# pasa de 3 MB y crece ~50 KB por snapshot; la página lo descargaba entero y
+# parseaba 24.000 filas en el navegador en cada carga. Este archivo trae lo
+# mismo que la página necesita, ~20 veces más pequeño.
+OUTPUT_SERIES = CARPETA_SALIDA / "series.json"
+
 # Bitácora de corridas: una fila por ejecución en modo cupos, con conteos de
 # asignaturas esperadas/leídas/fallidas. En el análisis, TODA corrida cuyo
 # run_id aparezca en cupos_historial.csv pero NO tenga fila aquí (o la tenga
@@ -826,17 +832,42 @@ def codigos_en_pagina_actual(driver) -> List[str]:
     return unicos
 
 
-def _control_siguiente(driver):
-    """Devuelve el control de 'página siguiente' si existe y está activo."""
-    candidatos = [
+# Controles de paginación de la tabla ADF. Hasta ahora solo se conocía el de
+# "Siguiente", y eso bastaba mientras el listado cupiera en una sola página.
+# Cuando NO cabe, la recolección termina parada en la última página y ya no
+# hay forma de volver: todas las asignaturas de páginas anteriores quedaban
+# inalcanzables y se contaban como fallidas. Por eso hacen falta los tres.
+_XPATHS_PAGINACION = {
+    "siguiente": [
         "//a[normalize-space(text())='Siguiente']",
         "//a[contains(@title,'Siguiente')]",
         "//a[normalize-space(text())='>']",
         "//a[contains(@class,'af_table_link-next')]",
         "//*[contains(@id,'::nextIcon')]",
         "//a[normalize-space(text())='Next']",
-    ]
-    for xp in candidatos:
+    ],
+    "anterior": [
+        "//a[normalize-space(text())='Anterior']",
+        "//a[contains(@title,'Anterior')]",
+        "//a[normalize-space(text())='<']",
+        "//a[contains(@class,'af_table_link-previous')]",
+        "//*[contains(@id,'::prevIcon')]",
+        "//a[normalize-space(text())='Previous']",
+    ],
+    "primera": [
+        "//a[normalize-space(text())='Primera']",
+        "//a[contains(@title,'Primera')]",
+        "//a[normalize-space(text())='<<']",
+        "//a[contains(@class,'af_table_link-first')]",
+        "//*[contains(@id,'::firstIcon')]",
+        "//a[normalize-space(text())='First']",
+    ],
+}
+
+
+def _control_paginacion(driver, cual: str):
+    """Devuelve el control de paginación pedido si existe y está activo."""
+    for xp in _XPATHS_PAGINACION.get(cual, []):
         for el in driver.find_elements(By.XPATH, xp):
             try:
                 if not (el.is_displayed() and el.is_enabled()):
@@ -848,6 +879,46 @@ def _control_siguiente(driver):
             except StaleElementReferenceException:
                 continue
     return None
+
+
+def _control_siguiente(driver):
+    return _control_paginacion(driver, "siguiente")
+
+
+def _clic_paginacion(driver, el) -> bool:
+    """Clic en un control de paginación + espera del refresco parcial."""
+    try:
+        driver.execute_script("arguments[0].click();", el)
+    except WebDriverException:
+        return False
+    esperar_overlay_ppr_desaparezca(driver)
+    time.sleep(0.5)
+    return True
+
+
+def hay_paginacion(driver) -> bool:
+    return any(_control_paginacion(driver, c) is not None
+               for c in ("siguiente", "anterior", "primera"))
+
+
+def ir_a_primera_pagina(driver, max_saltos=MAX_PAGINAS) -> bool:
+    """Rebobina el listado a la página 1.
+
+    Se llama SIEMPRE al terminar de recolectar códigos: la recolección deja
+    el navegador en la última página, y el bucle de clics recorre las
+    asignaturas en el orden original (o sea, empezando por la primera).
+    """
+    primera = _control_paginacion(driver, "primera")
+    if primera is not None and _clic_paginacion(driver, primera):
+        return True
+    # Sin botón "Primera": retroceder de a una hasta que se acabe
+    for _ in range(max_saltos):
+        anterior = _control_paginacion(driver, "anterior")
+        if anterior is None:
+            return True          # ya no se puede retroceder: estamos en la 1
+        if not _clic_paginacion(driver, anterior):
+            return False
+    return False
 
 
 def recolectar_todos_los_codigos(driver, verbose=True) -> List[str]:
@@ -874,16 +945,22 @@ def recolectar_todos_los_codigos(driver, verbose=True) -> List[str]:
         if siguiente is None:
             break
 
-        try:
-            driver.execute_script("arguments[0].click();", siguiente)
-        except WebDriverException:
+        if not _clic_paginacion(driver, siguiente):
             break
-        esperar_overlay_ppr_desaparezca(driver)
-        time.sleep(0.6)
 
         # Si tras avanzar no aparece nada nuevo, cortamos para no ciclar
         if not [c for c in codigos_en_pagina_actual(driver) if c not in set_vistos]:
             break
+
+    # IMPRESCINDIBLE: el bucle de arriba deja el listado en la última página.
+    # Sin este rebobinado, click_asignatura_por_codigo() solo alcanza las
+    # asignaturas de esa página (y de las siguientes, que ya no hay), y el
+    # resto del plan se pierde. Era la causa de los barridos de 10-25 materias.
+    if pagina > 1 or hay_paginacion(driver):
+        if verbose:
+            print(f"  Listado paginado ({pagina} páginas); volviendo a la primera...")
+        if not ir_a_primera_pagina(driver):
+            print("  ! No se pudo volver a la primera página del listado.")
 
     return vistos
 
@@ -937,20 +1014,27 @@ def _js_existe_codigo(driver, codigo: str) -> bool:
 
 
 def ir_a_pagina_con_codigo(driver, codigo: str, max_saltos=MAX_PAGINAS) -> bool:
-    """Si el listado tiene paginación y el código no está en la página
-    actual, avanza páginas hasta encontrarlo."""
-    for _ in range(max_saltos):
+    """Busca el código en el listado, avanzando páginas si hace falta.
+
+    Da la vuelta: si llega al final sin encontrarlo, rebobina a la página 1 y
+    sigue buscando. Antes solo avanzaba, así que un código que hubiera quedado
+    atrás era irrecuperable — y como cada 'Volver' del SIA puede dejar el
+    listado en cualquier página, eso pasaba constantemente.
+    """
+    dio_vuelta = False
+    for _ in range(max_saltos * 2):
         if _js_existe_codigo(driver, codigo):
             return True
         siguiente = _control_siguiente(driver)
         if siguiente is None:
+            if dio_vuelta:
+                return False          # ya recorrimos el listado entero
+            dio_vuelta = True
+            if not ir_a_primera_pagina(driver):
+                return False
+            continue
+        if not _clic_paginacion(driver, siguiente):
             return False
-        try:
-            driver.execute_script("arguments[0].click();", siguiente)
-        except WebDriverException:
-            return False
-        esperar_overlay_ppr_desaparezca(driver)
-        time.sleep(0.5)
     return False
 
 
@@ -2142,6 +2226,89 @@ def _sparkline_svg(valores: List[int], ancho=110, alto=26) -> str:
             f'stroke="{color}" stroke-width="1.6"/>{circulo}</svg>')
 
 
+def generar_series_json():
+    """Compacta cupos_historial.csv en series.json para la página web.
+
+    Tres decisiones de formato, todas por tamaño:
+
+    1. Se colapsa por CORRIDA tomando el mínimo de cupos. Un grupo aparece
+       una vez por actividad (teórica, taller, laboratorio) pero comparten la
+       misma inscripción, así que son el mismo punto; el mínimo es el cupo
+       que de verdad restringe. La página ya hacía esto en JavaScript en cada
+       carga — aquí se hace una sola vez.
+    2. Los instantes van como epoch en MINUTOS (no en milisegundos): el
+       muestreo es de 30 min, los milisegundos son ruido y cuestan 5 dígitos
+       por punto.
+    3. Cada serie se guarda delta-codificada respecto al punto anterior. Los
+       cupos casi no cambian entre snapshots, así que la mayoría de los
+       deltas son ceros de un carácter.
+
+    Las lecturas "NA" se omiten, igual que antes: NA no es 0.
+    """
+    if not OUTPUT_HISTORIAL.exists():
+        print("No hay historial todavía; corre primero: python sia_scraper.py cupos")
+        return
+
+    # clave -> {corrida: (epoch_min, cupos)}
+    crudo: Dict[str, Dict[str, tuple]] = {}
+    corridas = set()
+    with open(OUTPUT_HISTORIAL, encoding="utf-8-sig") as f:
+        for fila in csv.DictReader(f):
+            try:
+                cupos = int(fila["cupos_disponibles"])
+            except (ValueError, TypeError, KeyError):
+                continue
+            ts = fila.get("ts_lectura") or fila.get("fecha_hora") or ""
+            momento = _parse_ts(ts)
+            if momento == datetime.min.replace(tzinfo=timezone.utc):
+                continue
+            minutos = int(momento.timestamp() // 60)
+            clave = f"{fila['codigo']}|{fila['grupo']}"
+            corrida = fila.get("run_id") or ts
+            corridas.add(corrida)
+            puntos = crudo.setdefault(clave, {})
+            previo = puntos.get(corrida)
+            if previo is None:
+                puntos[corrida] = (minutos, cupos)
+            else:
+                puntos[corrida] = (min(previo[0], minutos),
+                                   min(previo[1], cupos))
+
+    series = {}
+    t_min = t_max = None
+    for clave, puntos in crudo.items():
+        orden = sorted(puntos.values())
+        if not orden:
+            continue
+        t0, c0 = orden[0]
+        dt, dc = [], []
+        t_ant, c_ant = t0, c0
+        for t, c in orden[1:]:
+            dt.append(t - t_ant)
+            dc.append(c - c_ant)
+            t_ant, c_ant = t, c
+        series[clave] = {"t0": t0, "c0": c0, "dt": dt, "dc": dc}
+        t_min = t0 if t_min is None else min(t_min, t0)
+        t_max = t_ant if t_max is None else max(t_max, t_ant)
+
+    salida = {
+        "version": 1,
+        "unidad_t": "epoch_min",
+        "generado": ahora_iso(),
+        "n_snapshots": len(corridas),
+        "t_ini": t_min,
+        "t_fin": t_max,
+        "series": series,
+    }
+    with open(OUTPUT_SERIES, "w", encoding="utf-8") as f:
+        json.dump(salida, f, ensure_ascii=False, separators=(",", ":"))
+
+    kb_hist = OUTPUT_HISTORIAL.stat().st_size / 1024
+    kb_json = OUTPUT_SERIES.stat().st_size / 1024
+    print(f"  -> series.json: {len(series)} series, {len(corridas)} snapshots "
+          f"({kb_json:.0f} KB frente a {kb_hist:.0f} KB del CSV)")
+
+
 def generar_estadisticas():
     """Lee cupos_historial.csv completo y escribe estadisticas.html."""
     if not OUTPUT_HISTORIAL.exists():
@@ -2431,7 +2598,22 @@ def main():
                         print(f"  ! Reintentando {codigo} ({intentos}/3)...")
                     except (InvalidSessionIdException, WebDriverException):
                         intentos += 1
-                        print(f"  ! Falla del navegador en {codigo}, se reintentará...")
+                        # Reintentar contra un driver muerto quema los 3
+                        # intentos en un segundo. Si la sesión ya no responde,
+                        # hay que levantar el navegador de nuevo aquí mismo.
+                        print(f"  ! Falla del navegador en {codigo} "
+                              f"({intentos}/3), se reintentará...")
+                        if not sesion_viva(driver):
+                            if reinicios >= MAX_REINICIOS_DRIVER:
+                                print("  ! Se agotaron los reintentos de reinicio.")
+                                raise SystemExit(1)
+                            reinicios += 1
+                            print(f"  ! Reiniciando navegador "
+                                  f"({reinicios}/{MAX_REINICIOS_DRIVER})...")
+                            driver = nuevo_driver()
+                            preparar()
+                        else:
+                            time.sleep(2)
 
                 if not exito:
                     print(f"  ! No se pudo procesar {codigo}, se omite.")
@@ -2448,7 +2630,8 @@ def main():
         termino_normal = True
         if MODO_CUPOS:
             # el historial ya se escribió incrementalmente; aquí solo se
-            # regenera la visualización
+            # regeneran las vistas derivadas
+            generar_series_json()
             generar_estadisticas()
 
         print("Proceso terminado.")
@@ -2458,11 +2641,13 @@ def main():
             print(f"Historial de cupos: {OUTPUT_HISTORIAL}")
             print(f"Bitácora de corridas: {OUTPUT_RUNS}")
             print(f"Estadísticas: abre {OUTPUT_STATS} en tu navegador.")
+            print(f"Series para la web: {OUTPUT_SERIES}")
 
     except KeyboardInterrupt:
         print("\nInterrumpido (Ctrl-C o SIGTERM); guardando lo extraído...")
         guardar(list(resultados.values()))
         if MODO_CUPOS and resultados:
+            generar_series_json()
             generar_estadisticas()
     finally:
         # runs.csv se escribe SIEMPRE (fin normal, interrupción o excepción).
@@ -2497,12 +2682,14 @@ if __name__ == "__main__":
         MODO_CUPOS = True
         main()
     elif modo in ("stats", "estadisticas"):
-        # Regenera estadisticas.html desde el historial, sin raspar.
+        # Regenera estadisticas.html y series.json desde el historial.
+        generar_series_json()
         generar_estadisticas()
     elif modo == "migrar":
         # Convierte cupos_historial.csv del esquema v1 al v2 (con respaldo).
         # También ocurre automáticamente en la primera corrida en modo cupos.
         if migrar_historial_v1():
+            generar_series_json()
             generar_estadisticas()
         else:
             print("El historial ya está en el esquema v2 (o no existe); "
