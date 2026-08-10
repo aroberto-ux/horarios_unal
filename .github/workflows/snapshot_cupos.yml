@@ -57,7 +57,7 @@ env:
   ADELANTO_SEG: "0"         # empezar el barrido N s antes de la marca
   REINTENTOS: "1"           # reintentos por barrido incompleto
   SIA_GUARDAR_TEXTO: "1"    # "0" fuera de la semana crítica (pesa mucho)
-  DESPLEGAR_PAGES: "0"      # "1" solo si usas el pages.yml de abajo
+  DESPLEGAR_PAGES: "1"      # "1" solo si usas el pages.yml de abajo
 
 jobs:
   snapshot:
