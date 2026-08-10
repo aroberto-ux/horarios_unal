@@ -1184,6 +1184,38 @@ def _parsear_profesores(texto: str) -> str:
     return "; ".join(nombres) if nombres else "No informado"
 
 
+def _inicio_de_los_grupos(body_text: str) -> int:
+    """Posición donde arranca la lista de grupos.
+
+    Lo normal es que el SIA rotule esa sección con "Contenido de la
+    asignatura". Pero NO siempre: Álgebra Lineal, Taller de proyectos
+    interdisciplinarios y Trabajo de Grado de posgrado traen los grupos sin
+    ese rótulo y sin sangría, así:
+
+        Facultad: FACULTAD DE INGENIERÍA
+        CLASE TEORICA (2024045)
+        (1) 2024045-1 Taller de proyectos interdisciplinarios
+
+    El parser cortaba ahí y las guardaba con cero grupos, así que
+    desaparecían de horarios.csv, del historial y de la página. Eran 42
+    grupos por barrido.
+
+    Respaldo: la primera línea que sea cabecera de actividad
+    ("CLASE TEORICA (2024045)") o de grupo ("(1) Grupo 1"). Empezar unas
+    líneas antes de la cuenta es inofensivo: las líneas de la cabecera
+    ("Tipología:", "Créditos:") no casan con ningún patrón de grupo.
+    """
+    ancla = body_text.find("Contenido de la asignatura")
+    if ancla != -1:
+        return ancla
+    desplazamiento = 0
+    for linea in body_text.splitlines(keepends=True):
+        if RE_ACTIVIDAD.match(linea) or RE_GRUPO.match(linea):
+            return desplazamiento
+        desplazamiento += len(linea)
+    return -1
+
+
 def parsear_texto_detalle(body_text: str, codigo: str) -> Asignatura:
     """Parser puro (sin Selenium) para poder probarlo con texto guardado."""
     asig = Asignatura(codigo=codigo)
@@ -1197,7 +1229,7 @@ def parsear_texto_detalle(body_text: str, codigo: str) -> Asignatura:
     m = re.search(r"Facultad:\s*(.+)", body_text)
     asig.facultad = _limpiar(m.group(1)) if m else ""
 
-    ini = body_text.find("Contenido de la asignatura")
+    ini = _inicio_de_los_grupos(body_text)
     if ini == -1:
         return asig
     fin = len(body_text)
@@ -2226,6 +2258,88 @@ def _sparkline_svg(valores: List[int], ancho=110, alto=26) -> str:
             f'stroke="{color}" stroke-width="1.6"/>{circulo}</svg>')
 
 
+def reparsear_textos() -> int:
+    """Recupera historial perdido re-parseando textos/*.jsonl.gz.
+
+    Para esto se guardaba el texto crudo. Cuando el parser falla en silencio
+    —como pasó con las asignaturas sin el rótulo "Contenido de la
+    asignatura"—, la medición no se pierde: está archivada. Al arreglar el
+    parser, este comando vuelve a leer lo archivado y añade al historial las
+    filas que faltaban, con el run_id y la marca de tiempo ORIGINALES.
+
+    Solo AÑADE lo que no está: una (run_id, codigo) ya presente no se toca,
+    así que correrlo dos veces no duplica nada.
+
+    orden_lectura queda en -1 ("desconocido"): el orden de las líneas del
+    .jsonl.gz no reconstruye de forma fiable el del barrido, y prefiero un
+    hueco declarado a un número inventado.
+    """
+    if not CARPETA_TEXTOS.is_dir():
+        print("No hay carpeta textos/; nada que re-parsear.")
+        return 0
+
+    ya_estan = set()
+    if OUTPUT_HISTORIAL.exists():
+        with open(OUTPUT_HISTORIAL, encoding="utf-8-sig") as f:
+            for fila in csv.DictReader(f):
+                ya_estan.add((fila.get("run_id", ""), fila.get("codigo", "")))
+
+    _asegurar_esquema_historial()
+    nuevas, por_codigo, corridas = 0, {}, set()
+
+    with open(OUTPUT_HISTORIAL, "a", newline="", encoding="utf-8-sig") as salida:
+        w = csv.DictWriter(salida, fieldnames=HIST_CAMPOS)
+        for ruta in sorted(CARPETA_TEXTOS.glob("run-*.jsonl.gz")):
+            run_id = ruta.name[len("run-"):-len(".jsonl.gz")]
+            try:
+                with gzip.open(ruta, "rt", encoding="utf-8") as f:
+                    lineas = list(f)
+            except OSError as e:
+                print(f"  ! No se pudo leer {ruta.name}: {e}")
+                continue
+
+            for linea in lineas:
+                linea = linea.strip()
+                if not linea:
+                    continue
+                try:
+                    reg = json.loads(linea)
+                except json.JSONDecodeError:
+                    continue
+                codigo = reg.get("codigo", "")
+                if not codigo or (run_id, codigo) in ya_estan:
+                    continue
+                asig = parsear_texto_detalle(reg.get("texto", ""), codigo)
+                if not asig.grupos:
+                    continue
+                for g in asig.grupos:
+                    w.writerow({
+                        "run_id": run_id,
+                        "ts_lectura": reg.get("ts", ""),
+                        "codigo": codigo,
+                        "actividad": g.actividad or "NA",
+                        "grupo": g.grupo,
+                        "profesores_raw": g.profesores,
+                        "profesores_norm": normalizar_profesores(g.profesores),
+                        "cupos_disponibles": g.cupos_disponibles or "NA",
+                        "cupos_totales": g.cupos_totales or "NA",
+                        "orden_lectura": -1,
+                    })
+                    nuevas += 1
+                por_codigo[codigo] = por_codigo.get(codigo, 0) + 1
+                corridas.add(run_id)
+                ya_estan.add((run_id, codigo))
+
+    if nuevas:
+        print(f"  -> Historial recuperado: {nuevas} filas nuevas "
+              f"en {len(corridas)} corridas.")
+        for cod, n in sorted(por_codigo.items(), key=lambda kv: -kv[1]):
+            print(f"     {cod:12} {n} mediciones")
+    else:
+        print("  -> Nada que recuperar: el historial ya está completo.")
+    return nuevas
+
+
 def generar_series_json():
     """Compacta cupos_historial.csv en series.json para la página web.
 
@@ -2694,6 +2808,12 @@ if __name__ == "__main__":
         else:
             print("El historial ya está en el esquema v2 (o no existe); "
                   "no hay nada que migrar.")
+    elif modo in ("reparsear", "recuperar"):
+        # Re-parsea textos/*.jsonl.gz y añade al historial lo que el parser
+        # no supo leer en su momento. Útil tras arreglar un bug del parser.
+        if reparsear_textos():
+            generar_series_json()
+            generar_estadisticas()
     elif modo == "html":
         # Regenera horario.html desde catalogo.json sin volver a raspar:
         #     python sia_scraper.py html
