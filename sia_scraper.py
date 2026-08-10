@@ -2267,8 +2267,14 @@ def reparsear_textos() -> int:
     parser, este comando vuelve a leer lo archivado y añade al historial las
     filas que faltaban, con el run_id y la marca de tiempo ORIGINALES.
 
-    Solo AÑADE lo que no está: una (run_id, codigo) ya presente no se toca,
-    así que correrlo dos veces no duplica nada.
+    Solo AÑADE lo que no está. La clave es (run_id, codigo, ts_lectura), no
+    (run_id, codigo): el bucle largo del workflow hace hasta 11 barridos con
+    el MISMO GITHUB_RUN_ID, así que run_id identifica una corrida de Actions,
+    no una medición. Con la clave corta se recuperaba un solo barrido de cada
+    corrida. El ts sí es único por lectura, y es el mismo string que se
+    archivó en el .jsonl.gz, así que la comparación es exacta.
+
+    Correrlo dos veces no duplica nada.
 
     orden_lectura queda en -1 ("desconocido"): el orden de las líneas del
     .jsonl.gz no reconstruye de forma fiable el del barrido, y prefiero un
@@ -2282,7 +2288,8 @@ def reparsear_textos() -> int:
     if OUTPUT_HISTORIAL.exists():
         with open(OUTPUT_HISTORIAL, encoding="utf-8-sig") as f:
             for fila in csv.DictReader(f):
-                ya_estan.add((fila.get("run_id", ""), fila.get("codigo", "")))
+                ya_estan.add((fila.get("run_id", ""), fila.get("codigo", ""),
+                              fila.get("ts_lectura", "")))
 
     _asegurar_esquema_historial()
     nuevas, por_codigo, corridas = 0, {}, set()
@@ -2307,7 +2314,8 @@ def reparsear_textos() -> int:
                 except json.JSONDecodeError:
                     continue
                 codigo = reg.get("codigo", "")
-                if not codigo or (run_id, codigo) in ya_estan:
+                ts = reg.get("ts", "")
+                if not codigo or (run_id, codigo, ts) in ya_estan:
                     continue
                 asig = parsear_texto_detalle(reg.get("texto", ""), codigo)
                 if not asig.grupos:
@@ -2315,7 +2323,7 @@ def reparsear_textos() -> int:
                 for g in asig.grupos:
                     w.writerow({
                         "run_id": run_id,
-                        "ts_lectura": reg.get("ts", ""),
+                        "ts_lectura": ts,
                         "codigo": codigo,
                         "actividad": g.actividad or "NA",
                         "grupo": g.grupo,
@@ -2328,7 +2336,7 @@ def reparsear_textos() -> int:
                     nuevas += 1
                 por_codigo[codigo] = por_codigo.get(codigo, 0) + 1
                 corridas.add(run_id)
-                ya_estan.add((run_id, codigo))
+                ya_estan.add((run_id, codigo, ts))
 
     if nuevas:
         print(f"  -> Historial recuperado: {nuevas} filas nuevas "
