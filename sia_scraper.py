@@ -131,13 +131,28 @@ SIA_SHARD = os.environ.get("SIA_SHARD", "").strip()
 
 
 def _calcular_run_id() -> str:
-    """Identificador único de esta ejecución, común a todas sus filas."""
+    """Identificador único de ESTE barrido, común a todas sus filas.
+
+    Ojo con GITHUB_RUN_ID: desde que el workflow pasó al esquema de "bucle
+    largo" (una corrida de Actions viva 5h30m que barre cada 30 min), ese
+    identificador ya NO distingue un snapshot de otro: los ~11 barridos de
+    una corrida lo comparten. Y como generar_series_json() colapsa por
+    run_id —a propósito, para juntar las filas de teórica/taller/laboratorio
+    de un mismo grupo—, sin este desempate todos esos barridos se fundirían
+    en un solo punto con la marca de tiempo del primero, y la página se
+    quedaría "actualizada" a la hora en que arrancó el bucle.
+
+    Como el bucle relanza el proceso en cada vuelta, basta con sellar el
+    identificador con el instante de arranque: los barridos van separados
+    por INTERVALO_MIN (30 min), así que la resolución de minutos sobra.
+    """
     base = os.environ.get("GITHUB_RUN_ID")
     if base:
         rid = f"gh-{base}"
         intento = os.environ.get("GITHUB_RUN_ATTEMPT")
         if intento and intento != "1":
             rid += f".{intento}"
+        rid += "-" + datetime.now(timezone.utc).strftime("%m%dT%H%M")
     else:
         rid = "local-" + datetime.now().strftime("%Y%m%dT%H%M%S")
     if SIA_SHARD:
