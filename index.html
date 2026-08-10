@@ -205,6 +205,52 @@ section.panel{
 }
 footer{max-width:1400px; margin:0 auto; padding:10px clamp(12px,3vw,32px) 30px; color:var(--tinta-suave); font-size:.78rem}
 footer a{color:var(--azul)}
+
+/* ---------- Acciones de cabecera ---------- */
+.head-acciones{display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+#btnImprimir{
+  font:600 .74rem "IBM Plex Mono",monospace; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--papel); background:none; border:1.5px solid #6E8577; border-radius:var(--radio);
+  padding:7px 12px; cursor:pointer;
+}
+#btnImprimir:hover{background:var(--papel); color:var(--tinta); border-color:var(--papel)}
+
+/* ---------- Detalle que acompaña la hoja impresa ---------- */
+#detalleImpresion{display:none}
+
+/* ---------- Impresión ---------- */
+@page{size:A4 portrait; margin:12mm}
+@media print{
+  html,body{background:#fff!important}
+  body{-webkit-print-color-adjust:exact; print-color-adjust:exact; line-height:1.35}
+  header{background:#fff; color:var(--tinta); border-bottom:2px solid var(--tinta); padding:0 0 8px}
+  h1{font-size:1.05rem}
+  h1 small{color:var(--tinta-suave); letter-spacing:.18em}
+  .estado, #btnImprimir{display:none}
+  .marco{display:block; max-width:none; padding:10px 0 0}
+  #panelMaterias, #panelTendencias, footer{display:none!important}
+  section.panel{border:none; box-shadow:none; overflow:visible}
+  .panel > .titulo{padding:0 0 6px}
+  .resumen{padding:8px 0; border-bottom:none; font-size:.72rem}
+  .resumen .chip button{display:none}
+  #avisoConflicto{margin:8px 0 0; break-inside:avoid; page-break-inside:avoid}
+  .grilla-envoltura{padding:8px 0 0; overflow:visible}
+  .grilla{min-width:0; grid-template-columns:44px repeat(6,1fr); break-inside:avoid; page-break-inside:avoid}
+  .bloque{box-shadow:none; font-size:.62rem}
+  .bloque b{font-size:.64rem}
+  .bloque .mono{font-size:.56rem}
+  #detalleImpresion{display:block; margin-top:14px}
+  #detalleImpresion h3{font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--tinta-suave); margin-bottom:6px}
+  #detalleImpresion h3 span{font-family:"IBM Plex Mono",monospace; letter-spacing:0;
+    text-transform:none; font-weight:400}
+  #detalleImpresion table{width:100%; border-collapse:collapse; font-size:.62rem}
+  #detalleImpresion th, #detalleImpresion td{
+    border:1px solid var(--cuadricula); padding:3px 5px; text-align:left; vertical-align:top}
+  #detalleImpresion th{background:var(--papel); font-size:.56rem; letter-spacing:.08em; text-transform:uppercase}
+  #detalleImpresion thead{display:table-header-group}
+  #detalleImpresion tr{break-inside:avoid; page-break-inside:avoid}
+}
 </style>
 </head>
 <body>
@@ -212,7 +258,10 @@ footer a{color:var(--azul)}
 <header>
   <div class="head-top">
     <h1><small>SIA · Ingeniería · UNAL</small>Planilla de horario</h1>
-    <div class="estado mono" id="estado"><span class="punto"></span>Cargando datos…</div>
+    <div class="head-acciones">
+      <div class="estado mono" id="estado"><span class="punto"></span>Cargando datos…</div>
+      <button id="btnImprimir" type="button" title="Imprime solo el horario; en el diálogo puedes elegir «Guardar como PDF»">Imprimir / PDF</button>
+    </div>
   </div>
 </header>
 
@@ -233,6 +282,16 @@ footer a{color:var(--azul)}
     <div class="resumen" id="chips"></div>
     <div id="avisoConflicto" role="alert"></div>
     <div class="grilla-envoltura"><div class="grilla" id="grilla"></div></div>
+    <div id="detalleImpresion">
+      <h3>Grupos del horario <span id="metaImpresion"></span></h3>
+      <table>
+        <thead><tr>
+          <th>Código</th><th>Asignatura</th><th>Cr</th><th>Grupo</th>
+          <th>Profesor</th><th>Horario</th><th>Salón</th>
+        </tr></thead>
+        <tbody id="cuerpoImpresion"></tbody>
+      </table>
+    </div>
   </section>
 
   <!-- Tendencias de cupos -->
@@ -383,6 +442,8 @@ let HISTORIAL = new Map();  // "codigo|grupo" -> [{t:Date, cupos:Number}]
 let seleccion = almacen.leer(); // ["codigo|grupo", ...]
 let grafico = null;
 let modoTend = "mis";
+let ultimaBusqueda = "";   // para no perder el scroll de la lista al repintar
+const ABIERTAS = new Set(); // materias que el usuario dejó desplegadas
 
 /* ================= Rango de tiempo =================
    Igual que en las gráficas del dólar: los datos crudos no se tocan, solo se
@@ -534,8 +595,10 @@ function sparkline(canvas, datos){
 
 function pintarLista(){
   const q = $("#busqueda").value.trim().toLowerCase();
-  const cont = $("#listaMaterias"); cont.innerHTML="";
-  const abiertaAntes = new Set([...cont.querySelectorAll(".materia.abierta")].map(x=>x.dataset.cod));
+  const cont = $("#listaMaterias");
+  const desplazamiento = (q===ultimaBusqueda) ? cont.scrollTop : 0;
+  ultimaBusqueda = q;
+  cont.innerHTML="";
 
   for(const m of [...MATERIAS.values()].sort((a,b)=>a.nombre.localeCompare(b.nombre))){
     const texto=`${m.nombre} ${m.codigo} ${[...m.grupos.values()].map(g=>g.profesores).join(" ")}`.toLowerCase();
@@ -543,11 +606,16 @@ function pintarLista(){
 
     const div=document.createElement("div");
     div.className="materia"; div.dataset.cod=m.codigo;
-    if(q || abiertaAntes.has(m.codigo)) div.classList.add("abierta");
+    if(q || ABIERTAS.has(m.codigo)) div.classList.add("abierta");
 
     const btn=document.createElement("button");
     btn.innerHTML=`<span class="flecha">▸</span><span class="cod">${m.codigo}</span><span class="nom">${m.nombre}</span><span class="cred">${m.creditos} cr</span>`;
-    btn.addEventListener("click",()=>div.classList.toggle("abierta"));
+    btn.addEventListener("click",()=>{
+      // el estado vive en ABIERTAS, no en el DOM: así ningún repintado
+      // (buscar, recargar los CSV, agregar un grupo) lo pierde
+      if(div.classList.toggle("abierta")) ABIERTAS.add(m.codigo);
+      else ABIERTAS.delete(m.codigo);
+    });
     div.appendChild(btn);
 
     const caja=document.createElement("div"); caja.className="grupos";
@@ -584,6 +652,20 @@ function pintarLista(){
     cont.appendChild(div);
   }
   if(!cont.children.length) cont.innerHTML='<div class="vacio">Ninguna materia coincide con la búsqueda.</div>';
+  cont.scrollTop = desplazamiento;
+}
+
+/* Marca/desmarca los botones sin reconstruir la lista: así la materia
+   desplegada sigue desplegada, no salta el scroll y no se redibujan
+   todas las sparklines en cada clic. */
+function actualizarBotones(){
+  for(const fila of document.querySelectorAll("#listaMaterias .grupo")){
+    const enSel = seleccion.includes(fila.dataset.k);
+    const b = fila.querySelector(".btnAdd");
+    if(!b) continue;
+    b.classList.toggle("quitar", enSel);
+    b.textContent = enSel ? "Quitar" : "Agregar";
+  }
 }
 
 function alternar(k){
@@ -595,7 +677,7 @@ function alternar(k){
     seleccion.push(k);
   }
   almacen.guardar(seleccion);
-  pintarLista(); pintarHorario(); if(modoTend==="mis") pintarGrafico();
+  actualizarBotones(); pintarHorario(); if(modoTend==="mis") pintarGrafico();
 }
 
 /* ================= Grilla semanal ================= */
@@ -670,6 +752,31 @@ function pintarHorario(){
     });
     gr.appendChild(col);
   }
+
+  pintarDetalleImpresion();
+}
+
+/* Tabla que solo aparece en la hoja impresa: útil para transcribir al SIA */
+function pintarDetalleImpresion(){
+  const cuerpo=$("#cuerpoImpresion"); if(!cuerpo) return;
+  const filas=[];
+  for(const k of seleccion){
+    const [c,gn]=k.split("|"); const m=MATERIAS.get(c); if(!m) continue;
+    const g=m.grupos.get(gn); if(!g) continue;
+    const hor=g.sesiones.map(s=>`${s.dia.slice(0,3)} ${deMin(s.ini)}–${deMin(s.fin)}`).join("<br>")||"—";
+    const sal=[...new Set(g.sesiones.map(s=>s.salon).filter(Boolean))].join(", ")||"—";
+    filas.push({nombre:m.nombre, html:`<tr>
+      <td class="mono">${m.codigo}</td><td>${m.nombre}</td>
+      <td class="mono">${m.creditos||"?"}</td><td class="mono">${gn}</td>
+      <td>${g.profesores||"Sin profesor asignado"}</td>
+      <td class="mono">${hor}</td><td class="mono">${sal}</td></tr>`});
+  }
+  filas.sort((a,b)=>a.nombre.localeCompare(b.nombre,"es"));
+  cuerpo.innerHTML = filas.map(f=>f.html).join("") ||
+    '<tr><td colspan="7">Todavía no hay grupos en el horario.</td></tr>';
+  const fecha=new Date().toLocaleDateString("es-CO",{day:"2-digit",month:"long",year:"numeric"});
+  $("#metaImpresion").textContent =
+    `${filas.length} ${filas.length===1?"grupo":"grupos"} · ${$("#totalCreditos").textContent} · impreso el ${fecha}`;
 }
 
 /* ================= Tendencias (Chart.js) ================= */
@@ -834,6 +941,19 @@ for(const b of document.querySelectorAll("#rangoTend button")){
   b.addEventListener("click", ()=>fijarRango(b.dataset.r));
 }
 marcarRangos();
+
+/* ---------- Imprimir ---------- */
+const TITULO_ORIGINAL = document.title;
+$("#btnImprimir").addEventListener("click", ()=>{
+  if(!seleccion.length){
+    alert("Tu horario está vacío: agrega al menos un grupo antes de imprimir.");
+    return;
+  }
+  // el título es el nombre que el navegador propone al guardar como PDF
+  document.title = `Horario UNAL · ${$("#totalCreditos").textContent}`;
+  window.print();
+});
+window.addEventListener("afterprint", ()=>{ document.title = TITULO_ORIGINAL; });
 
 cargarDatos();
 setInterval(cargarDatos, 10*60*1000); // refresca cada 10 minutos sin recargar la página
