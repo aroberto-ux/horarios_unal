@@ -218,6 +218,100 @@ footer a{color:var(--azul)}
 /* ---------- Detalle que acompaña la hoja impresa ---------- */
 #detalleImpresion{display:none}
 
+/* ---------- Plan de estudios: filtros de la lista ---------- */
+.filtros{
+  display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center;
+  padding:8px 16px; border-bottom:1px solid var(--cuadricula); background:var(--papel);
+  font-size:.78rem; color:var(--tinta-suave);
+}
+.filtros label{display:inline-flex; align-items:center; gap:6px; cursor:pointer}
+.filtros select{
+  font:500 .78rem "Archivo",sans-serif; color:var(--tinta);
+  padding:3px 6px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco);
+}
+
+/* ---------- Estado de cada materia frente al pensum ---------- */
+.sello{
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; font-weight:600;
+  padding:1px 6px; border-radius:99px; white-space:nowrap; letter-spacing:.02em;
+}
+.sello.libre{background:var(--verde-claro); color:var(--verde)}
+.sello.bloq {background:var(--ambar-claro); color:var(--ambar)}
+.sello.apro {background:var(--azul-claro); color:var(--azul)}
+.sello.fuera{background:#EEE; color:#777}
+.materia.bloqueada > button .nom{color:var(--tinta-suave)}
+.materia.aprobada > button .nom{text-decoration:line-through; text-decoration-color:var(--tinta-suave)}
+
+.plan{
+  padding:9px 16px 10px; font-size:.78rem; line-height:1.45;
+  background:var(--blanco); border-top:1px dashed var(--cuadricula);
+}
+.plan .falta{color:var(--ambar); font-weight:600}
+.plan .hecho{color:var(--verde)}
+.plan .cadena{color:var(--tinta-suave)}
+.plan .acciones{margin-top:6px; display:flex; gap:8px; flex-wrap:wrap}
+.plan button{
+  font:600 .72rem "Archivo",sans-serif; cursor:pointer;
+  border:1.5px solid var(--cuadricula); background:var(--papel); color:var(--tinta-suave);
+  border-radius:var(--radio); padding:3px 9px;
+}
+.plan button:hover{border-color:var(--tinta-suave); color:var(--tinta)}
+.plan button.marcada{border-color:var(--azul); color:var(--azul); background:var(--azul-claro)}
+
+/* ---------- Avisos del plan sobre el horario ---------- */
+#avisoPlan{display:none; margin:12px 16px 0; padding:10px 14px; border-radius:var(--radio);
+  background:var(--ambar-claro); color:var(--ambar); font-size:.85rem}
+#avisoPlan.visible{display:block}
+#avisoPlan ul{margin:4px 0 0; padding-left:18px}
+#avisoPlan li{margin-top:2px}
+#avisoPlan b{font-weight:700}
+
+/* ---------- Panel de avance (mini-malla) ---------- */
+#panelAvance{grid-column:1 / -1}
+.avance-barras{display:flex; flex-wrap:wrap; gap:10px 22px; padding:12px 16px; border-bottom:1px solid var(--cuadricula)}
+.barra{min-width:140px; flex:1 1 160px}
+.barra .rot{display:flex; justify-content:space-between; font-size:.74rem; color:var(--tinta-suave); margin-bottom:3px}
+.barra .rot b{font-family:"IBM Plex Mono",monospace; color:var(--tinta); font-weight:600}
+.barra .riel{height:7px; border-radius:99px; background:var(--cuadricula); overflow:hidden}
+.barra .relleno{height:100%; background:var(--verde); border-radius:99px; transition:width .2s}
+.barra.comp-B .relleno{background:var(--ambar)}
+.barra.comp-C .relleno{background:var(--azul)}
+.barra.comp-L .relleno{background:#8A4FBF}
+
+.avance-acciones{display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center;
+  padding:10px 16px; border-bottom:1px solid var(--cuadricula); font-size:.8rem; color:var(--tinta-suave)}
+.avance-acciones select, .avance-acciones button{
+  font:600 .76rem "Archivo",sans-serif; padding:4px 10px;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta); cursor:pointer;
+}
+.avance-acciones button:hover{border-color:var(--tinta-suave)}
+
+.malla{display:grid; grid-template-columns:repeat(11, minmax(96px,1fr)); gap:6px; padding:14px 16px; overflow-x:auto}
+.malla .col{display:flex; flex-direction:column; gap:5px; min-width:96px}
+.malla .cab{
+  font-family:"IBM Plex Mono",monospace; font-size:.62rem; font-weight:600; letter-spacing:.08em;
+  text-align:center; color:var(--papel); background:var(--tinta); border-radius:3px; padding:3px 2px;
+}
+.malla .caja{
+  border:1.5px solid var(--cuadricula); border-left-width:4px; border-radius:4px;
+  background:var(--blanco); padding:5px 6px; cursor:pointer; text-align:left; font:inherit;
+  display:block; width:100%; line-height:1.2;
+}
+.malla .caja:hover{border-color:var(--tinta-suave)}
+.malla .caja .n{font-size:.68rem; font-weight:600; display:block}
+.malla .caja .c{font-family:"IBM Plex Mono",monospace; font-size:.6rem; color:var(--tinta-suave)}
+.malla .caja.comp-B{border-left-color:var(--ambar)}
+.malla .caja.comp-C{border-left-color:var(--azul)}
+.malla .caja.comp-P{border-left-color:#8A4FBF}
+.malla .caja.ok{background:var(--verde-claro); border-color:var(--verde)}
+.malla .caja.ok .n{color:var(--verde)}
+.malla .caja.lista{box-shadow:inset 0 0 0 1px var(--verde)}
+.malla .caja.bloq{opacity:.55}
+.malla .caja.encurso{background:var(--azul-claro); border-color:var(--azul)}
+.leyenda{display:flex; flex-wrap:wrap; gap:6px 16px; padding:0 16px 14px; font-size:.74rem; color:var(--tinta-suave)}
+.leyenda span{display:inline-flex; align-items:center; gap:5px}
+.leyenda i{width:12px; height:12px; border-radius:3px; border:1.5px solid var(--cuadricula); display:inline-block}
+
 /* ---------- Impresión ---------- */
 @page{size:A4 portrait; margin:12mm}
 @media print{
@@ -228,12 +322,12 @@ footer a{color:var(--azul)}
   h1 small{color:var(--tinta-suave); letter-spacing:.18em}
   .estado, #btnImprimir{display:none}
   .marco{display:block; max-width:none; padding:10px 0 0}
-  #panelMaterias, #panelTendencias, footer{display:none!important}
+  #panelMaterias, #panelTendencias, #panelAvance, footer{display:none!important}
   section.panel{border:none; box-shadow:none; overflow:visible}
   .panel > .titulo{padding:0 0 6px}
   .resumen{padding:8px 0; border-bottom:none; font-size:.72rem}
   .resumen .chip button{display:none}
-  #avisoConflicto{margin:8px 0 0; break-inside:avoid; page-break-inside:avoid}
+  #avisoConflicto, #avisoPlan{margin:8px 0 0; break-inside:avoid; page-break-inside:avoid}
   .grilla-envoltura{padding:8px 0 0; overflow:visible}
   .grilla{min-width:0; grid-template-columns:44px repeat(6,1fr); break-inside:avoid; page-break-inside:avoid}
   .bloque{box-shadow:none; font-size:.62rem}
@@ -273,6 +367,16 @@ footer a{color:var(--azul)}
     <div class="buscador">
       <input id="busqueda" type="search" placeholder="Buscar por nombre, código o profesor…" autocomplete="off">
     </div>
+    <div class="filtros">
+      <label for="orden">Orden
+        <select id="orden">
+          <option value="semestre">por semestre del plan</option>
+          <option value="alfabetico">alfabético</option>
+          <option value="prioridad">las que más desbloquean</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="soloDisponibles"> Solo las que ya puedo ver</label>
+    </div>
     <div id="listaMaterias"></div>
   </section>
 
@@ -281,6 +385,7 @@ footer a{color:var(--azul)}
     <div class="titulo"><h2>Mi horario</h2><span class="dato" id="totalCreditos">0 créditos</span></div>
     <div class="resumen" id="chips"></div>
     <div id="avisoConflicto" role="alert"></div>
+    <div id="avisoPlan" role="status"></div>
     <div class="grilla-envoltura"><div class="grilla" id="grilla"></div></div>
     <div id="detalleImpresion">
       <h3>Grupos del horario <span id="metaImpresion"></span></h3>
@@ -291,6 +396,28 @@ footer a{color:var(--azul)}
         </tr></thead>
         <tbody id="cuerpoImpresion"></tbody>
       </table>
+    </div>
+  </section>
+
+  <!-- Avance en el plan de estudios -->
+  <section class="panel" id="panelAvance" aria-label="Mi avance en el plan de estudios">
+    <div class="titulo"><h2>Mi avance en el plan</h2><span class="dato" id="resumenAvance"></span></div>
+    <div class="avance-barras" id="barrasAvance"></div>
+    <div class="avance-acciones">
+      <span>Marca lo que ya aprobaste haciendo clic en cada asignatura.</span>
+      <label for="hastaSem" class="mono">Aprobar hasta</label>
+      <select id="hastaSem" aria-label="Marcar como aprobado hasta un semestre">
+        <option value="">— semestre —</option>
+      </select>
+      <button type="button" id="btnLimpiarAvance">Limpiar avance</button>
+    </div>
+    <div class="malla" id="malla"></div>
+    <div class="leyenda">
+      <span><i style="background:var(--verde-claro);border-color:var(--verde)"></i>Aprobada</span>
+      <span><i style="background:var(--azul-claro);border-color:var(--azul)"></i>En este horario</span>
+      <span><i style="box-shadow:inset 0 0 0 1px var(--verde)"></i>Puedes inscribirla</span>
+      <span><i style="opacity:.55"></i>Te falta prerrequisito</span>
+      <span class="mono">Borde: <b style="color:var(--ambar)">■</b> fundamentación · <b style="color:var(--azul)">■</b> disciplinar · <b style="color:#8A4FBF">■</b> nivelación</span>
     </div>
   </section>
 
@@ -322,6 +449,9 @@ footer a{color:var(--azul)}
   Datos tomados del SIA por <a href="https://github.com/aroberto-ux/horarios_unal">horarios_unal</a>.
   La página lee <span class="mono">horarios.csv</span> y <span class="mono">cupos_historial.csv</span> del repositorio en cada carga,
   así que se actualiza sola con cada snapshot del workflow.
+  Los prerrequisitos salen de la malla curricular de Ingeniería Civil del 19/04/2016 (Acuerdos 257 de 2008 y 026 de 2015)
+  y están transcritos en la constante <span class="mono">PENSUM</span> de este archivo: son una ayuda para ordenar el semestre,
+  no una autoridad. Lo que manda es el SIA.
 </footer>
 
 <script>
@@ -430,6 +560,229 @@ const numCupos = v => {
 };
 const deMin = m => `${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`;
 const fmtFecha = d => d.toLocaleString("es-CO",{timeZone:"America/Bogota",day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"});
+
+/* ================= Pensum: Ingeniería Civil (plan 2542) =================
+   Transcrito de la malla curricular del 19/04/2016 (Acuerdo 257 de 2008 del
+   Consejo Académico; Acuerdo 026 de 2015 del Consejo de Facultad).
+
+   Los prerrequisitos salen de las flechas del diagrama, incluidos los ocho
+   conectores numerados que saltan de un extremo a otro de la hoja:
+     1 Fund. de ecología → Saneamiento ambiental    5 Cálc. varias var. → Mec. de sólidos
+     2 Álgebra lineal    → Estática                 6 Cálc. varias var. → Mec. de fluidos
+     3 Álgebra lineal    → Ing. de transporte       7 Estática          → Mec. de fluidos
+     4 Cálculo integral  → Ingeniería económica     8 Materiales p/const→ Diseño estructural
+
+   Comprobación: los créditos por semestre que salen de esta tabla dan
+   18-18-17-18-18-19-18-18-18-18 (+20 de nivelación) = 180, igual que los
+   totales impresos al pie de la malla. Aun así, la fuente que manda es el SIA:
+   si encuentras una diferencia, corrígela aquí y avísale al repo.
+
+   Campos: sem (0 = nivelación), cr, comp (P/B/C/L), agr (agrupación),
+   req (prerrequisitos; un arreglo anidado significa "cualquiera de"),
+   ca ({n, comp} = créditos aprobados exigidos de ese componente). */
+const MAT = "Matemáticas y estadística", ICB = "Ingeniería civil básica disciplinar";
+const PENSUM = {
+  /* --- Nivelación --- */
+  "1000001":{nom:"Matemáticas básicas",     sem:0, cr:4, comp:"P", agr:"Matemática básica"},
+  "1000002":{nom:"Lecto-escritura",         sem:0, cr:4, comp:"P", agr:"Lecto-escritura"},
+  "1000044":{nom:"Inglés I",                sem:0, cr:3, comp:"P", agr:"Lengua extranjera"},
+  "1000045":{nom:"Inglés II",               sem:0, cr:3, comp:"P", agr:"Lengua extranjera", req:[["1000044","1000052"]]},
+  "1000046":{nom:"Inglés III",              sem:0, cr:3, comp:"P", agr:"Lengua extranjera", req:[["1000045","1000049","1000052"]]},
+  "1000047":{nom:"Inglés IV",               sem:0, cr:3, comp:"P", agr:"Lengua extranjera", req:[["1000046","1000050","1000053"]]},
+  "1000049":{nom:"Inglés II (virtual)",     sem:0, cr:3, comp:"P", agr:"Lengua extranjera", opt:true, req:[["1000044","1000052"]]},
+  "1000050":{nom:"Inglés III (virtual)",    sem:0, cr:3, comp:"P", agr:"Lengua extranjera", opt:true, req:[["1000045","1000049","1000052"]]},
+  "1000051":{nom:"Inglés IV (virtual)",     sem:0, cr:3, comp:"P", agr:"Lengua extranjera", opt:true, req:[["1000046","1000050","1000053"]]},
+  "1000052":{nom:"Inglés intensivo I y II", sem:0, cr:6, comp:"P", agr:"Lengua extranjera", opt:true},
+  "1000053":{nom:"Inglés intensivo III y IV",sem:0,cr:6, comp:"P", agr:"Lengua extranjera", opt:true, req:[["1000045","1000049","1000052"]]},
+
+  /* --- Semestre I --- */
+  "1000011":{nom:"Fundamentos de ecología", sem:1, cr:3, comp:"B", agr:"Química y biología"},
+  "1000004":{nom:"Cálculo diferencial",     sem:1, cr:4, comp:"B", agr:MAT},
+  "1000024":{nom:"Principios de química",   sem:1, cr:3, comp:"B", agr:"Química y biología"},
+  "2015711":{nom:"Dibujo básico",           sem:1, cr:3, comp:"B", agr:"Expresión gráfica"},
+  "2026186":{nom:"Introducción a la ingeniería civil", sem:1, cr:3, comp:"C", agr:ICB},
+
+  /* --- Semestre II --- */
+  "1000003":{nom:"Álgebra lineal",          sem:2, cr:4, comp:"B", agr:MAT, req:["1000004"]},
+  "1000005":{nom:"Cálculo integral",        sem:2, cr:4, comp:"B", agr:MAT, req:["1000004"]},
+  "1000019":{nom:"Fundamentos de mecánica", sem:2, cr:4, comp:"B", agr:"Física", req:["1000004"]},
+
+  /* --- Semestre III --- */
+  "1000006":{nom:"Cálculo en varias variables", sem:3, cr:4, comp:"B", agr:MAT, req:["1000005"]},
+  "1000013":{nom:"Probabilidad y estadística fundamental", sem:3, cr:3, comp:"B", agr:MAT, req:["1000004"]},
+  "2026134":{nom:"Estática",                sem:3, cr:3, comp:"C", agr:ICB, req:["1000019","1000003"]},
+  "2015958":{nom:"Geomática básica",        sem:3, cr:4, comp:"C", agr:ICB, req:["2015711","2026186"]},
+  "2015703":{nom:"Ingeniería económica",    sem:3, cr:3, comp:"B", agr:"Economía y finanzas", req:["1000005"]},
+
+  /* --- Semestre IV --- */
+  "1000007":{nom:"Ecuaciones diferenciales",sem:4, cr:4, comp:"B", agr:MAT, req:["1000006","1000003"]},
+  "2015948":{nom:"Dinámica",                sem:4, cr:3, comp:"C", agr:ICB, req:["2026134"]},
+  "2015956":{nom:"Geología",                sem:4, cr:3, comp:"C", agr:ICB, req:["1000024"]},
+  "2015957":{nom:"Geomática aplicada",      sem:4, cr:4, comp:"C", agr:ICB, req:["2015958"]},
+
+  /* --- Semestre V --- */
+  "2015966":{nom:"Mecánica de fluidos",     sem:5, cr:4, comp:"C", agr:ICB, req:["1000007","1000006","2026134"]},
+  "2015968":{nom:"Mecánica de sólidos",     sem:5, cr:4, comp:"C", agr:ICB, req:["2015948","1000006"]},
+  "2015965":{nom:"Materiales para construcción", sem:5, cr:4, comp:"C", agr:ICB, req:["2015956"]},
+
+  /* --- Semestre VI --- */
+  "2015961":{nom:"Hidráulica básica",       sem:6, cr:4, comp:"C", agr:"Hidráulica", req:["2015966"]},
+  "2015978":{nom:"Hidrología",              sem:6, cr:3, comp:"C", agr:ICB, req:["2015966","1000013"]},
+  "2015941":{nom:"Análisis estructural básico", sem:6, cr:3, comp:"C", agr:"Estructuras", req:["2015968"]},
+  "2015969":{nom:"Mecánica de suelos",      sem:6, cr:3, comp:"C", agr:"Geotecnia", req:["2015968"]},
+  "2026138":{nom:"Ingeniería de transporte",sem:6, cr:3, comp:"C", agr:"Vías y transporte", req:["2015957","1000003"]},
+
+  /* --- Semestre VII --- */
+  "2015954":{nom:"Estructuras hidráulicas", sem:7, cr:3, comp:"C", agr:"Hidráulica", req:["2015961"]},
+  "2015938":{nom:"Acueductos",              sem:7, cr:3, comp:"C", agr:"Saneamiento básico", req:["2015961"]},
+  "2015940":{nom:"Análisis estructural aplicado", sem:7, cr:3, comp:"C", agr:"Estructuras", req:["2015941"]},
+  "2015959":{nom:"Geotecnia",               sem:7, cr:3, comp:"C", agr:"Geotecnia", req:["2015969"]},
+  "2015963":{nom:"Ingeniería de tránsito",  sem:7, cr:3, comp:"C", agr:"Vías y transporte", req:["2026138"]},
+
+  /* --- Semestre VIII --- */
+  "2015973":{nom:"Saneamiento ambiental",   sem:8, cr:3, comp:"C", agr:"Saneamiento básico", req:["2015938","1000011"]},
+  "2015939":{nom:"Alcantarillados",         sem:8, cr:3, comp:"C", agr:"Saneamiento básico", req:["2015938","2015978"]},
+  "2015950":{nom:"Diseño estructural",      sem:8, cr:3, comp:"C", agr:"Estructuras", req:["2015940","2015965"]},
+  "2015971":{nom:"Pavimentos",              sem:8, cr:3, comp:"C", agr:"Geotecnia", req:["2015959","2015965"]},
+  "2015949":{nom:"Diseño geométrico de vías", sem:8, cr:3, comp:"C", agr:"Vías y transporte", req:["2015963","2015957"]},
+
+  /* --- Semestre IX --- */
+  "2015955":{nom:"Fundamentos de construcción", sem:9, cr:3, comp:"C", agr:"Construcción", ca:{n:67, comp:"C"}},
+  "2026135":{nom:"Ingeniería civil sostenible", sem:9, cr:3, comp:"C", agr:ICB, ca:{n:77, comp:"C"}},
+  "2015972":{nom:"Preparación y evaluación de proyectos de infraestructura", sem:9, cr:3, comp:"B", agr:"Economía y finanzas", req:["2015703"]},
+
+  /* --- Semestre X --- */
+  "2015296":{nom:"Trabajo de grado",        sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", ca:{n:77, comp:"C"}},
+  "2015299":{nom:"Trabajo de grado (posgrado MAPI)", sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", opt:true, ca:{n:77, comp:"C"}},
+
+  /* --- Optativas de Construcción de obras civiles (semestre X) --- */
+  "2015943":{nom:"Construcción de edificaciones", sem:10, cr:3, comp:"C", agr:"Construcción", opt:true, req:["2015955"]},
+  "2015944":{nom:"Construcción de infraestructura vial", sem:10, cr:3, comp:"C", agr:"Construcción", opt:true, req:["2015955"]},
+  "2015945":{nom:"Construcción de obras fluviales y litorales", sem:10, cr:3, comp:"C", agr:"Construcción", opt:true, req:["2015955"]},
+
+  /* --- Electiva técnica (semestre V): 28 créditos disciplinares --- */
+  "2015977":{nom:"Transporte sostenible",   sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2026136":{nom:"Tecnología del concreto", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2024045":{nom:"Taller de proyectos interdisciplinarios", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2015975":{nom:"Taller de experimentación y modelación", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2026137":{nom:"Pacificación del tráfico", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2015952":{nom:"Métodos numéricos para ingeniería civil", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2015967":{nom:"Mecánica de rocas",       sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2022760":{nom:"Gestión en construcción", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2015229":{nom:"Colombia contemporánea",  sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2016183":{nom:"Análisis de incertidumbre en ingeniería civil", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+
+  /* --- Herramientas de ingeniería: optativas "A" (sem II) y "B" (sem V) --- */
+  "2015734":{nom:"Programación de computadores", sem:2, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2016375":{nom:"Programación orientada a objetos", sem:2, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2025971":{nom:"Optimización",            sem:5, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2025970":{nom:"Modelos y simulación",    sem:5, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2017293":{nom:"Modelación matemática",   sem:5, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2015942":{nom:"Aplicación de elementos finitos", sem:5, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2015970":{nom:"Métodos numéricos",       sem:5, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2022761":{nom:"SIG para ingeniería civil", sem:5, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+
+  /* --- Prácticas: 70 % del plan = 126 créditos --- */
+  "2016762":{nom:"Práctica estudiantil I",  sem:10, cr:3, comp:"C", agr:"Asignaturas especiales", opt:true, ca:{n:126, comp:"TOT"}},
+  "2016763":{nom:"Práctica estudiantil II", sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", opt:true, ca:{n:126, comp:"TOT"}},
+  "1000070":{nom:"Práctica Colombia I",     sem:10, cr:3, comp:"C", agr:"Asignaturas especiales", opt:true, ca:{n:126, comp:"TOT"}},
+  "1000071":{nom:"Práctica Colombia II",    sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", opt:true, ca:{n:126, comp:"TOT"}}
+};
+
+/* Créditos que exige el plan por componente (Acuerdo 026 de 2015). */
+const META = {B:48, C:96, L:36, TOT:180};
+const NOMBRE_COMP = {P:"Nivelación", B:"Fundamentación", C:"Disciplinar", L:"Libre elección"};
+const ROMANOS = ["Nivel.","I","II","III","IV","V","VI","VII","VIII","IX","X"];
+/* Tope de créditos por semestre. El SIA lo calcula con el PAPA; 24 es el
+   máximo habitual, así que solo sirve de alerta, no de bloqueo. */
+const TOPE_CREDITOS = 24;
+
+/* Los códigos del SIA traen sufijos de sede ("1000004-B"). El pensum se
+   indexa por el código pelado para que ambos casen. */
+const nc = c => String(c ?? "").trim().toUpperCase().replace(/-[A-Z0-9]$/,"");
+const plan = c => PENSUM[nc(c)] || null;
+
+/* Materias que dependen de una dada, para medir cuánto desbloquea aprobarla. */
+const DEPENDE_DE = (()=>{
+  const m = new Map();
+  for(const [cod,d] of Object.entries(PENSUM)){
+    for(const r of (d.req||[])) for(const p of [].concat(r)){
+      if(!m.has(p)) m.set(p, new Set());
+      m.get(p).add(cod);
+    }
+  }
+  return m;
+})();
+/* Cuántas materias se abren, directa o indirectamente, al aprobar una.
+   El grafo no cambia en toda la sesión, así que se memoiza: el ordenamiento
+   de la lista llama a esto una vez por comparación. */
+const CACHE_ALCANCE = new Map();
+function alcance(cod){
+  const c = nc(cod);
+  if(CACHE_ALCANCE.has(c)) return CACHE_ALCANCE.get(c);
+  const visto = new Set();
+  (function baja(x){
+    for(const h of (DEPENDE_DE.get(x) || [])){
+      if(visto.has(h)) continue;
+      visto.add(h); baja(h);
+    }
+  })(c);
+  CACHE_ALCANCE.set(c, visto.size);
+  return visto.size;
+}
+
+/* ================= Avance del estudiante ================= */
+const avanceAlmacen = {
+  leer(){ try{ return new Set(JSON.parse(localStorage.getItem("avanceUNAL")||"[]")); }catch(e){ return new Set(); } },
+  guardar(s){ try{ localStorage.setItem("avanceUNAL", JSON.stringify([...s])); }catch(e){} }
+};
+let APROBADAS = avanceAlmacen.leer();   // códigos pelados
+
+/* Créditos aprobados por componente. Solo cuenta lo que está en el pensum:
+   las electivas de libre elección no tienen código fijo, así que el conteo de
+   L queda en manos del estudiante y aquí se reporta como "sin registrar". */
+function creditosAprobados(){
+  const t = {P:0, B:0, C:0, L:0, TOT:0};
+  for(const cod of APROBADAS){
+    const d = PENSUM[cod]; if(!d) continue;
+    t[d.comp] = (t[d.comp]||0) + d.cr;
+    if(d.comp !== "P") t.TOT += d.cr;   // la nivelación no suma a los 180
+  }
+  return t;
+}
+
+/* Códigos de las materias que están en el horario que se está armando. */
+const codigosSeleccion = () => new Set(seleccion.map(k => nc(k.split("|")[0])));
+
+/* Diagnóstico de una asignatura frente al plan.
+   estado: aprobada | libre | bloqueada | fuera (no está en el pensum) */
+function evaluar(codigo){
+  const cod = nc(codigo), d = PENSUM[cod];
+  if(!d) return {estado:"fuera", cod, faltan:[], simultaneas:[], ca:null};
+  if(APROBADAS.has(cod)) return {estado:"aprobada", cod, d, faltan:[], simultaneas:[], ca:null};
+
+  const enHorario = codigosSeleccion();
+  const faltan = [], simultaneas = [];
+  for(const r of (d.req||[])){
+    const ops = [].concat(r);
+    if(ops.some(o => APROBADAS.has(o))) continue;
+    // el prerrequisito está sin aprobar: ¿lo puso en el mismo semestre?
+    const choca = ops.find(o => enHorario.has(o));
+    if(choca) simultaneas.push(choca);
+    faltan.push(ops);
+  }
+  let ca = null;
+  if(d.ca){
+    const tengo = creditosAprobados()[d.ca.comp] || 0;
+    if(tengo < d.ca.n) ca = {...d.ca, tengo, faltan: d.ca.n - tengo};
+  }
+  const bloqueada = faltan.length > 0 || ca !== null;
+  return {estado: bloqueada ? "bloqueada" : "libre", cod, d, faltan, simultaneas, ca};
+}
+
+const nombrePlan = cod => (PENSUM[nc(cod)]?.nom) || (MATERIAS.get(cod)?.nombre) || cod;
+const listaOps = ops => [].concat(ops).map(nombrePlan).join(" o ");
+const textoCA = ca => `${ca.n} créditos ${ca.comp==="TOT" ? "del plan" : NOMBRE_COMP[ca.comp].toLowerCase()} aprobados (llevas ${ca.tengo}; faltan ${ca.faltan})`;
 
 const almacen = {
   leer(){ try{ return JSON.parse(localStorage.getItem("miHorarioUNAL")||"[]"); }catch(e){ return []; } },
@@ -549,7 +902,7 @@ async function cargarDatos(){
     $("#infoSnapshots").textContent = `${nSnap} snapshots · cada 30 min`;
     $("#conteoMaterias").textContent = `${MATERIAS.size} materias`;
 
-    pintarLista(); pintarHorario(); prepararTendencias();
+    pintarLista(); pintarHorario(); pintarAvance(); prepararTendencias();
     try{ pintarGrafico(); }catch(e){ msjLienzo("La gráfica falló al dibujarse. Recarga la página para intentar de nuevo."); }
   }catch(e){
     estado.innerHTML = '<span class="punto err"></span>Error al leer los CSV <button id="btnRecargar" type="button">reintentar</button>';
@@ -600,16 +953,37 @@ function pintarLista(){
   ultimaBusqueda = q;
   cont.innerHTML="";
 
-  for(const m of [...MATERIAS.values()].sort((a,b)=>a.nombre.localeCompare(b.nombre))){
+  const orden = $("#orden").value;
+  const soloDisp = $("#soloDisponibles").checked;
+  /* Las que no están en el pensum (electivas de libre elección) van al final
+     cuando se ordena por semestre: no tienen un lugar fijo en la malla. */
+  const clave = m => { const d = plan(m.codigo); return d ? d.sem : 99; };
+  const materias = [...MATERIAS.values()].sort((a,b)=>{
+    if(orden==="alfabetico") return a.nombre.localeCompare(b.nombre,"es");
+    if(orden==="prioridad"){
+      const da = alcance(a.codigo), db = alcance(b.codigo);
+      if(da!==db) return db-da;
+      return clave(a)-clave(b) || a.nombre.localeCompare(b.nombre,"es");
+    }
+    return clave(a)-clave(b) || a.nombre.localeCompare(b.nombre,"es");
+  });
+
+  let ocultas = 0;
+  for(const m of materias){
     const texto=`${m.nombre} ${m.codigo} ${[...m.grupos.values()].map(g=>g.profesores).join(" ")}`.toLowerCase();
     if(q && !texto.includes(q)) continue;
 
+    const ev = evaluar(m.codigo);
+    if(soloDisp && (ev.estado==="bloqueada" || ev.estado==="aprobada")){ ocultas++; continue; }
+
     const div=document.createElement("div");
     div.className="materia"; div.dataset.cod=m.codigo;
+    if(ev.estado==="bloqueada") div.classList.add("bloqueada");
+    if(ev.estado==="aprobada") div.classList.add("aprobada");
     if(q || ABIERTAS.has(m.codigo)) div.classList.add("abierta");
 
     const btn=document.createElement("button");
-    btn.innerHTML=`<span class="flecha">▸</span><span class="cod">${m.codigo}</span><span class="nom">${m.nombre}</span><span class="cred">${m.creditos} cr</span>`;
+    btn.innerHTML=`<span class="flecha">▸</span><span class="cod">${m.codigo}</span><span class="nom">${m.nombre}</span>${selloDe(ev)}<span class="cred">${m.creditos} cr</span>`;
     btn.addEventListener("click",()=>{
       // el estado vive en ABIERTAS, no en el DOM: así ningún repintado
       // (buscar, recargar los CSV, agregar un grupo) lo pierde
@@ -619,6 +993,7 @@ function pintarLista(){
     div.appendChild(btn);
 
     const caja=document.createElement("div"); caja.className="grupos";
+    caja.appendChild(bloquePlan(m, ev));
     for(const g of m.grupos.values()){
       const k=`${m.codigo}|${g.grupo}`;
       const enSel=seleccion.includes(k);
@@ -651,8 +1026,66 @@ function pintarLista(){
     div.appendChild(caja);
     cont.appendChild(div);
   }
-  if(!cont.children.length) cont.innerHTML='<div class="vacio">Ninguna materia coincide con la búsqueda.</div>';
+  if(!cont.children.length){
+    cont.innerHTML = ocultas
+      ? `<div class="vacio">Ninguna materia disponible coincide con la búsqueda.<br>${ocultas} quedaron fuera por el filtro «solo las que ya puedo ver».</div>`
+      : '<div class="vacio">Ninguna materia coincide con la búsqueda.</div>';
+  }else if(ocultas){
+    cont.insertAdjacentHTML("beforeend", `<div class="vacio">${ocultas} materia(s) ocultas: ya las aprobaste o te falta un prerrequisito.</div>`);
+  }
   cont.scrollTop = desplazamiento;
+}
+
+/* Sello de estado que acompaña el nombre en la lista. */
+function selloDe(ev){
+  if(ev.estado==="fuera")    return `<span class="sello fuera" title="No está en el plan obligatorio: cuenta como libre elección">L</span>`;
+  const s = ROMANOS[ev.d.sem];
+  if(ev.estado==="aprobada") return `<span class="sello apro" title="La marcaste como aprobada">✓ ${s}</span>`;
+  if(ev.estado==="libre")    return `<span class="sello libre" title="Cumples los requisitos del plan">${s}</span>`;
+  return `<span class="sello bloq" title="Te falta un requisito">⚠ ${s}</span>`;
+}
+
+/* Explicación del estado frente al plan + botón para marcarla aprobada. */
+function bloquePlan(m, ev){
+  const caja = document.createElement("div");
+  caja.className = "plan";
+  const partes = [];
+
+  if(ev.estado==="fuera"){
+    partes.push(`<span class="cadena">No aparece en el plan obligatorio de Ingeniería Civil: se cuenta como libre elección.</span>`);
+  }else{
+    const d = ev.d;
+    partes.push(`<span class="cadena">${ROMANOS[d.sem]} · ${d.agr}${d.opt?" · optativa":""}</span>`);
+    if(ev.estado==="aprobada"){
+      partes.push(`<span class="hecho">✓ Ya la aprobaste.</span>`);
+    }else{
+      if(ev.faltan.length){
+        partes.push(`<span class="falta">Te falta aprobar:</span> ${ev.faltan.map(listaOps).join(", ")}.`);
+      }
+      if(ev.ca){
+        partes.push(`<span class="falta">Requisito por créditos:</span> ${textoCA(ev.ca)}.`);
+      }
+      if(ev.simultaneas.length){
+        partes.push(`<span class="falta">Ojo:</span> ${ev.simultaneas.map(nombrePlan).join(" y ")} ${ev.simultaneas.length>1?"están":"está"} en este mismo horario; el prerrequisito hay que aprobarlo <em>antes</em>, no en paralelo.`);
+      }
+      if(!ev.faltan.length && !ev.ca){
+        partes.push(`<span class="hecho">✓ Cumples los requisitos para inscribirla.</span>`);
+      }
+    }
+    const abre = alcance(m.codigo);
+    if(abre) partes.push(`<span class="cadena">Aprobarla habilita ${abre} asignatura(s) más adelante.</span>`);
+  }
+
+  caja.innerHTML = partes.join(" ") + `<div class="acciones"></div>`;
+  if(ev.estado!=="fuera"){
+    const b = document.createElement("button");
+    const yaEsta = APROBADAS.has(ev.cod);
+    b.type="button"; b.textContent = yaEsta ? "✓ Aprobada — desmarcar" : "Marcar como aprobada";
+    b.classList.toggle("marcada", yaEsta);
+    b.addEventListener("click", ()=>alternarAprobada(ev.cod));
+    caja.querySelector(".acciones").appendChild(b);
+  }
+  return caja;
 }
 
 /* Marca/desmarca los botones sin reconstruir la lista: así la materia
@@ -672,12 +1105,34 @@ function alternar(k){
   const [cod]=k.split("|");
   if(seleccion.includes(k)) seleccion=seleccion.filter(x=>x!==k);
   else{
+    const ev = evaluar(cod);
+    if(ev.estado==="bloqueada" && !confirmarBloqueada(ev)) return;
     // solo un grupo por materia
     seleccion=seleccion.filter(x=>x.split("|")[0]!==cod);
     seleccion.push(k);
   }
   almacen.guardar(seleccion);
-  actualizarBotones(); pintarHorario(); if(modoTend==="mis") pintarGrafico();
+  actualizarBotones(); pintarHorario(); pintarAvance();
+  if(modoTend==="mis") pintarGrafico();
+}
+
+/* No bloqueamos la inscripción: puede haber homologaciones, equivalencias o
+   una corrección al pensum que esta página no conoce. Solo avisamos. */
+function confirmarBloqueada(ev){
+  const motivos = [];
+  for(const ops of ev.faltan) motivos.push("• " + listaOps(ops));
+  if(ev.ca) motivos.push("• " + textoCA(ev.ca));
+  return confirm(
+    `Según la malla, para ${ev.d.nom} te falta:\n\n${motivos.join("\n")}\n\n` +
+    `¿La agregas de todos modos? (puede que tengas equivalencias o que el SIA lo permita)`
+  );
+}
+
+function alternarAprobada(cod){
+  cod = nc(cod);
+  if(APROBADAS.has(cod)) APROBADAS.delete(cod); else APROBADAS.add(cod);
+  avanceAlmacen.guardar(APROBADAS);
+  pintarLista(); pintarHorario(); pintarAvance();
 }
 
 /* ================= Grilla semanal ================= */
@@ -721,6 +1176,8 @@ function pintarHorario(){
   aviso.classList.toggle("visible",pares.length>0);
   aviso.textContent = pares.length? "⚠ Conflicto de horario: "+[...new Set(pares)].join(" · ") : "";
 
+  pintarAvisosPlan(cred);
+
   // rango horario
   let minH=7*60, maxH=17*60;
   for(const s of ses){ minH=Math.min(minH,s.ini); maxH=Math.max(maxH,s.fin); }
@@ -757,6 +1214,104 @@ function pintarHorario(){
 }
 
 /* Tabla que solo aparece en la hoja impresa: útil para transcribir al SIA */
+/* ================= Coherencia del horario con el plan =================
+   Tres cosas que la grilla sola no ve:
+   1. materias cuyo prerrequisito todavía no está aprobado;
+   2. prerrequisito y consecuencia inscritos en el MISMO semestre
+      (p. ej. Cálculo integral junto con Cálculo en varias variables);
+   3. requisitos por créditos acumulados y tope de carga del semestre. */
+function pintarAvisosPlan(creditos){
+  const caja = $("#avisoPlan");
+  const cods = [...codigosSeleccion()];
+  const lineas = [];
+
+  for(const cod of cods){
+    const ev = evaluar(cod);
+    if(ev.estado!=="bloqueada") continue;
+    const nom = `<b>${ev.d.nom}</b>`;
+    if(ev.simultaneas.length){
+      lineas.push(`${nom} y ${ev.simultaneas.map(nombrePlan).join(", ")} están en el mismo semestre, pero ${ev.simultaneas.length>1?"son prerrequisitos":"es prerrequisito"}: hay que aprobarlo antes.`);
+    }
+    const soloFaltan = ev.faltan.filter(ops => ![].concat(ops).some(o=>ev.simultaneas.includes(o)));
+    if(soloFaltan.length){
+      lineas.push(`${nom}: te falta aprobar ${soloFaltan.map(listaOps).join(", ")}.`);
+    }
+    if(ev.ca) lineas.push(`${nom}: exige ${textoCA(ev.ca)}.`);
+  }
+
+  const fuera = cods.filter(c => !PENSUM[c]).length;
+  if(fuera) lineas.push(`${fuera} asignatura(s) del horario no están en el plan obligatorio: cuentan como libre elección (te faltan ${Math.max(0, META.L - creditosAprobados().L)} créditos L, según lo que hayas marcado).`);
+
+  if(creditos > TOPE_CREDITOS){
+    lineas.push(`Vas en <b>${creditos} créditos</b>. El SIA calcula el tope con tu PAPA y rara vez pasa de ${TOPE_CREDITOS}; revisa que te los permita.`);
+  }
+
+  caja.classList.toggle("visible", lineas.length>0);
+  caja.innerHTML = lineas.length
+    ? `⚠ Revisa el orden del plan:<ul>${lineas.map(l=>`<li>${l}</li>`).join("")}</ul>`
+    : "";
+}
+
+/* ================= Mini-malla y avance ================= */
+function pintarAvance(){
+  const cont = $("#malla"); if(!cont) return;
+  const t = creditosAprobados();
+  const enHorario = codigosSeleccion();
+
+  // Barras por componente
+  const barras = $("#barrasAvance");
+  barras.innerHTML = ["B","C","L","TOT"].map(c=>{
+    const rot = c==="TOT" ? "Total del plan" : NOMBRE_COMP[c];
+    const val = t[c]||0, meta = META[c];
+    const pct = Math.min(100, meta ? val/meta*100 : 0);
+    const nota = (c==="L") ? " (solo lo que esté en el plan)" : "";
+    return `<div class="barra comp-${c}">
+      <div class="rot"><span>${rot}${nota}</span><b>${val}/${meta}</b></div>
+      <div class="riel"><div class="relleno" style="width:${pct}%"></div></div>
+    </div>`;
+  }).join("");
+  $("#resumenAvance").textContent = `${t.TOT} de ${META.TOT} créditos · ${APROBADAS.size} asignaturas marcadas`;
+
+  // Mini-malla: una columna por semestre
+  const porSem = new Map();
+  for(const [cod,d] of Object.entries(PENSUM)){
+    if(d.opt) continue;             // las optativas no tienen casilla fija
+    if(!porSem.has(d.sem)) porSem.set(d.sem, []);
+    porSem.get(d.sem).push([cod,d]);
+  }
+  cont.innerHTML="";
+  for(let s=0; s<=10; s++){
+    const col=document.createElement("div"); col.className="col";
+    col.insertAdjacentHTML("beforeend", `<div class="cab">${s===0?"NIVEL.":"SEM "+ROMANOS[s]}</div>`);
+    for(const [cod,d] of (porSem.get(s)||[]).sort((a,b)=>a[1].nom.localeCompare(b[1].nom,"es"))){
+      const ev = evaluar(cod);
+      const b=document.createElement("button");
+      b.type="button"; b.className=`caja comp-${d.comp}`;
+      if(ev.estado==="aprobada") b.classList.add("ok");
+      else if(ev.estado==="libre") b.classList.add("lista");
+      else b.classList.add("bloq");
+      if(enHorario.has(cod)) b.classList.add("encurso");
+      b.innerHTML=`<span class="n">${d.nom}</span><span class="c">${cod} · ${d.cr} cr</span>`;
+      b.title = ev.estado==="aprobada" ? "Aprobada — clic para desmarcar"
+        : ev.faltan.length ? "Falta: " + ev.faltan.map(listaOps).join(", ")
+        : ev.ca ? "Falta: " + textoCA(ev.ca)
+        : "Puedes inscribirla";
+      b.addEventListener("click", ()=>alternarAprobada(cod));
+      col.appendChild(b);
+    }
+    cont.appendChild(col);
+  }
+}
+
+/* Atajo: dar por aprobado todo lo obligatorio hasta cierto semestre. */
+function aprobarHasta(sem){
+  for(const [cod,d] of Object.entries(PENSUM)){
+    if(!d.opt && d.sem<=sem) APROBADAS.add(cod);
+  }
+  avanceAlmacen.guardar(APROBADAS);
+  pintarLista(); pintarHorario(); pintarAvance();
+}
+
 function pintarDetalleImpresion(){
   const cuerpo=$("#cuerpoImpresion"); if(!cuerpo) return;
   const filas=[];
@@ -922,6 +1477,31 @@ function pintarGrafico(){
 
 /* ================= Eventos ================= */
 $("#busqueda").addEventListener("input", pintarLista);
+$("#orden").addEventListener("change", pintarLista);
+$("#soloDisponibles").addEventListener("change", pintarLista);
+
+/* Selector «aprobar hasta el semestre N» */
+(function(){
+  const sel = $("#hastaSem");
+  for(let s=0; s<=10; s++){
+    const o=document.createElement("option");
+    o.value=String(s); o.textContent = s===0 ? "Nivelación" : "Semestre "+ROMANOS[s];
+    sel.appendChild(o);
+  }
+  sel.addEventListener("change", ()=>{
+    if(sel.value==="") return;
+    aprobarHasta(Number(sel.value));
+    sel.value="";
+  });
+  $("#btnLimpiarAvance").addEventListener("click", ()=>{
+    if(!APROBADAS.size) return;
+    if(!confirm("Se borrarán todas las asignaturas que marcaste como aprobadas. ¿Sigo?")) return;
+    APROBADAS = new Set();
+    avanceAlmacen.guardar(APROBADAS);
+    pintarLista(); pintarHorario(); pintarAvance();
+  });
+})();
+pintarAvance();
 function fijarModo(modo){
   modoTend=modo;
   const mapa={mis:"#modoMis", materia:"#modoMateria", doc:"#modoDoc"};
