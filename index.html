@@ -572,6 +572,10 @@ const fmtFecha = d => d.toLocaleString("es-CO",{timeZone:"America/Bogota",day:"2
      3 Álgebra lineal    → Ing. de transporte       7 Estática          → Mec. de fluidos
      4 Cálculo integral  → Ingeniería económica     8 Materiales p/const→ Diseño estructural
 
+   Ojo con el canal horizontal que corre bajo la fila 5: lleva dos líneas
+   distintas, Ing. económica → Ing. de transporte y luego Ing. de transporte →
+   Preparación y evaluación de proyectos. No es una sola línea de punta a punta.
+
    Comprobación: los créditos por semestre que salen de esta tabla dan
    18-18-17-18-18-19-18-18-18-18 (+20 de nivelación) = 180, igual que los
    totales impresos al pie de la malla. Aun así, la fuente que manda es el SIA:
@@ -630,7 +634,7 @@ const PENSUM = {
   "2015978":{nom:"Hidrología",              sem:6, cr:3, comp:"C", agr:ICB, req:["2015966","1000013"]},
   "2015941":{nom:"Análisis estructural básico", sem:6, cr:3, comp:"C", agr:"Estructuras", req:["2015968"]},
   "2015969":{nom:"Mecánica de suelos",      sem:6, cr:3, comp:"C", agr:"Geotecnia", req:["2015968"]},
-  "2026138":{nom:"Ingeniería de transporte",sem:6, cr:3, comp:"C", agr:"Vías y transporte", req:["2015957","1000003"]},
+  "2026138":{nom:"Ingeniería de transporte",sem:6, cr:3, comp:"C", agr:"Vías y transporte", req:["2015703","1000003"]},
 
   /* --- Semestre VII --- */
   "2015954":{nom:"Estructuras hidráulicas", sem:7, cr:3, comp:"C", agr:"Hidráulica", req:["2015961"]},
@@ -649,7 +653,7 @@ const PENSUM = {
   /* --- Semestre IX --- */
   "2015955":{nom:"Fundamentos de construcción", sem:9, cr:3, comp:"C", agr:"Construcción", ca:{n:67, comp:"C"}},
   "2026135":{nom:"Ingeniería civil sostenible", sem:9, cr:3, comp:"C", agr:ICB, ca:{n:77, comp:"C"}},
-  "2015972":{nom:"Preparación y evaluación de proyectos de infraestructura", sem:9, cr:3, comp:"B", agr:"Economía y finanzas", req:["2015703"]},
+  "2015972":{nom:"Preparación y evaluación de proyectos de infraestructura", sem:9, cr:3, comp:"B", agr:"Economía y finanzas", req:["2026138"]},
 
   /* --- Semestre X --- */
   "2015296":{nom:"Trabajo de grado",        sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", ca:{n:77, comp:"C"}},
