@@ -1,62 +1,137 @@
 # ============================================================
-#  Snapshot de cupos del SIA — versión "bucle largo"
+#  Snapshot de cupos del SIA — bucle largo ALINEADO AL RELOJ
 #
-#  POR QUÉ ES ASÍ: el cron de GitHub Actions es "mejor esfuerzo".
-#  En la práctica se atrasa 0-30 min y descarta ~la mitad de los
-#  disparos. En vez de pelear con él, aquí el cron solo actúa como
-#  VIGILANTE: si no hay un bucle vivo, arranca uno. El bucle vive
-#  hasta 5h30m y toma un snapshot cada INTERVALO_MIN por su cuenta,
-#  con reloj propio y exacto.
+#  QUÉ CAMBIA respecto de la versión anterior:
 #
-#  Resultado: la precisión temporal ya no depende del scheduler de
-#  GitHub, solo de que el vigilante acierte una vez cada 5 horas.
+#  1) PUNTUALIDAD. Antes el bucle dormía INTERVALO_MIN contados
+#     desde que terminaba el barrido, así que la marca se corría
+#     al minuto en que hubiera arrancado la corrida (:18/:48,
+#     :20/:50...). Ahora duerme hasta el próximo múltiplo exacto
+#     de INTERVALO_MIN en UTC: los snapshots caen en :00 y :30.
 #
-#  Requiere: Settings > Actions > General > Workflow permissions:
-#  "Read and write permissions".
+#  2) RELEVO SIN HUECO. El bucle vivo publica en bucle.json a qué
+#     hora va a morir, y al morir lanza él mismo a su sucesor con
+#     workflow_dispatch (que sí funciona con GITHUB_TOKEN, es la
+#     excepción documentada a "los pushes del bot no disparan
+#     workflows"). El cron queda solo como red de seguridad.
+#
+#  3) RECUPERACIÓN. Si al arrancar el último snapshot del repo es
+#     más viejo que INTERVALO_MIN, toma uno de inmediato antes de
+#     alinearse, en vez de esperar hasta la siguiente marca.
+#
+#  4) REINTENTO. Si el SIA devuelve un barrido incompleto y queda
+#     margen antes de la próxima marca, lo repite una vez.
+#
+#  5) PERMISOS EXPLÍCITOS. Ya no depende del ajuste global del
+#     repo (Settings > Actions > Workflow permissions).
+#
+#  6) REFRESCO DE CÓDIGO. Cada vuelta hace pull, así un arreglo a
+#     sia_scraper.py entra en <=30 min en vez de esperar 5 horas.
+#
+#  PARADA DE EMERGENCIA: crea un archivo vacío llamado PARAR en la
+#  raíz del repo. El bucle termina y no encadena sucesor.
 # ============================================================
 name: Snapshot de cupos SIA
 
 on:
   schedule:
-    # Vigilante cada 15 min. Da igual que GitHub se salte la mayoría:
-    # solo hace falta que acierte UNO cada ~5h30m.
-    - cron: "3,18,33,48 * * * *"
+    # Red de seguridad por si se pierde el encadenamiento. Los
+    # disparos que llegan con un bucle sano vivo cuestan ~20 s.
+    - cron: "*/10 * * * *"
   workflow_dispatch:
 
-# NO usar 'concurrency': cancela las corridas PENDIENTES, que es
-# justo lo que hacía perder snapshots. El control de duplicados
-# ahora lo hace el paso "vigilante" de abajo.
+# Explícito > depender de la configuración del repo.
+#   contents: write -> git push
+#   actions:  write -> 'gh run list' y lanzar al sucesor
+permissions:
+  contents: write
+  actions: write
+
+# NO usar 'concurrency': cancelaría las corridas pendientes, que es
+# justo lo que hacía perder snapshots.
+
+env:
+  INTERVALO_MIN: "30"       # cada cuánto se mide
+  DURACION_MIN: "300"       # 5 h de bucle (tope de GitHub: 6 h)
+  VENTANA_MIN: "20"         # antelación con que se admite un relevo
+  ADELANTO_SEG: "0"         # empezar el barrido N s antes de la marca
+  REINTENTOS: "1"           # reintentos por barrido incompleto
+  SIA_GUARDAR_TEXTO: "1"    # "0" fuera de la semana crítica (pesa mucho)
+  DESPLEGAR_PAGES: "0"      # "1" solo si usas el pages.yml de abajo
 
 jobs:
   snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 350          # tope de GitHub: 360
+    timeout-minutes: 350
     steps:
       - name: Descargar el repositorio
         uses: actions/checkout@v5
+        with:
+          # Si existe el secreto PAT_PUSH, los commits salen con él y
+          # GitHub Pages (modo "deploy from a branch") sí reconstruye.
+          # Sin el secreto se usa el GITHUB_TOKEN de siempre.
+          token: ${{ secrets.PAT_PUSH || github.token }}
 
-      - name: Vigilante — ¿ya hay un bucle vivo?
+      # ----------------------------------------------------------
+      # ¿Arranco, relevo o me retiro?
+      # ----------------------------------------------------------
+      - name: Vigilante
         id: guard
+        shell: bash {0}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # Solo me retiro si existe una corrida ESTRICTAMENTE más
-          # antigua que la mía. Si la lista viene vacía, si jq devuelve
-          # "null" o si gh falla, arranco igual: el peor caso debe ser
-          # dos bucles solapados, nunca cero bucles.
-          activas=$(gh run list --repo "$GITHUB_REPOSITORY" \
-                      --workflow snapshot_cupos.yml \
-                      --status in_progress --limit 50 \
-                      --json databaseId --jq '.[].databaseId' || echo "")
-          echo "activas: [$activas] | yo: $GITHUB_RUN_ID"
-          seguir=si
-          for id in $activas; do
-            if [ "$id" -lt "$GITHUB_RUN_ID" ]; then
-              echo "La corrida $id es más antigua y sigue viva. Salgo."
-              seguir=no
+          set -u
+          ahora=$(date +%s)
+
+          vivo_id=""; vivo_fin=0
+          if [ -f bucle.json ]; then
+            vivo_id=$(jq -r '.run_id // ""' bucle.json 2>/dev/null)
+            vivo_fin=$(jq -r '.fin // 0'    bucle.json 2>/dev/null)
+          fi
+          case "$vivo_fin" in ''|*[!0-9]*) vivo_fin=0 ;; esac
+          restante=$(( vivo_fin - ahora ))
+
+          en_curso=$(gh run list --repo "$GITHUB_REPOSITORY" \
+                       --workflow snapshot_cupos.yml \
+                       --status in_progress --limit 50 \
+                       --json databaseId --jq '.[].databaseId' 2>/dev/null)
+          gh_ok=$?
+
+          echo "yo=$GITHUB_RUN_ID | bucle vivo=$vivo_id | le quedan $((restante/60)) min"
+          echo "en curso: $(echo $en_curso | tr '\n' ' ') (gh_ok=$gh_ok)"
+
+          vivo_sigue=no
+          rival_mayor=no
+          for id in $en_curso; do
+            if [ "$id" != "$GITHUB_RUN_ID" ]; then
+              if [ "$id" = "$vivo_id" ]; then
+                vivo_sigue=si
+              elif [ "$id" -lt "$GITHUB_RUN_ID" ]; then
+                rival_mayor=si
+              fi
             fi
           done
-          echo "seguir=$seguir" >> $GITHUB_OUTPUT
+
+          seguir=si
+          espera=$ahora
+          if [ "$rival_mayor" = si ]; then
+            echo "Hay otro vigilante más antiguo decidiendo. Me retiro."
+            seguir=no
+          elif [ "$gh_ok" -eq 0 ] && [ "$vivo_sigue" = no ]; then
+            echo "No hay bucle vivo (murió o nunca existió). Arranco ya."
+          elif [ "$restante" -gt $(( VENTANA_MIN * 60 )) ]; then
+            echo "El bucle $vivo_id está sano. Me retiro."
+            seguir=no
+          elif [ "$restante" -gt 0 ]; then
+            echo "Relevo: espero $((restante/60)) min a que termine el bucle $vivo_id."
+            espera=$vivo_fin
+          else
+            echo "El bucle anterior ya terminó su turno. Arranco ya."
+          fi
+
+          echo "seguir=$seguir" >> "$GITHUB_OUTPUT"
+          echo "espera=$espera" >> "$GITHUB_OUTPUT"
 
       - name: Instalar Python
         if: steps.guard.outputs.seguir == 'si'
@@ -68,19 +143,75 @@ jobs:
         if: steps.guard.outputs.seguir == 'si'
         run: pip install selenium
 
-      - name: Bucle de snapshots
+      # ----------------------------------------------------------
+      # El bucle
+      # ----------------------------------------------------------
+      - name: Bucle de snapshots alineado al reloj
         if: steps.guard.outputs.seguir == 'si'
+        shell: bash {0}          # sin -e: un fallo suelto no debe matar 5 h
         env:
-          SIA_GUARDAR_TEXTO: "1"   # pon "0" fuera de la semana crítica
-          INTERVALO_MIN: "30"      # cada cuánto tomar una medición
-          DURACION_MIN: "330"      # 5h30m; deja margen antes del tope
+          GH_TOKEN: ${{ github.token }}
+          ESPERA_HASTA: ${{ steps.guard.outputs.espera }}
         run: |
           set -u
           git config user.name  "sia-bot"
           git config user.email "sia-bot@users.noreply.github.com"
+          paso=$(( INTERVALO_MIN * 60 ))
+
+          # ---------- utilidades ----------
+          dormir_hasta() {
+            local objetivo=$1 falta
+            while :; do
+              falta=$(( objetivo - $(date +%s) ))
+              [ "$falta" -le 0 ] && break
+              [ "$falta" -gt 60 ] && falta=60
+              sleep "$falta"
+            done
+          }
+
+          empujar() {
+            local intento
+            for intento in 1 2 3 4; do
+              git push -q && return 0
+              echo "Push rechazado ($intento/4); rebase y reintento..."
+              git pull --rebase --autostash -q origin main || true
+              sleep 10
+            done
+            echo "::error::No se pudo hacer push tras 4 intentos"
+            return 1
+          }
+
+          # ¿La última fila de runs.csv corresponde a un barrido decente?
+          barrido_ok() {
+            python3 - <<'PY'
+          import csv, sys
+          try:
+              filas = list(csv.DictReader(open("runs.csv", encoding="utf-8-sig")))
+              u = filas[-1]
+              esperadas = int(u.get("n_esperadas") or 0)
+              leidas    = int(u.get("n_leidas") or 0)
+              sys.exit(0 if esperadas > 0 and leidas >= 0.9 * esperadas else 1)
+          except Exception:
+              sys.exit(0)   # ante la duda, no reintentar
+          PY
+          }
+
+          # epoch del snapshot más reciente registrado en runs.csv
+          ultimo_snapshot() {
+            python3 - <<'PY'
+          import csv, datetime
+          try:
+              filas = list(csv.DictReader(open("runs.csv", encoding="utf-8-sig")))
+              ts = max(f["ts_inicio"] for f in filas if f.get("ts_inicio"))
+              print(int(datetime.datetime.fromisoformat(ts).timestamp()))
+          except Exception:
+              print(0)
+          PY
+          }
 
           proteger_derivados() {
             contar() { tail -n +2 "$1" 2>/dev/null | cut -d, -f1 | sort -u | wc -l; }
+            local nuevas previas
             nuevas=$(contar horarios.csv)
             previas=$(git show HEAD:horarios.csv 2>/dev/null | tail -n +2 | cut -d, -f1 | sort -u | wc -l)
             echo "Materias: antes=$previas, ahora=$nuevas"
@@ -93,55 +224,103 @@ jobs:
           }
 
           guardar() {
+            local f
             for f in cupos_historial*.csv runs.csv estadisticas.html series.json \
                      catalogo.json grupos.csv horarios.csv horario.html; do
               [ -e "$f" ] && git add "$f"
             done
+            # bucle.json NO se toca aquí: lo escribe solo el relevo, y volver
+            # a añadirlo pisaría al sucesor que ya se anunció.
             [ -d textos ] && git add textos
-            git commit -m "snapshot de cupos $(date -u +'%Y-%m-%d %H:%M UTC')" \
+            git commit -q -m "snapshot de cupos $(date -u +'%Y-%m-%d %H:%M UTC')" \
               || { echo "Sin cambios que guardar"; return 0; }
-            for intento in 1 2 3; do
-              git push && return 0
-              echo "Push rechazado ($intento/3); rebase y reintento..."
-              git pull --rebase --autostash || true
-              sleep 10
-            done
-            echo "::error::No se pudo hacer push tras 3 intentos"
-            return 1
+            empujar || return 1
+            if [ "$DESPLEGAR_PAGES" = "1" ]; then
+              gh workflow run pages.yml --repo "$GITHUB_REPOSITORY" --ref main \
+                >/dev/null 2>&1 || echo "::warning::no pude lanzar pages.yml"
+            fi
           }
 
-          fin=$(( $(date +%s) + DURACION_MIN * 60 ))
-          n=0
-          while [ "$(date +%s)" -lt "$fin" ]; do
-            n=$((n + 1))
-            t0=$(date +%s)
-            echo "===== barrido #$n — $(date -u +'%H:%M UTC') ====="
-
-            # timeout duro: si el SIA se cuelga, no se lleva el bucle
-            timeout --signal=TERM $((INTERVALO_MIN * 60 - 240)) \
-              python sia_scraper.py cupos \
-              || echo "::warning::barrido #$n falló o se agotó (código $?)"
-
+          barrido() {
+            echo "===== barrido #$n — $(date -u +'%Y-%m-%d %H:%M:%S UTC') ====="
+            local limite=$(( paso - 300 )) i=0 rc margen
+            while :; do
+              timeout --signal=TERM "$limite" python sia_scraper.py cupos
+              rc=$?
+              [ "$rc" -ne 0 ] && echo "::warning::el barrido #$n salió con código $rc"
+              barrido_ok && break
+              [ "$i" -ge "$REINTENTOS" ] && { echo "::warning::barrido #$n incompleto; me quedo con lo que hay"; break; }
+              margen=$(( ( $(date +%s) / paso + 1 ) * paso - $(date +%s) ))
+              [ "$margen" -lt 480 ] && { echo "Sin margen para reintentar antes de la próxima marca."; break; }
+              i=$(( i + 1 ))
+              echo "Lectura incompleta; reintento $i/$REINTENTOS en 60 s."
+              sleep 60
+            done
             proteger_derivados
             guardar || true
+          }
 
-            resto=$(( INTERVALO_MIN * 60 - ($(date +%s) - t0) ))
-            if [ "$resto" -gt 0 ] && [ "$(date +%s)" -lt "$fin" ]; then
-              echo "Durmiendo $((resto / 60)) min hasta el próximo barrido"
-              sleep "$resto"
-            fi
+          # ---------- relevo ----------
+          if [ "$ESPERA_HASTA" -gt "$(date +%s)" ]; then
+            echo "Esperando a que el bucle anterior cierre su turno ($(date -u -d "@$ESPERA_HASTA" +'%H:%M UTC'))"
+            dormir_hasta "$ESPERA_HASTA"
+          fi
+
+          # ---------- anunciarse ----------
+          # Se hace ANTES del primer barrido: si no, un vigilante que llegue
+          # mientras dormimos hasta la primera marca creería que no hay nadie.
+          fin=$(( ( $(date +%s) + DURACION_MIN * 60 ) / paso * paso ))
+          printf '{"run_id":"%s","fin":%s,"fin_utc":"%s","intervalo_min":%s}\n' \
+            "$GITHUB_RUN_ID" "$fin" "$(date -u -d "@$fin" +'%Y-%m-%dT%H:%M:%SZ')" \
+            "$INTERVALO_MIN" > bucle.json
+          git add bucle.json
+          git commit -q -m "bucle $GITHUB_RUN_ID hasta $(date -u -d "@$fin" +'%H:%M UTC')" || true
+          empujar || true
+          echo "Turno de este bucle: hasta $(date -u -d "@$fin" +'%Y-%m-%d %H:%M UTC')"
+
+          # ---------- recuperar el snapshot perdido, si lo hay ----------
+          n=0
+          ultimo=$(ultimo_snapshot)
+          if [ "$(( $(date +%s) - ultimo ))" -gt $(( paso + 300 )) ]; then
+            echo "El último snapshot es de hace $(( ($(date +%s) - ultimo) / 60 )) min: recupero uno ya mismo."
+            n=1
+            barrido
+          fi
+
+          # ---------- bucle alineado a :00 y :30 ----------
+          while [ "$(date +%s)" -lt "$fin" ]; do
+            proximo=$(( ( $(date +%s) / paso + 1 ) * paso - ADELANTO_SEG ))
+            while [ "$proximo" -le "$(date +%s)" ]; do proximo=$(( proximo + paso )); done
+            echo "Durmiendo hasta $(date -u -d "@$proximo" +'%H:%M:%S UTC')"
+            dormir_hasta "$proximo"
+
+            if [ -f PARAR ]; then echo "Archivo PARAR presente: termino el bucle."; break; fi
+
+            # Trae arreglos del scraper y commits ajenos antes de medir.
+            git pull --rebase --autostash -q origin main || true
+
+            n=$(( n + 1 ))
+            barrido
           done
           echo "Bucle terminado tras $n barridos."
 
-      # Opcional: encadena la siguiente corrida sin esperar al cron.
-      # Requiere un PAT de grano fino (solo este repo, Actions: write)
-      # guardado como secreto PAT_DISPATCH. Sin él, este paso se salta
-      # y el vigilante retoma en <=15 min.
+      # ----------------------------------------------------------
+      # Encadenar sin esperar al cron. workflow_dispatch es la
+      # excepción: sí crea corridas aunque lo lance el GITHUB_TOKEN.
+      # ----------------------------------------------------------
       - name: Encadenar la siguiente corrida
-        if: steps.guard.outputs.seguir == 'si' && always()
+        if: always() && steps.guard.outputs.seguir == 'si'
+        shell: bash {0}
         env:
-          GH_TOKEN: ${{ secrets.PAT_DISPATCH }}
+          GH_TOKEN: ${{ github.token }}
         run: |
-          [ -z "${GH_TOKEN:-}" ] && { echo "Sin PAT_DISPATCH; lo retoma el cron vigilante."; exit 0; }
-          gh workflow run snapshot_cupos.yml --repo "$GITHUB_REPOSITORY" --ref main
-          echo "Siguiente bucle lanzado."
+          set -u
+          if [ -f PARAR ]; then
+            echo "Archivo PARAR presente: no encadeno sucesor."
+            exit 0
+          fi
+          if gh workflow run snapshot_cupos.yml --repo "$GITHUB_REPOSITORY" --ref main; then
+            echo "Sucesor lanzado."
+          else
+            echo "::warning::no pude lanzar el sucesor; lo retomará el cron vigilante."
+          fi
