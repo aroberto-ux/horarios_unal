@@ -921,6 +921,170 @@ def ir_a_primera_pagina(driver, max_saltos=MAX_PAGINAS) -> bool:
     return False
 
 
+# Cuánto esperar entre dos lecturas del listado para considerarlo asentado,
+# y cuántas veces reintentar. 12 x 1.2 s = ~15 s de margen, que sobra: en las
+# corridas buenas la tabla se estabiliza en la segunda lectura.
+ESPERA_ESTABILIDAD_S = 1.2
+INTENTOS_ESTABILIDAD = 12
+
+# Si el listado trae menos de este porcentaje de la última corrida buena,
+# es basura y hay que rehacer la búsqueda. No se pone un margen por arriba
+# porque la oferta puede crecer de verdad; para eso está la doble lectura.
+UMBRAL_LISTADO = 0.85
+
+# Qué parte del listado tiene que coincidir con el plan ya conocido. En las
+# corridas buenas el solape es del 100%; en las fallidas, del 0% (el listado
+# era de posgrado, o de otra facultad). Cualquier umbral intermedio separa
+# los dos casos, así que 0.5 deja sitio de sobra a que la oferta cambie.
+UMBRAL_SOLAPE = 0.5
+
+# Metadatos de la última recolección, para runs.csv.
+INFO_LISTADO = {"paginas": 0, "intentos": 1}
+
+
+def esperar_listado_estable(driver, verbose=True) -> List[str]:
+    """Devuelve los códigos de la página actual, pero solo cuando la tabla
+    deja de moverse.
+
+    El SIA es una app ADF que refresca la tabla por partes. Tras pulsar
+    "Mostrar", el conjunto de filas puede cambiar durante uno o dos segundos
+    más. Leer en ese hueco es lo que producía listados de 4, 52 o 101
+    asignaturas donde había 65: demasiado pronto se recogen menos filas de
+    las que hay; justo durante un re-render se mezclan dos conjuntos de
+    resultados distintos. Después el bucle intenta hacer clic en códigos que
+    ya no están en la tabla y falla la corrida entera.
+
+    El criterio es simple: dos lecturas consecutivas idénticas (misma lista
+    y mismo orden) separadas por ESPERA_ESTABILIDAD_S.
+    """
+    previo = None
+    for intento in range(INTENTOS_ESTABILIDAD):
+        actuales = codigos_en_pagina_actual(driver)
+        if actuales and actuales == previo:
+            return actuales
+        previo = actuales
+        time.sleep(ESPERA_ESTABILIDAD_S)
+    if verbose:
+        print(f"  ! El listado no se asentó tras "
+              f"{INTENTOS_ESTABILIDAD * ESPERA_ESTABILIDAD_S:.0f} s; "
+              f"sigo con {len(previo or [])} códigos.")
+    return previo or []
+
+
+def _n_asignaturas_de_referencia() -> Optional[int]:
+    """Cuántas asignaturas cabe esperar, según la última corrida COMPLETA.
+
+    Se usa solo como piso de cordura, nunca como techo: la oferta puede
+    crecer legítimamente entre semestres.
+    """
+    if OUTPUT_RUNS.exists():
+        try:
+            with open(OUTPUT_RUNS, encoding="utf-8-sig") as f:
+                buenas = [int(r["n_esperadas"]) for r in csv.DictReader(f)
+                          if r.get("completo") == "1"
+                          and (r.get("n_esperadas") or "").isdigit()]
+            if buenas:
+                return buenas[-1]
+        except (OSError, ValueError, KeyError):
+            pass
+    if OUTPUT_JSON.exists():
+        try:
+            with open(OUTPUT_JSON, encoding="utf-8") as f:
+                n = len(json.load(f))
+            return n or None
+        except (OSError, json.JSONDecodeError, TypeError):
+            pass
+    return None
+
+
+def _codigos_de_referencia() -> Optional[set]:
+    """Los códigos del plan según el último catálogo publicado.
+
+    Solo tiene sentido con UN plan configurado: con varios, catalogo.json
+    mezcla los códigos de todos y el solape deja de discriminar.
+    """
+    if len(PLANES_ESTUDIOS) != 1 or not OUTPUT_JSON.exists():
+        return None
+    try:
+        with open(OUTPUT_JSON, encoding="utf-8") as f:
+            codigos = {a["codigo"] for a in json.load(f) if a.get("codigo")}
+        return codigos or None
+    except (OSError, json.JSONDecodeError, TypeError, KeyError):
+        return None
+
+
+def recolectar_con_verificacion(driver, plan, intentos=3,
+                                verbose=True) -> List[str]:
+    """Recolecta los códigos y no se los cree hasta comprobarlos.
+
+    Tres comprobaciones, porque ninguna sola basta:
+
+    0. ¿ES ESTE PLAN? Se compara el listado con los códigos del último
+       catálogo publicado. En las corridas buenas el solape es del 100%; en
+       las fallidas fue del 0%, porque el SIA devolvía el listado de
+       posgrado o de otra facultad. Es la señal más limpia que hay, y la
+       única que detecta un listado equivocado pero ESTABLE.
+
+    1. DOBLE LECTURA. Se recorre el listado entero dos veces seguidas y las
+       dos listas tienen que ser idénticas. Si la tabla está mutando, las
+       dos lecturas discrepan y se detecta sin necesidad de saber cuántas
+       asignaturas "debería" haber. Es la comprobación que de verdad
+       distingue un listado inestable de una oferta que cambió.
+    2. PISO DE CORDURA. Además, el total no puede caer por debajo del 85% de
+       la última corrida completa. Esto ataja el caso extremo (recolectar 4
+       asignaturas) sin esperar a la segunda lectura.
+
+    Si algo no cuadra, se rehacen los filtros y se vuelve a intentar. Vale
+    la pena: una recolección cuesta segundos y una corrida fallida cuesta
+    el barrido completo.
+    """
+    referencia = _n_asignaturas_de_referencia()
+    piso = int(referencia * UMBRAL_LISTADO) if referencia else 0
+    conocidos = _codigos_de_referencia()
+    mejor: List[str] = []
+
+    for intento in range(1, intentos + 1):
+        INFO_LISTADO["intentos"] = intento
+        primera = recolectar_todos_los_codigos(driver, verbose=verbose)
+        segunda = recolectar_todos_los_codigos(driver, verbose=False)
+
+        if len(primera) > len(mejor):
+            mejor = primera
+
+        solape = None
+        if conocidos:
+            solape = len(set(primera) & conocidos) / len(conocidos)
+
+        if not primera:
+            motivo = "el listado salió vacío"
+        elif solape is not None and solape < UMBRAL_SOLAPE:
+            motivo = (f"el listado no es de este plan: solo el "
+                      f"{solape:.0%} de las asignaturas conocidas aparece "
+                      f"(p. ej. {', '.join(primera[:3])})")
+        elif primera != segunda:
+            motivo = (f"dos lecturas del listado no coinciden "
+                      f"({len(primera)} vs {len(segunda)} asignaturas)")
+        elif len(primera) < piso:
+            motivo = (f"el listado trae {len(primera)} asignaturas y la "
+                      f"última corrida buena trajo {referencia}")
+        else:
+            if referencia and len(primera) != referencia and verbose:
+                print(f"  (ojo: {len(primera)} asignaturas frente a "
+                      f"{referencia} de la última corrida completa; "
+                      f"la oferta pudo cambiar)")
+            return primera
+
+        print(f"  ! {motivo}. Rehaciendo la búsqueda "
+              f"({intento}/{intentos})...")
+        guardar_debug(driver, f"listado_inestable_{len(primera)}")
+        if intento < intentos:
+            configurar_filtros(driver, plan)
+
+    print(f"  ! El listado nunca cuadró tras {intentos} intentos; sigo con "
+          f"el mejor obtenido ({len(mejor)} asignaturas).")
+    return mejor
+
+
 def recolectar_todos_los_codigos(driver, verbose=True) -> List[str]:
     """Recorre TODAS las páginas de la tabla de resultados y devuelve la lista
     completa de códigos, sin duplicados y en orden de aparición."""
@@ -928,7 +1092,9 @@ def recolectar_todos_los_codigos(driver, verbose=True) -> List[str]:
     set_vistos = set()
 
     for pagina in range(1, MAX_PAGINAS + 1):
-        actuales = codigos_en_pagina_actual(driver)
+        # No basta con codigos_en_pagina_actual(): hay que esperar a que la
+        # tabla deje de cambiar antes de fiarse de lo que dice.
+        actuales = esperar_listado_estable(driver, verbose=verbose)
         nuevos = [c for c in actuales if c not in set_vistos]
         for c in nuevos:
             set_vistos.add(c)
@@ -949,7 +1115,8 @@ def recolectar_todos_los_codigos(driver, verbose=True) -> List[str]:
             break
 
         # Si tras avanzar no aparece nada nuevo, cortamos para no ciclar
-        if not [c for c in codigos_en_pagina_actual(driver) if c not in set_vistos]:
+        if not [c for c in esperar_listado_estable(driver, verbose=False)
+                if c not in set_vistos]:
             break
 
     # IMPRESCINDIBLE: el bucle de arriba deja el listado en la última página.
@@ -962,6 +1129,7 @@ def recolectar_todos_los_codigos(driver, verbose=True) -> List[str]:
         if not ir_a_primera_pagina(driver):
             print("  ! No se pudo volver a la primera página del listado.")
 
+    INFO_LISTADO["paginas"] = pagina
     return vistos
 
 
@@ -2218,11 +2386,40 @@ def guardar_texto_crudo(codigo: str, ts: str, texto: str):
 
 RUNS_CAMPOS = ["run_id", "ts_inicio", "ts_fin", "planes", "shard",
                "n_esperadas", "n_leidas", "n_fallidas", "codigos_fallidos",
-               "completo"]
+               "completo", "n_paginas", "intentos_listado"]
+
+
+def _asegurar_esquema_runs():
+    """Añade las columnas nuevas a runs.csv si viene del esquema viejo.
+
+    Sin esto, DictWriter escribiría 12 valores bajo una cabecera de 10 y el
+    archivo quedaría corrupto en silencio. Las filas viejas se quedan con
+    las columnas nuevas vacías, que es lo honesto: de esas corridas no
+    tenemos el dato.
+    """
+    if not OUTPUT_RUNS.exists():
+        return
+    try:
+        with open(OUTPUT_RUNS, encoding="utf-8-sig", newline="") as f:
+            lector = csv.DictReader(f)
+            cabecera = lector.fieldnames or []
+            if all(c in cabecera for c in RUNS_CAMPOS):
+                return
+            filas = list(lector)
+    except OSError:
+        return
+    with open(OUTPUT_RUNS, "w", newline="", encoding="utf-8-sig") as f:
+        w = csv.DictWriter(f, fieldnames=RUNS_CAMPOS)
+        w.writeheader()
+        for fila in filas:
+            w.writerow({c: fila.get(c, "") for c in RUNS_CAMPOS})
+    print(f"  -> runs.csv migrado al esquema nuevo ({len(filas)} filas "
+          f"conservadas).")
 
 
 def registrar_run(info: dict):
     """Añade la fila de esta corrida a runs.csv."""
+    _asegurar_esquema_runs()
     nuevo = not OUTPUT_RUNS.exists()
     with open(OUTPUT_RUNS, "a", newline="", encoding="utf-8-sig") as f:
         w = csv.DictWriter(f, fieldnames=RUNS_CAMPOS)
@@ -2589,6 +2786,7 @@ def main():
         "planes": " | ".join(PLANES_ESTUDIOS), "shard": SIA_SHARD or "1/1",
         "n_esperadas": 0, "n_leidas": 0, "n_fallidas": 0,
         "codigos_fallidos": [], "completo": 0,
+        "n_paginas": "", "intentos_listado": "",
     }
     orden_global = 0
     termino_normal = False
@@ -2615,7 +2813,7 @@ def main():
 
     def preparar():
         configurar_filtros(driver, plan_actual)
-        return recolectar_todos_los_codigos(driver, verbose=False)
+        return recolectar_con_verificacion(driver, plan_actual, verbose=False)
 
     try:
         driver = nuevo_driver()
@@ -2627,7 +2825,7 @@ def main():
             print("Configurando filtros...")
             configurar_filtros(driver, plan)
             print("Recolectando códigos de todas las páginas de resultados...")
-            codigos = recolectar_todos_los_codigos(driver)
+            codigos = recolectar_con_verificacion(driver, plan)
             print(f"\nSe encontraron {len(codigos)} asignaturas en {plan}.\n")
 
             if not codigos:
@@ -2660,6 +2858,8 @@ def main():
                       f"{len(pendientes)} asignaturas.\n")
 
             run["n_esperadas"] += len(pendientes)
+            run["n_paginas"] = INFO_LISTADO["paginas"]
+            run["intentos_listado"] = INFO_LISTADO["intentos"]
             procesadas = 0
             for i, codigo in enumerate(pendientes, 1):
                 print(f"[{i}/{len(pendientes)}] Procesando {codigo}...")
