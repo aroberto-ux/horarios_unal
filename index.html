@@ -292,17 +292,71 @@ function parseCSV(texto){
   return filas.filter(f=>f.length>1).map(f=>Object.fromEntries(cab.map((h,i)=>[h.trim(),(f[i]||"").trim()])));
 }
 
-async function cargarCSV(nombre){
+async function traer(nombre){
   const ts = Date.now();
   try{
     const r = await fetch(`${nombre}?ts=${ts}`, {cache:"no-store"});
-    if(r.ok) return parseCSV(await r.text());
+    if(r.ok) return r;
     throw 0;
   }catch(e){
     const r = await fetch(`${REPO_RAW}${nombre}?ts=${ts}`, {cache:"no-store"});
     if(!r.ok) throw new Error(`No pude leer ${nombre}`);
-    return parseCSV(await r.text());
+    return r;
   }
+}
+
+async function cargarCSV(nombre){ return parseCSV(await (await traer(nombre)).text()); }
+
+/* series.json: el historial ya colapsado por corrida y delta-codificado.
+   Pesa ~130 KB contra los 3 MB de cupos_historial.csv, y el CSV crece ~50 KB
+   por snapshot. Si el archivo todavía no existe (repo sin regenerar), se
+   vuelve al camino viejo para no dejar la página sin datos. */
+function expandirSeries(doc){
+  const H = new Map();
+  const MIN = 60000;
+  for(const [k, s] of Object.entries(doc.series||{})){
+    const pts = [{t:new Date(s.t0*MIN), cupos:s.c0}];
+    let t=s.t0, c=s.c0;
+    const dt=s.dt||[], dc=s.dc||[];
+    for(let i=0;i<dt.length;i++){
+      t+=dt[i]; c+=dc[i];
+      pts.push({t:new Date(t*MIN), cupos:c});
+    }
+    H.set(k, pts);
+  }
+  return H;
+}
+
+async function cargarHistorial(){
+  try{
+    const doc = await (await traer("series.json")).json();
+    if(!doc || !doc.series) throw 0;
+    return {historial: expandirSeries(doc), nSnap: doc.n_snapshots || 0};
+  }catch(e){
+    return cargarHistorialCSV();
+  }
+}
+
+async function cargarHistorialCSV(){
+  const hist = await cargarCSV("cupos_historial.csv");
+  const porGrupo = new Map();
+  for(const f of hist){
+    const cupos = numCupos(f.cupos_disponibles);
+    if(cupos===null) continue;
+    const ts = f.ts_lectura || f.fecha_hora;
+    const t = new Date(ts);
+    if(isNaN(+t)) continue;
+    const k = `${f.codigo}|${f.grupo}`;
+    const corrida = f.run_id || ts;
+    if(!porGrupo.has(k)) porGrupo.set(k, new Map());
+    const puntos = porGrupo.get(k);
+    const previo = puntos.get(corrida);
+    if(!previo) puntos.set(corrida, {t, cupos});
+    else { previo.cupos = Math.min(previo.cupos, cupos); if(t < previo.t) previo.t = t; }
+  }
+  const H = new Map();
+  for(const [k, puntos] of porGrupo) H.set(k, [...puntos.values()].sort((a,b)=>a.t-b.t));
+  return {historial: H, nSnap: new Set(hist.map(f=>f.run_id||f.ts_lectura||f.fecha_hora)).size};
 }
 
 const aMin = h => { const [a,b]=h.split(":").map(Number); return a*60+b; };
@@ -400,7 +454,7 @@ async function cargarDatos(){
   const estado = $("#estado");
   estado.innerHTML = '<span class="punto"></span>Cargando datos…';
   try{
-    const [hor, hist] = await Promise.all([cargarCSV("horarios.csv"), cargarCSV("cupos_historial.csv")]);
+    const [hor, hd] = await Promise.all([cargarCSV("horarios.csv"), cargarHistorial()]);
 
     MATERIAS = new Map();
     for(const f of hor){
@@ -412,35 +466,8 @@ async function cargarDatos(){
       if(f.dia && f.hora_inicio) g.sesiones.push({dia:f.dia.toUpperCase(),ini:aMin(f.hora_inicio),fin:aMin(f.hora_fin),salon:f.salon_nombre||f.salon||""});
     }
 
-    /* Historial de cupos.
-       Esquema v2: run_id, ts_lectura, codigo, actividad, grupo, ...
-       Esquema v1 (archivos viejos): fecha_hora, codigo, asignatura, grupo, ...
-       Se leen ambos para que la página no dependa de cuál esté publicado.
-
-       Un grupo puede aparecer varias veces en el mismo snapshot, una por
-       actividad (magistral/taller/laboratorio son la MISMA inscripción:
-       comparten cupo). Si se apilaran tal cual, la serie tendría puntos
-       repetidos en el mismo instante. Se colapsan por corrida tomando el
-       mínimo, que es el cupo que de verdad restringe. */
-    const porGrupo = new Map();               // "cod|grupo" -> Map(corrida -> punto)
-    for(const f of hist){
-      const cupos = numCupos(f.cupos_disponibles);
-      if(cupos===null) continue;              // "NA" = lectura fallida, no es un 0
-      const ts = f.ts_lectura || f.fecha_hora;
-      const t = new Date(ts);
-      if(isNaN(+t)) continue;                 // fila con fecha ilegible
-      const k = `${f.codigo}|${f.grupo}`;
-      const corrida = f.run_id || ts;         // v1 no tiene run_id: sirve la marca
-      if(!porGrupo.has(k)) porGrupo.set(k, new Map());
-      const puntos = porGrupo.get(k);
-      const previo = puntos.get(corrida);
-      // dentro de una corrida: el menor cupo y el instante más temprano
-      if(!previo) puntos.set(corrida, {t, cupos});
-      else { previo.cupos = Math.min(previo.cupos, cupos); if(t < previo.t) previo.t = t; }
-    }
-    HISTORIAL = new Map();
-    for(const [k, puntos] of porGrupo) HISTORIAL.set(k, [...puntos.values()]);
-    for(const v of HISTORIAL.values()) v.sort((a,b)=>a.t-b.t);
+    HISTORIAL = hd.historial;
+    const nSnap = hd.nSnap;
 
     // cupos vigentes = último snapshot si existe
     for(const m of MATERIAS.values()) for(const g of m.grupos.values()){
@@ -456,10 +483,6 @@ async function cargarDatos(){
     let pri=null; for(const v of HISTORIAL.values()){ const f=v[0].t; if(!pri||f<pri) pri=f; }
     T_FIN = ult ? +ult : null;  T_INI = pri ? +pri : null;
     marcarRangos();
-    /* Un snapshot = una CORRIDA del scraper. No sirve contar marcas de
-       tiempo distintas: en el esquema v2 cada asignatura lleva la suya
-       (un barrido tarda minutos), así que eso contaría cientos por corrida. */
-    const nSnap = new Set(hist.map(f=>f.run_id||f.ts_lectura||f.fecha_hora)).size;
     estado.innerHTML = `<span class="punto"></span>Actualizado: ${ult?fmtFecha(ult):"—"} <button id="btnRecargar" type="button">recargar</button>`;
     $("#btnRecargar").addEventListener("click", cargarDatos);
     $("#infoSnapshots").textContent = `${nSnap} snapshots · cada 30 min`;
