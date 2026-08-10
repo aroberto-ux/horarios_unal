@@ -86,12 +86,14 @@ jobs:
             echo "Materias: antes=$previas, ahora=$nuevas"
             if [ "$previas" -gt 0 ] && [ $((nuevas * 10)) -lt $((previas * 8)) ]; then
               echo "::warning::Raspado incompleto ($nuevas de $previas). Restauro derivados; el historial conserva la fila parcial."
-              git checkout -- horarios.csv grupos.csv catalogo.json estadisticas.html horario.html 2>/dev/null || true
+              # series.json y estadisticas.html NO se restauran: derivan del
+              # historial completo, no del barrido de esta vuelta.
+              git checkout -- horarios.csv grupos.csv catalogo.json horario.html 2>/dev/null || true
             fi
           }
 
           guardar() {
-            for f in cupos_historial*.csv runs.csv estadisticas.html \
+            for f in cupos_historial*.csv runs.csv estadisticas.html series.json \
                      catalogo.json grupos.csv horarios.csv horario.html; do
               [ -e "$f" ] && git add "$f"
             done
