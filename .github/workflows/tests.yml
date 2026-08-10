@@ -1,21 +1,26 @@
 # Corre la suite del parser en cada cambio. No necesita Chrome ni red: los
 # tests trabajan sobre los textos crudos ya archivados en textos/*.jsonl.gz.
 # selenium se instala solo porque sia_scraper.py lo importa al cargarse.
+#
+# CAMBIO: antes se listaba lo que había que IGNORAR, y cada archivo nuevo que
+# tocaba el bot (bucle.json, horarios.csv, catalogo.json...) volvía a disparar
+# CI. Ahora se lista lo que sí debe dispararlo. Importa sobre todo si empiezas
+# a empujar con un PAT: con el GITHUB_TOKEN los pushes del bot no disparan
+# workflows, pero con un PAT sí, y serían ~50 corridas de CI al día.
 name: Tests
 
 on:
   push:
     branches: [main]
-    # Los snapshots del bot tocan solo datos; no hace falta correr CI 48
-    # veces al día por eso.
-    paths-ignore:
-      - "cupos_historial*.csv"
-      - "runs.csv"
-      - "series.json"
-      - "estadisticas.html"
-      - "textos/**"
+    paths:
+      - "sia_scraper.py"
+      - "tests/**"
+      - ".github/workflows/tests.yml"
   pull_request:
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   pytest:
@@ -42,3 +47,6 @@ jobs:
           assert d["series"], "series.json quedó vacío"
           print(f"OK: {len(d['series'])} series, {d['n_snapshots']} snapshots")
           EOF
+
+      - name: No dejar sucio el árbol
+        run: git diff --stat
