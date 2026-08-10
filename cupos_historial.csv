@@ -27224,3 +27224,873 @@ gh-31356702976,2026-08-10T02:21:31-05:00,2015296,NA,(7) Grupo 7,SANTIAGO RAMIREZ
 gh-31356702976,2026-08-10T02:21:31-05:00,2015296,NA,(8) Grupo 8,Jose Ricardo Martinez Vargas,jose ricardo martinez vargas,5,NA,62
 gh-31356702976,2026-08-10T02:21:31-05:00,2015296,NA,(9) Grupo 9,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,5,NA,62
 gh-31356702976,2026-08-10T02:21:32-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,63
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31292179881,2026-08-08T22:20:54-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31292353798,2026-08-08T22:26:02-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31297624895,2026-08-09T00:53:12-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31297624895,2026-08-09T00:54:30-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31297624895,2026-08-09T00:54:33-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31302862067,2026-08-09T03:11:58-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31302862067,2026-08-09T03:12:48-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31305643470,2026-08-09T04:20:39-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31305643470,2026-08-09T04:21:56-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31305643470,2026-08-09T04:21:59-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31309220228,2026-08-09T05:49:06-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31309220228,2026-08-09T05:50:26-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31309220228,2026-08-09T05:50:29-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31311246746,2026-08-09T06:38:21-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31311246746,2026-08-09T06:39:40-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31311246746,2026-08-09T06:39:43-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31315002005,2026-08-09T08:08:03-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31315002005,2026-08-09T08:09:18-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31315002005,2026-08-09T08:09:20-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31320087122,2026-08-09T10:04:03-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31320087122,2026-08-09T10:05:28-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31320087122,2026-08-09T10:05:31-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31321697284,2026-08-09T10:40:39-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31321697284,2026-08-09T10:41:55-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31321697284,2026-08-09T10:41:58-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31324642392,2026-08-09T11:46:45-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31324642392,2026-08-09T11:48:00-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31324642392,2026-08-09T11:48:02-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31326948682,2026-08-09T12:40:39-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31326948682,2026-08-09T12:41:22-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31330201224,2026-08-09T13:54:22-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31330201224,2026-08-09T13:55:40-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31330201224,2026-08-09T13:55:43-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31334982229,2026-08-09T15:44:19-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31334982229,2026-08-09T15:45:36-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31334982229,2026-08-09T15:45:39-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31342430722,2026-08-09T18:40:12-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31342430722,2026-08-09T18:41:29-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31342430722,2026-08-09T18:41:31-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31345044316,2026-08-09T19:40:15-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31345044316,2026-08-09T19:41:41-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31345044316,2026-08-09T19:41:43-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31345044316,2026-08-09T20:39:52-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31345044316,2026-08-09T20:41:13-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31345044316,2026-08-09T20:41:16-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31345044316,2026-08-09T21:39:52-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31345044316,2026-08-09T21:41:13-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31345044316,2026-08-09T21:41:16-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31345044316,2026-08-09T22:10:14-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31345044316,2026-08-09T22:11:00-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31352060992,2026-08-09T22:15:48-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31352060992,2026-08-09T22:17:09-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31352060992,2026-08-09T22:17:11-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31352060992,2026-08-09T22:45:43-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31352060992,2026-08-09T22:46:25-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(1) Grupo 1,Erika Lorena Rosero Alzate; Oscar Andrés Rojas Sepúlveda,erika lorena rosero alzate;oscar andres rojas sepulveda,0,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(10) Grupo 10,Epifanio Lozano Ayala,epifanio lozano ayala,14,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(11) Grupo 11,No informado,NA,60,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(12) Grupo 12,No informado,NA,40,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(13) Grupo 13,Mohammed EL AIDI,mohammed el aidi,40,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(15) Grupo 15,Myriam Leonor Campos Florez,myriam leonor campos florez,60,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(16) Grupo 16,No informado,NA,60,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(17) Grupo 17,Martha Cecilia Moreno Penagos,martha cecilia moreno penagos,40,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(18) Grupo 18,John Alexander Cruz Morales,john alexander cruz morales,52,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(20) Grupo 20,Natalia Camila Pinzon Cortes,natalia camila pinzon cortes,60,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(21) Grupo 21,Ivon Andrea Dorado Correa,ivon andrea dorado correa,52,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(22) Grupo 22,No informado,NA,46,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(3) Grupo 3,No informado,NA,60,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(4) Grupo 4,Luis Alejandro Barbosa Torres,luis alejandro barbosa torres,112,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(5) Grupo 5,Jaime David Mora Paz,jaime david mora paz,60,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(7) Grupo 7,Myriam Leonor Campos Florez,myriam leonor campos florez,40,NA,-1
+gh-31355229767,2026-08-09T23:22:08-05:00,1000003-B,NA,(8) Grupo 8,No informado,NA,10,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(1) 2024045-1 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(10) 2024045-10 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(11) 2024045-11 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(12) 2024045-12 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(13) 2024045-13 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(14) 2024045-14 Taller de proyectos interdisciplinarios,Dolly Santos Barbosa,dolly santos barbosa,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(15) 2024045-15 Taller de proyectos interdisciplinarios,Oscar Andres Eraso Eraso,oscar andres eraso eraso,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(16) 2024045-16 Taller de proyectos interdisciplinarios,Luis Ignacio Rodriguez Varela,luis ignacio rodriguez varela,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(17) 2024045-17 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(18) 2024045-18 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(19) 2024045-19 Taller de proyectos interdisciplinarios,FRANCISCO JAVIER VÁSQUEZ VÁSQUEZ,francisco javier vasquez vasquez,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(2) 2024045-2 Taller de proyectos interdisciplinarios,Fernando Bernal Martinez,fernando bernal martinez,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(21) 2024045-21 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(22) 2024045-22 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(23) 2024045-23 Taller de proyectos interdisciplinarios,No informado,NA,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(24) 2024045-24 Taller de proyectos interdisciplinarios,Hector Julian Garcia Otalora,hector julian garcia otalora,200,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(3) 2024045-3 Taller de proyectos interdisciplinarios,Guillermo Alberto Rocha Casas,guillermo alberto rocha casas,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(4) 2024045-4 Taller de proyectos interdisciplinarios,Francy Nayely Prieto Novoa,francy nayely prieto novoa,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(40) 2024045-40 TPI-- NO BORRAR-- BLOQ ESPACIOS,No informado,NA,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(5) 2024045-5 Taller de proyectos interdisciplinarios,Nubia Carmenza Moreno Sarmiento,nubia carmenza moreno sarmiento,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(6) 2024045-6 Taller de proyectos interdisciplinarios,JOHANA CATALINA MANOSALVA BARRERA,johana catalina manosalva barrera,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(7) 2024045-7 Taller de proyectos interdisciplinarios,Ubaldo Garcia Zaragoza,ubaldo garcia zaragoza,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(8) 2024045-8 Taller de proyectos interdisciplinarios,JHON FREDDY LOPEZ MEDINA,jhon freddy lopez medina,0,NA,-1
+gh-31355229767,2026-08-09T23:23:28-05:00,2024045,CLASE TEORICA,(9) 2024045-9 Taller de proyectos interdisciplinarios,Manuel Alejandro Mayorga Betancourt,manuel alejandro mayorga betancourt,0,NA,-1
+gh-31355229767,2026-08-09T23:23:31-05:00,2015299,CLASE TEORICA,(1) Grupo 1,GABRIELA ARRIETA LOYO,gabriela arrieta loyo,51,NA,-1
