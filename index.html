@@ -199,6 +199,21 @@ section.panel{
 .controles-tend .rango button+button{border-left:1px solid var(--cuadricula)}
 .controles-tend .rango button.corto{opacity:.45}
 .controles-tend .periodo{font:500 .76rem "IBM Plex Mono",monospace; color:var(--tinta-suave)}
+.controles-tend .fechas{display:flex; align-items:center; gap:5px; flex-wrap:wrap}
+.controles-tend .fechas[hidden]{display:none}
+.controles-tend .fechas label{font-size:.74rem; color:var(--tinta-suave)}
+.controles-tend .fechas input{
+  font:500 .76rem "IBM Plex Mono",monospace; color:var(--tinta);
+  padding:5px 7px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco);
+}
+.controles-tend .fechas input:focus{outline:none; border-color:var(--azul); box-shadow:0 0 0 3px var(--azul-claro)}
+.controles-tend .fechas.activo input{border-color:var(--azul)}
+.controles-tend .fechas button{
+  font:600 .8rem "IBM Plex Mono",monospace; line-height:1; color:var(--tinta-suave);
+  padding:6px 8px; border:1.5px solid var(--cuadricula); border-radius:var(--radio);
+  background:var(--papel); cursor:pointer;
+}
+.controles-tend .fechas button:hover{border-color:var(--tinta-suave); color:var(--tinta)}
 .lienzo{position:relative; height:min(52vh,420px); padding:12px 16px 18px}
 .lienzo .msj{
   position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
@@ -600,6 +615,11 @@ section.panel[hidden]{display:none!important}
         <button type="button" data-r="1M">1M</button>
         <button type="button" data-r="4M">4M</button>
         <button type="button" data-r="max">Máx</button>
+      </div>
+      <div class="fechas" id="fechasTend">
+        <label for="fechaIni">Desde</label><input type="date" id="fechaIni">
+        <label for="fechaFin">Hasta</label><input type="date" id="fechaFin">
+        <button type="button" id="btnHoyFin" title="Poner la fecha final en la última lectura disponible">⇥</button>
       </div>
       <span class="periodo" id="periodoTend"></span>
     </div>
@@ -1043,14 +1063,36 @@ const ABIERTAS = new Set(); // materias que el usuario dejó desplegadas
    workflow lleva un rato sin correr. */
 const RANGOS = {"1D":864e5, "1S":7*864e5, "1M":30*864e5, "4M":120*864e5, "max":Infinity};
 let rangoTend = (()=>{ try{ const v=localStorage.getItem("rangoTendUNAL"); return RANGOS[v]?v:"1M"; }catch(e){ return "1M"; } })();
+/* Rango escrito a mano con los dos campos de fecha. Cuando está puesto manda
+   sobre los botones; se guarda aparte para no ensuciar `rangoTend`. */
+let rangoPersonal = (()=>{
+  try{
+    const v = JSON.parse(localStorage.getItem("rangoPersonalUNAL")||"null");
+    return (v && v.desde < v.hasta) ? v : null;
+  }catch(e){ return null; }
+})();
 let T_INI = null, T_FIN = null;   // extremos del historial completo
 
+/* Los <input type="date"> hablan en hora local del navegador (para el caso de
+   uso, Bogotá). Se construyen a mano para no caer en el parseo UTC de
+   new Date("2026-08-01"), que correría el día cinco horas. */
+const deInputFecha = (str, finDeDia=false) => {
+  const [y,m,d] = String(str||"").split("-").map(Number);
+  if(!y || !m || !d) return null;
+  return finDeDia ? +new Date(y, m-1, d, 23, 59, 59, 999) : +new Date(y, m-1, d);
+};
+const aInputFecha = ts => {
+  const d = new Date(ts);
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+};
+
 function ventana(){
+  if(rangoPersonal) return {...rangoPersonal, personal:true};
   const hasta = T_FIN ?? Date.now();
   const span  = RANGOS[rangoTend];
   let desde = span===Infinity ? (T_INI ?? hasta-864e5) : hasta-span;
   if(!(desde < hasta)) desde = hasta - 864e5;   // un solo snapshot: evita min==max
-  return {desde, hasta};
+  return {desde, hasta, personal:false};
 }
 
 /* Recorta una serie a la ventana activa.
@@ -1060,9 +1102,9 @@ function ventana(){
    lectura que faltó (NA) no es lo mismo que un cupo que no cambió. */
 function recortar(serie){
   if(!serie || !serie.length) return [];
-  const {desde} = ventana();
-  if(desde <= +serie[0].t) return serie;
-  const dentro = serie.filter(p => +p.t >= desde);
+  const {desde, hasta} = ventana();
+  if(desde <= +serie[0].t && hasta >= +serie[serie.length-1].t) return serie;
+  const dentro = serie.filter(p => +p.t >= desde && +p.t <= hasta);
   let previo = null;
   for(const p of serie){ if(+p.t < desde) previo = p; else break; }
   if(previo) dentro.unshift({t:new Date(desde), cupos:previo.cupos, anclado:+previo.t});
@@ -1071,7 +1113,10 @@ function recortar(serie){
 
 /* Etiqueta del eje X según lo ancho que sea el rango. */
 function fmtEje(v){
-  const d = new Date(v), span = RANGOS[rangoTend]===Infinity ? (T_FIN-T_INI) : RANGOS[rangoTend];
+  const {desde, hasta, personal} = ventana();
+  const d = new Date(v);
+  const span = personal ? (hasta-desde)
+             : RANGOS[rangoTend]===Infinity ? (T_FIN-T_INI) : RANGOS[rangoTend];
   const o = span <= 2*864e5  ? {hour:"2-digit", minute:"2-digit"}
           : span <= 10*864e5 ? {day:"2-digit", month:"short", hour:"2-digit"}
           :                    {day:"2-digit", month:"short"};
@@ -1082,20 +1127,53 @@ function marcarRangos(){
   const disp = (T_FIN!=null && T_INI!=null) ? T_FIN-T_INI : 0;
   for(const b of document.querySelectorAll("#rangoTend button")){
     const r = b.dataset.r, span = RANGOS[r];
-    b.classList.toggle("activo", r===rangoTend);
+    // Con un rango a mano ningún botón queda marcado: manda lo que se escribió
+    b.classList.toggle("activo", !rangoPersonal && r===rangoTend);
     const corto = span!==Infinity && disp>0 && span>disp;
     b.classList.toggle("corto", corto);
     b.title = corto ? `El historial solo cubre ${Math.max(1,Math.round(disp/864e5))} d\u00eda(s); se ve todo lo que hay.` : "";
   }
-  const {desde, hasta} = ventana();
+  const {desde, hasta, personal} = ventana();
   const p = $("#periodoTend");
-  if(p) p.textContent = (T_FIN==null) ? "" : `${fmtFecha(new Date(desde))} \u2192 ${fmtFecha(new Date(hasta))}`;
+  if(p) p.textContent = (T_FIN==null) ? ""
+    : `${fmtFecha(new Date(desde))} \u2192 ${fmtFecha(new Date(hasta))}${personal?" · a medida":""}`;
+
+  // Los campos reflejan siempre la ventana activa, la haya puesto un botón o
+  // el propio usuario: así se ve qué días cubre cada atajo.
+  const ini = $("#fechaIni"), fin = $("#fechaFin");
+  if(ini && fin){
+    if(document.activeElement!==ini) ini.value = aInputFecha(desde);
+    if(document.activeElement!==fin) fin.value = aInputFecha(hasta);
+    if(T_INI!=null){ ini.min = fin.min = aInputFecha(T_INI); }
+    if(T_FIN!=null){ ini.max = fin.max = aInputFecha(T_FIN); }
+    $("#fechasTend").classList.toggle("activo", !!personal);
+  }
 }
 
 function fijarRango(r){
   if(!RANGOS[r]) return;
   rangoTend = r;
+  rangoPersonal = null;
+  try{ localStorage.removeItem("rangoPersonalUNAL"); }catch(e){}
   try{ localStorage.setItem("rangoTendUNAL", r); }catch(e){}
+  marcarRangos();
+  refrescarSparklines();
+  pintarGrafico();
+}
+
+/* Aplica lo escrito en los campos de fecha. Si vienen al revés se intercambian
+   en vez de rechazarlas: es lo que el usuario quiso decir. El intercambio va
+   sobre las cadenas «AAAA-MM-DD» (que en ISO ordenan bien como texto) y no
+   sobre los instantes ya calculados: si no, el «23:59:59» del final acabaría
+   pegado al inicio y el rango perdería casi dos días. */
+function fijarRangoPersonal(){
+  let a = $("#fechaIni").value, b = $("#fechaFin").value;
+  if(!a || !b) return;                               // campo a medio llenar
+  if(a > b) [a, b] = [b, a];
+  const desde = deInputFecha(a), hasta = deInputFecha(b, true);
+  if(desde==null || hasta==null) return;
+  rangoPersonal = {desde, hasta};                    // un mismo día cubre sus 24 h
+  try{ localStorage.setItem("rangoPersonalUNAL", JSON.stringify(rangoPersonal)); }catch(e){}
   marcarRangos();
   refrescarSparklines();
   pintarGrafico();
@@ -2039,10 +2117,16 @@ function pintarGrafico(){
     ? seleccion
     : [...(MATERIAS.get($("#selMateria").value)?.grupos.keys()||[])].map(g=>`${$("#selMateria").value}|${g}`);
   const datasets=seriesPara(claves);
-  const sufRango = rangoTend==="max" ? "" : ` en el rango ${rangoTend}`;
+  const v = ventana();
+  const sufRango = v.personal
+    ? ` entre el ${fmtFecha(new Date(v.desde))} y el ${fmtFecha(new Date(v.hasta))}`
+    : (rangoTend==="max" ? "" : ` en el rango ${rangoTend}`);
   msjLienzo(datasets.length? null :
-    (modoTend==="mis" ? "Agrega grupos a tu horario para ver su tendencia."
-                      : `Esta asignatura no tiene historial de cupos${sufRango}.`));
+    (modoTend==="mis"
+      ? (v.personal && seleccion.length
+          ? `Tus grupos no tienen lecturas${sufRango}. Prueba con otras fechas.`
+          : "Agrega grupos a tu horario para ver su tendencia.")
+      : `Esta asignatura no tiene historial de cupos${sufRango}.`));
   const ctx=$("#grafico");
   if(grafico) grafico.destroy();
   if(!datasets.length){ grafico=null; return; }
@@ -2189,6 +2273,7 @@ function fijarModo(modo){
   // El modo Docentes es un barrido agregado sobre todo el historial, no una
   // serie de tiempo: el selector de rango no aplica ahí.
   $("#rangoTend").hidden = (modo==="doc");
+  $("#fechasTend").hidden = (modo==="doc");
   $("#periodoTend").hidden = (modo==="doc");
   pintarGrafico();
 }
@@ -2199,6 +2284,13 @@ $("#selMateria").addEventListener("change", pintarGrafico);
 for(const b of document.querySelectorAll("#rangoTend button")){
   b.addEventListener("click", ()=>fijarRango(b.dataset.r));
 }
+$("#fechaIni").addEventListener("change", fijarRangoPersonal);
+$("#fechaFin").addEventListener("change", fijarRangoPersonal);
+$("#btnHoyFin").addEventListener("click", ()=>{
+  if(T_FIN==null) return;
+  $("#fechaFin").value = aInputFecha(T_FIN);
+  fijarRangoPersonal();
+});
 marcarRangos();
 
 /* ---------- Imprimir ---------- */
