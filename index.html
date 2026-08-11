@@ -258,12 +258,17 @@ footer a{color:var(--azul)}
 .plan button.marcada{border-color:var(--azul); color:var(--azul); background:var(--azul-claro)}
 
 /* ---------- Avisos del plan sobre el horario ---------- */
-#avisoPlan{display:none; margin:12px 16px 0; padding:10px 14px; border-radius:var(--radio);
-  background:var(--ambar-claro); color:var(--ambar); font-size:.85rem}
+#avisoPlan{display:none; margin:10px 16px 0; font-size:.8rem; color:var(--tinta-suave);
+  border-left:3px solid var(--cuadricula); padding-left:10px}
 #avisoPlan.visible{display:block}
-#avisoPlan ul{margin:4px 0 0; padding-left:18px}
-#avisoPlan li{margin-top:2px}
-#avisoPlan b{font-weight:700}
+#avisoPlan summary{cursor:pointer; list-style:none; padding:1px 0}
+#avisoPlan summary::-webkit-details-marker{display:none}
+#avisoPlan summary::before{content:"›"; display:inline-block; margin-right:6px; transition:transform .15s}
+#avisoPlan[open] summary::before{transform:rotate(90deg)}
+#avisoPlan summary:hover{color:var(--tinta)}
+#avisoPlan ul{margin:6px 0 2px; padding-left:16px; line-height:1.5}
+#avisoPlan li{margin-top:3px}
+#avisoPlan b{font-weight:600; color:var(--tinta)}
 
 /* ---------- Panel de avance (mini-malla) ---------- */
 .avance-barras{display:flex; flex-wrap:wrap; gap:10px 22px; padding:12px 16px; border-bottom:1px solid var(--cuadricula)}
@@ -332,6 +337,20 @@ footer a{color:var(--azul)}
 .gen-chip button{border:0; background:none; cursor:pointer; color:var(--tinta-suave); font-size:.9rem; line-height:1; padding:0 2px}
 .gen-chip button:hover{color:var(--rojo)}
 .gen-vacio{font-size:.8rem; color:var(--tinta-suave); font-style:italic}
+#genBuscar{width:100%; font:400 .82rem "Archivo",sans-serif; color:var(--tinta);
+  padding:6px 10px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco)}
+#genBuscar:focus{outline:none; border-color:var(--tinta-suave)}
+.gen-lista{margin-top:6px; max-height:260px; overflow-y:auto;
+  border:1px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco)}
+.gen-lista label{display:flex; align-items:center; gap:8px; padding:5px 10px; cursor:pointer;
+  border-bottom:1px solid var(--cuadricula); font-size:.8rem}
+.gen-lista label:last-child{border-bottom:0}
+.gen-lista label:hover{background:var(--papel)}
+.gen-lista input{margin:0; flex:0 0 auto; accent-color:var(--verde)}
+.gen-lista .t{flex:1; min-width:0}
+.gen-lista .t b{display:block; font-weight:600; color:var(--tinta)}
+.gen-lista .t span{font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:var(--tinta-suave)}
+.gen-lista .sello{flex:0 0 auto}
 
 /* Rejilla para pintar las franjas ocupadas */
 .gen-rejilla{display:grid; grid-template-columns:38px repeat(6,1fr); gap:1px; background:var(--cuadricula);
@@ -400,6 +419,7 @@ footer a{color:var(--azul)}
   .tabs button{padding:8px 10px; font-size:.7rem; letter-spacing:.04em}
 }
 
+#panelAvance{grid-column:1 / -1}
 section.panel[hidden]{display:none!important}
 /* En las vistas panorámicas (plan y cupos) el catálogo estorba más que ayuda */
 .marco.ancho{grid-template-columns:1fr}
@@ -451,9 +471,8 @@ section.panel[hidden]{display:none!important}
     </div>
   </div>
   <nav class="tabs" role="tablist" aria-label="Secciones de la página">
-    <button type="button" role="tab" data-vista="horario"   aria-controls="panelHorario"    aria-selected="true">Horario <span class="bdg" id="bdgHorario"></span></button>
+    <button type="button" role="tab" data-vista="horario"   aria-controls="panelHorario panelAvance"    aria-selected="true">Horario <span class="bdg" id="bdgHorario"></span></button>
     <button type="button" role="tab" data-vista="generador" aria-controls="panelGenerador"  aria-selected="false" tabindex="-1">Armar horario <span class="bdg" id="bdgGenerador"></span></button>
-    <button type="button" role="tab" data-vista="plan"      aria-controls="panelAvance"     aria-selected="false" tabindex="-1">Mi plan <span class="bdg" id="bdgPlan"></span></button>
     <button type="button" role="tab" data-vista="cupos"     aria-controls="panelTendencias" aria-selected="false" tabindex="-1">Cupos <span class="bdg" id="bdgCupos"></span></button>
   </nav>
 </header>
@@ -484,7 +503,7 @@ section.panel[hidden]{display:none!important}
     <div class="titulo"><h2>Mi horario</h2><span class="dato" id="totalCreditos">0 créditos</span></div>
     <div class="resumen" id="chips"></div>
     <div id="avisoConflicto" role="alert"></div>
-    <div id="avisoPlan" role="status"></div>
+    <details id="avisoPlan"></details>
     <div class="grilla-envoltura"><div class="grilla" id="grilla"></div></div>
     <div id="detalleImpresion">
       <h3>Grupos del horario <span id="metaImpresion"></span></h3>
@@ -504,8 +523,10 @@ section.panel[hidden]{display:none!important}
     <div class="gen-cols">
       <div class="gen-lado">
         <h3>Materias que quieres inscribir</h3>
-        <p class="gen-ayuda">Despliega una asignatura en la lista de la izquierda y usa «Incluir en el generador». También puedes traer las que ya tengas puestas en el horario.</p>
+        <p class="gen-ayuda">Marca las asignaturas y ya está: del grupo se encarga el generador. No aparecen las que tengas marcadas como aprobadas.</p>
         <div class="gen-chips" id="genChips"></div>
+        <input id="genBuscar" type="search" placeholder="Buscar asignatura…" autocomplete="off">
+        <div class="gen-lista" id="genLista"></div>
         <div class="gen-opciones">
           <button type="button" id="btnDesdeHorario">Traer las del horario</button>
           <button type="button" id="btnVaciarCand">Vaciar</button>
@@ -537,7 +558,7 @@ section.panel[hidden]{display:none!important}
   </section>
 
   <!-- Avance en el plan de estudios -->
-  <section class="panel" id="panelAvance" aria-label="Mi avance en el plan de estudios" role="tabpanel" aria-labelledby="tab-plan">
+  <section class="panel" id="panelAvance" aria-label="Mi avance en el plan de estudios">
     <div class="titulo"><h2>Mi avance en el plan</h2><span class="dato" id="resumenAvance"></span></div>
     <div class="avance-barras" id="barrasAvance"></div>
     <div class="avance-acciones">
@@ -1115,7 +1136,7 @@ async function cargarDatos(){
     $("#infoSnapshots").textContent = `${nSnap} snapshots · cada 30 min`;
     $("#conteoMaterias").textContent = `${MATERIAS.size} materias`;
 
-    pintarLista(); pintarHorario(); pintarAvance(); pintarCandidatas(); prepararTendencias();
+    pintarLista(); pintarHorario(); pintarAvance(); pintarCandidatas(); pintarGenLista(); prepararTendencias();
     try{ pintarGrafico(); }catch(e){ msjLienzo("La gráfica falló al dibujarse. Recarga la página para intentar de nuevo."); }
   }catch(e){
     estado.innerHTML = '<span class="punto err"></span>Error al leer los CSV <button id="btnRecargar" type="button">reintentar</button>';
@@ -1326,8 +1347,8 @@ function alternar(k){
   const [cod]=k.split("|");
   if(seleccion.includes(k)) seleccion=seleccion.filter(x=>x!==k);
   else{
-    const ev = evaluar(cod);
-    if(ev.estado==="bloqueada" && !confirmarBloqueada(ev)) return;
+    // Nada de diálogos: si le falta un requisito queda anotado, discreto,
+    // en las notas del plan. Puede haber homologaciones que aquí no constan.
     // solo un grupo por materia
     seleccion=seleccion.filter(x=>x.split("|")[0]!==cod);
     seleccion.push(k);
@@ -1337,23 +1358,11 @@ function alternar(k){
   if(modoTend==="mis") pintarGrafico();
 }
 
-/* No bloqueamos la inscripción: puede haber homologaciones, equivalencias o
-   una corrección al pensum que esta página no conoce. Solo avisamos. */
-function confirmarBloqueada(ev){
-  const motivos = [];
-  for(const ops of ev.faltan) motivos.push("• " + listaOps(ops));
-  if(ev.ca) motivos.push("• " + textoCA(ev.ca));
-  return confirm(
-    `Según la malla, para ${ev.d.nom} te falta:\n\n${motivos.join("\n")}\n\n` +
-    `¿La agregas de todos modos? (puede que tengas equivalencias o que el SIA lo permita)`
-  );
-}
-
 function alternarAprobada(cod){
   cod = nc(cod);
   if(APROBADAS.has(cod)) APROBADAS.delete(cod); else APROBADAS.add(cod);
   avanceAlmacen.guardar(APROBADAS);
-  pintarLista(); pintarHorario(); pintarAvance();
+  pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista();
 }
 
 /* ================= Grilla semanal ================= */
@@ -1468,10 +1477,15 @@ function pintarAvisosPlan(creditos){
     lineas.push(`Vas en <b>${creditos} créditos</b>. El SIA calcula el tope con tu PAPA y rara vez pasa de ${TOPE_CREDITOS}; revisa que te los permita.`);
   }
 
+  // Un renglón discreto y plegado: el que quiera el detalle lo abre.
+  // Se mantiene abierto si el usuario ya lo había desplegado.
+  const abierto = caja.open;
   caja.classList.toggle("visible", lineas.length>0);
   caja.innerHTML = lineas.length
-    ? `⚠ Revisa el orden del plan:<ul>${lineas.map(l=>`<li>${l}</li>`).join("")}</ul>`
+    ? `<summary>${lineas.length} ${lineas.length===1?"nota":"notas"} sobre el orden del plan</summary>`+
+      `<ul>${lineas.map(l=>`<li>${l}</li>`).join("")}</ul>`
     : "";
+  caja.open = abierto;
 }
 
 /* ================= Mini-malla y avance ================= */
@@ -1575,7 +1589,7 @@ function aprobarHasta(sem){
   for(const [cod,d] of Object.entries(PENSUM)) if(!d.opt && d.sem<=sem) APROBADAS.add(cod);
   for(const r of RANURAS) if(r.sem<=sem) APROBADAS.add(r.id);
   avanceAlmacen.guardar(APROBADAS);
-  pintarLista(); pintarHorario(); pintarAvance();
+  pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista();
 }
 
 function pintarDetalleImpresion(){
@@ -1817,7 +1831,7 @@ function usarHorario(claves){
 /* ---------- Materias candidatas ---------- */
 function alternarCandidata(cod){
   if(CANDIDATAS.has(cod)) CANDIDATAS.delete(cod); else CANDIDATAS.add(cod);
-  genAlmacen.guardar(); pintarCandidatas(); pintarLista(); invalidarResultados();
+  genAlmacen.guardar(); pintarCandidatas(); sincronizarGenLista(); pintarLista(); invalidarResultados();
 }
 /* Lo generado deja de valer en cuanto cambian las materias o las franjas. */
 function invalidarResultados(){
@@ -1842,6 +1856,42 @@ function pintarCandidatas(){
   const cred=vivas.reduce((t,c)=>t+Number(MATERIAS.get(c).creditos||0),0);
   $("#genResumen").textContent = vivas.length ? `${vivas.length} materias · ${cred} créditos` : "";
   actualizarInsignias();
+}
+
+/* Selector propio del generador: solo materias, sin grupos. Elegir grupo es
+   justamente el trabajo que se le está delegando a la máquina. */
+function pintarGenLista(){
+  const caja = $("#genLista"); if(!caja) return;
+  const q = ($("#genBuscar").value||"").trim().toLowerCase();
+  caja.innerHTML = "";
+  const items = [...MATERIAS.values()]
+    .filter(m => !APROBADAS.has(nc(m.codigo)))
+    .filter(m => !q || `${m.nombre} ${m.codigo}`.toLowerCase().includes(q))
+    .sort((a,b)=>{
+      const sa = plan(a.codigo)?.sem ?? 99, sb = plan(b.codigo)?.sem ?? 99;
+      return sa-sb || a.nombre.localeCompare(b.nombre,"es");
+    });
+  if(!items.length){
+    caja.innerHTML = '<div class="gen-vacio" style="padding:8px 10px">Ninguna asignatura coincide.</div>';
+    return;
+  }
+  for(const m of items){
+    const ev = evaluar(m.codigo);
+    const l = document.createElement("label");
+    l.dataset.cod = m.codigo;
+    l.innerHTML = `<input type="checkbox" ${CANDIDATAS.has(m.codigo)?"checked":""}>` +
+      `<span class="t"><b>${m.nombre}</b><span>${m.grupos.size} grupo(s) · ${m.creditos} cr</span></span>` +
+      selloDe(ev);
+    l.querySelector("input").addEventListener("change", ()=>alternarCandidata(m.codigo));
+    caja.appendChild(l);
+  }
+}
+
+/* Marcar una materia no debe reconstruir la lista: se perdería el scroll y el
+   foco. Basta con poner al día las casillas. */
+function sincronizarGenLista(){
+  for(const l of document.querySelectorAll("#genLista label"))
+    l.querySelector("input").checked = CANDIDATAS.has(l.dataset.cod);
 }
 
 /* ---------- Rejilla de franjas ocupadas ---------- */
@@ -2022,17 +2072,17 @@ function pintarGrafico(){
    se retira en las panorámicas (la malla y las gráficas de cupos), que
    agradecen todo el ancho. */
 const VISTAS = {
-  horario:   {panel:"#panelHorario",    lado:true },
-  generador: {panel:"#panelGenerador",  lado:true },
-  plan:      {panel:"#panelAvance",     lado:false},
-  cupos:     {panel:"#panelTendencias", lado:false}
+  horario:   {paneles:["#panelHorario","#panelAvance"], lado:true },
+  generador: {paneles:["#panelGenerador"],              lado:false},
+  cupos:     {paneles:["#panelTendencias"],             lado:false}
 };
 let vistaActual = "horario";
 
 function irA(v, {foco=false, guardar=true}={}){
   if(!VISTAS[v]) v = "horario";
   vistaActual = v;
-  for(const [k,cfg] of Object.entries(VISTAS)) $(cfg.panel).hidden = (k!==v);
+  for(const [k,cfg] of Object.entries(VISTAS))
+    for(const sel of cfg.paneles) $(sel).hidden = (k!==v);
   document.querySelectorAll(".tabs button").forEach(b=>{
     const act = b.dataset.vista===v;
     b.setAttribute("aria-selected", act ? "true" : "false");
@@ -2056,8 +2106,7 @@ function actualizarInsignias(){
   $("#bdgHorario").textContent   = cred ? cred+" cr" : "";
   const cand = [...CANDIDATAS].filter(c=>MATERIAS.has(c)).length;
   $("#bdgGenerador").textContent = cand ? String(cand) : "";
-  const t = creditosAprobados();
-  $("#bdgPlan").textContent      = t.TOT ? Math.round(t.TOT/META.TOT*100)+"%" : "";
+  $("#bdgCupos").textContent     = "";
 }
 
 (function pestanas(){
@@ -2103,7 +2152,7 @@ $("#soloDisponibles").addEventListener("change", pintarLista);
     if(!confirm("Se borrarán todas las asignaturas que marcaste como aprobadas. ¿Sigo?")) return;
     APROBADAS = new Set();
     avanceAlmacen.guardar(APROBADAS);
-    pintarLista(); pintarHorario(); pintarAvance();
+    pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista();
   });
 })();
 pintarAvance();
@@ -2114,16 +2163,17 @@ $("#genOrden").addEventListener("change", ()=>{ RESULTADOS.length && pintarResul
 $("#genSoloCupos").addEventListener("change", ()=>{ RESULTADOS.length && generarHorarios(); });
 $("#btnDesdeHorario").addEventListener("click", ()=>{
   for(const k of seleccion) CANDIDATAS.add(k.split("|")[0]);
-  genAlmacen.guardar(); pintarCandidatas(); pintarLista(); invalidarResultados();
+  genAlmacen.guardar(); pintarCandidatas(); sincronizarGenLista(); pintarLista(); invalidarResultados();
 });
 $("#btnVaciarCand").addEventListener("click", ()=>{
-  CANDIDATAS.clear(); genAlmacen.guardar(); pintarCandidatas(); pintarLista();
+  CANDIDATAS.clear(); genAlmacen.guardar(); pintarCandidatas(); sincronizarGenLista(); pintarLista();
   $("#genResultados").innerHTML=""; $("#genEstado").textContent=""; RESULTADOS=[];
 });
 $("#btnLimpiarBloqueos").addEventListener("click", ()=>{
   BLOQUEADOS.clear(); genAlmacen.guardar(); pintarRejilla(); invalidarResultados();
 });
-pintarRejilla(); pintarCandidatas();
+$("#genBuscar").addEventListener("input", pintarGenLista);
+pintarRejilla(); pintarCandidatas(); pintarGenLista();
 
 function fijarModo(modo){
   modoTend=modo;
