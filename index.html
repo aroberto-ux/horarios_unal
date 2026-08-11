@@ -219,6 +219,40 @@ section.panel{
   position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
   text-align:center; padding:20px; color:var(--tinta-suave); font-size:.9rem; background:var(--blanco);
 }
+/* ---------- Resumen por snapshot ---------- */
+#snapPanel[hidden]{display:none}
+.snap-barra{display:flex; flex-wrap:wrap; gap:8px; align-items:center; padding:12px 16px; border-bottom:1px solid var(--cuadricula)}
+.snap-barra select{
+  font:500 .82rem "IBM Plex Mono",monospace; color:var(--tinta); max-width:min(420px,60vw);
+  padding:6px 9px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel);
+}
+.snap-barra button{
+  font:600 .8rem "IBM Plex Mono",monospace; color:var(--tinta-suave); cursor:pointer;
+  padding:6px 10px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel);
+}
+.snap-barra button:hover:not(:disabled){border-color:var(--tinta-suave); color:var(--tinta)}
+.snap-barra button:disabled{opacity:.4; cursor:default}
+.snap-meta{font:500 .78rem "IBM Plex Mono",monospace; color:var(--tinta-suave)}
+.snap-meta b{color:var(--tinta)}
+.snap-meta .baja{color:var(--rojo)}
+.snap-meta .sube{color:var(--verde)}
+
+.snap-lista{max-height:min(56vh,520px); overflow-y:auto; padding:6px 16px 16px}
+.snap-mat{border-bottom:1px solid var(--cuadricula); padding:9px 0}
+.snap-mat:last-child{border-bottom:0}
+.snap-cab{display:flex; align-items:center; gap:8px; width:100%; background:none; border:0;
+  padding:0 0 4px; cursor:pointer; font:inherit; text-align:left; color:var(--tinta)}
+.snap-cab:hover b{text-decoration:underline}
+.snap-cab i{width:10px; height:10px; border-radius:2px; flex:0 0 auto}
+.snap-cab b{font-size:.86rem; font-weight:600; flex:1; min-width:0}
+.snap-cab .tot{font-family:"IBM Plex Mono",monospace; font-size:.76rem; font-weight:600}
+.snap-fila{display:flex; align-items:baseline; gap:10px; padding:2px 0 2px 18px; font-size:.78rem}
+.snap-fila .g{flex:1; min-width:0; color:var(--tinta-suave)}
+.snap-fila .d{font-family:"IBM Plex Mono",monospace; font-size:.74rem; white-space:nowrap}
+.snap-fila .d .flecha{font-weight:600}
+.baja{color:var(--rojo)} .sube{color:var(--verde)}
+.snap-nada{padding:28px 16px; text-align:center; color:var(--tinta-suave); font-size:.88rem}
+
 footer{max-width:1400px; margin:0 auto; padding:10px clamp(12px,3vw,32px) 30px; color:var(--tinta-suave); font-size:.78rem}
 footer a{color:var(--azul)}
 
@@ -607,6 +641,7 @@ section.panel[hidden]{display:none!important}
         <button id="modoMis" class="activo" role="tab">Mis grupos</button>
         <button id="modoMateria" role="tab">Por asignatura</button>
         <button id="modoDoc" role="tab">Docentes</button>
+        <button id="modoSnap" role="tab">Cambios por snapshot</button>
       </div>
       <select id="selMateria" aria-label="Asignatura para graficar" hidden></select>
       <div class="modo rango" id="rangoTend" role="group" aria-label="Rango de tiempo">
@@ -624,6 +659,15 @@ section.panel[hidden]{display:none!important}
       <span class="periodo" id="periodoTend"></span>
     </div>
     <div class="lienzo"><canvas id="grafico"></canvas></div>
+    <div id="snapPanel" hidden>
+      <div class="snap-barra">
+        <button type="button" id="snapPrev" title="Snapshot anterior">◀</button>
+        <select id="selSnap" aria-label="Snapshot a inspeccionar"></select>
+        <button type="button" id="snapNext" title="Snapshot siguiente">▶</button>
+        <span class="snap-meta" id="snapMeta"></span>
+      </div>
+      <div class="snap-lista" id="snapLista"></div>
+    </div>
   </section>
 
 </div>
@@ -1197,6 +1241,7 @@ async function cargarDatos(){
     }
 
     HISTORIAL = hd.historial;
+    SNAPSHOTS = null;   // el reagrupado por corrida se recalcula
     const nSnap = hd.nSnap;
 
     // cupos vigentes = último snapshot si existe
@@ -1696,6 +1741,145 @@ function pintarDetalleImpresion(){
     `${filas.length} ${filas.length===1?"grupo":"grupos"} · ${$("#totalCreditos").textContent} · impreso el ${fecha}`;
 }
 
+/* ================= Resumen por snapshot =================
+   El historial viene por grupo, no por corrida. Para poder preguntar «¿qué
+   cambió en la lectura de las 6 de la tarde?» hay que reagruparlo: se juntan
+   en una misma corrida todos los puntos cuyos instantes están pegados. El
+   workflow corre cada 30 minutos y un barrido tarda unos pocos, así que un
+   hueco de más de 12 minutos marca corrida nueva sin ambigüedad. */
+const SNAP_UMBRAL = 12*60000;
+let SNAPSHOTS = null;      // se reconstruye con cada carga de datos
+let snapSel = null;        // instante del snapshot que se está mirando
+
+function construirSnapshots(){
+  if(SNAPSHOTS) return SNAPSHOTS;
+  const todos = [];
+  for(const [k, serie] of HISTORIAL) for(const p of serie) todos.push({k, t:+p.t, c:p.cupos});
+  todos.sort((a,b)=>a.t-b.t);
+
+  const runs = [];
+  for(const p of todos){
+    let r = runs[runs.length-1];
+    if(!r || p.t - r.fin > SNAP_UMBRAL){ r = {ini:p.t, fin:p.t, puntos:new Map()}; runs.push(r); }
+    else r.fin = p.t;
+    r.puntos.set(p.k, p.c);
+  }
+
+  /* Los cambios se miden contra el último valor conocido de cada grupo, no
+     contra la corrida inmediatamente anterior: un grupo puede haberse quedado
+     sin lectura (NA) y eso no es un cambio de cupos. */
+  const ultimo = new Map();
+  for(const r of runs){
+    r.t = r.ini;
+    r.cambios = []; r.nuevos = 0;
+    for(const [k,c] of r.puntos){
+      const prev = ultimo.get(k);
+      if(prev === undefined) r.nuevos++;
+      else if(prev !== c) r.cambios.push({k, antes:prev, ahora:c, d:c-prev});
+      ultimo.set(k, c);
+    }
+    r.sinLectura = ultimo.size - r.puntos.size;
+    r.estables = r.puntos.size - r.cambios.length - r.nuevos;
+    r.tomados   = r.cambios.reduce((t,c)=>t + (c.d<0 ? -c.d : 0), 0);
+    r.liberados = r.cambios.reduce((t,c)=>t + (c.d>0 ?  c.d : 0), 0);
+    r.materias  = new Set(r.cambios.map(c=>c.k.split("|")[0])).size;
+  }
+  SNAPSHOTS = runs;
+  return runs;
+}
+
+const nombreDe = cod => MATERIAS.get(cod)?.nombre || cod;
+
+function pintarSnapshots(){
+  const todos = construirSnapshots();
+  const {desde, hasta} = ventana();
+  // El rango de fechas de arriba también filtra esta lista: es el mismo eje
+  const snaps = todos.filter(s => s.t>=desde && s.t<=hasta);
+  const sel = $("#selSnap"), lista = $("#snapLista"), meta = $("#snapMeta");
+
+  if(!snaps.length){
+    sel.innerHTML = ""; sel.disabled = true;
+    $("#snapPrev").disabled = $("#snapNext").disabled = true;
+    meta.textContent = "";
+    lista.innerHTML = `<div class="snap-nada">No hay snapshots en el rango elegido.${todos.length?` El historial tiene ${todos.length}; prueba a ampliar las fechas.`:""}</div>`;
+    return;
+  }
+  sel.disabled = false;
+
+  // por defecto, el más reciente del rango
+  if(snapSel==null || !snaps.some(s=>s.t===snapSel)) snapSel = snaps[snaps.length-1].t;
+  const i = snaps.findIndex(s=>s.t===snapSel);
+  const s = snaps[i];
+
+  sel.innerHTML = snaps.map((x,j)=>{
+    const n = x.cambios.length;
+    return `<option value="${x.t}"${x.t===snapSel?" selected":""}>${fmtFecha(new Date(x.t))} · ${n?`${n} cambio(s)`:"sin cambios"}</option>`;
+  }).reverse().join("");
+  $("#snapPrev").disabled = (i===0);
+  $("#snapNext").disabled = (i===snaps.length-1);
+
+  meta.innerHTML =
+    `<b>${s.cambios.length}</b> grupo(s) en <b>${s.materias}</b> asignatura(s) · ` +
+    `<span class="baja">▼${s.tomados}</span> tomados · <span class="sube">▲${s.liberados}</span> liberados · ` +
+    `${s.estables} sin cambio` +
+    (s.nuevos ? ` · ${s.nuevos} nuevos` : "") +
+    (s.sinLectura ? ` · ${s.sinLectura} sin lectura` : "");
+
+  if(!s.cambios.length){
+    lista.innerHTML = `<div class="snap-nada">En esta corrida ningún grupo movió sus cupos.<br>Se leyeron ${s.puntos.size} grupos.</div>`;
+    return;
+  }
+
+  // agrupar por asignatura y ordenar por cuánto se movió cada una
+  const porMat = new Map();
+  for(const c of s.cambios){
+    const cod = c.k.split("|")[0];
+    if(!porMat.has(cod)) porMat.set(cod, []);
+    porMat.get(cod).push(c);
+  }
+  const mats = [...porMat.entries()]
+    .map(([cod, cs])=>({cod, cs: cs.sort((a,b)=>Math.abs(b.d)-Math.abs(a.d)),
+                        neto: cs.reduce((t,c)=>t+c.d,0),
+                        mov: cs.reduce((t,c)=>t+Math.abs(c.d),0)}))
+    .sort((a,b)=> b.mov-a.mov || nombreDe(a.cod).localeCompare(nombreDe(b.cod),"es"));
+
+  lista.innerHTML = "";
+  for(const m of mats){
+    const div = document.createElement("div"); div.className = "snap-mat";
+    const signo = m.neto<0 ? "baja" : m.neto>0 ? "sube" : "";
+    const cab = document.createElement("button");
+    cab.type = "button"; cab.className = "snap-cab";
+    cab.title = "Ver la tendencia de esta asignatura";
+    cab.innerHTML = `<i style="background:${MATERIAS.has(m.cod)?colorDe(m.cod):"#B7CDBB"}"></i>` +
+      `<b>${nombreDe(m.cod)}</b>` +
+      `<span class="tot ${signo}">${m.neto>0?"+":""}${m.neto} cupos</span>`;
+    cab.addEventListener("click", ()=>{
+      if(!MATERIAS.has(m.cod)) return;
+      $("#selMateria").value = m.cod;
+      fijarModo("materia");
+    });
+    div.appendChild(cab);
+    for(const c of m.cs){
+      const g = c.k.slice(m.cod.length+1);
+      const cl = c.d<0 ? "baja" : "sube";
+      div.insertAdjacentHTML("beforeend",
+        `<div class="snap-fila"><span class="g">${g}</span>` +
+        `<span class="d ${cl}">${c.antes} → ${c.ahora} <span class="flecha">${c.d<0?"▼":"▲"}${Math.abs(c.d)}</span></span></div>`);
+    }
+    lista.appendChild(div);
+  }
+}
+
+function moverSnapshot(paso){
+  const {desde, hasta} = ventana();
+  const snaps = construirSnapshots().filter(s => s.t>=desde && s.t<=hasta);
+  const i = snaps.findIndex(s=>s.t===snapSel);
+  const j = i + paso;
+  if(j<0 || j>=snaps.length) return;
+  snapSel = snaps[j].t;
+  pintarSnapshots();
+}
+
 /* ================= Tendencias (Chart.js) ================= */
 function prepararTendencias(){
   const sel=$("#selMateria"); sel.innerHTML="";
@@ -2106,12 +2290,14 @@ function msjLienzo(txt){
 
 let esperaChart=0;
 function pintarGrafico(){
+  if(modoTend==="snap"){ pintarSnapshots(); return; }   // no necesita Chart.js
   if(typeof Chart==="undefined"){
     if(esperaChart++<24){ msjLienzo("Cargando el módulo de gráficas…"); setTimeout(pintarGrafico,500); }
     else msjLienzo("No se pudo cargar la librería de gráficas (Chart.js). Revisa tu conexión y recarga la página.");
     return;
   }
   esperaChart=0;
+  if(modoTend==="snap"){ pintarSnapshots(); return; }
   if(modoTend==="doc"){ pintarDocentes(); return; }
   const claves = modoTend==="mis"
     ? seleccion
@@ -2267,19 +2453,27 @@ pintarRejilla(); pintarCandidatas(); pintarGenLista();
 
 function fijarModo(modo){
   modoTend=modo;
-  const mapa={mis:"#modoMis", materia:"#modoMateria", doc:"#modoDoc"};
+  const mapa={mis:"#modoMis", materia:"#modoMateria", doc:"#modoDoc", snap:"#modoSnap"};
   for(const [m,sel] of Object.entries(mapa)) $(sel).classList.toggle("activo", m===modo);
-  $("#selMateria").hidden = (modo==="mis");
+  $("#selMateria").hidden = (modo!=="materia" && modo!=="doc");
   // El modo Docentes es un barrido agregado sobre todo el historial, no una
-  // serie de tiempo: el selector de rango no aplica ahí.
+  // serie de tiempo: el selector de rango no aplica ahí. En Snapshots sí,
+  // porque acota qué corridas se ofrecen en la lista.
   $("#rangoTend").hidden = (modo==="doc");
   $("#fechasTend").hidden = (modo==="doc");
   $("#periodoTend").hidden = (modo==="doc");
+  document.querySelector(".lienzo").hidden = (modo==="snap");
+  $("#snapPanel").hidden = (modo!=="snap");
+  if(modo==="snap" && grafico){ grafico.destroy(); grafico=null; }
   pintarGrafico();
 }
 $("#modoMis").addEventListener("click",()=>fijarModo("mis"));
 $("#modoMateria").addEventListener("click",()=>fijarModo("materia"));
 $("#modoDoc").addEventListener("click",()=>fijarModo("doc"));
+$("#modoSnap").addEventListener("click",()=>fijarModo("snap"));
+$("#selSnap").addEventListener("change", ()=>{ snapSel = Number($("#selSnap").value); pintarSnapshots(); });
+$("#snapPrev").addEventListener("click", ()=>moverSnapshot(-1));
+$("#snapNext").addEventListener("click", ()=>moverSnapshot(1));
 $("#selMateria").addEventListener("change", pintarGrafico);
 for(const b of document.querySelectorAll("#rangoTend button")){
   b.addEventListener("click", ()=>fijarRango(b.dataset.r));
