@@ -181,7 +181,6 @@ section.panel{
 .vacio{padding:40px 20px; text-align:center; color:var(--tinta-suave); font-size:.9rem}
 
 /* ---------- Tendencias ---------- */
-#panelTendencias{grid-column:1 / -1}
 .controles-tend{display:flex; flex-wrap:wrap; gap:10px; padding:14px 16px; border-bottom:1px solid var(--cuadricula); align-items:center}
 .controles-tend select{
   font:500 .88rem "Archivo",sans-serif; color:var(--tinta);
@@ -267,7 +266,6 @@ footer a{color:var(--azul)}
 #avisoPlan b{font-weight:700}
 
 /* ---------- Panel de avance (mini-malla) ---------- */
-#panelAvance{grid-column:1 / -1}
 .avance-barras{display:flex; flex-wrap:wrap; gap:10px 22px; padding:12px 16px; border-bottom:1px solid var(--cuadricula)}
 .barra{min-width:140px; flex:1 1 160px}
 .barra .rot{display:flex; justify-content:space-between; font-size:.74rem; color:var(--tinta-suave); margin-bottom:3px}
@@ -317,6 +315,96 @@ footer a{color:var(--azul)}
 .leyenda span{display:inline-flex; align-items:center; gap:5px}
 .leyenda i{width:12px; height:12px; border-radius:3px; border:1.5px solid var(--cuadricula); display:inline-block}
 
+/* ---------- Generador de horarios ---------- */
+.gen-cols{display:grid; grid-template-columns:minmax(260px,1fr) minmax(320px,1.2fr); gap:0}
+@media(max-width:900px){ .gen-cols{grid-template-columns:1fr} }
+.gen-lado{padding:14px 16px; border-right:1px solid var(--cuadricula)}
+.gen-lado:last-child{border-right:0; border-top:0}
+@media(max-width:900px){ .gen-lado{border-right:0; border-bottom:1px solid var(--cuadricula)} }
+.gen-lado h3{font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--tinta-suave); margin:0 0 8px}
+.gen-ayuda{font-size:.78rem; color:var(--tinta-suave); line-height:1.45; margin:0 0 10px}
+
+.gen-chips{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px}
+.gen-chip{display:inline-flex; align-items:center; gap:6px; font-size:.78rem; font-weight:600;
+  background:var(--papel); border:1.5px solid var(--cuadricula); border-radius:99px; padding:3px 6px 3px 10px}
+.gen-chip i{width:8px; height:8px; border-radius:50%; display:inline-block}
+.gen-chip .n{font-family:"IBM Plex Mono",monospace; font-weight:500; color:var(--tinta-suave); font-size:.7rem}
+.gen-chip button{border:0; background:none; cursor:pointer; color:var(--tinta-suave); font-size:.9rem; line-height:1; padding:0 2px}
+.gen-chip button:hover{color:var(--rojo)}
+.gen-vacio{font-size:.8rem; color:var(--tinta-suave); font-style:italic}
+
+/* Rejilla para pintar las franjas ocupadas */
+.gen-rejilla{display:grid; grid-template-columns:38px repeat(6,1fr); gap:1px; background:var(--cuadricula);
+  border:1px solid var(--cuadricula); border-radius:var(--radio); overflow:hidden; user-select:none; touch-action:none}
+.gen-rejilla .gh{background:var(--papel); font-family:"IBM Plex Mono",monospace; font-size:.6rem; font-weight:600;
+  text-align:center; padding:3px 0; color:var(--tinta-suave)}
+.gen-rejilla .gr{background:var(--papel); font-family:"IBM Plex Mono",monospace; font-size:.58rem;
+  text-align:right; padding:0 4px; color:var(--tinta-suave); line-height:13px}
+.gen-rejilla .gc{background:var(--blanco); height:13px; border:0; padding:0; cursor:pointer}
+.gen-rejilla .gc.media{box-shadow:inset 0 -1px 0 var(--cuadricula)}
+.gen-rejilla .gc.off{background:repeating-linear-gradient(45deg,#E9D9D6,#E9D9D6 3px,#F5EAE8 3px,#F5EAE8 6px)}
+
+.gen-opciones{display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; margin-top:12px; font-size:.8rem; color:var(--tinta-suave)}
+.gen-opciones select, .gen-opciones button{font:600 .78rem "Archivo",sans-serif; padding:5px 12px;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta); cursor:pointer}
+.gen-opciones label{display:inline-flex; align-items:center; gap:6px; cursor:pointer}
+#btnGenerar{background:var(--tinta); color:var(--papel); border-color:var(--tinta)}
+#btnGenerar:hover{opacity:.88}
+
+#genEstado{padding:0 16px 4px; font-size:.82rem; color:var(--tinta-suave)}
+#genEstado.error{color:var(--rojo)}
+#genEstado ul{margin:4px 0 0; padding-left:18px}
+
+.gen-res{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; padding:12px 16px}
+.gen-card{border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco); padding:10px 12px}
+.gen-card.puesto{border-color:var(--azul); box-shadow:0 0 0 2px var(--azul-claro)}
+.gen-card header{display:flex; justify-content:space-between; align-items:baseline; gap:8px; margin-bottom:6px}
+.gen-card header b{font-size:.85rem}
+.gen-card header span{font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:var(--tinta-suave); text-align:right}
+.gen-mini{position:relative; display:grid; grid-template-columns:repeat(6,1fr); gap:1px;
+  background:var(--cuadricula); border:1px solid var(--cuadricula); border-radius:3px; overflow:hidden; margin-bottom:8px}
+.gen-mini .mcol{position:relative; background:var(--blanco); height:96px}
+.gen-mini .mbloq{position:absolute; left:0; right:0; background:#EFE2E0}
+.gen-mini .mses{position:absolute; left:1px; right:1px; border-radius:2px; min-height:3px}
+.gen-mini .mdia{position:absolute; top:1px; left:0; right:0; text-align:center;
+  font-family:"IBM Plex Mono",monospace; font-size:.5rem; color:var(--tinta-suave); pointer-events:none}
+.gen-card ol{margin:0 0 8px; padding-left:16px; font-size:.72rem; color:var(--tinta-suave); line-height:1.5}
+.gen-card ol b{color:var(--tinta); font-weight:600}
+.gen-card .usar{width:100%; font:600 .76rem "Archivo",sans-serif; cursor:pointer; padding:5px;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta)}
+.gen-card .usar:hover{border-color:var(--tinta-suave)}
+.gen-card.puesto .usar{background:var(--azul-claro); border-color:var(--azul); color:var(--azul)}
+
+/* ---------- Navegación por pestañas ---------- */
+.tabs{
+  max-width:1400px; margin:16px auto -22px; padding:0 clamp(16px,4vw,40px);
+  display:flex; gap:3px; flex-wrap:wrap; position:relative; z-index:1;
+}
+.tabs button{
+  font:700 .78rem "Archivo",sans-serif; letter-spacing:.08em; text-transform:uppercase;
+  display:inline-flex; align-items:center; gap:7px; cursor:pointer;
+  background:none; border:0; border-radius:6px 6px 0 0; padding:9px 15px 11px;
+  color:#9DB3A5; transition:background .15s, color .15s;
+}
+.tabs button:hover{color:var(--papel); background:#ffffff14}
+.tabs button[aria-selected="true"]{background:var(--verde); color:#fff}
+.tabs button:focus-visible{outline:2px solid var(--papel); outline-offset:-3px}
+.tabs .bdg{
+  font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:600; letter-spacing:0;
+  background:#ffffff2e; border-radius:99px; padding:1px 7px; text-transform:none;
+}
+.tabs button[aria-selected="true"] .bdg{background:#00000030}
+.tabs .bdg:empty{display:none}
+@media (max-width:600px){
+  .tabs{gap:2px; margin-bottom:-22px}
+  .tabs button{padding:8px 10px; font-size:.7rem; letter-spacing:.04em}
+}
+
+section.panel[hidden]{display:none!important}
+/* En las vistas panorámicas (plan y cupos) el catálogo estorba más que ayuda */
+.marco.ancho{grid-template-columns:1fr}
+.marco.ancho #panelMaterias{display:none}
+
 /* ---------- Impresión ---------- */
 @page{size:A4 portrait; margin:12mm}
 @media print{
@@ -325,9 +413,9 @@ footer a{color:var(--azul)}
   header{background:#fff; color:var(--tinta); border-bottom:2px solid var(--tinta); padding:0 0 8px}
   h1{font-size:1.05rem}
   h1 small{color:var(--tinta-suave); letter-spacing:.18em}
-  .estado, #btnImprimir{display:none}
+  .estado, #btnImprimir, .tabs{display:none}
   .marco{display:block; max-width:none; padding:10px 0 0}
-  #panelMaterias, #panelTendencias, #panelAvance, footer{display:none!important}
+  #panelMaterias, #panelTendencias, #panelAvance, #panelGenerador, footer{display:none!important}
   section.panel{border:none; box-shadow:none; overflow:visible}
   .panel > .titulo{padding:0 0 6px}
   .resumen{padding:8px 0; border-bottom:none; font-size:.72rem}
@@ -362,6 +450,12 @@ footer a{color:var(--azul)}
       <button id="btnImprimir" type="button" title="Imprime solo el horario; en el diálogo puedes elegir «Guardar como PDF»">Imprimir / PDF</button>
     </div>
   </div>
+  <nav class="tabs" role="tablist" aria-label="Secciones de la página">
+    <button type="button" role="tab" data-vista="horario"   aria-controls="panelHorario"    aria-selected="true">Horario <span class="bdg" id="bdgHorario"></span></button>
+    <button type="button" role="tab" data-vista="generador" aria-controls="panelGenerador"  aria-selected="false" tabindex="-1">Armar horario <span class="bdg" id="bdgGenerador"></span></button>
+    <button type="button" role="tab" data-vista="plan"      aria-controls="panelAvance"     aria-selected="false" tabindex="-1">Mi plan <span class="bdg" id="bdgPlan"></span></button>
+    <button type="button" role="tab" data-vista="cupos"     aria-controls="panelTendencias" aria-selected="false" tabindex="-1">Cupos <span class="bdg" id="bdgCupos"></span></button>
+  </nav>
 </header>
 
 <div class="marco">
@@ -386,7 +480,7 @@ footer a{color:var(--azul)}
   </section>
 
   <!-- Grilla semanal -->
-  <section class="panel" id="panelHorario" aria-label="Mi horario semanal">
+  <section class="panel" id="panelHorario" aria-label="Mi horario semanal" role="tabpanel" aria-labelledby="tab-horario">
     <div class="titulo"><h2>Mi horario</h2><span class="dato" id="totalCreditos">0 créditos</span></div>
     <div class="resumen" id="chips"></div>
     <div id="avisoConflicto" role="alert"></div>
@@ -404,8 +498,46 @@ footer a{color:var(--azul)}
     </div>
   </section>
 
+  <!-- Generador de horarios posibles -->
+  <section class="panel" id="panelGenerador" aria-label="Generador de horarios" role="tabpanel" aria-labelledby="tab-generador">
+    <div class="titulo"><h2>Armar horario automáticamente</h2><span class="dato" id="genResumen"></span></div>
+    <div class="gen-cols">
+      <div class="gen-lado">
+        <h3>Materias que quieres inscribir</h3>
+        <p class="gen-ayuda">Despliega una asignatura en la lista de la izquierda y usa «Incluir en el generador». También puedes traer las que ya tengas puestas en el horario.</p>
+        <div class="gen-chips" id="genChips"></div>
+        <div class="gen-opciones">
+          <button type="button" id="btnDesdeHorario">Traer las del horario</button>
+          <button type="button" id="btnVaciarCand">Vaciar</button>
+        </div>
+      </div>
+      <div class="gen-lado">
+        <h3>Franjas en las que no puedes</h3>
+        <p class="gen-ayuda">Pinta con el ratón (o el dedo) las horas que tienes ocupadas: trabajo, transporte, lo que sea. El generador descartará cualquier grupo que caiga ahí.</p>
+        <div class="gen-rejilla" id="genRejilla"></div>
+        <div class="gen-opciones">
+          <button type="button" id="btnLimpiarBloqueos">Despintar todo</button>
+        </div>
+      </div>
+    </div>
+    <div class="gen-opciones" style="padding:12px 16px; border-top:1px solid var(--cuadricula)">
+      <button type="button" id="btnGenerar">Generar horarios</button>
+      <label for="genOrden">Ordenar por
+        <select id="genOrden">
+          <option value="huecos">menos huecos entre clases</option>
+          <option value="dias">menos días en la universidad</option>
+          <option value="tarde">empezar lo más tarde posible</option>
+          <option value="temprano">terminar lo más temprano posible</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="genSoloCupos" checked> Solo grupos con cupos</label>
+    </div>
+    <div id="genEstado"></div>
+    <div class="gen-res" id="genResultados"></div>
+  </section>
+
   <!-- Avance en el plan de estudios -->
-  <section class="panel" id="panelAvance" aria-label="Mi avance en el plan de estudios">
+  <section class="panel" id="panelAvance" aria-label="Mi avance en el plan de estudios" role="tabpanel" aria-labelledby="tab-plan">
     <div class="titulo"><h2>Mi avance en el plan</h2><span class="dato" id="resumenAvance"></span></div>
     <div class="avance-barras" id="barrasAvance"></div>
     <div class="avance-acciones">
@@ -428,7 +560,7 @@ footer a{color:var(--azul)}
   </section>
 
   <!-- Tendencias de cupos -->
-  <section class="panel" id="panelTendencias" aria-label="Tendencia de cupos por grupo">
+  <section class="panel" id="panelTendencias" aria-label="Tendencia de cupos por grupo" role="tabpanel" aria-labelledby="tab-cupos">
     <div class="titulo"><h2>Tendencia de cupos</h2><span class="dato" id="infoSnapshots"></span></div>
     <div class="controles-tend">
       <div class="modo" role="tablist">
@@ -983,7 +1115,7 @@ async function cargarDatos(){
     $("#infoSnapshots").textContent = `${nSnap} snapshots · cada 30 min`;
     $("#conteoMaterias").textContent = `${MATERIAS.size} materias`;
 
-    pintarLista(); pintarHorario(); pintarAvance(); prepararTendencias();
+    pintarLista(); pintarHorario(); pintarAvance(); pintarCandidatas(); prepararTendencias();
     try{ pintarGrafico(); }catch(e){ msjLienzo("La gráfica falló al dibujarse. Recarga la página para intentar de nuevo."); }
   }catch(e){
     estado.innerHTML = '<span class="punto err"></span>Error al leer los CSV <button id="btnRecargar" type="button">reintentar</button>';
@@ -1158,14 +1290,22 @@ function bloquePlan(m, ev){
   }
 
   caja.innerHTML = partes.join(" ") + `<div class="acciones"></div>`;
+  const acciones = caja.querySelector(".acciones");
   if(ev.estado!=="fuera"){
     const b = document.createElement("button");
     const yaEsta = APROBADAS.has(ev.cod);
     b.type="button"; b.textContent = yaEsta ? "✓ Aprobada — desmarcar" : "Marcar como aprobada";
     b.classList.toggle("marcada", yaEsta);
     b.addEventListener("click", ()=>alternarAprobada(ev.cod));
-    caja.querySelector(".acciones").appendChild(b);
+    acciones.appendChild(b);
   }
+  // Cualquier materia del catálogo puede entrar al generador, esté o no en el plan
+  const c = document.createElement("button");
+  const candidata = CANDIDATAS.has(m.codigo);
+  c.type="button"; c.textContent = candidata ? "✓ En el generador — quitar" : "Incluir en el generador";
+  c.classList.toggle("marcada", candidata);
+  c.addEventListener("click", ()=>alternarCandidata(m.codigo));
+  acciones.appendChild(c);
   return caja;
 }
 
@@ -1292,6 +1432,7 @@ function pintarHorario(){
   }
 
   pintarDetalleImpresion();
+  actualizarInsignias();
 }
 
 /* Tabla que solo aparece en la hoja impresa: útil para transcribir al SIA */
@@ -1354,6 +1495,7 @@ function pintarAvance(){
   const hechas = [...APROBADAS].filter(id => PENSUM[id] || RANURA[id]).length + cubiertas.size
                  - [...cubiertas.keys()].filter(id => APROBADAS.has(id)).length;
   $("#resumenAvance").textContent = `${t.TOT} de ${META.TOT} créditos · ${hechas} casillas cubiertas`;
+  actualizarInsignias();
 
   // Mini-malla: una columna por semestre, con asignaturas y casillas flexibles
   const porSem = new Map();
@@ -1467,7 +1609,282 @@ function prepararTendencias(){
   }
 }
 
-/* ================= Estadísticas de cupos ================= */
+/* ================= Generador de horarios =================
+   Producto cartesiano de los grupos de cada materia candidata, podado con
+   backtracking: en cuanto un grupo choca con lo ya elegido se corta la rama,
+   así no hay que enumerar combinaciones imposibles. Las materias con menos
+   grupos van primero, que es lo que más poda. */
+const GEN_PASO   = 30;      // resolución de la rejilla de bloqueos, en minutos
+const GEN_DESDE  = 6*60, GEN_HASTA = 22*60;
+const GEN_LIMITE = 400;     // horarios que se guardan como máximo
+const GEN_NODOS  = 400000;  // techo de seguridad para no congelar el navegador
+
+const genAlmacen = {
+  leer(){ try{ return JSON.parse(localStorage.getItem("generadorUNAL")||"{}"); }catch(e){ return {}; } },
+  guardar(){ try{ localStorage.setItem("generadorUNAL",
+    JSON.stringify({cand:[...CANDIDATAS], bloq:[...BLOQUEADOS]})); }catch(e){} }
+};
+const _gen0 = genAlmacen.leer();
+let CANDIDATAS = new Set(_gen0.cand || []);
+let BLOQUEADOS = new Set(_gen0.bloq || []);   // "DIA|minuto"
+let RESULTADOS = [];
+
+const franja = (dia, min) => `${dia}|${min}`;
+
+/* ¿El grupo pisa alguna franja bloqueada? */
+function chocaBloqueo(g){
+  for(const s of g.sesiones)
+    for(let m=Math.floor(s.ini/GEN_PASO)*GEN_PASO; m<s.fin; m+=GEN_PASO)
+      if(BLOQUEADOS.has(franja(s.dia,m))) return true;
+  return false;
+}
+function chocanGrupos(a,b){
+  for(const s of a.sesiones) for(const t of b.sesiones)
+    if(s.dia===t.dia && s.ini<t.fin && t.ini<s.fin) return true;
+  return false;
+}
+
+/* Días, huecos, hora de entrada y de salida de una combinación. */
+function metricas(combo){
+  const porDia = new Map();
+  for(const {g} of combo) for(const s of g.sesiones){
+    if(!porDia.has(s.dia)) porDia.set(s.dia, []);
+    porDia.get(s.dia).push(s);
+  }
+  let huecos=0, ini=24*60, fin=0;
+  for(const ss of porDia.values()){
+    ss.sort((a,b)=>a.ini-b.ini);
+    let tope = ss[0].fin;
+    for(let i=1;i<ss.length;i++){ huecos += Math.max(0, ss[i].ini-tope); tope = Math.max(tope, ss[i].fin); }
+    ini = Math.min(ini, ss[0].ini); fin = Math.max(fin, tope);
+  }
+  if(!porDia.size){ ini=0; fin=0; }
+  return {dias:porDia.size, huecos, ini, fin};
+}
+
+function generarHorarios(){
+  const estado = $("#genEstado"), caja = $("#genResultados");
+  const mats = [...CANDIDATAS].map(c=>MATERIAS.get(c)).filter(Boolean);
+  caja.innerHTML=""; RESULTADOS=[]; estado.className="";
+
+  if(!mats.length){
+    estado.textContent = "Primero elige al menos una materia.";
+    estado.className="error"; return;
+  }
+
+  const soloCupos = $("#genSoloCupos").checked;
+  const ops = [], sinSalida = [];
+  for(const m of mats){
+    const todos = [...m.grupos.values()];
+    const librePorBloqueo = todos.filter(g=>!chocaBloqueo(g));
+    const gs = soloCupos ? librePorBloqueo.filter(g=>g.cupos===null||g.cupos>0) : librePorBloqueo;
+    if(!gs.length) sinSalida.push({m, todos:todos.length, tras:librePorBloqueo.length});
+    ops.push({m, gs});
+  }
+  if(sinSalida.length){
+    estado.className="error";
+    estado.innerHTML = "No hay ningún horario posible:<ul>" + sinSalida.map(x=>{
+      const causa = x.tras===0
+        ? `sus ${x.todos} grupo(s) chocan con las franjas que bloqueaste`
+        : `los ${x.tras} grupo(s) que te sirven están sin cupos`;
+      return `<li><b>${x.m.nombre}</b>: ${causa}.</li>`;
+    }).join("") + "</ul>";
+    return;
+  }
+
+  ops.sort((a,b)=>a.gs.length-b.gs.length);   // menos alternativas primero: poda más
+  let nodos=0, cortado=false;
+  const elegidos=[];
+  (function bt(i){
+    if(RESULTADOS.length>=GEN_LIMITE || nodos>GEN_NODOS){ cortado=true; return; }
+    if(i===ops.length){ RESULTADOS.push(elegidos.slice()); return; }
+    for(const g of ops[i].gs){
+      nodos++;
+      if(elegidos.some(e=>chocanGrupos(e.g,g))) continue;
+      elegidos.push({m:ops[i].m, g});
+      bt(i+1);
+      elegidos.pop();
+      if(RESULTADOS.length>=GEN_LIMITE || nodos>GEN_NODOS){ cortado=true; return; }
+    }
+  })(0);
+
+  if(!RESULTADOS.length){
+    estado.className="error";
+    estado.textContent = "Todas las combinaciones se cruzan entre sí. Prueba quitando una materia o liberando alguna franja.";
+    return;
+  }
+  const combos = ops.reduce((t,o)=>t*o.gs.length, 1);
+  estado.textContent = `${RESULTADOS.length}${cortado?"+":""} horarios sin cruces` +
+    ` (de ${combos.toLocaleString("es")} combinaciones posibles)` +
+    (cortado ? ". Se muestran los primeros que se encontraron; afina las franjas para reducirlos." : ".");
+  pintarResultados();
+}
+
+function pintarResultados(){
+  const caja = $("#genResultados"); caja.innerHTML="";
+  if(!RESULTADOS.length) return;
+  const modo = $("#genOrden").value;
+  const puestos = new Set(seleccion);
+
+  const conM = RESULTADOS.map(c=>({combo:c, m:metricas(c)}));
+  conM.sort((a,b)=>{
+    if(modo==="dias")     return a.m.dias-b.m.dias || a.m.huecos-b.m.huecos;
+    if(modo==="tarde")    return b.m.ini-a.m.ini   || a.m.huecos-b.m.huecos;
+    if(modo==="temprano") return a.m.fin-b.m.fin   || a.m.huecos-b.m.huecos;
+    return a.m.huecos-b.m.huecos || a.m.dias-b.m.dias;
+  });
+
+  // rango horario común, para que las miniaturas se puedan comparar de un vistazo
+  let lo=24*60, hi=0;
+  for(const {m} of conM){ if(!m.fin) continue; lo=Math.min(lo,m.ini); hi=Math.max(hi,m.fin); }
+  lo=Math.floor(lo/60)*60; hi=Math.ceil(hi/60)*60;
+  if(hi<=lo){ lo=7*60; hi=18*60; }
+
+  // De a 12 tarjetas: pintar 400 miniaturas de golpe no aporta nada
+  let vistos = 0;
+  const masBtn = document.createElement("button");
+  masBtn.type="button"; masBtn.className="usar";
+  const tanda = ()=>{
+    masBtn.remove();
+    conM.slice(vistos, vistos+12).forEach((r,i)=>caja.appendChild(tarjetaHorario(r, vistos+i+1, lo, hi, puestos)));
+    vistos = Math.min(vistos+12, conM.length);
+    if(vistos < conM.length){
+      masBtn.textContent = `Ver ${Math.min(12, conM.length-vistos)} más (quedan ${conM.length-vistos})`;
+      caja.appendChild(masBtn);
+    }
+  };
+  masBtn.addEventListener("click", tanda);
+  tanda();
+}
+
+function tarjetaHorario({combo, m}, n, lo, hi, puestos){
+  const total = hi-lo;
+  const art = document.createElement("article"); art.className="gen-card";
+  const claves = combo.map(({m:mat,g})=>`${mat.codigo}|${g.grupo}`);
+  if(claves.length===puestos.size && claves.every(k=>puestos.has(k))) art.classList.add("puesto");
+
+  const hh = m.huecos ? `${Math.floor(m.huecos/60)}h${m.huecos%60?String(m.huecos%60).padStart(2,"0"):""}` : "sin huecos";
+  art.innerHTML = `<header><b>Opción ${n}</b><span>${m.dias} día(s) · ${hh}<br>entras ${deMin(m.ini)} · sales ${deMin(m.fin)}</span></header>`;
+
+  // miniatura de la semana
+  const mini = document.createElement("div"); mini.className="gen-mini";
+  for(const d of DIAS){
+    const col=document.createElement("div"); col.className="mcol";
+    col.insertAdjacentHTML("beforeend", `<span class="mdia">${d.slice(0,1)}</span>`);
+    for(let t=lo; t<hi; t+=GEN_PASO){
+      if(!BLOQUEADOS.has(franja(d,t))) continue;
+      const b=document.createElement("div"); b.className="mbloq";
+      b.style.top=((t-lo)/total*100)+"%"; b.style.height=(GEN_PASO/total*100)+"%";
+      col.appendChild(b);
+    }
+    for(const {m:mat,g} of combo) for(const s of g.sesiones){
+      if(s.dia!==d) continue;
+      const b=document.createElement("div"); b.className="mses";
+      b.style.top=((s.ini-lo)/total*100)+"%";
+      b.style.height=Math.max(2,(s.fin-s.ini)/total*100)+"%";
+      b.style.background=colorDe(mat.codigo);
+      b.title=`${mat.nombre} · ${deMin(s.ini)}–${deMin(s.fin)}`;
+      col.appendChild(b);
+    }
+    mini.appendChild(col);
+  }
+  art.appendChild(mini);
+
+  const ol=document.createElement("ol");
+  ol.innerHTML = combo.map(({m:mat,g})=>{
+    const cu = g.cupos===null ? "" : ` · ${g.cupos} cupos`;
+    return `<li><b>${mat.nombre}</b><br>${g.grupo}${cu}</li>`;
+  }).join("");
+  art.appendChild(ol);
+
+  const btn=document.createElement("button");
+  btn.type="button"; btn.className="usar";
+  btn.textContent = art.classList.contains("puesto") ? "✓ Es el que tienes puesto" : "Usar este horario";
+  btn.addEventListener("click", ()=>usarHorario(claves));
+  art.appendChild(btn);
+  return art;
+}
+
+function usarHorario(claves){
+  seleccion = claves.slice();
+  almacen.guardar(seleccion);
+  actualizarBotones(); pintarHorario(); pintarAvance(); pintarResultados();
+  if(modoTend==="mis") pintarGrafico();
+  irA("horario");
+  $("#grilla").scrollIntoView({behavior:"smooth", block:"center"});
+}
+
+/* ---------- Materias candidatas ---------- */
+function alternarCandidata(cod){
+  if(CANDIDATAS.has(cod)) CANDIDATAS.delete(cod); else CANDIDATAS.add(cod);
+  genAlmacen.guardar(); pintarCandidatas(); pintarLista(); invalidarResultados();
+}
+/* Lo generado deja de valer en cuanto cambian las materias o las franjas. */
+function invalidarResultados(){
+  if(!RESULTADOS.length) return;
+  RESULTADOS = [];
+  $("#genResultados").innerHTML = "";
+  $("#genEstado").className = "";
+  $("#genEstado").textContent = "Cambiaste algo: vuelve a generar para ver los horarios actualizados.";
+}
+function pintarCandidatas(){
+  const caja=$("#genChips"); if(!caja) return;
+  caja.innerHTML="";
+  const vivas=[...CANDIDATAS].filter(c=>MATERIAS.has(c));
+  if(!vivas.length){ caja.innerHTML='<span class="gen-vacio">Todavía no has elegido ninguna materia.</span>'; }
+  for(const c of vivas){
+    const m=MATERIAS.get(c);
+    const ch=document.createElement("span"); ch.className="gen-chip";
+    ch.innerHTML=`<i style="background:${colorDe(c)}"></i>${m.nombre} <span class="n">${m.grupos.size} gr.</span><button type="button" aria-label="Quitar">✕</button>`;
+    ch.querySelector("button").addEventListener("click",()=>alternarCandidata(c));
+    caja.appendChild(ch);
+  }
+  const cred=vivas.reduce((t,c)=>t+Number(MATERIAS.get(c).creditos||0),0);
+  $("#genResumen").textContent = vivas.length ? `${vivas.length} materias · ${cred} créditos` : "";
+  actualizarInsignias();
+}
+
+/* ---------- Rejilla de franjas ocupadas ---------- */
+function pintarRejilla(){
+  const g=$("#genRejilla"); if(!g) return;
+  g.innerHTML='<div class="gh"></div>'+DIAS.map(d=>`<div class="gh">${d.slice(0,3)}</div>`).join("");
+  for(let t=GEN_DESDE; t<GEN_HASTA; t+=GEN_PASO){
+    g.insertAdjacentHTML("beforeend", `<div class="gr">${t%60===0?deMin(t):""}</div>`);
+    for(const d of DIAS){
+      const b=document.createElement("button");
+      b.type="button"; b.className="gc"+(t%60===30?" media":"")+(BLOQUEADOS.has(franja(d,t))?" off":"");
+      b.dataset.f=franja(d,t);
+      b.setAttribute("aria-label", `${d} ${deMin(t)}`);
+      g.appendChild(b);
+    }
+  }
+}
+(function rejillaInteractiva(){
+  let pintando=null;   // true = bloquear, false = liberar
+  const aplicar=el=>{
+    if(!el || !el.classList.contains("gc")) return;
+    const f=el.dataset.f;
+    if(pintando){ BLOQUEADOS.add(f); el.classList.add("off"); }
+    else{ BLOQUEADOS.delete(f); el.classList.remove("off"); }
+  };
+  document.addEventListener("pointerdown", e=>{
+    const el=e.target.closest("#genRejilla .gc"); if(!el) return;
+    e.preventDefault();
+    pintando = !el.classList.contains("off");
+    aplicar(el);
+  });
+  document.addEventListener("pointermove", e=>{
+    if(pintando===null) return;
+    const el=document.elementFromPoint(e.clientX,e.clientY);
+    if(el && el.closest("#genRejilla")) aplicar(el.closest(".gc"));
+  });
+  document.addEventListener("pointerup", ()=>{
+    if(pintando===null) return;
+    pintando=null; genAlmacen.guardar(); invalidarResultados();
+  });
+})();
+
+
 function statsGrupo(k){
   const h=HISTORIAL.get(k)||[];
   if(!h.length) return null;
@@ -1599,7 +2016,71 @@ function pintarGrafico(){
   });
 }
 
-/* ================= Eventos ================= */
+/* ================= Navegación por pestañas =================
+   Una sola vista visible a la vez. El catálogo de asignaturas se queda fijo
+   en las vistas donde se usa (armar el horario a mano y elegir candidatas), y
+   se retira en las panorámicas (la malla y las gráficas de cupos), que
+   agradecen todo el ancho. */
+const VISTAS = {
+  horario:   {panel:"#panelHorario",    lado:true },
+  generador: {panel:"#panelGenerador",  lado:true },
+  plan:      {panel:"#panelAvance",     lado:false},
+  cupos:     {panel:"#panelTendencias", lado:false}
+};
+let vistaActual = "horario";
+
+function irA(v, {foco=false, guardar=true}={}){
+  if(!VISTAS[v]) v = "horario";
+  vistaActual = v;
+  for(const [k,cfg] of Object.entries(VISTAS)) $(cfg.panel).hidden = (k!==v);
+  document.querySelectorAll(".tabs button").forEach(b=>{
+    const act = b.dataset.vista===v;
+    b.setAttribute("aria-selected", act ? "true" : "false");
+    b.tabIndex = act ? 0 : -1;
+    if(act && foco) b.focus();
+  });
+  $(".marco").classList.toggle("ancho", !VISTAS[v].lado);
+  if(guardar){
+    try{ localStorage.setItem("vistaUNAL", v); }catch(e){}
+    if(location.hash.slice(1) !== v) history.replaceState(null,"","#"+v);
+  }
+  // El lienzo de Chart.js mide mal si nace oculto: hay que redibujarlo al mostrarlo
+  if(v==="cupos") pintarGrafico();
+  actualizarInsignias();
+}
+
+/* Contadores en las pestañas, para saber qué hay en cada una sin entrar. */
+function actualizarInsignias(){
+  const cred = [...new Set(seleccion.map(k=>k.split("|")[0]))]
+    .reduce((t,c)=>t+Number(MATERIAS.get(c)?.creditos||0),0);
+  $("#bdgHorario").textContent   = cred ? cred+" cr" : "";
+  const cand = [...CANDIDATAS].filter(c=>MATERIAS.has(c)).length;
+  $("#bdgGenerador").textContent = cand ? String(cand) : "";
+  const t = creditosAprobados();
+  $("#bdgPlan").textContent      = t.TOT ? Math.round(t.TOT/META.TOT*100)+"%" : "";
+}
+
+(function pestanas(){
+  const botones = [...document.querySelectorAll(".tabs button")];
+  botones.forEach(b=>b.addEventListener("click", ()=>irA(b.dataset.vista)));
+  // Flechas, Inicio y Fin, como manda el patrón de tablist
+  $(".tabs").addEventListener("keydown", e=>{
+    const i = botones.findIndex(b=>b.dataset.vista===vistaActual);
+    let j = null;
+    if(e.key==="ArrowRight") j = (i+1)%botones.length;
+    else if(e.key==="ArrowLeft") j = (i-1+botones.length)%botones.length;
+    else if(e.key==="Home") j = 0;
+    else if(e.key==="End") j = botones.length-1;
+    if(j===null) return;
+    e.preventDefault(); irA(botones[j].dataset.vista, {foco:true});
+  });
+  window.addEventListener("hashchange", ()=>irA(location.hash.slice(1), {guardar:false}));
+  let inicial = location.hash.slice(1);
+  if(!VISTAS[inicial]){ try{ inicial = localStorage.getItem("vistaUNAL"); }catch(e){} }
+  irA(inicial || "horario", {guardar:false});
+})();
+
+
 $("#busqueda").addEventListener("input", pintarLista);
 $("#orden").addEventListener("change", pintarLista);
 $("#soloDisponibles").addEventListener("change", pintarLista);
@@ -1626,6 +2107,24 @@ $("#soloDisponibles").addEventListener("change", pintarLista);
   });
 })();
 pintarAvance();
+
+/* Generador */
+$("#btnGenerar").addEventListener("click", generarHorarios);
+$("#genOrden").addEventListener("change", ()=>{ RESULTADOS.length && pintarResultados(); });
+$("#genSoloCupos").addEventListener("change", ()=>{ RESULTADOS.length && generarHorarios(); });
+$("#btnDesdeHorario").addEventListener("click", ()=>{
+  for(const k of seleccion) CANDIDATAS.add(k.split("|")[0]);
+  genAlmacen.guardar(); pintarCandidatas(); pintarLista(); invalidarResultados();
+});
+$("#btnVaciarCand").addEventListener("click", ()=>{
+  CANDIDATAS.clear(); genAlmacen.guardar(); pintarCandidatas(); pintarLista();
+  $("#genResultados").innerHTML=""; $("#genEstado").textContent=""; RESULTADOS=[];
+});
+$("#btnLimpiarBloqueos").addEventListener("click", ()=>{
+  BLOQUEADOS.clear(); genAlmacen.guardar(); pintarRejilla(); invalidarResultados();
+});
+pintarRejilla(); pintarCandidatas();
+
 function fijarModo(modo){
   modoTend=modo;
   const mapa={mis:"#modoMis", materia:"#modoMateria", doc:"#modoDoc"};
@@ -1653,6 +2152,7 @@ $("#btnImprimir").addEventListener("click", ()=>{
     alert("Tu horario está vacío: agrega al menos un grupo antes de imprimir.");
     return;
   }
+  irA("horario");
   // el título es el nombre que el navegador propone al guardar como PDF
   document.title = `Horario UNAL · ${$("#totalCreditos").textContent}`;
   window.print();
