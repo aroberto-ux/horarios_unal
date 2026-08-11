@@ -138,7 +138,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:26-05:00",
+    "ts_lectura": "2026-08-11T15:00:25-05:00",
     "orden_lectura": 0
   },
   {
@@ -280,7 +280,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:27-05:00",
+    "ts_lectura": "2026-08-11T15:00:26-05:00",
     "orden_lectura": 1
   },
   {
@@ -859,11 +859,11 @@
             "dia": "LUNES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "AULA 5",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 5",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 5. AULA 5. AULAS DE CLASE ORINOQUIA. SALON."
           },
           {
             "dia": "MIÉRCOLES",
@@ -888,7 +888,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:29-05:00",
+    "ts_lectura": "2026-08-11T15:00:28-05:00",
     "orden_lectura": 2
   },
   {
@@ -998,7 +998,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:30-05:00",
+    "ts_lectura": "2026-08-11T15:00:30-05:00",
     "orden_lectura": 3
   },
   {
@@ -1140,7 +1140,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:32-05:00",
+    "ts_lectura": "2026-08-11T15:00:31-05:00",
     "orden_lectura": 4
   },
   {
@@ -2023,66 +2023,66 @@
             "dia": "LUNES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "AULA 6",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 6",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 6. AULA 6. AULAS DE CLASE ORINOQUIA. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "AULA 6",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 6",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 6. AULA 6. AULAS DE CLASE ORINOQUIA. SALON."
           },
           {
             "dia": "VIERNES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "AULA 6",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 6",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 6. AULA 6. AULAS DE CLASE ORINOQUIA. SALON."
           },
           {
             "dia": "MARTES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "AULA 5",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 5",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 5. AULA 5. AULAS DE CLASE ORINOQUIA. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "AULA 5",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 5",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 5. AULA 5. AULAS DE CLASE ORINOQUIA. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "AULA 5",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 5",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 5. AULA 5. AULAS DE CLASE ORINOQUIA. SALON."
           }
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:33-05:00",
+    "ts_lectura": "2026-08-11T15:00:32-05:00",
     "orden_lectura": 5
   },
   {
@@ -2544,7 +2544,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:35-05:00",
+    "ts_lectura": "2026-08-11T15:00:34-05:00",
     "orden_lectura": 6
   },
   {
@@ -3059,36 +3059,36 @@
             "dia": "LUNES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "AULA 2",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 2",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 2. AULA 2. AULAS DE CLASE ORINOQUIA. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "AULA 2",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 2",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 2. AULA 2. AULAS DE CLASE ORINOQUIA. SALON."
           },
           {
             "dia": "VIERNES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "AULA 2",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 2",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 2. AULA 2. AULAS DE CLASE ORINOQUIA. SALON."
           }
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:37-05:00",
+    "ts_lectura": "2026-08-11T15:00:36-05:00",
     "orden_lectura": 7
   },
   {
@@ -3101,7 +3101,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T14:30:38-05:00",
+    "ts_lectura": "2026-08-11T15:00:38-05:00",
     "orden_lectura": 8
   },
   {
@@ -3147,7 +3147,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:39-05:00",
+    "ts_lectura": "2026-08-11T15:00:39-05:00",
     "orden_lectura": 9
   },
   {
@@ -3193,7 +3193,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:40-05:00",
+    "ts_lectura": "2026-08-11T15:00:40-05:00",
     "orden_lectura": 10
   },
   {
@@ -3495,7 +3495,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:41-05:00",
+    "ts_lectura": "2026-08-11T15:00:42-05:00",
     "orden_lectura": 11
   },
   {
@@ -3605,7 +3605,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:43-05:00",
+    "ts_lectura": "2026-08-11T15:00:43-05:00",
     "orden_lectura": 12
   },
   {
@@ -3779,7 +3779,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:44-05:00",
+    "ts_lectura": "2026-08-11T15:00:44-05:00",
     "orden_lectura": 13
   },
   {
@@ -3889,7 +3889,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:45-05:00",
+    "ts_lectura": "2026-08-11T15:00:45-05:00",
     "orden_lectura": 14
   },
   {
@@ -4223,7 +4223,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:46-05:00",
+    "ts_lectura": "2026-08-11T15:00:47-05:00",
     "orden_lectura": 15
   },
   {
@@ -4429,7 +4429,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:48-05:00",
+    "ts_lectura": "2026-08-11T15:00:48-05:00",
     "orden_lectura": 16
   },
   {
@@ -4539,7 +4539,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:49-05:00",
+    "ts_lectura": "2026-08-11T15:00:50-05:00",
     "orden_lectura": 17
   },
   {
@@ -4649,7 +4649,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:50-05:00",
+    "ts_lectura": "2026-08-11T15:00:51-05:00",
     "orden_lectura": 18
   },
   {
@@ -4746,28 +4746,28 @@
           },
           {
             "dia": "LUNES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "AULA 4",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 4",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 4. AULA 4. AULAS DE CLASE ORINOQUIA. SALON."
           },
           {
             "dia": "MIÉRCOLES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "AULA 4",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 4",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 4. AULA 4. AULAS DE CLASE ORINOQUIA. SALON."
           }
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:51-05:00",
+    "ts_lectura": "2026-08-11T15:00:52-05:00",
     "orden_lectura": 19
   },
   {
@@ -6745,7 +6745,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:54-05:00",
+    "ts_lectura": "2026-08-11T15:00:55-05:00",
     "orden_lectura": 20
   },
   {
@@ -6887,7 +6887,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:55-05:00",
+    "ts_lectura": "2026-08-11T15:00:56-05:00",
     "orden_lectura": 21
   },
   {
@@ -7029,7 +7029,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:57-05:00",
+    "ts_lectura": "2026-08-11T15:00:57-05:00",
     "orden_lectura": 22
   },
   {
@@ -7401,7 +7401,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:30:58-05:00",
+    "ts_lectura": "2026-08-11T15:00:59-05:00",
     "orden_lectura": 23
   },
   {
@@ -7543,7 +7543,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:00-05:00",
+    "ts_lectura": "2026-08-11T15:01:00-05:00",
     "orden_lectura": 24
   },
   {
@@ -7556,7 +7556,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T14:31:01-05:00",
+    "ts_lectura": "2026-08-11T15:01:01-05:00",
     "orden_lectura": 25
   },
   {
@@ -7822,7 +7822,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:02-05:00",
+    "ts_lectura": "2026-08-11T15:01:03-05:00",
     "orden_lectura": 26
   },
   {
@@ -7996,7 +7996,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:03-05:00",
+    "ts_lectura": "2026-08-11T15:01:04-05:00",
     "orden_lectura": 27
   },
   {
@@ -8106,7 +8106,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:05-05:00",
+    "ts_lectura": "2026-08-11T15:01:05-05:00",
     "orden_lectura": 28
   },
   {
@@ -8216,7 +8216,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:06-05:00",
+    "ts_lectura": "2026-08-11T15:01:06-05:00",
     "orden_lectura": 29
   },
   {
@@ -8326,7 +8326,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:08-05:00",
+    "ts_lectura": "2026-08-11T15:01:08-05:00",
     "orden_lectura": 30
   },
   {
@@ -8692,7 +8692,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:09-05:00",
+    "ts_lectura": "2026-08-11T15:01:09-05:00",
     "orden_lectura": 31
   },
   {
@@ -9244,7 +9244,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:10-05:00",
+    "ts_lectura": "2026-08-11T15:01:10-05:00",
     "orden_lectura": 32
   },
   {
@@ -9880,7 +9880,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:12-05:00",
+    "ts_lectura": "2026-08-11T15:01:12-05:00",
     "orden_lectura": 33
   },
   {
@@ -9893,7 +9893,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T14:31:13-05:00",
+    "ts_lectura": "2026-08-11T15:01:13-05:00",
     "orden_lectura": 34
   },
   {
@@ -10533,7 +10533,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:15-05:00",
+    "ts_lectura": "2026-08-11T15:01:14-05:00",
     "orden_lectura": 35
   },
   {
@@ -10546,7 +10546,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T14:31:16-05:00",
+    "ts_lectura": "2026-08-11T15:01:16-05:00",
     "orden_lectura": 36
   },
   {
@@ -10716,7 +10716,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:17-05:00",
+    "ts_lectura": "2026-08-11T15:01:17-05:00",
     "orden_lectura": 37
   },
   {
@@ -11042,7 +11042,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:18-05:00",
+    "ts_lectura": "2026-08-11T15:01:18-05:00",
     "orden_lectura": 38
   },
   {
@@ -11870,7 +11870,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:20-05:00",
+    "ts_lectura": "2026-08-11T15:01:20-05:00",
     "orden_lectura": 39
   },
   {
@@ -11883,7 +11883,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T14:31:21-05:00",
+    "ts_lectura": "2026-08-11T15:01:21-05:00",
     "orden_lectura": 40
   },
   {
@@ -11993,7 +11993,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:22-05:00",
+    "ts_lectura": "2026-08-11T15:01:22-05:00",
     "orden_lectura": 41
   },
   {
@@ -12747,7 +12747,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:24-05:00",
+    "ts_lectura": "2026-08-11T15:01:24-05:00",
     "orden_lectura": 42
   },
   {
@@ -13667,7 +13667,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:26-05:00",
+    "ts_lectura": "2026-08-11T15:01:26-05:00",
     "orden_lectura": 43
   },
   {
@@ -13849,7 +13849,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:27-05:00",
+    "ts_lectura": "2026-08-11T15:01:27-05:00",
     "orden_lectura": 44
   },
   {
@@ -14199,7 +14199,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:28-05:00",
+    "ts_lectura": "2026-08-11T15:01:28-05:00",
     "orden_lectura": 45
   },
   {
@@ -14245,7 +14245,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:29-05:00",
+    "ts_lectura": "2026-08-11T15:01:29-05:00",
     "orden_lectura": 46
   },
   {
@@ -14553,7 +14553,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:31-05:00",
+    "ts_lectura": "2026-08-11T15:01:31-05:00",
     "orden_lectura": 47
   },
   {
@@ -14695,7 +14695,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:32-05:00",
+    "ts_lectura": "2026-08-11T15:01:32-05:00",
     "orden_lectura": 48
   },
   {
@@ -14837,7 +14837,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:34-05:00",
+    "ts_lectura": "2026-08-11T15:01:33-05:00",
     "orden_lectura": 49
   },
   {
@@ -14947,7 +14947,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:35-05:00",
+    "ts_lectura": "2026-08-11T15:01:35-05:00",
     "orden_lectura": 50
   },
   {
@@ -14960,7 +14960,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T14:31:36-05:00",
+    "ts_lectura": "2026-08-11T15:01:36-05:00",
     "orden_lectura": 51
   },
   {
@@ -14973,7 +14973,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T14:31:37-05:00",
+    "ts_lectura": "2026-08-11T15:01:37-05:00",
     "orden_lectura": 52
   },
   {
@@ -15083,7 +15083,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:38-05:00",
+    "ts_lectura": "2026-08-11T15:01:38-05:00",
     "orden_lectura": 53
   },
   {
@@ -15193,7 +15193,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:40-05:00",
+    "ts_lectura": "2026-08-11T15:01:39-05:00",
     "orden_lectura": 54
   },
   {
@@ -15453,7 +15453,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:41-05:00",
+    "ts_lectura": "2026-08-11T15:01:41-05:00",
     "orden_lectura": 55
   },
   {
@@ -15947,7 +15947,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:42-05:00",
+    "ts_lectura": "2026-08-11T15:01:42-05:00",
     "orden_lectura": 56
   },
   {
@@ -16469,7 +16469,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:44-05:00",
+    "ts_lectura": "2026-08-11T15:01:44-05:00",
     "orden_lectura": 57
   },
   {
@@ -16482,7 +16482,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T14:31:45-05:00",
+    "ts_lectura": "2026-08-11T15:01:45-05:00",
     "orden_lectura": 58
   },
   {
@@ -16592,7 +16592,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:46-05:00",
+    "ts_lectura": "2026-08-11T15:01:46-05:00",
     "orden_lectura": 59
   },
   {
@@ -16702,7 +16702,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:47-05:00",
+    "ts_lectura": "2026-08-11T15:01:47-05:00",
     "orden_lectura": 60
   },
   {
@@ -17564,7 +17564,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:49-05:00",
+    "ts_lectura": "2026-08-11T15:01:49-05:00",
     "orden_lectura": 61
   },
   {
@@ -17996,7 +17996,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:50-05:00",
+    "ts_lectura": "2026-08-11T15:01:50-05:00",
     "orden_lectura": 62
   },
   {
@@ -18032,7 +18032,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T14:31:51-05:00",
+    "ts_lectura": "2026-08-11T15:01:52-05:00",
     "orden_lectura": 63
   },
   {
@@ -18045,7 +18045,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T14:31:53-05:00",
+    "ts_lectura": "2026-08-11T15:01:53-05:00",
     "orden_lectura": 64
   }
 ]
