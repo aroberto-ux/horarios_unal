@@ -308,6 +308,11 @@ footer a{color:var(--azul)}
 .malla .caja.lista{box-shadow:inset 0 0 0 1px var(--verde)}
 .malla .caja.bloq{opacity:.55}
 .malla .caja.encurso{background:var(--azul-claro); border-color:var(--azul)}
+.malla .caja.ranura{border-style:dashed; border-left-style:solid}
+.malla .caja.ranura .n{font-style:italic}
+.malla .caja.ranura.comp-L{border-left-color:#00A5E0}
+.malla .caja[disabled]{cursor:default; opacity:1}
+.malla .caja[disabled] .c{font-style:normal; color:var(--verde)}
 .leyenda{display:flex; flex-wrap:wrap; gap:6px 16px; padding:0 16px 14px; font-size:.74rem; color:var(--tinta-suave)}
 .leyenda span{display:inline-flex; align-items:center; gap:5px}
 .leyenda i{width:12px; height:12px; border-radius:3px; border:1.5px solid var(--cuadricula); display:inline-block}
@@ -351,7 +356,7 @@ footer a{color:var(--azul)}
 
 <header>
   <div class="head-top">
-    <h1><small>borboleta</small>Planilla de horario</h1>
+    <h1><small>SIA · Ingeniería · UNAL</small>Planilla de horario</h1>
     <div class="head-acciones">
       <div class="estado mono" id="estado"><span class="punto"></span>Cargando datos…</div>
       <button id="btnImprimir" type="button" title="Imprime solo el horario; en el diálogo puedes elegir «Guardar como PDF»">Imprimir / PDF</button>
@@ -417,7 +422,8 @@ footer a{color:var(--azul)}
       <span><i style="background:var(--azul-claro);border-color:var(--azul)"></i>En este horario</span>
       <span><i style="box-shadow:inset 0 0 0 1px var(--verde)"></i>Puedes inscribirla</span>
       <span><i style="opacity:.55"></i>Te falta prerrequisito</span>
-      <span class="mono">Borde: <b style="color:var(--ambar)">■</b> fundamentación · <b style="color:var(--azul)">■</b> disciplinar · <b style="color:#8A4FBF">■</b> nivelación</span>
+      <span class="mono">Borde: <b style="color:var(--ambar)">■</b> fundamentación · <b style="color:var(--azul)">■</b> disciplinar · <b style="color:#00A5E0">■</b> libre elección · <b style="color:#8A4FBF">■</b> nivelación</span>
+      <span><i style="border-style:dashed"></i>Casilla flexible (electiva u optativa)</span>
     </div>
   </section>
 
@@ -656,7 +662,7 @@ const PENSUM = {
   "2015972":{nom:"Preparación y evaluación de proyectos de infraestructura", sem:9, cr:3, comp:"B", agr:"Economía y finanzas", req:["2026138"]},
 
   /* --- Semestre X --- */
-  "2015296":{nom:"Trabajo de grado",        sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", ca:{n:77, comp:"C"}},
+  "2015296":{nom:"Trabajo de grado",        sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", opt:true, ca:{n:77, comp:"C"}},
   "2015299":{nom:"Trabajo de grado (posgrado MAPI)", sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", opt:true, ca:{n:77, comp:"C"}},
 
   /* --- Optativas de Construcción de obras civiles (semestre X) --- */
@@ -665,16 +671,16 @@ const PENSUM = {
   "2015945":{nom:"Construcción de obras fluviales y litorales", sem:10, cr:3, comp:"C", agr:"Construcción", opt:true, req:["2015955"]},
 
   /* --- Electiva técnica (semestre V): 28 créditos disciplinares --- */
-  "2015977":{nom:"Transporte sostenible",   sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
-  "2026136":{nom:"Tecnología del concreto", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
-  "2024045":{nom:"Taller de proyectos interdisciplinarios", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
-  "2015975":{nom:"Taller de experimentación y modelación", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
-  "2026137":{nom:"Pacificación del tráfico", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
-  "2015952":{nom:"Métodos numéricos para ingeniería civil", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
-  "2015967":{nom:"Mecánica de rocas",       sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
-  "2022760":{nom:"Gestión en construcción", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
-  "2015229":{nom:"Colombia contemporánea",  sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
-  "2016183":{nom:"Análisis de incertidumbre en ingeniería civil", sem:5, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2015977":{nom:"Transporte sostenible",   sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2026136":{nom:"Tecnología del concreto", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2024045":{nom:"Taller de proyectos interdisciplinarios", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2015975":{nom:"Taller de experimentación y modelación", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2026137":{nom:"Pacificación del tráfico", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2015952":{nom:"Métodos numéricos para ingeniería civil", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2015967":{nom:"Mecánica de rocas",       sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2022760":{nom:"Gestión en construcción", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2015229":{nom:"Colombia contemporánea",  sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2016183":{nom:"Análisis de incertidumbre en ingeniería civil", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
 
   /* --- Herramientas de ingeniería: optativas "A" (sem II) y "B" (sem V) --- */
   "2015734":{nom:"Programación de computadores", sem:2, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
@@ -697,6 +703,48 @@ const PENSUM = {
 const META = {B:48, C:96, L:36, TOT:180};
 const NOMBRE_COMP = {P:"Nivelación", B:"Fundamentación", C:"Disciplinar", L:"Libre elección"};
 const ROMANOS = ["Nivel.","I","II","III","IV","V","VI","VII","VIII","IX","X"];
+/* ================= Casillas del componente flexible =================
+   La malla dibuja 17 casillas que no tienen código fijo: las electivas de
+   libre elección y las optativas. Se listan aquí para que el avance incluya
+   los 36 créditos de libre elección, que si no quedarían siempre en 0.
+
+   Las que llevan `grupo` sí tienen asignaturas con código en el catálogo
+   (herramientas de ingeniería, electiva técnica, construcción de obras
+   civiles, trabajo de grado): esas se marcan solas cuando apruebas una de
+   ellas, y sus créditos los aporta la asignatura real, no la casilla, para no
+   contarlos dos veces. Las de libre elección no tienen código en ninguna
+   parte, así que se marcan a mano.
+
+   Suma de libre elección: 2+3+4+3+3+3 + 9 (prof. IX) + 6 (prof. X) + 3 = 36. */
+const RANURAS = [
+  {id:"ELEC1",  sem:1,  cr:2, comp:"L", agr:"Humanidades",                nom:"Electiva"},
+  {id:"ELEC2",  sem:2,  cr:3, comp:"L", agr:"Humanidades",                nom:"Electiva"},
+  {id:"ELEC4",  sem:4,  cr:4, comp:"L", agr:"Física",                     nom:"Electiva"},
+  {id:"ELEC5",  sem:5,  cr:3, comp:"L", agr:"Herramientas de ingeniería", nom:"Electiva"},
+  {id:"ELEC7",  sem:7,  cr:3, comp:"L", agr:"Electiva técnica",           nom:"Electiva"},
+  {id:"ELEC8",  sem:8,  cr:3, comp:"L", agr:"Economía y finanzas",        nom:"Electiva"},
+  {id:"ELEC10", sem:10, cr:3, comp:"L", agr:"Economía y finanzas",        nom:"Electiva"},
+  /* Electivas de profundización: 60 % del plan aprobado = 108 créditos */
+  {id:"PROF9A", sem:9,  cr:3, comp:"L", agr:"Profundización", nom:"Electiva de ing. civil", ca:{n:108, comp:"TOT"}},
+  {id:"PROF9B", sem:9,  cr:3, comp:"L", agr:"Profundización", nom:"Electiva de ing. civil", ca:{n:108, comp:"TOT"}},
+  {id:"PROF9C", sem:9,  cr:3, comp:"L", agr:"Profundización", nom:"Electiva de ing. civil", ca:{n:108, comp:"TOT"}},
+  {id:"PROF10A",sem:10, cr:3, comp:"L", agr:"Profundización", nom:"Electiva de ing. civil", ca:{n:108, comp:"TOT"}},
+  {id:"PROF10B",sem:10, cr:3, comp:"L", agr:"Profundización", nom:"Electiva de ing. civil", ca:{n:108, comp:"TOT"}},
+  /* Optativas: las cubre una asignatura con código del catálogo */
+  {id:"HERRA",  sem:2,  cr:3, comp:"B", agr:"Herramientas de ingeniería", nom:"Herramientas de ing. \u00abA\u00bb", grupo:"herr"},
+  {id:"HERRB",  sem:5,  cr:3, comp:"B", agr:"Herramientas de ingeniería", nom:"Herramientas de ing. \u00abB\u00bb", grupo:"herr"},
+  {id:"ETEC",   sem:6,  cr:3, comp:"C", agr:"Electiva técnica", nom:"Electiva técnica", grupo:"tec",   ca:{n:28, comp:"C"}},
+  {id:"COBRAS", sem:10, cr:3, comp:"C", agr:"Construcción", nom:"Construcción de obras civiles", grupo:"const"},
+  {id:"TGRADO", sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", nom:"Trabajo de grado", grupo:"grado", ca:{n:77, comp:"C"}}
+];
+const RANURA = Object.fromEntries(RANURAS.map(r=>[r.id, r]));
+const GRUPOS_RANURA = {
+  herr : ["2015734","2016375","2025971","2025970","2017293","2015942","2015970","2022761"],
+  tec  : ["2015977","2026136","2024045","2015975","2026137","2015952","2015967","2022760","2015229","2016183"],
+  const: ["2015943","2015944","2015945"],
+  grado: ["2015296","2015299"]
+};
+
 /* Tope de créditos por semestre. El SIA lo calcula con el PAPA; 24 es el
    máximo habitual, así que solo sirve de alerta, no de bloqueo. */
 const TOPE_CREDITOS = 24;
@@ -742,17 +790,46 @@ const avanceAlmacen = {
 };
 let APROBADAS = avanceAlmacen.leer();   // códigos pelados
 
-/* Créditos aprobados por componente. Solo cuenta lo que está en el pensum:
-   las electivas de libre elección no tienen código fijo, así que el conteo de
-   L queda en manos del estudiante y aquí se reporta como "sin registrar". */
+/* Qué asignatura real cubre cada casilla optativa. Si apruebas dos
+   herramientas de ingeniería, la primera llena la casilla "A" y la segunda
+   la "B"; el orden es el del plan, no importa cuál sea cuál. */
+function asignacionRanuras(){
+  const mapa = new Map();
+  for(const [g, cods] of Object.entries(GRUPOS_RANURA)){
+    const hechas = cods.filter(c => APROBADAS.has(c));
+    RANURAS.filter(r => r.grupo===g).forEach((r,i)=>{ if(hechas[i]) mapa.set(r.id, hechas[i]); });
+  }
+  return mapa;
+}
+
+/* Créditos aprobados por componente, contando asignaturas y casillas.
+   Una casilla optativa cubierta por una asignatura real NO suma: sus créditos
+   ya los aportó esa asignatura. */
 function creditosAprobados(){
   const t = {P:0, B:0, C:0, L:0, TOT:0};
-  for(const cod of APROBADAS){
-    const d = PENSUM[cod]; if(!d) continue;
+  const cubiertas = asignacionRanuras();
+  for(const id of APROBADAS){
+    const d = PENSUM[id] || RANURA[id];
+    if(!d) continue;
+    if(RANURA[id] && cubiertas.has(id)) continue;
     t[d.comp] = (t[d.comp]||0) + d.cr;
     if(d.comp !== "P") t.TOT += d.cr;   // la nivelación no suma a los 180
   }
   return t;
+}
+
+/* Estado de una casilla flexible. Reutiliza el requisito por créditos de las
+   electivas de profundización (108) y del trabajo de grado (77 disciplinares). */
+function evaluarRanura(r, cubiertas){
+  const cubre = cubiertas.get(r.id) || null;
+  if(cubre) return {estado:"aprobada", cubre, ca:null};
+  if(APROBADAS.has(r.id)) return {estado:"aprobada", cubre:null, ca:null};
+  let ca = null;
+  if(r.ca){
+    const tengo = creditosAprobados()[r.ca.comp] || 0;
+    if(tengo < r.ca.n) ca = {...r.ca, tengo, faltan: r.ca.n - tengo};
+  }
+  return {estado: ca ? "bloqueada" : "libre", cubre:null, ca};
 }
 
 /* Códigos de las materias que están en el horario que se está armando. */
@@ -1244,7 +1321,7 @@ function pintarAvisosPlan(creditos){
   }
 
   const fuera = cods.filter(c => !PENSUM[c]).length;
-  if(fuera) lineas.push(`${fuera} asignatura(s) del horario no están en el plan obligatorio: cuentan como libre elección (te faltan ${Math.max(0, META.L - creditosAprobados().L)} créditos L, según lo que hayas marcado).`);
+  if(fuera) lineas.push(`${fuera} asignatura(s) del horario no están en el plan obligatorio: cuentan como libre elección. Te faltan ${Math.max(0, META.L - creditosAprobados().L)} de los ${META.L} créditos L; marca la casilla del semestre que corresponda cuando las apruebes.`);
 
   if(creditos > TOPE_CREDITOS){
     lineas.push(`Vas en <b>${creditos} créditos</b>. El SIA calcula el tope con tu PAPA y rara vez pasa de ${TOPE_CREDITOS}; revisa que te los permita.`);
@@ -1261,6 +1338,7 @@ function pintarAvance(){
   const cont = $("#malla"); if(!cont) return;
   const t = creditosAprobados();
   const enHorario = codigosSeleccion();
+  const cubiertas = asignacionRanuras();
 
   // Barras por componente
   const barras = $("#barrasAvance");
@@ -1268,50 +1346,92 @@ function pintarAvance(){
     const rot = c==="TOT" ? "Total del plan" : NOMBRE_COMP[c];
     const val = t[c]||0, meta = META[c];
     const pct = Math.min(100, meta ? val/meta*100 : 0);
-    const nota = (c==="L") ? " (solo lo que esté en el plan)" : "";
     return `<div class="barra comp-${c}">
-      <div class="rot"><span>${rot}${nota}</span><b>${val}/${meta}</b></div>
+      <div class="rot"><span>${rot}</span><b>${val}/${meta}</b></div>
       <div class="riel"><div class="relleno" style="width:${pct}%"></div></div>
     </div>`;
   }).join("");
-  $("#resumenAvance").textContent = `${t.TOT} de ${META.TOT} créditos · ${APROBADAS.size} asignaturas marcadas`;
+  const hechas = [...APROBADAS].filter(id => PENSUM[id] || RANURA[id]).length + cubiertas.size
+                 - [...cubiertas.keys()].filter(id => APROBADAS.has(id)).length;
+  $("#resumenAvance").textContent = `${t.TOT} de ${META.TOT} créditos · ${hechas} casillas cubiertas`;
 
-  // Mini-malla: una columna por semestre
+  // Mini-malla: una columna por semestre, con asignaturas y casillas flexibles
   const porSem = new Map();
+  const mete = (sem, item) => { if(!porSem.has(sem)) porSem.set(sem, []); porSem.get(sem).push(item); };
   for(const [cod,d] of Object.entries(PENSUM)){
-    if(d.opt) continue;             // las optativas no tienen casilla fija
-    if(!porSem.has(d.sem)) porSem.set(d.sem, []);
-    porSem.get(d.sem).push([cod,d]);
+    if(d.opt) continue;             // las optativas viven en su casilla flexible
+    mete(d.sem, {tipo:"asig", cod, d});
   }
+  for(const r of RANURAS) mete(r.sem, {tipo:"ranura", r});
+
   cont.innerHTML="";
   for(let s=0; s<=10; s++){
     const col=document.createElement("div"); col.className="col";
     col.insertAdjacentHTML("beforeend", `<div class="cab">${s===0?"NIVEL.":"SEM "+ROMANOS[s]}</div>`);
-    for(const [cod,d] of (porSem.get(s)||[]).sort((a,b)=>a[1].nom.localeCompare(b[1].nom,"es"))){
-      const ev = evaluar(cod);
-      const b=document.createElement("button");
-      b.type="button"; b.className=`caja comp-${d.comp}`;
-      if(ev.estado==="aprobada") b.classList.add("ok");
-      else if(ev.estado==="libre") b.classList.add("lista");
-      else b.classList.add("bloq");
-      if(enHorario.has(cod)) b.classList.add("encurso");
-      b.innerHTML=`<span class="n">${d.nom}</span><span class="c">${cod} · ${d.cr} cr</span>`;
-      b.title = ev.estado==="aprobada" ? "Aprobada — clic para desmarcar"
-        : ev.faltan.length ? "Falta: " + ev.faltan.map(listaOps).join(", ")
-        : ev.ca ? "Falta: " + textoCA(ev.ca)
-        : "Puedes inscribirla";
-      b.addEventListener("click", ()=>alternarAprobada(cod));
-      col.appendChild(b);
+    // las asignaturas con código van primero; las casillas flexibles, al final
+    const items = (porSem.get(s)||[]).slice().sort((a,b)=>{
+      if(a.tipo!==b.tipo) return a.tipo==="asig" ? -1 : 1;
+      const na = a.tipo==="asig" ? a.d.nom : a.r.nom;
+      const nb = b.tipo==="asig" ? b.d.nom : b.r.nom;
+      return na.localeCompare(nb,"es");
+    });
+    for(const it of items){
+      col.appendChild(it.tipo==="asig"
+        ? cajaAsignatura(it.cod, it.d, enHorario)
+        : cajaRanura(it.r, cubiertas, enHorario));
     }
     cont.appendChild(col);
   }
 }
 
-/* Atajo: dar por aprobado todo lo obligatorio hasta cierto semestre. */
-function aprobarHasta(sem){
-  for(const [cod,d] of Object.entries(PENSUM)){
-    if(!d.opt && d.sem<=sem) APROBADAS.add(cod);
+function cajaAsignatura(cod, d, enHorario){
+  const ev = evaluar(cod);
+  const b = document.createElement("button");
+  b.type="button"; b.className=`caja comp-${d.comp}`;
+  b.classList.add(ev.estado==="aprobada" ? "ok" : ev.estado==="libre" ? "lista" : "bloq");
+  if(enHorario.has(cod)) b.classList.add("encurso");
+  b.innerHTML=`<span class="n">${d.nom}</span><span class="c">${cod} · ${d.cr} cr</span>`;
+  b.title = ev.estado==="aprobada" ? "Aprobada — clic para desmarcar"
+    : ev.faltan.length ? "Falta: " + ev.faltan.map(listaOps).join(", ")
+    : ev.ca ? "Falta: " + textoCA(ev.ca)
+    : "Puedes inscribirla";
+  b.addEventListener("click", ()=>alternarAprobada(cod));
+  return b;
+}
+
+function cajaRanura(r, cubiertas, enHorario){
+  const ev = evaluarRanura(r, cubiertas);
+  const b = document.createElement("button");
+  b.type="button"; b.className=`caja ranura comp-${r.comp}`;
+  b.classList.add(ev.estado==="aprobada" ? "ok" : ev.estado==="libre" ? "lista" : "bloq");
+  // ¿hay en el horario una materia que podría llenar esta casilla?
+  const candidatas = GRUPOS_RANURA[r.grupo] || [];
+  if(r.grupo && [...enHorario].some(c => candidatas.includes(c))) b.classList.add("encurso");
+
+  const pie = ev.cubre
+    ? `<span class="c">${nombrePlan(ev.cubre)}</span>`
+    : `<span class="c">${r.agr} · ${r.cr} cr</span>`;
+  b.innerHTML = `<span class="n">${r.nom}</span>${pie}`;
+
+  if(ev.cubre){
+    b.title = `Cubierta por ${nombrePlan(ev.cubre)} (${ev.cubre}). Desmárcala desde su propia casilla o desde la lista.`;
+    b.disabled = true;
+  }else{
+    b.title = ev.estado==="aprobada" ? "Marcada — clic para desmarcar"
+      : ev.ca ? "Falta: " + textoCA(ev.ca)
+      : r.grupo ? "Se marca sola al aprobar una asignatura del grupo, o márcala a mano"
+      : "Márcala cuando apruebes una electiva que ocupe esta casilla";
+    b.addEventListener("click", ()=>alternarAprobada(r.id));
   }
+  return b;
+}
+
+/* Atajo: dar por cubierto todo lo del plan hasta cierto semestre, casillas
+   flexibles incluidas. Las optativas con código se dejan quietas: la casilla
+   ya las representa y marcarlas duplicaría el conteo. */
+function aprobarHasta(sem){
+  for(const [cod,d] of Object.entries(PENSUM)) if(!d.opt && d.sem<=sem) APROBADAS.add(cod);
+  for(const r of RANURAS) if(r.sem<=sem) APROBADAS.add(r.id);
   avanceAlmacen.guardar(APROBADAS);
   pintarLista(); pintarHorario(); pintarAvance();
 }
