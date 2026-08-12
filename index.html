@@ -412,6 +412,12 @@ footer a{color:var(--azul)}
 .gen-lista .t b{display:block; font-weight:600; color:var(--tinta)}
 .gen-lista .t span{font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:var(--tinta-suave)}
 .gen-lista .sello{flex:0 0 auto}
+.gen-check{display:flex; align-items:center; gap:6px; margin-top:6px;
+  font-size:.76rem; color:var(--tinta-suave); cursor:pointer}
+.gen-check input{margin:0; accent-color:var(--verde)}
+/* Aviso al pie de la lista cuando se recortan las electivas mostradas */
+.tope-libres{font-size:.76rem; color:var(--tinta-suave); font-style:italic;
+  padding:10px 12px; border-top:1px dashed var(--cuadricula)}
 
 /* Rejilla para pintar las franjas ocupadas */
 .gen-rejilla{display:grid; grid-template-columns:38px repeat(6,1fr); gap:1px; background:var(--cuadricula);
@@ -559,6 +565,13 @@ section.panel[hidden]{display:none!important}
           <option value="prioridad">las que más desbloquean</option>
         </select>
       </label>
+      <label for="fuente">Mostrar
+        <select id="fuente">
+          <option value="plan">las del plan</option>
+          <option value="libre">las de libre elección</option>
+          <option value="todas">todas</option>
+        </select>
+      </label>
       <label><input type="checkbox" id="soloDisponibles"> Solo las que ya puedo ver</label>
     </div>
     <div id="listaMaterias"></div>
@@ -592,6 +605,7 @@ section.panel[hidden]{display:none!important}
         <p class="gen-ayuda">Marca las asignaturas y ya está: del grupo se encarga el generador. No aparecen las que tengas marcadas como aprobadas.</p>
         <div class="gen-chips" id="genChips"></div>
         <input id="genBuscar" type="search" placeholder="Buscar asignatura…" autocomplete="off">
+        <label class="gen-check"><input type="checkbox" id="genLibres"> Incluir libre elección</label>
         <div class="gen-lista" id="genLista"></div>
         <div class="gen-opciones">
           <button type="button" id="btnDesdeHorario">Traer las del horario</button>
@@ -1260,6 +1274,110 @@ function fijarRangoPersonal(){
 }
 
 /* ================= Carga y modelo ================= */
+
+/* Vuelca las filas de un horarios*.csv en MATERIAS.
+   `libre` marca las que vienen de horarios_libre.csv (el barrido diario de
+   electivas). Si una asignatura ya llegó por el plan se ignora la versión
+   libre: la del plan trae la tipología correcta y su historial de cupos es el
+   de cada 30 min, no el de una vez al día. */
+function ingerirHorarios(filas, libre=false){
+  for(const f of filas){
+    const cod=f.codigo_asignatura; if(!cod) continue;
+    if(libre && MATERIAS.has(cod) && !MATERIAS.get(cod).libre) continue;
+    if(!MATERIAS.has(cod)) MATERIAS.set(cod,{codigo:cod,nombre:f.asignatura,creditos:f.creditos,tipologia:f.tipologia,libre,grupos:new Map()});
+    const m=MATERIAS.get(cod);
+    if(!m.grupos.has(f.grupo)) m.grupos.set(f.grupo,{grupo:f.grupo,profesores:f.profesores,cupos:numCupos(f.cupos_disponibles),sesiones:[],actividades:new Set()});
+    const g=m.grupos.get(f.grupo);
+    g.actividades.add(f.actividad||"");
+    if(f.dia && f.hora_inicio) g.sesiones.push({dia:f.dia.toUpperCase(),ini:aMin(f.hora_inicio),fin:aMin(f.hora_fin),salon:f.salon_nombre||f.salon||"",act:f.actividad||""});
+  }
+}
+
+/* Familias de componentes: grupos con la misma firma de actividades. */
+function calcularFamilias(materias){
+  for(const m of materias){
+    m.familias = new Map();
+    for(const g of m.grupos.values()){
+      g.fam = firmaDe(g.actividades);
+      if(!m.familias.has(g.fam))
+        m.familias.set(g.fam, {clave:g.fam, etiqueta:etiquetaFam(g.actividades), grupos:[]});
+      m.familias.get(g.fam).grupos.push(g.grupo);
+    }
+    /* ¿Hace falta inscribir varios grupos? Solo si NINGÚN grupo por sí solo
+       cubre todas las actividades de la asignatura.
+
+       Esto es lo que separa los dos patrones y además absorbe las erratas del
+       SIA. Fundamentos de mecánica tiene un grupo mal escrito, «(16) Gruop 16»,
+       que solo trae la magistral: si nos fiáramos del número de familias, la
+       asignatura entera parecería multicomponente y les pediríamos tres
+       inscripciones a los 28 grupos que ya vienen completos. Como existe un
+       grupo que cubre {magistral, taller, laboratorio}, la asignatura se
+       resuelve con un clic y la errata queda como una alternativa más.
+
+       Modelación matemática, en cambio, no tiene ningún grupo que traiga
+       teórica y magistral a la vez: ahí sí son dos inscripciones. */
+    const todasAct = new Set();
+    for(const g of m.grupos.values()) for(const a of g.actividades) todasAct.add(a);
+    m.multi = todasAct.size > 1 &&
+      ![...m.grupos.values()].some(g => g.actividades.size === todasAct.size);
+  }
+}
+
+/* ================= Libre elección: carga bajo demanda =================
+   horarios_libre.csv trae CIENTOS de asignaturas y pesa varias veces lo que
+   pesa el del plan. Cargarlo siempre castigaría a quien solo quiere ver su
+   semestre, así que se trae la primera vez que alguien pide verlas y se queda
+   en memoria: la recarga automática cada 10 min lo reutiliza sin volver a
+   descargarlo, porque el barrido de electivas es diario y no puede haber
+   cambiado. */
+let LIBRES = {estado:"no", filas:null, series:null, t:0};
+const LIBRES_TTL = 6*60*60*1000;
+
+async function asegurarLibres({repintar=true}={}){
+  if(LIBRES.estado==="cargando") return false;
+  if(!LIBRES.filas || Date.now()-LIBRES.t > LIBRES_TTL){
+    LIBRES.estado="cargando";
+    if(repintar) pintarLista();
+    try{
+      const [filas, doc] = await Promise.all([
+        cargarCSV("horarios_libre.csv"),
+        // El historial diario es un extra: si aún no existe, las electivas
+        // se muestran igual, solo que sin sparkline ni velocidad.
+        traer("series_libre.json").then(r=>r.json()).catch(()=>null),
+      ]);
+      LIBRES.filas = filas; LIBRES.series = doc; LIBRES.t = Date.now();
+    }catch(e){
+      LIBRES.estado="error";
+      if(repintar) pintarLista();
+      return false;
+    }
+  }
+  const antes = new Set(MATERIAS.keys());
+  ingerirHorarios(LIBRES.filas, true);
+  const nuevas = [...MATERIAS.values()].filter(m => !antes.has(m.codigo));
+  calcularFamilias(nuevas);
+  if(LIBRES.series && LIBRES.series.series)
+    for(const [k,v] of expandirSeries(LIBRES.series)) if(!HISTORIAL.has(k)) HISTORIAL.set(k, v);
+  for(const m of nuevas) for(const g of m.grupos.values()){
+    const h = HISTORIAL.get(`${m.codigo}|${g.grupo}`);
+    if(h && h.length) g.cupos = h[h.length-1].cupos;
+  }
+  COLORES = null;
+  LIBRES.estado = "listo";
+  if(repintar){ pintarLista(); pintarGenLista(); prepararTendencias(); }
+  return true;
+}
+
+/* Cuántas materias hay y de dónde salen. */
+function textoConteo(){
+  const total = MATERIAS.size;
+  const libres = [...MATERIAS.values()].filter(m=>m.libre).length;
+  if(LIBRES.estado==="cargando") return `${total-libres} del plan · cargando electivas…`;
+  if(LIBRES.estado==="error")    return `${total-libres} del plan · no pude leer las electivas`;
+  return libres ? `${total-libres} del plan · ${libres} de libre elección`
+                : `${total} materias`;
+}
+
 async function cargarDatos(){
   const estado = $("#estado");
   estado.innerHTML = '<span class="punto"></span>Cargando datos…';
@@ -1267,43 +1385,9 @@ async function cargarDatos(){
     const [hor, hd] = await Promise.all([cargarCSV("horarios.csv"), cargarHistorial()]);
 
     MATERIAS = new Map();
-    for(const f of hor){
-      const cod=f.codigo_asignatura; if(!cod) continue;
-      if(!MATERIAS.has(cod)) MATERIAS.set(cod,{codigo:cod,nombre:f.asignatura,creditos:f.creditos,tipologia:f.tipologia,grupos:new Map()});
-      const m=MATERIAS.get(cod);
-      if(!m.grupos.has(f.grupo)) m.grupos.set(f.grupo,{grupo:f.grupo,profesores:f.profesores,cupos:numCupos(f.cupos_disponibles),sesiones:[],actividades:new Set()});
-      const g=m.grupos.get(f.grupo);
-      g.actividades.add(f.actividad||"");
-      if(f.dia && f.hora_inicio) g.sesiones.push({dia:f.dia.toUpperCase(),ini:aMin(f.hora_inicio),fin:aMin(f.hora_fin),salon:f.salon_nombre||f.salon||"",act:f.actividad||""});
-    }
-
-    // Familias de componentes: grupos con la misma firma de actividades
-    for(const m of MATERIAS.values()){
-      m.familias = new Map();
-      for(const g of m.grupos.values()){
-        g.fam = firmaDe(g.actividades);
-        if(!m.familias.has(g.fam))
-          m.familias.set(g.fam, {clave:g.fam, etiqueta:etiquetaFam(g.actividades), grupos:[]});
-        m.familias.get(g.fam).grupos.push(g.grupo);
-      }
-      /* ¿Hace falta inscribir varios grupos? Solo si NINGÚN grupo por sí solo
-         cubre todas las actividades de la asignatura.
-
-         Esto es lo que separa los dos patrones y además absorbe las erratas del
-         SIA. Fundamentos de mecánica tiene un grupo mal escrito, «(16) Gruop 16»,
-         que solo trae la magistral: si nos fiáramos del número de familias, la
-         asignatura entera parecería multicomponente y les pediríamos tres
-         inscripciones a los 28 grupos que ya vienen completos. Como existe un
-         grupo que cubre {magistral, taller, laboratorio}, la asignatura se
-         resuelve con un clic y la errata queda como una alternativa más.
-
-         Modelación matemática, en cambio, no tiene ningún grupo que traiga
-         teórica y magistral a la vez: ahí sí son dos inscripciones. */
-      const todasAct = new Set();
-      for(const g of m.grupos.values()) for(const a of g.actividades) todasAct.add(a);
-      m.multi = todasAct.size > 1 &&
-        ![...m.grupos.values()].some(g => g.actividades.size === todasAct.size);
-    }
+    COLORES = null;
+    ingerirHorarios(hor, false);
+    calcularFamilias(MATERIAS.values());
 
     HISTORIAL = hd.historial;
     SNAPSHOTS = null;   // el reagrupado por corrida se recalcula
@@ -1314,6 +1398,13 @@ async function cargarDatos(){
       const h=HISTORIAL.get(`${m.codigo}|${g.grupo}`);
       if(h && h.length) g.cupos = h[h.length-1].cupos;
     }
+
+    /* Las electivas se recargan ANTES de la limpieza de abajo. Si no, un
+       horario con una electiva perdería ese grupo en cada recarga: no estaría
+       en MATERIAS todavía y la limpieza lo tomaría por una materia difunta. */
+    const faltan = [...seleccion.map(k=>k.split("|")[0]), ...CANDIDATAS]
+      .some(c => !MATERIAS.has(c));
+    if(faltan || LIBRES.estado==="listo") await asegurarLibres({repintar:false});
 
     // limpiar selecciones que ya no existen
     seleccion = seleccion.filter(k=>{ const [c,g]=k.split("|"); return MATERIAS.has(c) && MATERIAS.get(c).grupos.has(g); });
@@ -1326,7 +1417,7 @@ async function cargarDatos(){
     estado.innerHTML = `<span class="punto"></span>Actualizado: ${ult?fmtFecha(ult):"—"} <button id="btnRecargar" type="button">recargar</button>`;
     $("#btnRecargar").addEventListener("click", cargarDatos);
     $("#infoSnapshots").textContent = `${nSnap} snapshots · cada 30 min`;
-    $("#conteoMaterias").textContent = `${MATERIAS.size} materias`;
+    $("#conteoMaterias").textContent = textoConteo();
 
     pintarLista(); pintarHorario(); pintarAvance(); pintarCandidatas(); pintarGenLista(); prepararTendencias();
     try{ pintarGrafico(); }catch(e){ msjLienzo("La gráfica falló al dibujarse. Recarga la página para intentar de nuevo."); }
@@ -1337,9 +1428,21 @@ async function cargarDatos(){
 }
 
 /* ================= Lista de materias ================= */
+/* El color sale del orden alfabético, pero se calcula UNA vez y las materias
+   del plan van primero. Antes se reordenaban todas las claves en cada llamada
+   —cientos de veces por repintado con las electivas cargadas— y, peor, al
+   traerlas cambiaba el color de media malla, porque cada código nuevo corría
+   los índices. */
+let COLORES = null;
 function colorDe(codigo){
-  const cods=[...MATERIAS.keys()].sort();
-  return PALETA[cods.indexOf(codigo) % PALETA.length];
+  if(!COLORES){
+    COLORES = new Map();
+    const plan = [...MATERIAS.values()].filter(m=>!m.libre).map(m=>m.codigo).sort();
+    plan.forEach((c,i)=> COLORES.set(c, PALETA[i % PALETA.length]));
+    const libres = [...MATERIAS.values()].filter(m=>m.libre).map(m=>m.codigo).sort();
+    libres.forEach((c,i)=> COLORES.set(c, PALETA[(plan.length+i) % PALETA.length]));
+  }
+  return COLORES.get(codigo) || PALETA[0];
 }
 function claseCupos(n){ return n===null?"sindato":(n<=0?"cero":(n<=3?"pocos":"ok")); }
 const textoCupos = n => n===null ? "sin dato" : `${n} cupos`;
@@ -1381,6 +1484,16 @@ function pintarLista(){
 
   const orden = $("#orden").value;
   const soloDisp = $("#soloDisponibles").checked;
+  const fuente = $("#fuente") ? $("#fuente").value : "plan";
+  /* Lo que ya está en el horario o en el generador se ve siempre, sin importar
+     el filtro: esconder un grupo que el usuario tiene inscrito sería mentirle
+     sobre su propio horario. */
+  const fijas = new Set([...seleccion.map(k=>k.split("|")[0]), ...CANDIDATAS]);
+  /* Las electivas son cientos y cada una dibuja sus grupos con su sparkline.
+     Pintarlas todas de una congela el navegador un par de segundos, así que se
+     muestran las primeras y el buscador hace el resto. */
+  const TOPE_LIBRES = 80;
+  let libresPintadas = 0, libresOcultas = 0;
   /* Las que no están en el pensum (electivas de libre elección) van al final
      cuando se ordena por semestre: no tienen un lugar fijo en la malla. */
   const clave = m => { const d = plan(m.codigo); return d ? d.sem : 99; };
@@ -1396,8 +1509,16 @@ function pintarLista(){
 
   let ocultas = 0;
   for(const m of materias){
+    if(!fijas.has(m.codigo)){
+      if(m.libre && fuente==="plan") continue;
+      if(!m.libre && fuente==="libre") continue;
+    }
     const texto=`${m.nombre} ${m.codigo} ${[...m.grupos.values()].map(g=>g.profesores).join(" ")}`.toLowerCase();
     if(q && !texto.includes(q)) continue;
+    if(m.libre && !fijas.has(m.codigo)){
+      if(libresPintadas >= TOPE_LIBRES){ libresOcultas++; continue; }
+      libresPintadas++;
+    }
 
     const ev = evaluar(m.codigo);
     if(soloDisp && (ev.estado==="bloqueada" || ev.estado==="aprobada")){ ocultas++; continue; }
@@ -1466,8 +1587,17 @@ function pintarLista(){
     div.appendChild(caja);
     cont.appendChild(div);
   }
+  if(libresOcultas){
+    cont.insertAdjacentHTML("beforeend",
+      `<div class="tope-libres">Se muestran ${TOPE_LIBRES} electivas de las ${libresOcultas+TOPE_LIBRES} que hay. Busca por nombre, código o profesor para encontrar el resto.</div>`);
+  }
+  if($("#conteoMaterias")) $("#conteoMaterias").textContent = textoConteo();
   if(!cont.children.length){
-    cont.innerHTML = ocultas
+    if(LIBRES.estado==="cargando" && fuente!=="plan")
+      cont.innerHTML = '<div class="vacio">Cargando las asignaturas de libre elección…</div>';
+    else if(LIBRES.estado==="error" && fuente!=="plan")
+      cont.innerHTML = '<div class="vacio">No pude leer <span class="mono">horarios_libre.csv</span>. Puede que el barrido diario de electivas todavía no haya corrido.</div>';
+    else cont.innerHTML = ocultas
       ? `<div class="vacio">Ninguna materia disponible coincide con la búsqueda.<br>${ocultas} quedaron fuera por el filtro «solo las que ya puedo ver».</div>`
       : '<div class="vacio">Ninguna materia coincide con la búsqueda.</div>';
   }else if(ocultas){
@@ -1997,7 +2127,11 @@ function moverSnapshot(paso){
 /* ================= Tendencias (Chart.js) ================= */
 function prepararTendencias(){
   const sel=$("#selMateria"); sel.innerHTML="";
-  for(const m of [...MATERIAS.values()].sort((a,b)=>a.nombre.localeCompare(b.nombre))){
+  // Una electiva recién raspada puede no tener todavía ni un punto de
+  // historial; ofrecerla aquí solo lleva a una gráfica vacía.
+  const conDatos = m => !m.libre ||
+    [...m.grupos.keys()].some(g => HISTORIAL.has(`${m.codigo}|${g}`));
+  for(const m of [...MATERIAS.values()].filter(conDatos).sort((a,b)=>a.nombre.localeCompare(b.nombre))){
     const o=document.createElement("option"); o.value=m.codigo; o.textContent=`${m.nombre} (${m.codigo})`;
     sel.appendChild(o);
   }
@@ -2259,18 +2393,32 @@ function pintarGenLista(){
   const caja = $("#genLista"); if(!caja) return;
   const q = ($("#genBuscar").value||"").trim().toLowerCase();
   caja.innerHTML = "";
+  const conLibres = $("#genLibres") ? $("#genLibres").checked : false;
   const items = [...MATERIAS.values()]
     .filter(m => !APROBADAS.has(nc(m.codigo)))
+    // Las ya marcadas como candidatas siguen apareciendo aunque se apague la
+    // casilla: si no, desaparecerían de la lista pero seguirían contando en el
+    // generador, que es la peor combinación posible.
+    .filter(m => !m.libre || conLibres || CANDIDATAS.has(m.codigo))
     .filter(m => !q || `${m.nombre} ${m.codigo}`.toLowerCase().includes(q))
     .sort((a,b)=>{
+      // Primero el plan (por semestre) y después las electivas: son el relleno,
+      // no el esqueleto del horario.
+      if(!!a.libre !== !!b.libre) return a.libre ? 1 : -1;
       const sa = plan(a.codigo)?.sem ?? 99, sb = plan(b.codigo)?.sem ?? 99;
       return sa-sb || a.nombre.localeCompare(b.nombre,"es");
     });
+  if(LIBRES.estado==="cargando" && conLibres){
+    caja.innerHTML = '<div class="gen-vacio" style="padding:8px 10px">Cargando las electivas…</div>';
+    return;
+  }
   if(!items.length){
     caja.innerHTML = '<div class="gen-vacio" style="padding:8px 10px">Ninguna asignatura coincide.</div>';
     return;
   }
-  for(const m of items){
+  const TOPE_GEN = 150;
+  const recortadas = Math.max(0, items.length - TOPE_GEN);
+  for(const m of items.slice(0, TOPE_GEN)){
     const ev = evaluar(m.codigo);
     const l = document.createElement("label");
     l.dataset.cod = m.codigo;
@@ -2279,6 +2427,10 @@ function pintarGenLista(){
       selloDe(ev);
     l.querySelector("input").addEventListener("change", ()=>alternarCandidata(m.codigo));
     caja.appendChild(l);
+  }
+  if(recortadas){
+    caja.insertAdjacentHTML("beforeend",
+      `<div class="tope-libres">Y ${recortadas} más. Escribe en el buscador para filtrarlas.</div>`);
   }
 }
 
@@ -2535,6 +2687,10 @@ function actualizarInsignias(){
 
 $("#busqueda").addEventListener("input", pintarLista);
 $("#orden").addEventListener("change", pintarLista);
+$("#fuente").addEventListener("change", async ()=>{
+  if($("#fuente").value!=="plan") await asegurarLibres();
+  pintarLista();
+});
 $("#soloDisponibles").addEventListener("change", pintarLista);
 
 /* Selector «aprobar hasta el semestre N» */
@@ -2576,6 +2732,13 @@ $("#btnLimpiarBloqueos").addEventListener("click", ()=>{
   BLOQUEADOS.clear(); genAlmacen.guardar(); pintarRejilla(); invalidarResultados();
 });
 $("#genBuscar").addEventListener("input", pintarGenLista);
+$("#genLibres").addEventListener("change", async ()=>{
+  if($("#genLibres").checked && LIBRES.estado!=="listo"){
+    $("#genLista").innerHTML = '<div class="gen-vacio" style="padding:8px 10px">Cargando las electivas…</div>';
+    await asegurarLibres({repintar:false});
+  }
+  pintarGenLista();
+});
 pintarRejilla(); pintarCandidatas(); pintarGenLista();
 
 function fijarModo(modo){
