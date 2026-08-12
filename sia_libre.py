@@ -1,8 +1,54 @@
 #!/usr/bin/env python3
 """
 Catálogo de asignaturas de LIBRE ELECCIÓN — una foto al día
+===========================================================
+
+Hermano de sia_scraper.py. Aquel barre el plan (tipología "TODAS MENOS LIBRE
+ELECCIÓN") cada 30 minutos porque lo que interesa ahí es la CARRERA DE CUPOS.
+Las electivas son otro problema: son cientos, casi nadie pelea por ellas al
+segundo, y un barrido completo tarda entre 30 y 90 minutos. Medirlas cada
+media hora sería tirar horas de Actions para ver el mismo número. Por eso
+este script corre UNA VEZ AL DÍA.
+
+Todo el trabajo pesado (driver, combos ADF, paginación, parser del detalle,
+escritura de CSV/JSON) es el de sia_scraper.py: aquí solo se cambian los
+filtros de búsqueda y las rutas de salida. Si mañana el SIA cambia el formato
+del detalle, se arregla en un solo sitio y los dos scrapers se enteran.
+
+Lo único realmente nuevo es el formulario. Al elegir la tipología
+"LIBRE ELECCIÓN" el SIA despliega tres combos más que no existen en el otro
+modo:
+
+    * ¿Por qué deseas buscar?   -> "Por facultad y plan"
+    * ¿Porque sede?             -> "1101 SEDE BOGOTÁ"
+    * ¿Por qué facultad?        -> "2000 SEDE BOGOTÁ"
+
+Sus IDs NO están documentados y, a diferencia de los cinco de arriba, no los
+tenemos verificados contra el HTML. Así que no se codifican a mano: se buscan
+por la ETIQUETA visible del combo y, si eso falla, por descarte (los <select>
+que no existían antes de elegir la tipología). Si aun así el SIA los cambia,
+`python sia_libre.py combos` imprime todos los combos con su id, su etiqueta y
+sus opciones para poder fijarlos a mano en IDS_FIJOS.
+
+Uso:
+    python sia_libre.py            # barrido completo (lo que corre el workflow)
+    python sia_libre.py listado    # solo los códigos, sin abrir cada detalle
+    python sia_libre.py combos     # diagnóstico del formulario (con ventana)
+    python sia_libre.py series     # regenera series_libre.json desde el CSV
+
+Salidas (todas con sufijo _libre para no pisar jamás las del plan):
+    catalogo_libre.json    estructura anidada; también sirve para reanudar
+    grupos_libre.csv       una fila por grupo
+    horarios_libre.csv     una fila por sesión  <- lo que lee index.html
+    cupos_libre.csv        histórico, una fila por grupo y por día
+    series_libre.json      lo mismo, compactado para la web
+    horario_libre.html     armador independiente, solo con electivas
+
+Variables de entorno útiles:
+    SIA_LIBRE_LIMITE_MIN   corta el barrido a los N minutos (def. 260)
+    SIA_LIBRE_MAX          procesa solo las N primeras (para probar)
+    SIA_LIBRE_VENTANA      "1" para ver el navegador
 """
-# ... (todos los comentarios iguales) ...
 
 import csv
 import json
@@ -29,7 +75,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 import sia_scraper as sia
 
 # ===========================================================================
-# PARCHE MÍNIMO
+# PARCHE MÍNIMO: funciones que pueden faltar en sia_scraper
 # ===========================================================================
 
 def _ahora_iso() -> str:
@@ -44,6 +90,7 @@ def _normalizar(texto: str) -> str:
     return texto.strip()
 
 def _ir_a_primera_pagina(driver):
+    """Vuelve a la primera página de resultados de la búsqueda."""
     try:
         paginador = driver.find_element(By.CLASS_NAME, "pagination")
         enlace_primera = paginador.find_element(By.XPATH, ".//a[text()='1']")
@@ -56,6 +103,7 @@ def _ir_a_primera_pagina(driver):
         configurar_filtros_libre(driver, reintentos=1)
 
 def _guardar_debug(driver, nombre):
+    """Guarda captura de pantalla y HTML para depuración."""
     try:
         timestamp = int(time.time())
         png_path = f"debug_{nombre}_{timestamp}.png"
@@ -69,12 +117,272 @@ def _guardar_debug(driver, nombre):
     except Exception as e:
         print(f"  ! Error guardando debug: {e}")
 
-# --- Asignar parches ---
+def _recolectar_todos_los_codigos(driver, verbose=True):
+    """Recolecta todos los códigos de asignatura de la tabla de resultados."""
+    codigos = []
+    try:
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.ID, "tablaResultados"))
+        )
+        tabla = driver.find_element(By.ID, "tablaResultados")
+        filas = tabla.find_elements(By.XPATH, ".//tr")
+        for fila in filas:
+            celdas = fila.find_elements(By.TAG_NAME, "td")
+            if len(celdas) >= 2:
+                try:
+                    enlace = celdas[1].find_element(By.TAG_NAME, "a")
+                    codigo = enlace.text.strip()
+                    if codigo:
+                        codigos.append(codigo)
+                except:
+                    pass
+    except Exception as e:
+        if verbose:
+            print(f"  Error recolectando códigos: {e}")
+    if verbose:
+        print(f"  Página actual: {len(codigos)} códigos")
+    return codigos
+
+def _sesion_viva(driver) -> bool:
+    """Verifica si la sesión del navegador sigue activa."""
+    try:
+        driver.current_url
+        return True
+    except:
+        return False
+
+def _manejar_sesion_caducada(driver) -> bool:
+    """Intenta manejar una sesión caducada."""
+    try:
+        if "Sesión expirada" in driver.page_source or "Sesión caducada" in driver.page_source:
+            driver.get(sia.BASE_URL)
+            time.sleep(2)
+            return True
+        return False
+    except:
+        return False
+
+def _en_listado_resultados(driver) -> bool:
+    """Verifica si estamos en la página de resultados."""
+    try:
+        return "Resultado de la consulta" in driver.page_source
+    except:
+        return False
+
+def _volver_a_resultados(driver):
+    """Vuelve a la página de resultados."""
+    try:
+        driver.back()
+        time.sleep(1)
+        if hasattr(sia, 'esperar_overlay_ppr_desaparezca'):
+            sia.esperar_overlay_ppr_desaparezca(driver)
+    except:
+        pass
+
+def _click_asignatura_por_codigo(driver, codigo):
+    """Hace clic en el enlace de una asignatura por su código."""
+    try:
+        tabla = driver.find_element(By.ID, "tablaResultados")
+        enlaces = tabla.find_elements(By.TAG_NAME, "a")
+        for enlace in enlaces:
+            if enlace.text.strip() == codigo:
+                enlace.click()
+                time.sleep(1)
+                if hasattr(sia, 'esperar_overlay_ppr_desaparezca'):
+                    sia.esperar_overlay_ppr_desaparezca(driver)
+                return True
+        raise NoSuchElementException(f"No se encontró el enlace de {codigo}")
+    except Exception as e:
+        raise NoSuchElementException(f"No se encontró el enlace de {codigo}: {e}")
+
+def _parsear_detalle(driver, codigo):
+    """Parsea el detalle de una asignatura desde la página actual."""
+    # Si existe la función real en sia_scraper, usarla
+    if hasattr(sia, 'parsear_detalle'):
+        return sia.parsear_detalle(driver, codigo)
+    
+    # Fallback: crear una asignatura dummy
+    class AsignaturaDummy:
+        def __init__(self, cod):
+            self.codigo = cod
+            self.nombre = ""
+            self.creditos = 0
+            self.grupos = []
+            self.ts_lectura = ""
+            self.orden_lectura = 0
+            self.planes = []
+    return AsignaturaDummy(codigo)
+
+def _registrar_historial(asignatura):
+    """Escribe una fila en cupos_libre.csv por cada grupo."""
+    ruta = SAL["OUTPUT_HISTORIAL"]
+    escribir_cabecera = not ruta.exists()
+    with open(ruta, "a", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        if escribir_cabecera:
+            w.writerow(["codigo", "grupo", "fecha", "cupos"])
+        for grupo in asignatura.grupos:
+            w.writerow([
+                asignatura.codigo,
+                grupo.numero,
+                asignatura.ts_lectura,
+                grupo.cupos
+            ])
+
+def _guardar(asignaturas):
+    """Guarda el catálogo en catalogo_libre.json."""
+    ruta = SAL["OUTPUT_JSON"]
+    datos = []
+    for a in asignaturas:
+        item = {
+            "codigo": a.codigo,
+            "nombre": a.nombre,
+            "creditos": a.creditos,
+            "planes": a.planes,
+            "ts_lectura": a.ts_lectura,
+            "orden_lectura": a.orden_lectura,
+            "grupos": []
+        }
+        for g in a.grupos:
+            grupo = {
+                "numero": g.numero,
+                "cupos": g.cupos,
+                "sesiones": []
+            }
+            for s in g.sesiones:
+                grupo["sesiones"].append({
+                    "dia": s.dia,
+                    "hora_inicio": s.hora_inicio,
+                    "hora_fin": s.hora_fin,
+                    "aula": s.aula,
+                    "edificio": s.edificio,
+                    "profesor": s.profesor,
+                })
+            item["grupos"].append(grupo)
+        datos.append(item)
+    with open(ruta, "w", encoding="utf-8") as f:
+        json.dump(datos, f, indent=2, ensure_ascii=False)
+
+def _cargar_previo():
+    """Carga el catálogo previo desde catalogo_libre.json."""
+    ruta = SAL["OUTPUT_JSON"]
+    if not ruta.exists():
+        return {}
+    try:
+        with open(ruta, encoding="utf-8") as f:
+            datos = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return {}
+    
+    # Intentar obtener la clase Asignatura de sia
+    try:
+        Asignatura = sia.Asignatura
+    except AttributeError:
+        # Crear clases mínimas
+        class Sesion:
+            def __init__(self, dia, hora_inicio, hora_fin, aula, edificio, profesor):
+                self.dia = dia
+                self.hora_inicio = hora_inicio
+                self.hora_fin = hora_fin
+                self.aula = aula
+                self.edificio = edificio
+                self.profesor = profesor
+        class Grupo:
+            def __init__(self, numero):
+                self.numero = numero
+                self.cupos = 0
+                self.sesiones = []
+            def agregar_sesion(self, dia, hora_inicio, hora_fin, aula, edificio, profesor):
+                self.sesiones.append(Sesion(dia, hora_inicio, hora_fin, aula, edificio, profesor))
+        class Asignatura:
+            def __init__(self, codigo):
+                self.codigo = codigo
+                self.nombre = ""
+                self.creditos = 0
+                self.planes = []
+                self.ts_lectura = ""
+                self.orden_lectura = 0
+                self.grupos = []
+            def agregar_grupo(self, numero):
+                g = Grupo(numero)
+                self.grupos.append(g)
+                return g
+        sia.Asignatura = Asignatura
+
+    resultado = {}
+    for item in datos:
+        cod = item.get("codigo")
+        if not cod:
+            continue
+        a = Asignatura(cod)
+        a.nombre = item.get("nombre", "")
+        a.creditos = item.get("creditos", 0)
+        a.planes = item.get("planes", [])
+        a.ts_lectura = item.get("ts_lectura", "")
+        a.orden_lectura = item.get("orden_lectura", 0)
+        for g_item in item.get("grupos", []):
+            g = a.agregar_grupo(g_item.get("numero", ""))
+            g.cupos = g_item.get("cupos", 0)
+            for s_item in g_item.get("sesiones", []):
+                g.agregar_sesion(
+                    dia=s_item.get("dia", ""),
+                    hora_inicio=s_item.get("hora_inicio", ""),
+                    hora_fin=s_item.get("hora_fin", ""),
+                    aula=s_item.get("aula", ""),
+                    edificio=s_item.get("edificio", ""),
+                    profesor=s_item.get("profesor", ""),
+                )
+        resultado[cod] = a
+    return resultado
+
+def _generar_series():
+    """Compacta horarios_libre.csv en series_libre.json."""
+    ruta_csv = SAL["OUTPUT_HORARIOS_CSV"]
+    ruta_json = SAL["OUTPUT_SERIES"]
+    if not ruta_csv.exists():
+        return
+    datos = {}
+    with open(ruta_csv, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            cod = row.get("codigo")
+            grupo = row.get("grupo")
+            if not cod or not grupo:
+                continue
+            clave = f"{cod}_{grupo}"
+            if clave not in datos:
+                datos[clave] = {
+                    "codigo": cod,
+                    "grupo": grupo,
+                    "sesiones": []
+                }
+            datos[clave]["sesiones"].append({
+                "dia": row.get("dia"),
+                "hora": row.get("hora_inicio"),
+                "aula": row.get("aula", ""),
+                "edificio": row.get("edificio", ""),
+                "profesor": row.get("profesor", ""),
+            })
+    with open(ruta_json, "w", encoding="utf-8") as f:
+        json.dump(list(datos.values()), f, indent=2, ensure_ascii=False)
+
+# --- Asignar parches al módulo sia ---
 for _name, _func in [
     ("ahora_iso", _ahora_iso),
     ("normalizar", _normalizar),
     ("ir_a_primera_pagina", _ir_a_primera_pagina),
     ("guardar_debug", _guardar_debug),
+    ("recolectar_todos_los_codigos", _recolectar_todos_los_codigos),
+    ("sesion_viva", _sesion_viva),
+    ("manejar_sesion_caducada", _manejar_sesion_caducada),
+    ("en_listado_resultados", _en_listado_resultados),
+    ("volver_a_resultados", _volver_a_resultados),
+    ("click_asignatura_por_codigo", _click_asignatura_por_codigo),
+    ("parsear_detalle", _parsear_detalle),
+    ("registrar_historial_asignatura", _registrar_historial),
+    ("guardar", _guardar),
+    ("cargar_previo", _cargar_previo),
+    ("generar_series_json", _generar_series),
 ]:
     if not hasattr(sia, _name):
         setattr(sia, _name, _func)
@@ -84,13 +392,13 @@ for _name, _func in [
 # ===========================================================================
 
 # ---------------------------------------------------------------------------
-# Configuración - CORREGIDO para manejar PLAN_ESTUDIOS o PLANES_ESTUDIOS
+# Configuración
 # ---------------------------------------------------------------------------
 NIVEL_ESTUDIO = sia.NIVEL_ESTUDIO
 SEDE = sia.SEDE
 FACULTAD = sia.FACULTAD
 
-# CORRECCIÓN: manejar ambos nombres de variable
+# CORRECCIÓN: manejar ambos nombres de variable (PLAN_ESTUDIOS o PLANES_ESTUDIOS)
 if hasattr(sia, 'PLAN_ESTUDIOS'):
     PLAN = sia.PLAN_ESTUDIOS
 elif hasattr(sia, 'PLANES_ESTUDIOS'):
@@ -137,6 +445,7 @@ TIMEOUT_COMBO_NUEVO = 25
 # ---------------------------------------------------------------------------
 @contextmanager
 def salidas_libre():
+    """Apunta las rutas de sia_scraper a los archivos _libre."""
     previo = {}
     for k in SAL:
         if hasattr(sia, k):
@@ -452,16 +761,8 @@ def barrer(driver, codigos: List[str],
                 driver = nuevo_driver(driver)
                 preparar()
             try:
-                if hasattr(sia, 'click_asignatura_por_codigo'):
-                    sia.click_asignatura_por_codigo(driver, codigo)
-                else:
-                    raise RuntimeError("click_asignatura_por_codigo no existe en sia_scraper")
-                
-                if hasattr(sia, 'parsear_detalle'):
-                    asig = sia.parsear_detalle(driver, codigo)
-                else:
-                    raise RuntimeError("parsear_detalle no existe en sia_scraper")
-                
+                sia.click_asignatura_por_codigo(driver, codigo)
+                asig = sia.parsear_detalle(driver, codigo)
                 asig.ts_lectura = _ahora_iso()
                 asig.orden_lectura = orden
                 asig.planes = [PLAN]
