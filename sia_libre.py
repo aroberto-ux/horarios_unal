@@ -444,6 +444,40 @@ def click_detalle(driver, codigo: str, espera=10.0, diagnosticar=False) -> str:
         f"Ninguna estrategia de clic abrió el detalle de {codigo}")
 
 
+def verificar_formulario(driver, esperado: Dict[str, str]):
+    """Lee el formulario tal y como quedó y comprueba que dice lo que pedimos.
+
+    Es la guarda que faltaba. Sin ella, un formulario mal configurado produce
+    un barrido perfectamente normal —sin errores, sin avisos— de asignaturas
+    que no son las que se pidieron. Pasó de verdad: nueve asignaturas de
+    posgrado de la FACULTAD DE MINAS (Medellín) publicadas como electivas de
+    Ingeniería Civil en Bogotá. El único síntoma fue que en la web salían
+    cuatro electivas raras.
+
+    Además imprime SIEMPRE el estado completo del formulario: son ocho líneas
+    por corrida y son las que permiten entender de un vistazo qué buscó el
+    scraper cuando algo sale raro.
+    """
+    inv = {c["id"]: c for c in inventario_combos(driver)}
+    print("\n  Formulario tal y como quedó:")
+    for c in inventario_combos(driver):
+        if c["id"] and c["visible"] and c["n"] > 1:
+            marca = "*" if c["id"] in esperado else " "
+            print(f"   {marca} {c['etiqueta'][:34]:36} = {c['sel'][:40]}")
+
+    malos = []
+    for cid, valor in esperado.items():
+        actual = inv.get(cid, {}).get("sel", "(no está)")
+        if sia.normalizar(actual) != sia.normalizar(valor):
+            malos.append(f"«{inv.get(cid, {}).get('etiqueta', cid)}» "
+                         f"pedimos «{valor}» y quedó «{actual}»")
+    if malos:
+        raise RuntimeError(
+            "El formulario no quedó como se pidió, no busco:\n     - "
+            + "\n     - ".join(malos))
+    print()
+
+
 def configurar_filtros_libre(driver, reintentos=3):
     """Los cinco filtros de siempre + los tres de libre elección, y a buscar."""
     ultimo_error = None
@@ -466,6 +500,12 @@ def configurar_filtros_libre(driver, reintentos=3):
             # «TODAS MENOS LIBRE ELECCIÓN» (ver seleccionar_estricto).
             seleccionar_estricto(driver, sia.ID_TIPOLOGIA, TIPOLOGIA)
 
+            # Lo que el formulario DEBE decir cuando terminemos.
+            esperado = {
+                sia.ID_NIVEL: NIVEL_ESTUDIO, sia.ID_SEDE: SEDE,
+                sia.ID_FACULTAD: FACULTAD, sia.ID_PLAN: PLAN,
+                sia.ID_TIPOLOGIA: TIPOLOGIA,
+            }
             usados = set(IDS_BASE)
             pendientes = (
                 ("criterio", CRITERIO_BUSQUEDA),
@@ -480,24 +520,29 @@ def configurar_filtros_libre(driver, reintentos=3):
                 # que dibuja los combos de sede y facultad.
                 cid = buscar_combo(driver, cual, usados, previos)
                 if not cid:
-                    print(f"  ~ No apareció el combo «{cual}»; sigo con lo "
-                          f"que el SIA traiga por defecto.")
-                    continue
+                    # Antes esto seguía "con lo que el SIA traiga por defecto",
+                    # y el defecto resultó ser otra sede entera.
+                    raise RuntimeError(
+                        f"No apareció el combo «{cual}» tras elegir "
+                        f"{TIPOLOGIA}. Corre `python sia_libre.py combos` "
+                        f"para ver qué desplegables hay ahora.")
                 try:
                     seleccionar_estricto(driver, cid, valor)
                     usados.add(cid)
-                except RuntimeError as e:
-                    # Si el combo detectado no tiene la opción pedida, es que
-                    # detectamos el combo equivocado: no vale seguir con él.
-                    print(f"  ~ Combo «{cual}» ({cid}) descartado: {e}")
-                    usados.add(cid)
-                    otro = buscar_combo(driver, cual, usados, previos, timeout=8)
-                    if otro:
-                        print(f"  ~ Reintento de «{cual}» con {otro}")
-                        seleccionar_estricto(driver, otro, valor)
-                        usados.add(otro)
-                    else:
-                        raise
+                    esperado[cid] = valor
+                except RuntimeError:
+                    # NO se prueba con otro combo. Ir tanteando desplegables
+                    # hasta que alguno acepte el valor fue exactamente lo que
+                    # produjo un barrido entero de la FACULTAD DE MINAS: el
+                    # formulario acaba en un estado que nadie pidió y el
+                    # resultado parece legítimo. Mejor parar y enseñar qué hay.
+                    opciones = next((c["opciones"] for c in inventario_combos(driver)
+                                     if c["id"] == cid), [])
+                    print(f"  ! El combo «{cual}» ({cid}) no acepta «{valor}».")
+                    print(f"    Sus opciones son: {opciones}")
+                    raise
+
+            verificar_formulario(driver, esperado)
 
             WebDriverWait(driver, sia.TIMEOUT_NAV).until(
                 EC.element_to_be_clickable(
@@ -612,6 +657,9 @@ def cargar_para_reanudar() -> Dict[str, "sia.Asignatura"]:
     en este repo. Solo tiene sentido cuando el job se murió a media mañana y
     Actions lo reintenta el mismo día.
     """
+    if os.environ.get("SIA_LIBRE_DESDE_CERO") == "1":
+        print("SIA_LIBRE_DESDE_CERO=1: se ignora el catálogo en disco.")
+        return {}
     ruta = SAL["OUTPUT_JSON"]
     if not ruta.exists():
         return {}
