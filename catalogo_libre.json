@@ -131,7 +131,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T11:52:53-05:00",
-    "orden_lectura": 0
+    "orden_lectura": -1
   },
   {
     "codigo": "3008728",
@@ -167,7 +167,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T11:52:55-05:00",
-    "orden_lectura": 1
+    "orden_lectura": -1
   },
   {
     "codigo": "3010951",
@@ -180,7 +180,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T11:52:56-05:00",
-    "orden_lectura": 2
+    "orden_lectura": -1
   },
   {
     "codigo": "3006726",
@@ -193,7 +193,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T11:52:57-05:00",
-    "orden_lectura": 3
+    "orden_lectura": -1
   },
   {
     "codigo": "3010953",
@@ -206,6 +206,1498 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T11:52:58-05:00",
+    "orden_lectura": -1
+  },
+  {
+    "codigo": "2026054",
+    "nombre": "Inglés Intensivo I",
+    "tipologia": "ELECTIVA DE PREGRADO",
+    "creditos": "4",
+    "facultad": "FACULTAD DE CIENCIAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Jenny Alejandra Acosta Reyes",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-317",
+            "salon_nombre": "SALON DE CLASE 453-317 (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 453-317 (SALA TIC). 453-317. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "DE EDUC.CONTINUADA",
+            "salon_nombre": "PROG",
+            "edificio": "310-201",
+            "tipo_espacio": "310 - Antonio García Nossa",
+            "lugar_raw": "PROG. DE EDUC.CONTINUADA. 310-201. 310 - Antonio García Nossa. ."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-317",
+            "salon_nombre": "SALON DE CLASE 453-317 (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 453-317 (SALA TIC). 453-317. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-107",
+            "salon_nombre": "SALON DE CLASE 453-107",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-107. 453-107. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Jenny Alejandra Acosta Reyes",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-201",
+            "salon_nombre": "SALON DE CLASE 454-201",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-201. 454-201. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-202",
+            "salon_nombre": "SALON DE CLASE 454-202",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-202. 454-202. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-201",
+            "salon_nombre": "SALON DE CLASE 454-201",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-201. 454-201. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "453-105",
+            "salon_nombre": "SALON DE CLASE 453-105",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-105. 453-105. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Karen Dayana Rodriguez Castaneda",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-301",
+            "salon_nombre": "SALON DE CLASE 454-301",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-301. 454-301. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-307",
+            "salon_nombre": "SALON DE CLASE 454-307",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-307. 454-307. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-202",
+            "salon_nombre": "SALON DE CLASE 454-202",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-202. 454-202. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "453-415",
+            "salon_nombre": "SALON DE CLASE 453-415",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-415. 453-415. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Karen Dayana Rodriguez Castaneda",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-207",
+            "salon_nombre": "SALÓN DE CLASE 401-207",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-207. 401-207. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-115",
+            "salon_nombre": "SALON DE CLASE 453-115",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-109",
+            "salon_nombre": "SALON DE CLASE 453-109",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-109. 453-109. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(5) Grupo 5",
+        "actividad": "CLASE TEORICA",
+        "profesores": "SENDA VALENTINA MARÍA GARCÍA CASTAÑO",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-202",
+            "salon_nombre": "SALÓN DE CLASE 401-202",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-202. 401-202. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-317",
+            "salon_nombre": "SALON DE CLASE 453-317 (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 453-317 (SALA TIC). 453-317. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-415",
+            "salon_nombre": "SALON DE CLASE 453-415",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-415. 453-415. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-306",
+            "salon_nombre": "SALÓN DE CLASE 401-306",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-306. 401-306. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(6) Grupo 6",
+        "actividad": "CLASE TEORICA",
+        "profesores": "ADRIANA DE LOS ANGELES QUINTERO ORJUELA",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-111",
+            "salon_nombre": "SALON DE CLASE 453-111",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-111. 453-111. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-115",
+            "salon_nombre": "SALON DE CLASE 453-115",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "401-102",
+            "salon_nombre": "SALÓN DE CLASE 401-102",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-102. 401-102. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(7) Grupo 7",
+        "actividad": "CLASE TEORICA",
+        "profesores": "SENDA VALENTINA MARÍA GARCÍA CASTAÑO",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-407",
+            "salon_nombre": "SALON DE CLASE 453-407",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-407. 453-407. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-115",
+            "salon_nombre": "SALON DE CLASE 453-115",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-315",
+            "salon_nombre": "SALON DE CLASE 453-315",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-111",
+            "salon_nombre": "SALON DE CLASE 453-111",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-111. 453-111. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(8) Grupo 8",
+        "actividad": "CLASE TEORICA",
+        "profesores": "ADRIANA DE LOS ANGELES QUINTERO ORJUELA",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-105",
+            "salon_nombre": "SALÓN DE CLASE",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE. 401-105. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-317",
+            "salon_nombre": "SALON DE CLASE 453-317 (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 453-317 (SALA TIC). 453-317. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-202",
+            "salon_nombre": "SALÓN DE CLASE 401-202",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-202. 401-202. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-12T12:27:48-05:00",
+    "orden_lectura": 0
+  },
+  {
+    "codigo": "2026055",
+    "nombre": "Inglés Intensivo II",
+    "tipologia": "ELECTIVA DE PREGRADO",
+    "creditos": "4",
+    "facultad": "FACULTAD DE CIENCIAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Roger Barragan Fonseca",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-206",
+            "salon_nombre": "SALON DE CLASE 454-206",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-206",
+            "salon_nombre": "SALON DE CLASE 454-206",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-206",
+            "salon_nombre": "SALON DE CLASE 454-206",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-206",
+            "salon_nombre": "SALON DE CLASE 454-206",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE TEORICA",
+        "profesores": "OLGA INES GOMEZ VILLEGAS",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-208",
+            "salon_nombre": "SALON DE CLASE 454-208",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-208. 454-208. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-201",
+            "salon_nombre": "SALON DE CLASE 454-201",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-201. 454-201. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "453-103",
+            "salon_nombre": "SALON DE CLASE 453-103",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-103. 453-103. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Laura Alejandra Guerrero Calderon",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-202",
+            "salon_nombre": "SALON DE CLASE 454-202",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-202. 454-202. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-301",
+            "salon_nombre": "SALON DE CLASE 454-301",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-301. 454-301. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "471-222B",
+            "salon_nombre": "AULA TEORICA",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "",
+            "lugar_raw": "AULA TEORICA. 471-222B. 471 - José Félix Patiño Restrepo. ."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "453-307",
+            "salon_nombre": "SALON DE CLASE 453-307 (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 453-307 (SALA TIC). 453-307. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Gustavo Garzon Gomez",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-107",
+            "salon_nombre": "SALON DE CLASE 453-107",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-107. 453-107. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "311-201",
+            "salon_nombre": "AULA",
+            "edificio": "311 - Lauchlin Currie",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA. 311-201. 311 - Lauchlin Currie. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-105",
+            "salon_nombre": "SALÓN DE CLASE",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE. 401-105. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(5) Grupo 5",
+        "actividad": "CLASE TEORICA",
+        "profesores": "AIDA PATRICIA ZAMBRANO MONSALVE",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-306",
+            "salon_nombre": "SALÓN DE CLASE 401-306",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-306. 401-306. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-305",
+            "salon_nombre": "SALÓN DE CLASE 401-305",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-305. 401-305. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-207",
+            "salon_nombre": "SALÓN DE CLASE 401-207",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-207. 401-207. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(6) Grupo 6",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Juan Diego Galvez Diaz",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-107",
+            "salon_nombre": "SALON DE CLASE 453-107",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-107. 453-107. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "311-102",
+            "salon_nombre": "AULA",
+            "edificio": "311 - Lauchlin Currie",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA. 311-102. 311 - Lauchlin Currie. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-313",
+            "salon_nombre": "SALON DE CLASE 453-313",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-313. 453-313. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(7) Grupo 7",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Laura Alejandra Guerrero Calderon",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-315",
+            "salon_nombre": "SALON DE CLASE 453-315",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "401-207",
+            "salon_nombre": "SALÓN DE CLASE 401-207",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-207. 401-207. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "471-116",
+            "salon_nombre": "SALON DE CLASE - NO DISPONIBLE PARA EL RESTO DE LA UNIVERSIDAD",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "",
+            "lugar_raw": "SALON DE CLASE - NO DISPONIBLE PARA EL RESTO DE LA UNIVERSIDAD. 471-116. 471 - José Félix Patiño Restrepo. ."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "401-105",
+            "salon_nombre": "SALÓN DE CLASE",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE. 401-105. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(8) Grupo 8",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Juan Diego Galvez Diaz",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "31/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-202",
+            "salon_nombre": "SALÓN DE CLASE 401-202",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-202. 401-202. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-109",
+            "salon_nombre": "SALON DE CLASE 453-109",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-109. 453-109. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-206",
+            "salon_nombre": "SALÓN DE CLASE 401-206",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-206. 401-206. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-12T12:27:49-05:00",
+    "orden_lectura": 1
+  },
+  {
+    "codigo": "2026056",
+    "nombre": "Inglés Intensivo III",
+    "tipologia": "ELECTIVA DE PREGRADO",
+    "creditos": "4",
+    "facultad": "FACULTAD DE CIENCIAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "MARTIN FELIPE SUAREZ GUARIN",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-307",
+            "salon_nombre": "SALON DE CLASE 454-307",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-307. 454-307. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-208",
+            "salon_nombre": "SALON DE CLASE 454-208",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-208. 454-208. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-103",
+            "salon_nombre": "SALON DE CLASE 453-103",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-103. 453-103. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "CLASE TEORICA",
+        "profesores": "MARTIN FELIPE SUAREZ GUARIN",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "471-112",
+            "salon_nombre": "SALON",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON. 471-112. 471 - José Félix Patiño Restrepo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-204",
+            "salon_nombre": "SALON DE CLASE 454-204",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-204. 454-204. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "500-303",
+            "salon_nombre": "SALON DE CLASE 303",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 303. 500-303. 500 - Ciencias Agrarias. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "224-216",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-216. 224 - Manuel Ancizar. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Camilo Andres Saldaña Diaz",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-107",
+            "salon_nombre": "SALON DE CLASE 453-107",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-107. 453-107. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-311",
+            "salon_nombre": "SALON DE CLASE 453-311",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-311. 453-311. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-315",
+            "salon_nombre": "SALON DE CLASE 453-315",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(5) Grupo 5",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Camilo Andres Saldaña Diaz",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-115",
+            "salon_nombre": "SALON DE CLASE 453-115",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "454-201",
+            "salon_nombre": "SALON DE CLASE 454-201",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-201. 454-201. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-411",
+            "salon_nombre": "SALON DE CLASE 453-411",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-411. 453-411. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(6) Grupo 6",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Lina Beatríz Barrero Molina",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-315",
+            "salon_nombre": "SALON DE CLASE 453-315",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-111",
+            "salon_nombre": "SALON DE CLASE 453-111",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-111. 453-111. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-103",
+            "salon_nombre": "SALON DE CLASE 453-103",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-103. 453-103. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-307",
+            "salon_nombre": "SALON DE CLASE 453-307 (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 453-307 (SALA TIC). 453-307. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-12T12:27:50-05:00",
+    "orden_lectura": 2
+  },
+  {
+    "codigo": "2026057",
+    "nombre": "Intensive english I - Internationalization",
+    "tipologia": "ELECTIVA DE PREGRADO",
+    "creditos": "4",
+    "facultad": "FACULTAD DE CIENCIAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Andres Felipe Mican Castiblanco",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "SÁBADO",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-206",
+            "salon_nombre": "SALON DE CLASE 454-206",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Diego Andres Rincón Beltrán",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-313",
+            "salon_nombre": "SALON DE CLASE 453-313",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-313. 453-313. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-315",
+            "salon_nombre": "SALON DE CLASE 453-315",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-101",
+            "salon_nombre": "SALÓN DE CLASE 401-101",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-101. 401-101. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-303",
+            "salon_nombre": "SALON DE CLASE 453-303",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-303. 453-303. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "SÁBADO",
+            "hora_inicio": "07:00",
+            "hora_fin": "11:00",
+            "salon": "471-507",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 471-507. 471 - José Félix Patiño Restrepo. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-12T12:27:51-05:00",
+    "orden_lectura": 3
+  },
+  {
+    "codigo": "2018965",
+    "nombre": "Proyecto de Tesis de Maestría",
+    "tipologia": "ACTIVIDADES ACADÉMICAS",
+    "creditos": "10",
+    "facultad": "FACULTAD DE CIENCIAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "",
+        "profesores": "Jose Robel Arenas Salazar; Benjamin Calvo Mozo; Giovanni Alejandro Pinzon Estrada",
+        "cupos_disponibles": "15",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "413-116",
+            "salon_nombre": "SALA DE VIDEOCONFERENCIAS",
+            "edificio": "413 - Belisario Ruiz Wilches",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE VIDEOCONFERENCIAS. 413-116. 413 - Belisario Ruiz Wilches. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-12T12:27:53-05:00",
     "orden_lectura": 4
+  },
+  {
+    "codigo": "2018966",
+    "nombre": "Seminario de investigación I",
+    "tipologia": "ACTIVIDADES ACADÉMICAS",
+    "creditos": "3",
+    "facultad": "FACULTAD DE CIENCIAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "",
+        "profesores": "Jose Gregorio Portilla Barbosa; Benjamin Calvo Mozo",
+        "cupos_disponibles": "20",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "413-116",
+            "salon_nombre": "SALA DE VIDEOCONFERENCIAS",
+            "edificio": "413 - Belisario Ruiz Wilches",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE VIDEOCONFERENCIAS. 413-116. 413 - Belisario Ruiz Wilches. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "413-116",
+            "salon_nombre": "SALA DE VIDEOCONFERENCIAS",
+            "edificio": "413 - Belisario Ruiz Wilches",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE VIDEOCONFERENCIAS. 413-116. 413 - Belisario Ruiz Wilches. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-12T12:27:54-05:00",
+    "orden_lectura": 5
+  },
+  {
+    "codigo": "2018967",
+    "nombre": "Seminario de investigación II",
+    "tipologia": "ACTIVIDADES ACADÉMICAS",
+    "creditos": "3",
+    "facultad": "FACULTAD DE CIENCIAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "",
+        "profesores": "Leonardo Castañeda Colorado; Mario Armando Higuera Garzon",
+        "cupos_disponibles": "15",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "413-117",
+            "salon_nombre": "SALON DE CLASE 117",
+            "edificio": "413 - Belisario Ruiz Wilches",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 117. 413-117. 413 - Belisario Ruiz Wilches. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "413-117",
+            "salon_nombre": "SALON DE CLASE 117",
+            "edificio": "413 - Belisario Ruiz Wilches",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 117. 413-117. 413 - Belisario Ruiz Wilches. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-12T12:27:55-05:00",
+    "orden_lectura": 6
+  },
+  {
+    "codigo": "2018968",
+    "nombre": "Seminario de investigación III",
+    "tipologia": "ACTIVIDADES ACADÉMICAS",
+    "creditos": "3",
+    "facultad": "FACULTAD DE CIENCIAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "SANTIAGO VARGAS DOMINGUEZ; Eduard Alexis Larrañaga Rubio",
+        "cupos_disponibles": "15",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "413-117",
+            "salon_nombre": "SALON DE CLASE 117",
+            "edificio": "413 - Belisario Ruiz Wilches",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 117. 413-117. 413 - Belisario Ruiz Wilches. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "413-117",
+            "salon_nombre": "SALON DE CLASE 117",
+            "edificio": "413 - Belisario Ruiz Wilches",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 117. 413-117. 413 - Belisario Ruiz Wilches. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-12T12:27:56-05:00",
+    "orden_lectura": 7
+  },
+  {
+    "codigo": "2018969",
+    "nombre": "Tesis de Maestría",
+    "tipologia": "TESIS-TRAB.FINAL",
+    "creditos": "40",
+    "facultad": "FACULTAD DE CIENCIAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "",
+        "profesores": "Eduard Alexis Larrañaga Rubio",
+        "cupos_disponibles": "30",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Asignaturas semestrales con duración entre 17 y 20 semanas",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "SÁBADO",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "413-116",
+            "salon_nombre": "SALA DE VIDEOCONFERENCIAS",
+            "edificio": "413 - Belisario Ruiz Wilches",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE VIDEOCONFERENCIAS. 413-116. 413 - Belisario Ruiz Wilches. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-12T12:27:58-05:00",
+    "orden_lectura": 8
   }
 ]
