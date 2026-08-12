@@ -1,0 +1,100 @@
+[
+  {
+    "codigo": "3011100",
+    "nombre": "Analítica de negocios",
+    "tipologia": "OBLIGATORIAS",
+    "creditos": "4",
+    "facultad": "FACULTAD DE MINAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [],
+    "ts_lectura": "2026-08-12T11:41:13-05:00",
+    "orden_lectura": 0
+  },
+  {
+    "codigo": "3011101",
+    "nombre": "Analítica descriptiva y visualización de datos",
+    "tipologia": "OBLIGATORIAS",
+    "creditos": "4",
+    "facultad": "FACULTAD DE MINAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1 REMOTA",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Juan David Velasquez Henao",
+        "cupos_disponibles": "70",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 18/10/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "13:00",
+            "hora_fin": "20:00",
+            "salon": "M8-102",
+            "salon_nombre": "AUDITORIO PETER SANTAMARIA",
+            "edificio": "BLOQUE M8",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO PETER SANTAMARIA. M8-102. BLOQUE M8. AUDITORIO."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-12T11:41:14-05:00",
+    "orden_lectura": 1
+  },
+  {
+    "codigo": "3010861",
+    "nombre": "Analitica predictiva",
+    "tipologia": "OBLIGATORIAS",
+    "creditos": "4",
+    "facultad": "FACULTAD DE MINAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1 REMOTA",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Juan David Velasquez Henao",
+        "cupos_disponibles": "130",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 18/10/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "SÁBADO",
+            "hora_inicio": "06:00",
+            "hora_fin": "13:00",
+            "salon": "Virtual-4",
+            "salon_nombre": "Cursos Dirigidos o virtuales de la Sede",
+            "edificio": "Aulas virtuales",
+            "tipo_espacio": "SALA DE INFORMATICA O DE COMPUTO",
+            "lugar_raw": "Cursos Dirigidos o virtuales de la Sede. Virtual-4. Aulas virtuales. SALA DE INFORMATICA O DE COMPUTO."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-12T11:41:15-05:00",
+    "orden_lectura": 2
+  },
+  {
+    "codigo": "3010799",
+    "nombre": "Productos de datos",
+    "tipologia": "OBLIGATORIAS",
+    "creditos": "4",
+    "facultad": "FACULTAD DE MINAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [],
+    "ts_lectura": "2026-08-12T11:41:16-05:00",
+    "orden_lectura": 3
+  }
+]

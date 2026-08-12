@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Armador de horario — SIA UNAL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#FAFBF7; --tinta:#1E2A24; --tinta-suave:#5A6B60;
+  --linea:#E3E9DD; --linea-fuerte:#C9D4C0;
+  --verde:#4C7A2E; --verde-claro:#EDF3E4;
+  --rojo:#C24438; --rojo-claro:#FBEAE8;
+  --b1:#DCE8F4; --b1i:#2C5578; --b2:#F3E6D0; --b2i:#7A5A1E;
+  --b3:#E4DCF0; --b3i:#54407A; --b4:#D9EFE3; --b4i:#22633E;
+  --b5:#F4DEDC; --b5i:#83403A; --b6:#EDEBD2; --b6i:#6A6320;
+  --b7:#DBECF0; --b7i:#2E6470; --b8:#F0E0EC; --b8i:#7A3E67;
+  --display:'Space Grotesk',system-ui,sans-serif;
+  --cuerpo:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:var(--cuerpo);color:var(--tinta);background:var(--papel);
+  display:flex;flex-direction:column;font-size:14px}
+
+/* ---------- cabecera ---------- */
+header{display:flex;align-items:center;gap:18px;padding:10px 18px;
+  border-bottom:2px solid var(--tinta);background:var(--papel)}
+header h1{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:.01em}
+header h1 span{color:var(--verde)}
+.contadores{display:flex;gap:8px;margin-left:auto}
+.ficha{border:1.5px solid var(--tinta);padding:4px 12px;font-family:var(--mono);
+  font-size:12.5px;background:#fff;display:flex;gap:7px;align-items:baseline}
+.ficha b{font-size:16px}
+.ficha.mal{border-color:var(--rojo);color:var(--rojo);background:var(--rojo-claro)}
+header button{font-family:var(--display);font-weight:500;font-size:13px;cursor:pointer;
+  border:1.5px solid var(--tinta);background:#fff;color:var(--tinta);padding:6px 13px}
+header button:hover{background:var(--tinta);color:var(--papel)}
+header button:focus-visible,.grupo:focus-visible{outline:2px solid var(--verde);outline-offset:2px}
+
+/* ---------- estructura ---------- */
+main{flex:1;display:flex;min-height:0}
+aside{width:340px;min-width:280px;border-right:2px solid var(--tinta);
+  display:flex;flex-direction:column;background:#fff}
+.busqueda{padding:12px;border-bottom:1px solid var(--linea-fuerte);display:flex;flex-direction:column;gap:9px}
+.busqueda input{width:100%;padding:8px 11px;font-family:var(--cuerpo);font-size:14px;
+  border:1.5px solid var(--linea-fuerte);background:var(--papel)}
+.busqueda input:focus{outline:none;border-color:var(--verde)}
+.busqueda label{display:flex;gap:7px;align-items:center;font-size:12.5px;color:var(--tinta-suave);cursor:pointer}
+.fila-imp{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.fila-imp button{font-family:var(--display);font-size:12px;cursor:pointer;
+  border:1.5px solid var(--tinta);background:#fff;color:var(--tinta);padding:5px 10px}
+.fila-imp button:hover{background:var(--tinta);color:var(--papel)}
+.chip-extra{font-family:var(--mono);font-size:11px;color:var(--verde)}
+.chip-extra a{color:var(--rojo);margin-left:4px}
+.busqueda select{padding:6px 8px;font-family:var(--cuerpo);font-size:12.5px;
+  border:1.5px solid var(--linea-fuerte);background:var(--papel)}
+.lista{flex:1;overflow-y:auto}
+
+/* ---------- lista de asignaturas ---------- */
+.asig{border-bottom:1px solid var(--linea)}
+.asig>summary{list-style:none;cursor:pointer;padding:10px 12px;display:flex;gap:9px;align-items:baseline}
+.asig>summary::-webkit-details-marker{display:none}
+.asig>summary:hover{background:var(--papel)}
+.asig .cod{font-family:var(--mono);font-size:11px;color:var(--tinta-suave);white-space:nowrap}
+.asig .nom{font-weight:600;font-size:13.5px;flex:1}
+.asig .cred{font-family:var(--mono);font-size:11px;color:var(--tinta-suave)}
+.asig[data-sel="1"]>summary{border-left:4px solid var(--verde);padding-left:8px;background:var(--verde-claro)}
+.grupo{padding:8px 12px 8px 24px;border-top:1px dashed var(--linea);cursor:pointer;position:relative}
+.grupo:hover{background:var(--papel)}
+.grupo.sel{background:var(--verde-claro);border-left:4px solid var(--verde);padding-left:20px}
+.grupo .g-cab{display:flex;gap:8px;align-items:baseline}
+.grupo .g-num{font-family:var(--mono);font-weight:600;font-size:12px}
+.grupo .g-prof{font-size:12px;color:var(--tinta-suave);flex:1;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.grupo .g-hor{font-family:var(--mono);font-size:11px;color:var(--tinta-suave);margin-top:3px}
+.tag{font-family:var(--mono);font-size:10px;padding:1px 6px;border:1px solid currentColor;white-space:nowrap}
+.tag.cupos{color:var(--verde)}
+.tag.sindato{color:#888}
+.tag.agotado{color:var(--tinta-suave)}
+.tag.cruce{color:var(--rojo);background:var(--rojo-claro)}
+.grupo.agotado .g-cab,.grupo.agotado .g-hor{opacity:.5}
+.vacio{padding:26px 16px;color:var(--tinta-suave);font-size:13px;text-align:center}
+
+/* ---------- rejilla (papel milimetrado) ---------- */
+.zona-grid{flex:1;display:flex;flex-direction:column;min-width:0;padding:14px 16px 16px}
+.dias{display:grid;margin-left:52px;grid-auto-flow:column;grid-auto-columns:1fr}
+.dias div{font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.06em;
+  text-align:center;padding-bottom:6px;color:var(--tinta)}
+.rejilla-wrap{flex:1;display:flex;min-height:0;border:2px solid var(--tinta);background:#fff}
+.horas{width:52px;position:relative;border-right:1.5px solid var(--linea-fuerte);flex:none}
+.horas span{position:absolute;right:7px;transform:translateY(-55%);
+  font-family:var(--mono);font-size:10.5px;color:var(--tinta-suave)}
+.cols{flex:1;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;position:relative;
+  background-image:
+    repeating-linear-gradient(to bottom,transparent 0,transparent calc(var(--paso) - 1px),var(--linea) calc(var(--paso) - 1px),var(--linea) var(--paso)),
+    repeating-linear-gradient(to bottom,transparent 0,transparent calc(var(--paso)/2 - 1px),color-mix(in srgb,var(--linea) 45%,transparent) calc(var(--paso)/2 - 1px),color-mix(in srgb,var(--linea) 45%,transparent) calc(var(--paso)/2))}
+.col{position:relative;border-right:1px solid var(--linea)}
+.col:last-child{border-right:none}
+.bloque{position:absolute;left:3px;right:3px;border:1.5px solid var(--bi);
+  background:var(--bg);color:var(--bi);padding:4px 6px;overflow:hidden;font-size:11px;
+  line-height:1.25;cursor:pointer}
+.bloque .b-cod{font-family:var(--mono);font-size:9.5px;opacity:.75}
+.bloque .b-nom{font-weight:600;font-size:11px}
+.bloque .b-det{font-family:var(--mono);font-size:9.5px;margin-top:1px;opacity:.85}
+.bloque.cruce{border-color:var(--rojo);
+  background-image:repeating-linear-gradient(45deg,transparent 0 6px,rgba(194,68,56,.22) 6px 10px)}
+.aviso-cruces{margin-top:10px;border:1.5px solid var(--rojo);background:var(--rojo-claro);
+  color:var(--rojo);padding:8px 12px;font-size:12.5px;display:none}
+.aviso-cruces.on{display:block}
+.aviso-cruces b{font-family:var(--mono)}
+.grid-vacia{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:var(--tinta-suave);font-size:13.5px;pointer-events:none}
+
+@media (max-width:860px){
+  main{flex-direction:column}
+  aside{width:100%;max-height:45vh;border-right:none;border-bottom:2px solid var(--tinta)}
+}
+@media print{
+  aside,header button,.busqueda{display:none}
+  aside{border:none}
+  main{display:block}
+  body{background:#fff}
+}
+@media (prefers-reduced-motion:no-preference){
+  .bloque{transition:filter .15s}
+  .bloque:hover{filter:brightness(.96)}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Armador de horario <span>· SIA UNAL</span></h1>
+  <div class="contadores">
+    <div class="ficha"><b id="c-cred">0</b> créditos</div>
+    <div class="ficha"><b id="c-asig">0</b> asignaturas</div>
+    <div class="ficha" id="f-cruce" hidden><b id="c-cruce">0</b> cruces</div>
+  </div>
+  <button id="btn-imprimir">Imprimir</button>
+  <button id="btn-vaciar">Vaciar horario</button>
+</header>
+<main>
+  <aside>
+    <div class="busqueda">
+      <input id="buscar" type="search" placeholder="Buscar asignatura o profesor…" autocomplete="off">
+      <label><input type="checkbox" id="solo-cupos"> Solo grupos con cupos</label>
+      <div class="fila-imp">
+        <button id="btn-importar" type="button">Importar CSV / Excel</button>
+        <input type="file" id="file-importar" accept=".csv,.xlsx,.xls" hidden>
+        <span class="chip-extra" id="chip-extra" hidden><b id="n-extra">0</b> importadas
+          <a href="#" id="quitar-extra">quitar</a></span>
+      </div>
+      <select id="filtro-plan" hidden></select>
+    </div>
+    <div class="lista" id="lista"></div>
+  </aside>
+  <section class="zona-grid">
+    <div class="dias" id="dias"></div>
+    <div class="rejilla-wrap">
+      <div class="horas" id="horas"></div>
+      <div class="cols" id="cols"></div>
+    </div>
+    <div class="aviso-cruces" id="aviso"></div>
+  </section>
+</main>
+<script>
+const BASE = [{"c": "3010861", "n": "Analitica predictiva", "cr": "4", "t": "OBLIGATORIAS", "pl": ["2542 INGENIERÍA CIVIL"], "g": [{"g": "(1) Grupo 1 REMOTA", "p": "Juan David Velasquez Henao", "cu": "130", "j": "DIURNO", "s": [{"d": "SÁBADO", "i": "06:00", "f": "13:00", "sa": "Virtual-4", "e": "Aulas virtuales"}]}]}, {"c": "3011100", "n": "Analítica de negocios", "cr": "4", "t": "OBLIGATORIAS", "pl": ["2542 INGENIERÍA CIVIL"], "g": []}, {"c": "3011101", "n": "Analítica descriptiva y visualización de datos", "cr": "4", "t": "OBLIGATORIAS", "pl": ["2542 INGENIERÍA CIVIL"], "g": [{"g": "(1) Grupo 1 REMOTA", "p": "Juan David Velasquez Henao", "cu": "70", "j": "DIURNO", "s": [{"d": "VIERNES", "i": "13:00", "f": "20:00", "sa": "M8-102", "e": "BLOQUE M8"}]}]}, {"c": "3010799", "n": "Productos de datos", "cr": "4", "t": "OBLIGATORIAS", "pl": ["2542 INGENIERÍA CIVIL"], "g": []}];
+
+/* ---------- datos importados (CSV/Excel), persistidos en el navegador ---- */
+let EXTRA = {};
+try{ EXTRA = JSON.parse(localStorage.getItem("horario-unal-extra")||"{}"); }catch(e){}
+function persistirExtra(){
+  try{ localStorage.setItem("horario-unal-extra", JSON.stringify(EXTRA)); }
+  catch(e){ alert("El archivo es demasiado grande para guardarlo en el navegador; "+
+                  "los datos importados se perderán al cerrar la página."); }
+}
+function combinar(){
+  const m = {};
+  for(const a of BASE) m[a.c] = a;
+  for(const [c,s] of Object.entries(EXTRA)) m[c] = s;   // lo importado manda
+  return Object.values(m).sort((x,y)=>(x.n||"").localeCompare(y.n||"","es"));
+}
+let DATA = combinar();
+
+/* ---------- utilidades ---------- */
+const $ = s => document.querySelector(s);
+const DIAS_ORDEN = ["LUNES","MARTES","MIERCOLES","JUEVES","VIERNES","SABADO","DOMINGO"];
+const DIA_CORTO = {LUNES:"LUN",MARTES:"MAR",MIERCOLES:"MIÉ",JUEVES:"JUE",VIERNES:"VIE",SABADO:"SÁB",DOMINGO:"DOM"};
+const normDia = d => (d||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toUpperCase().trim();
+const aMin = h => { const m=/^(\d{1,2})[:.](\d{2})$/.exec((h||"").trim()); return m? (+m[1])*60+(+m[2]) : null; };
+const fMin = m => String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0");
+
+/* sesiones válidas (con día y horas) de un grupo */
+function sesiones(g){
+  return (g.s||[]).map(s=>({dia:normDia(s.d),ini:aMin(s.i),fin:aMin(s.f),salon:s.sa||"",edif:s.e||""}))
+                  .filter(s=>s.ini!==null && s.fin!==null && DIAS_ORDEN.includes(s.dia));
+}
+function chocan(a,b){ return a.dia===b.dia && a.ini<b.fin && b.ini<a.fin; }
+function cruceEntre(g1,g2){
+  for(const a of sesiones(g1)) for(const b of sesiones(g2)) if(chocan(a,b)) return [a,b];
+  return null;
+}
+
+/* ---------- estado ---------- */
+let seleccion = {};              // codigo -> índice de grupo
+try{ seleccion = JSON.parse(localStorage.getItem("horario-unal")||"{}"); }catch(e){}
+function persistir(){ try{ localStorage.setItem("horario-unal",JSON.stringify(seleccion)); }catch(e){} }
+
+const seleccionados = () => Object.entries(seleccion)
+  .map(([cod,i])=>{ const a=DATA.find(x=>x.c===cod); return a&&a.g[i]? {a,g:a.g[i],gi:i}:null; })
+  .filter(Boolean);
+
+/* ---------- dimensiones de la rejilla ---------- */
+function rango(){
+  let ini=7*60, fin=18*60;
+  for(const {g} of seleccionados()) for(const s of sesiones(g)){
+    ini=Math.min(ini,s.ini); fin=Math.max(fin,s.fin);
+  }
+  return {ini:Math.floor(ini/60)*60, fin:Math.ceil(fin/60)*60};
+}
+function diasVisibles(){
+  const base=["LUNES","MARTES","MIERCOLES","JUEVES","VIERNES"];
+  const usados=new Set();
+  for(const {g} of seleccionados()) for(const s of sesiones(g)) usados.add(s.dia);
+  if(usados.has("SABADO")) base.push("SABADO");
+  if(usados.has("DOMINGO")){ if(!base.includes("SABADO")) base.push("SABADO"); base.push("DOMINGO"); }
+  return base;
+}
+
+/* ---------- render: rejilla ---------- */
+function pintarRejilla(){
+  const sel=seleccionados(), {ini,fin}=rango(), dias=diasVisibles();
+  const total=fin-ini;
+  $("#cols").style.setProperty("--paso","calc(100%/"+(total/60)+")");
+
+  $("#dias").innerHTML = dias.map(d=>`<div>${DIA_CORTO[d]}</div>`).join("");
+  $("#horas").innerHTML = Array.from({length:total/60+1},(_,k)=>
+    `<span style="top:${k*100/(total/60)}%">${fMin(ini+k*60)}</span>`).join("");
+
+  /* detectar cruces */
+  const conflictos=[]; const enCruce=new Set();
+  for(let i=0;i<sel.length;i++) for(let j=i+1;j<sel.length;j++){
+    const par=cruceEntre(sel[i].g,sel[j].g);
+    if(par){ conflictos.push({x:sel[i],y:sel[j],ses:par});
+             enCruce.add(sel[i].a.c); enCruce.add(sel[j].a.c); }
+  }
+
+  /* bloques por día, con carriles para solapados */
+  const html = dias.map(dia=>{
+    const bloques=[];
+    sel.forEach((s,idx)=>{ for(const ses of sesiones(s.g)) if(ses.dia===dia)
+      bloques.push({...ses,a:s.a,g:s.g,color:(DATA.indexOf(DATA.find(x=>x.c===s.a.c))%8)+1}); });
+    bloques.sort((p,q)=>p.ini-q.ini);
+    const carril=[], nCarril=[];
+    bloques.forEach((b,i)=>{
+      let c=0; while(bloques.some((o,j)=>j<i&&nCarril[j]===c&&chocan(o,b))) c++;
+      nCarril[i]=c;
+    });
+    const maxC=Math.max(0,...nCarril)+1;
+    const inner=bloques.map((b,i)=>{
+      const top=(b.ini-ini)/total*100, alto=(b.fin-b.ini)/total*100;
+      const w=100/maxC, x=nCarril[i]*w;
+      const mal=enCruce.has(b.a.c)&&bloques.some((o,j)=>j!==i&&chocan(o,b));
+      const lugar=[b.salon,b.edif&&"— "+b.edif.split(" - ")[0]].filter(Boolean).join(" ");
+      return `<div class="bloque${mal?" cruce":""}" tabindex="0"
+        style="--bg:var(--b${b.color});--bi:var(--b${b.color}i);top:${top}%;height:${alto}%;
+        left:calc(${x}% + 3px);right:auto;width:calc(${w}% - 6px)"
+        title="${b.a.n} — ${b.g.g}\n${fMin(b.ini)}–${fMin(b.fin)}  ${lugar}"
+        onclick="quitar('${b.a.c}')">
+        <div class="b-cod">${b.a.c}</div><div class="b-nom">${b.a.n}</div>
+        <div class="b-det">${fMin(b.ini)}–${fMin(b.fin)}${b.salon?" · "+b.salon:""}</div></div>`;
+    }).join("");
+    return `<div class="col">${inner}</div>`;
+  }).join("");
+  $("#cols").innerHTML = html + (sel.length?"":`<div class="grid-vacia">Elige un grupo en la lista para empezar.</div>`);
+
+  /* contadores y aviso */
+  $("#c-cred").textContent = sel.reduce((t,s)=>t+(+s.a.cr||0),0);
+  $("#c-asig").textContent = sel.length;
+  $("#c-cruce").textContent = conflictos.length;
+  $("#f-cruce").hidden = !conflictos.length;
+  $("#f-cruce").className = "ficha"+(conflictos.length?" mal":"");
+  const av=$("#aviso");
+  av.className="aviso-cruces"+(conflictos.length?" on":"");
+  av.innerHTML = conflictos.map(c=>
+    `<b>${c.x.a.n}</b> (${c.x.g.g}) se cruza con <b>${c.y.a.n}</b> (${c.y.g.g}) — ${DIA_CORTO[c.ses[0].dia]} ${fMin(Math.max(c.ses[0].ini,c.ses[1].ini))}–${fMin(Math.min(c.ses[0].fin,c.ses[1].fin))}`
+  ).join("<br>");
+}
+
+/* ---------- render: lista ---------- */
+function pintarLista(){
+  const q=($("#buscar").value||"").toLowerCase();
+  const soloCupos=$("#solo-cupos").checked;
+  const planSel=$("#filtro-plan").value;
+  const sel=seleccionados();
+  const abiertos=new Set([...document.querySelectorAll(".asig[open]")].map(d=>d.dataset.c));
+
+  $("#lista").innerHTML = DATA.map(a=>{
+    if(planSel && !(a.pl||[]).includes(planSel)) return "";
+    const coincideA = !q || a.n.toLowerCase().includes(q) || a.c.toLowerCase().includes(q);
+    let grupos = a.g.map((g,i)=>({g,i}));
+    if(q && !coincideA) grupos = grupos.filter(({g})=>(g.p||"").toLowerCase().includes(q));
+    if(!coincideA && !grupos.length) return "";
+    if(soloCupos) grupos = grupos.filter(({g})=>(+g.cu||0)>0);
+    if(soloCupos && !grupos.length && !(q&&coincideA)) return "";
+
+    const filas = grupos.map(({g,i})=>{
+      const yo = seleccion[a.c]===i;
+      const otros = sel.filter(s=>s.a.c!==a.c);
+      const conflicto = !yo && otros.find(s=>cruceEntre(s.g,g));
+      const cupos=+g.cu||0;
+      const sinDato = g.cu==="NA" || g.cu===""||g.cu==null;  // "NA" = no leído, no es 0
+      const etiqCupos = sinDato ? "sin dato" : (cupos?cupos+" cupos":"sin cupos");
+      const hor = sesiones(g).map(s=>`${DIA_CORTO[s.dia]} ${fMin(s.ini)}–${fMin(s.fin)}`).join(" · ")
+                  || "sin horario informado";
+      return `<div class="grupo${yo?" sel":""}${(cupos||sinDato)?"":" agotado"}" tabindex="0" role="button"
+          onclick="alternar('${a.c}',${i})" onkeydown="if(event.key==='Enter')alternar('${a.c}',${i})">
+        <div class="g-cab"><span class="g-num">${g.g}</span>
+          <span class="g-prof">${(g.p||"").split(";")[0]||"—"}</span>
+          ${conflicto?`<span class="tag cruce">cruce</span>`:""}
+          <span class="tag ${sinDato?"sindato":(cupos?"cupos":"agotado")}">${etiqCupos}</span></div>
+        <div class="g-hor">${hor}</div></div>`;
+    }).join("");
+
+    const abierto = abiertos.has(a.c)||seleccion[a.c]!==undefined||q?" open":"";
+    return `<details class="asig" data-c="${a.c}" data-sel="${seleccion[a.c]!==undefined?1:0}"${abierto}>
+      <summary><span class="cod">${a.c}</span><span class="nom">${a.n}</span>
+        <span class="cred">${a.cr||"?"} cr</span></summary>${filas||'<div class="vacio">Sin grupos</div>'}</details>`;
+  }).join("") || `<div class="vacio">Nada coincide con la búsqueda.</div>`;
+}
+
+/* ---------- acciones ---------- */
+window.alternar = (cod,i)=>{
+  if(seleccion[cod]===i) delete seleccion[cod]; else seleccion[cod]=i;
+  persistir(); pintar();
+};
+window.quitar = cod=>{ delete seleccion[cod]; persistir(); pintar(); };
+$("#btn-vaciar").onclick = ()=>{ seleccion={}; persistir(); pintar(); };
+$("#btn-imprimir").onclick = ()=>window.print();
+$("#buscar").oninput = pintarLista;
+$("#solo-cupos").onchange = pintarLista;
+
+/* ---------- importación de CSV / Excel ----------
+   Formato esperado: el de horarios.csv (una fila por sesión). Encabezados
+   reconocidos con flexibilidad: codigo_asignatura/codigo, asignatura/nombre,
+   creditos, tipologia, planes/plan, grupo, profesores/profesor,
+   cupos_disponibles/cupos, jornada, dia, hora_inicio/inicio, hora_fin/fin,
+   salon/aula, edificio. Un Excel guardado desde ese CSV también funciona. */
+const MAPK = {codigoasignatura:"c",codigo:"c",asignatura:"n",nombre:"n",
+  creditos:"cr",tipologia:"t",planes:"pl",plan:"pl",grupo:"g",
+  profesores:"p",profesor:"p",cuposdisponibles:"cu",cupos:"cu",jornada:"j",
+  dia:"d",horainicio:"i",inicio:"i",horafin:"f",fin:"f",
+  salon:"sa",aula:"sa",edificio:"e"};
+const normKey = k => (k||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+  .toLowerCase().replace(/[^a-z0-9]/g,"");
+
+function parseCSV(txt){
+  txt = txt.replace(/^\uFEFF/,"");
+  const fin1 = txt.indexOf("\n");
+  const linea1 = fin1>=0 ? txt.slice(0,fin1) : txt;
+  const delim = (linea1.match(/;/g)||[]).length > (linea1.match(/,/g)||[]).length ? ";" : ",";
+  const filas=[]; let fila=[], campo="", enComillas=false;
+  for(let k=0;k<txt.length;k++){
+    const ch=txt[k];
+    if(enComillas){
+      if(ch==='"'){ if(txt[k+1]==='"'){campo+='"';k++;} else enComillas=false; }
+      else campo+=ch;
+    }
+    else if(ch==='"') enComillas=true;
+    else if(ch===delim){ fila.push(campo); campo=""; }
+    else if(ch==="\n"||ch==="\r"){
+      if(ch==="\r"&&txt[k+1]==="\n")k++;
+      fila.push(campo); campo="";
+      if(fila.some(x=>x!=="")) filas.push(fila);
+      fila=[];
+    }
+    else campo+=ch;
+  }
+  if(campo!==""||fila.length){ fila.push(campo); if(fila.some(x=>x!=="")) filas.push(fila); }
+  const cab = filas.shift()||[];
+  return filas.map(f=>Object.fromEntries(cab.map((h,i)=>[h,f[i]??""])));
+}
+
+function filasASujetos(rows){
+  const subs={};
+  for(const cruda of rows){
+    const r={};
+    for(const [k,v] of Object.entries(cruda)){
+      const nk=MAPK[normKey(k)];
+      if(nk) r[nk]=String(v??"").trim();
+    }
+    if(!r.c) continue;
+    let s=subs[r.c];
+    if(!s) s=subs[r.c]={c:r.c,n:r.n||r.c,cr:r.cr||"",t:r.t||"",pl:[],g:[],_g:{},_s:{}};
+    if(r.pl) for(const p of r.pl.split("|")){
+      const pp=p.trim(); if(pp && !s.pl.includes(pp)) s.pl.push(pp);
+    }
+    const gk=r.g||"(1) Grupo 1";
+    let g=s._g[gk];
+    if(!g){ g={g:gk,p:r.p||"",cu:r.cu||"",j:r.j||"",s:[]}; s._g[gk]=g; s.g.push(g); }
+    if(r.d && r.i && r.f){
+      const clave=gk+"|"+r.d+r.i+r.f;
+      if(!s._s[clave]){ s._s[clave]=1;
+        g.s.push({d:r.d,i:r.i,f:r.f,sa:r.sa||"",e:r.e||""}); }
+    }
+  }
+  for(const s of Object.values(subs)){ delete s._g; delete s._s; }
+  return subs;
+}
+
+function cargarXLSX(){
+  if(window.XLSX) return Promise.resolve(window.XLSX);
+  return new Promise((res,rej)=>{
+    const sc=document.createElement("script");
+    sc.src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js";
+    sc.onload=()=>res(window.XLSX);
+    sc.onerror=()=>rej(new Error("no se pudo descargar el lector de Excel"));
+    document.head.appendChild(sc);
+  });
+}
+
+async function importarArchivo(file){
+  try{
+    let rows;
+    if(/\.(xlsx|xls)$/i.test(file.name)){
+      const X=await cargarXLSX();
+      const wb=X.read(await file.arrayBuffer());
+      rows=X.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:""});
+    }else{
+      rows=parseCSV(await file.text());
+    }
+    const nuevos=filasASujetos(rows);
+    const n=Object.keys(nuevos).length;
+    if(!n){
+      alert("No se reconocieron materias en el archivo.\n"+
+            "Se espera el formato de horarios.csv: columnas codigo_asignatura, "+
+            "asignatura, grupo, dia, hora_inicio, hora_fin…");
+      return;
+    }
+    for(const [c,s] of Object.entries(nuevos)){
+      const prev=EXTRA[c];
+      if(prev) for(const p of (prev.pl||[])) if(!s.pl.includes(p)) s.pl.push(p);
+      EXTRA[c]=s;
+    }
+    persistirExtra();
+    recombinar();
+    alert(n+" materias importadas ("+rows.length+" filas leídas).");
+  }catch(err){
+    const esExcel=/\.(xlsx|xls)$/i.test(file.name);
+    alert("No se pudo importar: "+err.message+
+          (esExcel?"\nEl lector de Excel necesita internet; sin conexión, guarda el archivo como CSV.":""));
+  }
+}
+
+function actualizarFiltroPlan(){
+  const sel=$("#filtro-plan");
+  const antes=sel.value;
+  const planes=[...new Set(DATA.flatMap(a=>a.pl||[]))].sort();
+  sel.hidden = planes.length<2;
+  sel.innerHTML = `<option value="">Todos los planes (${DATA.length})</option>`+
+    planes.map(p=>`<option value="${p}"${p===antes?" selected":""}>${p}</option>`).join("");
+}
+function actualizarChip(){
+  const n=Object.keys(EXTRA).length;
+  $("#chip-extra").hidden=!n;
+  $("#n-extra").textContent=n;
+}
+function recombinar(){
+  DATA=combinar();
+  actualizarFiltroPlan();
+  actualizarChip();
+  pintar();
+}
+
+$("#btn-importar").onclick=()=>$("#file-importar").click();
+$("#file-importar").onchange=e=>{
+  const f=e.target.files[0];
+  if(f) importarArchivo(f);
+  e.target.value="";
+};
+$("#quitar-extra").onclick=e=>{
+  e.preventDefault();
+  EXTRA={}; persistirExtra(); recombinar();
+};
+$("#filtro-plan").onchange=pintarLista;
+
+function pintar(){ pintarLista(); pintarRejilla(); }
+recombinar();
+</script>
+</body>
+</html>
