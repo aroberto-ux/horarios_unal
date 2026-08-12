@@ -458,6 +458,9 @@ footer a{color:var(--azul)}
 .gen-card ul li{display:flex; gap:7px; align-items:flex-start; margin-bottom:5px}
 .gen-card ul li i{flex:0 0 auto; width:10px; height:10px; border-radius:2px; margin-top:3px}
 .gen-card ul b{display:block; color:var(--tinta); font-weight:600}
+.gen-mini .mses.rel{opacity:.75; background-image:repeating-linear-gradient(45deg,#0000,#0000 2px,#ffffff70 2px,#ffffff70 4px)}
+.gen-card ul li.relleno b{font-weight:500}
+.gen-card ul .comp.libre{background:var(--verde-claro); color:var(--verde)}
 .gen-card ul .comp{display:inline-block; font-size:.62rem; font-weight:700; letter-spacing:.04em;
   text-transform:uppercase; color:var(--tinta-suave); background:var(--papel);
   border-radius:99px; padding:0 6px; margin-right:5px}
@@ -632,6 +635,15 @@ section.panel[hidden]{display:none!important}
         </select>
       </label>
       <label><input type="checkbox" id="genSoloCupos" checked> Solo grupos con cupos</label>
+      <label for="genRelleno">Rellenar huecos con electivas
+        <select id="genRelleno">
+          <option value="0">no</option>
+          <option value="1">hasta 1</option>
+          <option value="2">hasta 2</option>
+          <option value="3">hasta 3</option>
+        </select>
+      </label>
+      <label id="lblSinDias" hidden><input type="checkbox" id="genSinDias" checked> sin abrir días nuevos</label>
     </div>
     <div id="genEstado"></div>
     <div class="gen-res" id="genResultados"></div>
@@ -2190,6 +2202,63 @@ function metricas(combo){
   return {dias:porDia.size, huecos, ini, fin};
 }
 
+/* ================= Relleno de huecos con electivas =================
+   Una vez armado el esqueleto del semestre quedan ratos muertos entre clases.
+   Esto busca electivas que quepan justo ahí, con una heurística voraz: en cada
+   pasada se prueba cada grupo de cada electiva libre, se mide cuánto empeora o
+   mejora el horario y se queda con el mejor. Repetir es más barato que
+   enumerar: meter las electivas en el producto cartesiano multiplicaría las
+   combinaciones por cientos y el generador se ahogaría.
+
+   El orden de preferencia es el que tendría cualquiera al inscribirse:
+   1. no abrir un día nuevo (ir a la universidad un día más cuesta un viaje);
+   2. no alargar la jornada (entrar antes o salir después);
+   3. y, dentro de eso, tapar la mayor cantidad de hueco posible. */
+function paquetesElectivos(soloCupos){
+  const out = [];
+  for(const m of MATERIAS.values()){
+    if(!m.libre || m.multi) continue;          // las multicomponente no se rellenan solas
+    for(const g of m.grupos.values()){
+      if(!g.sesiones.length) continue;         // sin horario publicado no se puede encajar
+      if(chocaBloqueo(g)) continue;
+      if(soloCupos && g.cupos!==null && g.cupos<=0) continue;
+      out.push({m, g});
+    }
+  }
+  return out;
+}
+
+/* Cuánto se degrada el horario al añadir un grupo. Menor es mejor. */
+function costoRelleno(base, cand, sinDias){
+  const dDias   = cand.dias - base.dias;
+  if(sinDias && dDias > 0) return null;        // el usuario no quiere días nuevos
+  const dJornada = Math.max(0, base.ini - cand.ini) + Math.max(0, cand.fin - base.fin);
+  const dHuecos  = cand.huecos - base.huecos;  // negativo = tapó hueco
+  return dDias*100000 + dJornada*100 + dHuecos;
+}
+
+function rellenarConElectivas(combo, cupo, soloCupos, sinDias, pool){
+  let actual = combo;
+  const puestas = [];
+  for(let n=0; n<cupo; n++){
+    const base = metricas(actual);
+    const yaHay = new Set(actual.map(e=>e.m.codigo));
+    let mejor = null;
+    for(const {m, g} of pool){
+      if(yaHay.has(m.codigo)) continue;
+      if(actual.some(e=>chocanGrupos(e.g, g))) continue;
+      const cand = [...actual, {m, g, fam:null, relleno:true}];
+      const c = costoRelleno(base, metricas(cand), sinDias);
+      if(c===null) continue;
+      if(!mejor || c < mejor.c) mejor = {c, cand, m, g};
+    }
+    if(!mejor) break;
+    actual = mejor.cand;
+    puestas.push(mejor.m.codigo);
+  }
+  return {combo: actual, puestas};
+}
+
 function generarHorarios(){
   const estado = $("#genEstado"), caja = $("#genResultados");
   const mats = [...CANDIDATAS].map(c=>MATERIAS.get(c)).filter(Boolean);
@@ -2253,10 +2322,55 @@ function generarHorarios(){
     return;
   }
   const combos = ops.reduce((t,o)=>t*o.gs.length, 1);
+  let extra = "";
+
+  /* Relleno de huecos. Se hace sobre los mejores horarios ya ordenados, no
+     sobre los 400: rellenar es caro (cientos de grupos por pasada) y nadie mira
+     la opción 200. Los demás quedan sin electivas y se rellenan si el usuario
+     pide ver más. */
+  const cupo = Number($("#genRelleno").value||0);
+  if(cupo > 0){
+    const pool = paquetesElectivos(soloCupos);
+    if(!pool.length){
+      extra = LIBRES.estado==="listo"
+        ? " No hay electivas con horario publicado y cupos para rellenar."
+        : " Marca «Incluir libre elección» para traer el catálogo de electivas.";
+    }else{
+      const sinDias = $("#genSinDias").checked;
+      /* Solo se rellenan los mejores: probar 127 grupos contra 400 horarios
+         tardaría segundos y nadie mira la opción 200. Los demás se conservan
+         tal cual, sin electivas — truncar la lista escondería horarios válidos
+         solo por haber activado el relleno. */
+      const ord = ordenarResultados(RESULTADOS);
+      const cabeza = ord.slice(0, GEN_RELLENO_TOPE)
+        .map(r => rellenarConElectivas(r, cupo, soloCupos, sinDias, pool).combo);
+      RESULTADOS = cabeza.concat(ord.slice(GEN_RELLENO_TOPE));
+      const con = cabeza.filter(c=>c.some(e=>e.relleno)).length;
+      extra = con
+        ? ` Se les buscaron electivas a los ${cabeza.length} mejores y ${con} admitieron alguna (${pool.length} grupos candidatos).`
+        : ` Ninguno de los ${pool.length} grupos de electivas cabe sin ${sinDias?"abrir un día nuevo":"cruzarse con tus clases"}.`;
+    }
+  }
+
   estado.textContent = `${RESULTADOS.length}${cortado?"+":""} horarios sin cruces` +
     ` (de ${combos.toLocaleString("es")} combinaciones posibles)` +
-    (cortado ? ". Se muestran los primeros que se encontraron; afina las franjas para reducirlos." : ".");
+    (cortado ? ". Se muestran los primeros que se encontraron; afina las franjas para reducirlos." : ".") +
+    extra;
   pintarResultados();
+}
+
+/* Rellenar es caro, así que solo se hace sobre los mejores. */
+const GEN_RELLENO_TOPE = 40;
+
+/* Ordena las combinaciones según el criterio elegido arriba. */
+function ordenarResultados(lista){
+  const modo = $("#genOrden").value;
+  return lista.map(c=>({c, m:metricas(c)})).sort((a,b)=>{
+    if(modo==="dias")     return a.m.dias-b.m.dias || a.m.huecos-b.m.huecos;
+    if(modo==="tarde")    return b.m.ini-a.m.ini   || a.m.huecos-b.m.huecos;
+    if(modo==="temprano") return a.m.fin-b.m.fin   || a.m.huecos-b.m.huecos;
+    return a.m.huecos-b.m.huecos || a.m.dias-b.m.dias;
+  }).map(x=>x.c);
 }
 
 function pintarResultados(){
@@ -2265,13 +2379,7 @@ function pintarResultados(){
   const modo = $("#genOrden").value;
   const puestos = new Set(seleccion);
 
-  const conM = RESULTADOS.map(c=>({combo:c, m:metricas(c)}));
-  conM.sort((a,b)=>{
-    if(modo==="dias")     return a.m.dias-b.m.dias || a.m.huecos-b.m.huecos;
-    if(modo==="tarde")    return b.m.ini-a.m.ini   || a.m.huecos-b.m.huecos;
-    if(modo==="temprano") return a.m.fin-b.m.fin   || a.m.huecos-b.m.huecos;
-    return a.m.huecos-b.m.huecos || a.m.dias-b.m.dias;
-  });
+  const conM = ordenarResultados(RESULTADOS).map(c=>({combo:c, m:metricas(c)}));
 
   // rango horario común, para que las miniaturas se puedan comparar de un vistazo
   let lo=24*60, hi=0;
@@ -2303,7 +2411,10 @@ function tarjetaHorario({combo, m}, n, lo, hi, puestos){
   if(claves.length===puestos.size && claves.every(k=>puestos.has(k))) art.classList.add("puesto");
 
   const hh = m.huecos ? `${Math.floor(m.huecos/60)}h${m.huecos%60?String(m.huecos%60).padStart(2,"0"):""}` : "sin huecos";
-  art.innerHTML = `<header><b>Opción ${n}</b><span>${m.dias} día(s) · ${hh}<br>entras ${deMin(m.ini)} · sales ${deMin(m.fin)}</span></header>`;
+  const cr = [...new Set(combo.map(x=>x.m.codigo))].reduce((t,c)=>t+Number(MATERIAS.get(c)?.creditos||0),0);
+  const nrel = combo.filter(x=>x.relleno).length;
+  art.innerHTML = `<header><b>Opción ${n}</b><span>${m.dias} día(s) · ${hh} · ${cr} cr` +
+    `${nrel?` · +${nrel} electiva(s)`:""}<br>entras ${deMin(m.ini)} · sales ${deMin(m.fin)}</span></header>`;
 
   // miniatura de la semana
   const mini = document.createElement("div"); mini.className="gen-mini";
@@ -2316,9 +2427,9 @@ function tarjetaHorario({combo, m}, n, lo, hi, puestos){
       b.style.top=((t-lo)/total*100)+"%"; b.style.height=(GEN_PASO/total*100)+"%";
       col.appendChild(b);
     }
-    for(const {m:mat,g} of combo) for(const s of g.sesiones){
+    for(const {m:mat,g,relleno} of combo) for(const s of g.sesiones){
       if(s.dia!==d) continue;
-      const b=document.createElement("div"); b.className="mses";
+      const b=document.createElement("div"); b.className="mses"+(relleno?" rel":"");
       b.style.top=((s.ini-lo)/total*100)+"%";
       b.style.height=Math.max(2,(s.fin-s.ini)/total*100)+"%";
       b.style.background=colorDe(mat.codigo);
@@ -2331,11 +2442,12 @@ function tarjetaHorario({combo, m}, n, lo, hi, puestos){
 
   // El cuadrito repite el color del bloque en la miniatura y en la grilla
   const lista=document.createElement("ul");
-  lista.innerHTML = combo.map(({m:mat,g,fam})=>{
+  lista.innerHTML = combo.map(({m:mat,g,fam,relleno})=>{
     const cu = g.cupos===null ? "" : ` · ${g.cupos} cupos`;
     const et = (mat.multi && fam) ? `<span class="comp">${fam.etiqueta}</span>` : "";
-    return `<li><i style="background:${colorDe(mat.codigo)}"></i>`+
-           `<span><b>${mat.nombre}</b>${et}${g.grupo}${cu}</span></li>`;
+    const rl = relleno ? `<span class="comp libre">Electiva</span>` : "";
+    return `<li${relleno?' class="relleno"':''}><i style="background:${colorDe(mat.codigo)}"></i>`+
+           `<span><b>${mat.nombre}</b>${rl}${et}${g.grupo}${cu}</span></li>`;
   }).join("");
   art.appendChild(lista);
 
@@ -2718,8 +2830,24 @@ pintarAvance();
 
 /* Generador */
 $("#btnGenerar").addEventListener("click", generarHorarios);
-$("#genOrden").addEventListener("change", ()=>{ RESULTADOS.length && pintarResultados(); });
+$("#genOrden").addEventListener("change", ()=>{
+  if(!RESULTADOS.length) return;
+  // Con relleno activo hay que rehacerlo: el criterio decide cuáles son los
+  // «mejores» a los que se les buscan electivas.
+  if(Number($("#genRelleno").value||0) > 0) generarHorarios(); else pintarResultados();
+});
 $("#genSoloCupos").addEventListener("change", ()=>{ RESULTADOS.length && generarHorarios(); });
+$("#genRelleno").addEventListener("change", async ()=>{
+  const cupo = Number($("#genRelleno").value||0);
+  $("#lblSinDias").hidden = !cupo;
+  // Rellenar necesita el catálogo de electivas: se trae solo la primera vez
+  if(cupo && LIBRES.estado!=="listo"){
+    $("#genEstado").className=""; $("#genEstado").textContent="Trayendo el catálogo de electivas…";
+    await asegurarLibres({repintar:false});
+  }
+  if(RESULTADOS.length || cupo) generarHorarios();
+});
+$("#genSinDias").addEventListener("change", ()=>{ RESULTADOS.length && generarHorarios(); });
 $("#btnDesdeHorario").addEventListener("click", ()=>{
   for(const k of seleccion) CANDIDATAS.add(k.split("|")[0]);
   genAlmacen.guardar(); pintarCandidatas(); sincronizarGenLista(); pintarLista(); invalidarResultados();
