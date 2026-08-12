@@ -239,3 +239,178 @@ def test_sin_anclas_delega_en_sia_scraper(sin_esperas, monkeypatch):
     d = _DriverFalso([])
     assert "sia_scraper" in libre.click_detalle(d, "9999999")
     assert llamado == ["9999999"]
+
+
+# --- Verificación del formulario (el fallo de la FACULTAD DE MINAS) ---
+
+class _DriverCombos:
+    def __init__(self, combos): self.combos = combos
+    def execute_script(self, script, *args):
+        if "salida.push" in script and "getBoundingClientRect" in script:
+            return self.combos
+        return []
+
+
+def _combo(cid, etiqueta, sel):
+    return {"id": cid, "etiqueta": etiqueta, "n": 5, "sel": sel,
+            "visible": True, "opciones": []}
+
+
+def test_detecta_que_el_formulario_quedo_en_otra_sede(monkeypatch, capsys):
+    """El caso real: se pidió Bogotá y el combo quedó en Medellín. Antes esto
+    pasaba en silencio y se publicaban asignaturas de la Facultad de Minas."""
+    d = _DriverCombos([
+        _combo("soc1", "Nivel de estudio", "Pregrado"),
+        _combo("soc6", "¿Porque sede?", "1103 SEDE MEDELLÍN"),
+    ])
+    with pytest.raises(RuntimeError, match="no quedó como se pidió"):
+        libre.verificar_formulario(d, {"soc1": "Pregrado",
+                                       "soc6": "1101 SEDE BOGOTÁ"})
+
+
+def test_detecta_la_tipologia_cambiada(monkeypatch):
+    d = _DriverCombos([_combo("soc4", "Tipología de asignatura",
+                              "TODAS MENOS LIBRE ELECCIÓN")])
+    with pytest.raises(RuntimeError, match="LIBRE ELECCIÓN"):
+        libre.verificar_formulario(d, {"soc4": "LIBRE ELECCIÓN"})
+
+
+def test_detecta_un_combo_que_desaparecio(monkeypatch):
+    d = _DriverCombos([_combo("soc1", "Nivel de estudio", "Pregrado")])
+    with pytest.raises(RuntimeError, match="no está"):
+        libre.verificar_formulario(d, {"soc8": "2000 SEDE BOGOTÁ"})
+
+
+def test_un_formulario_correcto_pasa_y_se_registra(capsys):
+    d = _DriverCombos([
+        _combo("soc1", "Nivel de estudio", "Pregrado"),
+        _combo("soc4", "Tipología de asignatura", "LIBRE ELECCIÓN"),
+        _combo("soc8", "¿Por qué facultad?", "2000 SEDE BOGOTÁ"),
+    ])
+    libre.verificar_formulario(d, {"soc1": "Pregrado",
+                                   "soc4": "LIBRE ELECCIÓN",
+                                   "soc8": "2000 SEDE BOGOTÁ"})
+    salida = capsys.readouterr().out
+    assert "LIBRE ELECCIÓN" in salida and "2000 SEDE BOGOTÁ" in salida, \
+        "el estado del formulario debe quedar en el log"
+
+
+def test_tolera_tildes_y_espacios_al_verificar():
+    d = _DriverCombos([_combo("soc4", "Tipología", " LIBRE ELECCION ")])
+    libre.verificar_formulario(d, {"soc4": "LIBRE ELECCIÓN"})   # no revienta
+
+
+# --- Revisión de cordura, con los datos reales de las corridas fallidas ---
+
+def _a(codigo, nombre, tipologia, facultad="FACULTAD DE INGENIERÍA"):
+    return sia.Asignatura(codigo=codigo, nombre=nombre, tipologia=tipologia,
+                          creditos="3", facultad=facultad, planes=[], grupos=[])
+
+
+# Lo que de verdad publicó el barrido del 12/08 (catalogo_libre.json)
+CORRIDA_MINAS = [
+    _a("3011100", "Analítica de negocios", "OBLIGATORIAS", "FACULTAD DE MINAS"),
+    _a("3011101", "Analítica descriptiva", "OBLIGATORIAS", "FACULTAD DE MINAS"),
+    _a("3010861", "Analitica predictiva", "OBLIGATORIAS", "FACULTAD DE MINAS"),
+    _a("3010799", "Productos de datos", "OBLIGATORIAS", "FACULTAD DE MINAS"),
+    _a("3008548", "Comportamiento mecánico", "OBLIGATORIAS", "FACULTAD DE MINAS"),
+    _a("3008728", "Geotecnia de macizos", "OBLIGATORIAS", "FACULTAD DE MINAS"),
+]
+
+CORRIDA_MAESTRIA = [
+    _a("2026054", "Inglés Intensivo I", "ELECTIVA DE PREGRADO"),
+    _a("2026055", "Inglés Intensivo II", "ELECTIVA DE PREGRADO"),
+    _a("2026056", "Inglés Intensivo III", "ELECTIVA DE PREGRADO"),
+    _a("2026057", "Intensive English I", "ELECTIVA DE PREGRADO"),
+    _a("2018965", "Proyecto de Tesis de Maestría", "ACTIVIDADES ACADÉMICAS"),
+    _a("2018966", "Seminario de investigación I", "ACTIVIDADES ACADÉMICAS"),
+    _a("2018967", "Seminario de investigación II", "ACTIVIDADES ACADÉMICAS"),
+    _a("2018968", "Seminario de investigación III", "ACTIVIDADES ACADÉMICAS"),
+    _a("2018969", "Tesis de Maestría", "TESIS-TRAB.FINAL"),
+]
+
+ELECTIVAS_DE_VERDAD = [
+    _a("1000131-B", "Tango y sociedad", "LIBRE ELECCIÓN"),
+    _a("2026054", "Inglés Intensivo I", "ELECTIVA DE PREGRADO"),
+    _a("2017472", "Desarrollo Rural", "LIBRE ELECCIÓN"),
+    _a("2015229", "Historia del jazz", "LIBRE ELECCIÓN"),
+    _a("1000044-B", "Deporte formativo", "LIBRE ELECCIÓN"),
+]
+
+
+def test_caza_la_corrida_de_la_facultad_de_minas():
+    motivo = libre.revisar_cordura(CORRIDA_MINAS)
+    assert motivo and "OBLIGATORIAS" in motivo and "MINAS" in motivo
+
+
+def test_caza_la_corrida_de_la_maestria():
+    """5 de 9 con tipología imposible: seminarios y tesis no son electivas."""
+    motivo = libre.revisar_cordura(CORRIDA_MAESTRIA)
+    assert motivo and "TESIS-TRAB.FINAL" in motivo
+
+
+def test_no_molesta_a_un_barrido_bueno():
+    assert libre.revisar_cordura(ELECTIVAS_DE_VERDAD) is None
+
+
+def test_aguanta_alguna_rareza_suelta():
+    """Ser estricto no puede significar abortar por una asignatura rara."""
+    mezcla = ELECTIVAS_DE_VERDAD + [_a("999", "Trabajo de grado", "TRABAJO DE GRADO")]
+    assert libre.revisar_cordura(mezcla) is None
+
+
+def test_no_juzga_con_una_muestra_ridicula():
+    assert libre.revisar_cordura(CORRIDA_MINAS[:2]) is None
+
+
+def test_se_puede_desactivar(monkeypatch):
+    monkeypatch.setenv("SIA_LIBRE_SIN_CORDURA", "1")
+    assert libre.revisar_cordura(CORRIDA_MINAS) is None
+
+
+@pytest.mark.parametrize("tipologia, sospechosa", [
+    ("OBLIGATORIAS", True), ("DISCIPLINAR OBLIGATORIA", True),
+    ("ACTIVIDADES ACADÉMICAS", True), ("TESIS-TRAB.FINAL", True),
+    ("NIVELACIÓN", True),
+    ("LIBRE ELECCIÓN", False), ("ELECTIVA DE PREGRADO", False),
+    ("DISCIPLINAR OPTATIVA", False), ("", False),
+])
+def test_clasificacion_de_tipologias(tipologia, sospechosa):
+    assert libre.tipologia_sospechosa(tipologia) is sospechosa
+
+
+def test_avisa_de_los_desplegables_sin_configurar(capsys):
+    """El combo que nadie toca es el sospechoso número uno: debe salir en el
+    log con sus opciones, no pasar desapercibido."""
+    d = _DriverCombos([
+        _combo("soc4", "Tipología de asignatura", "LIBRE ELECCIÓN"),
+        {"id": "soc9", "etiqueta": "¿Por qué plan?", "n": 40,
+         "sel": "3011 MAESTRÍA EN INGENIERÍA - GEOTECNIA", "visible": True,
+         "opciones": ["3011 MAESTRÍA...", "2542 INGENIERÍA CIVIL"]},
+    ])
+    libre.verificar_formulario(d, {"soc4": "LIBRE ELECCIÓN"})
+    salida = capsys.readouterr().out
+    assert "NO configura" in salida
+    assert "¿Por qué plan?" in salida and "GEOTECNIA" in salida
+    assert "2542 INGENIERÍA CIVIL" in salida, "debe listar las opciones"
+
+
+def test_el_plan_es_el_unico_combo_opcional():
+    obligatorios = {"criterio", "sede", "facultad"}
+    assert set(libre.CLAVES_COMBO) == obligatorios | {"plan"}
+    assert libre.PLAN_BUSQUEDA == libre.PLAN, \
+        "el combo de plan debe apuntar al mismo plan de arriba"
+
+
+@pytest.mark.parametrize("etiqueta", [
+    "¿Por qué plan?", "¿Porque plan?", "¿Por qué plan de estudios?",
+])
+def test_reconoce_las_etiquetas_del_cuarto_combo(etiqueta):
+    compacta = libre._compacto(etiqueta)
+    assert any(k in compacta for k in libre.CLAVES_COMBO["plan"])
+
+
+def test_el_combo_de_plan_de_arriba_no_se_confunde():
+    """«Plan de estudios» (el de arriba) no puede pasar por «¿Por qué plan?»."""
+    compacta = libre._compacto("Plan de estudios")
+    assert not any(k in compacta for k in libre.CLAVES_COMBO["plan"])
