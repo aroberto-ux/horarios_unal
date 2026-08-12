@@ -1,0 +1,138 @@
+# ============================================================
+#  Catálogo de LIBRE ELECCIÓN — una corrida al día
+#
+#  Por qué separado de snapshot_cupos.yml:
+#
+#  1) RITMO. Las electivas son cientos y su barrido completo tarda
+#     entre 30 y 90 min. Medirlas cada 30 min sería imposible y,
+#     sobre todo, inútil: no se agotan al minuto como las del plan.
+#
+#  2) AISLAMIENTO. Este job solo escribe archivos *_libre.*, así
+#     que un rebase contra los ~48 commits diarios del bot de
+#     cupos no puede producir conflictos de contenido.
+#
+#  3) TOLERANCIA A FALLOS. Si el SIA se cae a mitad del barrido,
+#     se publica lo conseguido salvo que sea tan poco que empeore
+#     lo ya publicado (ver el paso "Proteger lo publicado").
+#
+#  PARADA DE EMERGENCIA: igual que el otro workflow, un archivo
+#  vacío llamado PARAR en la raíz del repo lo desactiva.
+# ============================================================
+name: Libre elección (diario)
+
+on:
+  schedule:
+    # 09:20 UTC = 04:20 en Bogotá. De madrugada el SIA responde
+    # rápido y el barrido cabe entero antes de que alguien lo use.
+    - cron: "20 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+# A diferencia del bucle de cupos, aquí sí conviene: dos barridos
+# simultáneos de electivas solo se pisarían el uno al otro.
+concurrency:
+  group: libre-eleccion
+  cancel-in-progress: false
+
+jobs:
+  barrido:
+    runs-on: ubuntu-latest
+    # El tope de GitHub son 6 h; el script se corta solo a los 270
+    # min (SIA_LIBRE_LIMITE_MIN) para que siempre quede tiempo de
+    # commitear en vez de morir a mitad de escritura.
+    timeout-minutes: 330
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v5
+        with:
+          # Con el secreto PAT_PUSH los commits disparan la
+          # reconstrucción de Pages; sin él se usa el GITHUB_TOKEN.
+          token: ${{ secrets.PAT_PUSH || github.token }}
+
+      - name: Parada de emergencia
+        id: parar
+        run: |
+          if [ -f PARAR ]; then
+            echo "Archivo PARAR presente: no se hace nada."
+            echo "seguir=no" >> "$GITHUB_OUTPUT"
+          else
+            echo "seguir=si" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Instalar Python
+        if: steps.parar.outputs.seguir == 'si'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        if: steps.parar.outputs.seguir == 'si'
+        run: pip install selenium
+
+      - name: Barrido de electivas
+        if: steps.parar.outputs.seguir == 'si'
+        continue-on-error: true      # un barrido a medias sigue sirviendo
+        env:
+          SIA_LIBRE_LIMITE_MIN: "270"
+        run: python sia_libre.py
+
+      # ----------------------------------------------------------
+      # Mismo criterio que 'proteger_derivados' en snapshot_cupos:
+      # publicar 30 electivas donde ayer había 400 sería un
+      # retroceso, no una actualización.
+      # ----------------------------------------------------------
+      - name: Proteger lo publicado
+        if: steps.parar.outputs.seguir == 'si'
+        shell: bash {0}
+        run: |
+          set -u
+          contar() { tail -n +2 "$1" 2>/dev/null | cut -d, -f1 | sort -u | wc -l; }
+          nuevas=$(contar horarios_libre.csv)
+          previas=$(git show HEAD:horarios_libre.csv 2>/dev/null | tail -n +2 | cut -d, -f1 | sort -u | wc -l)
+          echo "Electivas: antes=$previas, ahora=$nuevas"
+          if [ "$previas" -gt 0 ] && [ $((nuevas * 10)) -lt $((previas * 8)) ]; then
+            echo "::warning::Barrido incompleto ($nuevas de $previas). Restauro el catálogo de ayer."
+            # cupos_libre.csv NO se restaura: es un registro histórico y
+            # las filas parciales son datos legítimos, identificables por
+            # su run_id. series_libre.json tampoco: deriva de ese CSV.
+            git checkout -- horarios_libre.csv grupos_libre.csv \
+                            catalogo_libre.json horario_libre.html 2>/dev/null || true
+          fi
+
+      - name: Publicar
+        if: steps.parar.outputs.seguir == 'si'
+        shell: bash {0}
+        run: |
+          set -u
+          git config user.name  "sia-bot"
+          git config user.email "sia-bot@users.noreply.github.com"
+
+          for f in catalogo_libre.json grupos_libre.csv horarios_libre.csv \
+                   cupos_libre.csv series_libre.json horario_libre.html; do
+            [ -e "$f" ] && git add "$f"
+          done
+          git commit -q -m "electivas de libre elección $(date -u +'%Y-%m-%d')" \
+            || { echo "Sin cambios que guardar"; exit 0; }
+
+          # El bot de cupos empuja cada ~30 min: el push de este job casi
+          # siempre llega detrás de uno suyo y hay que rebasar.
+          for intento in 1 2 3 4; do
+            git push -q && exit 0
+            echo "Push rechazado ($intento/4); rebase y reintento..."
+            git pull --rebase --autostash -q origin main || true
+            sleep 10
+          done
+          echo "::error::No se pudo hacer push tras 4 intentos"
+          exit 1
+
+      - name: Refrescar GitHub Pages
+        if: steps.parar.outputs.seguir == 'si'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run pages.yml --repo "$GITHUB_REPOSITORY" --ref main \
+            || echo "::warning::no pude lanzar pages.yml"
