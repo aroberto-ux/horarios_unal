@@ -10,7 +10,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T11:41:13-05:00",
-    "orden_lectura": 0
+    "orden_lectura": -1
   },
   {
     "codigo": "3011101",
@@ -46,7 +46,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T11:41:14-05:00",
-    "orden_lectura": 1
+    "orden_lectura": -1
   },
   {
     "codigo": "3010861",
@@ -82,7 +82,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T11:41:15-05:00",
-    "orden_lectura": 2
+    "orden_lectura": -1
   },
   {
     "codigo": "3010799",
@@ -95,6 +95,117 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T11:41:16-05:00",
+    "orden_lectura": -1
+  },
+  {
+    "codigo": "3008548",
+    "nombre": "COMPORTAMIENTO MECÁNICO DE SUELOS TROPICALES",
+    "tipologia": "OBLIGATORIAS",
+    "creditos": "4",
+    "facultad": "FACULTAD DE MINAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Yamile Valencia",
+        "cupos_disponibles": "20",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "10:00",
+            "hora_fin": "14:00",
+            "salon": "M1-220",
+            "salon_nombre": "AULA ESPECIAL",
+            "edificio": "BLOQUE M1",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA ESPECIAL. M1-220. BLOQUE M1. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-12T11:52:53-05:00",
+    "orden_lectura": 0
+  },
+  {
+    "codigo": "3008728",
+    "nombre": "Geotecnia de Macizos Rocosos",
+    "tipologia": "OBLIGATORIAS",
+    "creditos": "4",
+    "facultad": "FACULTAD DE MINAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Ludger Oswaldo Suarez Burgoa",
+        "cupos_disponibles": "20",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "15:00",
+            "hora_fin": "19:00",
+            "salon": "M1-308",
+            "salon_nombre": "AULA ESPECIAL",
+            "edificio": "BLOQUE M1",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA ESPECIAL. M1-308. BLOQUE M1. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-12T11:52:55-05:00",
+    "orden_lectura": 1
+  },
+  {
+    "codigo": "3010951",
+    "nombre": "Ingeniería de cimentaciones",
+    "tipologia": "OBLIGATORIAS",
+    "creditos": "4",
+    "facultad": "FACULTAD DE MINAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [],
+    "ts_lectura": "2026-08-12T11:52:56-05:00",
+    "orden_lectura": 2
+  },
+  {
+    "codigo": "3006726",
+    "nombre": "Instrum. Geotécnica y Exploración Subsuelo",
+    "tipologia": "OBLIGATORIAS",
+    "creditos": "4",
+    "facultad": "FACULTAD DE MINAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [],
+    "ts_lectura": "2026-08-12T11:52:57-05:00",
     "orden_lectura": 3
+  },
+  {
+    "codigo": "3010953",
+    "nombre": "Mecánica de suelos avanzada",
+    "tipologia": "OBLIGATORIAS",
+    "creditos": "4",
+    "facultad": "FACULTAD DE MINAS",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [],
+    "ts_lectura": "2026-08-12T11:52:58-05:00",
+    "orden_lectura": 4
   }
 ]

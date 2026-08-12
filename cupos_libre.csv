@@ -1,3 +1,5 @@
 ﻿run_id,ts_lectura,codigo,actividad,grupo,profesores_raw,profesores_norm,cupos_disponibles,cupos_totales,orden_lectura
 gh-31618725391-0812T1640,2026-08-12T11:41:14-05:00,3011101,CLASE TEORICA,(1) Grupo 1 REMOTA,Juan David Velasquez Henao,juan david velasquez henao,70,NA,1
 gh-31618725391-0812T1640,2026-08-12T11:41:15-05:00,3010861,CLASE TEORICA,(1) Grupo 1 REMOTA,Juan David Velasquez Henao,juan david velasquez henao,130,NA,2
+gh-31619704480-0812T1651,2026-08-12T11:52:53-05:00,3008548,CLASE TEORICA,(1) Grupo 1,Yamile Valencia,yamile valencia,20,NA,0
+gh-31619704480-0812T1651,2026-08-12T11:52:55-05:00,3008728,CLASE TEORICA,(1) Grupo 1,Ludger Oswaldo Suarez Burgoa,ludger oswaldo suarez burgoa,20,NA,1
