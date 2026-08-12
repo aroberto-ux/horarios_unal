@@ -138,8 +138,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:30:50-05:00",
-    "orden_lectura": 1
+    "ts_lectura": "2026-08-11T21:00:44-05:00",
+    "orden_lectura": 0
   },
   {
     "codigo": "2015939",
@@ -280,8 +280,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:30:51-05:00",
-    "orden_lectura": 2
+    "ts_lectura": "2026-08-11T21:00:46-05:00",
+    "orden_lectura": 1
   },
   {
     "codigo": "1000003-B",
@@ -888,8 +888,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:30:52-05:00",
-    "orden_lectura": 3
+    "ts_lectura": "2026-08-11T21:00:47-05:00",
+    "orden_lectura": 2
   },
   {
     "codigo": "2015940",
@@ -998,8 +998,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:30:54-05:00",
-    "orden_lectura": 4
+    "ts_lectura": "2026-08-11T21:00:48-05:00",
+    "orden_lectura": 3
   },
   {
     "codigo": "2015941",
@@ -1140,8 +1140,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:30:55-05:00",
-    "orden_lectura": 5
+    "ts_lectura": "2026-08-11T21:00:49-05:00",
+    "orden_lectura": 4
   },
   {
     "codigo": "1000004-B",
@@ -2082,8 +2082,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:30:56-05:00",
-    "orden_lectura": 6
+    "ts_lectura": "2026-08-11T21:00:51-05:00",
+    "orden_lectura": 5
   },
   {
     "codigo": "1000006-B",
@@ -2544,8 +2544,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:30:58-05:00",
-    "orden_lectura": 7
+    "ts_lectura": "2026-08-11T21:00:52-05:00",
+    "orden_lectura": 6
   },
   {
     "codigo": "1000005-B",
@@ -3088,8 +3088,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:00-05:00",
-    "orden_lectura": 8
+    "ts_lectura": "2026-08-11T21:00:54-05:00",
+    "orden_lectura": 7
   },
   {
     "codigo": "2015229",
@@ -3101,8 +3101,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T20:31:01-05:00",
-    "orden_lectura": 9
+    "ts_lectura": "2026-08-11T21:00:55-05:00",
+    "orden_lectura": 8
   },
   {
     "codigo": "2015943",
@@ -3147,8 +3147,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:02-05:00",
-    "orden_lectura": 10
+    "ts_lectura": "2026-08-11T21:00:56-05:00",
+    "orden_lectura": 9
   },
   {
     "codigo": "2015944",
@@ -3193,8 +3193,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:03-05:00",
-    "orden_lectura": 11
+    "ts_lectura": "2026-08-11T21:00:57-05:00",
+    "orden_lectura": 10
   },
   {
     "codigo": "2015711",
@@ -3495,8 +3495,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:05-05:00",
-    "orden_lectura": 12
+    "ts_lectura": "2026-08-11T21:00:59-05:00",
+    "orden_lectura": 11
   },
   {
     "codigo": "2015948",
@@ -3605,8 +3605,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:06-05:00",
-    "orden_lectura": 13
+    "ts_lectura": "2026-08-11T21:01:00-05:00",
+    "orden_lectura": 12
   },
   {
     "codigo": "2015950",
@@ -3779,8 +3779,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:08-05:00",
-    "orden_lectura": 14
+    "ts_lectura": "2026-08-11T21:01:01-05:00",
+    "orden_lectura": 13
   },
   {
     "codigo": "2015949",
@@ -3889,8 +3889,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:09-05:00",
-    "orden_lectura": 15
+    "ts_lectura": "2026-08-11T21:01:02-05:00",
+    "orden_lectura": 14
   },
   {
     "codigo": "1000007-B",
@@ -4223,8 +4223,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:10-05:00",
-    "orden_lectura": 16
+    "ts_lectura": "2026-08-11T21:01:03-05:00",
+    "orden_lectura": 15
   },
   {
     "codigo": "2026134",
@@ -4429,8 +4429,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:11-05:00",
-    "orden_lectura": 17
+    "ts_lectura": "2026-08-11T21:01:05-05:00",
+    "orden_lectura": 16
   },
   {
     "codigo": "2015954",
@@ -4539,8 +4539,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:12-05:00",
-    "orden_lectura": 18
+    "ts_lectura": "2026-08-11T21:01:06-05:00",
+    "orden_lectura": 17
   },
   {
     "codigo": "2015955",
@@ -4649,8 +4649,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:14-05:00",
-    "orden_lectura": 19
+    "ts_lectura": "2026-08-11T21:01:08-05:00",
+    "orden_lectura": 18
   },
   {
     "codigo": "1000011-B",
@@ -4767,8 +4767,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:15-05:00",
-    "orden_lectura": 20
+    "ts_lectura": "2026-08-11T21:01:09-05:00",
+    "orden_lectura": 19
   },
   {
     "codigo": "1000019-B",
@@ -6745,8 +6745,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:18-05:00",
-    "orden_lectura": 21
+    "ts_lectura": "2026-08-11T21:01:12-05:00",
+    "orden_lectura": 20
   },
   {
     "codigo": "2015956",
@@ -6887,8 +6887,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:19-05:00",
-    "orden_lectura": 22
+    "ts_lectura": "2026-08-11T21:01:13-05:00",
+    "orden_lectura": 21
   },
   {
     "codigo": "2015957",
@@ -7029,8 +7029,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:20-05:00",
-    "orden_lectura": 23
+    "ts_lectura": "2026-08-11T21:01:14-05:00",
+    "orden_lectura": 22
   },
   {
     "codigo": "2015958",
@@ -7401,8 +7401,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:22-05:00",
-    "orden_lectura": 24
+    "ts_lectura": "2026-08-11T21:01:15-05:00",
+    "orden_lectura": 23
   },
   {
     "codigo": "2015959",
@@ -7543,8 +7543,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:23-05:00",
-    "orden_lectura": 25
+    "ts_lectura": "2026-08-11T21:01:16-05:00",
+    "orden_lectura": 24
   },
   {
     "codigo": "2022760",
@@ -7556,8 +7556,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T20:31:24-05:00",
-    "orden_lectura": 26
+    "ts_lectura": "2026-08-11T21:01:18-05:00",
+    "orden_lectura": 25
   },
   {
     "codigo": "2015961",
@@ -7822,8 +7822,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:25-05:00",
-    "orden_lectura": 27
+    "ts_lectura": "2026-08-11T21:01:19-05:00",
+    "orden_lectura": 26
   },
   {
     "codigo": "2015978",
@@ -7996,8 +7996,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:27-05:00",
-    "orden_lectura": 28
+    "ts_lectura": "2026-08-11T21:01:20-05:00",
+    "orden_lectura": 27
   },
   {
     "codigo": "2026135",
@@ -8106,8 +8106,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:28-05:00",
-    "orden_lectura": 29
+    "ts_lectura": "2026-08-11T21:01:21-05:00",
+    "orden_lectura": 28
   },
   {
     "codigo": "2015963",
@@ -8216,8 +8216,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:30-05:00",
-    "orden_lectura": 30
+    "ts_lectura": "2026-08-11T21:01:22-05:00",
+    "orden_lectura": 29
   },
   {
     "codigo": "2026138",
@@ -8326,8 +8326,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:31-05:00",
-    "orden_lectura": 31
+    "ts_lectura": "2026-08-11T21:01:24-05:00",
+    "orden_lectura": 30
   },
   {
     "codigo": "2015703",
@@ -8692,8 +8692,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:32-05:00",
-    "orden_lectura": 32
+    "ts_lectura": "2026-08-11T21:01:25-05:00",
+    "orden_lectura": 31
   },
   {
     "codigo": "1000044-B",
@@ -9244,8 +9244,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:34-05:00",
-    "orden_lectura": 33
+    "ts_lectura": "2026-08-11T21:01:26-05:00",
+    "orden_lectura": 32
   },
   {
     "codigo": "1000045-B",
@@ -9880,8 +9880,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:35-05:00",
-    "orden_lectura": 34
+    "ts_lectura": "2026-08-11T21:01:28-05:00",
+    "orden_lectura": 33
   },
   {
     "codigo": "1000049-B",
@@ -9893,8 +9893,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T20:31:36-05:00",
-    "orden_lectura": 35
+    "ts_lectura": "2026-08-11T21:01:29-05:00",
+    "orden_lectura": 34
   },
   {
     "codigo": "1000046-B",
@@ -10533,8 +10533,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:38-05:00",
-    "orden_lectura": 36
+    "ts_lectura": "2026-08-11T21:01:31-05:00",
+    "orden_lectura": 35
   },
   {
     "codigo": "1000050-B",
@@ -10546,8 +10546,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T20:31:39-05:00",
-    "orden_lectura": 37
+    "ts_lectura": "2026-08-11T21:01:32-05:00",
+    "orden_lectura": 36
   },
   {
     "codigo": "1000052-B",
@@ -10716,8 +10716,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:40-05:00",
-    "orden_lectura": 38
+    "ts_lectura": "2026-08-11T21:01:33-05:00",
+    "orden_lectura": 37
   },
   {
     "codigo": "1000053-B",
@@ -11042,8 +11042,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:41-05:00",
-    "orden_lectura": 39
+    "ts_lectura": "2026-08-11T21:01:35-05:00",
+    "orden_lectura": 38
   },
   {
     "codigo": "1000047-B",
@@ -11870,8 +11870,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:43-05:00",
-    "orden_lectura": 40
+    "ts_lectura": "2026-08-11T21:01:36-05:00",
+    "orden_lectura": 39
   },
   {
     "codigo": "1000051-B",
@@ -11883,8 +11883,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T20:31:44-05:00",
-    "orden_lectura": 41
+    "ts_lectura": "2026-08-11T21:01:37-05:00",
+    "orden_lectura": 40
   },
   {
     "codigo": "2026186",
@@ -11993,8 +11993,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:45-05:00",
-    "orden_lectura": 42
+    "ts_lectura": "2026-08-11T21:01:39-05:00",
+    "orden_lectura": 41
   },
   {
     "codigo": "1000002-B",
@@ -12747,8 +12747,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:47-05:00",
-    "orden_lectura": 43
+    "ts_lectura": "2026-08-11T21:01:40-05:00",
+    "orden_lectura": 42
   },
   {
     "codigo": "1000001-B",
@@ -13667,8 +13667,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:50-05:00",
-    "orden_lectura": 44
+    "ts_lectura": "2026-08-11T21:01:42-05:00",
+    "orden_lectura": 43
   },
   {
     "codigo": "2015965",
@@ -13849,8 +13849,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:51-05:00",
-    "orden_lectura": 45
+    "ts_lectura": "2026-08-11T21:01:44-05:00",
+    "orden_lectura": 44
   },
   {
     "codigo": "2015966",
@@ -14199,8 +14199,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:52-05:00",
-    "orden_lectura": 46
+    "ts_lectura": "2026-08-11T21:01:45-05:00",
+    "orden_lectura": 45
   },
   {
     "codigo": "2015967",
@@ -14245,8 +14245,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:53-05:00",
-    "orden_lectura": 47
+    "ts_lectura": "2026-08-11T21:01:46-05:00",
+    "orden_lectura": 46
   },
   {
     "codigo": "2015968",
@@ -14553,8 +14553,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:55-05:00",
-    "orden_lectura": 48
+    "ts_lectura": "2026-08-11T21:01:47-05:00",
+    "orden_lectura": 47
   },
   {
     "codigo": "2015969",
@@ -14695,8 +14695,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:56-05:00",
-    "orden_lectura": 49
+    "ts_lectura": "2026-08-11T21:01:48-05:00",
+    "orden_lectura": 48
   },
   {
     "codigo": "2015970",
@@ -14837,8 +14837,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:57-05:00",
-    "orden_lectura": 50
+    "ts_lectura": "2026-08-11T21:01:50-05:00",
+    "orden_lectura": 49
   },
   {
     "codigo": "2017293",
@@ -14947,8 +14947,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:31:59-05:00",
-    "orden_lectura": 51
+    "ts_lectura": "2026-08-11T21:01:51-05:00",
+    "orden_lectura": 50
   },
   {
     "codigo": "2025970",
@@ -14960,8 +14960,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T20:32:00-05:00",
-    "orden_lectura": 52
+    "ts_lectura": "2026-08-11T21:01:52-05:00",
+    "orden_lectura": 51
   },
   {
     "codigo": "2025971",
@@ -14973,8 +14973,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T20:32:01-05:00",
-    "orden_lectura": 53
+    "ts_lectura": "2026-08-11T21:01:53-05:00",
+    "orden_lectura": 52
   },
   {
     "codigo": "2015971",
@@ -15083,8 +15083,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:32:03-05:00",
-    "orden_lectura": 54
+    "ts_lectura": "2026-08-11T21:01:54-05:00",
+    "orden_lectura": 53
   },
   {
     "codigo": "2015972",
@@ -15193,8 +15193,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:32:04-05:00",
-    "orden_lectura": 55
+    "ts_lectura": "2026-08-11T21:01:56-05:00",
+    "orden_lectura": 54
   },
   {
     "codigo": "1000024-B",
@@ -15453,8 +15453,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:32:06-05:00",
-    "orden_lectura": 56
+    "ts_lectura": "2026-08-11T21:01:57-05:00",
+    "orden_lectura": 55
   },
   {
     "codigo": "1000013-B",
@@ -15947,8 +15947,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:32:07-05:00",
-    "orden_lectura": 57
+    "ts_lectura": "2026-08-11T21:01:58-05:00",
+    "orden_lectura": 56
   },
   {
     "codigo": "2015734",
@@ -16469,8 +16469,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:32:08-05:00",
-    "orden_lectura": 58
+    "ts_lectura": "2026-08-11T21:02:00-05:00",
+    "orden_lectura": 57
   },
   {
     "codigo": "2016375",
@@ -16482,8 +16482,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T20:32:10-05:00",
-    "orden_lectura": 59
+    "ts_lectura": "2026-08-11T21:02:01-05:00",
+    "orden_lectura": 58
   },
   {
     "codigo": "2015973",
@@ -16592,8 +16592,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:32:11-05:00",
-    "orden_lectura": 60
+    "ts_lectura": "2026-08-11T21:02:02-05:00",
+    "orden_lectura": 59
   },
   {
     "codigo": "2022761",
@@ -16702,8 +16702,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:32:12-05:00",
-    "orden_lectura": 61
+    "ts_lectura": "2026-08-11T21:02:03-05:00",
+    "orden_lectura": 60
   },
   {
     "codigo": "2024045",
@@ -17564,8 +17564,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:32:14-05:00",
-    "orden_lectura": 62
+    "ts_lectura": "2026-08-11T21:02:05-05:00",
+    "orden_lectura": 61
   },
   {
     "codigo": "2015296",
@@ -17996,8 +17996,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:32:15-05:00",
-    "orden_lectura": 63
+    "ts_lectura": "2026-08-11T21:02:06-05:00",
+    "orden_lectura": 62
   },
   {
     "codigo": "2015299",
@@ -18032,8 +18032,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-11T20:32:17-05:00",
-    "orden_lectura": 64
+    "ts_lectura": "2026-08-11T21:02:07-05:00",
+    "orden_lectura": 63
   },
   {
     "codigo": "2015977",
@@ -18045,7 +18045,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-11T20:32:18-05:00",
-    "orden_lectura": 65
+    "ts_lectura": "2026-08-11T21:02:08-05:00",
+    "orden_lectura": 64
   }
 ]
