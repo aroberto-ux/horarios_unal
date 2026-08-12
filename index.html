@@ -2336,9 +2336,10 @@ function pintarDocentes(){
    Y una donde nos apartamos a propósito: si el mínimo roza el cero, el eje Y
    incluye el cero. En bolsa da igual, aquí "0 cupos" es el umbral que importa. */
 
-/* Los cupos se leen cada 30 min y se mantienen entre lecturas: el escalón es
-   más honesto que la recta. Pon false si prefieres el trazo recto de Google. */
-const TEND_ESCALON = "after";
+/* Interpolación entre snapshots. false = recta directa de un punto al siguiente,
+   como en Google. "after" dibuja el escalón (el cupo se mantiene hasta la
+   siguiente lectura): más fiel al dato crudo, pero se ve cuadrado. */
+const TEND_ESCALON = false;
 
 const VERDE_T = "#147A46", ROJO_T = "#B3372E", NEUTRO_T = "#5C6B60";
 
