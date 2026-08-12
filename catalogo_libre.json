@@ -1292,7 +1292,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:53:57-05:00",
-    "orden_lectura": 0
+    "orden_lectura": -1
   },
   {
     "codigo": "2029352",
@@ -1372,7 +1372,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:53:59-05:00",
-    "orden_lectura": 1
+    "orden_lectura": -1
   },
   {
     "codigo": "2024279",
@@ -1418,7 +1418,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:00-05:00",
-    "orden_lectura": 2
+    "orden_lectura": -1
   },
   {
     "codigo": "2022616",
@@ -1443,7 +1443,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:01-05:00",
-    "orden_lectura": 3
+    "orden_lectura": -1
   },
   {
     "codigo": "2022617",
@@ -1489,7 +1489,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:02-05:00",
-    "orden_lectura": 4
+    "orden_lectura": -1
   },
   {
     "codigo": "2021111",
@@ -1502,7 +1502,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:04-05:00",
-    "orden_lectura": 5
+    "orden_lectura": -1
   },
   {
     "codigo": "2021514",
@@ -1538,7 +1538,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:06-05:00",
-    "orden_lectura": 6
+    "orden_lectura": -1
   },
   {
     "codigo": "2029102",
@@ -1551,7 +1551,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:07-05:00",
-    "orden_lectura": 7
+    "orden_lectura": -1
   },
   {
     "codigo": "2018614",
@@ -1564,7 +1564,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:08-05:00",
-    "orden_lectura": 8
+    "orden_lectura": -1
   },
   {
     "codigo": "2026732",
@@ -1577,7 +1577,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:09-05:00",
-    "orden_lectura": 9
+    "orden_lectura": -1
   },
   {
     "codigo": "2027248",
@@ -1613,7 +1613,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:11-05:00",
-    "orden_lectura": 10
+    "orden_lectura": -1
   },
   {
     "codigo": "2025406",
@@ -1638,7 +1638,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:12-05:00",
-    "orden_lectura": 11
+    "orden_lectura": -1
   },
   {
     "codigo": "2026433",
@@ -1674,7 +1674,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:14-05:00",
-    "orden_lectura": 12
+    "orden_lectura": -1
   },
   {
     "codigo": "2015111",
@@ -1687,7 +1687,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:15-05:00",
-    "orden_lectura": 13
+    "orden_lectura": -1
   },
   {
     "codigo": "2011302",
@@ -1712,7 +1712,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:16-05:00",
-    "orden_lectura": 14
+    "orden_lectura": -1
   },
   {
     "codigo": "2012698",
@@ -1737,7 +1737,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:17-05:00",
-    "orden_lectura": 15
+    "orden_lectura": -1
   },
   {
     "codigo": "2021140",
@@ -1847,7 +1847,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:18-05:00",
-    "orden_lectura": 16
+    "orden_lectura": -1
   },
   {
     "codigo": "2026533",
@@ -1883,7 +1883,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:19-05:00",
-    "orden_lectura": 17
+    "orden_lectura": -1
   },
   {
     "codigo": "2018776",
@@ -1896,7 +1896,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:21-05:00",
-    "orden_lectura": 18
+    "orden_lectura": -1
   },
   {
     "codigo": "2028674",
@@ -1921,7 +1921,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:22-05:00",
-    "orden_lectura": 19
+    "orden_lectura": -1
   },
   {
     "codigo": "2024149",
@@ -1934,7 +1934,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:23-05:00",
-    "orden_lectura": 20
+    "orden_lectura": -1
   },
   {
     "codigo": "2021146",
@@ -1947,7 +1947,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:24-05:00",
-    "orden_lectura": 21
+    "orden_lectura": -1
   },
   {
     "codigo": "2021147",
@@ -1983,7 +1983,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:25-05:00",
-    "orden_lectura": 22
+    "orden_lectura": -1
   },
   {
     "codigo": "2026274",
@@ -2019,7 +2019,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:27-05:00",
-    "orden_lectura": 23
+    "orden_lectura": -1
   },
   {
     "codigo": "2023912",
@@ -2032,7 +2032,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:28-05:00",
-    "orden_lectura": 24
+    "orden_lectura": -1
   },
   {
     "codigo": "2029655",
@@ -2068,7 +2068,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:29-05:00",
-    "orden_lectura": 25
+    "orden_lectura": -1
   },
   {
     "codigo": "2022287",
@@ -2104,7 +2104,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:30-05:00",
-    "orden_lectura": 26
+    "orden_lectura": -1
   },
   {
     "codigo": "1000129-B",
@@ -2140,7 +2140,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:31-05:00",
-    "orden_lectura": 27
+    "orden_lectura": -1
   },
   {
     "codigo": "2021770",
@@ -2176,7 +2176,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:33-05:00",
-    "orden_lectura": 28
+    "orden_lectura": -1
   },
   {
     "codigo": "2029485",
@@ -2189,7 +2189,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:34-05:00",
-    "orden_lectura": 29
+    "orden_lectura": -1
   },
   {
     "codigo": "2027992",
@@ -2225,7 +2225,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:35-05:00",
-    "orden_lectura": 30
+    "orden_lectura": -1
   },
   {
     "codigo": "2027937",
@@ -2305,7 +2305,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:36-05:00",
-    "orden_lectura": 31
+    "orden_lectura": -1
   },
   {
     "codigo": "2029730",
@@ -2318,7 +2318,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:37-05:00",
-    "orden_lectura": 32
+    "orden_lectura": -1
   },
   {
     "codigo": "2029911",
@@ -2343,7 +2343,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:39-05:00",
-    "orden_lectura": 33
+    "orden_lectura": -1
   },
   {
     "codigo": "2029656",
@@ -2356,7 +2356,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:40-05:00",
-    "orden_lectura": 34
+    "orden_lectura": -1
   },
   {
     "codigo": "2029813",
@@ -2369,7 +2369,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:41-05:00",
-    "orden_lectura": 35
+    "orden_lectura": -1
   },
   {
     "codigo": "2029912",
@@ -2394,7 +2394,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:42-05:00",
-    "orden_lectura": 36
+    "orden_lectura": -1
   },
   {
     "codigo": "2029812",
@@ -2407,7 +2407,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:44-05:00",
-    "orden_lectura": 37
+    "orden_lectura": -1
   },
   {
     "codigo": "1000134-B",
@@ -2420,7 +2420,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:45-05:00",
-    "orden_lectura": 38
+    "orden_lectura": -1
   },
   {
     "codigo": "1000176-B",
@@ -2456,7 +2456,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:46-05:00",
-    "orden_lectura": 39
+    "orden_lectura": -1
   },
   {
     "codigo": "1000170-B",
@@ -2492,7 +2492,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:48-05:00",
-    "orden_lectura": 40
+    "orden_lectura": -1
   },
   {
     "codigo": "1000159-B",
@@ -2538,7 +2538,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:49-05:00",
-    "orden_lectura": 41
+    "orden_lectura": -1
   },
   {
     "codigo": "1000158-B",
@@ -2574,7 +2574,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:50-05:00",
-    "orden_lectura": 42
+    "orden_lectura": -1
   },
   {
     "codigo": "1000175-B",
@@ -2610,7 +2610,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:51-05:00",
-    "orden_lectura": 43
+    "orden_lectura": -1
   },
   {
     "codigo": "1000164-B",
@@ -2623,7 +2623,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:52-05:00",
-    "orden_lectura": 44
+    "orden_lectura": -1
   },
   {
     "codigo": "1000141-B",
@@ -2659,7 +2659,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:53-05:00",
-    "orden_lectura": 45
+    "orden_lectura": -1
   },
   {
     "codigo": "1000089-B",
@@ -3135,7 +3135,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:55-05:00",
-    "orden_lectura": 46
+    "orden_lectura": -1
   },
   {
     "codigo": "1000160-B",
@@ -3148,7 +3148,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:54:56-05:00",
-    "orden_lectura": 47
+    "orden_lectura": -1
   },
   {
     "codigo": "1000168-B",
@@ -3184,7 +3184,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:57-05:00",
-    "orden_lectura": 48
+    "orden_lectura": -1
   },
   {
     "codigo": "1000167-B",
@@ -3220,7 +3220,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:54:59-05:00",
-    "orden_lectura": 49
+    "orden_lectura": -1
   },
   {
     "codigo": "1000172-B",
@@ -3266,7 +3266,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:00-05:00",
-    "orden_lectura": 50
+    "orden_lectura": -1
   },
   {
     "codigo": "1000145-B",
@@ -3291,7 +3291,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:01-05:00",
-    "orden_lectura": 51
+    "orden_lectura": -1
   },
   {
     "codigo": "1000165-B",
@@ -3304,7 +3304,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:02-05:00",
-    "orden_lectura": 52
+    "orden_lectura": -1
   },
   {
     "codigo": "1000173-B",
@@ -3350,7 +3350,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:03-05:00",
-    "orden_lectura": 53
+    "orden_lectura": -1
   },
   {
     "codigo": "1000162-B",
@@ -3363,7 +3363,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:04-05:00",
-    "orden_lectura": 54
+    "orden_lectura": -1
   },
   {
     "codigo": "1000128-B",
@@ -3376,7 +3376,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:06-05:00",
-    "orden_lectura": 55
+    "orden_lectura": -1
   },
   {
     "codigo": "1000171-B",
@@ -3412,7 +3412,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:07-05:00",
-    "orden_lectura": 56
+    "orden_lectura": -1
   },
   {
     "codigo": "1000163-B",
@@ -3425,7 +3425,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:08-05:00",
-    "orden_lectura": 57
+    "orden_lectura": -1
   },
   {
     "codigo": "1000174-B",
@@ -3461,7 +3461,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:09-05:00",
-    "orden_lectura": 58
+    "orden_lectura": -1
   },
   {
     "codigo": "1000169-B",
@@ -3497,7 +3497,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:11-05:00",
-    "orden_lectura": 59
+    "orden_lectura": -1
   },
   {
     "codigo": "1000161-B",
@@ -3510,7 +3510,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:12-05:00",
-    "orden_lectura": 60
+    "orden_lectura": -1
   },
   {
     "codigo": "2028643",
@@ -3546,7 +3546,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:13-05:00",
-    "orden_lectura": 61
+    "orden_lectura": -1
   },
   {
     "codigo": "1000157-B",
@@ -3559,7 +3559,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:14-05:00",
-    "orden_lectura": 62
+    "orden_lectura": -1
   },
   {
     "codigo": "2029903",
@@ -3584,7 +3584,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:16-05:00",
-    "orden_lectura": 63
+    "orden_lectura": -1
   },
   {
     "codigo": "2029864",
@@ -3609,7 +3609,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:17-05:00",
-    "orden_lectura": 64
+    "orden_lectura": -1
   },
   {
     "codigo": "2021758",
@@ -3687,7 +3687,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:18-05:00",
-    "orden_lectura": 65
+    "orden_lectura": -1
   },
   {
     "codigo": "2021760",
@@ -3712,7 +3712,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:20-05:00",
-    "orden_lectura": 66
+    "orden_lectura": -1
   },
   {
     "codigo": "2016133",
@@ -3748,7 +3748,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:21-05:00",
-    "orden_lectura": 67
+    "orden_lectura": -1
   },
   {
     "codigo": "2021142",
@@ -3826,7 +3826,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:22-05:00",
-    "orden_lectura": 68
+    "orden_lectura": -1
   },
   {
     "codigo": "2028571",
@@ -3862,7 +3862,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:23-05:00",
-    "orden_lectura": 69
+    "orden_lectura": -1
   },
   {
     "codigo": "2029900",
@@ -3898,7 +3898,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:24-05:00",
-    "orden_lectura": 70
+    "orden_lectura": -1
   },
   {
     "codigo": "2023244",
@@ -3944,7 +3944,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:26-05:00",
-    "orden_lectura": 71
+    "orden_lectura": -1
   },
   {
     "codigo": "2026204",
@@ -3990,7 +3990,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:27-05:00",
-    "orden_lectura": 72
+    "orden_lectura": -1
   },
   {
     "codigo": "2019336",
@@ -4003,7 +4003,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:28-05:00",
-    "orden_lectura": 73
+    "orden_lectura": -1
   },
   {
     "codigo": "2028569",
@@ -4039,7 +4039,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:29-05:00",
-    "orden_lectura": 74
+    "orden_lectura": -1
   },
   {
     "codigo": "2029421",
@@ -4075,7 +4075,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:31-05:00",
-    "orden_lectura": 75
+    "orden_lectura": -1
   },
   {
     "codigo": "2026908",
@@ -4088,7 +4088,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:32-05:00",
-    "orden_lectura": 76
+    "orden_lectura": -1
   },
   {
     "codigo": "2017564",
@@ -4124,7 +4124,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:33-05:00",
-    "orden_lectura": 77
+    "orden_lectura": -1
   },
   {
     "codigo": "2011303",
@@ -4137,7 +4137,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:35-05:00",
-    "orden_lectura": 78
+    "orden_lectura": -1
   },
   {
     "codigo": "2027223",
@@ -4285,7 +4285,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:36-05:00",
-    "orden_lectura": 79
+    "orden_lectura": -1
   },
   {
     "codigo": "2027224",
@@ -4423,7 +4423,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:37-05:00",
-    "orden_lectura": 80
+    "orden_lectura": -1
   },
   {
     "codigo": "2021152",
@@ -4459,7 +4459,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:38-05:00",
-    "orden_lectura": 81
+    "orden_lectura": -1
   },
   {
     "codigo": "7000293-B",
@@ -4484,7 +4484,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:40-05:00",
-    "orden_lectura": 82
+    "orden_lectura": -1
   },
   {
     "codigo": "2029500",
@@ -4497,7 +4497,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:41-05:00",
-    "orden_lectura": 83
+    "orden_lectura": -1
   },
   {
     "codigo": "2029512",
@@ -4533,7 +4533,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:42-05:00",
-    "orden_lectura": 84
+    "orden_lectura": -1
   },
   {
     "codigo": "2026702",
@@ -4569,7 +4569,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:43-05:00",
-    "orden_lectura": 85
+    "orden_lectura": -1
   },
   {
     "codigo": "2028615",
@@ -4582,7 +4582,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:44-05:00",
-    "orden_lectura": 86
+    "orden_lectura": -1
   },
   {
     "codigo": "2026205",
@@ -4618,7 +4618,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:45-05:00",
-    "orden_lectura": 87
+    "orden_lectura": -1
   },
   {
     "codigo": "2025976",
@@ -4664,7 +4664,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:47-05:00",
-    "orden_lectura": 88
+    "orden_lectura": -1
   },
   {
     "codigo": "2020414",
@@ -4677,7 +4677,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:48-05:00",
-    "orden_lectura": 89
+    "orden_lectura": -1
   },
   {
     "codigo": "2022180",
@@ -4713,7 +4713,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:49-05:00",
-    "orden_lectura": 90
+    "orden_lectura": -1
   },
   {
     "codigo": "2020915",
@@ -4726,7 +4726,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:51-05:00",
-    "orden_lectura": 91
+    "orden_lectura": -1
   },
   {
     "codigo": "2028647",
@@ -4739,7 +4739,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:52-05:00",
-    "orden_lectura": 92
+    "orden_lectura": -1
   },
   {
     "codigo": "2029283",
@@ -4752,7 +4752,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:55:54-05:00",
-    "orden_lectura": 93
+    "orden_lectura": -1
   },
   {
     "codigo": "2029398",
@@ -4788,7 +4788,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:55-05:00",
-    "orden_lectura": 94
+    "orden_lectura": -1
   },
   {
     "codigo": "2023915",
@@ -4824,7 +4824,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:56-05:00",
-    "orden_lectura": 95
+    "orden_lectura": -1
   },
   {
     "codigo": "2015633",
@@ -4860,7 +4860,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:58-05:00",
-    "orden_lectura": 96
+    "orden_lectura": -1
   },
   {
     "codigo": "2029789",
@@ -4885,7 +4885,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:55:59-05:00",
-    "orden_lectura": 97
+    "orden_lectura": -1
   },
   {
     "codigo": "2024990",
@@ -4898,7 +4898,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:00-05:00",
-    "orden_lectura": 98
+    "orden_lectura": -1
   },
   {
     "codigo": "2022188",
@@ -4911,7 +4911,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:01-05:00",
-    "orden_lectura": 99
+    "orden_lectura": -1
   },
   {
     "codigo": "2025336",
@@ -4989,7 +4989,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:03-05:00",
-    "orden_lectura": 100
+    "orden_lectura": -1
   },
   {
     "codigo": "2025814",
@@ -5035,7 +5035,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:04-05:00",
-    "orden_lectura": 101
+    "orden_lectura": -1
   },
   {
     "codigo": "2027940",
@@ -5048,7 +5048,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:05-05:00",
-    "orden_lectura": 102
+    "orden_lectura": -1
   },
   {
     "codigo": "2027941",
@@ -5084,7 +5084,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:06-05:00",
-    "orden_lectura": 103
+    "orden_lectura": -1
   },
   {
     "codigo": "2019054",
@@ -5097,7 +5097,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:07-05:00",
-    "orden_lectura": 104
+    "orden_lectura": -1
   },
   {
     "codigo": "2021154",
@@ -5143,7 +5143,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:09-05:00",
-    "orden_lectura": 105
+    "orden_lectura": -1
   },
   {
     "codigo": "2018617",
@@ -5156,7 +5156,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:10-05:00",
-    "orden_lectura": 106
+    "orden_lectura": -1
   },
   {
     "codigo": "2029676",
@@ -5202,7 +5202,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:12-05:00",
-    "orden_lectura": 107
+    "orden_lectura": -1
   },
   {
     "codigo": "2029371",
@@ -5238,7 +5238,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:13-05:00",
-    "orden_lectura": 108
+    "orden_lectura": -1
   },
   {
     "codigo": "2029870",
@@ -5251,7 +5251,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:14-05:00",
-    "orden_lectura": 109
+    "orden_lectura": -1
   },
   {
     "codigo": "2017803",
@@ -5264,7 +5264,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:15-05:00",
-    "orden_lectura": 110
+    "orden_lectura": -1
   },
   {
     "codigo": "2015705",
@@ -5342,7 +5342,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:17-05:00",
-    "orden_lectura": 111
+    "orden_lectura": -1
   },
   {
     "codigo": "2015706",
@@ -5388,7 +5388,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:18-05:00",
-    "orden_lectura": 112
+    "orden_lectura": -1
   },
   {
     "codigo": "2024999",
@@ -5401,7 +5401,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:19-05:00",
-    "orden_lectura": 113
+    "orden_lectura": -1
   },
   {
     "codigo": "2026000",
@@ -5414,7 +5414,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:20-05:00",
-    "orden_lectura": 114
+    "orden_lectura": -1
   },
   {
     "codigo": "2025997",
@@ -5427,7 +5427,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:21-05:00",
-    "orden_lectura": 115
+    "orden_lectura": -1
   },
   {
     "codigo": "2021849",
@@ -5463,7 +5463,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:23-05:00",
-    "orden_lectura": 116
+    "orden_lectura": -1
   },
   {
     "codigo": "2027716",
@@ -5476,7 +5476,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:24-05:00",
-    "orden_lectura": 117
+    "orden_lectura": -1
   },
   {
     "codigo": "2026001",
@@ -5489,7 +5489,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:25-05:00",
-    "orden_lectura": 118
+    "orden_lectura": -1
   },
   {
     "codigo": "2026002",
@@ -5502,7 +5502,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:27-05:00",
-    "orden_lectura": 119
+    "orden_lectura": -1
   },
   {
     "codigo": "2024077",
@@ -5515,7 +5515,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:28-05:00",
-    "orden_lectura": 120
+    "orden_lectura": -1
   },
   {
     "codigo": "2026501",
@@ -5551,7 +5551,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:30-05:00",
-    "orden_lectura": 121
+    "orden_lectura": -1
   },
   {
     "codigo": "2026053",
@@ -5761,7 +5761,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:31-05:00",
-    "orden_lectura": 122
+    "orden_lectura": -1
   },
   {
     "codigo": "2027096",
@@ -5971,7 +5971,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:32-05:00",
-    "orden_lectura": 123
+    "orden_lectura": -1
   },
   {
     "codigo": "2022625",
@@ -6017,7 +6017,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:33-05:00",
-    "orden_lectura": 124
+    "orden_lectura": -1
   },
   {
     "codigo": "2022626",
@@ -6042,7 +6042,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:35-05:00",
-    "orden_lectura": 125
+    "orden_lectura": -1
   },
   {
     "codigo": "2022627",
@@ -6088,7 +6088,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:36-05:00",
-    "orden_lectura": 126
+    "orden_lectura": -1
   },
   {
     "codigo": "2026739",
@@ -6134,7 +6134,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:37-05:00",
-    "orden_lectura": 127
+    "orden_lectura": -1
   },
   {
     "codigo": "2017810",
@@ -6180,7 +6180,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:39-05:00",
-    "orden_lectura": 128
+    "orden_lectura": -1
   },
   {
     "codigo": "2021149",
@@ -6216,7 +6216,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:40-05:00",
-    "orden_lectura": 129
+    "orden_lectura": -1
   },
   {
     "codigo": "2028914",
@@ -6229,7 +6229,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:42-05:00",
-    "orden_lectura": 130
+    "orden_lectura": -1
   },
   {
     "codigo": "2020994",
@@ -6265,7 +6265,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:43-05:00",
-    "orden_lectura": 131
+    "orden_lectura": -1
   },
   {
     "codigo": "2023215",
@@ -6278,7 +6278,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:44-05:00",
-    "orden_lectura": 132
+    "orden_lectura": -1
   },
   {
     "codigo": "2020404",
@@ -6291,7 +6291,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:45-05:00",
-    "orden_lectura": 133
+    "orden_lectura": -1
   },
   {
     "codigo": "1000151-B",
@@ -6304,7 +6304,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:56:46-05:00",
-    "orden_lectura": 134
+    "orden_lectura": -1
   },
   {
     "codigo": "2029505",
@@ -6340,7 +6340,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:48-05:00",
-    "orden_lectura": 135
+    "orden_lectura": -1
   },
   {
     "codigo": "2023250",
@@ -6386,7 +6386,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:49-05:00",
-    "orden_lectura": 136
+    "orden_lectura": -1
   },
   {
     "codigo": "2029607",
@@ -6422,7 +6422,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:50-05:00",
-    "orden_lectura": 137
+    "orden_lectura": -1
   },
   {
     "codigo": "2015191",
@@ -6500,7 +6500,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:51-05:00",
-    "orden_lectura": 138
+    "orden_lectura": -1
   },
   {
     "codigo": "2023286",
@@ -6546,7 +6546,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:53-05:00",
-    "orden_lectura": 139
+    "orden_lectura": -1
   },
   {
     "codigo": "2028496",
@@ -6571,7 +6571,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:54-05:00",
-    "orden_lectura": 140
+    "orden_lectura": -1
   },
   {
     "codigo": "2023251",
@@ -6617,7 +6617,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:55-05:00",
-    "orden_lectura": 141
+    "orden_lectura": -1
   },
   {
     "codigo": "2027100",
@@ -6765,7 +6765,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:56-05:00",
-    "orden_lectura": 142
+    "orden_lectura": -1
   },
   {
     "codigo": "2026058",
@@ -7047,7 +7047,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:58-05:00",
-    "orden_lectura": 143
+    "orden_lectura": -1
   },
   {
     "codigo": "2027101",
@@ -7257,7 +7257,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:56:59-05:00",
-    "orden_lectura": 144
+    "orden_lectura": -1
   },
   {
     "codigo": "2011183",
@@ -7282,7 +7282,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:00-05:00",
-    "orden_lectura": 145
+    "orden_lectura": -1
   },
   {
     "codigo": "2026630",
@@ -7307,7 +7307,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:01-05:00",
-    "orden_lectura": 146
+    "orden_lectura": -1
   },
   {
     "codigo": "2026631",
@@ -7332,7 +7332,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:03-05:00",
-    "orden_lectura": 147
+    "orden_lectura": -1
   },
   {
     "codigo": "2028821",
@@ -7357,7 +7357,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:04-05:00",
-    "orden_lectura": 148
+    "orden_lectura": -1
   },
   {
     "codigo": "2028822",
@@ -7382,7 +7382,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:05-05:00",
-    "orden_lectura": 149
+    "orden_lectura": -1
   },
   {
     "codigo": "2014269",
@@ -7407,7 +7407,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:06-05:00",
-    "orden_lectura": 150
+    "orden_lectura": -1
   },
   {
     "codigo": "2011283",
@@ -7432,7 +7432,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:07-05:00",
-    "orden_lectura": 151
+    "orden_lectura": -1
   },
   {
     "codigo": "2023216",
@@ -7510,7 +7510,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:09-05:00",
-    "orden_lectura": 152
+    "orden_lectura": -1
   },
   {
     "codigo": "2025981",
@@ -7546,7 +7546,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:10-05:00",
-    "orden_lectura": 153
+    "orden_lectura": -1
   },
   {
     "codigo": "2025053",
@@ -7592,7 +7592,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:12-05:00",
-    "orden_lectura": 154
+    "orden_lectura": -1
   },
   {
     "codigo": "2029556",
@@ -7638,7 +7638,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:13-05:00",
-    "orden_lectura": 155
+    "orden_lectura": -1
   },
   {
     "codigo": "2025063",
@@ -7651,7 +7651,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:57:15-05:00",
-    "orden_lectura": 156
+    "orden_lectura": -1
   },
   {
     "codigo": "2026987",
@@ -7664,7 +7664,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:57:16-05:00",
-    "orden_lectura": 157
+    "orden_lectura": -1
   },
   {
     "codigo": "2029615",
@@ -7689,7 +7689,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:17-05:00",
-    "orden_lectura": 158
+    "orden_lectura": -1
   },
   {
     "codigo": "2022630",
@@ -7767,7 +7767,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:18-05:00",
-    "orden_lectura": 159
+    "orden_lectura": -1
   },
   {
     "codigo": "2022631",
@@ -7792,7 +7792,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:20-05:00",
-    "orden_lectura": 160
+    "orden_lectura": -1
   },
   {
     "codigo": "2021471",
@@ -7838,7 +7838,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:21-05:00",
-    "orden_lectura": 161
+    "orden_lectura": -1
   },
   {
     "codigo": "2021472",
@@ -7884,7 +7884,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:22-05:00",
-    "orden_lectura": 162
+    "orden_lectura": -1
   },
   {
     "codigo": "2021473",
@@ -7930,7 +7930,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:24-05:00",
-    "orden_lectura": 163
+    "orden_lectura": -1
   },
   {
     "codigo": "2017949",
@@ -7943,7 +7943,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:57:25-05:00",
-    "orden_lectura": 164
+    "orden_lectura": -1
   },
   {
     "codigo": "2029790",
@@ -7979,7 +7979,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:26-05:00",
-    "orden_lectura": 165
+    "orden_lectura": -1
   },
   {
     "codigo": "2023919",
@@ -8015,7 +8015,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:27-05:00",
-    "orden_lectura": 166
+    "orden_lectura": -1
   },
   {
     "codigo": "2029046",
@@ -8051,7 +8051,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:29-05:00",
-    "orden_lectura": 167
+    "orden_lectura": -1
   },
   {
     "codigo": "2028036",
@@ -8097,7 +8097,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:30-05:00",
-    "orden_lectura": 168
+    "orden_lectura": -1
   },
   {
     "codigo": "2027041",
@@ -8110,7 +8110,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:57:31-05:00",
-    "orden_lectura": 169
+    "orden_lectura": -1
   },
   {
     "codigo": "2026611",
@@ -8146,7 +8146,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:32-05:00",
-    "orden_lectura": 170
+    "orden_lectura": -1
   },
   {
     "codigo": "2024401",
@@ -8159,7 +8159,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:57:34-05:00",
-    "orden_lectura": 171
+    "orden_lectura": -1
   },
   {
     "codigo": "2029557",
@@ -8205,7 +8205,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:35-05:00",
-    "orden_lectura": 172
+    "orden_lectura": -1
   },
   {
     "codigo": "2029844",
@@ -8251,7 +8251,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:36-05:00",
-    "orden_lectura": 173
+    "orden_lectura": -1
   },
   {
     "codigo": "2023240",
@@ -8297,7 +8297,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:38-05:00",
-    "orden_lectura": 174
+    "orden_lectura": -1
   },
   {
     "codigo": "2029611",
@@ -8343,7 +8343,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:39-05:00",
-    "orden_lectura": 175
+    "orden_lectura": -1
   },
   {
     "codigo": "2023241",
@@ -8389,7 +8389,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:40-05:00",
-    "orden_lectura": 176
+    "orden_lectura": -1
   },
   {
     "codigo": "2016253",
@@ -8435,7 +8435,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:41-05:00",
-    "orden_lectura": 177
+    "orden_lectura": -1
   },
   {
     "codigo": "2022221",
@@ -8471,7 +8471,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:43-05:00",
-    "orden_lectura": 178
+    "orden_lectura": -1
   },
   {
     "codigo": "2023218",
@@ -8484,7 +8484,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:57:44-05:00",
-    "orden_lectura": 179
+    "orden_lectura": -1
   },
   {
     "codigo": "2027191",
@@ -8520,7 +8520,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:45-05:00",
-    "orden_lectura": 180
+    "orden_lectura": -1
   },
   {
     "codigo": "2020922",
@@ -8533,7 +8533,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:57:46-05:00",
-    "orden_lectura": 181
+    "orden_lectura": -1
   },
   {
     "codigo": "2020933",
@@ -8546,7 +8546,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:57:47-05:00",
-    "orden_lectura": 182
+    "orden_lectura": -1
   },
   {
     "codigo": "2025828",
@@ -8559,7 +8559,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:57:49-05:00",
-    "orden_lectura": 183
+    "orden_lectura": -1
   },
   {
     "codigo": "2025703",
@@ -8595,7 +8595,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:50-05:00",
-    "orden_lectura": 184
+    "orden_lectura": -1
   },
   {
     "codigo": "2018622",
@@ -8608,7 +8608,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:57:51-05:00",
-    "orden_lectura": 185
+    "orden_lectura": -1
   },
   {
     "codigo": "2018623",
@@ -8621,7 +8621,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:57:53-05:00",
-    "orden_lectura": 186
+    "orden_lectura": -1
   },
   {
     "codigo": "2022225",
@@ -8657,7 +8657,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:54-05:00",
-    "orden_lectura": 187
+    "orden_lectura": -1
   },
   {
     "codigo": "2026688",
@@ -8703,7 +8703,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:55-05:00",
-    "orden_lectura": 188
+    "orden_lectura": -1
   },
   {
     "codigo": "2024006",
@@ -8739,7 +8739,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:57:56-05:00",
-    "orden_lectura": 189
+    "orden_lectura": -1
   },
   {
     "codigo": "2028610",
@@ -8752,7 +8752,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:57:57-05:00",
-    "orden_lectura": 190
+    "orden_lectura": -1
   },
   {
     "codigo": "2027394",
@@ -8765,7 +8765,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:57:59-05:00",
-    "orden_lectura": 191
+    "orden_lectura": -1
   },
   {
     "codigo": "2024994",
@@ -8801,7 +8801,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:00-05:00",
-    "orden_lectura": 192
+    "orden_lectura": -1
   },
   {
     "codigo": "2022229",
@@ -8837,7 +8837,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:02-05:00",
-    "orden_lectura": 193
+    "orden_lectura": -1
   },
   {
     "codigo": "2024221",
@@ -8873,7 +8873,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:03-05:00",
-    "orden_lectura": 194
+    "orden_lectura": -1
   },
   {
     "codigo": "2028288",
@@ -8909,7 +8909,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:04-05:00",
-    "orden_lectura": 195
+    "orden_lectura": -1
   },
   {
     "codigo": "2023217",
@@ -8955,7 +8955,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:06-05:00",
-    "orden_lectura": 196
+    "orden_lectura": -1
   },
   {
     "codigo": "2029650",
@@ -8991,7 +8991,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:07-05:00",
-    "orden_lectura": 197
+    "orden_lectura": -1
   },
   {
     "codigo": "2021118",
@@ -9004,7 +9004,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:08-05:00",
-    "orden_lectura": 198
+    "orden_lectura": -1
   },
   {
     "codigo": "2028465",
@@ -9040,7 +9040,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:09-05:00",
-    "orden_lectura": 199
+    "orden_lectura": -1
   },
   {
     "codigo": "2021160",
@@ -9086,7 +9086,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:11-05:00",
-    "orden_lectura": 200
+    "orden_lectura": -1
   },
   {
     "codigo": "2026444",
@@ -9099,7 +9099,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:12-05:00",
-    "orden_lectura": 201
+    "orden_lectura": -1
   },
   {
     "codigo": "2029315",
@@ -9112,7 +9112,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:13-05:00",
-    "orden_lectura": 202
+    "orden_lectura": -1
   },
   {
     "codigo": "2029728",
@@ -9148,7 +9148,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:15-05:00",
-    "orden_lectura": 203
+    "orden_lectura": -1
   },
   {
     "codigo": "2025665",
@@ -9184,7 +9184,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:16-05:00",
-    "orden_lectura": 204
+    "orden_lectura": -1
   },
   {
     "codigo": "2029896",
@@ -9209,7 +9209,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:17-05:00",
-    "orden_lectura": 205
+    "orden_lectura": -1
   },
   {
     "codigo": "2021478",
@@ -9255,7 +9255,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:19-05:00",
-    "orden_lectura": 206
+    "orden_lectura": -1
   },
   {
     "codigo": "2021479",
@@ -9301,7 +9301,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:20-05:00",
-    "orden_lectura": 207
+    "orden_lectura": -1
   },
   {
     "codigo": "2021480",
@@ -9347,7 +9347,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:21-05:00",
-    "orden_lectura": 208
+    "orden_lectura": -1
   },
   {
     "codigo": "2026065",
@@ -9495,7 +9495,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:23-05:00",
-    "orden_lectura": 209
+    "orden_lectura": -1
   },
   {
     "codigo": "2027119",
@@ -9643,7 +9643,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:24-05:00",
-    "orden_lectura": 210
+    "orden_lectura": -1
   },
   {
     "codigo": "2029561",
@@ -9778,7 +9778,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:26-05:00",
-    "orden_lectura": 211
+    "orden_lectura": -1
   },
   {
     "codigo": "2029562",
@@ -9803,7 +9803,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:27-05:00",
-    "orden_lectura": 212
+    "orden_lectura": -1
   },
   {
     "codigo": "2016762",
@@ -9816,7 +9816,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:28-05:00",
-    "orden_lectura": 213
+    "orden_lectura": -1
   },
   {
     "codigo": "2016763",
@@ -9829,7 +9829,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:29-05:00",
-    "orden_lectura": 214
+    "orden_lectura": -1
   },
   {
     "codigo": "2022240",
@@ -9865,7 +9865,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:31-05:00",
-    "orden_lectura": 215
+    "orden_lectura": -1
   },
   {
     "codigo": "2024008",
@@ -9878,7 +9878,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:32-05:00",
-    "orden_lectura": 216
+    "orden_lectura": -1
   },
   {
     "codigo": "2021483",
@@ -9914,7 +9914,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:34-05:00",
-    "orden_lectura": 217
+    "orden_lectura": -1
   },
   {
     "codigo": "2021485",
@@ -9950,7 +9950,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:35-05:00",
-    "orden_lectura": 218
+    "orden_lectura": -1
   },
   {
     "codigo": "2029382",
@@ -9986,7 +9986,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:36-05:00",
-    "orden_lectura": 219
+    "orden_lectura": -1
   },
   {
     "codigo": "2025691",
@@ -10022,7 +10022,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:38-05:00",
-    "orden_lectura": 220
+    "orden_lectura": -1
   },
   {
     "codigo": "2025419",
@@ -10035,7 +10035,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:39-05:00",
-    "orden_lectura": 221
+    "orden_lectura": -1
   },
   {
     "codigo": "2029856",
@@ -10071,7 +10071,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:40-05:00",
-    "orden_lectura": 222
+    "orden_lectura": -1
   },
   {
     "codigo": "1000152-B",
@@ -10084,7 +10084,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:41-05:00",
-    "orden_lectura": 223
+    "orden_lectura": -1
   },
   {
     "codigo": "2029777",
@@ -10097,7 +10097,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:43-05:00",
-    "orden_lectura": 224
+    "orden_lectura": -1
   },
   {
     "codigo": "2029778",
@@ -10143,7 +10143,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:44-05:00",
-    "orden_lectura": 225
+    "orden_lectura": -1
   },
   {
     "codigo": "2029414",
@@ -10156,7 +10156,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:45-05:00",
-    "orden_lectura": 226
+    "orden_lectura": -1
   },
   {
     "codigo": "2029281",
@@ -10192,7 +10192,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:47-05:00",
-    "orden_lectura": 227
+    "orden_lectura": -1
   },
   {
     "codigo": "2026834",
@@ -10228,7 +10228,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:48-05:00",
-    "orden_lectura": 228
+    "orden_lectura": -1
   },
   {
     "codigo": "2028300",
@@ -10264,7 +10264,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:49-05:00",
-    "orden_lectura": 229
+    "orden_lectura": -1
   },
   {
     "codigo": "2024124",
@@ -10300,7 +10300,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:50-05:00",
-    "orden_lectura": 230
+    "orden_lectura": -1
   },
   {
     "codigo": "2024476",
@@ -10313,7 +10313,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:51-05:00",
-    "orden_lectura": 231
+    "orden_lectura": -1
   },
   {
     "codigo": "2024464",
@@ -10326,7 +10326,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:52-05:00",
-    "orden_lectura": 232
+    "orden_lectura": -1
   },
   {
     "codigo": "2024461",
@@ -10339,7 +10339,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:54-05:00",
-    "orden_lectura": 233
+    "orden_lectura": -1
   },
   {
     "codigo": "2018842",
@@ -10364,7 +10364,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:58:56-05:00",
-    "orden_lectura": 234
+    "orden_lectura": -1
   },
   {
     "codigo": "2024622",
@@ -10377,7 +10377,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:57-05:00",
-    "orden_lectura": 235
+    "orden_lectura": -1
   },
   {
     "codigo": "2020932",
@@ -10390,7 +10390,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:58:58-05:00",
-    "orden_lectura": 236
+    "orden_lectura": -1
   },
   {
     "codigo": "2018627",
@@ -10403,7 +10403,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:59:00-05:00",
-    "orden_lectura": 237
+    "orden_lectura": -1
   },
   {
     "codigo": "2018628",
@@ -10416,7 +10416,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:59:01-05:00",
-    "orden_lectura": 238
+    "orden_lectura": -1
   },
   {
     "codigo": "2018632",
@@ -10429,7 +10429,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:59:02-05:00",
-    "orden_lectura": 239
+    "orden_lectura": -1
   },
   {
     "codigo": "2018633",
@@ -10442,7 +10442,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:59:04-05:00",
-    "orden_lectura": 240
+    "orden_lectura": -1
   },
   {
     "codigo": "2018626",
@@ -10455,7 +10455,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:59:05-05:00",
-    "orden_lectura": 241
+    "orden_lectura": -1
   },
   {
     "codigo": "2018634",
@@ -10468,7 +10468,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:59:06-05:00",
-    "orden_lectura": 242
+    "orden_lectura": -1
   },
   {
     "codigo": "2029331",
@@ -10481,7 +10481,7 @@
     ],
     "grupos": [],
     "ts_lectura": "2026-08-12T12:59:07-05:00",
-    "orden_lectura": 243
+    "orden_lectura": -1
   },
   {
     "codigo": "2015725",
@@ -10591,7 +10591,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:59:08-05:00",
-    "orden_lectura": 244
+    "orden_lectura": -1
   },
   {
     "codigo": "2015732",
@@ -10669,7 +10669,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:59:10-05:00",
-    "orden_lectura": 245
+    "orden_lectura": -1
   },
   {
     "codigo": "2027134",
@@ -10715,7 +10715,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:59:11-05:00",
-    "orden_lectura": 246
+    "orden_lectura": -1
   },
   {
     "codigo": "2023242",
@@ -10793,7 +10793,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:59:12-05:00",
-    "orden_lectura": 247
+    "orden_lectura": -1
   },
   {
     "codigo": "2023243",
@@ -10871,7 +10871,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:59:13-05:00",
-    "orden_lectura": 248
+    "orden_lectura": -1
   },
   {
     "codigo": "2016197",
@@ -10917,7 +10917,7 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:59:15-05:00",
-    "orden_lectura": 249
+    "orden_lectura": -1
   },
   {
     "codigo": "2025156",
@@ -10953,6 +10953,6 @@
       }
     ],
     "ts_lectura": "2026-08-12T12:59:16-05:00",
-    "orden_lectura": 250
+    "orden_lectura": -1
   }
 ]
