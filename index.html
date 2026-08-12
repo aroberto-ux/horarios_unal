@@ -110,6 +110,16 @@ section.panel{
 .grupos{display:none; background:var(--papel); border-top:1px dashed var(--cuadricula)}
 .materia.abierta .grupos{display:block}
 
+.multi-aviso{padding:7px 16px; font-size:.76rem; color:var(--ambar); background:var(--ambar-claro);
+  border-top:1px dashed var(--cuadricula)}
+.multi-aviso b{font-weight:700}
+.fam-cab{display:flex; justify-content:space-between; align-items:baseline; gap:8px;
+  padding:6px 16px 4px; font:700 .7rem "Archivo",sans-serif; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--tinta-suave); background:var(--blanco); border-top:1px solid var(--cuadricula)}
+.fam-cab span{font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:500; letter-spacing:0; text-transform:none}
+.bloque .etq{display:block; font-size:.6rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; opacity:.9}
+.resumen .chip b{font-weight:700; font-size:.7rem}
+
 .grupo{
   display:grid; grid-template-columns:1fr auto; gap:4px 12px;
   padding:10px 16px 12px; border-bottom:1px dashed var(--cuadricula);
@@ -442,6 +452,9 @@ footer a{color:var(--azul)}
 .gen-card ul li{display:flex; gap:7px; align-items:flex-start; margin-bottom:5px}
 .gen-card ul li i{flex:0 0 auto; width:10px; height:10px; border-radius:2px; margin-top:3px}
 .gen-card ul b{display:block; color:var(--tinta); font-weight:600}
+.gen-card ul .comp{display:inline-block; font-size:.62rem; font-weight:700; letter-spacing:.04em;
+  text-transform:uppercase; color:var(--tinta-suave); background:var(--papel);
+  border-radius:99px; padding:0 6px; margin-right:5px}
 .gen-card .usar{width:100%; font:600 .76rem "Archivo",sans-serif; cursor:pointer; padding:5px;
   border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta)}
 .gen-card .usar:hover{border-color:var(--tinta-suave)}
@@ -687,6 +700,29 @@ const $ = s => document.querySelector(s);
 const REPO_RAW = "https://raw.githubusercontent.com/aroberto-ux/horarios_unal/main/";
 const DIAS = ["LUNES","MARTES","MIÉRCOLES","JUEVES","VIERNES","SÁBADO"];
 const PALETA = ["#2B5DA8","#147A46","#8A4FBF","#B36F06","#0E7C86","#A63D6F","#5A6B2F","#7A4A21"];
+
+/* ================= Componentes de una asignatura =================
+   El SIA reparte los componentes (magistral, taller, laboratorio…) de dos
+   maneras distintas, y hay que soportar las dos:
+
+   a) Todos dentro del MISMO grupo. Fundamentos de mecánica es así: «(1) Grupo 1»
+      trae magistral el martes, taller el jueves y laboratorio el viernes. Con un
+      clic ya quedan los tres; lo único que faltaba era decir cuál es cuál.
+
+   b) En grupos SEPARADOS que hay que inscribir a la vez. Modelación matemática
+      es así: «(1) …» y «(2) …» son la teórica, y «(1M) … - Magistral» es la
+      magistral, con sus propios 80 cupos. Aquí sí hacen falta dos selecciones.
+
+   Para distinguirlos se agrupan los grupos de cada asignatura por su firma de
+   actividades. Cada firma distinta es una «familia»: dentro de una familia los
+   grupos son alternativas excluyentes, y entre familias se complementan. */
+const ACTIVIDADES = {
+  "CLASE MAGISTRAL":"Magistral", "CLASE TEORICA":"Teoría", "CLASE TALLER":"Taller",
+  "CLASE LABORATORIO":"Laboratorio", "CLASE PRACTICA":"Práctica", "":"Clase"
+};
+const etiquetaAct = a => ACTIVIDADES[a] ?? (a.replace(/^CLASE /,"").toLowerCase().replace(/^./,c=>c.toUpperCase()));
+const firmaDe = acts => [...acts].sort().join("|");
+const etiquetaFam = acts => [...acts].sort((a,b)=>etiquetaAct(a).localeCompare(etiquetaAct(b),"es")).map(etiquetaAct).join(" + ");
 
 function parseCSV(texto){
   texto = texto.replace(/^\uFEFF/,"");
@@ -1235,9 +1271,38 @@ async function cargarDatos(){
       const cod=f.codigo_asignatura; if(!cod) continue;
       if(!MATERIAS.has(cod)) MATERIAS.set(cod,{codigo:cod,nombre:f.asignatura,creditos:f.creditos,tipologia:f.tipologia,grupos:new Map()});
       const m=MATERIAS.get(cod);
-      if(!m.grupos.has(f.grupo)) m.grupos.set(f.grupo,{grupo:f.grupo,profesores:f.profesores,cupos:numCupos(f.cupos_disponibles),sesiones:[]});
+      if(!m.grupos.has(f.grupo)) m.grupos.set(f.grupo,{grupo:f.grupo,profesores:f.profesores,cupos:numCupos(f.cupos_disponibles),sesiones:[],actividades:new Set()});
       const g=m.grupos.get(f.grupo);
-      if(f.dia && f.hora_inicio) g.sesiones.push({dia:f.dia.toUpperCase(),ini:aMin(f.hora_inicio),fin:aMin(f.hora_fin),salon:f.salon_nombre||f.salon||""});
+      g.actividades.add(f.actividad||"");
+      if(f.dia && f.hora_inicio) g.sesiones.push({dia:f.dia.toUpperCase(),ini:aMin(f.hora_inicio),fin:aMin(f.hora_fin),salon:f.salon_nombre||f.salon||"",act:f.actividad||""});
+    }
+
+    // Familias de componentes: grupos con la misma firma de actividades
+    for(const m of MATERIAS.values()){
+      m.familias = new Map();
+      for(const g of m.grupos.values()){
+        g.fam = firmaDe(g.actividades);
+        if(!m.familias.has(g.fam))
+          m.familias.set(g.fam, {clave:g.fam, etiqueta:etiquetaFam(g.actividades), grupos:[]});
+        m.familias.get(g.fam).grupos.push(g.grupo);
+      }
+      /* ¿Hace falta inscribir varios grupos? Solo si NINGÚN grupo por sí solo
+         cubre todas las actividades de la asignatura.
+
+         Esto es lo que separa los dos patrones y además absorbe las erratas del
+         SIA. Fundamentos de mecánica tiene un grupo mal escrito, «(16) Gruop 16»,
+         que solo trae la magistral: si nos fiáramos del número de familias, la
+         asignatura entera parecería multicomponente y les pediríamos tres
+         inscripciones a los 28 grupos que ya vienen completos. Como existe un
+         grupo que cubre {magistral, taller, laboratorio}, la asignatura se
+         resuelve con un clic y la errata queda como una alternativa más.
+
+         Modelación matemática, en cambio, no tiene ningún grupo que traiga
+         teórica y magistral a la vez: ahí sí son dos inscripciones. */
+      const todasAct = new Set();
+      for(const g of m.grupos.values()) for(const a of g.actividades) todasAct.add(a);
+      m.multi = todasAct.size > 1 &&
+        ![...m.grupos.values()].some(g => g.actividades.size === todasAct.size);
     }
 
     HISTORIAL = hd.historial;
@@ -1355,11 +1420,25 @@ function pintarLista(){
 
     const caja=document.createElement("div"); caja.className="grupos";
     caja.appendChild(bloquePlan(m, ev));
-    for(const g of m.grupos.values()){
+    if(m.multi){
+      caja.insertAdjacentHTML("beforeend",
+        `<div class="multi-aviso">Esta asignatura se inscribe por componentes: elige un grupo de <b>cada uno</b> de los ${m.familias.size}.</div>`);
+    }
+    let famActual = null;
+    for(const g of ordenarPorFamilia(m)){
+      if(m.multi && g.fam!==famActual){
+        famActual = g.fam;
+        const f = m.familias.get(g.fam);
+        caja.insertAdjacentHTML("beforeend",
+          `<div class="fam-cab">${f.etiqueta}<span>${f.grupos.length} grupo(s)</span></div>`);
+      }
       const k=`${m.codigo}|${g.grupo}`;
       const enSel=seleccion.includes(k);
       const fila=document.createElement("div"); fila.className="grupo"; fila.dataset.k=k;
-      const hor=g.sesiones.map(s=>`${s.dia.slice(0,3)} ${deMin(s.ini)}–${deMin(s.fin)}${s.salon?" · "+s.salon:""}`).join("\n");
+      // Con varias actividades dentro del grupo, cada sesión dice cuál es
+      const varias = g.actividades.size>1;
+      const hor=g.sesiones.map(s=>
+        `${varias?etiquetaAct(s.act)+": ":""}${s.dia.slice(0,3)} ${deMin(s.ini)}–${deMin(s.fin)}${s.salon?" · "+s.salon:""}`).join("\n");
       const st=statsGrupo(k);
       let vel="";
       if(st && st.vel7>0){
@@ -1395,6 +1474,13 @@ function pintarLista(){
     cont.insertAdjacentHTML("beforeend", `<div class="vacio">${ocultas} materia(s) ocultas: ya las aprobaste o te falta un prerrequisito.</div>`);
   }
   cont.scrollTop = desplazamiento;
+}
+
+/* Grupos ordenados por familia, para poder titular cada bloque de componentes. */
+function ordenarPorFamilia(m){
+  const orden = [...m.familias.keys()];
+  return [...m.grupos.values()].sort((a,b)=>
+    orden.indexOf(a.fam)-orden.indexOf(b.fam) || a.grupo.localeCompare(b.grupo,"es",{numeric:true}));
 }
 
 /* Sello de estado que acompaña el nombre en la lista. */
@@ -1470,14 +1556,22 @@ function actualizarBotones(){
   }
 }
 
+/* Familia a la que pertenece un grupo ya seleccionado. */
+function famDe(k){
+  const [cod,gn] = k.split("|");
+  return MATERIAS.get(cod)?.grupos.get(gn)?.fam ?? null;
+}
+
 function alternar(k){
-  const [cod]=k.split("|");
+  const [cod,gn]=k.split("|");
   if(seleccion.includes(k)) seleccion=seleccion.filter(x=>x!==k);
   else{
     // Nada de diálogos: si le falta un requisito queda anotado, discreto,
     // en las notas del plan. Puede haber homologaciones que aquí no constan.
-    // solo un grupo por materia
-    seleccion=seleccion.filter(x=>x.split("|")[0]!==cod);
+    // Un grupo por familia: los componentes de una misma asignatura (magistral,
+    // taller, laboratorio…) conviven; las alternativas del mismo componente no.
+    const fam = MATERIAS.get(cod)?.grupos.get(gn)?.fam ?? null;
+    seleccion = seleccion.filter(x => x.split("|")[0]!==cod || famDe(x)!==fam);
     seleccion.push(k);
   }
   almacen.guardar(seleccion);
@@ -1498,7 +1592,9 @@ function sesionesSeleccion(){
   for(const k of seleccion){
     const [c,gn]=k.split("|"); const m=MATERIAS.get(c); if(!m) continue;
     const g=m.grupos.get(gn); if(!g) continue;
-    for(const s of g.sesiones) out.push({...s, k, nombre:m.nombre, grupo:gn, color:colorDe(c)});
+    const varias = g.actividades && g.actividades.size>1;
+    for(const s of g.sesiones) out.push({...s, k, nombre:m.nombre, grupo:gn, color:colorDe(c),
+      etq: (varias || (m.multi && s.act)) ? etiquetaAct(s.act) : ""});
   }
   return out;
 }
@@ -1514,8 +1610,9 @@ function pintarHorario(){
   if(!seleccion.length) chips.innerHTML='<span style="color:var(--tinta-suave);font-size:.85rem">Agrega grupos desde la lista de asignaturas.</span>';
   for(const k of seleccion){
     const [c,g]=k.split("|"); const m=MATERIAS.get(c); if(!m) continue;
+    const fam = m.multi ? m.familias.get(m.grupos.get(g)?.fam) : null;
     const chip=document.createElement("span"); chip.className="chip";
-    chip.innerHTML=`<i style="background:${colorDe(c)}"></i>${m.nombre} · ${g}<button type="button" aria-label="Quitar ${m.nombre}">✕</button>`;
+    chip.innerHTML=`<i style="background:${colorDe(c)}"></i>${m.nombre}${fam?` <b>${fam.etiqueta}</b>`:""} · ${g}<button type="button" aria-label="Quitar ${m.nombre}">✕</button>`;
     chip.querySelector("button").addEventListener("click",()=>alternar(k));
     chips.appendChild(chip);
   }
@@ -1560,8 +1657,8 @@ function pintarHorario(){
       b.style.top=((s.ini-minH)/total*100)+"%";
       b.style.height=((s.fin-s.ini)/total*100)+"%";
       b.style.borderColor=s.color; b.style.background=s.color+"1A"; b.style.color=s.color;
-      b.title=`${s.nombre} ${s.grupo} · ${deMin(s.ini)}–${deMin(s.fin)}${s.salon?" · "+s.salon:""}`;
-      b.innerHTML=`<b>${s.nombre}</b><span class="mono">${deMin(s.ini)}–${deMin(s.fin)}${s.salon?"<br>"+s.salon:""}</span>`;
+      b.title=`${s.nombre}${s.etq?" · "+s.etq:""} ${s.grupo} · ${deMin(s.ini)}–${deMin(s.fin)}${s.salon?" · "+s.salon:""}`;
+      b.innerHTML=`<b>${s.nombre}</b>${s.etq?`<span class="etq">${s.etq}</span>`:""}<span class="mono">${deMin(s.ini)}–${deMin(s.fin)}${s.salon?"<br>"+s.salon:""}</span>`;
       col.appendChild(b);
     });
     gr.appendChild(col);
@@ -1595,6 +1692,23 @@ function pintarAvisosPlan(creditos){
       lineas.push(`${nom}: te falta aprobar ${soloFaltan.map(listaOps).join(", ")}.`);
     }
     if(ev.ca) lineas.push(`${nom}: exige ${textoCA(ev.ca)}.`);
+  }
+
+  // Componentes sin elegir: con Modelación matemática, tener solo la teórica
+  // no basta; la magistral es una inscripción aparte.
+  const porMat = new Map();
+  for(const k of seleccion){
+    const [c,gn] = k.split("|");
+    if(!porMat.has(c)) porMat.set(c, new Set());
+    const f = MATERIAS.get(c)?.grupos.get(gn)?.fam;
+    if(f) porMat.get(c).add(f);
+  }
+  for(const [c, fams] of porMat){
+    const m = MATERIAS.get(c);
+    if(!m || !m.multi) continue;
+    const faltan = [...m.familias.values()].filter(f => !fams.has(f.clave));
+    if(faltan.length)
+      lineas.push(`<b>${m.nombre}</b> se inscribe por componentes y te falta elegir ${faltan.map(f=>f.etiqueta.toLowerCase()).join(" y ")}.`);
   }
 
   const fuera = cods.filter(c => !PENSUM[c]).length;
@@ -1953,13 +2067,24 @@ function generarHorarios(){
   }
 
   const soloCupos = $("#genSoloCupos").checked;
+  // Una decisión por COMPONENTE: una asignatura con magistral y teórica
+  // separadas aporta dos elecciones al producto, no una.
   const ops = [], sinSalida = [];
   for(const m of mats){
-    const todos = [...m.grupos.values()];
-    const librePorBloqueo = todos.filter(g=>!chocaBloqueo(g));
-    const gs = soloCupos ? librePorBloqueo.filter(g=>g.cupos===null||g.cupos>0) : librePorBloqueo;
-    if(!gs.length) sinSalida.push({m, todos:todos.length, tras:librePorBloqueo.length});
-    ops.push({m, gs});
+    // Si un solo grupo ya cubre la asignatura, es UNA decisión sobre todos sus
+    // grupos; si no, una decisión por componente.
+    const bloques = m.multi
+      ? [...m.familias.values()].map(f=>({fam:f, grupos:f.grupos}))
+      : [{fam:null, grupos:[...m.grupos.keys()]}];
+    for(const fam0 of bloques){
+      const fam = fam0.fam;
+      const todos = fam0.grupos.map(n=>m.grupos.get(n));
+      const librePorBloqueo = todos.filter(g=>!chocaBloqueo(g));
+      const gs = soloCupos ? librePorBloqueo.filter(g=>g.cupos===null||g.cupos>0) : librePorBloqueo;
+      const nom = (m.multi && fam) ? `${m.nombre} (${fam.etiqueta.toLowerCase()})` : m.nombre;
+      if(!gs.length) sinSalida.push({nom, todos:todos.length, tras:librePorBloqueo.length});
+      ops.push({m, fam, gs, nom});
+    }
   }
   if(sinSalida.length){
     estado.className="error";
@@ -1967,7 +2092,7 @@ function generarHorarios(){
       const causa = x.tras===0
         ? `sus ${x.todos} grupo(s) chocan con las franjas que bloqueaste`
         : `los ${x.tras} grupo(s) que te sirven están sin cupos`;
-      return `<li><b>${x.m.nombre}</b>: ${causa}.</li>`;
+      return `<li><b>${x.nom}</b>: ${causa}.</li>`;
     }).join("") + "</ul>";
     return;
   }
@@ -1981,7 +2106,7 @@ function generarHorarios(){
     for(const g of ops[i].gs){
       nodos++;
       if(elegidos.some(e=>chocanGrupos(e.g,g))) continue;
-      elegidos.push({m:ops[i].m, g});
+      elegidos.push({m:ops[i].m, g, fam:ops[i].fam});
       bt(i+1);
       elegidos.pop();
       if(RESULTADOS.length>=GEN_LIMITE || nodos>GEN_NODOS){ cortado=true; return; }
@@ -2072,10 +2197,11 @@ function tarjetaHorario({combo, m}, n, lo, hi, puestos){
 
   // El cuadrito repite el color del bloque en la miniatura y en la grilla
   const lista=document.createElement("ul");
-  lista.innerHTML = combo.map(({m:mat,g})=>{
+  lista.innerHTML = combo.map(({m:mat,g,fam})=>{
     const cu = g.cupos===null ? "" : ` · ${g.cupos} cupos`;
+    const et = (mat.multi && fam) ? `<span class="comp">${fam.etiqueta}</span>` : "";
     return `<li><i style="background:${colorDe(mat.codigo)}"></i>`+
-           `<span><b>${mat.nombre}</b>${g.grupo}${cu}</span></li>`;
+           `<span><b>${mat.nombre}</b>${et}${g.grupo}${cu}</span></li>`;
   }).join("");
   art.appendChild(lista);
 
@@ -2117,7 +2243,8 @@ function pintarCandidatas(){
   for(const c of vivas){
     const m=MATERIAS.get(c);
     const ch=document.createElement("span"); ch.className="gen-chip";
-    ch.innerHTML=`<i style="background:${colorDe(c)}"></i>${m.nombre} <span class="n">${m.grupos.size} gr.</span><button type="button" aria-label="Quitar">✕</button>`;
+    const det = m.multi ? `${m.familias.size} componentes` : `${m.grupos.size} gr.`;
+    ch.innerHTML=`<i style="background:${colorDe(c)}"></i>${m.nombre} <span class="n">${det}</span><button type="button" aria-label="Quitar">✕</button>`;
     ch.querySelector("button").addEventListener("click",()=>alternarCandidata(c));
     caja.appendChild(ch);
   }
@@ -2148,7 +2275,7 @@ function pintarGenLista(){
     const l = document.createElement("label");
     l.dataset.cod = m.codigo;
     l.innerHTML = `<input type="checkbox" ${CANDIDATAS.has(m.codigo)?"checked":""}>` +
-      `<span class="t"><b>${m.nombre}</b><span>${m.grupos.size} grupo(s) · ${m.creditos} cr</span></span>` +
+      `<span class="t"><b>${m.nombre}</b><span>${m.multi?`${m.familias.size} componentes · `:""}${m.grupos.size} grupo(s) · ${m.creditos} cr</span></span>` +
       selloDe(ev);
     l.querySelector("input").addEventListener("change", ()=>alternarCandidata(m.codigo));
     caja.appendChild(l);
