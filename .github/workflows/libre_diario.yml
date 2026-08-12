@@ -80,6 +80,20 @@ jobs:
           SIA_LIBRE_LIMITE_MIN: "270"
         run: python sia_libre.py
 
+      # Los debug_*.png/html se quedaban en el runner y se perdían al
+      # terminar el job. Son lo único que dice qué página devolvió el SIA
+      # cuando un clic no lleva al detalle.
+      - name: Guardar diagnósticos
+        if: always() && steps.parar.outputs.seguir == 'si'
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostico-libre
+          path: |
+            debug_*.png
+            debug_*.html
+          if-no-files-found: ignore
+          retention-days: 7
+
       # ----------------------------------------------------------
       # Mismo criterio que 'proteger_derivados' en snapshot_cupos:
       # publicar 30 electivas donde ayer había 400 sería un
