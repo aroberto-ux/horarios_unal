@@ -91,6 +91,12 @@ TIPOLOGIA = "LIBRE ELECCIÓN"
 CRITERIO_BUSQUEDA = "Por facultad y plan"
 SEDE_BUSQUEDA = "1101 SEDE BOGOTÁ"
 FACULTAD_BUSQUEDA = "2000 SEDE BOGOTÁ"
+# Un cuarto combo que la captura del formulario no alcanzaba a mostrar. Es la
+# explicación más probable de que, con los ocho desplegables correctos, el SIA
+# devolviera las asignaturas de una maestría ajena: al elegir la facultad, ADF
+# dibuja debajo un combo de plan que se queda en su primer valor. Si no existe,
+# no pasa nada: es el único opcional.
+PLAN_BUSQUEDA = "2542 INGENIERÍA CIVIL"
 
 # Rescate manual: si algún día la detección automática falla, corre
 # `python sia_libre.py combos`, copia los IDs que imprime y ponlos aquí.
@@ -98,6 +104,7 @@ IDS_FIJOS = {
     "criterio": "",
     "sede": "",
     "facultad": "",
+    "plan": "",
 }
 
 # Etiquetas con las que se reconoce cada combo. Se comparan sin tildes, sin
@@ -107,6 +114,8 @@ CLAVES_COMBO = {
     "criterio": ("porquedeseasbuscar", "deseasbuscar", "criteriodebusqueda"),
     "sede": ("porquesede", "quesede"),
     "facultad": ("porquefacultad", "quefacultad"),
+    "plan": ("porqueplan", "queplan", "porqueplandeestudios",
+             "queplandeestudios"),
 }
 
 IDS_BASE = (sia.ID_NIVEL, sia.ID_SEDE, sia.ID_FACULTAD, sia.ID_PLAN,
@@ -460,10 +469,27 @@ def verificar_formulario(driver, esperado: Dict[str, str]):
     """
     inv = {c["id"]: c for c in inventario_combos(driver)}
     print("\n  Formulario tal y como quedó:")
+    sin_tocar = []
     for c in inventario_combos(driver):
         if c["id"] and c["visible"] and c["n"] > 1:
-            marca = "*" if c["id"] in esperado else " "
+            marca = "*" if c["id"] in esperado else "?"
             print(f"   {marca} {c['etiqueta'][:34]:36} = {c['sel'][:40]}")
+            if c["id"] not in esperado:
+                sin_tocar.append(c)
+
+    if sin_tocar:
+        # Los marcados con «?» son los sospechosos de siempre: un combo que
+        # nadie configura se queda en su primer valor y puede mandar sobre
+        # todos los demás. Así fue como salieron asignaturas de una maestría
+        # de Minas con los ocho desplegables conocidos en orden.
+        print(f"\n  !! {len(sin_tocar)} desplegable(s) que este scraper NO "
+              f"configura (marcados con ?):")
+        for c in sin_tocar:
+            print(f"     «{c['etiqueta'][:40]}» = {c['sel'][:40]}  (id {c['id']})")
+            if c["opciones"]:
+                print(f"        opciones: {c['opciones'][:6]}")
+        print("     Si los resultados salen de otro plan o sede, el culpable "
+              "está en esta lista.")
 
     malos = []
     for cid, valor in esperado.items():
@@ -476,6 +502,42 @@ def verificar_formulario(driver, esperado: Dict[str, str]):
             "El formulario no quedó como se pidió, no busco:\n     - "
             + "\n     - ".join(malos))
     print()
+
+
+# Tipologías que NO puede tener una asignatura de libre elección. Si el
+# formulario acaba apuntando a otro plan, esto es lo primero que canta: las
+# corridas malas trajeron OBLIGATORIAS (un plan de Minas) y ACTIVIDADES
+# ACADÉMICAS / TESIS-TRAB.FINAL (una maestría de Ciencias).
+TIPOLOGIAS_IMPOSIBLES = ("obligatori", "tesis", "trab.final", "trabajo de grado",
+                         "actividades academicas", "nivelacion")
+MUESTRA_CORDURA = 12      # cuántas asignaturas mirar antes de juzgar
+UMBRAL_CORDURA = 0.5      # proporción de imposibles que ya es señal de alarma
+
+
+def tipologia_sospechosa(tipologia: str) -> bool:
+    t = sia.normalizar(tipologia or "")
+    return any(x in t for x in TIPOLOGIAS_IMPOSIBLES)
+
+
+def revisar_cordura(asignaturas) -> Optional[str]:
+    """¿Esto que estamos raspando parece libre elección? Devuelve el motivo si
+    no lo parece, o None si va bien."""
+    if os.environ.get("SIA_LIBRE_SIN_CORDURA") == "1":
+        return None
+    muestra = list(asignaturas)[:MUESTRA_CORDURA]
+    if len(muestra) < 4:
+        return None
+    malas = [a for a in muestra if tipologia_sospechosa(a.tipologia)]
+    if len(malas) / len(muestra) <= UMBRAL_CORDURA:
+        return None
+    tipos = sorted({a.tipologia for a in malas})
+    facultades = sorted({a.facultad for a in muestra if a.facultad})
+    return (f"{len(malas)} de las primeras {len(muestra)} asignaturas tienen "
+            f"tipologías que una electiva no puede tener ({', '.join(tipos)}). "
+            f"Facultades: {', '.join(facultades)}. El formulario apunta a otro "
+            f"plan aunque los combos digan lo correcto: mira la tabla "
+            f"«Formulario tal y como quedó» de más arriba por si hay un "
+            f"desplegable que no estamos tocando.")
 
 
 def configurar_filtros_libre(driver, reintentos=3):
@@ -508,18 +570,24 @@ def configurar_filtros_libre(driver, reintentos=3):
             }
             usados = set(IDS_BASE)
             pendientes = (
-                ("criterio", CRITERIO_BUSQUEDA),
-                ("sede", SEDE_BUSQUEDA),
-                ("facultad", FACULTAD_BUSQUEDA),
+                ("criterio", CRITERIO_BUSQUEDA, True),
+                ("sede", SEDE_BUSQUEDA, True),
+                ("facultad", FACULTAD_BUSQUEDA, True),
+                # Opcional: puede que este combo ni exista.
+                ("plan", PLAN_BUSQUEDA, False),
             )
-            for cual, valor in pendientes:
+            for cual, valor, obligatorio in pendientes:
                 if not valor:
                     continue
                 # Se buscan de uno en uno y no todos de golpe: elegir el
                 # criterio dispara otro refresco parcial y es ESE refresco el
                 # que dibuja los combos de sede y facultad.
-                cid = buscar_combo(driver, cual, usados, previos)
+                cid = buscar_combo(driver, cual, usados, previos,
+                                   timeout=TIMEOUT_COMBO_NUEVO if obligatorio else 6)
                 if not cid:
+                    if not obligatorio:
+                        print(f"  · No hay combo «{cual}»: no hace falta.")
+                        continue
                     # Antes esto seguía "con lo que el SIA traiga por defecto",
                     # y el defecto resultó ser otra sede entera.
                     raise RuntimeError(
@@ -531,6 +599,10 @@ def configurar_filtros_libre(driver, reintentos=3):
                     usados.add(cid)
                     esperado[cid] = valor
                 except RuntimeError:
+                    if not obligatorio:
+                        print(f"  · El combo «{cual}» no acepta «{valor}»; "
+                              f"lo dejo como estaba.")
+                        continue
                     # NO se prueba con otro combo. Ir tanteando desplegables
                     # hasta que alguno acepte el valor fue exactamente lo que
                     # produjo un barrido entero de la FACULTAD DE MINAS: el
@@ -680,6 +752,18 @@ def cargar_para_reanudar() -> Dict[str, "sia.Asignatura"]:
 
     with salidas_libre():
         previo = sia.cargar_previo()
+
+    # Una corrida mala deja su cosecha en catalogo_libre.json y la siguiente la
+    # hereda tal cual: así es como nueve asignaturas de la FACULTAD DE MINAS
+    # sobrevivieron a tres barridos seguidos.
+    sucias = [c for c, a in previo.items() if tipologia_sospechosa(a.tipologia)]
+    if sucias:
+        print(f"Descarto {len(sucias)} asignaturas del catálogo previo con "
+              f"tipología imposible para una electiva (quedaron de una corrida "
+              f"con el formulario mal): {', '.join(sucias[:6])}"
+              f"{'...' if len(sucias) > 6 else ''}")
+        for c in sucias:
+            previo.pop(c, None)
     # cargar_previo() no restaura ts_lectura (no le hace falta al plan), pero
     # aquí sí: es el sello con el que se decide si el archivo es de hoy.
     por_codigo = {d["codigo"]: d.get("ts_lectura", "") for d in datos
@@ -700,7 +784,8 @@ def barrer(driver, codigos: List[str],
     reinicios = 0
     seguidas = 0
     orden = 0
-    resumen = {"leidas": 0, "fallidas": [], "cortado": False}
+    resumen = {"leidas": 0, "fallidas": [], "cortado": False,
+               "cordura_ok": False}
 
     pendientes = [c for c in codigos if c not in resultados]
     if len(pendientes) < len(codigos):
@@ -815,6 +900,16 @@ def barrer(driver, codigos: List[str],
                 break
         else:
             seguidas = 0
+
+        # En cuanto haya muestra suficiente, comprobar que esto son electivas
+        # y no el plan de otra facultad. Antes se descubría 26 minutos después,
+        # mirando los datos ya publicados.
+        if not resumen["cordura_ok"] and resumen["leidas"] >= MUESTRA_CORDURA:
+            motivo = revisar_cordura(resultados.values())
+            if motivo:
+                raise RuntimeError("Esto no es libre elección: " + motivo)
+            resumen["cordura_ok"] = True
+            print("  (comprobado: las tipologías son de electivas)")
 
         if i % CHECKPOINT_EVERY == 0:
             with salidas_libre():
@@ -960,6 +1055,11 @@ def main():
 
     if not resultados:
         print("No se extrajo ninguna asignatura; no se escribe nada.")
+        raise SystemExit(1)
+
+    motivo = revisar_cordura(resultados.values())
+    if motivo:
+        print(f"\nNO publico nada. Esto no es libre elección: {motivo}")
         raise SystemExit(1)
 
     with salidas_libre():
