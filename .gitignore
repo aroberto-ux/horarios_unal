@@ -1,0 +1,21 @@
+# Diagnósticos que escribe guardar_debug() en la raíz del repo
+debug_*.png
+debug_*.html
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Artefactos derivados: los reconstruye pages.yml en cada despliegue.
+# Versionarlos era ~1,7 MB de blob nuevo cada 30 minutos.
+estadisticas.html
+index.html
+series.json
+series_libre.json
+
+# Respaldos de migraciones (bórralos a mano cuando hayas verificado)
+cupos_historial_pre_particion.csv
+cupos_historial_v1*.csv
