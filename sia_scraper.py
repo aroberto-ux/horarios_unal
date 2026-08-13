@@ -46,6 +46,8 @@ import unicodedata
 from dataclasses import dataclass, field, asdict
 from typing import List, Dict, Optional
 
+import historial
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select, WebDriverWait
@@ -2358,28 +2360,16 @@ def registrar_historial_asignatura(asig: Asignatura) -> int:
     se leyó. Escribir incrementalmente (y no todo al final) garantiza que un
     timeout o una caída dejen datos parciales identificables por run_id, en
     vez de perder el barrido entero."""
-    _asegurar_esquema_historial()
-    nuevo = not OUTPUT_HISTORIAL.exists()
-    n = 0
-    with open(OUTPUT_HISTORIAL, "a", newline="", encoding="utf-8-sig") as f:
-        w = csv.DictWriter(f, fieldnames=HIST_CAMPOS)
-        if nuevo:
-            w.writeheader()
-        for g in asig.grupos:
-            w.writerow({
-                "run_id": RUN_ID,
-                "ts_lectura": asig.ts_lectura,
-                "codigo": asig.codigo,
-                "actividad": g.actividad or "NA",
-                "grupo": g.grupo,
-                "profesores_raw": g.profesores,
-                "profesores_norm": normalizar_profesores(g.profesores),
-                "cupos_disponibles": g.cupos_disponibles or "NA",
-                "cupos_totales": g.cupos_totales or "NA",
-                "orden_lectura": asig.orden_lectura,
-            })
-            n += 1
-    return n
+    return historial.anexar([{
+        "run_id": RUN_ID,
+        "ts_lectura": asig.ts_lectura,
+        "codigo": asig.codigo,
+        "actividad": g.actividad or "NA",
+        "grupo": g.grupo,
+        "profesores_raw": g.profesores,
+        "cupos_disponibles": g.cupos_disponibles or "NA",
+        "orden_lectura": asig.orden_lectura,
+    } for g in asig.grupos])
 
 
 def guardar_texto_crudo(codigo: str, ts: str, texto: str):
@@ -2497,17 +2487,14 @@ def reparsear_textos() -> int:
         return 0
 
     ya_estan = set()
-    if OUTPUT_HISTORIAL.exists():
-        with open(OUTPUT_HISTORIAL, encoding="utf-8-sig") as f:
-            for fila in csv.DictReader(f):
-                ya_estan.add((fila.get("run_id", ""), fila.get("codigo", ""),
-                              fila.get("ts_lectura", "")))
+    for fila in historial.leer():
+        ya_estan.add((fila.get("run_id", ""), fila.get("codigo", ""),
+                      fila.get("ts_lectura", "")))
 
-    _asegurar_esquema_historial()
     nuevas, por_codigo, corridas = 0, {}, set()
+    pendientes: List[dict] = []
 
-    with open(OUTPUT_HISTORIAL, "a", newline="", encoding="utf-8-sig") as salida:
-        w = csv.DictWriter(salida, fieldnames=HIST_CAMPOS)
+    if True:
         for ruta in sorted(CARPETA_TEXTOS.glob("run-*.jsonl.gz")):
             run_id = ruta.name[len("run-"):-len(".jsonl.gz")]
             try:
@@ -2533,22 +2520,22 @@ def reparsear_textos() -> int:
                 if not asig.grupos:
                     continue
                 for g in asig.grupos:
-                    w.writerow({
+                    pendientes.append({
                         "run_id": run_id,
                         "ts_lectura": ts,
                         "codigo": codigo,
                         "actividad": g.actividad or "NA",
                         "grupo": g.grupo,
                         "profesores_raw": g.profesores,
-                        "profesores_norm": normalizar_profesores(g.profesores),
                         "cupos_disponibles": g.cupos_disponibles or "NA",
-                        "cupos_totales": g.cupos_totales or "NA",
                         "orden_lectura": -1,
                     })
                     nuevas += 1
                 por_codigo[codigo] = por_codigo.get(codigo, 0) + 1
                 corridas.add(run_id)
                 ya_estan.add((run_id, codigo, ts))
+
+    historial.anexar(pendientes)
 
     if nuevas:
         print(f"  -> Historial recuperado: {nuevas} filas nuevas "
@@ -2579,15 +2566,15 @@ def generar_series_json():
 
     Las lecturas "NA" se omiten, igual que antes: NA no es 0.
     """
-    if not OUTPUT_HISTORIAL.exists():
+    if not historial.particiones():
         print("No hay historial todavía; corre primero: python sia_scraper.py cupos")
         return
 
     # clave -> {corrida: (epoch_min, cupos)}
     crudo: Dict[str, Dict[str, tuple]] = {}
     corridas = set()
-    with open(OUTPUT_HISTORIAL, encoding="utf-8-sig") as f:
-        for fila in csv.DictReader(f):
+    if True:
+        for fila in historial.leer():
             try:
                 cupos = int(fila["cupos_disponibles"])
             except (ValueError, TypeError, KeyError):
@@ -2637,15 +2624,14 @@ def generar_series_json():
     with open(OUTPUT_SERIES, "w", encoding="utf-8") as f:
         json.dump(salida, f, ensure_ascii=False, separators=(",", ":"))
 
-    kb_hist = OUTPUT_HISTORIAL.stat().st_size / 1024
     kb_json = OUTPUT_SERIES.stat().st_size / 1024
     print(f"  -> series.json: {len(series)} series, {len(corridas)} snapshots "
-          f"({kb_json:.0f} KB frente a {kb_hist:.0f} KB del CSV)")
+          f"({kb_json:.0f} KB; historial: {historial.resumen()})")
 
 
 def generar_estadisticas():
     """Lee cupos_historial.csv completo y escribe estadisticas.html."""
-    if not OUTPUT_HISTORIAL.exists():
+    if not historial.particiones():
         print("No hay historial todavía; corre primero: python sia_scraper.py cupos")
         return
 
@@ -2661,8 +2647,8 @@ def generar_estadisticas():
 
     series: Dict[tuple, list] = {}
     marcas = set()
-    with open(OUTPUT_HISTORIAL, encoding="utf-8-sig") as f:
-        for fila in csv.DictReader(f):
+    if True:
+        for fila in historial.leer():
             try:
                 # "NA" (fallo de lectura) se salta aquí; en el análisis serio
                 # se cuenta aparte, no se confunde con 0
@@ -2975,7 +2961,7 @@ def main():
         print(f"Archivos: {OUTPUT_GRUPOS_CSV}, {OUTPUT_HORARIOS_CSV}, {OUTPUT_JSON}")
         print(f"Armador de horario: abre {OUTPUT_HTML} en tu navegador.")
         if MODO_CUPOS:
-            print(f"Historial de cupos: {OUTPUT_HISTORIAL}")
+            print(f"Historial de cupos: {historial.resumen()}")
             print(f"Bitácora de corridas: {OUTPUT_RUNS}")
             print(f"Estadísticas: abre {OUTPUT_STATS} en tu navegador.")
             print(f"Series para la web: {OUTPUT_SERIES}")
@@ -3023,14 +3009,9 @@ if __name__ == "__main__":
         generar_series_json()
         generar_estadisticas()
     elif modo == "migrar":
-        # Convierte cupos_historial.csv del esquema v1 al v2 (con respaldo).
-        # También ocurre automáticamente en la primera corrida en modo cupos.
-        if migrar_historial_v1():
-            generar_series_json()
-            generar_estadisticas()
-        else:
-            print("El historial ya está en el esquema v2 (o no existe); "
-                  "no hay nada que migrar.")
+        print("El historial vive particionado en historial/AAAA-MM-DD.csv.\n"
+              "La migración desde el archivo monolítico se hace una sola vez "
+              "con: python migrar_particiones.py --aplicar")
     elif modo in ("reparsear", "recuperar"):
         # Re-parsea textos/*.jsonl.gz y añade al historial lo que el parser
         # no supo leer en su momento. Útil tras arreglar un bug del parser.
