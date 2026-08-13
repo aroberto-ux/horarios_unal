@@ -1472,10 +1472,27 @@ function esc(s){
     ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
 
+/* Los Estudiantes NO quita los diacríticos: su slug conserva tal cual lo que
+   tengan guardado. Comprobado en su propio sitio:
+
+     .../professors/fernando-eli-romero-ordo%C3%B1ez      <- ñ conservada
+     .../professors/anibal-alejandro-rojas-hern%C3%A1ndez <- á conservada
+     .../professors/pedro-jose-hernandez-castillo         <- sin tilde
+
+   Los dos últimos son el mismo apellido escrito de dos maneras, así que su
+   base de datos es inconsistente según quién escribió el nombre y NINGUNA
+   regla acierta siempre. Se conserva el nombre tal como lo escribe el SIA,
+   que es la única fuente fiable que hay. Afecta a 29 de los 204 docentes del
+   plan; si resulta que allí la mayoría está sin tildes, poner esto en true. */
+const QUITAR_TILDES = false;
+
 function babel(nombre){
-  return nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-+|-+$/g, "")
-    .replace(/-+/g, "-").toLowerCase();
+  const base = QUITAR_TILDES
+    ? nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    : nombre;
+  // \p{L} incluye ñ, á y demás: así solo se sustituyen espacios y signos.
+  return base.replace(/[^\p{L}\p{N}]+/gu, "-")
+    .replace(/^-+|-+$/g, "").replace(/-+/g, "-").toLowerCase();
 }
 
 /* Una casilla de profesores puede traer dos docentes separados por «;»
@@ -1488,7 +1505,7 @@ function enlacesDocentes(txt){
   const nombres = partirDocentes(txt);
   if(!LOS_ESTUDIANTES || !nombres.length) return esc(txt || "Sin profesor asignado");
   return nombres.map(n =>
-    `<a class="prof-link" href="${LOS_ESTUDIANTES}${babel(n)}" target="_blank"
+    `<a class="prof-link" href="${LOS_ESTUDIANTES}${encodeURIComponent(babel(n))}" target="_blank"
         rel="noopener noreferrer"
         title="Ver calificaciones de ${esc(n)} en Los Estudiantes (puede que no tenga ficha)"
      >${esc(n)}<span class="prof-flecha" aria-hidden="true">↗</span></a>`
