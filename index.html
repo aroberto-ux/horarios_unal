@@ -1,0 +1,3086 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planilla de horario · UNAL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"
+  onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js';document.head.appendChild(s);"></script>
+<style>
+:root{
+  --papel:#FAFBF7;          /* papel de planilla */
+  --cuadricula:#E4EADF;     /* línea de cuadrícula */
+  --tinta:#182720;          /* tinta principal */
+  --tinta-suave:#5C6B60;    /* anotaciones */
+  --verde:#147A46;          /* cupos disponibles */
+  --verde-claro:#E4F2E9;
+  --ambar:#B36F06;          /* pocos cupos */
+  --ambar-claro:#F7ECD8;
+  --rojo:#B3372E;           /* sin cupos / conflicto */
+  --rojo-claro:#F8E5E3;
+  --azul:#2B5DA8;           /* trazo de selección */
+  --azul-claro:#E7EEF9;
+  --blanco:#FFFFFF;
+  --radio:6px;
+  --sombra:0 1px 2px rgba(24,39,32,.08), 0 4px 14px rgba(24,39,32,.06);
+}
+*{box-sizing:border-box; margin:0; padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important; animation:none!important} }
+
+body{
+  font-family:"Archivo", system-ui, sans-serif;
+  background:
+    linear-gradient(var(--cuadricula) 1px, transparent 1px) 0 0/100% 28px,
+    linear-gradient(90deg, var(--cuadricula) 1px, transparent 1px) 0 0/28px 100%,
+    var(--papel);
+  color:var(--tinta);
+  line-height:1.5;
+}
+.mono{font-family:"IBM Plex Mono", ui-monospace, monospace}
+
+/* ---------- Cabecera ---------- */
+/* Acotada al hijo directo de body: hay otros <header> anidados (las tarjetas
+   de horarios generados) que no deben heredar el fondo oscuro. */
+body > header{
+  background:var(--tinta); color:var(--papel);
+  padding:20px clamp(16px,4vw,40px) 22px;
+  border-bottom:4px solid var(--verde);
+}
+.head-top{display:flex; flex-wrap:wrap; gap:12px 24px; align-items:baseline; justify-content:space-between; max-width:1400px; margin:0 auto}
+h1{
+  font-variation-settings:"wdth" 115;
+  font-weight:900; font-size:clamp(1.35rem,3.2vw,2rem);
+  letter-spacing:.01em; text-transform:uppercase;
+}
+h1 small{display:block; font-weight:400; font-size:.72rem; letter-spacing:.28em; color:#9DB3A5; margin-bottom:2px}
+.estado{font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:#C9D6CD; text-align:right}
+.estado .punto{display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--verde); margin-right:6px; vertical-align:middle}
+.estado .punto.err{background:var(--rojo)}
+.estado button{
+  margin-left:10px; background:none; border:1px solid #52645A; color:#C9D6CD;
+  font:inherit; padding:2px 10px; border-radius:99px; cursor:pointer;
+}
+.estado button:hover{border-color:var(--papel); color:var(--papel)}
+
+/* ---------- Layout ---------- */
+.marco{max-width:1400px; margin:0 auto; padding:22px clamp(12px,3vw,32px); display:grid; grid-template-columns:400px 1fr; gap:22px}
+@media (max-width:980px){ .marco{grid-template-columns:1fr} }
+
+section.panel{
+  background:var(--blanco); border:1px solid var(--cuadricula);
+  border-radius:var(--radio); box-shadow:var(--sombra); overflow:hidden;
+}
+.panel > .titulo{
+  display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+  padding:12px 16px; border-bottom:1px solid var(--cuadricula);
+}
+.panel > .titulo h2{
+  font-size:.8rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--tinta-suave);
+}
+.panel > .titulo .dato{font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:var(--tinta-suave)}
+
+/* ---------- Buscador y lista de materias ---------- */
+.buscador{padding:12px 16px; border-bottom:1px solid var(--cuadricula)}
+.buscador input{
+  width:100%; font:500 .95rem "Archivo",sans-serif; color:var(--tinta);
+  padding:10px 12px; border:1.5px solid var(--cuadricula); border-radius:var(--radio);
+  background:var(--papel); outline:none;
+}
+.buscador input:focus{border-color:var(--azul); box-shadow:0 0 0 3px var(--azul-claro)}
+#listaMaterias{max-height:72vh; overflow-y:auto}
+.materia{border-bottom:1px solid var(--cuadricula)}
+.materia:last-child{border-bottom:none}
+.materia > button{
+  width:100%; text-align:left; background:none; border:none; cursor:pointer;
+  padding:12px 16px; display:flex; gap:12px; align-items:baseline; font-family:inherit;
+}
+.materia > button:hover{background:var(--papel)}
+.materia > button:focus-visible, .grupo .btnAdd:focus-visible, button:focus-visible, select:focus-visible{
+  outline:2px solid var(--azul); outline-offset:2px;
+}
+.materia .cod{font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--tinta-suave); white-space:nowrap}
+.materia .nom{font-weight:600; font-size:.95rem; flex:1}
+.materia .cred{font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--tinta-suave); white-space:nowrap}
+.materia .flecha{color:var(--tinta-suave); font-size:.8rem; transition:transform .15s}
+.materia.abierta .flecha{transform:rotate(90deg)}
+.grupos{display:none; background:var(--papel); border-top:1px dashed var(--cuadricula)}
+.materia.abierta .grupos{display:block}
+
+.multi-aviso{padding:7px 16px; font-size:.76rem; color:var(--ambar); background:var(--ambar-claro);
+  border-top:1px dashed var(--cuadricula)}
+.multi-aviso b{font-weight:700}
+.fam-cab{display:flex; justify-content:space-between; align-items:baseline; gap:8px;
+  padding:6px 16px 4px; font:700 .7rem "Archivo",sans-serif; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--tinta-suave); background:var(--blanco); border-top:1px solid var(--cuadricula)}
+.fam-cab span{font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:500; letter-spacing:0; text-transform:none}
+.bloque .etq{display:block; font-size:.6rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; opacity:.9}
+.resumen .chip b{font-weight:700; font-size:.7rem}
+
+.grupo{
+  display:grid; grid-template-columns:1fr auto; gap:4px 12px;
+  padding:10px 16px 12px; border-bottom:1px dashed var(--cuadricula);
+}
+.grupo:last-child{border-bottom:none}
+.grupo .g-nom{font-weight:600; font-size:.88rem}
+.grupo .g-prof{font-size:.8rem; color:var(--tinta-suave)}
+/* El enlace no debe gritar: es una ayuda opcional, no la información
+   principal de la fila. Se distingue solo al pasar por encima. */
+.prof-link{color:inherit; text-decoration:none; border-bottom:1px dotted var(--cuadricula)}
+.prof-link:hover{color:var(--verde); border-bottom-color:var(--verde)}
+.prof-flecha{font-size:.7em; opacity:.5; margin-left:2px}
+.grupo .g-hor{font-family:"IBM Plex Mono",monospace; font-size:.74rem; color:var(--tinta); margin-top:2px; white-space:pre-line}
+.grupo .g-der{display:flex; flex-direction:column; align-items:flex-end; gap:6px}
+.cupos{
+  font-family:"IBM Plex Mono",monospace; font-size:.74rem; font-weight:600;
+  padding:2px 8px; border-radius:99px; white-space:nowrap;
+}
+.cupos.ok{background:var(--verde-claro); color:var(--verde)}
+.cupos.pocos{background:var(--ambar-claro); color:var(--ambar)}
+.cupos.cero{background:var(--rojo-claro); color:var(--rojo)}
+.cupos.sindato{background:#EEE; color:#777}
+.vel{font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:var(--rojo); white-space:nowrap}
+.vel.sube{color:var(--verde)}
+.spark{width:84px; height:22px}
+.btnAdd{
+  font:600 .78rem "Archivo",sans-serif; letter-spacing:.04em;
+  border:1.5px solid var(--azul); color:var(--azul); background:var(--blanco);
+  border-radius:var(--radio); padding:5px 12px; cursor:pointer;
+}
+.btnAdd:hover{background:var(--azul-claro)}
+.btnAdd.quitar{border-color:var(--rojo); color:var(--rojo)}
+.btnAdd.quitar:hover{background:var(--rojo-claro)}
+
+/* ---------- Grilla semanal ---------- */
+.resumen{display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; padding:12px 16px; border-bottom:1px solid var(--cuadricula); font-size:.85rem}
+.resumen .chip{
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:"IBM Plex Mono",monospace; font-size:.75rem;
+  background:var(--papel); border:1px solid var(--cuadricula); border-radius:99px; padding:3px 10px;
+}
+.resumen .chip i{width:10px; height:10px; border-radius:3px; display:inline-block}
+.resumen .chip button{border:none; background:none; cursor:pointer; color:var(--tinta-suave); font-size:.85rem; padding:0 0 0 2px}
+.resumen .chip button:hover{color:var(--rojo)}
+#avisoConflicto{display:none; margin:12px 16px 0; padding:10px 14px; border-radius:var(--radio);
+  background:var(--rojo-claro); color:var(--rojo); font-size:.85rem; font-weight:600}
+#avisoConflicto.visible{display:block}
+
+.grilla-envoltura{padding:16px; overflow-x:auto}
+.grilla{
+  display:grid; grid-template-columns:52px repeat(6, minmax(96px,1fr));
+  min-width:640px; border:1.5px solid var(--tinta); border-radius:4px; overflow:hidden; background:var(--blanco);
+}
+.grilla .esquina, .grilla .dia{
+  background:var(--tinta); color:var(--papel); font-family:"IBM Plex Mono",monospace;
+  font-size:.72rem; font-weight:600; letter-spacing:.08em; text-align:center; padding:7px 4px;
+}
+.reglilla{position:relative; border-right:1px solid var(--cuadricula)}
+.reglilla span{
+  position:absolute; right:6px; transform:translateY(-55%);
+  font-family:"IBM Plex Mono",monospace; font-size:.68rem; color:var(--tinta-suave);
+}
+.columna{
+  position:relative; border-right:1px solid var(--cuadricula);
+  background:linear-gradient(var(--cuadricula) 1px, transparent 1px) 0 1px / 100% var(--paso-hora);
+}
+.columna:last-child, .reglilla:last-child{border-right:none}
+.bloque{
+  position:absolute; left:4px; right:4px; border-radius:4px; padding:4px 6px;
+  border:1.5px solid; overflow:hidden; cursor:default;
+  font-size:.7rem; line-height:1.25; box-shadow:1px 1px 0 rgba(24,39,32,.12);
+}
+.bloque b{display:block; font-size:.72rem}
+.bloque .mono{font-size:.64rem; opacity:.85}
+.bloque.choque{border-color:var(--rojo)!important; background:var(--rojo-claro)!important; color:var(--rojo)!important}
+.vacio{padding:40px 20px; text-align:center; color:var(--tinta-suave); font-size:.9rem}
+
+/* ---------- Tendencias ---------- */
+.controles-tend{display:flex; flex-wrap:wrap; gap:10px; padding:14px 16px; border-bottom:1px solid var(--cuadricula); align-items:center}
+.controles-tend select{
+  font:500 .88rem "Archivo",sans-serif; color:var(--tinta);
+  padding:8px 10px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel);
+}
+.controles-tend .modo{display:flex; border:1.5px solid var(--cuadricula); border-radius:var(--radio); overflow:hidden}
+.controles-tend .modo button{
+  font:600 .8rem "Archivo",sans-serif; padding:8px 14px; border:none; background:var(--blanco);
+  color:var(--tinta-suave); cursor:pointer;
+}
+.controles-tend .modo button.activo{background:var(--tinta); color:var(--papel)}
+.controles-tend .modo[hidden]{display:none}
+.controles-tend .rango button{padding:8px 11px; font:600 .76rem "IBM Plex Mono",monospace; letter-spacing:.02em}
+.controles-tend .rango button+button{border-left:1px solid var(--cuadricula)}
+.controles-tend .rango button.corto{opacity:.45}
+.controles-tend .periodo{font:500 .76rem "IBM Plex Mono",monospace; color:var(--tinta-suave)}
+.controles-tend .fechas{display:flex; align-items:center; gap:5px; flex-wrap:wrap}
+.controles-tend .fechas[hidden]{display:none}
+.controles-tend .fechas label{font-size:.74rem; color:var(--tinta-suave)}
+.controles-tend .fechas input{
+  font:500 .76rem "IBM Plex Mono",monospace; color:var(--tinta);
+  padding:5px 7px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco);
+}
+.controles-tend .fechas input:focus{outline:none; border-color:var(--azul); box-shadow:0 0 0 3px var(--azul-claro)}
+.controles-tend .fechas.activo input{border-color:var(--azul)}
+.controles-tend .fechas button{
+  font:600 .8rem "IBM Plex Mono",monospace; line-height:1; color:var(--tinta-suave);
+  padding:6px 8px; border:1.5px solid var(--cuadricula); border-radius:var(--radio);
+  background:var(--papel); cursor:pointer;
+}
+.controles-tend .fechas button:hover{border-color:var(--tinta-suave); color:var(--tinta)}
+.lienzo{position:relative; height:min(52vh,420px); padding:12px 16px 18px}
+.lienzo .msj{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:20px; color:var(--tinta-suave); font-size:.9rem; background:var(--blanco);
+}
+/* ---------- Resumen por snapshot ---------- */
+#snapPanel[hidden]{display:none}
+.snap-barra{display:flex; flex-wrap:wrap; gap:8px; align-items:center; padding:12px 16px; border-bottom:1px solid var(--cuadricula)}
+.snap-barra select{
+  font:500 .82rem "IBM Plex Mono",monospace; color:var(--tinta); max-width:min(420px,60vw);
+  padding:6px 9px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel);
+}
+.snap-barra button{
+  font:600 .8rem "IBM Plex Mono",monospace; color:var(--tinta-suave); cursor:pointer;
+  padding:6px 10px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel);
+}
+.snap-barra button:hover:not(:disabled){border-color:var(--tinta-suave); color:var(--tinta)}
+.snap-barra button:disabled{opacity:.4; cursor:default}
+.snap-meta{font:500 .78rem "IBM Plex Mono",monospace; color:var(--tinta-suave)}
+.snap-meta b{color:var(--tinta)}
+.snap-meta .baja{color:var(--rojo)}
+.snap-meta .sube{color:var(--verde)}
+
+.snap-lista{max-height:min(56vh,520px); overflow-y:auto; padding:6px 16px 16px}
+.snap-mat{border-bottom:1px solid var(--cuadricula); padding:9px 0}
+.snap-mat:last-child{border-bottom:0}
+.snap-cab{display:flex; align-items:center; gap:8px; width:100%; background:none; border:0;
+  padding:0 0 4px; cursor:pointer; font:inherit; text-align:left; color:var(--tinta)}
+.snap-cab:hover b{text-decoration:underline}
+.snap-cab i{width:10px; height:10px; border-radius:2px; flex:0 0 auto}
+.snap-cab b{font-size:.86rem; font-weight:600; flex:1; min-width:0}
+.snap-cab .tot{font-family:"IBM Plex Mono",monospace; font-size:.76rem; font-weight:600}
+.snap-fila{display:flex; align-items:baseline; gap:10px; padding:2px 0 2px 18px; font-size:.78rem}
+.snap-fila .g{flex:1; min-width:0; color:var(--tinta-suave)}
+.snap-fila .d{font-family:"IBM Plex Mono",monospace; font-size:.74rem; white-space:nowrap}
+.snap-fila .d .flecha{font-weight:600}
+.baja{color:var(--rojo)} .sube{color:var(--verde)}
+.snap-nada{padding:28px 16px; text-align:center; color:var(--tinta-suave); font-size:.88rem}
+
+footer{max-width:1400px; margin:0 auto; padding:10px clamp(12px,3vw,32px) 30px; color:var(--tinta-suave); font-size:.78rem}
+footer a{color:var(--azul)}
+
+/* ---------- Acciones de cabecera ---------- */
+.head-acciones{display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+#btnImprimir{
+  font:600 .74rem "IBM Plex Mono",monospace; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--papel); background:none; border:1.5px solid #6E8577; border-radius:var(--radio);
+  padding:7px 12px; cursor:pointer;
+}
+#btnImprimir:hover{background:var(--papel); color:var(--tinta); border-color:var(--papel)}
+
+/* ---------- Detalle que acompaña la hoja impresa ---------- */
+#detalleImpresion{display:none}
+
+/* ---------- Plan de estudios: filtros de la lista ---------- */
+.filtros{
+  display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center;
+  padding:8px 16px; border-bottom:1px solid var(--cuadricula); background:var(--papel);
+  font-size:.78rem; color:var(--tinta-suave);
+}
+.filtros label{display:inline-flex; align-items:center; gap:6px; cursor:pointer}
+.filtros select{
+  font:500 .78rem "Archivo",sans-serif; color:var(--tinta);
+  padding:3px 6px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco);
+}
+
+/* ---------- Estado de cada materia frente al pensum ---------- */
+.sello{
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; font-weight:600;
+  padding:1px 6px; border-radius:99px; white-space:nowrap; letter-spacing:.02em;
+}
+.sello.libre{background:var(--verde-claro); color:var(--verde)}
+.sello.bloq {background:var(--ambar-claro); color:var(--ambar)}
+.sello.apro {background:var(--azul-claro); color:var(--azul)}
+.sello.fuera{background:#EEE; color:#777}
+.materia.bloqueada > button .nom{color:var(--tinta-suave)}
+.materia.aprobada > button .nom{text-decoration:line-through; text-decoration-color:var(--tinta-suave)}
+
+.plan{
+  padding:9px 16px 10px; font-size:.78rem; line-height:1.45;
+  background:var(--blanco); border-top:1px dashed var(--cuadricula);
+}
+.plan .falta{color:var(--ambar); font-weight:600}
+.plan .hecho{color:var(--verde)}
+.plan .cadena{color:var(--tinta-suave)}
+.plan .acciones{margin-top:6px; display:flex; gap:8px; flex-wrap:wrap}
+.plan button{
+  font:600 .72rem "Archivo",sans-serif; cursor:pointer;
+  border:1.5px solid var(--cuadricula); background:var(--papel); color:var(--tinta-suave);
+  border-radius:var(--radio); padding:3px 9px;
+}
+.plan button:hover{border-color:var(--tinta-suave); color:var(--tinta)}
+.plan button.marcada{border-color:var(--azul); color:var(--azul); background:var(--azul-claro)}
+
+/* ---------- Avisos del plan sobre el horario ---------- */
+#avisoPlan{display:none; margin:10px 16px 0; font-size:.8rem; color:var(--tinta-suave);
+  border-left:3px solid var(--cuadricula); padding-left:10px}
+#avisoPlan.visible{display:block}
+#avisoPlan summary{cursor:pointer; list-style:none; padding:1px 0}
+#avisoPlan summary::-webkit-details-marker{display:none}
+#avisoPlan summary::before{content:"›"; display:inline-block; margin-right:6px; transition:transform .15s}
+#avisoPlan[open] summary::before{transform:rotate(90deg)}
+#avisoPlan summary:hover{color:var(--tinta)}
+#avisoPlan ul{margin:6px 0 2px; padding-left:16px; line-height:1.5}
+#avisoPlan li{margin-top:3px}
+#avisoPlan b{font-weight:600; color:var(--tinta)}
+
+/* ---------- Panel de avance (mini-malla) ---------- */
+.avance-barras{display:flex; flex-wrap:wrap; gap:10px 22px; padding:12px 16px; border-bottom:1px solid var(--cuadricula)}
+.barra{min-width:140px; flex:1 1 160px}
+.barra .rot{display:flex; justify-content:space-between; font-size:.74rem; color:var(--tinta-suave); margin-bottom:3px}
+.barra .rot b{font-family:"IBM Plex Mono",monospace; color:var(--tinta); font-weight:600}
+.barra .riel{height:7px; border-radius:99px; background:var(--cuadricula); overflow:hidden}
+.barra .relleno{height:100%; background:var(--verde); border-radius:99px; transition:width .2s}
+.barra.comp-B .relleno{background:var(--ambar)}
+.barra.comp-C .relleno{background:var(--azul)}
+.barra.comp-L .relleno{background:#8A4FBF}
+
+.avance-acciones{display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center;
+  padding:10px 16px; border-bottom:1px solid var(--cuadricula); font-size:.8rem; color:var(--tinta-suave)}
+.avance-acciones select, .avance-acciones button{
+  font:600 .76rem "Archivo",sans-serif; padding:4px 10px;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta); cursor:pointer;
+}
+.avance-acciones button:hover{border-color:var(--tinta-suave)}
+
+.malla{display:grid; grid-template-columns:repeat(11, minmax(96px,1fr)); gap:6px; padding:14px 16px; overflow-x:auto}
+.malla .col{display:flex; flex-direction:column; gap:5px; min-width:96px}
+.malla .cab{
+  font-family:"IBM Plex Mono",monospace; font-size:.62rem; font-weight:600; letter-spacing:.08em;
+  text-align:center; color:var(--papel); background:var(--tinta); border-radius:3px; padding:3px 2px;
+}
+.malla .caja{
+  border:1.5px solid var(--cuadricula); border-left-width:4px; border-radius:4px;
+  background:var(--blanco); padding:5px 6px; cursor:pointer; text-align:left; font:inherit;
+  display:block; width:100%; line-height:1.2;
+}
+.malla .caja:hover{border-color:var(--tinta-suave)}
+.malla .caja .n{font-size:.68rem; font-weight:600; display:block}
+.malla .caja .c{font-family:"IBM Plex Mono",monospace; font-size:.6rem; color:var(--tinta-suave)}
+.malla .caja.comp-B{border-left-color:var(--ambar)}
+.malla .caja.comp-C{border-left-color:var(--azul)}
+.malla .caja.comp-P{border-left-color:#8A4FBF}
+.malla .caja.ok{background:var(--verde-claro); border-color:var(--verde)}
+.malla .caja.ok .n{color:var(--verde)}
+.malla .caja.lista{box-shadow:inset 0 0 0 1px var(--verde)}
+.malla .caja.bloq{opacity:.55}
+.malla .caja.encurso{background:var(--azul-claro); border-color:var(--azul)}
+.malla .caja.ranura{border-style:dashed; border-left-style:solid}
+.malla .caja.ranura .n{font-style:italic}
+.malla .caja.ranura.comp-L{border-left-color:#00A5E0}
+.malla .caja[disabled]{cursor:default; opacity:1}
+.malla .caja[disabled] .c{font-style:normal; color:var(--verde)}
+.leyenda{display:flex; flex-wrap:wrap; gap:6px 16px; padding:0 16px 14px; font-size:.74rem; color:var(--tinta-suave)}
+.leyenda span{display:inline-flex; align-items:center; gap:5px}
+.leyenda i{width:12px; height:12px; border-radius:3px; border:1.5px solid var(--cuadricula); display:inline-block}
+
+/* ---------- Generador de horarios ---------- */
+.gen-cols{display:grid; grid-template-columns:minmax(260px,1fr) minmax(320px,1.2fr); gap:0}
+@media(max-width:900px){ .gen-cols{grid-template-columns:1fr} }
+.gen-lado{padding:14px 16px; border-right:1px solid var(--cuadricula)}
+.gen-lado:last-child{border-right:0; border-top:0}
+@media(max-width:900px){ .gen-lado{border-right:0; border-bottom:1px solid var(--cuadricula)} }
+.gen-lado h3{font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--tinta-suave); margin:0 0 8px}
+.gen-ayuda{font-size:.78rem; color:var(--tinta-suave); line-height:1.45; margin:0 0 10px}
+
+.gen-chips{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px}
+.gen-chip{display:inline-flex; align-items:center; gap:6px; font-size:.78rem; font-weight:600;
+  background:var(--papel); border:1.5px solid var(--cuadricula); border-radius:99px; padding:3px 6px 3px 10px}
+.gen-chip i{width:8px; height:8px; border-radius:50%; display:inline-block}
+.gen-chip .n{font-family:"IBM Plex Mono",monospace; font-weight:500; color:var(--tinta-suave); font-size:.7rem}
+.gen-chip button{border:0; background:none; cursor:pointer; color:var(--tinta-suave); font-size:.9rem; line-height:1; padding:0 2px}
+.gen-chip button:hover{color:var(--rojo)}
+.gen-vacio{font-size:.8rem; color:var(--tinta-suave); font-style:italic}
+#genBuscar{width:100%; font:400 .82rem "Archivo",sans-serif; color:var(--tinta);
+  padding:6px 10px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco)}
+#genBuscar:focus{outline:none; border-color:var(--tinta-suave)}
+.gen-lista{margin-top:6px; max-height:260px; overflow-y:auto;
+  border:1px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco)}
+.gen-lista label{display:flex; align-items:center; gap:8px; padding:5px 10px; cursor:pointer;
+  border-bottom:1px solid var(--cuadricula); font-size:.8rem}
+.gen-lista label:last-child{border-bottom:0}
+.gen-lista label:hover{background:var(--papel)}
+.gen-lista input{margin:0; flex:0 0 auto; accent-color:var(--verde)}
+.gen-lista .t{flex:1; min-width:0}
+.gen-lista .t b{display:block; font-weight:600; color:var(--tinta)}
+.gen-lista .t span{font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:var(--tinta-suave)}
+.gen-lista .sello{flex:0 0 auto}
+.gen-check{display:flex; align-items:center; gap:6px; margin-top:6px;
+  font-size:.76rem; color:var(--tinta-suave); cursor:pointer}
+.gen-check input{margin:0; accent-color:var(--verde)}
+/* Aviso al pie de la lista cuando se recortan las electivas mostradas */
+.tope-libres{font-size:.76rem; color:var(--tinta-suave); font-style:italic;
+  padding:10px 12px; border-top:1px dashed var(--cuadricula)}
+
+/* Rejilla para pintar las franjas ocupadas */
+.gen-rejilla{display:grid; grid-template-columns:38px repeat(6,1fr); gap:1px; background:var(--cuadricula);
+  border:1px solid var(--cuadricula); border-radius:var(--radio); overflow:hidden; user-select:none; touch-action:none}
+.gen-rejilla .gh{background:var(--papel); font-family:"IBM Plex Mono",monospace; font-size:.6rem; font-weight:600;
+  text-align:center; padding:3px 0; color:var(--tinta-suave)}
+.gen-rejilla .gr{background:var(--papel); font-family:"IBM Plex Mono",monospace; font-size:.58rem;
+  text-align:right; padding:0 4px; color:var(--tinta-suave); line-height:13px}
+.gen-rejilla .gc{background:var(--blanco); height:13px; border:0; padding:0; cursor:pointer}
+.gen-rejilla .gc.media{box-shadow:inset 0 -1px 0 var(--cuadricula)}
+.gen-rejilla .gc.off{background:repeating-linear-gradient(45deg,#E9D9D6,#E9D9D6 3px,#F5EAE8 3px,#F5EAE8 6px)}
+
+.gen-opciones{display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; margin-top:12px; font-size:.8rem; color:var(--tinta-suave)}
+.gen-opciones select, .gen-opciones button{font:600 .78rem "Archivo",sans-serif; padding:5px 12px;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta); cursor:pointer}
+.gen-opciones label{display:inline-flex; align-items:center; gap:6px; cursor:pointer}
+#btnGenerar{background:var(--tinta); color:var(--papel); border-color:var(--tinta)}
+#btnGenerar:hover{opacity:.88}
+
+#genEstado{padding:0 16px 4px; font-size:.82rem; color:var(--tinta-suave)}
+#genEstado.error{color:var(--rojo)}
+#genEstado ul{margin:4px 0 0; padding-left:18px}
+
+.gen-res{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; padding:12px 16px}
+.gen-card{border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco); padding:10px 12px}
+.gen-card.puesto{border-color:var(--azul); box-shadow:0 0 0 2px var(--azul-claro)}
+.gen-card header{display:flex; justify-content:space-between; align-items:baseline; gap:8px; margin-bottom:6px}
+.gen-card header b{font-size:.85rem}
+.gen-card header span{font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:var(--tinta-suave); text-align:right}
+.gen-mini{position:relative; display:grid; grid-template-columns:repeat(6,1fr); gap:1px;
+  background:var(--cuadricula); border:1px solid var(--cuadricula); border-radius:3px; overflow:hidden; margin-bottom:8px}
+.gen-mini .mcol{position:relative; background:var(--blanco); height:96px}
+.gen-mini .mbloq{position:absolute; left:0; right:0; background:#EFE2E0}
+.gen-mini .mses{position:absolute; left:1px; right:1px; border-radius:2px; min-height:3px}
+.gen-mini .mdia{position:absolute; top:1px; left:0; right:0; text-align:center;
+  font-family:"IBM Plex Mono",monospace; font-size:.5rem; color:var(--tinta-suave); pointer-events:none}
+.gen-card ul{list-style:none; margin:0 0 8px; padding:0; font-size:.72rem; color:var(--tinta-suave); line-height:1.4}
+.gen-card ul li{display:flex; gap:7px; align-items:flex-start; margin-bottom:5px}
+.gen-card ul li i{flex:0 0 auto; width:10px; height:10px; border-radius:2px; margin-top:3px}
+.gen-card ul b{display:block; color:var(--tinta); font-weight:600}
+.gen-mini .mses.rel{opacity:.75; background-image:repeating-linear-gradient(45deg,#0000,#0000 2px,#ffffff70 2px,#ffffff70 4px)}
+.gen-card ul li.relleno b{font-weight:500}
+.gen-card ul .comp.libre{background:var(--verde-claro); color:var(--verde)}
+.gen-card ul .dem{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.62rem;
+  font-weight:600; border-radius:99px; padding:0 6px; margin-top:2px}
+.dem.alta {background:var(--rojo-claro);  color:var(--rojo)}
+.dem.media{background:var(--ambar-claro); color:var(--ambar)}
+.dem.baja {background:var(--papel);       color:var(--tinta-suave)}
+.gen-card ul .comp{display:inline-block; font-size:.62rem; font-weight:700; letter-spacing:.04em;
+  text-transform:uppercase; color:var(--tinta-suave); background:var(--papel);
+  border-radius:99px; padding:0 6px; margin-right:5px}
+.gen-card .usar{width:100%; font:600 .76rem "Archivo",sans-serif; cursor:pointer; padding:5px;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta)}
+.gen-card .usar:hover{border-color:var(--tinta-suave)}
+.gen-card.puesto .usar{background:var(--azul-claro); border-color:var(--azul); color:var(--azul)}
+
+/* ---------- Navegación por pestañas ---------- */
+.tabs{
+  max-width:1400px; margin:16px auto -22px; padding:0 clamp(16px,4vw,40px);
+  display:flex; gap:3px; flex-wrap:wrap; position:relative; z-index:1;
+}
+.tabs button{
+  font:700 .78rem "Archivo",sans-serif; letter-spacing:.08em; text-transform:uppercase;
+  display:inline-flex; align-items:center; gap:7px; cursor:pointer;
+  background:none; border:0; border-radius:6px 6px 0 0; padding:9px 15px 11px;
+  color:#9DB3A5; transition:background .15s, color .15s;
+}
+.tabs button:hover{color:var(--papel); background:#ffffff14}
+.tabs button[aria-selected="true"]{background:var(--verde); color:#fff}
+.tabs button:focus-visible{outline:2px solid var(--papel); outline-offset:-3px}
+.tabs .bdg{
+  font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:600; letter-spacing:0;
+  background:#ffffff2e; border-radius:99px; padding:1px 7px; text-transform:none;
+}
+.tabs button[aria-selected="true"] .bdg{background:#00000030}
+.tabs .bdg:empty{display:none}
+@media (max-width:600px){
+  .tabs{gap:2px; margin-bottom:-22px}
+  .tabs button{padding:8px 10px; font-size:.7rem; letter-spacing:.04em}
+}
+
+#panelAvance{grid-column:1 / -1}
+section.panel[hidden]{display:none!important}
+/* En las vistas panorámicas (plan y cupos) el catálogo estorba más que ayuda */
+.marco.ancho{grid-template-columns:1fr}
+.marco.ancho #panelMaterias{display:none}
+
+/* ---------- Impresión ---------- */
+@page{size:A4 portrait; margin:12mm}
+@media print{
+  html,body{background:#fff!important}
+  body{-webkit-print-color-adjust:exact; print-color-adjust:exact; line-height:1.35}
+  body > header{background:#fff; color:var(--tinta); border-bottom:2px solid var(--tinta); padding:0 0 8px}
+  h1{font-size:1.05rem}
+  h1 small{color:var(--tinta-suave); letter-spacing:.18em}
+  .estado, #btnImprimir, .tabs{display:none}
+  .marco{display:block; max-width:none; padding:10px 0 0}
+  #panelMaterias, #panelTendencias, #panelAvance, #panelGenerador, footer{display:none!important}
+  section.panel{border:none; box-shadow:none; overflow:visible}
+  .panel > .titulo{padding:0 0 6px}
+  .resumen{padding:8px 0; border-bottom:none; font-size:.72rem}
+  .resumen .chip button{display:none}
+  #avisoConflicto, #avisoPlan{margin:8px 0 0; break-inside:avoid; page-break-inside:avoid}
+  .grilla-envoltura{padding:8px 0 0; overflow:visible}
+  .grilla{min-width:0; grid-template-columns:44px repeat(6,1fr); break-inside:avoid; page-break-inside:avoid}
+  .bloque{box-shadow:none; font-size:.62rem}
+  .bloque b{font-size:.64rem}
+  .bloque .mono{font-size:.56rem}
+  #detalleImpresion{display:block; margin-top:14px}
+  #detalleImpresion h3{font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--tinta-suave); margin-bottom:6px}
+  #detalleImpresion h3 span{font-family:"IBM Plex Mono",monospace; letter-spacing:0;
+    text-transform:none; font-weight:400}
+  #detalleImpresion table{width:100%; border-collapse:collapse; font-size:.62rem}
+  #detalleImpresion th, #detalleImpresion td{
+    border:1px solid var(--cuadricula); padding:3px 5px; text-align:left; vertical-align:top}
+  #detalleImpresion th{background:var(--papel); font-size:.56rem; letter-spacing:.08em; text-transform:uppercase}
+  #detalleImpresion thead{display:table-header-group}
+  #detalleImpresion tr{break-inside:avoid; page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-top">
+    <h1><small>Ingeniería Civil</small>Planilla de horario</h1>
+    <div class="head-acciones">
+      <div class="estado mono" id="estado"><span class="punto"></span>Cargando datos…</div>
+      <button id="btnImprimir" type="button" title="Imprime solo el horario; en el diálogo puedes elegir «Guardar como PDF»">Imprimir / PDF</button>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="Secciones de la página">
+    <button type="button" role="tab" data-vista="horario"   aria-controls="panelHorario panelAvance"    aria-selected="true">Horario <span class="bdg" id="bdgHorario"></span></button>
+    <button type="button" role="tab" data-vista="generador" aria-controls="panelGenerador"  aria-selected="false" tabindex="-1">Generador horario <span class="bdg" id="bdgGenerador"></span></button>
+    <button type="button" role="tab" data-vista="cupos"     aria-controls="panelTendencias" aria-selected="false" tabindex="-1">Tendencias <span class="bdg" id="bdgCupos"></span></button>
+  </nav>
+</header>
+
+<div class="marco">
+
+  <!-- Catálogo de materias -->
+  <section class="panel" id="panelMaterias" aria-label="Catálogo de asignaturas">
+    <div class="titulo"><h2>Asignaturas</h2><span class="dato" id="conteoMaterias"></span></div>
+    <div class="buscador">
+      <input id="busqueda" type="search" placeholder="Buscar por nombre, código o profesor…" autocomplete="off">
+    </div>
+    <div class="filtros">
+      <label for="orden">Orden
+        <select id="orden">
+          <option value="semestre">por semestre del plan</option>
+          <option value="alfabetico">alfabético</option>
+          <option value="prioridad">las que más desbloquean</option>
+        </select>
+      </label>
+      <label for="fuente">Mostrar
+        <select id="fuente">
+          <option value="plan">las del plan</option>
+          <option value="libre">las de libre elección</option>
+          <option value="todas">todas</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="soloDisponibles"> Solo las que ya puedo ver</label>
+    </div>
+    <div id="listaMaterias"></div>
+  </section>
+
+  <!-- Grilla semanal -->
+  <section class="panel" id="panelHorario" aria-label="Mi horario semanal" role="tabpanel" aria-labelledby="tab-horario">
+    <div class="titulo"><h2>Mi horario</h2><span class="dato" id="totalCreditos">0 créditos</span></div>
+    <div class="resumen" id="chips"></div>
+    <div id="avisoConflicto" role="alert"></div>
+    <details id="avisoPlan"></details>
+    <div class="grilla-envoltura"><div class="grilla" id="grilla"></div></div>
+    <div id="detalleImpresion">
+      <h3>Grupos del horario <span id="metaImpresion"></span></h3>
+      <table>
+        <thead><tr>
+          <th>Código</th><th>Asignatura</th><th>Cr</th><th>Grupo</th>
+          <th>Profesor</th><th>Horario</th><th>Salón</th>
+        </tr></thead>
+        <tbody id="cuerpoImpresion"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Generador de horarios posibles -->
+  <section class="panel" id="panelGenerador" aria-label="Generador de horarios" role="tabpanel" aria-labelledby="tab-generador">
+    <div class="titulo"><h2>Armar horario automáticamente</h2><span class="dato" id="genResumen"></span></div>
+    <div class="gen-cols">
+      <div class="gen-lado">
+        <h3>Materias que quieres inscribir</h3>
+        <p class="gen-ayuda">Marca las asignaturas y ya está: del grupo se encarga el generador. No aparecen las que tengas marcadas como aprobadas.</p>
+        <div class="gen-chips" id="genChips"></div>
+        <input id="genBuscar" type="search" placeholder="Buscar asignatura…" autocomplete="off">
+        <label class="gen-check"><input type="checkbox" id="genLibres"> Incluir libre elección</label>
+        <div class="gen-lista" id="genLista"></div>
+        <div class="gen-opciones">
+          <button type="button" id="btnDesdeHorario">Traer las del horario</button>
+          <button type="button" id="btnVaciarCand">Vaciar</button>
+        </div>
+      </div>
+      <div class="gen-lado">
+        <h3>Franjas en las que no puedes</h3>
+        <p class="gen-ayuda">Pinta con el ratón (o el dedo) las horas que tienes ocupadas: trabajo, transporte, lo que sea. El generador descartará cualquier grupo que caiga ahí.</p>
+        <div class="gen-rejilla" id="genRejilla"></div>
+        <div class="gen-opciones">
+          <button type="button" id="btnLimpiarBloqueos">Despintar todo</button>
+        </div>
+      </div>
+    </div>
+    <div class="gen-opciones" style="padding:12px 16px; border-top:1px solid var(--cuadricula)">
+      <button type="button" id="btnGenerar">Generar horarios</button>
+      <label for="genOrden">Ordenar por
+        <select id="genOrden">
+          <option value="huecos">menos huecos entre clases</option>
+          <option value="dias">menos días en la universidad</option>
+          <option value="tarde">empezar lo más tarde posible</option>
+          <option value="temprano">terminar lo más temprano posible</option>
+          <option value="demanda">grupos que se llenan más rápido</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="genSoloCupos" checked> Solo grupos con cupos</label>
+      <label for="genRelleno">Rellenar huecos con electivas
+        <select id="genRelleno">
+          <option value="0">no</option>
+          <option value="1">hasta 1</option>
+          <option value="2">hasta 2</option>
+          <option value="3">hasta 3</option>
+        </select>
+      </label>
+      <label id="lblSinDias" hidden><input type="checkbox" id="genSinDias" checked> sin abrir días nuevos</label>
+    </div>
+    <div id="genEstado"></div>
+    <div class="gen-res" id="genResultados"></div>
+  </section>
+
+  <!-- Avance en el plan de estudios -->
+  <section class="panel" id="panelAvance" aria-label="Mi avance en el plan de estudios">
+    <div class="titulo"><h2>Mi avance en el plan</h2><span class="dato" id="resumenAvance"></span></div>
+    <div class="avance-barras" id="barrasAvance"></div>
+    <div class="avance-acciones">
+      <span>Marca lo que ya aprobaste haciendo clic en cada asignatura.</span>
+      <label for="hastaSem" class="mono">Aprobar hasta</label>
+      <select id="hastaSem" aria-label="Marcar como aprobado hasta un semestre">
+        <option value="">— semestre —</option>
+      </select>
+      <button type="button" id="btnLimpiarAvance">Limpiar avance</button>
+    </div>
+    <div class="malla" id="malla"></div>
+    <div class="leyenda">
+      <span><i style="background:var(--verde-claro);border-color:var(--verde)"></i>Aprobada</span>
+      <span><i style="background:var(--azul-claro);border-color:var(--azul)"></i>En este horario</span>
+      <span><i style="box-shadow:inset 0 0 0 1px var(--verde)"></i>Puedes inscribirla</span>
+      <span><i style="opacity:.55"></i>Te falta prerrequisito</span>
+      <span class="mono">Borde: <b style="color:var(--ambar)">■</b> fundamentación · <b style="color:var(--azul)">■</b> disciplinar · <b style="color:#00A5E0">■</b> libre elección · <b style="color:#8A4FBF">■</b> nivelación</span>
+      <span><i style="border-style:dashed"></i>Casilla flexible (electiva u optativa)</span>
+    </div>
+  </section>
+
+  <!-- Tendencias de cupos -->
+  <section class="panel" id="panelTendencias" aria-label="Tendencia de cupos por grupo" role="tabpanel" aria-labelledby="tab-cupos">
+    <div class="titulo"><h2>Tendencia de cupos</h2><span class="dato" id="infoSnapshots"></span></div>
+    <div class="controles-tend">
+      <div class="modo" role="tablist">
+        <button id="modoMis" class="activo" role="tab">Mis grupos</button>
+        <button id="modoMateria" role="tab">Por asignatura</button>
+        <button id="modoDoc" role="tab">Docentes</button>
+        <button id="modoSnap" role="tab">Cambios por snapshot</button>
+      </div>
+      <select id="selMateria" aria-label="Asignatura para graficar" hidden></select>
+      <div class="modo rango" id="rangoTend" role="group" aria-label="Rango de tiempo">
+        <button type="button" data-r="1D">1D</button>
+        <button type="button" data-r="1S">1S</button>
+        <button type="button" data-r="1M">1M</button>
+        <button type="button" data-r="4M">4M</button>
+        <button type="button" data-r="max">Máx</button>
+      </div>
+      <div class="fechas" id="fechasTend">
+        <label for="fechaIni">Desde</label><input type="date" id="fechaIni">
+        <label for="fechaFin">Hasta</label><input type="date" id="fechaFin">
+        <button type="button" id="btnHoyFin" title="Poner la fecha final en la última lectura disponible">⇥</button>
+      </div>
+      <span class="periodo" id="periodoTend"></span>
+    </div>
+    <div class="lienzo"><canvas id="grafico"></canvas></div>
+    <div id="snapPanel" hidden>
+      <div class="snap-barra">
+        <button type="button" id="snapPrev" title="Snapshot anterior">◀</button>
+        <select id="selSnap" aria-label="Snapshot a inspeccionar"></select>
+        <button type="button" id="snapNext" title="Snapshot siguiente">▶</button>
+        <span class="snap-meta" id="snapMeta"></span>
+      </div>
+      <div class="snap-lista" id="snapLista"></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  Datos tomados del SIA por <a href="https://github.com/aroberto-ux/horarios_unal">horarios_unal</a>.
+  La página lee <span class="mono">horarios.csv</span> y <span class="mono">cupos_historial.csv</span> del repositorio en cada carga,
+  así que se actualiza sola con cada snapshot del workflow.
+  Los prerrequisitos salen de la malla curricular de Ingeniería Civil del 19/04/2016 (Acuerdos 257 de 2008 y 026 de 2015)
+  y están transcritos en la constante <span class="mono">PENSUM</span> de este archivo: son una ayuda para ordenar el semestre,
+  no una autoridad. Lo que manda es el SIA.
+</footer>
+
+<script>
+/* ================= Utilidades ================= */
+const $ = s => document.querySelector(s);
+const REPO_RAW = "https://raw.githubusercontent.com/aroberto-ux/horarios_unal/main/";
+const DIAS = ["LUNES","MARTES","MIÉRCOLES","JUEVES","VIERNES","SÁBADO"];
+const PALETA = ["#2B5DA8","#147A46","#8A4FBF","#B36F06","#0E7C86","#A63D6F","#5A6B2F","#7A4A21"];
+
+/* ================= Componentes de una asignatura =================
+   El SIA reparte los componentes (magistral, taller, laboratorio…) de dos
+   maneras distintas, y hay que soportar las dos:
+
+   a) Todos dentro del MISMO grupo. Fundamentos de mecánica es así: «(1) Grupo 1»
+      trae magistral el martes, taller el jueves y laboratorio el viernes. Con un
+      clic ya quedan los tres; lo único que faltaba era decir cuál es cuál.
+
+   b) En grupos SEPARADOS que hay que inscribir a la vez. Modelación matemática
+      es así: «(1) …» y «(2) …» son la teórica, y «(1M) … - Magistral» es la
+      magistral, con sus propios 80 cupos. Aquí sí hacen falta dos selecciones.
+
+   Para distinguirlos se agrupan los grupos de cada asignatura por su firma de
+   actividades. Cada firma distinta es una «familia»: dentro de una familia los
+   grupos son alternativas excluyentes, y entre familias se complementan. */
+const ACTIVIDADES = {
+  "CLASE MAGISTRAL":"Magistral", "CLASE TEORICA":"Teoría", "CLASE TALLER":"Taller",
+  "CLASE LABORATORIO":"Laboratorio", "CLASE PRACTICA":"Práctica", "":"Clase"
+};
+const etiquetaAct = a => ACTIVIDADES[a] ?? (a.replace(/^CLASE /,"").toLowerCase().replace(/^./,c=>c.toUpperCase()));
+const firmaDe = acts => [...acts].sort().join("|");
+const etiquetaFam = acts => [...acts].sort((a,b)=>etiquetaAct(a).localeCompare(etiquetaAct(b),"es")).map(etiquetaAct).join(" + ");
+
+function parseCSV(texto){
+  texto = texto.replace(/^\uFEFF/,"");
+  const filas=[]; let fila=[], campo="", enComillas=false;
+  for(let i=0;i<texto.length;i++){
+    const c=texto[i];
+    if(enComillas){
+      if(c==='"'){ if(texto[i+1]==='"'){campo+='"';i++;} else enComillas=false; }
+      else campo+=c;
+    }else{
+      if(c==='"') enComillas=true;
+      else if(c===','){ fila.push(campo); campo=""; }
+      else if(c==='\n'){ fila.push(campo); filas.push(fila); fila=[]; campo=""; }
+      else if(c!=='\r') campo+=c;
+    }
+  }
+  if(campo!==""||fila.length){ fila.push(campo); filas.push(fila); }
+  const cab=filas.shift();
+  return filas.filter(f=>f.length>1).map(f=>Object.fromEntries(cab.map((h,i)=>[h.trim(),(f[i]||"").trim()])));
+}
+
+async function traer(nombre){
+  const ts = Date.now();
+  try{
+    const r = await fetch(`${nombre}?ts=${ts}`, {cache:"no-store"});
+    if(r.ok) return r;
+    throw 0;
+  }catch(e){
+    const r = await fetch(`${REPO_RAW}${nombre}?ts=${ts}`, {cache:"no-store"});
+    if(!r.ok) throw new Error(`No pude leer ${nombre}`);
+    return r;
+  }
+}
+
+async function cargarCSV(nombre){ return parseCSV(await (await traer(nombre)).text()); }
+
+/* series.json: el historial ya colapsado por corrida y delta-codificado.
+   Pesa ~130 KB contra los 3 MB de cupos_historial.csv, y el CSV crece ~50 KB
+   por snapshot. Si el archivo todavía no existe (repo sin regenerar), se
+   vuelve al camino viejo para no dejar la página sin datos. */
+function expandirSeries(doc){
+  const H = new Map();
+  const MIN = 60000;
+  for(const [k, s] of Object.entries(doc.series||{})){
+    const pts = [{t:new Date(s.t0*MIN), cupos:s.c0}];
+    let t=s.t0, c=s.c0;
+    const dt=s.dt||[], dc=s.dc||[];
+    for(let i=0;i<dt.length;i++){
+      t+=dt[i]; c+=dc[i];
+      pts.push({t:new Date(t*MIN), cupos:c});
+    }
+    H.set(k, pts);
+  }
+  return H;
+}
+
+async function cargarHistorial(){
+  try{
+    const doc = await (await traer("series.json")).json();
+    if(!doc || !doc.series) throw 0;
+    return {historial: expandirSeries(doc), nSnap: doc.n_snapshots || 0};
+  }catch(e){
+    return cargarHistorialCSV();
+  }
+}
+
+async function cargarHistorialCSV(){
+  const hist = await cargarCSV("cupos_historial.csv");
+  const porGrupo = new Map();
+  for(const f of hist){
+    const cupos = numCupos(f.cupos_disponibles);
+    if(cupos===null) continue;
+    const ts = f.ts_lectura || f.fecha_hora;
+    const t = new Date(ts);
+    if(isNaN(+t)) continue;
+    const k = `${f.codigo}|${f.grupo}`;
+    const corrida = f.run_id || ts;
+    if(!porGrupo.has(k)) porGrupo.set(k, new Map());
+    const puntos = porGrupo.get(k);
+    const previo = puntos.get(corrida);
+    if(!previo) puntos.set(corrida, {t, cupos});
+    else { previo.cupos = Math.min(previo.cupos, cupos); if(t < previo.t) previo.t = t; }
+  }
+  const H = new Map();
+  for(const [k, puntos] of porGrupo) H.set(k, [...puntos.values()].sort((a,b)=>a.t-b.t));
+  return {historial: H, nSnap: new Set(hist.map(f=>f.run_id||f.ts_lectura||f.fecha_hora)).size};
+}
+
+const aMin = h => { const [a,b]=h.split(":").map(Number); return a*60+b; };
+/* Cupos -> número, o null si el scraper no pudo leerlos ("NA").
+   Ojo: "NA" NO es 0. Un 0 significa "grupo agotado" y es un dato real;
+   un NA significa "no se sabe" y debe omitirse de las series. */
+const numCupos = v => {
+  const s = String(v ?? "").trim();
+  if(!s || s === "NA") return null;
+  const n = Number(s);
+  return Number.isFinite(n) ? n : null;
+};
+const deMin = m => `${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`;
+const fmtFecha = d => d.toLocaleString("es-CO",{timeZone:"America/Bogota",day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"});
+
+/* ================= Pensum: Ingeniería Civil (plan 2542) =================
+   Transcrito de la malla curricular del 19/04/2016 (Acuerdo 257 de 2008 del
+   Consejo Académico; Acuerdo 026 de 2015 del Consejo de Facultad).
+
+   Los prerrequisitos salen de las flechas del diagrama, incluidos los ocho
+   conectores numerados que saltan de un extremo a otro de la hoja:
+     1 Fund. de ecología → Saneamiento ambiental    5 Cálc. varias var. → Mec. de sólidos
+     2 Álgebra lineal    → Estática                 6 Cálc. varias var. → Mec. de fluidos
+     3 Álgebra lineal    → Ing. de transporte       7 Estática          → Mec. de fluidos
+     4 Cálculo integral  → Ingeniería económica     8 Materiales p/const→ Diseño estructural
+
+   Ojo con el canal horizontal que corre bajo la fila 5: lleva dos líneas
+   distintas, Ing. económica → Ing. de transporte y luego Ing. de transporte →
+   Preparación y evaluación de proyectos. No es una sola línea de punta a punta.
+
+   Comprobación: los créditos por semestre que salen de esta tabla dan
+   18-18-17-18-18-19-18-18-18-18 (+20 de nivelación) = 180, igual que los
+   totales impresos al pie de la malla. Aun así, la fuente que manda es el SIA:
+   si encuentras una diferencia, corrígela aquí y avísale al repo.
+
+   Campos: sem (0 = nivelación), cr, comp (P/B/C/L), agr (agrupación),
+   req (prerrequisitos; un arreglo anidado significa "cualquiera de"),
+   ca ({n, comp} = créditos aprobados exigidos de ese componente). */
+const MAT = "Matemáticas y estadística", ICB = "Ingeniería civil básica disciplinar";
+const PENSUM = {
+  /* --- Nivelación --- */
+  "1000001":{nom:"Matemáticas básicas",     sem:0, cr:4, comp:"P", agr:"Matemática básica"},
+  "1000002":{nom:"Lecto-escritura",         sem:0, cr:4, comp:"P", agr:"Lecto-escritura"},
+  "1000044":{nom:"Inglés I",                sem:0, cr:3, comp:"P", agr:"Lengua extranjera"},
+  "1000045":{nom:"Inglés II",               sem:0, cr:3, comp:"P", agr:"Lengua extranjera", req:[["1000044","1000052"]]},
+  "1000046":{nom:"Inglés III",              sem:0, cr:3, comp:"P", agr:"Lengua extranjera", req:[["1000045","1000049","1000052"]]},
+  "1000047":{nom:"Inglés IV",               sem:0, cr:3, comp:"P", agr:"Lengua extranjera", req:[["1000046","1000050","1000053"]]},
+  "1000049":{nom:"Inglés II (virtual)",     sem:0, cr:3, comp:"P", agr:"Lengua extranjera", opt:true, req:[["1000044","1000052"]]},
+  "1000050":{nom:"Inglés III (virtual)",    sem:0, cr:3, comp:"P", agr:"Lengua extranjera", opt:true, req:[["1000045","1000049","1000052"]]},
+  "1000051":{nom:"Inglés IV (virtual)",     sem:0, cr:3, comp:"P", agr:"Lengua extranjera", opt:true, req:[["1000046","1000050","1000053"]]},
+  "1000052":{nom:"Inglés intensivo I y II", sem:0, cr:6, comp:"P", agr:"Lengua extranjera", opt:true},
+  "1000053":{nom:"Inglés intensivo III y IV",sem:0,cr:6, comp:"P", agr:"Lengua extranjera", opt:true, req:[["1000045","1000049","1000052"]]},
+
+  /* --- Semestre I --- */
+  "1000011":{nom:"Fundamentos de ecología", sem:1, cr:3, comp:"B", agr:"Química y biología"},
+  "1000004":{nom:"Cálculo diferencial",     sem:1, cr:4, comp:"B", agr:MAT},
+  "1000024":{nom:"Principios de química",   sem:1, cr:3, comp:"B", agr:"Química y biología"},
+  "2015711":{nom:"Dibujo básico",           sem:1, cr:3, comp:"B", agr:"Expresión gráfica"},
+  "2026186":{nom:"Introducción a la ingeniería civil", sem:1, cr:3, comp:"C", agr:ICB},
+
+  /* --- Semestre II --- */
+  "1000003":{nom:"Álgebra lineal",          sem:2, cr:4, comp:"B", agr:MAT, req:["1000004"]},
+  "1000005":{nom:"Cálculo integral",        sem:2, cr:4, comp:"B", agr:MAT, req:["1000004"]},
+  "1000019":{nom:"Fundamentos de mecánica", sem:2, cr:4, comp:"B", agr:"Física", req:["1000004"]},
+
+  /* --- Semestre III --- */
+  "1000006":{nom:"Cálculo en varias variables", sem:3, cr:4, comp:"B", agr:MAT, req:["1000005"]},
+  "1000013":{nom:"Probabilidad y estadística fundamental", sem:3, cr:3, comp:"B", agr:MAT, req:["1000004"]},
+  "2026134":{nom:"Estática",                sem:3, cr:3, comp:"C", agr:ICB, req:["1000019","1000003"]},
+  "2015958":{nom:"Geomática básica",        sem:3, cr:4, comp:"C", agr:ICB, req:["2015711","2026186"]},
+  "2015703":{nom:"Ingeniería económica",    sem:3, cr:3, comp:"B", agr:"Economía y finanzas", req:["1000005"]},
+
+  /* --- Semestre IV --- */
+  "1000007":{nom:"Ecuaciones diferenciales",sem:4, cr:4, comp:"B", agr:MAT, req:["1000006","1000003"]},
+  "2015948":{nom:"Dinámica",                sem:4, cr:3, comp:"C", agr:ICB, req:["2026134"]},
+  "2015956":{nom:"Geología",                sem:4, cr:3, comp:"C", agr:ICB, req:["1000024"]},
+  "2015957":{nom:"Geomática aplicada",      sem:4, cr:4, comp:"C", agr:ICB, req:["2015958"]},
+
+  /* --- Semestre V --- */
+  "2015966":{nom:"Mecánica de fluidos",     sem:5, cr:4, comp:"C", agr:ICB, req:["1000007","1000006","2026134"]},
+  "2015968":{nom:"Mecánica de sólidos",     sem:5, cr:4, comp:"C", agr:ICB, req:["2015948","1000006"]},
+  "2015965":{nom:"Materiales para construcción", sem:5, cr:4, comp:"C", agr:ICB, req:["2015956"]},
+
+  /* --- Semestre VI --- */
+  "2015961":{nom:"Hidráulica básica",       sem:6, cr:4, comp:"C", agr:"Hidráulica", req:["2015966"]},
+  "2015978":{nom:"Hidrología",              sem:6, cr:3, comp:"C", agr:ICB, req:["2015966","1000013"]},
+  "2015941":{nom:"Análisis estructural básico", sem:6, cr:3, comp:"C", agr:"Estructuras", req:["2015968"]},
+  "2015969":{nom:"Mecánica de suelos",      sem:6, cr:3, comp:"C", agr:"Geotecnia", req:["2015968"]},
+  "2026138":{nom:"Ingeniería de transporte",sem:6, cr:3, comp:"C", agr:"Vías y transporte", req:["2015703","1000003"]},
+
+  /* --- Semestre VII --- */
+  "2015954":{nom:"Estructuras hidráulicas", sem:7, cr:3, comp:"C", agr:"Hidráulica", req:["2015961"]},
+  "2015938":{nom:"Acueductos",              sem:7, cr:3, comp:"C", agr:"Saneamiento básico", req:["2015961"]},
+  "2015940":{nom:"Análisis estructural aplicado", sem:7, cr:3, comp:"C", agr:"Estructuras", req:["2015941"]},
+  "2015959":{nom:"Geotecnia",               sem:7, cr:3, comp:"C", agr:"Geotecnia", req:["2015969"]},
+  "2015963":{nom:"Ingeniería de tránsito",  sem:7, cr:3, comp:"C", agr:"Vías y transporte", req:["2026138"]},
+
+  /* --- Semestre VIII --- */
+  "2015973":{nom:"Saneamiento ambiental",   sem:8, cr:3, comp:"C", agr:"Saneamiento básico", req:["2015938","1000011"]},
+  "2015939":{nom:"Alcantarillados",         sem:8, cr:3, comp:"C", agr:"Saneamiento básico", req:["2015938","2015978"]},
+  "2015950":{nom:"Diseño estructural",      sem:8, cr:3, comp:"C", agr:"Estructuras", req:["2015940","2015965"]},
+  "2015971":{nom:"Pavimentos",              sem:8, cr:3, comp:"C", agr:"Geotecnia", req:["2015959","2015965"]},
+  "2015949":{nom:"Diseño geométrico de vías", sem:8, cr:3, comp:"C", agr:"Vías y transporte", req:["2015963","2015957"]},
+
+  /* --- Semestre IX --- */
+  "2015955":{nom:"Fundamentos de construcción", sem:9, cr:3, comp:"C", agr:"Construcción", ca:{n:67, comp:"C"}},
+  "2026135":{nom:"Ingeniería civil sostenible", sem:9, cr:3, comp:"C", agr:ICB, ca:{n:77, comp:"C"}},
+  "2015972":{nom:"Preparación y evaluación de proyectos de infraestructura", sem:9, cr:3, comp:"B", agr:"Economía y finanzas", req:["2026138"]},
+
+  /* --- Semestre X --- */
+  "2015296":{nom:"Trabajo de grado",        sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", opt:true, ca:{n:77, comp:"C"}},
+  "2015299":{nom:"Trabajo de grado (posgrado MAPI)", sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", opt:true, ca:{n:77, comp:"C"}},
+
+  /* --- Optativas de Construcción de obras civiles (semestre X) --- */
+  "2015943":{nom:"Construcción de edificaciones", sem:10, cr:3, comp:"C", agr:"Construcción", opt:true, req:["2015955"]},
+  "2015944":{nom:"Construcción de infraestructura vial", sem:10, cr:3, comp:"C", agr:"Construcción", opt:true, req:["2015955"]},
+  "2015945":{nom:"Construcción de obras fluviales y litorales", sem:10, cr:3, comp:"C", agr:"Construcción", opt:true, req:["2015955"]},
+
+  /* --- Electiva técnica (semestre V): 28 créditos disciplinares --- */
+  "2015977":{nom:"Transporte sostenible",   sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2026136":{nom:"Tecnología del concreto", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2024045":{nom:"Taller de proyectos interdisciplinarios", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2015975":{nom:"Taller de experimentación y modelación", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2026137":{nom:"Pacificación del tráfico", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2015952":{nom:"Métodos numéricos para ingeniería civil", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2015967":{nom:"Mecánica de rocas",       sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2022760":{nom:"Gestión en construcción", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2015229":{nom:"Colombia contemporánea",  sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+  "2016183":{nom:"Análisis de incertidumbre en ingeniería civil", sem:6, cr:3, comp:"C", agr:"Electiva técnica", opt:true, ca:{n:28, comp:"C"}},
+
+  /* --- Herramientas de ingeniería: optativas "A" (sem II) y "B" (sem V) --- */
+  "2015734":{nom:"Programación de computadores", sem:2, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2016375":{nom:"Programación orientada a objetos", sem:2, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2025971":{nom:"Optimización",            sem:5, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2025970":{nom:"Modelos y simulación",    sem:5, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2017293":{nom:"Modelación matemática",   sem:5, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2015942":{nom:"Aplicación de elementos finitos", sem:5, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2015970":{nom:"Métodos numéricos",       sem:5, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+  "2022761":{nom:"SIG para ingeniería civil", sem:5, cr:3, comp:"B", agr:"Herramientas de ingeniería", opt:true},
+
+  /* --- Prácticas: 70 % del plan = 126 créditos --- */
+  "2016762":{nom:"Práctica estudiantil I",  sem:10, cr:3, comp:"C", agr:"Asignaturas especiales", opt:true, ca:{n:126, comp:"TOT"}},
+  "2016763":{nom:"Práctica estudiantil II", sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", opt:true, ca:{n:126, comp:"TOT"}},
+  "1000070":{nom:"Práctica Colombia I",     sem:10, cr:3, comp:"C", agr:"Asignaturas especiales", opt:true, ca:{n:126, comp:"TOT"}},
+  "1000071":{nom:"Práctica Colombia II",    sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", opt:true, ca:{n:126, comp:"TOT"}}
+};
+
+/* Créditos que exige el plan por componente (Acuerdo 026 de 2015). */
+const META = {B:48, C:96, L:36, TOT:180};
+const NOMBRE_COMP = {P:"Nivelación", B:"Fundamentación", C:"Disciplinar", L:"Libre elección"};
+const ROMANOS = ["Nivel.","I","II","III","IV","V","VI","VII","VIII","IX","X"];
+/* ================= Casillas del componente flexible =================
+   La malla dibuja 17 casillas que no tienen código fijo: las electivas de
+   libre elección y las optativas. Se listan aquí para que el avance incluya
+   los 36 créditos de libre elección, que si no quedarían siempre en 0.
+
+   Las que llevan `grupo` sí tienen asignaturas con código en el catálogo
+   (herramientas de ingeniería, electiva técnica, construcción de obras
+   civiles, trabajo de grado): esas se marcan solas cuando apruebas una de
+   ellas, y sus créditos los aporta la asignatura real, no la casilla, para no
+   contarlos dos veces. Las de libre elección no tienen código en ninguna
+   parte, así que se marcan a mano.
+
+   Suma de libre elección: 2+3+4+3+3+3 + 9 (prof. IX) + 6 (prof. X) + 3 = 36. */
+const RANURAS = [
+  {id:"ELEC1",  sem:1,  cr:2, comp:"L", agr:"Humanidades",                nom:"Electiva"},
+  {id:"ELEC2",  sem:2,  cr:3, comp:"L", agr:"Humanidades",                nom:"Electiva"},
+  {id:"ELEC4",  sem:4,  cr:4, comp:"L", agr:"Física",                     nom:"Electiva"},
+  {id:"ELEC5",  sem:5,  cr:3, comp:"L", agr:"Herramientas de ingeniería", nom:"Electiva"},
+  {id:"ELEC7",  sem:7,  cr:3, comp:"L", agr:"Electiva técnica",           nom:"Electiva"},
+  {id:"ELEC8",  sem:8,  cr:3, comp:"L", agr:"Economía y finanzas",        nom:"Electiva"},
+  {id:"ELEC10", sem:10, cr:3, comp:"L", agr:"Economía y finanzas",        nom:"Electiva"},
+  /* Electivas de profundización: 60 % del plan aprobado = 108 créditos */
+  {id:"PROF9A", sem:9,  cr:3, comp:"L", agr:"Profundización", nom:"Electiva de ing. civil", ca:{n:108, comp:"TOT"}},
+  {id:"PROF9B", sem:9,  cr:3, comp:"L", agr:"Profundización", nom:"Electiva de ing. civil", ca:{n:108, comp:"TOT"}},
+  {id:"PROF9C", sem:9,  cr:3, comp:"L", agr:"Profundización", nom:"Electiva de ing. civil", ca:{n:108, comp:"TOT"}},
+  {id:"PROF10A",sem:10, cr:3, comp:"L", agr:"Profundización", nom:"Electiva de ing. civil", ca:{n:108, comp:"TOT"}},
+  {id:"PROF10B",sem:10, cr:3, comp:"L", agr:"Profundización", nom:"Electiva de ing. civil", ca:{n:108, comp:"TOT"}},
+  /* Optativas: las cubre una asignatura con código del catálogo */
+  {id:"HERRA",  sem:2,  cr:3, comp:"B", agr:"Herramientas de ingeniería", nom:"Herramientas de ing. \u00abA\u00bb", grupo:"herr"},
+  {id:"HERRB",  sem:5,  cr:3, comp:"B", agr:"Herramientas de ingeniería", nom:"Herramientas de ing. \u00abB\u00bb", grupo:"herr"},
+  {id:"ETEC",   sem:6,  cr:3, comp:"C", agr:"Electiva técnica", nom:"Electiva técnica", grupo:"tec",   ca:{n:28, comp:"C"}},
+  {id:"COBRAS", sem:10, cr:3, comp:"C", agr:"Construcción", nom:"Construcción de obras civiles", grupo:"const"},
+  {id:"TGRADO", sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", nom:"Trabajo de grado", grupo:"grado", ca:{n:77, comp:"C"}}
+];
+const RANURA = Object.fromEntries(RANURAS.map(r=>[r.id, r]));
+const GRUPOS_RANURA = {
+  herr : ["2015734","2016375","2025971","2025970","2017293","2015942","2015970","2022761"],
+  tec  : ["2015977","2026136","2024045","2015975","2026137","2015952","2015967","2022760","2015229","2016183"],
+  const: ["2015943","2015944","2015945"],
+  grado: ["2015296","2015299"]
+};
+
+/* Tope de créditos por semestre. El SIA lo calcula con el PAPA; 24 es el
+   máximo habitual, así que solo sirve de alerta, no de bloqueo. */
+const TOPE_CREDITOS = 24;
+
+/* Los códigos del SIA traen sufijos de sede ("1000004-B"). El pensum se
+   indexa por el código pelado para que ambos casen. */
+const nc = c => String(c ?? "").trim().toUpperCase().replace(/-[A-Z0-9]$/,"");
+const plan = c => PENSUM[nc(c)] || null;
+
+/* Materias que dependen de una dada, para medir cuánto desbloquea aprobarla. */
+const DEPENDE_DE = (()=>{
+  const m = new Map();
+  for(const [cod,d] of Object.entries(PENSUM)){
+    for(const r of (d.req||[])) for(const p of [].concat(r)){
+      if(!m.has(p)) m.set(p, new Set());
+      m.get(p).add(cod);
+    }
+  }
+  return m;
+})();
+/* Cuántas materias se abren, directa o indirectamente, al aprobar una.
+   El grafo no cambia en toda la sesión, así que se memoiza: el ordenamiento
+   de la lista llama a esto una vez por comparación. */
+const CACHE_ALCANCE = new Map();
+function alcance(cod){
+  const c = nc(cod);
+  if(CACHE_ALCANCE.has(c)) return CACHE_ALCANCE.get(c);
+  const visto = new Set();
+  (function baja(x){
+    for(const h of (DEPENDE_DE.get(x) || [])){
+      if(visto.has(h)) continue;
+      visto.add(h); baja(h);
+    }
+  })(c);
+  CACHE_ALCANCE.set(c, visto.size);
+  return visto.size;
+}
+
+/* ================= Avance del estudiante ================= */
+const avanceAlmacen = {
+  leer(){ try{ return new Set(JSON.parse(localStorage.getItem("avanceUNAL")||"[]")); }catch(e){ return new Set(); } },
+  guardar(s){ try{ localStorage.setItem("avanceUNAL", JSON.stringify([...s])); }catch(e){} }
+};
+let APROBADAS = avanceAlmacen.leer();   // códigos pelados
+
+/* Qué asignatura real cubre cada casilla optativa. Si apruebas dos
+   herramientas de ingeniería, la primera llena la casilla "A" y la segunda
+   la "B"; el orden es el del plan, no importa cuál sea cuál. */
+function asignacionRanuras(){
+  const mapa = new Map();
+  for(const [g, cods] of Object.entries(GRUPOS_RANURA)){
+    const hechas = cods.filter(c => APROBADAS.has(c));
+    RANURAS.filter(r => r.grupo===g).forEach((r,i)=>{ if(hechas[i]) mapa.set(r.id, hechas[i]); });
+  }
+  return mapa;
+}
+
+/* Créditos aprobados por componente, contando asignaturas y casillas.
+   Una casilla optativa cubierta por una asignatura real NO suma: sus créditos
+   ya los aportó esa asignatura. */
+function creditosAprobados(){
+  const t = {P:0, B:0, C:0, L:0, TOT:0};
+  const cubiertas = asignacionRanuras();
+  for(const id of APROBADAS){
+    const d = PENSUM[id] || RANURA[id];
+    if(!d) continue;
+    if(RANURA[id] && cubiertas.has(id)) continue;
+    t[d.comp] = (t[d.comp]||0) + d.cr;
+    if(d.comp !== "P") t.TOT += d.cr;   // la nivelación no suma a los 180
+  }
+  return t;
+}
+
+/* Estado de una casilla flexible. Reutiliza el requisito por créditos de las
+   electivas de profundización (108) y del trabajo de grado (77 disciplinares). */
+function evaluarRanura(r, cubiertas){
+  const cubre = cubiertas.get(r.id) || null;
+  if(cubre) return {estado:"aprobada", cubre, ca:null};
+  if(APROBADAS.has(r.id)) return {estado:"aprobada", cubre:null, ca:null};
+  let ca = null;
+  if(r.ca){
+    const tengo = creditosAprobados()[r.ca.comp] || 0;
+    if(tengo < r.ca.n) ca = {...r.ca, tengo, faltan: r.ca.n - tengo};
+  }
+  return {estado: ca ? "bloqueada" : "libre", cubre:null, ca};
+}
+
+/* Códigos de las materias que están en el horario que se está armando. */
+const codigosSeleccion = () => new Set(seleccion.map(k => nc(k.split("|")[0])));
+
+/* Diagnóstico de una asignatura frente al plan.
+   estado: aprobada | libre | bloqueada | fuera (no está en el pensum) */
+function evaluar(codigo){
+  const cod = nc(codigo), d = PENSUM[cod];
+  if(!d) return {estado:"fuera", cod, faltan:[], simultaneas:[], ca:null};
+  if(APROBADAS.has(cod)) return {estado:"aprobada", cod, d, faltan:[], simultaneas:[], ca:null};
+
+  const enHorario = codigosSeleccion();
+  const faltan = [], simultaneas = [];
+  for(const r of (d.req||[])){
+    const ops = [].concat(r);
+    if(ops.some(o => APROBADAS.has(o))) continue;
+    // el prerrequisito está sin aprobar: ¿lo puso en el mismo semestre?
+    const choca = ops.find(o => enHorario.has(o));
+    if(choca) simultaneas.push(choca);
+    faltan.push(ops);
+  }
+  let ca = null;
+  if(d.ca){
+    const tengo = creditosAprobados()[d.ca.comp] || 0;
+    if(tengo < d.ca.n) ca = {...d.ca, tengo, faltan: d.ca.n - tengo};
+  }
+  const bloqueada = faltan.length > 0 || ca !== null;
+  return {estado: bloqueada ? "bloqueada" : "libre", cod, d, faltan, simultaneas, ca};
+}
+
+const nombrePlan = cod => (PENSUM[nc(cod)]?.nom) || (MATERIAS.get(cod)?.nombre) || cod;
+const listaOps = ops => [].concat(ops).map(nombrePlan).join(" o ");
+const textoCA = ca => `${ca.n} créditos ${ca.comp==="TOT" ? "del plan" : NOMBRE_COMP[ca.comp].toLowerCase()} aprobados (llevas ${ca.tengo}; faltan ${ca.faltan})`;
+
+const almacen = {
+  leer(){ try{ return JSON.parse(localStorage.getItem("miHorarioUNAL")||"[]"); }catch(e){ return []; } },
+  guardar(v){ try{ localStorage.setItem("miHorarioUNAL", JSON.stringify(v)); }catch(e){} }
+};
+
+/* ================= Estado ================= */
+let MATERIAS = new Map();   // codigo -> {codigo,nombre,creditos,tipologia,grupos:Map}
+let HISTORIAL = new Map();  // "codigo|grupo" -> [{t:Date, cupos:Number}]
+let seleccion = almacen.leer(); // ["codigo|grupo", ...]
+let grafico = null;
+let modoTend = "mis";
+let ultimaBusqueda = "";   // para no perder el scroll de la lista al repintar
+const ABIERTAS = new Set(); // materias que el usuario dejó desplegadas
+
+/* ================= Rango de tiempo =================
+   Igual que en las gráficas del dólar: los datos crudos no se tocan, solo se
+   recorta la ventana que se dibuja. Todo se mide contra la ÚLTIMA lectura del
+   historial (no contra Date.now()), para que el rango no se vacíe cuando el
+   workflow lleva un rato sin correr. */
+const RANGOS = {"1D":864e5, "1S":7*864e5, "1M":30*864e5, "4M":120*864e5, "max":Infinity};
+let rangoTend = (()=>{ try{ const v=localStorage.getItem("rangoTendUNAL"); return RANGOS[v]?v:"1M"; }catch(e){ return "1M"; } })();
+/* Rango escrito a mano con los dos campos de fecha. Cuando está puesto manda
+   sobre los botones; se guarda aparte para no ensuciar `rangoTend`. */
+let rangoPersonal = (()=>{
+  try{
+    const v = JSON.parse(localStorage.getItem("rangoPersonalUNAL")||"null");
+    return (v && v.desde < v.hasta) ? v : null;
+  }catch(e){ return null; }
+})();
+let T_INI = null, T_FIN = null;   // extremos del historial completo
+
+/* Los <input type="date"> hablan en hora local del navegador (para el caso de
+   uso, Bogotá). Se construyen a mano para no caer en el parseo UTC de
+   new Date("2026-08-01"), que correría el día cinco horas. */
+const deInputFecha = (str, finDeDia=false) => {
+  const [y,m,d] = String(str||"").split("-").map(Number);
+  if(!y || !m || !d) return null;
+  return finDeDia ? +new Date(y, m-1, d, 23, 59, 59, 999) : +new Date(y, m-1, d);
+};
+const aInputFecha = ts => {
+  const d = new Date(ts);
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+};
+
+function ventana(){
+  if(rangoPersonal) return {...rangoPersonal, personal:true};
+  const hasta = T_FIN ?? Date.now();
+  const span  = RANGOS[rangoTend];
+  let desde = span===Infinity ? (T_INI ?? hasta-864e5) : hasta-span;
+  if(!(desde < hasta)) desde = hasta - 864e5;   // un solo snapshot: evita min==max
+  return {desde, hasta, personal:false};
+}
+
+/* Recorta una serie a la ventana activa.
+   Si el grupo no tuvo lecturas dentro del rango pero sí antes, se ancla un
+   punto al inicio de la ventana con el último valor conocido; si no, la línea
+   arrancaría en el aire o desaparecería. Hacia la derecha NO se extrapola: una
+   lectura que faltó (NA) no es lo mismo que un cupo que no cambió. */
+function recortar(serie){
+  if(!serie || !serie.length) return [];
+  const {desde, hasta} = ventana();
+  if(desde <= +serie[0].t && hasta >= +serie[serie.length-1].t) return serie;
+  const dentro = serie.filter(p => +p.t >= desde && +p.t <= hasta);
+  let previo = null;
+  for(const p of serie){ if(+p.t < desde) previo = p; else break; }
+  if(previo) dentro.unshift({t:new Date(desde), cupos:previo.cupos, anclado:+previo.t});
+  return dentro;
+}
+
+/* Etiqueta del eje X según lo ancho que sea el rango. */
+function fmtEje(v){
+  const {desde, hasta, personal} = ventana();
+  const d = new Date(v);
+  const span = personal ? (hasta-desde)
+             : RANGOS[rangoTend]===Infinity ? (T_FIN-T_INI) : RANGOS[rangoTend];
+  const o = span <= 2*864e5  ? {hour:"2-digit", minute:"2-digit"}
+          : span <= 10*864e5 ? {day:"2-digit", month:"short", hour:"2-digit"}
+          :                    {day:"2-digit", month:"short"};
+  return d.toLocaleString("es-CO", {timeZone:"America/Bogota", ...o});
+}
+
+function marcarRangos(){
+  const disp = (T_FIN!=null && T_INI!=null) ? T_FIN-T_INI : 0;
+  for(const b of document.querySelectorAll("#rangoTend button")){
+    const r = b.dataset.r, span = RANGOS[r];
+    // Con un rango a mano ningún botón queda marcado: manda lo que se escribió
+    b.classList.toggle("activo", !rangoPersonal && r===rangoTend);
+    const corto = span!==Infinity && disp>0 && span>disp;
+    b.classList.toggle("corto", corto);
+    b.title = corto ? `El historial solo cubre ${Math.max(1,Math.round(disp/864e5))} d\u00eda(s); se ve todo lo que hay.` : "";
+  }
+  const {desde, hasta, personal} = ventana();
+  const p = $("#periodoTend");
+  if(p) p.textContent = (T_FIN==null) ? ""
+    : `${fmtFecha(new Date(desde))} \u2192 ${fmtFecha(new Date(hasta))}${personal?" · a medida":""}`;
+
+  // Los campos reflejan siempre la ventana activa, la haya puesto un botón o
+  // el propio usuario: así se ve qué días cubre cada atajo.
+  const ini = $("#fechaIni"), fin = $("#fechaFin");
+  if(ini && fin){
+    if(document.activeElement!==ini) ini.value = aInputFecha(desde);
+    if(document.activeElement!==fin) fin.value = aInputFecha(hasta);
+    if(T_INI!=null){ ini.min = fin.min = aInputFecha(T_INI); }
+    if(T_FIN!=null){ ini.max = fin.max = aInputFecha(T_FIN); }
+    $("#fechasTend").classList.toggle("activo", !!personal);
+  }
+}
+
+function fijarRango(r){
+  if(!RANGOS[r]) return;
+  rangoTend = r;
+  rangoPersonal = null;
+  try{ localStorage.removeItem("rangoPersonalUNAL"); }catch(e){}
+  try{ localStorage.setItem("rangoTendUNAL", r); }catch(e){}
+  marcarRangos();
+  refrescarSparklines();
+  pintarGrafico();
+}
+
+/* Aplica lo escrito en los campos de fecha. Si vienen al revés se intercambian
+   en vez de rechazarlas: es lo que el usuario quiso decir. El intercambio va
+   sobre las cadenas «AAAA-MM-DD» (que en ISO ordenan bien como texto) y no
+   sobre los instantes ya calculados: si no, el «23:59:59» del final acabaría
+   pegado al inicio y el rango perdería casi dos días. */
+function fijarRangoPersonal(){
+  let a = $("#fechaIni").value, b = $("#fechaFin").value;
+  if(!a || !b) return;                               // campo a medio llenar
+  if(a > b) [a, b] = [b, a];
+  const desde = deInputFecha(a), hasta = deInputFecha(b, true);
+  if(desde==null || hasta==null) return;
+  rangoPersonal = {desde, hasta};                    // un mismo día cubre sus 24 h
+  try{ localStorage.setItem("rangoPersonalUNAL", JSON.stringify(rangoPersonal)); }catch(e){}
+  marcarRangos();
+  refrescarSparklines();
+  pintarGrafico();
+}
+
+/* ================= Carga y modelo ================= */
+
+/* Vuelca las filas de un horarios*.csv en MATERIAS.
+   `libre` marca las que vienen de horarios_libre.csv (el barrido diario de
+   electivas). Si una asignatura ya llegó por el plan se ignora la versión
+   libre: la del plan trae la tipología correcta y su historial de cupos es el
+   de cada 30 min, no el de una vez al día. */
+function ingerirHorarios(filas, libre=false){
+  for(const f of filas){
+    const cod=f.codigo_asignatura; if(!cod) continue;
+    if(libre && MATERIAS.has(cod) && !MATERIAS.get(cod).libre) continue;
+    if(!MATERIAS.has(cod)) MATERIAS.set(cod,{codigo:cod,nombre:f.asignatura,creditos:f.creditos,tipologia:f.tipologia,libre,grupos:new Map()});
+    const m=MATERIAS.get(cod);
+    if(!m.grupos.has(f.grupo)) m.grupos.set(f.grupo,{grupo:f.grupo,profesores:f.profesores,cupos:numCupos(f.cupos_disponibles),sesiones:[],actividades:new Set()});
+    const g=m.grupos.get(f.grupo);
+    g.actividades.add(f.actividad||"");
+    if(f.dia && f.hora_inicio) g.sesiones.push({dia:f.dia.toUpperCase(),ini:aMin(f.hora_inicio),fin:aMin(f.hora_fin),salon:f.salon_nombre||f.salon||"",act:f.actividad||""});
+  }
+}
+
+/* Familias de componentes: grupos con la misma firma de actividades. */
+function calcularFamilias(materias){
+  for(const m of materias){
+    m.familias = new Map();
+    for(const g of m.grupos.values()){
+      g.fam = firmaDe(g.actividades);
+      if(!m.familias.has(g.fam))
+        m.familias.set(g.fam, {clave:g.fam, etiqueta:etiquetaFam(g.actividades), grupos:[]});
+      m.familias.get(g.fam).grupos.push(g.grupo);
+    }
+    /* ¿Hace falta inscribir varios grupos? Solo si NINGÚN grupo por sí solo
+       cubre todas las actividades de la asignatura.
+
+       Esto es lo que separa los dos patrones y además absorbe las erratas del
+       SIA. Fundamentos de mecánica tiene un grupo mal escrito, «(16) Gruop 16»,
+       que solo trae la magistral: si nos fiáramos del número de familias, la
+       asignatura entera parecería multicomponente y les pediríamos tres
+       inscripciones a los 28 grupos que ya vienen completos. Como existe un
+       grupo que cubre {magistral, taller, laboratorio}, la asignatura se
+       resuelve con un clic y la errata queda como una alternativa más.
+
+       Modelación matemática, en cambio, no tiene ningún grupo que traiga
+       teórica y magistral a la vez: ahí sí son dos inscripciones. */
+    const todasAct = new Set();
+    for(const g of m.grupos.values()) for(const a of g.actividades) todasAct.add(a);
+    m.multi = todasAct.size > 1 &&
+      ![...m.grupos.values()].some(g => g.actividades.size === todasAct.size);
+  }
+}
+
+/* ================= Libre elección: carga bajo demanda =================
+   horarios_libre.csv trae CIENTOS de asignaturas y pesa varias veces lo que
+   pesa el del plan. Cargarlo siempre castigaría a quien solo quiere ver su
+   semestre, así que se trae la primera vez que alguien pide verlas y se queda
+   en memoria: la recarga automática cada 10 min lo reutiliza sin volver a
+   descargarlo, porque el barrido de electivas es diario y no puede haber
+   cambiado. */
+let LIBRES = {estado:"no", filas:null, series:null, t:0};
+const LIBRES_TTL = 6*60*60*1000;
+
+async function asegurarLibres({repintar=true}={}){
+  if(LIBRES.estado==="cargando") return false;
+  if(!LIBRES.filas || Date.now()-LIBRES.t > LIBRES_TTL){
+    LIBRES.estado="cargando";
+    if(repintar) pintarLista();
+    try{
+      const [filas, doc] = await Promise.all([
+        cargarCSV("horarios_libre.csv"),
+        // El historial diario es un extra: si aún no existe, las electivas
+        // se muestran igual, solo que sin sparkline ni velocidad.
+        traer("series_libre.json").then(r=>r.json()).catch(()=>null),
+      ]);
+      LIBRES.filas = filas; LIBRES.series = doc; LIBRES.t = Date.now();
+    }catch(e){
+      LIBRES.estado="error";
+      if(repintar) pintarLista();
+      return false;
+    }
+  }
+  const antes = new Set(MATERIAS.keys());
+  ingerirHorarios(LIBRES.filas, true);
+  const nuevas = [...MATERIAS.values()].filter(m => !antes.has(m.codigo));
+  calcularFamilias(nuevas);
+  if(LIBRES.series && LIBRES.series.series)
+    for(const [k,v] of expandirSeries(LIBRES.series)) if(!HISTORIAL.has(k)) HISTORIAL.set(k, v);
+  for(const m of nuevas) for(const g of m.grupos.values()){
+    const h = HISTORIAL.get(`${m.codigo}|${g.grupo}`);
+    if(h && h.length) g.cupos = h[h.length-1].cupos;
+  }
+  COLORES = null;
+  LIBRES.estado = "listo";
+  if(repintar){ pintarLista(); pintarGenLista(); prepararTendencias(); }
+  return true;
+}
+
+/* Cuántas materias hay y de dónde salen. */
+function textoConteo(){
+  const total = MATERIAS.size;
+  const libres = [...MATERIAS.values()].filter(m=>m.libre).length;
+  if(LIBRES.estado==="cargando") return `${total-libres} del plan · cargando electivas…`;
+  if(LIBRES.estado==="error")    return `${total-libres} del plan · no pude leer las electivas`;
+  return libres ? `${total-libres} del plan · ${libres} de libre elección`
+                : `${total} materias`;
+}
+
+async function cargarDatos(){
+  const estado = $("#estado");
+  estado.innerHTML = '<span class="punto"></span>Cargando datos…';
+  try{
+    const [hor, hd] = await Promise.all([cargarCSV("horarios.csv"), cargarHistorial()]);
+
+    MATERIAS = new Map();
+    COLORES = null;
+    ingerirHorarios(hor, false);
+    calcularFamilias(MATERIAS.values());
+
+    HISTORIAL = hd.historial;
+    SNAPSHOTS = null;   // el reagrupado por corrida se recalcula
+    CACHE_DEMANDA.clear();
+    const nSnap = hd.nSnap;
+
+    // cupos vigentes = último snapshot si existe
+    for(const m of MATERIAS.values()) for(const g of m.grupos.values()){
+      const h=HISTORIAL.get(`${m.codigo}|${g.grupo}`);
+      if(h && h.length) g.cupos = h[h.length-1].cupos;
+    }
+
+    /* Las electivas se recargan ANTES de la limpieza de abajo. Si no, un
+       horario con una electiva perdería ese grupo en cada recarga: no estaría
+       en MATERIAS todavía y la limpieza lo tomaría por una materia difunta. */
+    const faltan = [...seleccion.map(k=>k.split("|")[0]), ...CANDIDATAS]
+      .some(c => !MATERIAS.has(c));
+    if(faltan || LIBRES.estado==="listo") await asegurarLibres({repintar:false});
+
+    // limpiar selecciones que ya no existen
+    seleccion = seleccion.filter(k=>{ const [c,g]=k.split("|"); return MATERIAS.has(c) && MATERIAS.get(c).grupos.has(g); });
+    almacen.guardar(seleccion);
+
+    let ult=null; for(const v of HISTORIAL.values()){ const f=v[v.length-1].t; if(!ult||f>ult) ult=f; }
+    let pri=null; for(const v of HISTORIAL.values()){ const f=v[0].t; if(!pri||f<pri) pri=f; }
+    T_FIN = ult ? +ult : null;  T_INI = pri ? +pri : null;
+    marcarRangos();
+    estado.innerHTML = `<span class="punto"></span>Actualizado: ${ult?fmtFecha(ult):"—"} <button id="btnRecargar" type="button">recargar</button>`;
+    $("#btnRecargar").addEventListener("click", cargarDatos);
+    $("#infoSnapshots").textContent = `${nSnap} snapshots · cada 30 min`;
+    $("#conteoMaterias").textContent = textoConteo();
+
+    pintarLista(); pintarHorario(); pintarAvance(); pintarCandidatas(); pintarGenLista(); prepararTendencias();
+    try{ pintarGrafico(); }catch(e){ msjLienzo("La gráfica falló al dibujarse. Recarga la página para intentar de nuevo."); }
+  }catch(e){
+    estado.innerHTML = '<span class="punto err"></span>Error al leer los CSV <button id="btnRecargar" type="button">reintentar</button>';
+    $("#btnRecargar").addEventListener("click", cargarDatos);
+  }
+}
+
+/* ================= Lista de materias ================= */
+/* El color sale del orden alfabético, pero se calcula UNA vez y las materias
+   del plan van primero. Antes se reordenaban todas las claves en cada llamada
+   —cientos de veces por repintado con las electivas cargadas— y, peor, al
+   traerlas cambiaba el color de media malla, porque cada código nuevo corría
+   los índices. */
+let COLORES = null;
+/* ================= Enlace a Los Estudiantes =================
+   No se copia ni un dato suyo: solo se arma la URL de la ficha del docente y
+   el usuario decide si va. Así las calificaciones nunca quedan desactualizadas
+   en este repositorio, y el tráfico va a quien mantiene esa base de datos.
+
+   Pon LOS_ESTUDIANTES en null para quitar los enlaces de toda la página.
+
+   El patrón de sus URLs es /universidad-nacional/professors/nombre-con-guiones,
+   así que basta con normalizar el nombre. Ojo: si el SIA escribe el nombre de
+   forma distinta a como está allí (un segundo apellido de más, un nombre de
+   pila que allí no aparece), el enlace acaba en un 404 suyo. Por eso el title
+   avisa de que la ficha puede no existir. */
+const LOS_ESTUDIANTES = "https://losestudiantes.com/universidad-nacional/professors/";
+
+/* El resto de la página interpola los textos del SIA tal cual, pero un nombre
+   dentro de un href y de un title sí necesita escaparse. */
+function esc(s){
+  return String(s??"").replace(/[&<>"']/g, c =>
+    ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+/* Los Estudiantes NO quita los diacríticos: su slug conserva tal cual lo que
+   tengan guardado. Comprobado en su propio sitio:
+
+     .../professors/fernando-eli-romero-ordo%C3%B1ez      <- ñ conservada
+     .../professors/anibal-alejandro-rojas-hern%C3%A1ndez <- á conservada
+     .../professors/pedro-jose-hernandez-castillo         <- sin tilde
+
+   Los dos últimos son el mismo apellido escrito de dos maneras, así que su
+   base de datos es inconsistente según quién escribió el nombre y NINGUNA
+   regla acierta siempre. Se conserva el nombre tal como lo escribe el SIA,
+   que es la única fuente fiable que hay. Afecta a 29 de los 204 docentes del
+   plan; si resulta que allí la mayoría está sin tildes, poner esto en true. */
+const QUITAR_TILDES = false;
+
+function babel(nombre){
+  const base = QUITAR_TILDES
+    ? nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    : nombre;
+  // \p{L} incluye ñ, á y demás: así solo se sustituyen espacios y signos.
+  return base.replace(/[^\p{L}\p{N}]+/gu, "-")
+    .replace(/^-+|-+$/g, "").replace(/-+/g, "-").toLowerCase();
+}
+
+/* Una casilla de profesores puede traer dos docentes separados por «;»
+   (pasa en 6 de las 194 del plan), y entonces hacen falta dos enlaces. */
+function partirDocentes(txt){
+  return (txt||"").split(/\s*[;/]\s*/).map(s=>s.trim()).filter(Boolean);
+}
+
+function enlacesDocentes(txt){
+  const nombres = partirDocentes(txt);
+  if(!LOS_ESTUDIANTES || !nombres.length) return esc(txt || "Sin profesor asignado");
+  return nombres.map(n =>
+    `<a class="prof-link" href="${LOS_ESTUDIANTES}${encodeURIComponent(babel(n))}" target="_blank"
+        rel="noopener noreferrer"
+        title="Ver calificaciones de ${esc(n)} en Los Estudiantes (puede que no tenga ficha)"
+     >${esc(n)}<span class="prof-flecha" aria-hidden="true">↗</span></a>`
+  ).join(" · ");
+}
+
+function colorDe(codigo){
+  if(!COLORES){
+    COLORES = new Map();
+    const plan = [...MATERIAS.values()].filter(m=>!m.libre).map(m=>m.codigo).sort();
+    plan.forEach((c,i)=> COLORES.set(c, PALETA[i % PALETA.length]));
+    const libres = [...MATERIAS.values()].filter(m=>m.libre).map(m=>m.codigo).sort();
+    libres.forEach((c,i)=> COLORES.set(c, PALETA[(plan.length+i) % PALETA.length]));
+  }
+  return COLORES.get(codigo) || PALETA[0];
+}
+function claseCupos(n){ return n===null?"sindato":(n<=0?"cero":(n<=3?"pocos":"ok")); }
+const textoCupos = n => n===null ? "sin dato" : `${n} cupos`;
+
+/* Redibuja solo los mini-gráficos: cambiar de rango no debe re-renderizar la
+   lista entera (se perdería el scroll y el texto del buscador). */
+function refrescarSparklines(){
+  for(const c of document.querySelectorAll("#listaMaterias canvas.spark")){
+    const fila = c.closest(".grupo");
+    if(fila && fila.dataset.k) sparkline(c, recortar(HISTORIAL.get(fila.dataset.k)));
+  }
+}
+
+function sparkline(canvas, datos){
+  const ctx=canvas.getContext("2d"), W=canvas.width=84*2, H=canvas.height=22*2;
+  canvas.style.width="84px"; canvas.style.height="22px";
+  ctx.clearRect(0,0,W,H);
+  if(!datos||datos.length<2) return;
+  const xs=datos.map(p=>+p.t), ys=datos.map(p=>p.cupos);
+  const x0=Math.min(...xs), x1=Math.max(...xs), y1=Math.max(...ys,1);
+  ctx.lineWidth=2.5; ctx.strokeStyle="#2B5DA8"; ctx.beginPath();
+  datos.forEach((p,i)=>{
+    const x=4+(W-8)*((+p.t-x0)/((x1-x0)||1));
+    const y=H-4-(H-8)*(p.cupos/y1);
+    i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+  });
+  ctx.stroke();
+  const u=datos[datos.length-1];
+  ctx.fillStyle=u.cupos<=0?"#B3372E":"#147A46";
+  ctx.beginPath(); ctx.arc(W-4,H-4-(H-8)*(u.cupos/y1),4,0,7); ctx.fill();
+}
+
+function pintarLista(){
+  const q = $("#busqueda").value.trim().toLowerCase();
+  const cont = $("#listaMaterias");
+  const desplazamiento = (q===ultimaBusqueda) ? cont.scrollTop : 0;
+  ultimaBusqueda = q;
+  cont.innerHTML="";
+
+  const orden = $("#orden").value;
+  const soloDisp = $("#soloDisponibles").checked;
+  const fuente = $("#fuente") ? $("#fuente").value : "plan";
+  /* Lo que ya está en el horario o en el generador se ve siempre, sin importar
+     el filtro: esconder un grupo que el usuario tiene inscrito sería mentirle
+     sobre su propio horario. */
+  const fijas = new Set([...seleccion.map(k=>k.split("|")[0]), ...CANDIDATAS]);
+  /* Las electivas son cientos y cada una dibuja sus grupos con su sparkline.
+     Pintarlas todas de una congela el navegador un par de segundos, así que se
+     muestran las primeras y el buscador hace el resto. */
+  const TOPE_LIBRES = 80;
+  let libresPintadas = 0, libresOcultas = 0;
+  /* Las que no están en el pensum (electivas de libre elección) van al final
+     cuando se ordena por semestre: no tienen un lugar fijo en la malla. */
+  const clave = m => { const d = plan(m.codigo); return d ? d.sem : 99; };
+  const materias = [...MATERIAS.values()].sort((a,b)=>{
+    if(orden==="alfabetico") return a.nombre.localeCompare(b.nombre,"es");
+    if(orden==="prioridad"){
+      const da = alcance(a.codigo), db = alcance(b.codigo);
+      if(da!==db) return db-da;
+      return clave(a)-clave(b) || a.nombre.localeCompare(b.nombre,"es");
+    }
+    return clave(a)-clave(b) || a.nombre.localeCompare(b.nombre,"es");
+  });
+
+  let ocultas = 0;
+  for(const m of materias){
+    if(!fijas.has(m.codigo)){
+      if(m.libre && fuente==="plan") continue;
+      if(!m.libre && fuente==="libre") continue;
+    }
+    const texto=`${m.nombre} ${m.codigo} ${[...m.grupos.values()].map(g=>g.profesores).join(" ")}`.toLowerCase();
+    if(q && !texto.includes(q)) continue;
+    if(m.libre && !fijas.has(m.codigo)){
+      if(libresPintadas >= TOPE_LIBRES){ libresOcultas++; continue; }
+      libresPintadas++;
+    }
+
+    const ev = evaluar(m.codigo);
+    if(soloDisp && (ev.estado==="bloqueada" || ev.estado==="aprobada")){ ocultas++; continue; }
+
+    const div=document.createElement("div");
+    div.className="materia"; div.dataset.cod=m.codigo;
+    if(ev.estado==="bloqueada") div.classList.add("bloqueada");
+    if(ev.estado==="aprobada") div.classList.add("aprobada");
+    if(q || ABIERTAS.has(m.codigo)) div.classList.add("abierta");
+
+    const btn=document.createElement("button");
+    btn.innerHTML=`<span class="flecha">▸</span><span class="cod">${m.codigo}</span><span class="nom">${m.nombre}</span>${selloDe(ev)}<span class="cred">${m.creditos} cr</span>`;
+    btn.addEventListener("click",()=>{
+      // el estado vive en ABIERTAS, no en el DOM: así ningún repintado
+      // (buscar, recargar los CSV, agregar un grupo) lo pierde
+      if(div.classList.toggle("abierta")) ABIERTAS.add(m.codigo);
+      else ABIERTAS.delete(m.codigo);
+    });
+    div.appendChild(btn);
+
+    const caja=document.createElement("div"); caja.className="grupos";
+    caja.appendChild(bloquePlan(m, ev));
+    if(m.multi){
+      caja.insertAdjacentHTML("beforeend",
+        `<div class="multi-aviso">Esta asignatura se inscribe por componentes: elige un grupo de <b>cada uno</b> de los ${m.familias.size}.</div>`);
+    }
+    let famActual = null;
+    for(const g of ordenarPorFamilia(m)){
+      if(m.multi && g.fam!==famActual){
+        famActual = g.fam;
+        const f = m.familias.get(g.fam);
+        caja.insertAdjacentHTML("beforeend",
+          `<div class="fam-cab">${f.etiqueta}<span>${f.grupos.length} grupo(s)</span></div>`);
+      }
+      const k=`${m.codigo}|${g.grupo}`;
+      const enSel=seleccion.includes(k);
+      const fila=document.createElement("div"); fila.className="grupo"; fila.dataset.k=k;
+      // Con varias actividades dentro del grupo, cada sesión dice cuál es
+      const varias = g.actividades.size>1;
+      const hor=g.sesiones.map(s=>
+        `${varias?etiquetaAct(s.act)+": ":""}${s.dia.slice(0,3)} ${deMin(s.ini)}–${deMin(s.fin)}${s.salon?" · "+s.salon:""}`).join("\n");
+      const st=statsGrupo(k);
+      let vel="";
+      if(st && st.vel7>0){
+        const dias=st.actual>0? Math.max(1, Math.ceil(st.actual/(st.vel7/7))) : 0;
+        vel=`<span class="vel" title="Cupos tomados en los últimos 7 días">▼${st.vel7} en 7d${(st.actual>0&&dias<=30)?` · ~${dias}d`:""}</span>`;
+      }else if(st && st.vel7<0){
+        vel=`<span class="vel sube" title="Cupos liberados en los últimos 7 días">▲${-st.vel7} en 7d</span>`;
+      }
+      fila.innerHTML=`
+        <div>
+          <div class="g-nom">${g.grupo}</div>
+          <div class="g-prof">${enlacesDocentes(g.profesores)}</div>
+          <div class="g-hor">${hor||"Sin horario publicado"}</div>
+        </div>
+        <div class="g-der">
+          <span class="cupos ${claseCupos(g.cupos)}">${textoCupos(g.cupos)}</span>
+          ${vel}
+          <canvas class="spark" aria-hidden="true"></canvas>
+          <button class="btnAdd ${enSel?"quitar":""}" type="button">${enSel?"Quitar":"Agregar"}</button>
+        </div>`;
+      sparkline(fila.querySelector("canvas"), recortar(HISTORIAL.get(k)));
+      fila.querySelector(".btnAdd").addEventListener("click",()=>alternar(k));
+      caja.appendChild(fila);
+    }
+    div.appendChild(caja);
+    cont.appendChild(div);
+  }
+  if(libresOcultas){
+    cont.insertAdjacentHTML("beforeend",
+      `<div class="tope-libres">Se muestran ${TOPE_LIBRES} electivas de las ${libresOcultas+TOPE_LIBRES} que hay. Busca por nombre, código o profesor para encontrar el resto.</div>`);
+  }
+  if($("#conteoMaterias")) $("#conteoMaterias").textContent = textoConteo();
+  if(!cont.children.length){
+    if(LIBRES.estado==="cargando" && fuente!=="plan")
+      cont.innerHTML = '<div class="vacio">Cargando las asignaturas de libre elección…</div>';
+    else if(LIBRES.estado==="error" && fuente!=="plan")
+      cont.innerHTML = '<div class="vacio">No pude leer <span class="mono">horarios_libre.csv</span>. Puede que el barrido diario de electivas todavía no haya corrido.</div>';
+    else cont.innerHTML = ocultas
+      ? `<div class="vacio">Ninguna materia disponible coincide con la búsqueda.<br>${ocultas} quedaron fuera por el filtro «solo las que ya puedo ver».</div>`
+      : '<div class="vacio">Ninguna materia coincide con la búsqueda.</div>';
+  }else if(ocultas){
+    cont.insertAdjacentHTML("beforeend", `<div class="vacio">${ocultas} materia(s) ocultas: ya las aprobaste o te falta un prerrequisito.</div>`);
+  }
+  cont.scrollTop = desplazamiento;
+}
+
+/* Grupos ordenados por familia, para poder titular cada bloque de componentes. */
+function ordenarPorFamilia(m){
+  const orden = [...m.familias.keys()];
+  return [...m.grupos.values()].sort((a,b)=>
+    orden.indexOf(a.fam)-orden.indexOf(b.fam) || a.grupo.localeCompare(b.grupo,"es",{numeric:true}));
+}
+
+/* Sello de estado que acompaña el nombre en la lista. */
+function selloDe(ev){
+  if(ev.estado==="fuera")    return `<span class="sello fuera" title="No está en el plan obligatorio: cuenta como libre elección">L</span>`;
+  const s = ROMANOS[ev.d.sem];
+  if(ev.estado==="aprobada") return `<span class="sello apro" title="La marcaste como aprobada">✓ ${s}</span>`;
+  if(ev.estado==="libre")    return `<span class="sello libre" title="Cumples los requisitos del plan">${s}</span>`;
+  return `<span class="sello bloq" title="Te falta un requisito">⚠ ${s}</span>`;
+}
+
+/* Explicación del estado frente al plan + botón para marcarla aprobada. */
+function bloquePlan(m, ev){
+  const caja = document.createElement("div");
+  caja.className = "plan";
+  const partes = [];
+
+  if(ev.estado==="fuera"){
+    partes.push(`<span class="cadena">No aparece en el plan obligatorio de Ingeniería Civil: se cuenta como libre elección.</span>`);
+  }else{
+    const d = ev.d;
+    partes.push(`<span class="cadena">${ROMANOS[d.sem]} · ${d.agr}${d.opt?" · optativa":""}</span>`);
+    if(ev.estado==="aprobada"){
+      partes.push(`<span class="hecho">✓ Ya la aprobaste.</span>`);
+    }else{
+      if(ev.faltan.length){
+        partes.push(`<span class="falta">Te falta aprobar:</span> ${ev.faltan.map(listaOps).join(", ")}.`);
+      }
+      if(ev.ca){
+        partes.push(`<span class="falta">Requisito por créditos:</span> ${textoCA(ev.ca)}.`);
+      }
+      if(ev.simultaneas.length){
+        partes.push(`<span class="falta">Ojo:</span> ${ev.simultaneas.map(nombrePlan).join(" y ")} ${ev.simultaneas.length>1?"están":"está"} en este mismo horario; el prerrequisito hay que aprobarlo <em>antes</em>, no en paralelo.`);
+      }
+      if(!ev.faltan.length && !ev.ca){
+        partes.push(`<span class="hecho">✓ Cumples los requisitos para inscribirla.</span>`);
+      }
+    }
+    const abre = alcance(m.codigo);
+    if(abre) partes.push(`<span class="cadena">Aprobarla habilita ${abre} asignatura(s) más adelante.</span>`);
+  }
+
+  caja.innerHTML = partes.join(" ") + `<div class="acciones"></div>`;
+  const acciones = caja.querySelector(".acciones");
+  if(ev.estado!=="fuera"){
+    const b = document.createElement("button");
+    const yaEsta = APROBADAS.has(ev.cod);
+    b.type="button"; b.textContent = yaEsta ? "✓ Aprobada — desmarcar" : "Marcar como aprobada";
+    b.classList.toggle("marcada", yaEsta);
+    b.addEventListener("click", ()=>alternarAprobada(ev.cod));
+    acciones.appendChild(b);
+  }
+  // Cualquier materia del catálogo puede entrar al generador, esté o no en el plan
+  const c = document.createElement("button");
+  const candidata = CANDIDATAS.has(m.codigo);
+  c.type="button"; c.textContent = candidata ? "✓ En el generador — quitar" : "Incluir en el generador";
+  c.classList.toggle("marcada", candidata);
+  c.addEventListener("click", ()=>alternarCandidata(m.codigo));
+  acciones.appendChild(c);
+  return caja;
+}
+
+/* Marca/desmarca los botones sin reconstruir la lista: así la materia
+   desplegada sigue desplegada, no salta el scroll y no se redibujan
+   todas las sparklines en cada clic. */
+function actualizarBotones(){
+  for(const fila of document.querySelectorAll("#listaMaterias .grupo")){
+    const enSel = seleccion.includes(fila.dataset.k);
+    const b = fila.querySelector(".btnAdd");
+    if(!b) continue;
+    b.classList.toggle("quitar", enSel);
+    b.textContent = enSel ? "Quitar" : "Agregar";
+  }
+}
+
+/* Familia a la que pertenece un grupo ya seleccionado. */
+function famDe(k){
+  const [cod,gn] = k.split("|");
+  return MATERIAS.get(cod)?.grupos.get(gn)?.fam ?? null;
+}
+
+function alternar(k){
+  const [cod,gn]=k.split("|");
+  if(seleccion.includes(k)) seleccion=seleccion.filter(x=>x!==k);
+  else{
+    // Nada de diálogos: si le falta un requisito queda anotado, discreto,
+    // en las notas del plan. Puede haber homologaciones que aquí no constan.
+    // Un grupo por familia: los componentes de una misma asignatura (magistral,
+    // taller, laboratorio…) conviven; las alternativas del mismo componente no.
+    const fam = MATERIAS.get(cod)?.grupos.get(gn)?.fam ?? null;
+    seleccion = seleccion.filter(x => x.split("|")[0]!==cod || famDe(x)!==fam);
+    seleccion.push(k);
+  }
+  almacen.guardar(seleccion);
+  actualizarBotones(); pintarHorario(); pintarAvance();
+  if(modoTend==="mis") pintarGrafico();
+}
+
+function alternarAprobada(cod){
+  cod = nc(cod);
+  if(APROBADAS.has(cod)) APROBADAS.delete(cod); else APROBADAS.add(cod);
+  avanceAlmacen.guardar(APROBADAS);
+  pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista();
+}
+
+/* ================= Grilla semanal ================= */
+function sesionesSeleccion(){
+  const out=[];
+  for(const k of seleccion){
+    const [c,gn]=k.split("|"); const m=MATERIAS.get(c); if(!m) continue;
+    const g=m.grupos.get(gn); if(!g) continue;
+    const varias = g.actividades && g.actividades.size>1;
+    for(const s of g.sesiones) out.push({...s, k, nombre:m.nombre, grupo:gn, color:colorDe(c),
+      etq: (varias || (m.multi && s.act)) ? etiquetaAct(s.act) : ""});
+  }
+  return out;
+}
+
+function pintarHorario(){
+  const ses=sesionesSeleccion();
+  // créditos
+  const cred=[...new Set(seleccion.map(k=>k.split("|")[0]))].reduce((t,c)=>t+Number(MATERIAS.get(c)?.creditos||0),0);
+  $("#totalCreditos").textContent=`${cred} créditos`;
+
+  // chips
+  const chips=$("#chips"); chips.innerHTML="";
+  if(!seleccion.length) chips.innerHTML='<span style="color:var(--tinta-suave);font-size:.85rem">Agrega grupos desde la lista de asignaturas.</span>';
+  for(const k of seleccion){
+    const [c,g]=k.split("|"); const m=MATERIAS.get(c); if(!m) continue;
+    const fam = m.multi ? m.familias.get(m.grupos.get(g)?.fam) : null;
+    const chip=document.createElement("span"); chip.className="chip";
+    chip.innerHTML=`<i style="background:${colorDe(c)}"></i>${m.nombre}${fam?` <b>${fam.etiqueta}</b>`:""} · ${g}<button type="button" aria-label="Quitar ${m.nombre}">✕</button>`;
+    chip.querySelector("button").addEventListener("click",()=>alternar(k));
+    chips.appendChild(chip);
+  }
+
+  // conflictos
+  const choques=new Set(); const pares=[];
+  for(let i=0;i<ses.length;i++) for(let j=i+1;j<ses.length;j++){
+    const a=ses[i],b=ses[j];
+    if(a.k!==b.k && a.dia===b.dia && a.ini<b.fin && b.ini<a.fin){
+      choques.add(i); choques.add(j);
+      pares.push(`${a.nombre} y ${b.nombre} se cruzan el ${a.dia.toLowerCase()} ${deMin(Math.max(a.ini,b.ini))}–${deMin(Math.min(a.fin,b.fin))}`);
+    }
+  }
+  const aviso=$("#avisoConflicto");
+  aviso.classList.toggle("visible",pares.length>0);
+  aviso.textContent = pares.length? "⚠ Conflicto de horario: "+[...new Set(pares)].join(" · ") : "";
+
+  pintarAvisosPlan(cred);
+
+  // rango horario
+  let minH=7*60, maxH=17*60;
+  for(const s of ses){ minH=Math.min(minH,s.ini); maxH=Math.max(maxH,s.fin); }
+  minH=Math.floor(minH/60)*60; maxH=Math.ceil(maxH/60)*60;
+  const total=maxH-minH, ALTO=Math.max(440, total/60*44);
+
+  const gr=$("#grilla"); gr.innerHTML="";
+  gr.insertAdjacentHTML("beforeend",'<div class="esquina">HORA</div>'+DIAS.map(d=>`<div class="dia">${d.slice(0,3)}</div>`).join(""));
+
+  const regla=document.createElement("div"); regla.className="reglilla"; regla.style.height=ALTO+"px";
+  for(let h=minH+60; h<maxH; h+=60){
+    const s=document.createElement("span"); s.textContent=deMin(h); s.style.top=((h-minH)/total*100)+"%"; regla.appendChild(s);
+  }
+  gr.appendChild(regla);
+
+  for(const d of DIAS){
+    const col=document.createElement("div"); col.className="columna";
+    col.style.height=ALTO+"px";
+    col.style.setProperty("--paso-hora",(60/total*ALTO)+"px");
+    ses.forEach((s,i)=>{
+      if(s.dia!==d) return;
+      const b=document.createElement("div"); b.className="bloque"+(choques.has(i)?" choque":"");
+      b.style.top=((s.ini-minH)/total*100)+"%";
+      b.style.height=((s.fin-s.ini)/total*100)+"%";
+      b.style.borderColor=s.color; b.style.background=s.color+"1A"; b.style.color=s.color;
+      b.title=`${s.nombre}${s.etq?" · "+s.etq:""} ${s.grupo} · ${deMin(s.ini)}–${deMin(s.fin)}${s.salon?" · "+s.salon:""}`;
+      b.innerHTML=`<b>${s.nombre}</b>${s.etq?`<span class="etq">${s.etq}</span>`:""}<span class="mono">${deMin(s.ini)}–${deMin(s.fin)}${s.salon?"<br>"+s.salon:""}</span>`;
+      col.appendChild(b);
+    });
+    gr.appendChild(col);
+  }
+
+  pintarDetalleImpresion();
+  actualizarInsignias();
+}
+
+/* Tabla que solo aparece en la hoja impresa: útil para transcribir al SIA */
+/* ================= Coherencia del horario con el plan =================
+   Tres cosas que la grilla sola no ve:
+   1. materias cuyo prerrequisito todavía no está aprobado;
+   2. prerrequisito y consecuencia inscritos en el MISMO semestre
+      (p. ej. Cálculo integral junto con Cálculo en varias variables);
+   3. requisitos por créditos acumulados y tope de carga del semestre. */
+function pintarAvisosPlan(creditos){
+  const caja = $("#avisoPlan");
+  const cods = [...codigosSeleccion()];
+  const lineas = [];
+
+  for(const cod of cods){
+    const ev = evaluar(cod);
+    if(ev.estado!=="bloqueada") continue;
+    const nom = `<b>${ev.d.nom}</b>`;
+    if(ev.simultaneas.length){
+      lineas.push(`${nom} y ${ev.simultaneas.map(nombrePlan).join(", ")} están en el mismo semestre, pero ${ev.simultaneas.length>1?"son prerrequisitos":"es prerrequisito"}: hay que aprobarlo antes.`);
+    }
+    const soloFaltan = ev.faltan.filter(ops => ![].concat(ops).some(o=>ev.simultaneas.includes(o)));
+    if(soloFaltan.length){
+      lineas.push(`${nom}: te falta aprobar ${soloFaltan.map(listaOps).join(", ")}.`);
+    }
+    if(ev.ca) lineas.push(`${nom}: exige ${textoCA(ev.ca)}.`);
+  }
+
+  // Componentes sin elegir: con Modelación matemática, tener solo la teórica
+  // no basta; la magistral es una inscripción aparte.
+  const porMat = new Map();
+  for(const k of seleccion){
+    const [c,gn] = k.split("|");
+    if(!porMat.has(c)) porMat.set(c, new Set());
+    const f = MATERIAS.get(c)?.grupos.get(gn)?.fam;
+    if(f) porMat.get(c).add(f);
+  }
+  for(const [c, fams] of porMat){
+    const m = MATERIAS.get(c);
+    if(!m || !m.multi) continue;
+    const faltan = [...m.familias.values()].filter(f => !fams.has(f.clave));
+    if(faltan.length)
+      lineas.push(`<b>${m.nombre}</b> se inscribe por componentes y te falta elegir ${faltan.map(f=>f.etiqueta.toLowerCase()).join(" y ")}.`);
+  }
+
+  const fuera = cods.filter(c => !PENSUM[c]).length;
+  if(fuera) lineas.push(`${fuera} asignatura(s) del horario no están en el plan obligatorio: cuentan como libre elección. Te faltan ${Math.max(0, META.L - creditosAprobados().L)} de los ${META.L} créditos L; marca la casilla del semestre que corresponda cuando las apruebes.`);
+
+  if(creditos > TOPE_CREDITOS){
+    lineas.push(`Vas en <b>${creditos} créditos</b>. El SIA calcula el tope con tu PAPA y rara vez pasa de ${TOPE_CREDITOS}; revisa que te los permita.`);
+  }
+
+  // Un renglón discreto y plegado: el que quiera el detalle lo abre.
+  // Se mantiene abierto si el usuario ya lo había desplegado.
+  const abierto = caja.open;
+  caja.classList.toggle("visible", lineas.length>0);
+  caja.innerHTML = lineas.length
+    ? `<summary>${lineas.length} ${lineas.length===1?"nota":"notas"} sobre el orden del plan</summary>`+
+      `<ul>${lineas.map(l=>`<li>${l}</li>`).join("")}</ul>`
+    : "";
+  caja.open = abierto;
+}
+
+/* ================= Mini-malla y avance ================= */
+function pintarAvance(){
+  const cont = $("#malla"); if(!cont) return;
+  const t = creditosAprobados();
+  const enHorario = codigosSeleccion();
+  const cubiertas = asignacionRanuras();
+
+  // Barras por componente
+  const barras = $("#barrasAvance");
+  barras.innerHTML = ["B","C","L","TOT"].map(c=>{
+    const rot = c==="TOT" ? "Total del plan" : NOMBRE_COMP[c];
+    const val = t[c]||0, meta = META[c];
+    const pct = Math.min(100, meta ? val/meta*100 : 0);
+    return `<div class="barra comp-${c}">
+      <div class="rot"><span>${rot}</span><b>${val}/${meta}</b></div>
+      <div class="riel"><div class="relleno" style="width:${pct}%"></div></div>
+    </div>`;
+  }).join("");
+  const hechas = [...APROBADAS].filter(id => PENSUM[id] || RANURA[id]).length + cubiertas.size
+                 - [...cubiertas.keys()].filter(id => APROBADAS.has(id)).length;
+  $("#resumenAvance").textContent = `${t.TOT} de ${META.TOT} créditos · ${hechas} casillas cubiertas`;
+  actualizarInsignias();
+
+  // Mini-malla: una columna por semestre, con asignaturas y casillas flexibles
+  const porSem = new Map();
+  const mete = (sem, item) => { if(!porSem.has(sem)) porSem.set(sem, []); porSem.get(sem).push(item); };
+  for(const [cod,d] of Object.entries(PENSUM)){
+    if(d.opt) continue;             // las optativas viven en su casilla flexible
+    mete(d.sem, {tipo:"asig", cod, d});
+  }
+  for(const r of RANURAS) mete(r.sem, {tipo:"ranura", r});
+
+  cont.innerHTML="";
+  for(let s=0; s<=10; s++){
+    const col=document.createElement("div"); col.className="col";
+    col.insertAdjacentHTML("beforeend", `<div class="cab">${s===0?"NIVEL.":"SEM "+ROMANOS[s]}</div>`);
+    // las asignaturas con código van primero; las casillas flexibles, al final
+    const items = (porSem.get(s)||[]).slice().sort((a,b)=>{
+      if(a.tipo!==b.tipo) return a.tipo==="asig" ? -1 : 1;
+      const na = a.tipo==="asig" ? a.d.nom : a.r.nom;
+      const nb = b.tipo==="asig" ? b.d.nom : b.r.nom;
+      return na.localeCompare(nb,"es");
+    });
+    for(const it of items){
+      col.appendChild(it.tipo==="asig"
+        ? cajaAsignatura(it.cod, it.d, enHorario)
+        : cajaRanura(it.r, cubiertas, enHorario));
+    }
+    cont.appendChild(col);
+  }
+}
+
+function cajaAsignatura(cod, d, enHorario){
+  const ev = evaluar(cod);
+  const b = document.createElement("button");
+  b.type="button"; b.className=`caja comp-${d.comp}`;
+  b.classList.add(ev.estado==="aprobada" ? "ok" : ev.estado==="libre" ? "lista" : "bloq");
+  if(enHorario.has(cod)) b.classList.add("encurso");
+  b.innerHTML=`<span class="n">${d.nom}</span><span class="c">${cod} · ${d.cr} cr</span>`;
+  b.title = ev.estado==="aprobada" ? "Aprobada — clic para desmarcar"
+    : ev.faltan.length ? "Falta: " + ev.faltan.map(listaOps).join(", ")
+    : ev.ca ? "Falta: " + textoCA(ev.ca)
+    : "Puedes inscribirla";
+  b.addEventListener("click", ()=>alternarAprobada(cod));
+  return b;
+}
+
+function cajaRanura(r, cubiertas, enHorario){
+  const ev = evaluarRanura(r, cubiertas);
+  const b = document.createElement("button");
+  b.type="button"; b.className=`caja ranura comp-${r.comp}`;
+  b.classList.add(ev.estado==="aprobada" ? "ok" : ev.estado==="libre" ? "lista" : "bloq");
+  // ¿hay en el horario una materia que podría llenar esta casilla?
+  const candidatas = GRUPOS_RANURA[r.grupo] || [];
+  if(r.grupo && [...enHorario].some(c => candidatas.includes(c))) b.classList.add("encurso");
+
+  const pie = ev.cubre
+    ? `<span class="c">${nombrePlan(ev.cubre)}</span>`
+    : `<span class="c">${r.agr} · ${r.cr} cr</span>`;
+  b.innerHTML = `<span class="n">${r.nom}</span>${pie}`;
+
+  if(ev.cubre){
+    b.title = `Cubierta por ${nombrePlan(ev.cubre)} (${ev.cubre}). Desmárcala desde su propia casilla o desde la lista.`;
+    b.disabled = true;
+  }else{
+    b.title = ev.estado==="aprobada" ? "Marcada — clic para desmarcar"
+      : ev.ca ? "Falta: " + textoCA(ev.ca)
+      : r.grupo ? "Se marca sola al aprobar una asignatura del grupo, o márcala a mano"
+      : "Márcala cuando apruebes una electiva que ocupe esta casilla";
+    b.addEventListener("click", ()=>alternarAprobada(r.id));
+  }
+  return b;
+}
+
+/* Atajo: dar por cubierto todo lo del plan hasta cierto semestre, casillas
+   flexibles incluidas. Las optativas con código se dejan quietas: la casilla
+   ya las representa y marcarlas duplicaría el conteo. */
+function aprobarHasta(sem){
+  for(const [cod,d] of Object.entries(PENSUM)) if(!d.opt && d.sem<=sem) APROBADAS.add(cod);
+  for(const r of RANURAS) if(r.sem<=sem) APROBADAS.add(r.id);
+  avanceAlmacen.guardar(APROBADAS);
+  pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista();
+}
+
+function pintarDetalleImpresion(){
+  const cuerpo=$("#cuerpoImpresion"); if(!cuerpo) return;
+  const filas=[];
+  for(const k of seleccion){
+    const [c,gn]=k.split("|"); const m=MATERIAS.get(c); if(!m) continue;
+    const g=m.grupos.get(gn); if(!g) continue;
+    const hor=g.sesiones.map(s=>`${s.dia.slice(0,3)} ${deMin(s.ini)}–${deMin(s.fin)}`).join("<br>")||"—";
+    const sal=[...new Set(g.sesiones.map(s=>s.salon).filter(Boolean))].join(", ")||"—";
+    filas.push({nombre:m.nombre, html:`<tr>
+      <td class="mono">${m.codigo}</td><td>${m.nombre}</td>
+      <td class="mono">${m.creditos||"?"}</td><td class="mono">${gn}</td>
+      <td>${enlacesDocentes(g.profesores)}</td>
+      <td class="mono">${hor}</td><td class="mono">${sal}</td></tr>`});
+  }
+  filas.sort((a,b)=>a.nombre.localeCompare(b.nombre,"es"));
+  cuerpo.innerHTML = filas.map(f=>f.html).join("") ||
+    '<tr><td colspan="7">Todavía no hay grupos en el horario.</td></tr>';
+  const fecha=new Date().toLocaleDateString("es-CO",{day:"2-digit",month:"long",year:"numeric"});
+  $("#metaImpresion").textContent =
+    `${filas.length} ${filas.length===1?"grupo":"grupos"} · ${$("#totalCreditos").textContent} · impreso el ${fecha}`;
+}
+
+/* ================= Resumen por snapshot =================
+   El historial viene por grupo, no por corrida. Para poder preguntar «¿qué
+   cambió en la lectura de las 6 de la tarde?» hay que reagruparlo: se juntan
+   en una misma corrida todos los puntos cuyos instantes están pegados. El
+   workflow corre cada 30 minutos y un barrido tarda unos pocos, así que un
+   hueco de más de 12 minutos marca corrida nueva sin ambigüedad. */
+const SNAP_UMBRAL = 12*60000;
+let SNAPSHOTS = null;      // se reconstruye con cada carga de datos
+let snapSel = null;        // instante del snapshot que se está mirando
+
+function construirSnapshots(){
+  if(SNAPSHOTS) return SNAPSHOTS;
+  const todos = [];
+  for(const [k, serie] of HISTORIAL) for(const p of serie) todos.push({k, t:+p.t, c:p.cupos});
+  todos.sort((a,b)=>a.t-b.t);
+
+  const runs = [];
+  for(const p of todos){
+    let r = runs[runs.length-1];
+    if(!r || p.t - r.fin > SNAP_UMBRAL){ r = {ini:p.t, fin:p.t, puntos:new Map()}; runs.push(r); }
+    else r.fin = p.t;
+    r.puntos.set(p.k, p.c);
+  }
+
+  /* Los cambios se miden contra el último valor conocido de cada grupo, no
+     contra la corrida inmediatamente anterior: un grupo puede haberse quedado
+     sin lectura (NA) y eso no es un cambio de cupos. */
+  const ultimo = new Map();
+  for(const r of runs){
+    r.t = r.ini;
+    r.cambios = []; r.nuevos = 0;
+    for(const [k,c] of r.puntos){
+      const prev = ultimo.get(k);
+      if(prev === undefined) r.nuevos++;
+      else if(prev !== c) r.cambios.push({k, antes:prev, ahora:c, d:c-prev});
+      ultimo.set(k, c);
+    }
+    r.sinLectura = ultimo.size - r.puntos.size;
+    r.estables = r.puntos.size - r.cambios.length - r.nuevos;
+    r.tomados   = r.cambios.reduce((t,c)=>t + (c.d<0 ? -c.d : 0), 0);
+    r.liberados = r.cambios.reduce((t,c)=>t + (c.d>0 ?  c.d : 0), 0);
+    r.materias  = new Set(r.cambios.map(c=>c.k.split("|")[0])).size;
+  }
+  SNAPSHOTS = runs;
+  return runs;
+}
+
+const nombreDe = cod => MATERIAS.get(cod)?.nombre || cod;
+
+function pintarSnapshots(){
+  const todos = construirSnapshots();
+  const {desde, hasta} = ventana();
+  // El rango de fechas de arriba también filtra esta lista: es el mismo eje
+  const snaps = todos.filter(s => s.t>=desde && s.t<=hasta);
+  const sel = $("#selSnap"), lista = $("#snapLista"), meta = $("#snapMeta");
+
+  if(!snaps.length){
+    sel.innerHTML = ""; sel.disabled = true;
+    $("#snapPrev").disabled = $("#snapNext").disabled = true;
+    meta.textContent = "";
+    lista.innerHTML = `<div class="snap-nada">No hay snapshots en el rango elegido.${todos.length?` El historial tiene ${todos.length}; prueba a ampliar las fechas.`:""}</div>`;
+    return;
+  }
+  sel.disabled = false;
+
+  // por defecto, el más reciente del rango
+  if(snapSel==null || !snaps.some(s=>s.t===snapSel)) snapSel = snaps[snaps.length-1].t;
+  const i = snaps.findIndex(s=>s.t===snapSel);
+  const s = snaps[i];
+
+  sel.innerHTML = snaps.map((x,j)=>{
+    const n = x.cambios.length;
+    return `<option value="${x.t}"${x.t===snapSel?" selected":""}>${fmtFecha(new Date(x.t))} · ${n?`${n} cambio(s)`:"sin cambios"}</option>`;
+  }).reverse().join("");
+  $("#snapPrev").disabled = (i===0);
+  $("#snapNext").disabled = (i===snaps.length-1);
+
+  meta.innerHTML =
+    `<b>${s.cambios.length}</b> grupo(s) en <b>${s.materias}</b> asignatura(s) · ` +
+    `<span class="baja">▼${s.tomados}</span> tomados · <span class="sube">▲${s.liberados}</span> liberados · ` +
+    `${s.estables} sin cambio` +
+    (s.nuevos ? ` · ${s.nuevos} nuevos` : "") +
+    (s.sinLectura ? ` · ${s.sinLectura} sin lectura` : "");
+
+  if(!s.cambios.length){
+    lista.innerHTML = `<div class="snap-nada">En esta corrida ningún grupo movió sus cupos.<br>Se leyeron ${s.puntos.size} grupos.</div>`;
+    return;
+  }
+
+  // agrupar por asignatura y ordenar por cuánto se movió cada una
+  const porMat = new Map();
+  for(const c of s.cambios){
+    const cod = c.k.split("|")[0];
+    if(!porMat.has(cod)) porMat.set(cod, []);
+    porMat.get(cod).push(c);
+  }
+  const mats = [...porMat.entries()]
+    .map(([cod, cs])=>({cod, cs: cs.sort((a,b)=>Math.abs(b.d)-Math.abs(a.d)),
+                        neto: cs.reduce((t,c)=>t+c.d,0),
+                        mov: cs.reduce((t,c)=>t+Math.abs(c.d),0)}))
+    .sort((a,b)=> b.mov-a.mov || nombreDe(a.cod).localeCompare(nombreDe(b.cod),"es"));
+
+  lista.innerHTML = "";
+  for(const m of mats){
+    const div = document.createElement("div"); div.className = "snap-mat";
+    const signo = m.neto<0 ? "baja" : m.neto>0 ? "sube" : "";
+    const cab = document.createElement("button");
+    cab.type = "button"; cab.className = "snap-cab";
+    cab.title = "Ver la tendencia de esta asignatura";
+    cab.innerHTML = `<i style="background:${MATERIAS.has(m.cod)?colorDe(m.cod):"#B7CDBB"}"></i>` +
+      `<b>${nombreDe(m.cod)}</b>` +
+      `<span class="tot ${signo}">${m.neto>0?"+":""}${m.neto} cupos</span>`;
+    cab.addEventListener("click", ()=>{
+      if(!MATERIAS.has(m.cod)) return;
+      $("#selMateria").value = m.cod;
+      fijarModo("materia");
+    });
+    div.appendChild(cab);
+    for(const c of m.cs){
+      const g = c.k.slice(m.cod.length+1);
+      const cl = c.d<0 ? "baja" : "sube";
+      div.insertAdjacentHTML("beforeend",
+        `<div class="snap-fila"><span class="g">${g}</span>` +
+        `<span class="d ${cl}">${c.antes} → ${c.ahora} <span class="flecha">${c.d<0?"▼":"▲"}${Math.abs(c.d)}</span></span></div>`);
+    }
+    lista.appendChild(div);
+  }
+}
+
+function moverSnapshot(paso){
+  const {desde, hasta} = ventana();
+  const snaps = construirSnapshots().filter(s => s.t>=desde && s.t<=hasta);
+  const i = snaps.findIndex(s=>s.t===snapSel);
+  const j = i + paso;
+  if(j<0 || j>=snaps.length) return;
+  snapSel = snaps[j].t;
+  pintarSnapshots();
+}
+
+/* ================= Tendencias (Chart.js) ================= */
+function prepararTendencias(){
+  const sel=$("#selMateria"); sel.innerHTML="";
+  // Una electiva recién raspada puede no tener todavía ni un punto de
+  // historial; ofrecerla aquí solo lleva a una gráfica vacía.
+  const conDatos = m => !m.libre ||
+    [...m.grupos.keys()].some(g => HISTORIAL.has(`${m.codigo}|${g}`));
+  for(const m of [...MATERIAS.values()].filter(conDatos).sort((a,b)=>a.nombre.localeCompare(b.nombre))){
+    const o=document.createElement("option"); o.value=m.codigo; o.textContent=`${m.nombre} (${m.codigo})`;
+    sel.appendChild(o);
+  }
+}
+
+/* ================= Generador de horarios =================
+   Producto cartesiano de los grupos de cada materia candidata, podado con
+   backtracking: en cuanto un grupo choca con lo ya elegido se corta la rama,
+   así no hay que enumerar combinaciones imposibles. Las materias con menos
+   grupos van primero, que es lo que más poda. */
+const GEN_PASO   = 30;      // resolución de la rejilla de bloqueos, en minutos
+const GEN_DESDE  = 6*60, GEN_HASTA = 22*60;
+const GEN_LIMITE = 400;     // horarios que se guardan como máximo
+const GEN_NODOS  = 400000;  // techo de seguridad para no congelar el navegador
+
+const genAlmacen = {
+  leer(){ try{ return JSON.parse(localStorage.getItem("generadorUNAL")||"{}"); }catch(e){ return {}; } },
+  guardar(){ try{ localStorage.setItem("generadorUNAL",
+    JSON.stringify({cand:[...CANDIDATAS], bloq:[...BLOQUEADOS]})); }catch(e){} }
+};
+const _gen0 = genAlmacen.leer();
+let CANDIDATAS = new Set(_gen0.cand || []);
+let BLOQUEADOS = new Set(_gen0.bloq || []);   // "DIA|minuto"
+let RESULTADOS = [];
+
+const franja = (dia, min) => `${dia}|${min}`;
+
+/* ¿El grupo pisa alguna franja bloqueada? */
+function chocaBloqueo(g){
+  for(const s of g.sesiones)
+    for(let m=Math.floor(s.ini/GEN_PASO)*GEN_PASO; m<s.fin; m+=GEN_PASO)
+      if(BLOQUEADOS.has(franja(s.dia,m))) return true;
+  return false;
+}
+function chocanGrupos(a,b){
+  for(const s of a.sesiones) for(const t of b.sesiones)
+    if(s.dia===t.dia && s.ini<t.fin && t.ini<s.fin) return true;
+  return false;
+}
+
+/* Días, huecos, hora de entrada y de salida de una combinación. */
+function metricas(combo){
+  const porDia = new Map();
+  for(const {g} of combo) for(const s of g.sesiones){
+    if(!porDia.has(s.dia)) porDia.set(s.dia, []);
+    porDia.get(s.dia).push(s);
+  }
+  let huecos=0, ini=24*60, fin=0;
+  for(const ss of porDia.values()){
+    ss.sort((a,b)=>a.ini-b.ini);
+    let tope = ss[0].fin;
+    for(let i=1;i<ss.length;i++){ huecos += Math.max(0, ss[i].ini-tope); tope = Math.max(tope, ss[i].fin); }
+    ini = Math.min(ini, ss[0].ini); fin = Math.max(fin, tope);
+  }
+  if(!porDia.size){ ini=0; fin=0; }
+  return {dias:porDia.size, huecos, ini, fin};
+}
+
+/* ================= Relleno de huecos con electivas =================
+   Una vez armado el esqueleto del semestre quedan ratos muertos entre clases.
+   Esto busca electivas que quepan justo ahí, con una heurística voraz: en cada
+   pasada se prueba cada grupo de cada electiva libre, se mide cuánto empeora o
+   mejora el horario y se queda con el mejor. Repetir es más barato que
+   enumerar: meter las electivas en el producto cartesiano multiplicaría las
+   combinaciones por cientos y el generador se ahogaría.
+
+   El orden de preferencia es el que tendría cualquiera al inscribirse:
+   1. no abrir un día nuevo (ir a la universidad un día más cuesta un viaje);
+   2. no alargar la jornada (entrar antes o salir después);
+   3. y, dentro de eso, tapar la mayor cantidad de hueco posible. */
+function paquetesElectivos(soloCupos){
+  const out = [];
+  for(const m of MATERIAS.values()){
+    if(!m.libre || m.multi) continue;          // las multicomponente no se rellenan solas
+    for(const g of m.grupos.values()){
+      if(!g.sesiones.length) continue;         // sin horario publicado no se puede encajar
+      if(chocaBloqueo(g)) continue;
+      if(soloCupos && g.cupos!==null && g.cupos<=0) continue;
+      out.push({m, g});
+    }
+  }
+  return out;
+}
+
+/* Cuánto se degrada el horario al añadir un grupo. Menor es mejor. */
+function costoRelleno(base, cand, sinDias){
+  const dDias   = cand.dias - base.dias;
+  if(sinDias && dDias > 0) return null;        // el usuario no quiere días nuevos
+  const dJornada = Math.max(0, base.ini - cand.ini) + Math.max(0, cand.fin - base.fin);
+  const dHuecos  = cand.huecos - base.huecos;  // negativo = tapó hueco
+  return dDias*100000 + dJornada*100 + dHuecos;
+}
+
+function rellenarConElectivas(combo, cupo, soloCupos, sinDias, pool){
+  let actual = combo;
+  const puestas = [];
+  for(let n=0; n<cupo; n++){
+    const base = metricas(actual);
+    const yaHay = new Set(actual.map(e=>e.m.codigo));
+    let mejor = null;
+    for(const {m, g} of pool){
+      if(yaHay.has(m.codigo)) continue;
+      if(actual.some(e=>chocanGrupos(e.g, g))) continue;
+      const cand = [...actual, {m, g, fam:null, relleno:true}];
+      const c = costoRelleno(base, metricas(cand), sinDias);
+      if(c===null) continue;
+      if(!mejor || c < mejor.c) mejor = {c, cand, m, g};
+    }
+    if(!mejor) break;
+    actual = mejor.cand;
+    puestas.push(mejor.m.codigo);
+  }
+  return {combo: actual, puestas};
+}
+
+function generarHorarios(){
+  const estado = $("#genEstado"), caja = $("#genResultados");
+  const mats = [...CANDIDATAS].map(c=>MATERIAS.get(c)).filter(Boolean);
+  caja.innerHTML=""; RESULTADOS=[]; estado.className="";
+
+  if(!mats.length){
+    estado.textContent = "Primero elige al menos una materia.";
+    estado.className="error"; return;
+  }
+
+  const soloCupos = $("#genSoloCupos").checked;
+  // Una decisión por COMPONENTE: una asignatura con magistral y teórica
+  // separadas aporta dos elecciones al producto, no una.
+  const ops = [], sinSalida = [];
+  for(const m of mats){
+    // Si un solo grupo ya cubre la asignatura, es UNA decisión sobre todos sus
+    // grupos; si no, una decisión por componente.
+    const bloques = m.multi
+      ? [...m.familias.values()].map(f=>({fam:f, grupos:f.grupos}))
+      : [{fam:null, grupos:[...m.grupos.keys()]}];
+    for(const fam0 of bloques){
+      const fam = fam0.fam;
+      const todos = fam0.grupos.map(n=>m.grupos.get(n));
+      const librePorBloqueo = todos.filter(g=>!chocaBloqueo(g));
+      const gs = soloCupos ? librePorBloqueo.filter(g=>g.cupos===null||g.cupos>0) : librePorBloqueo;
+      const nom = (m.multi && fam) ? `${m.nombre} (${fam.etiqueta.toLowerCase()})` : m.nombre;
+      if(!gs.length) sinSalida.push({nom, todos:todos.length, tras:librePorBloqueo.length});
+      ops.push({m, fam, gs, nom});
+    }
+  }
+  if(sinSalida.length){
+    estado.className="error";
+    estado.innerHTML = "No hay ningún horario posible:<ul>" + sinSalida.map(x=>{
+      const causa = x.tras===0
+        ? `sus ${x.todos} grupo(s) chocan con las franjas que bloqueaste`
+        : `los ${x.tras} grupo(s) que te sirven están sin cupos`;
+      return `<li><b>${x.nom}</b>: ${causa}.</li>`;
+    }).join("") + "</ul>";
+    return;
+  }
+
+  ops.sort((a,b)=>a.gs.length-b.gs.length);   // menos alternativas primero: poda más
+  let nodos=0, cortado=false;
+  const elegidos=[];
+  (function bt(i){
+    if(RESULTADOS.length>=GEN_LIMITE || nodos>GEN_NODOS){ cortado=true; return; }
+    if(i===ops.length){ RESULTADOS.push(elegidos.slice()); return; }
+    for(const g of ops[i].gs){
+      nodos++;
+      if(elegidos.some(e=>chocanGrupos(e.g,g))) continue;
+      elegidos.push({m:ops[i].m, g, fam:ops[i].fam});
+      bt(i+1);
+      elegidos.pop();
+      if(RESULTADOS.length>=GEN_LIMITE || nodos>GEN_NODOS){ cortado=true; return; }
+    }
+  })(0);
+
+  if(!RESULTADOS.length){
+    estado.className="error";
+    estado.textContent = "Todas las combinaciones se cruzan entre sí. Prueba quitando una materia o liberando alguna franja.";
+    return;
+  }
+  const combos = ops.reduce((t,o)=>t*o.gs.length, 1);
+  let extra = "";
+
+  /* Relleno de huecos. Se hace sobre los mejores horarios ya ordenados, no
+     sobre los 400: rellenar es caro (cientos de grupos por pasada) y nadie mira
+     la opción 200. Los demás quedan sin electivas y se rellenan si el usuario
+     pide ver más. */
+  const cupo = Number($("#genRelleno").value||0);
+  if(cupo > 0){
+    const pool = paquetesElectivos(soloCupos);
+    if(!pool.length){
+      extra = LIBRES.estado==="listo"
+        ? " No hay electivas con horario publicado y cupos para rellenar."
+        : " Marca «Incluir libre elección» para traer el catálogo de electivas.";
+    }else{
+      const sinDias = $("#genSinDias").checked;
+      /* Solo se rellenan los mejores: probar 127 grupos contra 400 horarios
+         tardaría segundos y nadie mira la opción 200. Los demás se conservan
+         tal cual, sin electivas — truncar la lista escondería horarios válidos
+         solo por haber activado el relleno. */
+      const ord = ordenarResultados(RESULTADOS);
+      const cabeza = ord.slice(0, GEN_RELLENO_TOPE)
+        .map(r => rellenarConElectivas(r, cupo, soloCupos, sinDias, pool).combo);
+      RESULTADOS = cabeza.concat(ord.slice(GEN_RELLENO_TOPE));
+      const con = cabeza.filter(c=>c.some(e=>e.relleno)).length;
+      extra = con
+        ? ` Se les buscaron electivas a los ${cabeza.length} mejores y ${con} admitieron alguna (${pool.length} grupos candidatos).`
+        : ` Ninguno de los ${pool.length} grupos de electivas cabe sin ${sinDias?"abrir un día nuevo":"cruzarse con tus clases"}.`;
+    }
+  }
+
+  if($("#genOrden").value==="demanda"){
+    const conDatos = RESULTADOS.filter(c=>demandaCombo(c).n>0).length;
+    extra += conDatos
+      ? ` Ordenados por qué tan rápido vuelan los cupos; eso mide demanda (fama, horario cómodo, grupo pequeño), no calidad de la enseñanza.`
+      : ` Todavía no hay suficiente historial de cupos para ordenar por demanda: se muestran por huecos.`;
+  }
+  estado.textContent = `${RESULTADOS.length}${cortado?"+":""} horarios sin cruces` +
+    ` (de ${combos.toLocaleString("es")} combinaciones posibles)` +
+    (cortado ? ". Se muestran los primeros que se encontraron; afina las franjas para reducirlos." : ".") +
+    extra;
+  pintarResultados();
+}
+
+/* Rellenar es caro, así que solo se hace sobre los mejores. */
+const GEN_RELLENO_TOPE = 40;
+
+/* Ordena las combinaciones según el criterio elegido arriba. */
+function ordenarResultados(lista){
+  const modo = $("#genOrden").value;
+  return lista.map(c=>({c, m:metricas(c), d:modo==="demanda"?demandaCombo(c):null})).sort((a,b)=>{
+    if(modo==="dias")     return a.m.dias-b.m.dias || a.m.huecos-b.m.huecos;
+    if(modo==="tarde")    return b.m.ini-a.m.ini   || a.m.huecos-b.m.huecos;
+    if(modo==="temprano") return a.m.fin-b.m.fin   || a.m.huecos-b.m.huecos;
+    // Demanda: de mayor a menor, y a igualdad de demanda el de menos huecos
+    if(modo==="demanda")  return b.d.media-a.d.media || a.m.huecos-b.m.huecos;
+    return a.m.huecos-b.m.huecos || a.m.dias-b.m.dias;
+  }).map(x=>x.c);
+}
+
+function pintarResultados(){
+  const caja = $("#genResultados"); caja.innerHTML="";
+  if(!RESULTADOS.length) return;
+  const modo = $("#genOrden").value;
+  const puestos = new Set(seleccion);
+
+  /* Se reordena el arreglo, no una copia: así «usar este horario» y cualquier
+     inspección posterior ven el mismo orden que la pantalla. */
+  RESULTADOS = ordenarResultados(RESULTADOS);
+  const conM = RESULTADOS.map(c=>({combo:c, m:metricas(c)}));
+
+  // rango horario común, para que las miniaturas se puedan comparar de un vistazo
+  let lo=24*60, hi=0;
+  for(const {m} of conM){ if(!m.fin) continue; lo=Math.min(lo,m.ini); hi=Math.max(hi,m.fin); }
+  lo=Math.floor(lo/60)*60; hi=Math.ceil(hi/60)*60;
+  if(hi<=lo){ lo=7*60; hi=18*60; }
+
+  // De a 12 tarjetas: pintar 400 miniaturas de golpe no aporta nada
+  let vistos = 0;
+  const masBtn = document.createElement("button");
+  masBtn.type="button"; masBtn.className="usar";
+  const tanda = ()=>{
+    masBtn.remove();
+    conM.slice(vistos, vistos+12).forEach((r,i)=>caja.appendChild(tarjetaHorario(r, vistos+i+1, lo, hi, puestos)));
+    vistos = Math.min(vistos+12, conM.length);
+    if(vistos < conM.length){
+      masBtn.textContent = `Ver ${Math.min(12, conM.length-vistos)} más (quedan ${conM.length-vistos})`;
+      caja.appendChild(masBtn);
+    }
+  };
+  masBtn.addEventListener("click", tanda);
+  tanda();
+}
+
+function tarjetaHorario({combo, m}, n, lo, hi, puestos){
+  const total = hi-lo;
+  const art = document.createElement("article"); art.className="gen-card";
+  const claves = combo.map(({m:mat,g})=>`${mat.codigo}|${g.grupo}`);
+  if(claves.length===puestos.size && claves.every(k=>puestos.has(k))) art.classList.add("puesto");
+
+  const hh = m.huecos ? `${Math.floor(m.huecos/60)}h${m.huecos%60?String(m.huecos%60).padStart(2,"0"):""}` : "sin huecos";
+  const cr = [...new Set(combo.map(x=>x.m.codigo))].reduce((t,c)=>t+Number(MATERIAS.get(c)?.creditos||0),0);
+  const nrel = combo.filter(x=>x.relleno).length;
+  art.innerHTML = `<header><b>Opción ${n}</b><span>${m.dias} día(s) · ${hh} · ${cr} cr` +
+    `${nrel?` · +${nrel} electiva(s)`:""}<br>entras ${deMin(m.ini)} · sales ${deMin(m.fin)}</span></header>`;
+
+  // miniatura de la semana
+  const mini = document.createElement("div"); mini.className="gen-mini";
+  for(const d of DIAS){
+    const col=document.createElement("div"); col.className="mcol";
+    col.insertAdjacentHTML("beforeend", `<span class="mdia">${d.slice(0,2)}</span>`);
+    for(let t=lo; t<hi; t+=GEN_PASO){
+      if(!BLOQUEADOS.has(franja(d,t))) continue;
+      const b=document.createElement("div"); b.className="mbloq";
+      b.style.top=((t-lo)/total*100)+"%"; b.style.height=(GEN_PASO/total*100)+"%";
+      col.appendChild(b);
+    }
+    for(const {m:mat,g,relleno} of combo) for(const s of g.sesiones){
+      if(s.dia!==d) continue;
+      const b=document.createElement("div"); b.className="mses"+(relleno?" rel":"");
+      b.style.top=((s.ini-lo)/total*100)+"%";
+      b.style.height=Math.max(2,(s.fin-s.ini)/total*100)+"%";
+      b.style.background=colorDe(mat.codigo);
+      b.title=`${mat.nombre} · ${deMin(s.ini)}–${deMin(s.fin)}`;
+      col.appendChild(b);
+    }
+    mini.appendChild(col);
+  }
+  art.appendChild(mini);
+
+  // El cuadrito repite el color del bloque en la miniatura y en la grilla
+  const lista=document.createElement("ul");
+  lista.innerHTML = combo.map(({m:mat,g,fam,relleno})=>{
+    const cu = g.cupos===null ? "" : ` · ${g.cupos} cupos`;
+    const et = (mat.multi && fam) ? `<span class="comp">${fam.etiqueta}</span>` : "";
+    const rl = relleno ? `<span class="comp libre">Electiva</span>` : "";
+    const dm = insigniaDemanda(`${mat.codigo}|${g.grupo}`);
+    return `<li${relleno?' class="relleno"':''}><i style="background:${colorDe(mat.codigo)}"></i>`+
+           `<span><b>${mat.nombre}</b>${rl}${et}${g.grupo}${cu}${dm?"<br>"+dm:""}</span></li>`;
+  }).join("");
+  art.appendChild(lista);
+
+  const btn=document.createElement("button");
+  btn.type="button"; btn.className="usar";
+  btn.textContent = art.classList.contains("puesto") ? "✓ Es el que tienes puesto" : "Usar este horario";
+  btn.addEventListener("click", ()=>usarHorario(claves));
+  art.appendChild(btn);
+  return art;
+}
+
+function usarHorario(claves){
+  seleccion = claves.slice();
+  almacen.guardar(seleccion);
+  actualizarBotones(); pintarHorario(); pintarAvance(); pintarResultados();
+  if(modoTend==="mis") pintarGrafico();
+  irA("horario");
+  $("#grilla").scrollIntoView({behavior:"smooth", block:"center"});
+}
+
+/* ---------- Materias candidatas ---------- */
+function alternarCandidata(cod){
+  if(CANDIDATAS.has(cod)) CANDIDATAS.delete(cod); else CANDIDATAS.add(cod);
+  genAlmacen.guardar(); pintarCandidatas(); sincronizarGenLista(); pintarLista(); invalidarResultados();
+}
+/* Lo generado deja de valer en cuanto cambian las materias o las franjas. */
+function invalidarResultados(){
+  if(!RESULTADOS.length) return;
+  RESULTADOS = [];
+  $("#genResultados").innerHTML = "";
+  $("#genEstado").className = "";
+  $("#genEstado").textContent = "Cambiaste algo: vuelve a generar para ver los horarios actualizados.";
+}
+function pintarCandidatas(){
+  const caja=$("#genChips"); if(!caja) return;
+  caja.innerHTML="";
+  const vivas=[...CANDIDATAS].filter(c=>MATERIAS.has(c));
+  if(!vivas.length){ caja.innerHTML='<span class="gen-vacio">Todavía no has elegido ninguna materia.</span>'; }
+  for(const c of vivas){
+    const m=MATERIAS.get(c);
+    const ch=document.createElement("span"); ch.className="gen-chip";
+    const det = m.multi ? `${m.familias.size} componentes` : `${m.grupos.size} gr.`;
+    ch.innerHTML=`<i style="background:${colorDe(c)}"></i>${m.nombre} <span class="n">${det}</span><button type="button" aria-label="Quitar">✕</button>`;
+    ch.querySelector("button").addEventListener("click",()=>alternarCandidata(c));
+    caja.appendChild(ch);
+  }
+  const cred=vivas.reduce((t,c)=>t+Number(MATERIAS.get(c).creditos||0),0);
+  $("#genResumen").textContent = vivas.length ? `${vivas.length} materias · ${cred} créditos` : "";
+  actualizarInsignias();
+}
+
+/* Selector propio del generador: solo materias, sin grupos. Elegir grupo es
+   justamente el trabajo que se le está delegando a la máquina. */
+function pintarGenLista(){
+  const caja = $("#genLista"); if(!caja) return;
+  const q = ($("#genBuscar").value||"").trim().toLowerCase();
+  caja.innerHTML = "";
+  const conLibres = $("#genLibres") ? $("#genLibres").checked : false;
+  const items = [...MATERIAS.values()]
+    .filter(m => !APROBADAS.has(nc(m.codigo)))
+    // Las ya marcadas como candidatas siguen apareciendo aunque se apague la
+    // casilla: si no, desaparecerían de la lista pero seguirían contando en el
+    // generador, que es la peor combinación posible.
+    .filter(m => !m.libre || conLibres || CANDIDATAS.has(m.codigo))
+    .filter(m => !q || `${m.nombre} ${m.codigo}`.toLowerCase().includes(q))
+    .sort((a,b)=>{
+      // Primero el plan (por semestre) y después las electivas: son el relleno,
+      // no el esqueleto del horario.
+      if(!!a.libre !== !!b.libre) return a.libre ? 1 : -1;
+      const sa = plan(a.codigo)?.sem ?? 99, sb = plan(b.codigo)?.sem ?? 99;
+      return sa-sb || a.nombre.localeCompare(b.nombre,"es");
+    });
+  if(LIBRES.estado==="cargando" && conLibres){
+    caja.innerHTML = '<div class="gen-vacio" style="padding:8px 10px">Cargando las electivas…</div>';
+    return;
+  }
+  if(!items.length){
+    caja.innerHTML = '<div class="gen-vacio" style="padding:8px 10px">Ninguna asignatura coincide.</div>';
+    return;
+  }
+  const TOPE_GEN = 150;
+  const recortadas = Math.max(0, items.length - TOPE_GEN);
+  for(const m of items.slice(0, TOPE_GEN)){
+    const ev = evaluar(m.codigo);
+    const l = document.createElement("label");
+    l.dataset.cod = m.codigo;
+    l.innerHTML = `<input type="checkbox" ${CANDIDATAS.has(m.codigo)?"checked":""}>` +
+      `<span class="t"><b>${m.nombre}</b><span>${m.multi?`${m.familias.size} componentes · `:""}${m.grupos.size} grupo(s) · ${m.creditos} cr</span></span>` +
+      selloDe(ev);
+    l.querySelector("input").addEventListener("change", ()=>alternarCandidata(m.codigo));
+    caja.appendChild(l);
+  }
+  if(recortadas){
+    caja.insertAdjacentHTML("beforeend",
+      `<div class="tope-libres">Y ${recortadas} más. Escribe en el buscador para filtrarlas.</div>`);
+  }
+}
+
+/* Marcar una materia no debe reconstruir la lista: se perdería el scroll y el
+   foco. Basta con poner al día las casillas. */
+function sincronizarGenLista(){
+  for(const l of document.querySelectorAll("#genLista label"))
+    l.querySelector("input").checked = CANDIDATAS.has(l.dataset.cod);
+}
+
+/* ---------- Rejilla de franjas ocupadas ---------- */
+function pintarRejilla(){
+  const g=$("#genRejilla"); if(!g) return;
+  g.innerHTML='<div class="gh"></div>'+DIAS.map(d=>`<div class="gh">${d.slice(0,3)}</div>`).join("");
+  for(let t=GEN_DESDE; t<GEN_HASTA; t+=GEN_PASO){
+    g.insertAdjacentHTML("beforeend", `<div class="gr">${t%60===0?deMin(t):""}</div>`);
+    for(const d of DIAS){
+      const b=document.createElement("button");
+      b.type="button"; b.className="gc"+(t%60===30?" media":"")+(BLOQUEADOS.has(franja(d,t))?" off":"");
+      b.dataset.f=franja(d,t);
+      b.setAttribute("aria-label", `${d} ${deMin(t)}`);
+      g.appendChild(b);
+    }
+  }
+}
+(function rejillaInteractiva(){
+  let pintando=null;   // true = bloquear, false = liberar
+  const aplicar=el=>{
+    if(!el || !el.classList.contains("gc")) return;
+    const f=el.dataset.f;
+    if(pintando){ BLOQUEADOS.add(f); el.classList.add("off"); }
+    else{ BLOQUEADOS.delete(f); el.classList.remove("off"); }
+  };
+  document.addEventListener("pointerdown", e=>{
+    const el=e.target.closest("#genRejilla .gc"); if(!el) return;
+    e.preventDefault();
+    pintando = !el.classList.contains("off");
+    aplicar(el);
+  });
+  document.addEventListener("pointermove", e=>{
+    if(pintando===null) return;
+    const el=document.elementFromPoint(e.clientX,e.clientY);
+    if(el && el.closest("#genRejilla")) aplicar(el.closest(".gc"));
+  });
+  document.addEventListener("pointerup", ()=>{
+    if(pintando===null) return;
+    pintando=null; genAlmacen.guardar(); invalidarResultados();
+  });
+})();
+
+
+function statsGrupo(k){
+  const h=HISTORIAL.get(k)||[];
+  if(!h.length) return null;
+  const actual=h[h.length-1].cupos;
+  const maxHist=Math.max(...h.map(p=>p.cupos));
+  const corte=+h[h.length-1].t - 7*864e5;
+  let ref=h[0];
+  for(const p of h){ if(+p.t<=corte) ref=p; else break; }
+  const vel7=ref.cupos-actual; // >0: se está llenando; <0: liberó cupos
+  return {actual, maxHist, inscritos:Math.max(0,maxHist-actual), vel7};
+}
+
+/* ================= Demanda: qué tan rápido vuelan los cupos =================
+   En semana de inscripciones, un grupo que se vacía en horas suele ser el del
+   docente con mejor fama. Es un proxy de DEMANDA, no de calidad: también se
+   llenan rápido los grupos pequeños, los de horario cómodo y aquellos a los que
+   se apunta un curso entero de amigos. Sirve para orientarse, no para decidir.
+
+   La velocidad se mide sobre el tramo en que el grupo realmente se estaba
+   llenando —desde la última vez que estuvo en su tope hasta que tocó su mínimo—
+   y no sobre los últimos 7 días fijos. Si no, un grupo que se agotó en tres
+   horas y lleva seis días en cero saldría con una velocidad diluida, justo el
+   caso que más interesa detectar. */
+const CACHE_DEMANDA = new Map();
+const DEM_MIN_DIAS = 0.25;   // 6 h: evita que dos lecturas seguidas den un pico absurdo
+/* Amortiguador del tamaño del grupo. Dividir los cupos tomados entre la
+   capacidad a secas hacía que un grupo de UN cupo que perdió ese cupo empatara
+   con uno de treinta que se vació entero: ambos daban «100 % en un día». Sumar
+   una constante al denominador hunde a los grupos diminutos, donde una sola
+   inscripción no dice nada, y deja arriba a los que movieron volumen de verdad.
+   Con 5: 1 de 1 → 0.17; 10 de 10 → 0.67; 17 de 17 → 0.77. */
+const DEM_K = 5;
+
+function demandaGrupo(k){
+  if(CACHE_DEMANDA.has(k)) return CACHE_DEMANDA.get(k);
+  const h = HISTORIAL.get(k) || [];
+  let out = null;
+  if(h.length >= 2){
+    const cap = Math.max(...h.map(p=>p.cupos));
+    if(cap > 0){
+      // último instante en el tope, y el mínimo que vino después
+      let iCap = 0;
+      for(let i=0;i<h.length;i++) if(h[i].cupos===cap) iCap=i;
+      let iMin = iCap, min = h[iCap].cupos;
+      for(let i=iCap;i<h.length;i++) if(h[i].cupos < min){ min=h[i].cupos; iMin=i; }
+      const tomados = cap - min;
+      if(tomados > 0){
+        const dias = Math.max(DEM_MIN_DIAS, (+h[iMin].t - +h[iCap].t)/864e5);
+        const velocidad = tomados/dias;            // cupos por día
+        out = {velRel: velocidad/(cap+DEM_K), velocidad, tomados, cap, dias,
+               agotado: min===0, actual: h[h.length-1].cupos};
+      }else{
+        out = {velRel:0, velocidad:0, tomados:0, cap, dias:0, agotado:false, actual:h[h.length-1].cupos};
+      }
+    }
+  }
+  CACHE_DEMANDA.set(k, out);
+  return out;
+}
+
+/* Demanda de una combinación: promedio de los grupos que tienen historial.
+   Los que no lo tienen se omiten en vez de contar como cero, para no castigar a
+   una electiva recién raspada frente a una materia con meses de lecturas. */
+function demandaCombo(combo){
+  let suma=0, n=0;
+  for(const {m,g} of combo){
+    const d = demandaGrupo(`${m.codigo}|${g.grupo}`);
+    if(d){ suma += d.velRel; n++; }
+  }
+  return n ? {media:suma/n, n} : {media:-1, n:0};
+}
+
+const NIVEL_DEM = v =>
+  v >= .50 ? {cls:"alta",  txt:"vuela"} :
+  v >= .15 ? {cls:"media", txt:"se mueve"} :
+  v >    0 ? {cls:"baja",  txt:"tranquilo"} : null;
+
+function insigniaDemanda(k){
+  const d = demandaGrupo(k);
+  if(!d || !d.velRel) return "";
+  const nv = NIVEL_DEM(d.velRel);
+  const vel = d.velocidad>=10 ? Math.round(d.velocidad) : d.velocidad.toFixed(1);
+  return `<span class="dem ${nv.cls}" title="Perdió ${d.tomados} de ${d.cap} cupos en ${
+    d.dias<1 ? Math.round(d.dias*24)+" h" : d.dias.toFixed(1)+" días"}${
+    d.agotado?", hasta agotarse":""}. Mide demanda, no calidad.">${nv.txt} · ${vel}/día</span>`;
+}
+
+function docentesDe(cod){
+  const m=MATERIAS.get(cod); if(!m) return [];
+  const por=new Map();
+  for(const g of m.grupos.values()){
+    const st=statsGrupo(`${cod}|${g.grupo}`); if(!st) continue;
+    const nom=g.profesores||"Sin docente asignado";
+    if(!por.has(nom)) por.set(nom,{nombre:nom,grupos:0,inscritos:0,actual:0,cap:0,vel7:0});
+    const d=por.get(nom);
+    d.grupos++; d.inscritos+=st.inscritos; d.actual+=st.actual; d.cap+=st.maxHist; d.vel7+=st.vel7;
+  }
+  return [...por.values()].map(d=>({...d, ocup:d.cap? d.inscritos/d.cap : 0}));
+}
+
+function pintarDocentes(){
+  const cod=$("#selMateria").value;
+  const filas=docentesDe(cod).sort((a,b)=>b.ocup-a.ocup || b.inscritos-a.inscritos);
+  msjLienzo(filas.length? null : "Esta asignatura no tiene historial de cupos todavía.");
+  const ctx=$("#grafico");
+  if(grafico) grafico.destroy();
+  if(!filas.length){ grafico=null; return; }
+  const et=filas.map(f=>{
+    const n=f.nombre.length>34? f.nombre.slice(0,32)+"…" : f.nombre;
+    return `${n} · ${Math.round(f.ocup*100)}%`;
+  });
+  grafico=new Chart(ctx,{
+    type:"bar",
+    data:{labels:et, datasets:[
+      {label:"Inscritos (aprox.)", data:filas.map(f=>f.inscritos), backgroundColor:"#2B5DA8"},
+      {label:"Cupos disponibles", data:filas.map(f=>f.actual), backgroundColor:"#B7CDBB"}
+    ]},
+    options:{
+      indexAxis:"y", maintainAspectRatio:false, animation:false,
+      plugins:{
+        legend:{labels:{font:{family:"Archivo", size:11}, boxWidth:14}},
+        tooltip:{callbacks:{
+          afterBody:its=>{
+            const f=filas[its[0].dataIndex];
+            const t=f.vel7>0? `Se llenaron ${f.vel7} cupos en los últimos 7 días`
+                  : f.vel7<0? `Se liberaron ${-f.vel7} cupos en los últimos 7 días`
+                  : "Sin cambios en los últimos 7 días";
+            return [`Ocupación aprox.: ${Math.round(f.ocup*100)}% · ${f.grupos} grupo(s)`, t];
+          }
+        }}
+      },
+      scales:{
+        x:{stacked:true, beginAtZero:true, title:{display:true, text:"Cupos", font:{family:"Archivo", size:11}},
+           ticks:{font:{family:"IBM Plex Mono", size:10}, precision:0}, grid:{color:"#EEF2EA"}},
+        y:{stacked:true, ticks:{font:{family:"Archivo", size:11}}, grid:{display:false}}
+      }
+    }
+  });
+}
+
+function seriesPara(claves){
+  return claves.map((k,i)=>{
+    const [c,g]=k.split("|"); const m=MATERIAS.get(c);
+    return {
+      label:`${m?m.nombre:c} · ${g}`,
+      data:recortar(HISTORIAL.get(k)).map(p=>({x:+p.t, y:p.cupos, anc:p.anclado||0})),
+      borderColor:PALETA[i%PALETA.length], backgroundColor:PALETA[i%PALETA.length],
+      tension:.25, pointRadius:2.5, borderWidth:2
+    };
+  }).filter(d=>d.data.length);
+}
+
+function msjLienzo(txt){
+  const l=document.querySelector(".lienzo");
+  let m=l.querySelector(".msj");
+  if(!txt){ if(m) m.remove(); return; }
+  if(!m){ m=document.createElement("div"); m.className="msj"; l.appendChild(m); }
+  m.textContent=txt;
+}
+
+let esperaChart=0;
+function pintarGrafico(){
+  if(modoTend==="snap"){ pintarSnapshots(); return; }   // no necesita Chart.js
+  if(typeof Chart==="undefined"){
+    if(esperaChart++<24){ msjLienzo("Cargando el módulo de gráficas…"); setTimeout(pintarGrafico,500); }
+    else msjLienzo("No se pudo cargar la librería de gráficas (Chart.js). Revisa tu conexión y recarga la página.");
+    return;
+  }
+  esperaChart=0;
+  if(modoTend==="snap"){ pintarSnapshots(); return; }
+  if(modoTend==="doc"){ pintarDocentes(); return; }
+  const claves = modoTend==="mis"
+    ? seleccion
+    : [...(MATERIAS.get($("#selMateria").value)?.grupos.keys()||[])].map(g=>`${$("#selMateria").value}|${g}`);
+  const datasets=seriesPara(claves);
+  const v = ventana();
+  const sufRango = v.personal
+    ? ` entre el ${fmtFecha(new Date(v.desde))} y el ${fmtFecha(new Date(v.hasta))}`
+    : (rangoTend==="max" ? "" : ` en el rango ${rangoTend}`);
+  msjLienzo(datasets.length? null :
+    (modoTend==="mis"
+      ? (v.personal && seleccion.length
+          ? `Tus grupos no tienen lecturas${sufRango}. Prueba con otras fechas.`
+          : "Agrega grupos a tu horario para ver su tendencia.")
+      : `Esta asignatura no tiene historial de cupos${sufRango}.`));
+  const ctx=$("#grafico");
+  if(grafico) grafico.destroy();
+  if(!datasets.length){ grafico=null; return; }
+  const vent=ventana();
+  grafico=new Chart(ctx,{
+    type:"line",
+    data:{datasets},
+    options:{
+      maintainAspectRatio:false, animation:false,
+      interaction:{mode:"nearest", intersect:false},
+      plugins:{
+        legend:{labels:{font:{family:"Archivo", size:11}, boxWidth:14}},
+        tooltip:{callbacks:{
+          title:its=>fmtFecha(new Date(its[0].parsed.x)),
+          label:c=>` ${c.dataset.label}: ${c.parsed.y} cupos` + (c.raw && c.raw.anc ? ` (sin lecturas en el rango; \u00faltima: ${fmtFecha(new Date(c.raw.anc))})` : "")
+        }}
+      },
+      scales:{
+        x:{type:"linear", min:vent.desde, max:vent.hasta,
+           ticks:{font:{family:"IBM Plex Mono", size:10}, maxRotation:60, autoSkip:true, maxTicksLimit:10,
+                  callback:fmtEje},
+           grid:{color:"#EEF2EA"}},
+        y:{beginAtZero:true, title:{display:true, text:"Cupos disponibles", font:{family:"Archivo", size:11}},
+           ticks:{font:{family:"IBM Plex Mono", size:10}, precision:0}, grid:{color:"#E4EADF"}}
+      }
+    }
+  });
+}
+
+/* ================= Navegación por pestañas =================
+   Una sola vista visible a la vez. El catálogo de asignaturas se queda fijo
+   en las vistas donde se usa (armar el horario a mano y elegir candidatas), y
+   se retira en las panorámicas (la malla y las gráficas de cupos), que
+   agradecen todo el ancho. */
+const VISTAS = {
+  horario:   {paneles:["#panelHorario","#panelAvance"], lado:true },
+  generador: {paneles:["#panelGenerador"],              lado:false},
+  cupos:     {paneles:["#panelTendencias"],             lado:false}
+};
+let vistaActual = "horario";
+
+function irA(v, {foco=false, guardar=true}={}){
+  if(!VISTAS[v]) v = "horario";
+  vistaActual = v;
+  for(const [k,cfg] of Object.entries(VISTAS))
+    for(const sel of cfg.paneles) $(sel).hidden = (k!==v);
+  document.querySelectorAll(".tabs button").forEach(b=>{
+    const act = b.dataset.vista===v;
+    b.setAttribute("aria-selected", act ? "true" : "false");
+    b.tabIndex = act ? 0 : -1;
+    if(act && foco) b.focus();
+  });
+  $(".marco").classList.toggle("ancho", !VISTAS[v].lado);
+  if(guardar){
+    try{ localStorage.setItem("vistaUNAL", v); }catch(e){}
+    if(location.hash.slice(1) !== v) history.replaceState(null,"","#"+v);
+  }
+  // El lienzo de Chart.js mide mal si nace oculto: hay que redibujarlo al mostrarlo
+  if(v==="cupos") pintarGrafico();
+  actualizarInsignias();
+}
+
+/* Contadores en las pestañas, para saber qué hay en cada una sin entrar. */
+function actualizarInsignias(){
+  const cred = [...new Set(seleccion.map(k=>k.split("|")[0]))]
+    .reduce((t,c)=>t+Number(MATERIAS.get(c)?.creditos||0),0);
+  $("#bdgHorario").textContent   = cred ? cred+" cr" : "";
+  const cand = [...CANDIDATAS].filter(c=>MATERIAS.has(c)).length;
+  $("#bdgGenerador").textContent = cand ? String(cand) : "";
+  $("#bdgCupos").textContent     = "";
+}
+
+(function pestanas(){
+  const botones = [...document.querySelectorAll(".tabs button")];
+  botones.forEach(b=>b.addEventListener("click", ()=>irA(b.dataset.vista)));
+  // Flechas, Inicio y Fin, como manda el patrón de tablist
+  $(".tabs").addEventListener("keydown", e=>{
+    const i = botones.findIndex(b=>b.dataset.vista===vistaActual);
+    let j = null;
+    if(e.key==="ArrowRight") j = (i+1)%botones.length;
+    else if(e.key==="ArrowLeft") j = (i-1+botones.length)%botones.length;
+    else if(e.key==="Home") j = 0;
+    else if(e.key==="End") j = botones.length-1;
+    if(j===null) return;
+    e.preventDefault(); irA(botones[j].dataset.vista, {foco:true});
+  });
+  window.addEventListener("hashchange", ()=>irA(location.hash.slice(1), {guardar:false}));
+  let inicial = location.hash.slice(1);
+  if(!VISTAS[inicial]){ try{ inicial = localStorage.getItem("vistaUNAL"); }catch(e){} }
+  irA(inicial || "horario", {guardar:false});
+})();
+
+
+$("#busqueda").addEventListener("input", pintarLista);
+$("#orden").addEventListener("change", pintarLista);
+$("#fuente").addEventListener("change", async ()=>{
+  if($("#fuente").value!=="plan") await asegurarLibres();
+  pintarLista();
+});
+$("#soloDisponibles").addEventListener("change", pintarLista);
+
+/* Selector «aprobar hasta el semestre N» */
+(function(){
+  const sel = $("#hastaSem");
+  for(let s=0; s<=10; s++){
+    const o=document.createElement("option");
+    o.value=String(s); o.textContent = s===0 ? "Nivelación" : "Semestre "+ROMANOS[s];
+    sel.appendChild(o);
+  }
+  sel.addEventListener("change", ()=>{
+    if(sel.value==="") return;
+    aprobarHasta(Number(sel.value));
+    sel.value="";
+  });
+  $("#btnLimpiarAvance").addEventListener("click", ()=>{
+    if(!APROBADAS.size) return;
+    if(!confirm("Se borrarán todas las asignaturas que marcaste como aprobadas. ¿Sigo?")) return;
+    APROBADAS = new Set();
+    avanceAlmacen.guardar(APROBADAS);
+    pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista();
+  });
+})();
+pintarAvance();
+
+/* Generador */
+$("#btnGenerar").addEventListener("click", generarHorarios);
+$("#genOrden").addEventListener("change", ()=>{
+  if(!RESULTADOS.length) return;
+  // Con relleno activo hay que rehacerlo: el criterio decide cuáles son los
+  // «mejores» a los que se les buscan electivas.
+  if(Number($("#genRelleno").value||0) > 0) generarHorarios(); else pintarResultados();
+});
+$("#genSoloCupos").addEventListener("change", ()=>{ RESULTADOS.length && generarHorarios(); });
+$("#genRelleno").addEventListener("change", async ()=>{
+  const cupo = Number($("#genRelleno").value||0);
+  $("#lblSinDias").hidden = !cupo;
+  // Rellenar necesita el catálogo de electivas: se trae solo la primera vez
+  if(cupo && LIBRES.estado!=="listo"){
+    $("#genEstado").className=""; $("#genEstado").textContent="Trayendo el catálogo de electivas…";
+    await asegurarLibres({repintar:false});
+  }
+  if(RESULTADOS.length || cupo) generarHorarios();
+});
+$("#genSinDias").addEventListener("change", ()=>{ RESULTADOS.length && generarHorarios(); });
+$("#btnDesdeHorario").addEventListener("click", ()=>{
+  for(const k of seleccion) CANDIDATAS.add(k.split("|")[0]);
+  genAlmacen.guardar(); pintarCandidatas(); sincronizarGenLista(); pintarLista(); invalidarResultados();
+});
+$("#btnVaciarCand").addEventListener("click", ()=>{
+  CANDIDATAS.clear(); genAlmacen.guardar(); pintarCandidatas(); sincronizarGenLista(); pintarLista();
+  $("#genResultados").innerHTML=""; $("#genEstado").textContent=""; RESULTADOS=[];
+});
+$("#btnLimpiarBloqueos").addEventListener("click", ()=>{
+  BLOQUEADOS.clear(); genAlmacen.guardar(); pintarRejilla(); invalidarResultados();
+});
+$("#genBuscar").addEventListener("input", pintarGenLista);
+$("#genLibres").addEventListener("change", async ()=>{
+  if($("#genLibres").checked && LIBRES.estado!=="listo"){
+    $("#genLista").innerHTML = '<div class="gen-vacio" style="padding:8px 10px">Cargando las electivas…</div>';
+    await asegurarLibres({repintar:false});
+  }
+  pintarGenLista();
+});
+pintarRejilla(); pintarCandidatas(); pintarGenLista();
+
+function fijarModo(modo){
+  modoTend=modo;
+  const mapa={mis:"#modoMis", materia:"#modoMateria", doc:"#modoDoc", snap:"#modoSnap"};
+  for(const [m,sel] of Object.entries(mapa)) $(sel).classList.toggle("activo", m===modo);
+  $("#selMateria").hidden = (modo!=="materia" && modo!=="doc");
+  // El modo Docentes es un barrido agregado sobre todo el historial, no una
+  // serie de tiempo: el selector de rango no aplica ahí. En Snapshots sí,
+  // porque acota qué corridas se ofrecen en la lista.
+  $("#rangoTend").hidden = (modo==="doc");
+  $("#fechasTend").hidden = (modo==="doc");
+  $("#periodoTend").hidden = (modo==="doc");
+  document.querySelector(".lienzo").hidden = (modo==="snap");
+  $("#snapPanel").hidden = (modo!=="snap");
+  if(modo==="snap" && grafico){ grafico.destroy(); grafico=null; }
+  pintarGrafico();
+}
+$("#modoMis").addEventListener("click",()=>fijarModo("mis"));
+$("#modoMateria").addEventListener("click",()=>fijarModo("materia"));
+$("#modoDoc").addEventListener("click",()=>fijarModo("doc"));
+$("#modoSnap").addEventListener("click",()=>fijarModo("snap"));
+$("#selSnap").addEventListener("change", ()=>{ snapSel = Number($("#selSnap").value); pintarSnapshots(); });
+$("#snapPrev").addEventListener("click", ()=>moverSnapshot(-1));
+$("#snapNext").addEventListener("click", ()=>moverSnapshot(1));
+$("#selMateria").addEventListener("change", pintarGrafico);
+for(const b of document.querySelectorAll("#rangoTend button")){
+  b.addEventListener("click", ()=>fijarRango(b.dataset.r));
+}
+$("#fechaIni").addEventListener("change", fijarRangoPersonal);
+$("#fechaFin").addEventListener("change", fijarRangoPersonal);
+$("#btnHoyFin").addEventListener("click", ()=>{
+  if(T_FIN==null) return;
+  $("#fechaFin").value = aInputFecha(T_FIN);
+  fijarRangoPersonal();
+});
+marcarRangos();
+
+/* ---------- Imprimir ---------- */
+const TITULO_ORIGINAL = document.title;
+$("#btnImprimir").addEventListener("click", ()=>{
+  if(!seleccion.length){
+    alert("Tu horario está vacío: agrega al menos un grupo antes de imprimir.");
+    return;
+  }
+  irA("horario");
+  // el título es el nombre que el navegador propone al guardar como PDF
+  document.title = `Horario UNAL · ${$("#totalCreditos").textContent}`;
+  window.print();
+});
+window.addEventListener("afterprint", ()=>{ document.title = TITULO_ORIGINAL; });
+
+cargarDatos();
+setInterval(cargarDatos, 10*60*1000); // refresca cada 10 minutos sin recargar la página
+</script>
+</body>
+</html>
