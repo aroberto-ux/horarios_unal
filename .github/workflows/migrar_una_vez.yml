@@ -1,0 +1,109 @@
+# ============================================================
+#  Migración a historial particionado — WORKFLOW DE UN SOLO USO
+#
+#  Existe porque migrar_particiones.py hay que EJECUTARLO, y la
+#  web de GitHub no da terminal. Esto lo corre en el runner y
+#  commitea el resultado a la rama que elijas en el desplegable.
+#
+#  BÓRRALO en cuanto la migración esté hecha y verificada.
+#
+#  Seguridad: si la comprobación de integridad falla, el job
+#  termina en error SIN commitear. La rama queda intacta y el
+#  trabajo del runner se descarta.
+# ============================================================
+name: "Migrar historial (un solo uso)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmar:
+        description: 'Escribe MIGRAR para confirmar'
+        required: true
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  migrar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comprobar la confirmación
+        run: |
+          if [ "${{ inputs.confirmar }}" != "MIGRAR" ]; then
+            echo "::error::Escribe MIGRAR en el campo de confirmación."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Simulacro (solo para verlo en el log)
+        run: python migrar_particiones.py
+
+      - name: Migrar de verdad
+        run: python migrar_particiones.py --aplicar
+
+      - name: Verificar que no se perdió ni cambió ningún dato
+        run: |
+          python - <<'PY'
+          import csv, glob, sys
+          from collections import OrderedDict
+
+          def cargar(rutas):
+              """(run_id, codigo, actividad, grupo) -> cupos. Primera gana,
+              igual que hace el migrador al deduplicar."""
+              d = OrderedDict()
+              for r in rutas:
+                  with open(r, encoding="utf-8-sig", newline="") as f:
+                      for fila in csv.DictReader(f):
+                          k = (fila["run_id"], fila["codigo"],
+                               fila["actividad"], fila["grupo"])
+                          d.setdefault(k, fila["cupos_disponibles"])
+              return d
+
+          antes = cargar(["cupos_historial_pre_particion.csv"])
+          despues = cargar(sorted(glob.glob("historial/*.csv")))
+
+          print(f"claves antes:   {len(antes)}")
+          print(f"claves después: {len(despues)}")
+
+          faltan = set(antes) - set(despues)
+          sobran = set(despues) - set(antes)
+          distintas = [k for k in antes if k in despues and antes[k] != despues[k]]
+
+          for nombre, conjunto in (("faltantes", faltan), ("inventadas", sobran),
+                                   ("con cupos distintos", distintas)):
+              if conjunto:
+                  print(f"::error::{len(conjunto)} claves {nombre}. "
+                        f"Ejemplo: {list(conjunto)[:3]}")
+
+          if faltan or sobran or distintas:
+              sys.exit(1)
+          print("OK: mismas claves, mismos cupos.")
+          PY
+
+      - name: Commitear el resultado
+        run: |
+          git config user.name  "sia-bot"
+          git config user.email "sia-bot@users.noreply.github.com"
+
+          git add historial
+          # El CSV monolítico y el respaldo v1 salen del control de versiones.
+          # El respaldo pre_particion NO se añade: queda solo en el runner,
+          # y el original sigue recuperable en la historia de git.
+          git rm --cached -q cupos_historial.csv cupos_historial_v1.csv || true
+
+          git commit -q -m "datos: particionar el historial de cupos por día
+
+          - $(ls historial/*.csv | wc -l) archivos en historial/
+          - se descartan las filas duplicadas por (run_id,codigo,actividad,grupo)
+          - se eliminan cupos_totales (100% NA) y profesores_norm (derivable)
+          - se unifica el offset horario a -05:00 y se quita el BOM"
+
+          git push
+          echo "### Migración completada :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+          ls -la historial/ >> $GITHUB_STEP_SUMMARY
