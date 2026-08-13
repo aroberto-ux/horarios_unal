@@ -14,6 +14,8 @@ on:
     branches: [main]
     paths:
       - "sia_scraper.py"
+      - "sia_libre.py"
+      - "historial.py"
       - "tests/**"
       - ".github/workflows/tests.yml"
   pull_request:
@@ -35,8 +37,30 @@ jobs:
       - name: Instalar dependencias
         run: pip install selenium pytest
 
+      # test_libre.py usa pytest.importorskip, que ante un ImportError SALTA
+      # el archivo en vez de fallar: si a sia_libre.py le faltara una
+      # dependencia en el runner, CI saldría verde sin haber probado nada.
+      # Esto lo comprueba de frente.
+      - name: Comprobar que los módulos importan
+        run: python -c "import historial, sia_scraper, sia_libre; print('los 3 módulos importan')"
+
       - name: Correr los tests
         run: python -m pytest tests/ -q
+
+      # Sin esto, un pytest que salte TODO por dependencias ausentes pasaría
+      # por bueno. Se exige un mínimo de tests realmente ejecutados.
+      - name: Que no se haya saltado media suite
+        run: |
+          python -m pytest tests/ -q --tb=no | tee /tmp/salida.txt
+          python - <<'EOF'
+          import re, pathlib, sys
+          txt = pathlib.Path("/tmp/salida.txt").read_text()
+          m = re.search(r"(\d+) passed", txt)
+          n = int(m.group(1)) if m else 0
+          print(f"tests ejecutados: {n}")
+          if n < 80:
+              sys.exit(f"solo {n} tests pasaron; se esperaban al menos 80")
+          EOF
 
       - name: Comprobar que series.json se regenera sin errores
         run: |
