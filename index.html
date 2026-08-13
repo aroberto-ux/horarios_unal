@@ -127,6 +127,11 @@ section.panel{
 .grupo:last-child{border-bottom:none}
 .grupo .g-nom{font-weight:600; font-size:.88rem}
 .grupo .g-prof{font-size:.8rem; color:var(--tinta-suave)}
+/* El enlace no debe gritar: es una ayuda opcional, no la información
+   principal de la fila. Se distingue solo al pasar por encima. */
+.prof-link{color:inherit; text-decoration:none; border-bottom:1px dotted var(--cuadricula)}
+.prof-link:hover{color:var(--verde); border-bottom-color:var(--verde)}
+.prof-flecha{font-size:.7em; opacity:.5; margin-left:2px}
 .grupo .g-hor{font-family:"IBM Plex Mono",monospace; font-size:.74rem; color:var(--tinta); margin-top:2px; white-space:pre-line}
 .grupo .g-der{display:flex; flex-direction:column; align-items:flex-end; gap:6px}
 .cupos{
@@ -1446,6 +1451,50 @@ async function cargarDatos(){
    traerlas cambiaba el color de media malla, porque cada código nuevo corría
    los índices. */
 let COLORES = null;
+/* ================= Enlace a Los Estudiantes =================
+   No se copia ni un dato suyo: solo se arma la URL de la ficha del docente y
+   el usuario decide si va. Así las calificaciones nunca quedan desactualizadas
+   en este repositorio, y el tráfico va a quien mantiene esa base de datos.
+
+   Pon LOS_ESTUDIANTES en null para quitar los enlaces de toda la página.
+
+   El patrón de sus URLs es /universidad-nacional/professors/nombre-con-guiones,
+   así que basta con normalizar el nombre. Ojo: si el SIA escribe el nombre de
+   forma distinta a como está allí (un segundo apellido de más, un nombre de
+   pila que allí no aparece), el enlace acaba en un 404 suyo. Por eso el title
+   avisa de que la ficha puede no existir. */
+const LOS_ESTUDIANTES = "https://losestudiantes.com/universidad-nacional/professors/";
+
+/* El resto de la página interpola los textos del SIA tal cual, pero un nombre
+   dentro de un href y de un title sí necesita escaparse. */
+function esc(s){
+  return String(s??"").replace(/[&<>"']/g, c =>
+    ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+function babel(nombre){
+  return nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-+|-+$/g, "")
+    .replace(/-+/g, "-").toLowerCase();
+}
+
+/* Una casilla de profesores puede traer dos docentes separados por «;»
+   (pasa en 6 de las 194 del plan), y entonces hacen falta dos enlaces. */
+function partirDocentes(txt){
+  return (txt||"").split(/\s*[;/]\s*/).map(s=>s.trim()).filter(Boolean);
+}
+
+function enlacesDocentes(txt){
+  const nombres = partirDocentes(txt);
+  if(!LOS_ESTUDIANTES || !nombres.length) return esc(txt || "Sin profesor asignado");
+  return nombres.map(n =>
+    `<a class="prof-link" href="${LOS_ESTUDIANTES}${babel(n)}" target="_blank"
+        rel="noopener noreferrer"
+        title="Ver calificaciones de ${esc(n)} en Los Estudiantes (puede que no tenga ficha)"
+     >${esc(n)}<span class="prof-flecha" aria-hidden="true">↗</span></a>`
+  ).join(" · ");
+}
+
 function colorDe(codigo){
   if(!COLORES){
     COLORES = new Map();
@@ -1583,7 +1632,7 @@ function pintarLista(){
       fila.innerHTML=`
         <div>
           <div class="g-nom">${g.grupo}</div>
-          <div class="g-prof">${g.profesores||"Sin profesor asignado"}</div>
+          <div class="g-prof">${enlacesDocentes(g.profesores)}</div>
           <div class="g-hor">${hor||"Sin horario publicado"}</div>
         </div>
         <div class="g-der">
@@ -1986,7 +2035,7 @@ function pintarDetalleImpresion(){
     filas.push({nombre:m.nombre, html:`<tr>
       <td class="mono">${m.codigo}</td><td>${m.nombre}</td>
       <td class="mono">${m.creditos||"?"}</td><td class="mono">${gn}</td>
-      <td>${g.profesores||"Sin profesor asignado"}</td>
+      <td>${enlacesDocentes(g.profesores)}</td>
       <td class="mono">${hor}</td><td class="mono">${sal}</td></tr>`});
   }
   filas.sort((a,b)=>a.nombre.localeCompare(b.nombre,"es"));
