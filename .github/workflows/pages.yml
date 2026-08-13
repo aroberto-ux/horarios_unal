@@ -44,15 +44,31 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # series.json y estadisticas.html ya no están en el repo (versionarlos
+      # eran ~1,7 MB de blob nuevo cada 30 min). Se construyen aquí, que es
+      # el único sitio que de verdad los necesita.
+      - name: Reconstruir los derivados
+        run: |
+          python -c "import sia_scraper as s; s.generar_series_json(); s.generar_estadisticas()"
+
       - name: Armar el sitio
         run: |
           mkdir -p _sitio
-          # Solo lo que la página lee. textos/ y los respaldos v1 pesan
-          # mucho y nadie los descarga desde el navegador.
           for f in index.html horario.html estadisticas.html series.json \
-                   horarios.csv grupos.csv catalogo.json cupos_historial.csv; do
+                   horarios.csv grupos.csv catalogo.json; do
             [ -e "$f" ] && cp "$f" _sitio/ || true
           done
+          # Solo los últimos 5 días del historial: servirlo entero son
+          # decenas de MB por visita, y Pages tiene un tope de tráfico.
+          # Quien quiera la serie completa que clone el repo.
+          if [ -d historial ]; then
+            mkdir -p _sitio/historial
+            ls historial/*.csv | tail -5 | xargs -I{} cp {} _sitio/historial/
+          fi
           ls -lh _sitio
 
       - uses: actions/upload-pages-artifact@v3
