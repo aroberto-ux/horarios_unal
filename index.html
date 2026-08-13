@@ -170,14 +170,22 @@ section.panel{
 
 .grilla-envoltura{padding:16px; overflow-x:auto}
 .grilla{
-  display:grid; grid-template-columns:52px repeat(6, minmax(96px,1fr));
-  min-width:640px; border:1.5px solid var(--tinta); border-radius:4px; overflow:hidden; background:var(--blanco);
+  /* --dias lo fija pintarHorario: el sábado se omite si no hay clase ese día,
+     y así la semana cabe en pantallas donde antes había que arrastrar. */
+  --dias:6;
+  display:grid; grid-template-columns:52px repeat(var(--dias), minmax(96px,1fr));
+  min-width:calc(52px + var(--dias) * 96px);
+  border:1.5px solid var(--tinta); border-radius:4px; overflow:hidden; background:var(--blanco);
 }
 .grilla .esquina, .grilla .dia{
   background:var(--tinta); color:var(--papel); font-family:"IBM Plex Mono",monospace;
   font-size:.72rem; font-weight:600; letter-spacing:.08em; text-align:center; padding:7px 4px;
 }
-.reglilla{position:relative; border-right:1px solid var(--cuadricula)}
+/* La columna de horas se queda pegada al borde izquierdo: al desplazar la
+   semana en horizontal, sin esto no se sabe a qué hora corresponde cada bloque. */
+.reglilla{position:relative; border-right:1px solid var(--cuadricula);
+  position:sticky; left:0; z-index:2; background:var(--blanco)}
+.grilla .esquina{position:sticky; left:0; z-index:3}
 .reglilla span{
   position:absolute; right:6px; transform:translateY(-55%);
   font-family:"IBM Plex Mono",monospace; font-size:.68rem; color:var(--tinta-suave);
@@ -425,8 +433,27 @@ footer a{color:var(--azul)}
   padding:10px 12px; border-top:1px dashed var(--cuadricula)}
 
 /* Rejilla para pintar las franjas ocupadas */
+/* Por defecto el dedo desplaza la página: con touch-action:none la rejilla
+   secuestraba el gesto y, al ser tan alta, no había forma de pasar de largo.
+   Solo en «modo pintar» se recupera el arrastre para bloquear franjas. */
+#detFranjas > summary{
+  cursor:pointer; list-style:none; padding:9px 12px; margin-bottom:8px;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel);
+  font:600 .8rem "Archivo",sans-serif; color:var(--tinta); display:flex; gap:8px; align-items:center;
+}
+#detFranjas > summary::-webkit-details-marker{display:none}
+#detFranjas > summary::before{content:"›"; transition:transform .15s; font-size:1.1em; line-height:1}
+#detFranjas[open] > summary::before{transform:rotate(90deg)}
+#detFranjas > summary b{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:.72rem;
+  font-weight:600; color:var(--tinta-suave)}
+#detFranjas > summary b.hay{color:var(--rojo)}
+/* En escritorio no hace falta plegarla: hay sitio de sobra */
+@media (min-width:721px){ #detFranjas > summary{display:none} }
+
 .gen-rejilla{display:grid; grid-template-columns:38px repeat(6,1fr); gap:1px; background:var(--cuadricula);
-  border:1px solid var(--cuadricula); border-radius:var(--radio); overflow:hidden; user-select:none; touch-action:none}
+  border:1px solid var(--cuadricula); border-radius:var(--radio); overflow:hidden; user-select:none; touch-action:auto}
+.gen-rejilla.pintar{touch-action:none; box-shadow:0 0 0 2px var(--azul)}
+#btnModoPintar[aria-pressed="true"]{background:var(--azul-claro); border-color:var(--azul); color:var(--azul)}
 .gen-rejilla .gh{background:var(--papel); font-family:"IBM Plex Mono",monospace; font-size:.6rem; font-weight:600;
   text-align:center; padding:3px 0; color:var(--tinta-suave)}
 .gen-rejilla .gr{background:var(--papel); font-family:"IBM Plex Mono",monospace; font-size:.58rem;
@@ -510,6 +537,107 @@ section.panel[hidden]{display:none!important}
 .marco.ancho{grid-template-columns:1fr}
 .marco.ancho #panelMaterias{display:none}
 
+/* ================= Móvil =================
+   La página nació para pantalla ancha y en un teléfono se notaba: el catálogo
+   ocupaba toda la primera pantalla, la grilla y la malla obligaban a arrastrar
+   sin referencia, y casi ningún botón llegaba al tamaño mínimo cómodo para el
+   dedo (unos 40 px). */
+@media (max-width:720px){
+  /* Cabecera más compacta: en un móvil el título no puede comerse media pantalla */
+  body > header{padding:14px 16px 16px}
+  .head-top{gap:8px 14px}
+  h1{font-size:1.15rem}
+  h1 small{font-size:.62rem; letter-spacing:.2em}
+  .head-acciones{width:100%; justify-content:space-between; gap:8px}
+  .estado{text-align:left; font-size:.72rem; flex:1; min-width:0}
+  .estado button, #btnImprimir{min-height:34px; padding:4px 12px}
+
+  /* En el móvil los paneles se apilan, y el catálogo quedaba primero: había que
+     recorrer decenas de asignaturas antes de ver el horario propio. Se invierte:
+     primero lo que uno ha armado, después la herramienta para armarlo. */
+  .marco{padding:16px 10px; gap:14px; display:flex; flex-direction:column}
+  #panelHorario{order:1}
+  #panelMaterias{order:2}
+  #panelAvance{order:3}
+  .panel > .titulo{padding:10px 12px}
+  .panel > .titulo h2{font-size:.72rem; letter-spacing:.14em}
+
+  /* El catálogo ya no acapara la pantalla: se ve que hay algo debajo */
+  #listaMaterias{max-height:52vh}
+  .materia > button{padding:11px 12px; gap:8px; flex-wrap:wrap}
+  .materia .nom{font-size:.9rem; flex:1 1 100%; order:3}
+  .grupo{padding:10px 12px 12px}
+  .btnAdd{min-height:38px; padding:8px 14px}
+  .plan button{min-height:36px; padding:7px 12px}
+  .filtros{padding:8px 12px}
+  .filtros select{min-height:34px}
+
+  /* Grilla: columnas más estrechas y letra menor, pero sigue siendo legible.
+     Con la columna de horas fija, arrastrar de lado ya no desorienta. */
+  .grilla-envoltura{padding:10px 0 10px 10px}
+  .grilla{grid-template-columns:40px repeat(var(--dias), minmax(68px,1fr));
+    min-width:calc(40px + var(--dias) * 68px)}
+  .grilla .esquina, .grilla .dia{font-size:.62rem; letter-spacing:.02em; padding:6px 2px}
+  .reglilla span{font-size:.6rem; right:4px}
+  .bloque{left:2px; right:2px; padding:3px 4px; font-size:.62rem}
+  .bloque b{font-size:.64rem}
+  .bloque .mono{font-size:.56rem}
+  .bloque .etq{font-size:.54rem}
+  .resumen{padding:10px 12px; gap:6px 10px}
+
+  /* Malla del plan: un semestre por pantalla, con parada suave al deslizar */
+  .malla{grid-template-columns:repeat(11, 76vw); gap:10px; padding:12px;
+    scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch}
+  .malla .col{min-width:0; scroll-snap-align:start}
+  .malla .caja{padding:9px 10px}
+  .malla .caja .n{font-size:.76rem}
+  .malla .caja .c{font-size:.66rem}
+  .avance-acciones{padding:10px 12px}
+  .avance-acciones select, .avance-acciones button{min-height:36px}
+  .leyenda{padding:0 12px 12px}
+
+  /* Generador */
+  .gen-lado{padding:12px}
+  .gen-res{grid-template-columns:1fr; padding:12px}
+  .gen-opciones{gap:8px 10px}
+  .gen-opciones select, .gen-opciones button{min-height:38px}
+  .gen-lista{max-height:210px}
+  .gen-lista label{padding:9px 10px}
+  .gen-lista input{width:18px; height:18px}
+  /* Celdas de la rejilla más altas: 13 px es imposible de acertar con el dedo */
+  .gen-rejilla .gc{height:19px}
+  .gen-rejilla .gr{line-height:19px; font-size:.55rem}
+  .gen-mini .mcol{height:120px}
+
+  /* Tendencias: los controles caben apilados, no comprimidos */
+  .controles-tend{padding:12px; gap:8px}
+  .controles-tend .modo{width:100%}
+  .controles-tend .modo button{flex:1; min-height:38px; padding:8px 6px; font-size:.74rem}
+  .controles-tend .rango{width:100%}
+  .controles-tend .rango button{flex:1; padding:8px 4px}
+  .controles-tend select{width:100%; min-height:38px}
+  .controles-tend .fechas{width:100%}
+  .controles-tend .fechas input{flex:1; min-width:0; min-height:36px}
+  .lienzo{height:min(56vh,340px); padding:10px 8px 14px}
+
+  /* Snapshots */
+  .snap-barra{padding:10px 12px}
+  .snap-barra select{flex:1; min-width:0; max-width:none; min-height:38px}
+  .snap-barra button{min-height:38px; min-width:40px}
+  .snap-lista{padding:6px 12px 12px}
+  .snap-fila{padding-left:10px; flex-wrap:wrap; gap:2px 8px}
+
+  footer{padding:10px 12px 24px}
+}
+
+/* Los navegadores de iOS acercan la página al enfocar un campo con letra menor
+   de 16 px. Subirlos evita ese salto de zoom que descoloca todo el diseño. */
+@media (max-width:720px){
+  #busqueda, #genBuscar, #fechaIni, #fechaFin,
+  .filtros select, .gen-opciones select, .controles-tend select, .snap-barra select,
+  .avance-acciones select{font-size:16px}
+}
+
 /* ---------- Impresión ---------- */
 @page{size:A4 portrait; margin:12mm}
 @media print{
@@ -527,7 +655,7 @@ section.panel[hidden]{display:none!important}
   .resumen .chip button{display:none}
   #avisoConflicto, #avisoPlan{margin:8px 0 0; break-inside:avoid; page-break-inside:avoid}
   .grilla-envoltura{padding:8px 0 0; overflow:visible}
-  .grilla{min-width:0; grid-template-columns:44px repeat(6,1fr); break-inside:avoid; page-break-inside:avoid}
+  .grilla{min-width:0; grid-template-columns:44px repeat(var(--dias),1fr); break-inside:avoid; page-break-inside:avoid}
   .bloque{box-shadow:none; font-size:.62rem}
   .bloque b{font-size:.64rem}
   .bloque .mono{font-size:.56rem}
@@ -627,9 +755,13 @@ section.panel[hidden]{display:none!important}
       </div>
       <div class="gen-lado">
         <h3>Franjas en las que no puedes</h3>
-        <p class="gen-ayuda">Pinta con el ratón (o el dedo) las horas que tienes ocupadas: trabajo, transporte, lo que sea. El generador descartará cualquier grupo que caiga ahí.</p>
-        <div class="gen-rejilla" id="genRejilla"></div>
+        <p class="gen-ayuda">Marca las horas que tienes ocupadas: trabajo, transporte, lo que sea. El generador descartará cualquier grupo que caiga ahí.</p>
+        <details id="detFranjas" open>
+          <summary id="sumFranjas">Franjas bloqueadas</summary>
+          <div class="gen-rejilla" id="genRejilla"></div>
+        </details>
         <div class="gen-opciones">
+          <button type="button" id="btnModoPintar" aria-pressed="false" hidden>Pintar arrastrando</button>
           <button type="button" id="btnLimpiarBloqueos">Despintar todo</button>
         </div>
       </div>
@@ -1443,7 +1575,7 @@ async function cargarDatos(){
     $("#infoSnapshots").textContent = `${nSnap} snapshots · cada 30 min`;
     $("#conteoMaterias").textContent = textoConteo();
 
-    pintarLista(); pintarHorario(); pintarAvance(); pintarCandidatas(); pintarGenLista(); prepararTendencias();
+    pintarLista(); pintarHorario(); pintarAvance(); pintarCandidatas(); pintarGenLista(); pintarRejilla(); prepararTendencias();
     try{ pintarGrafico(); }catch(e){ msjLienzo("La gráfica falló al dibujarse. Recarga la página para intentar de nuevo."); }
   }catch(e){
     estado.innerHTML = '<span class="punto err"></span>Error al leer los CSV <button id="btnRecargar" type="button">reintentar</button>';
@@ -1853,8 +1985,14 @@ function pintarHorario(){
   minH=Math.floor(minH/60)*60; maxH=Math.ceil(maxH/60)*60;
   const total=maxH-minH, ALTO=Math.max(440, total/60*44);
 
+  /* El sábado casi nunca tiene clase y una columna vacía es espacio muerto en
+     cualquier pantalla, pero sobre todo en un móvil. Reaparece sola en cuanto
+     se inscribe algo ese día. */
+  const diasVis = DIAS.filter(d => d!=="SÁBADO" || ses.some(x=>x.dia==="SÁBADO"));
+
   const gr=$("#grilla"); gr.innerHTML="";
-  gr.insertAdjacentHTML("beforeend",'<div class="esquina">HORA</div>'+DIAS.map(d=>`<div class="dia">${d.slice(0,3)}</div>`).join(""));
+  gr.style.setProperty("--dias", diasVis.length);
+  gr.insertAdjacentHTML("beforeend",'<div class="esquina">HORA</div>'+diasVis.map(d=>`<div class="dia">${d.slice(0,3)}</div>`).join(""));
 
   const regla=document.createElement("div"); regla.className="reglilla"; regla.style.height=ALTO+"px";
   for(let h=minH+60; h<maxH; h+=60){
@@ -1862,7 +2000,7 @@ function pintarHorario(){
   }
   gr.appendChild(regla);
 
-  for(const d of DIAS){
+  for(const d of diasVis){
     const col=document.createElement("div"); col.className="columna";
     col.style.height=ALTO+"px";
     col.style.setProperty("--paso-hora",(60/total*ALTO)+"px");
@@ -2639,10 +2777,44 @@ function sincronizarGenLista(){
 }
 
 /* ---------- Rejilla de franjas ocupadas ---------- */
+/* Rango que abarca la rejilla. Fijarlo en 6:00–22:00 daba 32 filas, y en un
+   móvil eso es una tabla larguísima para bloquear horas en las que nadie tiene
+   clase. Se ajusta a las sesiones que existen de verdad (hoy, 6:00–21:00), sin
+   perder ninguna franja ya pintada. */
+function rangoRejilla(){
+  let ini = 24*60, fin = 0, hay = false;
+  for(const m of MATERIAS.values()) for(const g of m.grupos.values()) for(const s of g.sesiones){
+    // Hay filas del SIA sin hora de fin: aMin() devuelve NaN y un solo NaN
+    // envenenaba el máximo, así que el rango caía siempre al 6:00–22:00 de reserva.
+    if(Number.isFinite(s.ini)){ ini = Math.min(ini, s.ini); hay = true; }
+    if(Number.isFinite(s.fin)){ fin = Math.max(fin, s.fin); hay = true; }
+  }
+  if(!hay) return {ini:GEN_DESDE, fin:GEN_HASTA};   // aún sin catálogo cargado
+  for(const f of BLOQUEADOS){
+    const t = Number(f.split("|")[1]);
+    if(Number.isFinite(t)){ ini = Math.min(ini, t); fin = Math.max(fin, t+GEN_PASO); }
+  }
+  if(!(ini < fin)) return {ini:GEN_DESDE, fin:GEN_HASTA};
+  /* Franja mínima utilizable: sin esto, un catálogo escaso (o solo un par de
+     celdas ya pintadas) dejaba una rejilla de dos filas, inservible. */
+  ini = Math.min(ini, 7*60); fin = Math.max(fin, 19*60);
+  return {ini: Math.floor(ini/60)*60, fin: Math.ceil(fin/60)*60};
+}
+
+function resumenFranjas(){
+  const n = BLOQUEADOS.size, s = $("#sumFranjas");
+  if(!s) return;
+  const horas = (n*GEN_PASO/60);
+  s.innerHTML = `Franjas en las que no puedes` +
+    `<b class="${n?"hay":""}">${n ? `${horas % 1 ? horas.toFixed(1) : horas} h marcadas` : "ninguna"}</b>`;
+}
+
 function pintarRejilla(){
+  resumenFranjas();
   const g=$("#genRejilla"); if(!g) return;
+  const {ini:RI, fin:RF} = rangoRejilla();
   g.innerHTML='<div class="gh"></div>'+DIAS.map(d=>`<div class="gh">${d.slice(0,3)}</div>`).join("");
-  for(let t=GEN_DESDE; t<GEN_HASTA; t+=GEN_PASO){
+  for(let t=RI; t<RF; t+=GEN_PASO){
     g.insertAdjacentHTML("beforeend", `<div class="gr">${t%60===0?deMin(t):""}</div>`);
     for(const d of DIAS){
       const b=document.createElement("button");
@@ -2653,29 +2825,76 @@ function pintarRejilla(){
     }
   }
 }
+/* El ratón y el lápiz pintan siempre al arrastrar: con ellos ese gesto no
+   desplaza la página, así que no hay conflicto. El dedo sí, y ahí manda el modo:
+     · modo desplazar (por defecto): un toque alterna UNA celda y arrastrar
+       desplaza la página con normalidad;
+     · modo pintar: se recupera el arrastre para marcar rangos de golpe.
+   Con el dedo se alterna en el «click», no en el «pointerdown», porque si no
+   cualquier intento de desplazar dejaría celdas pintadas por el camino. */
+let modoPintar = false;
+
 (function rejillaInteractiva(){
-  let pintando=null;   // true = bloquear, false = liberar
-  const aplicar=el=>{
+  let pintando = null;   // true = bloquear, false = liberar
+  let arrastrado = false;
+
+  const aplicar = el=>{
     if(!el || !el.classList.contains("gc")) return;
-    const f=el.dataset.f;
+    const f = el.dataset.f;
     if(pintando){ BLOQUEADOS.add(f); el.classList.add("off"); }
     else{ BLOQUEADOS.delete(f); el.classList.remove("off"); }
   };
+  const cerrar = ()=>{
+    if(pintando===null) return;
+    pintando = null;
+    genAlmacen.guardar(); invalidarResultados(); resumenFranjas();
+  };
+
   document.addEventListener("pointerdown", e=>{
-    const el=e.target.closest("#genRejilla .gc"); if(!el) return;
+    const el = e.target.closest("#genRejilla .gc"); if(!el) return;
+    // Solo el dedo compite con el desplazamiento: ratón y lápiz pintan siempre,
+    // igual que un pointerType desconocido, para no perder el arrastre por una
+    // detección fallida.
+    if(e.pointerType==="touch" && !modoPintar) return;   // deja desplazar
     e.preventDefault();
+    arrastrado = false;
     pintando = !el.classList.contains("off");
     aplicar(el);
   });
   document.addEventListener("pointermove", e=>{
     if(pintando===null) return;
-    const el=document.elementFromPoint(e.clientX,e.clientY);
+    arrastrado = true;
+    const el = document.elementFromPoint(e.clientX, e.clientY);
     if(el && el.closest("#genRejilla")) aplicar(el.closest(".gc"));
   });
-  document.addEventListener("pointerup", ()=>{
-    if(pintando===null) return;
-    pintando=null; genAlmacen.guardar(); invalidarResultados();
+  document.addEventListener("pointerup", cerrar);
+  document.addEventListener("pointercancel", cerrar);   // el navegador se llevó el gesto
+
+  // Toque suelto en modo desplazar: alterna solo esa celda
+  document.addEventListener("click", e=>{
+    const el = e.target.closest("#genRejilla .gc"); if(!el) return;
+    if(modoPintar || arrastrado) return;
+    const f = el.dataset.f;
+    if(BLOQUEADOS.has(f)){ BLOQUEADOS.delete(f); el.classList.remove("off"); }
+    else{ BLOQUEADOS.add(f); el.classList.add("off"); }
+    genAlmacen.guardar(); invalidarResultados(); resumenFranjas();
   });
+
+  // El botón solo tiene sentido donde el dedo compite con el desplazamiento
+  const tactil = window.matchMedia?.("(pointer:coarse)").matches;
+  /* En un móvil la rejilla ocupa media pantalla, así que empieza plegada: se
+     abre cuando se va a usar y el resto del tiempo no estorba al desplazarse. */
+  if(tactil) $("#detFranjas").open = false;
+  const btn = $("#btnModoPintar");
+  if(btn && tactil){
+    btn.hidden = false;
+    btn.addEventListener("click", ()=>{
+      modoPintar = !modoPintar;
+      btn.setAttribute("aria-pressed", modoPintar ? "true" : "false");
+      btn.textContent = modoPintar ? "✓ Pintando (toca para salir)" : "Pintar arrastrando";
+      $("#genRejilla").classList.toggle("pintar", modoPintar);
+    });
+  }
 })();
 
 
