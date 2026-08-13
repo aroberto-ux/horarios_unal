@@ -1,0 +1,14 @@
+# El runner es Linux y el editor puede ser Windows: sin esto los archivos
+# generados alternan CRLF/LF y cada commit parece cambiar el archivo entero.
+*.csv   text eol=lf
+*.json  text eol=lf
+*.py    text eol=lf
+*.yml   text eol=lf
+*.html  text eol=lf
+
+# jsonl.gz es binario: que git no intente diferenciarlo ni convertir saltos
+*.gz    binary
+
+# Datos: no los cuentes como "código" en la barra de lenguajes de GitHub
+historial/*.csv linguist-generated=true
+textos/*        linguist-generated=true
