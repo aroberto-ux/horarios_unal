@@ -1,1287 +1,5 @@
 [
   {
-    "codigo": "2026054",
-    "nombre": "Inglés Intensivo I",
-    "tipologia": "ELECTIVA DE PREGRADO",
-    "creditos": "4",
-    "facultad": "FACULTAD DE CIENCIAS",
-    "planes": [
-      "2542 INGENIERÍA CIVIL"
-    ],
-    "grupos": [
-      {
-        "grupo": "(1) Grupo 1",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Jenny Alejandra Acosta Reyes",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "453-317",
-            "salon_nombre": "SALON DE CLASE 453-317 (SALA TIC)",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE AUDIOVISUALES",
-            "lugar_raw": "SALON DE CLASE 453-317 (SALA TIC). 453-317. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "DE EDUC.CONTINUADA",
-            "salon_nombre": "PROG",
-            "edificio": "310-201",
-            "tipo_espacio": "310 - Antonio García Nossa",
-            "lugar_raw": "PROG. DE EDUC.CONTINUADA. 310-201. 310 - Antonio García Nossa. ."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "453-317",
-            "salon_nombre": "SALON DE CLASE 453-317 (SALA TIC)",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE AUDIOVISUALES",
-            "lugar_raw": "SALON DE CLASE 453-317 (SALA TIC). 453-317. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "453-107",
-            "salon_nombre": "SALON DE CLASE 453-107",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-107. 453-107. 453 - Guillermina Uribe Bone. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(2) Grupo 2",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Jenny Alejandra Acosta Reyes",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "454-201",
-            "salon_nombre": "SALON DE CLASE 454-201",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-201. 454-201. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "454-202",
-            "salon_nombre": "SALON DE CLASE 454-202",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-202. 454-202. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "454-201",
-            "salon_nombre": "SALON DE CLASE 454-201",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-201. 454-201. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "453-105",
-            "salon_nombre": "SALON DE CLASE 453-105",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-105. 453-105. 453 - Guillermina Uribe Bone. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(3) Grupo 3",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Karen Dayana Rodriguez Castaneda",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "454-301",
-            "salon_nombre": "SALON DE CLASE 454-301",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-301. 454-301. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "454-307",
-            "salon_nombre": "SALON DE CLASE 454-307",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-307. 454-307. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "454-202",
-            "salon_nombre": "SALON DE CLASE 454-202",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-202. 454-202. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "453-415",
-            "salon_nombre": "SALON DE CLASE 453-415",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-415. 453-415. 453 - Guillermina Uribe Bone. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(4) Grupo 4",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Karen Dayana Rodriguez Castaneda",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "401-207",
-            "salon_nombre": "SALÓN DE CLASE 401-207",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-207. 401-207. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "453-115",
-            "salon_nombre": "SALON DE CLASE 453-115",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "453-109",
-            "salon_nombre": "SALON DE CLASE 453-109",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-109. 453-109. 453 - Guillermina Uribe Bone. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(5) Grupo 5",
-        "actividad": "CLASE TEORICA",
-        "profesores": "SENDA VALENTINA MARÍA GARCÍA CASTAÑO",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "401-202",
-            "salon_nombre": "SALÓN DE CLASE 401-202",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-202. 401-202. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "453-317",
-            "salon_nombre": "SALON DE CLASE 453-317 (SALA TIC)",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE AUDIOVISUALES",
-            "lugar_raw": "SALON DE CLASE 453-317 (SALA TIC). 453-317. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "453-415",
-            "salon_nombre": "SALON DE CLASE 453-415",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-415. 453-415. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "401-306",
-            "salon_nombre": "SALÓN DE CLASE 401-306",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-306. 401-306. 401 - Julio Garavito Armero. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(6) Grupo 6",
-        "actividad": "CLASE TEORICA",
-        "profesores": "ADRIANA DE LOS ANGELES QUINTERO ORJUELA",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "401-203",
-            "salon_nombre": "SALÓN DE CLASE 401-203",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "453-111",
-            "salon_nombre": "SALON DE CLASE 453-111",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-111. 453-111. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "453-115",
-            "salon_nombre": "SALON DE CLASE 453-115",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "401-102",
-            "salon_nombre": "SALÓN DE CLASE 401-102",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-102. 401-102. 401 - Julio Garavito Armero. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(7) Grupo 7",
-        "actividad": "CLASE TEORICA",
-        "profesores": "SENDA VALENTINA MARÍA GARCÍA CASTAÑO",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "453-407",
-            "salon_nombre": "SALON DE CLASE 453-407",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-407. 453-407. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "453-115",
-            "salon_nombre": "SALON DE CLASE 453-115",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "453-315",
-            "salon_nombre": "SALON DE CLASE 453-315",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "453-111",
-            "salon_nombre": "SALON DE CLASE 453-111",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-111. 453-111. 453 - Guillermina Uribe Bone. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(8) Grupo 8",
-        "actividad": "CLASE TEORICA",
-        "profesores": "ADRIANA DE LOS ANGELES QUINTERO ORJUELA",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "401-105",
-            "salon_nombre": "SALÓN DE CLASE",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE. 401-105. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "453-317",
-            "salon_nombre": "SALON DE CLASE 453-317 (SALA TIC)",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE AUDIOVISUALES",
-            "lugar_raw": "SALON DE CLASE 453-317 (SALA TIC). 453-317. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "401-202",
-            "salon_nombre": "SALÓN DE CLASE 401-202",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-202. 401-202. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "401-203",
-            "salon_nombre": "SALÓN DE CLASE 401-203",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
-          }
-        ]
-      }
-    ],
-    "ts_lectura": "2026-08-12T12:27:48-05:00",
-    "orden_lectura": -1
-  },
-  {
-    "codigo": "2026055",
-    "nombre": "Inglés Intensivo II",
-    "tipologia": "ELECTIVA DE PREGRADO",
-    "creditos": "4",
-    "facultad": "FACULTAD DE CIENCIAS",
-    "planes": [
-      "2542 INGENIERÍA CIVIL"
-    ],
-    "grupos": [
-      {
-        "grupo": "(1) Grupo 1",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Roger Barragan Fonseca",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "454-206",
-            "salon_nombre": "SALON DE CLASE 454-206",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "454-206",
-            "salon_nombre": "SALON DE CLASE 454-206",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "454-206",
-            "salon_nombre": "SALON DE CLASE 454-206",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "454-206",
-            "salon_nombre": "SALON DE CLASE 454-206",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(2) Grupo 2",
-        "actividad": "CLASE TEORICA",
-        "profesores": "OLGA INES GOMEZ VILLEGAS",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "454-208",
-            "salon_nombre": "SALON DE CLASE 454-208",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-208. 454-208. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "454-201",
-            "salon_nombre": "SALON DE CLASE 454-201",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-201. 454-201. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "401-203",
-            "salon_nombre": "SALÓN DE CLASE 401-203",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "453-103",
-            "salon_nombre": "SALON DE CLASE 453-103",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-103. 453-103. 453 - Guillermina Uribe Bone. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(3) Grupo 3",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Laura Alejandra Guerrero Calderon",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "454-202",
-            "salon_nombre": "SALON DE CLASE 454-202",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-202. 454-202. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "454-301",
-            "salon_nombre": "SALON DE CLASE 454-301",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-301. 454-301. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "471-222B",
-            "salon_nombre": "AULA TEORICA",
-            "edificio": "471 - José Félix Patiño Restrepo",
-            "tipo_espacio": "",
-            "lugar_raw": "AULA TEORICA. 471-222B. 471 - José Félix Patiño Restrepo. ."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "453-307",
-            "salon_nombre": "SALON DE CLASE 453-307 (SALA TIC)",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE AUDIOVISUALES",
-            "lugar_raw": "SALON DE CLASE 453-307 (SALA TIC). 453-307. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
-          }
-        ]
-      },
-      {
-        "grupo": "(4) Grupo 4",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Gustavo Garzon Gomez",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "401-203",
-            "salon_nombre": "SALÓN DE CLASE 401-203",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "453-107",
-            "salon_nombre": "SALON DE CLASE 453-107",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-107. 453-107. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "311-201",
-            "salon_nombre": "AULA",
-            "edificio": "311 - Lauchlin Currie",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "AULA. 311-201. 311 - Lauchlin Currie. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "401-105",
-            "salon_nombre": "SALÓN DE CLASE",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE. 401-105. 401 - Julio Garavito Armero. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(5) Grupo 5",
-        "actividad": "CLASE TEORICA",
-        "profesores": "AIDA PATRICIA ZAMBRANO MONSALVE",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "401-306",
-            "salon_nombre": "SALÓN DE CLASE 401-306",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-306. 401-306. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "401-305",
-            "salon_nombre": "SALÓN DE CLASE 401-305",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-305. 401-305. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "401-207",
-            "salon_nombre": "SALÓN DE CLASE 401-207",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-207. 401-207. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "401-203",
-            "salon_nombre": "SALÓN DE CLASE 401-203",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(6) Grupo 6",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Juan Diego Galvez Diaz",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "453-107",
-            "salon_nombre": "SALON DE CLASE 453-107",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-107. 453-107. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "311-102",
-            "salon_nombre": "AULA",
-            "edificio": "311 - Lauchlin Currie",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "AULA. 311-102. 311 - Lauchlin Currie. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "453-313",
-            "salon_nombre": "SALON DE CLASE 453-313",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-313. 453-313. 453 - Guillermina Uribe Bone. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(7) Grupo 7",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Laura Alejandra Guerrero Calderon",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "453-315",
-            "salon_nombre": "SALON DE CLASE 453-315",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "401-207",
-            "salon_nombre": "SALÓN DE CLASE 401-207",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-207. 401-207. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "471-116",
-            "salon_nombre": "SALON DE CLASE - NO DISPONIBLE PARA EL RESTO DE LA UNIVERSIDAD",
-            "edificio": "471 - José Félix Patiño Restrepo",
-            "tipo_espacio": "",
-            "lugar_raw": "SALON DE CLASE - NO DISPONIBLE PARA EL RESTO DE LA UNIVERSIDAD. 471-116. 471 - José Félix Patiño Restrepo. ."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "401-105",
-            "salon_nombre": "SALÓN DE CLASE",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE. 401-105. 401 - Julio Garavito Armero. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(8) Grupo 8",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Juan Diego Galvez Diaz",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "31/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "401-202",
-            "salon_nombre": "SALÓN DE CLASE 401-202",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-202. 401-202. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "401-203",
-            "salon_nombre": "SALÓN DE CLASE 401-203",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "453-109",
-            "salon_nombre": "SALON DE CLASE 453-109",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-109. 453-109. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "401-206",
-            "salon_nombre": "SALÓN DE CLASE 401-206",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-206. 401-206. 401 - Julio Garavito Armero. SALON."
-          }
-        ]
-      }
-    ],
-    "ts_lectura": "2026-08-12T12:27:49-05:00",
-    "orden_lectura": -1
-  },
-  {
-    "codigo": "2026056",
-    "nombre": "Inglés Intensivo III",
-    "tipologia": "ELECTIVA DE PREGRADO",
-    "creditos": "4",
-    "facultad": "FACULTAD DE CIENCIAS",
-    "planes": [
-      "2542 INGENIERÍA CIVIL"
-    ],
-    "grupos": [
-      {
-        "grupo": "(1) Grupo 1",
-        "actividad": "CLASE TEORICA",
-        "profesores": "MARTIN FELIPE SUAREZ GUARIN",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "454-307",
-            "salon_nombre": "SALON DE CLASE 454-307",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-307. 454-307. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "454-208",
-            "salon_nombre": "SALON DE CLASE 454-208",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-208. 454-208. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "453-103",
-            "salon_nombre": "SALON DE CLASE 453-103",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-103. 453-103. 453 - Guillermina Uribe Bone. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(3) Grupo 3",
-        "actividad": "CLASE TEORICA",
-        "profesores": "MARTIN FELIPE SUAREZ GUARIN",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "471-112",
-            "salon_nombre": "SALON",
-            "edificio": "471 - José Félix Patiño Restrepo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON. 471-112. 471 - José Félix Patiño Restrepo. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "454-204",
-            "salon_nombre": "SALON DE CLASE 454-204",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-204. 454-204. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "500-303",
-            "salon_nombre": "SALON DE CLASE 303",
-            "edificio": "500 - Ciencias Agrarias",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 303. 500-303. 500 - Ciencias Agrarias. SALON."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "224-216",
-            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
-            "edificio": "224 - Manuel Ancizar",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-216. 224 - Manuel Ancizar. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(4) Grupo 4",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Camilo Andres Saldaña Diaz",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "453-107",
-            "salon_nombre": "SALON DE CLASE 453-107",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-107. 453-107. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "453-311",
-            "salon_nombre": "SALON DE CLASE 453-311",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-311. 453-311. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "453-315",
-            "salon_nombre": "SALON DE CLASE 453-315",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(5) Grupo 5",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Camilo Andres Saldaña Diaz",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "453-115",
-            "salon_nombre": "SALON DE CLASE 453-115",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "454-201",
-            "salon_nombre": "SALON DE CLASE 454-201",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-201. 454-201. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "453-411",
-            "salon_nombre": "SALON DE CLASE 453-411",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-411. 453-411. 453 - Guillermina Uribe Bone. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(6) Grupo 6",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Lina Beatríz Barrero Molina",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "453-315",
-            "salon_nombre": "SALON DE CLASE 453-315",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "453-111",
-            "salon_nombre": "SALON DE CLASE 453-111",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-111. 453-111. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "453-103",
-            "salon_nombre": "SALON DE CLASE 453-103",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-103. 453-103. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "453-307",
-            "salon_nombre": "SALON DE CLASE 453-307 (SALA TIC)",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALA DE AUDIOVISUALES",
-            "lugar_raw": "SALON DE CLASE 453-307 (SALA TIC). 453-307. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
-          }
-        ]
-      }
-    ],
-    "ts_lectura": "2026-08-12T12:27:50-05:00",
-    "orden_lectura": -1
-  },
-  {
-    "codigo": "2026057",
-    "nombre": "Intensive english I - Internationalization",
-    "tipologia": "ELECTIVA DE PREGRADO",
-    "creditos": "4",
-    "facultad": "FACULTAD DE CIENCIAS",
-    "planes": [
-      "2542 INGENIERÍA CIVIL"
-    ],
-    "grupos": [
-      {
-        "grupo": "(1) Grupo 1",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Andres Felipe Mican Castiblanco",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "401-203",
-            "salon_nombre": "SALÓN DE CLASE 401-203",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "SÁBADO",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "454-206",
-            "salon_nombre": "SALON DE CLASE 454-206",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(2) Grupo 2",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Diego Andres Rincón Beltrán",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "453-313",
-            "salon_nombre": "SALON DE CLASE 453-313",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-313. 453-313. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "453-315",
-            "salon_nombre": "SALON DE CLASE 453-315",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "401-101",
-            "salon_nombre": "SALÓN DE CLASE 401-101",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-101. 401-101. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "453-303",
-            "salon_nombre": "SALON DE CLASE 453-303",
-            "edificio": "453 - Guillermina Uribe Bone",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-303. 453-303. 453 - Guillermina Uribe Bone. SALON."
-          },
-          {
-            "dia": "SÁBADO",
-            "hora_inicio": "07:00",
-            "hora_fin": "11:00",
-            "salon": "471-507",
-            "salon_nombre": "SALON DE CLASE",
-            "edificio": "471 - José Félix Patiño Restrepo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE. 471-507. 471 - José Félix Patiño Restrepo. SALON."
-          }
-        ]
-      }
-    ],
-    "ts_lectura": "2026-08-12T12:27:51-05:00",
-    "orden_lectura": -1
-  },
-  {
     "codigo": "2029639",
     "nombre": "Historia y cultura Iraní",
     "tipologia": "LIBRE ELECCIÓN",
@@ -1291,8 +9,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:53:57-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:30:48-05:00",
+    "orden_lectura": 0
   },
   {
     "codigo": "2029352",
@@ -1371,8 +89,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:53:59-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:30:50-05:00",
+    "orden_lectura": 1
   },
   {
     "codigo": "2024279",
@@ -1417,8 +135,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:00-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:30:51-05:00",
+    "orden_lectura": 2
   },
   {
     "codigo": "2022616",
@@ -1442,8 +160,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:01-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:30:52-05:00",
+    "orden_lectura": 3
   },
   {
     "codigo": "2022617",
@@ -1488,8 +206,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:02-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:30:53-05:00",
+    "orden_lectura": 4
   },
   {
     "codigo": "2021111",
@@ -1501,8 +219,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:04-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:30:55-05:00",
+    "orden_lectura": 5
   },
   {
     "codigo": "2021514",
@@ -1537,8 +255,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:06-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:30:56-05:00",
+    "orden_lectura": 6
   },
   {
     "codigo": "2029102",
@@ -1550,8 +268,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:07-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:30:58-05:00",
+    "orden_lectura": 7
   },
   {
     "codigo": "2018614",
@@ -1563,8 +281,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:08-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:30:59-05:00",
+    "orden_lectura": 8
   },
   {
     "codigo": "2026732",
@@ -1576,8 +294,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:09-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:00-05:00",
+    "orden_lectura": 9
   },
   {
     "codigo": "2027248",
@@ -1612,8 +330,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:11-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:02-05:00",
+    "orden_lectura": 10
   },
   {
     "codigo": "2025406",
@@ -1637,8 +355,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:12-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:03-05:00",
+    "orden_lectura": 11
   },
   {
     "codigo": "2026433",
@@ -1673,8 +391,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:14-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:04-05:00",
+    "orden_lectura": 12
   },
   {
     "codigo": "2015111",
@@ -1686,8 +404,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:15-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:05-05:00",
+    "orden_lectura": 13
   },
   {
     "codigo": "2011302",
@@ -1711,8 +429,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:16-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:07-05:00",
+    "orden_lectura": 14
   },
   {
     "codigo": "2012698",
@@ -1736,8 +454,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:17-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:08-05:00",
+    "orden_lectura": 15
   },
   {
     "codigo": "2021140",
@@ -1846,8 +564,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:18-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:09-05:00",
+    "orden_lectura": 16
   },
   {
     "codigo": "2026533",
@@ -1882,8 +600,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:19-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:10-05:00",
+    "orden_lectura": 17
   },
   {
     "codigo": "2018776",
@@ -1895,8 +613,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:21-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:12-05:00",
+    "orden_lectura": 18
   },
   {
     "codigo": "2028674",
@@ -1920,8 +638,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:22-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:13-05:00",
+    "orden_lectura": 19
   },
   {
     "codigo": "2024149",
@@ -1933,8 +651,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:23-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:14-05:00",
+    "orden_lectura": 20
   },
   {
     "codigo": "2021146",
@@ -1946,8 +664,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:24-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:15-05:00",
+    "orden_lectura": 21
   },
   {
     "codigo": "2021147",
@@ -1982,8 +700,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:25-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:17-05:00",
+    "orden_lectura": 22
   },
   {
     "codigo": "2026274",
@@ -2018,8 +736,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:27-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:18-05:00",
+    "orden_lectura": 23
   },
   {
     "codigo": "2023912",
@@ -2031,8 +749,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:28-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:19-05:00",
+    "orden_lectura": 24
   },
   {
     "codigo": "2029655",
@@ -2067,8 +785,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:29-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:20-05:00",
+    "orden_lectura": 25
   },
   {
     "codigo": "2022287",
@@ -2103,8 +821,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:30-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:22-05:00",
+    "orden_lectura": 26
   },
   {
     "codigo": "1000129-B",
@@ -2139,8 +857,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:31-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:23-05:00",
+    "orden_lectura": 27
   },
   {
     "codigo": "2021770",
@@ -2175,8 +893,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:33-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:24-05:00",
+    "orden_lectura": 28
   },
   {
     "codigo": "2029485",
@@ -2188,8 +906,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:34-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:25-05:00",
+    "orden_lectura": 29
   },
   {
     "codigo": "2027992",
@@ -2224,8 +942,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:35-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:27-05:00",
+    "orden_lectura": 30
   },
   {
     "codigo": "2027937",
@@ -2304,8 +1022,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:36-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:28-05:00",
+    "orden_lectura": 31
   },
   {
     "codigo": "2029730",
@@ -2317,8 +1035,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:37-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:29-05:00",
+    "orden_lectura": 32
   },
   {
     "codigo": "2029911",
@@ -2342,8 +1060,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:39-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:30-05:00",
+    "orden_lectura": 33
   },
   {
     "codigo": "2029656",
@@ -2355,8 +1073,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:40-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:32-05:00",
+    "orden_lectura": 34
   },
   {
     "codigo": "2029813",
@@ -2368,8 +1086,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:41-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:33-05:00",
+    "orden_lectura": 35
   },
   {
     "codigo": "2029912",
@@ -2393,8 +1111,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:42-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:35-05:00",
+    "orden_lectura": 36
   },
   {
     "codigo": "2029812",
@@ -2406,8 +1124,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:44-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:36-05:00",
+    "orden_lectura": 37
   },
   {
     "codigo": "1000134-B",
@@ -2419,8 +1137,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:45-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:37-05:00",
+    "orden_lectura": 38
   },
   {
     "codigo": "1000176-B",
@@ -2455,8 +1173,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:46-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:39-05:00",
+    "orden_lectura": 39
   },
   {
     "codigo": "1000170-B",
@@ -2491,8 +1209,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:48-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:40-05:00",
+    "orden_lectura": 40
   },
   {
     "codigo": "1000159-B",
@@ -2537,8 +1255,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:49-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:41-05:00",
+    "orden_lectura": 41
   },
   {
     "codigo": "1000158-B",
@@ -2573,8 +1291,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:50-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:42-05:00",
+    "orden_lectura": 42
   },
   {
     "codigo": "1000175-B",
@@ -2609,8 +1327,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:51-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:44-05:00",
+    "orden_lectura": 43
   },
   {
     "codigo": "1000164-B",
@@ -2622,8 +1340,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:52-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:45-05:00",
+    "orden_lectura": 44
   },
   {
     "codigo": "1000141-B",
@@ -2658,8 +1376,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:53-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:46-05:00",
+    "orden_lectura": 45
   },
   {
     "codigo": "1000089-B",
@@ -3090,28 +1808,6 @@
         ]
       },
       {
-        "grupo": "(8) Grupo 8 - Clase Virtual",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 16/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          }
-        ]
-      },
-      {
         "grupo": "(9) Grupo 9 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
@@ -3134,8 +1830,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:55-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:48-05:00",
+    "orden_lectura": 46
   },
   {
     "codigo": "1000160-B",
@@ -3147,8 +1843,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:54:56-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:49-05:00",
+    "orden_lectura": 47
   },
   {
     "codigo": "1000168-B",
@@ -3183,8 +1879,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:57-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:50-05:00",
+    "orden_lectura": 48
   },
   {
     "codigo": "1000167-B",
@@ -3219,8 +1915,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:54:59-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:52-05:00",
+    "orden_lectura": 49
   },
   {
     "codigo": "1000172-B",
@@ -3265,8 +1961,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:00-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:53-05:00",
+    "orden_lectura": 50
   },
   {
     "codigo": "1000145-B",
@@ -3290,8 +1986,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:01-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:54-05:00",
+    "orden_lectura": 51
   },
   {
     "codigo": "1000165-B",
@@ -3303,8 +1999,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:02-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:56-05:00",
+    "orden_lectura": 52
   },
   {
     "codigo": "1000173-B",
@@ -3349,8 +2045,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:03-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:57-05:00",
+    "orden_lectura": 53
   },
   {
     "codigo": "1000162-B",
@@ -3362,8 +2058,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:04-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:31:58-05:00",
+    "orden_lectura": 54
   },
   {
     "codigo": "1000128-B",
@@ -3375,8 +2071,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:06-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:00-05:00",
+    "orden_lectura": 55
   },
   {
     "codigo": "1000171-B",
@@ -3411,8 +2107,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:07-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:01-05:00",
+    "orden_lectura": 56
   },
   {
     "codigo": "1000163-B",
@@ -3424,8 +2120,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:08-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:02-05:00",
+    "orden_lectura": 57
   },
   {
     "codigo": "1000174-B",
@@ -3460,8 +2156,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:09-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:03-05:00",
+    "orden_lectura": 58
   },
   {
     "codigo": "1000169-B",
@@ -3496,8 +2192,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:11-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:05-05:00",
+    "orden_lectura": 59
   },
   {
     "codigo": "1000161-B",
@@ -3509,8 +2205,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:12-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:06-05:00",
+    "orden_lectura": 60
   },
   {
     "codigo": "2028643",
@@ -3545,8 +2241,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:13-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:07-05:00",
+    "orden_lectura": 61
   },
   {
     "codigo": "1000157-B",
@@ -3558,8 +2254,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:14-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:08-05:00",
+    "orden_lectura": 62
   },
   {
     "codigo": "2029903",
@@ -3583,8 +2279,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:16-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:10-05:00",
+    "orden_lectura": 63
   },
   {
     "codigo": "2029864",
@@ -3608,8 +2304,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:17-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:11-05:00",
+    "orden_lectura": 64
   },
   {
     "codigo": "2021758",
@@ -3686,8 +2382,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:18-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:12-05:00",
+    "orden_lectura": 65
   },
   {
     "codigo": "2021760",
@@ -3711,8 +2407,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:20-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:14-05:00",
+    "orden_lectura": 66
   },
   {
     "codigo": "2016133",
@@ -3747,8 +2443,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:21-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:15-05:00",
+    "orden_lectura": 67
   },
   {
     "codigo": "2021142",
@@ -3825,8 +2521,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:22-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:16-05:00",
+    "orden_lectura": 68
   },
   {
     "codigo": "2028571",
@@ -3861,8 +2557,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:23-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:17-05:00",
+    "orden_lectura": 69
   },
   {
     "codigo": "2029900",
@@ -3897,8 +2593,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:24-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:19-05:00",
+    "orden_lectura": 70
   },
   {
     "codigo": "2023244",
@@ -3943,8 +2639,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:26-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:20-05:00",
+    "orden_lectura": 71
   },
   {
     "codigo": "2026204",
@@ -3989,8 +2685,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:27-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:22-05:00",
+    "orden_lectura": 72
   },
   {
     "codigo": "2019336",
@@ -4002,8 +2698,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:28-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:23-05:00",
+    "orden_lectura": 73
   },
   {
     "codigo": "2028569",
@@ -4038,8 +2734,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:29-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:24-05:00",
+    "orden_lectura": 74
   },
   {
     "codigo": "2029421",
@@ -4074,8 +2770,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:31-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:25-05:00",
+    "orden_lectura": 75
   },
   {
     "codigo": "2026908",
@@ -4087,8 +2783,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:32-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:27-05:00",
+    "orden_lectura": 76
   },
   {
     "codigo": "2017564",
@@ -4123,8 +2819,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:33-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:28-05:00",
+    "orden_lectura": 77
   },
   {
     "codigo": "2011303",
@@ -4136,8 +2832,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:35-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:30-05:00",
+    "orden_lectura": 78
   },
   {
     "codigo": "2027223",
@@ -4284,8 +2980,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:36-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:32-05:00",
+    "orden_lectura": 79
   },
   {
     "codigo": "2027224",
@@ -4422,8 +3118,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:37-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:33-05:00",
+    "orden_lectura": 80
   },
   {
     "codigo": "2021152",
@@ -4458,8 +3154,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:38-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:34-05:00",
+    "orden_lectura": 81
   },
   {
     "codigo": "7000293-B",
@@ -4483,8 +3179,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:40-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:36-05:00",
+    "orden_lectura": 82
   },
   {
     "codigo": "2029500",
@@ -4496,8 +3192,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:41-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:37-05:00",
+    "orden_lectura": 83
   },
   {
     "codigo": "2029512",
@@ -4532,8 +3228,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:42-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:38-05:00",
+    "orden_lectura": 84
   },
   {
     "codigo": "2026702",
@@ -4568,8 +3264,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:43-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:40-05:00",
+    "orden_lectura": 85
   },
   {
     "codigo": "2028615",
@@ -4581,8 +3277,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:44-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:41-05:00",
+    "orden_lectura": 86
   },
   {
     "codigo": "2026205",
@@ -4617,8 +3313,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:45-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:42-05:00",
+    "orden_lectura": 87
   },
   {
     "codigo": "2025976",
@@ -4663,8 +3359,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:47-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:44-05:00",
+    "orden_lectura": 88
   },
   {
     "codigo": "2020414",
@@ -4676,8 +3372,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:48-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:45-05:00",
+    "orden_lectura": 89
   },
   {
     "codigo": "2022180",
@@ -4712,8 +3408,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:49-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:46-05:00",
+    "orden_lectura": 90
   },
   {
     "codigo": "2020915",
@@ -4725,8 +3421,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:51-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:48-05:00",
+    "orden_lectura": 91
   },
   {
     "codigo": "2028647",
@@ -4738,8 +3434,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:52-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:49-05:00",
+    "orden_lectura": 92
   },
   {
     "codigo": "2029283",
@@ -4751,8 +3447,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:55:54-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:50-05:00",
+    "orden_lectura": 93
   },
   {
     "codigo": "2029398",
@@ -4787,8 +3483,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:55-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:51-05:00",
+    "orden_lectura": 94
   },
   {
     "codigo": "2023915",
@@ -4823,8 +3519,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:56-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:53-05:00",
+    "orden_lectura": 95
   },
   {
     "codigo": "2015633",
@@ -4859,8 +3555,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:58-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:54-05:00",
+    "orden_lectura": 96
   },
   {
     "codigo": "2029789",
@@ -4884,8 +3580,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:55:59-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:56-05:00",
+    "orden_lectura": 97
   },
   {
     "codigo": "2024990",
@@ -4897,8 +3593,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:00-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:57-05:00",
+    "orden_lectura": 98
   },
   {
     "codigo": "2022188",
@@ -4910,8 +3606,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:01-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:58-05:00",
+    "orden_lectura": 99
   },
   {
     "codigo": "2025336",
@@ -4923,38 +3619,6 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [
-      {
-        "grupo": "(1) Grupo 1 - Clase Presencial",
-        "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
-        "cupos_disponibles": "25",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 16/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "09:00",
-            "hora_fin": "11:00",
-            "salon": "225-103",
-            "salon_nombre": "SALON 103",
-            "edificio": "225 - Rogelio Salmona",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON 103. 225-103. 225 - Rogelio Salmona. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "09:00",
-            "hora_fin": "11:00",
-            "salon": "212-110",
-            "salon_nombre": "AULA 110",
-            "edificio": "212 - José Agustín Blanco Barros",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "AULA 110. 212-110. 212 - José Agustín Blanco Barros. SALON."
-          }
-        ]
-      },
       {
         "grupo": "(2) Grupo 2 - Clase Presencial",
         "actividad": "CLASE TEORICA",
@@ -4988,8 +3652,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:03-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:32:59-05:00",
+    "orden_lectura": 100
   },
   {
     "codigo": "2025814",
@@ -5034,8 +3698,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:04-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:01-05:00",
+    "orden_lectura": 101
   },
   {
     "codigo": "2027940",
@@ -5047,8 +3711,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:05-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:02-05:00",
+    "orden_lectura": 102
   },
   {
     "codigo": "2027941",
@@ -5083,8 +3747,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:06-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:03-05:00",
+    "orden_lectura": 103
   },
   {
     "codigo": "2019054",
@@ -5096,8 +3760,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:07-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:05-05:00",
+    "orden_lectura": 104
   },
   {
     "codigo": "2021154",
@@ -5142,8 +3806,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:09-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:06-05:00",
+    "orden_lectura": 105
   },
   {
     "codigo": "2018617",
@@ -5155,8 +3819,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:10-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:07-05:00",
+    "orden_lectura": 106
   },
   {
     "codigo": "2029676",
@@ -5201,8 +3865,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:12-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:09-05:00",
+    "orden_lectura": 107
   },
   {
     "codigo": "2029371",
@@ -5237,8 +3901,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:13-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:10-05:00",
+    "orden_lectura": 108
   },
   {
     "codigo": "2029870",
@@ -5250,8 +3914,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:14-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:11-05:00",
+    "orden_lectura": 109
   },
   {
     "codigo": "2017803",
@@ -5263,8 +3927,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:15-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:13-05:00",
+    "orden_lectura": 110
   },
   {
     "codigo": "2015705",
@@ -5341,8 +4005,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:17-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:14-05:00",
+    "orden_lectura": 111
   },
   {
     "codigo": "2015706",
@@ -5387,8 +4051,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:18-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:15-05:00",
+    "orden_lectura": 112
   },
   {
     "codigo": "2024999",
@@ -5400,8 +4064,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:19-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:16-05:00",
+    "orden_lectura": 113
   },
   {
     "codigo": "2026000",
@@ -5413,8 +4077,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:20-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:17-05:00",
+    "orden_lectura": 114
   },
   {
     "codigo": "2025997",
@@ -5426,8 +4090,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:21-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:18-05:00",
+    "orden_lectura": 115
   },
   {
     "codigo": "2021849",
@@ -5462,8 +4126,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:23-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:20-05:00",
+    "orden_lectura": 116
   },
   {
     "codigo": "2027716",
@@ -5475,8 +4139,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:24-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:21-05:00",
+    "orden_lectura": 117
   },
   {
     "codigo": "2026001",
@@ -5488,8 +4152,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:25-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:22-05:00",
+    "orden_lectura": 118
   },
   {
     "codigo": "2026002",
@@ -5501,8 +4165,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:27-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:24-05:00",
+    "orden_lectura": 119
   },
   {
     "codigo": "2024077",
@@ -5514,8 +4178,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:28-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:25-05:00",
+    "orden_lectura": 120
   },
   {
     "codigo": "2026501",
@@ -5550,8 +4214,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:30-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:26-05:00",
+    "orden_lectura": 121
   },
   {
     "codigo": "2026053",
@@ -5760,8 +4424,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:31-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:28-05:00",
+    "orden_lectura": 122
   },
   {
     "codigo": "2027096",
@@ -5970,8 +4634,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:32-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:29-05:00",
+    "orden_lectura": 123
   },
   {
     "codigo": "2022625",
@@ -6016,8 +4680,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:33-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:31-05:00",
+    "orden_lectura": 124
   },
   {
     "codigo": "2022626",
@@ -6041,8 +4705,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:35-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:32-05:00",
+    "orden_lectura": 125
   },
   {
     "codigo": "2022627",
@@ -6087,8 +4751,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:36-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:33-05:00",
+    "orden_lectura": 126
   },
   {
     "codigo": "2026739",
@@ -6133,8 +4797,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:37-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:35-05:00",
+    "orden_lectura": 127
   },
   {
     "codigo": "2017810",
@@ -6179,8 +4843,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:39-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:36-05:00",
+    "orden_lectura": 128
   },
   {
     "codigo": "2021149",
@@ -6215,8 +4879,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:40-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:38-05:00",
+    "orden_lectura": 129
   },
   {
     "codigo": "2028914",
@@ -6228,8 +4892,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:42-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:39-05:00",
+    "orden_lectura": 130
   },
   {
     "codigo": "2020994",
@@ -6264,8 +4928,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:43-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:40-05:00",
+    "orden_lectura": 131
   },
   {
     "codigo": "2023215",
@@ -6277,8 +4941,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:44-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:42-05:00",
+    "orden_lectura": 132
   },
   {
     "codigo": "2020404",
@@ -6290,8 +4954,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:45-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:43-05:00",
+    "orden_lectura": 133
   },
   {
     "codigo": "1000151-B",
@@ -6303,8 +4967,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:56:46-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:44-05:00",
+    "orden_lectura": 134
   },
   {
     "codigo": "2029505",
@@ -6339,8 +5003,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:48-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:46-05:00",
+    "orden_lectura": 135
   },
   {
     "codigo": "2023250",
@@ -6385,8 +5049,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:49-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:47-05:00",
+    "orden_lectura": 136
   },
   {
     "codigo": "2029607",
@@ -6421,8 +5085,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:50-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:48-05:00",
+    "orden_lectura": 137
   },
   {
     "codigo": "2015191",
@@ -6499,8 +5163,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:51-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:50-05:00",
+    "orden_lectura": 138
   },
   {
     "codigo": "2023286",
@@ -6545,8 +5209,1090 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:53-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:51-05:00",
+    "orden_lectura": 139
+  },
+  {
+    "codigo": "2026054",
+    "nombre": "Inglés Intensivo I",
+    "tipologia": "LIBRE ELECCIÓN",
+    "creditos": "4",
+    "facultad": "SEDE BOGOTÁ",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Jenny Alejandra Acosta Reyes",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-317",
+            "salon_nombre": "SALON DE CLASE 453-317 (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 453-317 (SALA TIC). 453-317. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "DE EDUC.CONTINUADA",
+            "salon_nombre": "PROG",
+            "edificio": "310-201",
+            "tipo_espacio": "310 - Antonio García Nossa",
+            "lugar_raw": "PROG. DE EDUC.CONTINUADA. 310-201. 310 - Antonio García Nossa. ."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-317",
+            "salon_nombre": "SALON DE CLASE 453-317 (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 453-317 (SALA TIC). 453-317. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-107",
+            "salon_nombre": "SALON DE CLASE 453-107",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-107. 453-107. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Jenny Alejandra Acosta Reyes",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-201",
+            "salon_nombre": "SALON DE CLASE 454-201",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-201. 454-201. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-202",
+            "salon_nombre": "SALON DE CLASE 454-202",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-202. 454-202. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-201",
+            "salon_nombre": "SALON DE CLASE 454-201",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-201. 454-201. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "453-105",
+            "salon_nombre": "SALON DE CLASE 453-105",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-105. 453-105. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Karen Dayana Rodriguez Castaneda",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-301",
+            "salon_nombre": "SALON DE CLASE 454-301",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-301. 454-301. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-307",
+            "salon_nombre": "SALON DE CLASE 454-307",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-307. 454-307. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-202",
+            "salon_nombre": "SALON DE CLASE 454-202",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-202. 454-202. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "453-415",
+            "salon_nombre": "SALON DE CLASE 453-415",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-415. 453-415. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Karen Dayana Rodriguez Castaneda",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-207",
+            "salon_nombre": "SALÓN DE CLASE 401-207",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-207. 401-207. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-115",
+            "salon_nombre": "SALON DE CLASE 453-115",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-109",
+            "salon_nombre": "SALON DE CLASE 453-109",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-109. 453-109. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(5) Grupo 5",
+        "actividad": "CLASE TEORICA",
+        "profesores": "SENDA VALENTINA MARÍA GARCÍA CASTAÑO",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-202",
+            "salon_nombre": "SALÓN DE CLASE 401-202",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-202. 401-202. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-317",
+            "salon_nombre": "SALON DE CLASE 453-317 (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 453-317 (SALA TIC). 453-317. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-415",
+            "salon_nombre": "SALON DE CLASE 453-415",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-415. 453-415. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-306",
+            "salon_nombre": "SALÓN DE CLASE 401-306",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-306. 401-306. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(6) Grupo 6",
+        "actividad": "CLASE TEORICA",
+        "profesores": "ADRIANA DE LOS ANGELES QUINTERO ORJUELA",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-111",
+            "salon_nombre": "SALON DE CLASE 453-111",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-111. 453-111. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-115",
+            "salon_nombre": "SALON DE CLASE 453-115",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "401-102",
+            "salon_nombre": "SALÓN DE CLASE 401-102",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-102. 401-102. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(7) Grupo 7",
+        "actividad": "CLASE TEORICA",
+        "profesores": "SENDA VALENTINA MARÍA GARCÍA CASTAÑO",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-407",
+            "salon_nombre": "SALON DE CLASE 453-407",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-407. 453-407. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-115",
+            "salon_nombre": "SALON DE CLASE 453-115",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-315",
+            "salon_nombre": "SALON DE CLASE 453-315",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-111",
+            "salon_nombre": "SALON DE CLASE 453-111",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-111. 453-111. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(8) Grupo 8",
+        "actividad": "CLASE TEORICA",
+        "profesores": "ADRIANA DE LOS ANGELES QUINTERO ORJUELA",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-105",
+            "salon_nombre": "SALÓN DE CLASE",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE. 401-105. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-317",
+            "salon_nombre": "SALON DE CLASE 453-317 (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 453-317 (SALA TIC). 453-317. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-202",
+            "salon_nombre": "SALÓN DE CLASE 401-202",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-202. 401-202. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-13T05:33:52-05:00",
+    "orden_lectura": 140
+  },
+  {
+    "codigo": "2026055",
+    "nombre": "Inglés Intensivo II",
+    "tipologia": "LIBRE ELECCIÓN",
+    "creditos": "4",
+    "facultad": "SEDE BOGOTÁ",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Roger Barragan Fonseca",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-206",
+            "salon_nombre": "SALON DE CLASE 454-206",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-206",
+            "salon_nombre": "SALON DE CLASE 454-206",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-206",
+            "salon_nombre": "SALON DE CLASE 454-206",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-206",
+            "salon_nombre": "SALON DE CLASE 454-206",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE TEORICA",
+        "profesores": "OLGA INES GOMEZ VILLEGAS",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-208",
+            "salon_nombre": "SALON DE CLASE 454-208",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-208. 454-208. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-201",
+            "salon_nombre": "SALON DE CLASE 454-201",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-201. 454-201. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "453-103",
+            "salon_nombre": "SALON DE CLASE 453-103",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-103. 453-103. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Laura Alejandra Guerrero Calderon",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-202",
+            "salon_nombre": "SALON DE CLASE 454-202",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-202. 454-202. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-301",
+            "salon_nombre": "SALON DE CLASE 454-301",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-301. 454-301. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "471-222B",
+            "salon_nombre": "AULA TEORICA",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "",
+            "lugar_raw": "AULA TEORICA. 471-222B. 471 - José Félix Patiño Restrepo. ."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "453-307",
+            "salon_nombre": "SALON DE CLASE 453-307 (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 453-307 (SALA TIC). 453-307. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Gustavo Garzon Gomez",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-107",
+            "salon_nombre": "SALON DE CLASE 453-107",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-107. 453-107. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "311-201",
+            "salon_nombre": "AULA",
+            "edificio": "311 - Lauchlin Currie",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA. 311-201. 311 - Lauchlin Currie. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-105",
+            "salon_nombre": "SALÓN DE CLASE",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE. 401-105. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(6) Grupo 6",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Juan Diego Galvez Diaz",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-107",
+            "salon_nombre": "SALON DE CLASE 453-107",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-107. 453-107. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "311-102",
+            "salon_nombre": "AULA",
+            "edificio": "311 - Lauchlin Currie",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA. 311-102. 311 - Lauchlin Currie. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-313",
+            "salon_nombre": "SALON DE CLASE 453-313",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-313. 453-313. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(7) Grupo 7",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Laura Alejandra Guerrero Calderon",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-315",
+            "salon_nombre": "SALON DE CLASE 453-315",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "401-207",
+            "salon_nombre": "SALÓN DE CLASE 401-207",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-207. 401-207. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "471-116",
+            "salon_nombre": "SALON DE CLASE - NO DISPONIBLE PARA EL RESTO DE LA UNIVERSIDAD",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "",
+            "lugar_raw": "SALON DE CLASE - NO DISPONIBLE PARA EL RESTO DE LA UNIVERSIDAD. 471-116. 471 - José Félix Patiño Restrepo. ."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "401-105",
+            "salon_nombre": "SALÓN DE CLASE",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE. 401-105. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(8) Grupo 8",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Juan Diego Galvez Diaz",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "31/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-202",
+            "salon_nombre": "SALÓN DE CLASE 401-202",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-202. 401-202. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-109",
+            "salon_nombre": "SALON DE CLASE 453-109",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-109. 453-109. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-206",
+            "salon_nombre": "SALÓN DE CLASE 401-206",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-206. 401-206. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-13T05:33:54-05:00",
+    "orden_lectura": 141
+  },
+  {
+    "codigo": "2026056",
+    "nombre": "Inglés Intensivo III",
+    "tipologia": "LIBRE ELECCIÓN",
+    "creditos": "4",
+    "facultad": "SEDE BOGOTÁ",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "MARTIN FELIPE SUAREZ GUARIN",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-307",
+            "salon_nombre": "SALON DE CLASE 454-307",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-307. 454-307. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-208",
+            "salon_nombre": "SALON DE CLASE 454-208",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-208. 454-208. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-103",
+            "salon_nombre": "SALON DE CLASE 453-103",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-103. 453-103. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "CLASE TEORICA",
+        "profesores": "MARTIN FELIPE SUAREZ GUARIN",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "471-112",
+            "salon_nombre": "SALON",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON. 471-112. 471 - José Félix Patiño Restrepo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-204",
+            "salon_nombre": "SALON DE CLASE 454-204",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-204. 454-204. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "500-303",
+            "salon_nombre": "SALON DE CLASE 303",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 303. 500-303. 500 - Ciencias Agrarias. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "224-216",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-216. 224 - Manuel Ancizar. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Camilo Andres Saldaña Diaz",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-107",
+            "salon_nombre": "SALON DE CLASE 453-107",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-107. 453-107. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-311",
+            "salon_nombre": "SALON DE CLASE 453-311",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-311. 453-311. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "453-315",
+            "salon_nombre": "SALON DE CLASE 453-315",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(5) Grupo 5",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Camilo Andres Saldaña Diaz",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-115",
+            "salon_nombre": "SALON DE CLASE 453-115",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALON DE CLASE 453-115. 453-115. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "454-201",
+            "salon_nombre": "SALON DE CLASE 454-201",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-201. 454-201. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-411",
+            "salon_nombre": "SALON DE CLASE 453-411",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-411. 453-411. 453 - Guillermina Uribe Bone. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(6) Grupo 6",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Lina Beatríz Barrero Molina",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-315",
+            "salon_nombre": "SALON DE CLASE 453-315",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-111",
+            "salon_nombre": "SALON DE CLASE 453-111",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-111. 453-111. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-103",
+            "salon_nombre": "SALON DE CLASE 453-103",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-103. 453-103. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-307",
+            "salon_nombre": "SALON DE CLASE 453-307 (SALA TIC)",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 453-307 (SALA TIC). 453-307. 453 - Guillermina Uribe Bone. SALA DE AUDIOVISUALES."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-13T05:33:55-05:00",
+    "orden_lectura": 142
   },
   {
     "codigo": "2028496",
@@ -6570,8 +6316,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:54-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:56-05:00",
+    "orden_lectura": 143
   },
   {
     "codigo": "2023251",
@@ -6616,8 +6362,156 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:55-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:33:58-05:00",
+    "orden_lectura": 144
+  },
+  {
+    "codigo": "2026057",
+    "nombre": "Intensive english I - Internationalization",
+    "tipologia": "LIBRE ELECCIÓN",
+    "creditos": "4",
+    "facultad": "SEDE BOGOTÁ",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Andres Felipe Mican Castiblanco",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "SÁBADO",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "454-206",
+            "salon_nombre": "SALON DE CLASE 454-206",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-206. 454-206. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Diego Andres Rincón Beltrán",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-313",
+            "salon_nombre": "SALON DE CLASE 453-313",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-313. 453-313. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-315",
+            "salon_nombre": "SALON DE CLASE 453-315",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-315. 453-315. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "401-101",
+            "salon_nombre": "SALÓN DE CLASE 401-101",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-101. 401-101. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "453-303",
+            "salon_nombre": "SALON DE CLASE 453-303",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 453-303. 453-303. 453 - Guillermina Uribe Bone. SALON."
+          },
+          {
+            "dia": "SÁBADO",
+            "hora_inicio": "07:00",
+            "hora_fin": "11:00",
+            "salon": "471-507",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 471-507. 471 - José Félix Patiño Restrepo. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-13T05:33:59-05:00",
+    "orden_lectura": 145
   },
   {
     "codigo": "2027100",
@@ -6764,8 +6658,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:56-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:00-05:00",
+    "orden_lectura": 146
   },
   {
     "codigo": "2026058",
@@ -7046,8 +6940,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:58-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:02-05:00",
+    "orden_lectura": 147
   },
   {
     "codigo": "2027101",
@@ -7256,8 +7150,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:56:59-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:03-05:00",
+    "orden_lectura": 148
   },
   {
     "codigo": "2011183",
@@ -7281,8 +7175,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:00-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:04-05:00",
+    "orden_lectura": 149
   },
   {
     "codigo": "2026630",
@@ -7306,8 +7200,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:01-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:06-05:00",
+    "orden_lectura": 150
   },
   {
     "codigo": "2026631",
@@ -7331,8 +7225,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:03-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:07-05:00",
+    "orden_lectura": 151
   },
   {
     "codigo": "2028821",
@@ -7356,8 +7250,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:04-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:08-05:00",
+    "orden_lectura": 152
   },
   {
     "codigo": "2028822",
@@ -7381,8 +7275,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:05-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:10-05:00",
+    "orden_lectura": 153
   },
   {
     "codigo": "2014269",
@@ -7406,8 +7300,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:06-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:11-05:00",
+    "orden_lectura": 154
   },
   {
     "codigo": "2011283",
@@ -7431,8 +7325,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:07-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:12-05:00",
+    "orden_lectura": 155
   },
   {
     "codigo": "2023216",
@@ -7509,8 +7403,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:09-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:13-05:00",
+    "orden_lectura": 156
   },
   {
     "codigo": "2025981",
@@ -7545,8 +7439,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:10-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:15-05:00",
+    "orden_lectura": 157
   },
   {
     "codigo": "2025053",
@@ -7591,8 +7485,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:12-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:16-05:00",
+    "orden_lectura": 158
   },
   {
     "codigo": "2029556",
@@ -7637,8 +7531,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:13-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:18-05:00",
+    "orden_lectura": 159
   },
   {
     "codigo": "2025063",
@@ -7650,8 +7544,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:57:15-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:19-05:00",
+    "orden_lectura": 160
   },
   {
     "codigo": "2026987",
@@ -7663,8 +7557,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:57:16-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:20-05:00",
+    "orden_lectura": 161
   },
   {
     "codigo": "2029615",
@@ -7688,8 +7582,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:17-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:22-05:00",
+    "orden_lectura": 162
   },
   {
     "codigo": "2022630",
@@ -7700,74 +7594,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": [
-      {
-        "grupo": "(1) Italiano Electivo I - Grupo 1",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Pablo Reyes Pozzi",
-        "cupos_disponibles": "26",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "205-205",
-            "salon_nombre": "AULA 205",
-            "edificio": "205 - Orlando Fals Borda",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "AULA 205. 205-205. 205 - Orlando Fals Borda. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(2) Italiano Electivo I - Grupo 2",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Pablo Reyes Pozzi",
-        "cupos_disponibles": "26",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "212-110",
-            "salon_nombre": "AULA 110",
-            "edificio": "212 - José Agustín Blanco Barros",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "AULA 110. 212-110. 212 - José Agustín Blanco Barros. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "212-110",
-            "salon_nombre": "AULA 110",
-            "edificio": "212 - José Agustín Blanco Barros",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "AULA 110. 212-110. 212 - José Agustín Blanco Barros. SALON."
-          }
-        ]
-      }
-    ],
-    "ts_lectura": "2026-08-12T12:57:18-05:00",
-    "orden_lectura": -1
+    "grupos": [],
+    "ts_lectura": "2026-08-13T05:34:23-05:00",
+    "orden_lectura": 163
   },
   {
     "codigo": "2022631",
@@ -7791,8 +7620,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:20-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:24-05:00",
+    "orden_lectura": 164
   },
   {
     "codigo": "2021471",
@@ -7837,8 +7666,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:21-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:26-05:00",
+    "orden_lectura": 165
   },
   {
     "codigo": "2021472",
@@ -7883,8 +7712,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:22-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:27-05:00",
+    "orden_lectura": 166
   },
   {
     "codigo": "2021473",
@@ -7929,8 +7758,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:24-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:28-05:00",
+    "orden_lectura": 167
   },
   {
     "codigo": "2017949",
@@ -7942,8 +7771,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:57:25-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:30-05:00",
+    "orden_lectura": 168
   },
   {
     "codigo": "2029790",
@@ -7978,8 +7807,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:26-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:32-05:00",
+    "orden_lectura": 169
   },
   {
     "codigo": "2023919",
@@ -8014,8 +7843,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:27-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:33-05:00",
+    "orden_lectura": 170
   },
   {
     "codigo": "2029046",
@@ -8050,8 +7879,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:29-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:35-05:00",
+    "orden_lectura": 171
   },
   {
     "codigo": "2028036",
@@ -8096,8 +7925,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:30-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:36-05:00",
+    "orden_lectura": 172
   },
   {
     "codigo": "2027041",
@@ -8109,8 +7938,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:57:31-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:37-05:00",
+    "orden_lectura": 173
   },
   {
     "codigo": "2026611",
@@ -8145,8 +7974,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:32-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:39-05:00",
+    "orden_lectura": 174
   },
   {
     "codigo": "2024401",
@@ -8158,8 +7987,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:57:34-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:40-05:00",
+    "orden_lectura": 175
   },
   {
     "codigo": "2029557",
@@ -8204,8 +8033,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:35-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:41-05:00",
+    "orden_lectura": 176
   },
   {
     "codigo": "2029844",
@@ -8250,8 +8079,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:36-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:43-05:00",
+    "orden_lectura": 177
   },
   {
     "codigo": "2023240",
@@ -8296,8 +8125,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:38-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:44-05:00",
+    "orden_lectura": 178
   },
   {
     "codigo": "2029611",
@@ -8342,8 +8171,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:39-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:45-05:00",
+    "orden_lectura": 179
   },
   {
     "codigo": "2023241",
@@ -8388,8 +8217,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:40-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:47-05:00",
+    "orden_lectura": 180
   },
   {
     "codigo": "2016253",
@@ -8434,8 +8263,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:41-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:48-05:00",
+    "orden_lectura": 181
   },
   {
     "codigo": "2022221",
@@ -8470,8 +8299,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:43-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:50-05:00",
+    "orden_lectura": 182
   },
   {
     "codigo": "2023218",
@@ -8483,8 +8312,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:57:44-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:51-05:00",
+    "orden_lectura": 183
   },
   {
     "codigo": "2027191",
@@ -8519,8 +8348,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:45-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:52-05:00",
+    "orden_lectura": 184
   },
   {
     "codigo": "2020922",
@@ -8532,8 +8361,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:57:46-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:54-05:00",
+    "orden_lectura": 185
   },
   {
     "codigo": "2020933",
@@ -8545,8 +8374,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:57:47-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:56-05:00",
+    "orden_lectura": 186
   },
   {
     "codigo": "2025828",
@@ -8558,8 +8387,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:57:49-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:57-05:00",
+    "orden_lectura": 187
   },
   {
     "codigo": "2025703",
@@ -8594,8 +8423,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:50-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:34:58-05:00",
+    "orden_lectura": 188
   },
   {
     "codigo": "2018622",
@@ -8607,8 +8436,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:57:51-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:00-05:00",
+    "orden_lectura": 189
   },
   {
     "codigo": "2018623",
@@ -8620,8 +8449,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:57:53-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:01-05:00",
+    "orden_lectura": 190
   },
   {
     "codigo": "2022225",
@@ -8656,8 +8485,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:54-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:03-05:00",
+    "orden_lectura": 191
   },
   {
     "codigo": "2026688",
@@ -8702,8 +8531,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:55-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:04-05:00",
+    "orden_lectura": 192
   },
   {
     "codigo": "2024006",
@@ -8738,8 +8567,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:57:56-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:06-05:00",
+    "orden_lectura": 193
   },
   {
     "codigo": "2028610",
@@ -8751,8 +8580,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:57:57-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:07-05:00",
+    "orden_lectura": 194
   },
   {
     "codigo": "2027394",
@@ -8764,8 +8593,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:57:59-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:08-05:00",
+    "orden_lectura": 195
   },
   {
     "codigo": "2024994",
@@ -8800,8 +8629,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:00-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:10-05:00",
+    "orden_lectura": 196
   },
   {
     "codigo": "2022229",
@@ -8836,8 +8665,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:02-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:11-05:00",
+    "orden_lectura": 197
   },
   {
     "codigo": "2024221",
@@ -8872,8 +8701,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:03-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:12-05:00",
+    "orden_lectura": 198
   },
   {
     "codigo": "2028288",
@@ -8908,8 +8737,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:04-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:14-05:00",
+    "orden_lectura": 199
   },
   {
     "codigo": "2023217",
@@ -8954,8 +8783,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:06-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:15-05:00",
+    "orden_lectura": 200
   },
   {
     "codigo": "2029650",
@@ -8990,8 +8819,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:07-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:17-05:00",
+    "orden_lectura": 201
   },
   {
     "codigo": "2021118",
@@ -9003,8 +8832,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:08-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:18-05:00",
+    "orden_lectura": 202
   },
   {
     "codigo": "2028465",
@@ -9039,8 +8868,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:09-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:19-05:00",
+    "orden_lectura": 203
   },
   {
     "codigo": "2021160",
@@ -9085,8 +8914,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:11-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:21-05:00",
+    "orden_lectura": 204
   },
   {
     "codigo": "2026444",
@@ -9098,8 +8927,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:12-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:22-05:00",
+    "orden_lectura": 205
   },
   {
     "codigo": "2029315",
@@ -9111,8 +8940,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:13-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:23-05:00",
+    "orden_lectura": 206
   },
   {
     "codigo": "2029728",
@@ -9147,8 +8976,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:15-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:25-05:00",
+    "orden_lectura": 207
   },
   {
     "codigo": "2025665",
@@ -9183,8 +9012,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:16-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:26-05:00",
+    "orden_lectura": 208
   },
   {
     "codigo": "2029896",
@@ -9208,8 +9037,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:17-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:27-05:00",
+    "orden_lectura": 209
   },
   {
     "codigo": "2021478",
@@ -9254,8 +9083,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:19-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:29-05:00",
+    "orden_lectura": 210
   },
   {
     "codigo": "2021479",
@@ -9300,8 +9129,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:20-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:30-05:00",
+    "orden_lectura": 211
   },
   {
     "codigo": "2021480",
@@ -9346,8 +9175,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:21-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:31-05:00",
+    "orden_lectura": 212
   },
   {
     "codigo": "2026065",
@@ -9494,8 +9323,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:23-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:33-05:00",
+    "orden_lectura": 213
   },
   {
     "codigo": "2027119",
@@ -9642,8 +9471,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:24-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:34-05:00",
+    "orden_lectura": 214
   },
   {
     "codigo": "2029561",
@@ -9777,8 +9606,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:26-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:36-05:00",
+    "orden_lectura": 215
   },
   {
     "codigo": "2029562",
@@ -9802,8 +9631,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:27-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:37-05:00",
+    "orden_lectura": 216
   },
   {
     "codigo": "2016762",
@@ -9815,8 +9644,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:28-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:38-05:00",
+    "orden_lectura": 217
   },
   {
     "codigo": "2016763",
@@ -9828,8 +9657,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:29-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:39-05:00",
+    "orden_lectura": 218
   },
   {
     "codigo": "2022240",
@@ -9864,8 +9693,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:31-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:41-05:00",
+    "orden_lectura": 219
   },
   {
     "codigo": "2024008",
@@ -9877,8 +9706,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:32-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:42-05:00",
+    "orden_lectura": 220
   },
   {
     "codigo": "2021483",
@@ -9913,8 +9742,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:34-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:43-05:00",
+    "orden_lectura": 221
   },
   {
     "codigo": "2021485",
@@ -9949,8 +9778,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:35-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:45-05:00",
+    "orden_lectura": 222
   },
   {
     "codigo": "2029382",
@@ -9985,8 +9814,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:36-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:46-05:00",
+    "orden_lectura": 223
   },
   {
     "codigo": "2025691",
@@ -10021,8 +9850,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:38-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:47-05:00",
+    "orden_lectura": 224
   },
   {
     "codigo": "2025419",
@@ -10034,8 +9863,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:39-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:49-05:00",
+    "orden_lectura": 225
   },
   {
     "codigo": "2029856",
@@ -10070,8 +9899,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:40-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:50-05:00",
+    "orden_lectura": 226
   },
   {
     "codigo": "1000152-B",
@@ -10083,8 +9912,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:41-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:52-05:00",
+    "orden_lectura": 227
   },
   {
     "codigo": "2029777",
@@ -10096,8 +9925,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:43-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:53-05:00",
+    "orden_lectura": 228
   },
   {
     "codigo": "2029778",
@@ -10142,8 +9971,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:44-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:54-05:00",
+    "orden_lectura": 229
   },
   {
     "codigo": "2029414",
@@ -10155,8 +9984,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:45-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:55-05:00",
+    "orden_lectura": 230
   },
   {
     "codigo": "2029281",
@@ -10191,8 +10020,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:47-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:57-05:00",
+    "orden_lectura": 231
   },
   {
     "codigo": "2026834",
@@ -10227,8 +10056,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:48-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:58-05:00",
+    "orden_lectura": 232
   },
   {
     "codigo": "2028300",
@@ -10263,8 +10092,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:49-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:35:59-05:00",
+    "orden_lectura": 233
   },
   {
     "codigo": "2024124",
@@ -10299,8 +10128,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:50-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:01-05:00",
+    "orden_lectura": 234
   },
   {
     "codigo": "2024476",
@@ -10312,8 +10141,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:51-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:02-05:00",
+    "orden_lectura": 235
   },
   {
     "codigo": "2024464",
@@ -10325,8 +10154,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:52-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:04-05:00",
+    "orden_lectura": 236
   },
   {
     "codigo": "2024461",
@@ -10338,8 +10167,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:54-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:05-05:00",
+    "orden_lectura": 237
   },
   {
     "codigo": "2018842",
@@ -10363,8 +10192,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-12T12:58:56-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:06-05:00",
+    "orden_lectura": 238
   },
   {
     "codigo": "2024622",
@@ -10376,8 +10205,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:57-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:08-05:00",
+    "orden_lectura": 239
   },
   {
     "codigo": "2020932",
@@ -10389,8 +10218,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:58:58-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:10-05:00",
+    "orden_lectura": 240
   },
   {
     "codigo": "2018627",
@@ -10402,8 +10231,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:59:00-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:11-05:00",
+    "orden_lectura": 241
   },
   {
     "codigo": "2018628",
@@ -10415,8 +10244,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:59:01-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:12-05:00",
+    "orden_lectura": 242
   },
   {
     "codigo": "2018632",
@@ -10428,8 +10257,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:59:02-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:14-05:00",
+    "orden_lectura": 243
   },
   {
     "codigo": "2018633",
@@ -10441,8 +10270,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:59:04-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:16-05:00",
+    "orden_lectura": 244
   },
   {
     "codigo": "2018626",
@@ -10454,8 +10283,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:59:05-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:18-05:00",
+    "orden_lectura": 245
   },
   {
     "codigo": "2018634",
@@ -10467,8 +10296,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:59:06-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:19-05:00",
+    "orden_lectura": 246
   },
   {
     "codigo": "2029331",
@@ -10480,8 +10309,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-12T12:59:07-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:21-05:00",
+    "orden_lectura": 247
   },
   {
     "codigo": "2015725",
@@ -10590,8 +10419,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:59:08-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:22-05:00",
+    "orden_lectura": 248
   },
   {
     "codigo": "2015732",
@@ -10668,8 +10497,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:59:10-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:24-05:00",
+    "orden_lectura": 249
   },
   {
     "codigo": "2027134",
@@ -10714,8 +10543,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:59:11-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:25-05:00",
+    "orden_lectura": 250
   },
   {
     "codigo": "2023242",
@@ -10792,8 +10621,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:59:12-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:26-05:00",
+    "orden_lectura": 251
   },
   {
     "codigo": "2023243",
@@ -10870,8 +10699,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:59:13-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:28-05:00",
+    "orden_lectura": 252
   },
   {
     "codigo": "2016197",
@@ -10916,8 +10745,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:59:15-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:29-05:00",
+    "orden_lectura": 253
   },
   {
     "codigo": "2025156",
@@ -10952,7 +10781,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-12T12:59:16-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-13T05:36:30-05:00",
+    "orden_lectura": 254
   }
 ]
