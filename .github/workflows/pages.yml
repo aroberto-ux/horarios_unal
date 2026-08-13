@@ -48,6 +48,12 @@ jobs:
         with:
           python-version: "3.12"
 
+      # sia_scraper.py importa selenium al cargarse, aunque generar_series_json
+      # y generar_estadisticas no lo usen para nada. Sin esto el import falla
+      # y el sitio no se despliega.
+      - name: Instalar dependencias
+        run: pip install selenium
+
       # series.json y estadisticas.html ya no están en el repo (versionarlos
       # eran ~1,7 MB de blob nuevo cada 30 min). Se construyen aquí, que es
       # el único sitio que de verdad los necesita.
