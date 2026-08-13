@@ -9,12 +9,14 @@ __pycache__/
 venv/
 .pytest_cache/
 
-# Artefactos derivados: los reconstruye pages.yml en cada despliegue.
-# Versionarlos era ~1,7 MB de blob nuevo cada 30 minutos.
+# Derivados que pages.yml reconstruye en cada despliegue.
+# Versionarlos eran ~1,7 MB de blob nuevo cada 30 minutos.
+#
+# OJO: aquí solo va lo que ALGO regenera. index.html está escrito a mano
+# (ningún script lo produce) y series_libre.json lo genera sia_libre.py
+# pero nadie lo reconstruye en el despliegue: los dos siguen versionados.
 estadisticas.html
-index.html
 series.json
-series_libre.json
 
 # Respaldos de migraciones (bórralos a mano cuando hayas verificado)
 cupos_historial_pre_particion.csv
