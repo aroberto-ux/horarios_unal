@@ -1,0 +1,23 @@
+# Diagnósticos que escribe guardar_debug() en la raíz del repo
+debug_*.png
+debug_*.html
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Derivados que pages.yml reconstruye en cada despliegue.
+# Versionarlos eran ~1,7 MB de blob nuevo cada 30 minutos.
+#
+# OJO: aquí solo va lo que ALGO regenera. index.html está escrito a mano
+# (ningún script lo produce) y series_libre.json lo genera sia_libre.py
+# pero nadie lo reconstruye en el despliegue: los dos siguen versionados.
+estadisticas.html
+series.json
+
+# Respaldos de migraciones (bórralos a mano cuando hayas verificado)
+cupos_historial_pre_particion.csv
+cupos_historial_v1*.csv

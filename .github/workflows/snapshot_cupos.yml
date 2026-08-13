@@ -82,6 +82,18 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -u
+
+          # Parada de emergencia. Va AQUÍ y no solo dentro del bucle: si el
+          # cron entra y no ve bucle vivo, arranca, empuja bucle.json y hace
+          # el barrido de recuperación ANTES de llegar al while. Con PARAR
+          # puesto eso eran dos pushes cada 10 min pese a la "parada".
+          if [ -f PARAR ]; then
+            echo "Archivo PARAR presente: no arranco."
+            echo "seguir=no"          >> "$GITHUB_OUTPUT"
+            echo "espera=$(date +%s)" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           ahora=$(date +%s)
 
           vivo_id=""; vivo_fin=0
@@ -225,10 +237,14 @@ jobs:
 
           guardar() {
             local f
-            for f in cupos_historial*.csv runs.csv estadisticas.html series.json \
-                     catalogo.json grupos.csv horarios.csv horario.html; do
+            for f in runs.csv catalogo.json grupos.csv horarios.csv horario.html; do
               [ -e "$f" ] && git add "$f"
             done
+            # El historial va particionado: git solo reescribe el archivo del
+            # día en curso en vez de un CSV monolítico de decenas de MB.
+            [ -d historial ] && git add historial
+            # estadisticas.html y series.json ya no se versionan: los
+            # reconstruye pages.yml en cada despliegue.
             # bucle.json NO se toca aquí: lo escribe solo el relevo, y volver
             # a añadirlo pisaría al sucesor que ya se anunció.
             [ -d textos ] && git add textos
