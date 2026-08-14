@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Planilla de horario · UNAL</title>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWN5C57S');</script>
+<!-- End Google Tag Manager -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -404,7 +413,7 @@ footer a{color:var(--azul)}
 .gen-chip button:hover{color:var(--rojo)}
 .gen-vacio{font-size:.8rem; color:var(--tinta-suave); font-style:italic}
 #genBuscar{width:100%; font:400 .82rem "Archivo",sans-serif; color:var(--tinta);
-  padding:6px 10px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco)}
+  padding:6px 10px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel)}
 #genBuscar:focus{outline:none; border-color:var(--tinta-suave)}
 .gen-lista{margin-top:6px; max-height:260px; overflow-y:auto;
   border:1px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco)}
@@ -546,6 +555,11 @@ section.panel[hidden]{display:none!important}
 </style>
 </head>
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWN5C57S"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <header>
   <div class="head-top">
@@ -1004,8 +1018,8 @@ const ROMANOS = ["Nivel.","I","II","III","IV","V","VI","VII","VIII","IX","X"];
 
    Las que llevan `grupo` sí tienen asignaturas con código en el catálogo
    (herramientas de ingeniería, electiva técnica, construcción de obras
-   civiles, trabajo de grado): esas se marcan solas cuando apruebas una de
-   ellas, y sus créditos los aporta la asignatura real, no la casilla, para no
+   civiles, trabajo de grado): esas se marcan solas al aprobar una de ellas,
+   y sus créditos los aporta la asignatura real, no la casilla, para no
    contarlos dos veces. Las de libre elección no tienen código en ninguna
    parte, así que se marcan a mano.
 
@@ -2762,8 +2776,7 @@ function insigniaDemanda(k){
   const nv = NIVEL_DEM(d.velRel);
   const vel = d.velocidad>=10 ? Math.round(d.velocidad) : d.velocidad.toFixed(1);
   return `<span class="dem ${nv.cls}" title="Perdió ${d.tomados} de ${d.cap} cupos en ${
-    d.dias<1 ? Math.round(d.dias*24)+" h" : d.dias.toFixed(1)+" días"}${
-    d.agotado?", hasta agotarse":""}. Mide demanda, no calidad.">${nv.txt} · ${vel}/día</span>`;
+    d.dias<1 ? Math.round(d.dias*24)+" h" : d.dias.toFixed(1)+" días"}${d.agotado?", hasta agotarse":""}. Mide demanda, no calidad.">${nv.txt} · ${vel}/día</span>`;
 }
 
 function docentesDe(cod){
