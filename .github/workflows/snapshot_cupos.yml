@@ -320,6 +320,23 @@ jobs:
           done
           echo "Bucle terminado tras $n barridos."
 
+      # sia_scraper.py SÍ genera debug_sin_asignaturas_*.png/html (y otros
+      # debug_*) en cuanto el listado sale vacío o un combo falla — el mismo
+      # blindaje que ya tiene libre_diario.yml. El problema es que .gitignore
+      # los excluye a propósito (no tiene sentido versionar capturas) y sin
+      # este paso se perdían al morir el runner: 6+ horas de barridos en cero
+      # sin una sola imagen de qué está mostrando el SIA en ese momento.
+      - name: Guardar diagnósticos
+        if: always() && steps.guard.outputs.seguir == 'si'
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostico-cupos-${{ github.run_id }}
+          path: |
+            debug_*.png
+            debug_*.html
+          if-no-files-found: ignore
+          retention-days: 7
+
       # ----------------------------------------------------------
       # Encadenar sin esperar al cron. workflow_dispatch es la
       # excepción: sí crea corridas aunque lo lance el GITHUB_TOKEN.
