@@ -62,8 +62,7 @@ from selenium.common.exceptions import (
 )
 
 BASE_URL = (
-    "https://sia.unal.edu.co/Catalogo/facespublico/public/servicioPublico.jsf"
-    "?taskflowId=task-flow-AC_CatalogoAsignaturas"
+    "https://sia.unal.edu.co/Catalogo/facespublico/public/servicioPublico.jsf?taskflowId=task-flow-AC_CatalogoAsignaturas"
 )
 
 # ---------------------------------------------------------------------------
