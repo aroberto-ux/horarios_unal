@@ -677,8 +677,18 @@ def configurar_filtros(driver, plan, reintentos=3):
         except (RuntimeError, TimeoutException, StaleElementReferenceException,
                 NoSuchElementException) as e:
             ultimo_error = e
+            # El mensaje de TimeoutException suele venir vacío (solo el volcado
+            # nativo de Chromedriver), así que por sí solo no dice si la página
+            # nunca cargó, si cargó otra cosa (login, mantenimiento, captcha)
+            # o si el SIA solo está lento. Esto se ve en el log sin descargar el
+            # artefacto; el .png/.html siguen ahí para el caso que necesite más.
+            try:
+                url_act, titulo_act = driver.current_url, driver.title
+            except WebDriverException:
+                url_act, titulo_act = "(no se pudo leer: sesión caída)", ""
             print(f"  ! Falló la configuración de filtros "
-                  f"(intento {intento}/{reintentos}): {type(e).__name__}")
+                  f"(intento {intento}/{reintentos}): {type(e).__name__}"
+                  f" — url={url_act!r} título={titulo_act!r}")
             if intento < reintentos:
                 print("  ! Recargando la página y empezando de cero...")
                 time.sleep(2)
