@@ -325,21 +325,16 @@ def crear_driver(headless: bool = False):
         options.add_argument("--window-size=1920,1080")
     else:
         options.add_argument("--start-maximized")
-    
-    # Opciones anti-detección y estabilidad para GitHub Actions
     options.add_argument("--disable-gpu")
     options.add_argument("--disable-extensions")
     options.add_argument("--disable-popup-blocking")
     options.add_argument("--disable-notifications")
-    options.add_argument("--disable-features=RendererCodeIntegrity,AutomationControlled,IsolateOrigins,site-per-process")
-    options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument("--disable-gpu-sandbox")
-    options.add_argument("--disable-software-rasterizer")
-    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-features=RendererCodeIntegrity,AutomationControlled")
+
+    # Imprescindible en equipos con poca RAM (Raspberry Pi, contenedores):
+    # /dev/shm es diminuto y Chrome se cae con "session deleted" sin esto.
     options.add_argument("--disable-dev-shm-usage")
-    
-    # User agent más realista
-    options.add_argument("--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+    options.add_argument("--no-sandbox")
 
     try:
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
@@ -359,13 +354,6 @@ def crear_driver(headless: bool = False):
         driver = webdriver.Chrome(options=options)
 
     driver.set_page_load_timeout(60)
-    
-    # Ejecutar script para ocultar que es automatizado
-    try:
-        driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-    except:
-        pass
-    
     return driver
 
 
@@ -557,16 +545,8 @@ def seleccionar(driver, select_id, texto_visible, timeout=TIMEOUT_COMBO_DEFAULT,
                     continue
                 texto_exacto = r["texto"]
             else:
-                # Intentar primero con JavaScript directamente para mayor compatibilidad
-                try:
-                    r = _seleccionar_por_js(driver, select_id, texto_visible)
-                    if r.get("ok"):
-                        texto_exacto = r["texto"]
-                    else:
-                        raise Exception("JS falló")
-                except:
-                    texto_exacto = _resolver_texto_opcion(driver, select_id, texto_visible)
-                    Select(driver.find_element(By.ID, select_id)).select_by_visible_text(texto_exacto)
+                texto_exacto = _resolver_texto_opcion(driver, select_id, texto_visible)
+                Select(driver.find_element(By.ID, select_id)).select_by_visible_text(texto_exacto)
 
             esperar_overlay_ppr_desaparezca(driver, timeout=timeout)
 
@@ -667,25 +647,17 @@ def configurar_filtros(driver, plan, reintentos=3):
     for intento in range(1, reintentos + 1):
         try:
             driver.get(BASE_URL)
-            
-            # Espera EXPLÍCITA a que el combo de nivel exista
-            try:
-                WebDriverWait(driver, 30).until(
-                    EC.presence_of_element_located((By.ID, ID_NIVEL))
-                )
-            except TimeoutException:
-                print("  ! Timeout esperando el combo de nivel. Recargando...")
-                time.sleep(2)
-                continue
-            
-            time.sleep(2)  # Espera extra para que ADF termine de procesar
-            
-            seleccionar(driver, ID_NIVEL, NIVEL_ESTUDIO, timeout=TIMEOUT_COMBO_DEFAULT + 10)
+            WebDriverWait(driver, 30).until(
+                EC.presence_of_element_located((By.ID, ID_NIVEL))
+            )
+            time.sleep(2)
+
+            seleccionar(driver, ID_NIVEL, NIVEL_ESTUDIO)
             seleccionar(driver, ID_SEDE, SEDE)
             seleccionar(driver, ID_FACULTAD, FACULTAD)
             # El combo de Plan de Estudios es el más lento (lista larga,
             # depende de las tres selecciones anteriores)
-            seleccionar(driver, ID_PLAN, plan, timeout=TIMEOUT_COMBO_PLAN + 10)
+            seleccionar(driver, ID_PLAN, plan, timeout=TIMEOUT_COMBO_PLAN)
             seleccionar(driver, ID_TIPOLOGIA, TIPOLOGIA)
 
             WebDriverWait(driver, TIMEOUT_NAV).until(
@@ -713,6 +685,7 @@ def configurar_filtros(driver, plan, reintentos=3):
 
     guardar_debug(driver, "configurar_filtros")
     raise RuntimeError(f"No se pudieron configurar los filtros: {ultimo_error}")
+
 
 
 # ---------------------------------------------------------------------------
@@ -1695,6 +1668,8 @@ def cargar_previo() -> Dict[str, Asignatura]:
     return previo
 
 
+
+
 # ---------------------------------------------------------------------------
 # Armador de horario (HTML interactivo)
 # ---------------------------------------------------------------------------
@@ -2228,6 +2203,8 @@ def generar_html(asignaturas: List[Asignatura]):
     json_seguro = json.dumps(datos, ensure_ascii=False).replace("</", "<\\/")
     html = PLANTILLA_HTML.replace("__DATOS__", json_seguro)
     OUTPUT_HTML.write_text(html, encoding="utf-8")
+
+
 
 
 # ---------------------------------------------------------------------------
