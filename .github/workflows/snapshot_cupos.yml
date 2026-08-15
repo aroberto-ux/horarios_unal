@@ -51,7 +51,7 @@ permissions:
 # justo lo que hacía perder snapshots.
 
 env:
-  INTERVALO_MIN: "30"       # cada cuánto se mide
+  INTERVALO_MIN: "5"       # cada cuánto se mide
   DURACION_MIN: "300"       # 5 h de bucle (tope de GitHub: 6 h)
   VENTANA_MIN: "20"         # antelación con que se admite un relevo
   ADELANTO_SEG: "0"         # empezar el barrido N s antes de la marca
