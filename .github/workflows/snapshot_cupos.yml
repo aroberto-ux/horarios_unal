@@ -181,15 +181,47 @@ jobs:
             done
           }
 
+          # Función mejorada de push con manejo de conflictos
           empujar() {
-            local intento
-            for intento in 1 2 3 4; do
-              git push -q && return 0
-              echo "Push rechazado ($intento/4); rebase y reintento..."
-              git pull --rebase --autostash -q origin main || true
-              sleep 10
+            local intento=0
+            local max_intentos=5
+            
+            while [ $intento -lt $max_intentos ]; do
+              intento=$((intento + 1))
+              
+              # Intentar push normal
+              if git push origin main 2>/dev/null; then
+                return 0
+              fi
+              
+              # Si falla, actualizar desde el remoto
+              echo "Push falló (intento $intento/$max_intentos), sincronizando..."
+              git fetch origin main
+              
+              # Si hay cambios en el remoto, hacer rebase
+              if ! git diff --quiet origin/main; then
+                git stash push -m "temp-$(date +%s)" 2>/dev/null || true
+                if git rebase origin/main; then
+                  # Rebase exitoso, aplicar cambios guardados
+                  git stash pop 2>/dev/null || true
+                  # Rehacer commit (los cambios del stash pueden haber creado conflicto)
+                  git add .
+                  git commit -q -m "snapshot de cupos $(date -u +'%Y-%m-%d %H:%M UTC')" 2>/dev/null || true
+                else
+                  # Rebase falló, volver atrás
+                  git rebase --abort 2>/dev/null || true
+                  git reset --hard origin/main
+                  git stash pop 2>/dev/null || true
+                  # Re-aplicar cambios después del reset
+                  git add .
+                  git commit -q -m "snapshot de cupos $(date -u +'%Y-%m-%d %H:%M UTC')" 2>/dev/null || true
+                fi
+              fi
+              
+              sleep $((intento * 3))
             done
-            echo "::error::No se pudo hacer push tras 4 intentos"
+            
+            echo "::error::No se pudo hacer push tras $max_intentos intentos"
             return 1
           }
 
