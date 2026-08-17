@@ -25,28 +25,41 @@ jobs:
           python -m pip install --upgrade pip
           pip install selenium
 
-      - name: Install Chrome (stable, not snap) and ChromeDriver
+      - name: Install Chrome and ChromeDriver
         run: |
-          # Eliminar Chromium snap que causa problemas
-          sudo apt-get remove -y chromium-browser || true
-          sudo snap remove chromium || true
-          
-          # Instalar Chrome estable
           sudo apt-get update
-          sudo apt-get install -y wget gnupg unzip
+          sudo apt-get install -y wget gnupg unzip xvfb
           wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
           sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
           sudo apt-get update
-          sudo apt-get install -y google-chrome-stable xvfb
-          
-          # Instalar ChromeDriver compatible
+          sudo apt-get install -y google-chrome-stable
           CHROME_VERSION=$(google-chrome-stable --version | grep -oP '\d+\.\d+\.\d+\.\d+')
-          echo "Chrome version: $CHROME_VERSION"
           wget -q "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chromedriver-linux64.zip"
           unzip chromedriver-linux64.zip
           sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
           chmod +x /usr/local/bin/chromedriver
-          chromedriver --version
+
+      - name: Get working proxy
+        id: proxy
+        run: |
+          # Descarga lista de proxies HTTP públicos
+          PROXY_LIST=$(curl -s https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all)
+          echo "$PROXY_LIST" > proxies.txt
+          # Toma el primer proxy que responda
+          for proxy in $(head -10 proxies.txt); do
+            if curl -s -x http://$proxy -I https://sia.unal.edu.co --max-time 5 | grep -q "HTTP/"; then
+              echo "proxy=$proxy" >> $GITHUB_OUTPUT
+              break
+            fi
+          done
+
+      - name: Inject proxy into scraper (runtime only)
+        if: steps.proxy.outputs.proxy != ''
+        run: |
+          PROXY="${{ steps.proxy.outputs.proxy }}"
+          # Agrega opciones de proxy al archivo sia_scraper.py (solo para esta ejecución)
+          sed -i "/options.add_argument('--no-sandbox')/a \ \ \ \ options.add_argument('--proxy-server=http://$PROXY')" sia_scraper.py
+          echo "Proxy inyectado: $PROXY"
 
       - name: Setup virtual display
         run: |
@@ -61,7 +74,6 @@ jobs:
           PYTHONUNBUFFERED: "1"
           SIA_GUARDAR_TEXTO: "0"
           DISPLAY: ":99"
-          CHROME_BIN: "/usr/bin/google-chrome-stable"
 
       - name: Check if snapshot succeeded
         id: check
