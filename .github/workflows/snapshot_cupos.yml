@@ -2,8 +2,8 @@ name: Snapshot de cupos
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # cada 30 minutos
-  workflow_dispatch:  # permite ejecución manual
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
 
 jobs:
   scrape:
@@ -23,26 +23,45 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install selenium webdriver-manager
+          pip install selenium
 
-      - name: Install Chrome
+      - name: Install Chrome (stable, not snap) and ChromeDriver
         run: |
+          # Eliminar Chromium snap que causa problemas
+          sudo apt-get remove -y chromium-browser || true
+          sudo snap remove chromium || true
+          
+          # Instalar Chrome estable
           sudo apt-get update
-          sudo apt-get install -y chromium-browser xvfb dbus-x11
-          echo "CHROME_BIN=/usr/bin/chromium-browser" >> $GITHUB_ENV
+          sudo apt-get install -y wget gnupg unzip
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable xvfb
+          
+          # Instalar ChromeDriver compatible
+          CHROME_VERSION=$(google-chrome-stable --version | grep -oP '\d+\.\d+\.\d+\.\d+')
+          echo "Chrome version: $CHROME_VERSION"
+          wget -q "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chromedriver-linux64.zip"
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+          chmod +x /usr/local/bin/chromedriver
+          chromedriver --version
 
       - name: Setup virtual display
         run: |
-          sudo service dbus start
-          Xvfb :99 -ac -screen 0 1920x1080x24 &
+          Xvfb :99 -screen 0 1920x1080x24 &
           echo "DISPLAY=:99" >> $GITHUB_ENV
+          echo "CHROME_BIN=/usr/bin/google-chrome-stable" >> $GITHUB_ENV
 
-      - name: Run scraper with stealth
+      - name: Run scraper
         run: |
           python sia_scraper.py cupos
         env:
           PYTHONUNBUFFERED: "1"
           SIA_GUARDAR_TEXTO: "0"
+          DISPLAY: ":99"
+          CHROME_BIN: "/usr/bin/google-chrome-stable"
 
       - name: Check if snapshot succeeded
         id: check
@@ -51,7 +70,6 @@ jobs:
             echo "success=true" >> $GITHUB_OUTPUT
           else
             echo "success=false" >> $GITHUB_OUTPUT
-            echo "⚠️ El snapshot no se generó correctamente"
           fi
 
       - name: Commit and push changes
@@ -62,12 +80,3 @@ jobs:
           git add catalogo.json grupos.csv horarios.csv horario.html series.json runs.csv historial/
           git commit -m "snapshot de cupos $(date -u '+%Y-%m-%d %H:%M') UTC" || echo "No hay cambios"
           git push
-
-      - name: Send alert on failure
-        if: steps.check.outputs.success != 'true'
-        run: |
-          echo "⚠️ El workflow falló. Verifica el SIA."
-          # Descomenta si tienes Telegram configurado
-          # curl -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT }}/sendMessage \
-          #   -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
-          #   -d "text=⚠️ SIA bloqueó Actions en $(date -u '+%Y-%m-%d %H:%M UTC')"
