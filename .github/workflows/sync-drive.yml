@@ -30,13 +30,16 @@ jobs:
           GDRIVE_JSON: ${{ secrets.GDRIVE_CREDENTIALS_JSON }}
         run: printf '%s' "$GDRIVE_JSON" > credenciales_drive.json
 
-      - name: Descargar archivos desde Drive
+      - name: Descargar archivos obligatorios desde Drive
         env:
           SIA_DRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
-        run: >
-          python bajar_drive.py
-          catalogo.json grupos.csv horarios.csv horario.html
-          estadisticas.html series.json cupos_historial.csv runs.csv
+        run: python bajar_drive.py catalogo.json grupos.csv horarios.csv horario.html
+
+      - name: Descargar archivos de cupos (opcionales, pueden no existir aún)
+        continue-on-error: true
+        env:
+          SIA_DRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+        run: python bajar_drive.py estadisticas.html series.json cupos_historial.csv runs.csv
 
       - name: Borrar credenciales (no deben quedar en el runner ni commitearse)
         if: always()
@@ -47,7 +50,8 @@ jobs:
           git config user.name "sia-bot"
           git config user.email "sia-bot@users.noreply.github.com"
           git add catalogo.json grupos.csv horarios.csv horario.html \
-                  estadisticas.html series.json cupos_historial.csv runs.csv
+                  estadisticas.html series.json cupos_historial.csv runs.csv \
+                  2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Sin cambios, no se hace commit."
           else
