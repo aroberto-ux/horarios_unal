@@ -13,10 +13,18 @@ Instalación:
 Uso:
     python bajar_drive.py catalogo.json horario.html grupos.csv ...
 
-Descarga cada archivo (buscado por NOMBRE dentro de la carpeta) al
-directorio actual, sobrescribiendo si ya existe localmente. Si algún
-archivo no aparece en Drive, se avisa y se sigue con los demás (no se
-detiene el resto de la descarga por uno faltante).
+Descarga cada archivo (buscado por NOMBRE en la raíz de la carpeta) al
+directorio actual, sobrescribiendo si ya existe. Si algún archivo no
+aparece, se avisa y se sigue con los demás.
+
+Para descargar TODO el contenido de una subcarpeta (p. ej. "historial/",
+que tiene un archivo por día y no se puede listar por nombre de antemano),
+usa el token especial @historial:
+
+    python bajar_drive.py catalogo.json horario.html @historial
+
+Eso descarga cada archivo dentro de la subcarpeta "historial" de Drive al
+directorio local ./historial/, conservando sus nombres.
 """
 
 import io
@@ -37,6 +45,7 @@ CARPETA_DRIVE_ID = os.environ.get("SIA_DRIVE_FOLDER_ID", "")
 # Basta con permiso de lectura para este script (a diferencia de
 # subir_drive.py, que necesita escritura).
 SCOPES = ["https://www.googleapis.com/auth/drive.readonly"]
+_MIME_CARPETA = "application/vnd.google-apps.folder"
 
 _servicio = None
 
@@ -59,11 +68,11 @@ def _get_servicio():
     return _servicio
 
 
-def _buscar_id(nombre: str) -> Optional[str]:
+def _buscar_id(nombre: str, carpeta_id: str) -> Optional[str]:
     servicio = _get_servicio()
     nombre_escapado = nombre.replace("'", "\\'")
     query = (
-        f"name = '{nombre_escapado}' and '{CARPETA_DRIVE_ID}' in parents "
+        f"name = '{nombre_escapado}' and '{carpeta_id}' in parents "
         "and trashed = false"
     )
     resultado = (
@@ -75,23 +84,40 @@ def _buscar_id(nombre: str) -> Optional[str]:
     return archivos[0]["id"] if archivos else None
 
 
+def _id_subcarpeta(nombre: str) -> Optional[str]:
+    servicio = _get_servicio()
+    query = (
+        f"name = '{nombre}' and '{CARPETA_DRIVE_ID}' in parents "
+        f"and mimeType = '{_MIME_CARPETA}' and trashed = false"
+    )
+    resultado = servicio.files().list(
+        q=query, spaces="drive", fields="files(id, name)"
+    ).execute()
+    archivos = resultado.get("files", [])
+    return archivos[0]["id"] if archivos else None
+
+
+def _descargar_por_id(file_id: str, destino: Path) -> None:
+    servicio = _get_servicio()
+    request = servicio.files().get_media(fileId=file_id)
+    buffer = io.BytesIO()
+    downloader = MediaIoBaseDownload(buffer, request)
+    listo = False
+    while not listo:
+        _, listo = downloader.next_chunk()
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    destino.write_bytes(buffer.getvalue())
+
+
 def bajar_archivo(nombre: str, destino: Optional[Path] = None) -> bool:
+    """Descarga un archivo suelto de la RAÍZ de la carpeta configurada."""
     destino = destino or (Path.cwd() / nombre)
     try:
-        servicio = _get_servicio()
-        file_id = _buscar_id(nombre)
+        file_id = _buscar_id(nombre, CARPETA_DRIVE_ID)
         if not file_id:
             print(f"  ! {nombre} no existe en la carpeta de Drive, se omite.")
             return False
-
-        request = servicio.files().get_media(fileId=file_id)
-        buffer = io.BytesIO()
-        downloader = MediaIoBaseDownload(buffer, request)
-        listo = False
-        while not listo:
-            _, listo = downloader.next_chunk()
-
-        destino.write_bytes(buffer.getvalue())
+        _descargar_por_id(file_id, destino)
         print(f"  -> Descargado: {nombre}")
         return True
     except HttpError as e:
@@ -99,6 +125,42 @@ def bajar_archivo(nombre: str, destino: Optional[Path] = None) -> bool:
     except RuntimeError as e:
         print(f"  ! {e}")
     return False
+
+
+def bajar_subcarpeta(nombre: str, destino_dir: Path) -> int:
+    """Descarga TODOS los archivos dentro de una subcarpeta de Drive
+    (p. ej. 'historial') a un directorio local, conservando sus nombres.
+    Usa esto para el historial particionado, donde no se sabe de antemano
+    cuántos archivos AAAA-MM-DD.csv existen."""
+    try:
+        carpeta_id = _id_subcarpeta(nombre)
+        if not carpeta_id:
+            print(f"  ! La subcarpeta '{nombre}' no existe en Drive todavía, se omite.")
+            return 0
+
+        servicio = _get_servicio()
+        archivos, token = [], None
+        while True:
+            resp = servicio.files().list(
+                q=f"'{carpeta_id}' in parents and trashed = false",
+                spaces="drive", fields="nextPageToken, files(id, name)",
+                pageToken=token, pageSize=1000,
+            ).execute()
+            archivos.extend(resp.get("files", []))
+            token = resp.get("nextPageToken")
+            if not token:
+                break
+
+        destino_dir.mkdir(parents=True, exist_ok=True)
+        for archivo in archivos:
+            _descargar_por_id(archivo["id"], destino_dir / archivo["name"])
+        print(f"  -> Descargados {len(archivos)} archivos de la subcarpeta '{nombre}'.")
+        return len(archivos)
+    except HttpError as e:
+        print(f"  ! Error de la API de Drive bajando la subcarpeta '{nombre}': {e}")
+    except RuntimeError as e:
+        print(f"  ! {e}")
+    return 0
 
 
 def bajar_varios(nombres) -> bool:
@@ -111,7 +173,17 @@ def bajar_varios(nombres) -> bool:
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Uso: python bajar_drive.py archivo1 [archivo2 ...]")
+        print("Uso: python bajar_drive.py archivo1 [archivo2 ...] [@historial]")
         raise SystemExit(1)
-    ok = bajar_varios(sys.argv[1:])
+
+    args = sys.argv[1:]
+    ok = True
+
+    if "@historial" in args:
+        args = [a for a in args if a != "@historial"]
+        bajar_subcarpeta("historial", CARPETA_SCRIPT / "historial")
+
+    if args:
+        ok = bajar_varios(args)
+
     raise SystemExit(0 if ok else 1)
