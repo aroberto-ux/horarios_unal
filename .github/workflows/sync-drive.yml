@@ -1,0 +1,56 @@
+name: Sincronizar datos desde Google Drive
+
+on:
+  schedule:
+    # Cada 30 minutos. GitHub no garantiza el minuto exacto (puede
+    # atrasarse unos minutos en horas pico), pero corre confiablemente.
+    - cron: '*/30 * * * *'
+  workflow_dispatch: {}   # permite lanzarlo a mano desde la pestaña Actions
+
+permissions:
+  contents: write   # necesario para que el job pueda hacer git push
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el repo
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: pip install google-api-python-client google-auth google-auth-httplib2
+
+      - name: Escribir credenciales de la cuenta de servicio
+        env:
+          GDRIVE_JSON: ${{ secrets.GDRIVE_CREDENTIALS_JSON }}
+        run: printf '%s' "$GDRIVE_JSON" > credenciales_drive.json
+
+      - name: Descargar archivos desde Drive
+        env:
+          SIA_DRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+        run: >
+          python bajar_drive.py
+          catalogo.json grupos.csv horarios.csv horario.html
+          estadisticas.html series.json cupos_historial.csv runs.csv
+
+      - name: Borrar credenciales (no deben quedar en el runner ni commitearse)
+        if: always()
+        run: rm -f credenciales_drive.json
+
+      - name: Commit y push si hubo cambios
+        run: |
+          git config user.name "sia-bot"
+          git config user.email "sia-bot@users.noreply.github.com"
+          git add catalogo.json grupos.csv horarios.csv horario.html \
+                  estadisticas.html series.json cupos_historial.csv runs.csv
+          if git diff --cached --quiet; then
+            echo "Sin cambios, no se hace commit."
+          else
+            git commit -m "Actualizar datos desde Drive [skip ci]"
+            git push
+          fi
