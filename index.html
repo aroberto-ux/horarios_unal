@@ -747,6 +747,11 @@ const REPO_RAW = "https://raw.githubusercontent.com/aroberto-ux/horarios_unal/ma
 const DIAS = ["LUNES","MARTES","MIÉRCOLES","JUEVES","VIERNES","SÁBADO"];
 const PALETA = ["#2B5DA8","#147A46","#8A4FBF","#B36F06","#0E7C86","#A63D6F","#5A6B2F","#7A4A21"];
 
+/* ---- Analítica: helper único para no repetir el chequeo de gtag ---- */
+function evento(nombre, params){
+  if(typeof gtag === "function") gtag('event', nombre, params||{});
+}
+
 /* ================= Componentes de una asignatura =================
    El SIA reparte los componentes (magistral, taller, laboratorio…) de dos
    maneras distintas, y hay que soportar las dos:
@@ -1285,6 +1290,7 @@ function fijarRango(r){
   marcarRangos();
   refrescarSparklines();
   pintarGrafico();
+  evento('cambiar_rango_tendencia', {rango:r});
 }
 
 /* Aplica lo escrito en los campos de fecha. Si vienen al revés se intercambian
@@ -1303,6 +1309,7 @@ function fijarRangoPersonal(){
   marcarRangos();
   refrescarSparklines();
   pintarGrafico();
+  evento('cambiar_rango_tendencia', {rango:'personalizado'});
 }
 
 /* ================= Carga y modelo ================= */
@@ -1524,6 +1531,7 @@ function enlacesDocentes(txt){
     `<a class="prof-link" href="${LOS_ESTUDIANTES}${encodeURIComponent(babel(n))}" target="_blank"
         rel="noopener noreferrer"
         title="Ver calificaciones de ${esc(n)} en Los Estudiantes (puede que no tenga ficha)"
+        onclick="evento('clic_docente_los_estudiantes',{docente:${JSON.stringify(n)}})"
      >${esc(n)}<span class="prof-flecha" aria-hidden="true">↗</span></a>`
   ).join(" · ");
 }
@@ -1628,7 +1636,7 @@ function pintarLista(){
     btn.addEventListener("click",()=>{
       // el estado vive en ABIERTAS, no en el DOM: así ningún repintado
       // (buscar, recargar los CSV, agregar un grupo) lo pierde
-      if(div.classList.toggle("abierta")) ABIERTAS.add(m.codigo);
+      if(div.classList.toggle("abierta")){ ABIERTAS.add(m.codigo); evento('ver_detalle_materia', {codigo:m.codigo, nombre:m.nombre}); }
       else ABIERTAS.delete(m.codigo);
     });
     div.appendChild(btn);
@@ -1788,7 +1796,8 @@ function famDe(k){
 
 function alternar(k){
   const [cod,gn]=k.split("|");
-  if(seleccion.includes(k)) seleccion=seleccion.filter(x=>x!==k);
+  const yaEstaba = seleccion.includes(k);
+  if(yaEstaba) seleccion=seleccion.filter(x=>x!==k);
   else{
     // Nada de diálogos: si le falta un requisito queda anotado, discreto,
     // en las notas del plan. Puede haber homologaciones que aquí no constan.
@@ -1801,13 +1810,19 @@ function alternar(k){
   almacen.guardar(seleccion);
   actualizarBotones(); pintarHorario(); pintarAvance();
   if(modoTend==="mis") pintarGrafico();
+  evento(yaEstaba ? 'quitar_grupo' : 'agregar_grupo', {
+    codigo_asignatura: cod, grupo: gn,
+    nombre_asignatura: MATERIAS.get(cod)?.nombre || cod
+  });
 }
 
 function alternarAprobada(cod){
   cod = nc(cod);
+  const seMarca = !APROBADAS.has(cod);
   if(APROBADAS.has(cod)) APROBADAS.delete(cod); else APROBADAS.add(cod);
   avanceAlmacen.guardar(APROBADAS);
   pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista();
+  evento(seMarca ? 'marcar_aprobada' : 'desmarcar_aprobada', {codigo: cod});
 }
 
 /* ================= Grilla semanal ================= */
@@ -1851,8 +1866,10 @@ function pintarHorario(){
     }
   }
   const aviso=$("#avisoConflicto");
+  const habiaConflicto = aviso.classList.contains("visible");
   aviso.classList.toggle("visible",pares.length>0);
   aviso.textContent = pares.length? "⚠ Conflicto de horario: "+[...new Set(pares)].join(" · ") : "";
+  if(pares.length && !habiaConflicto) evento('conflicto_horario', {n_pares: new Set(pares).size});
 
   pintarAvisosPlan(cred);
 
@@ -2055,6 +2072,7 @@ function aprobarHasta(sem){
   for(const r of RANURAS) if(r.sem<=sem) APROBADAS.add(r.id);
   avanceAlmacen.guardar(APROBADAS);
   pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista();
+  evento('aprobar_hasta_semestre', {semestre: sem});
 }
 
 function pintarDetalleImpresion(){
@@ -2379,6 +2397,7 @@ function generarHorarios(){
         : `los ${x.tras} grupo(s) que te sirven están sin cupos`;
       return `<li><b>${x.nom}</b>: ${causa}.</li>`;
     }).join("") + "</ul>";
+    evento('generar_horario', {n_materias: mats.length, n_resultados: 0, exito:false});
     return;
   }
 
@@ -2401,6 +2420,7 @@ function generarHorarios(){
   if(!RESULTADOS.length){
     estado.className="error";
     estado.textContent = "Todas las combinaciones se cruzan entre sí. Prueba quitando una materia o liberando alguna franja.";
+    evento('generar_horario', {n_materias: mats.length, n_resultados: 0, exito:false});
     return;
   }
   const combos = ops.reduce((t,o)=>t*o.gs.length, 1);
@@ -2445,6 +2465,10 @@ function generarHorarios(){
     (cortado ? ". Se muestran los primeros que se encontraron; afina las franjas para reducirlos." : ".") +
     extra;
   pintarResultados();
+  evento('generar_horario', {
+    n_materias: mats.length, n_resultados: RESULTADOS.length,
+    orden: $("#genOrden").value, con_relleno: cupo>0, exito:true
+  });
 }
 
 /* Rellenar es caro, así que solo se hace sobre los mejores. */
@@ -2493,7 +2517,7 @@ function pintarResultados(){
       caja.appendChild(masBtn);
     }
   };
-  masBtn.addEventListener("click", tanda);
+  masBtn.addEventListener("click", ()=>{ evento('ver_mas_horarios', {vistos}); tanda(); });
   tanda();
 }
 
@@ -2560,12 +2584,15 @@ function usarHorario(claves){
   if(modoTend==="mis") pintarGrafico();
   irA("horario");
   $("#grilla").scrollIntoView({behavior:"smooth", block:"center"});
+  evento('usar_horario_generado', {n_grupos: claves.length});
 }
 
 /* ---------- Materias candidatas ---------- */
 function alternarCandidata(cod){
-  if(CANDIDATAS.has(cod)) CANDIDATAS.delete(cod); else CANDIDATAS.add(cod);
+  const yaEstaba = CANDIDATAS.has(cod);
+  if(yaEstaba) CANDIDATAS.delete(cod); else CANDIDATAS.add(cod);
   genAlmacen.guardar(); pintarCandidatas(); sincronizarGenLista(); pintarLista(); invalidarResultados();
+  evento(yaEstaba ? 'quitar_candidata_generador' : 'agregar_candidata_generador', {codigo: cod});
 }
 /* Lo generado deja de valer en cuanto cambian las materias o las franjas. */
 function invalidarResultados(){
@@ -2684,6 +2711,7 @@ function pintarRejilla(){
   document.addEventListener("pointerup", ()=>{
     if(pintando===null) return;
     pintando=null; genAlmacen.guardar(); invalidarResultados();
+    evento('pintar_franjas_bloqueadas', {n_franjas: BLOQUEADOS.size});
   });
 })();
 
@@ -2916,6 +2944,7 @@ let vistaActual = "horario";
 
 function irA(v, {foco=false, guardar=true}={}){
   if(!VISTAS[v]) v = "horario";
+  const cambioDeVista = v !== vistaActual;
   vistaActual = v;
   for(const [k,cfg] of Object.entries(VISTAS))
     for(const sel of cfg.paneles) $(sel).hidden = (k!==v);
@@ -2933,6 +2962,15 @@ function irA(v, {foco=false, guardar=true}={}){
   // El lienzo de Chart.js mide mal si nace oculto: hay que redibujarlo al mostrarlo
   if(v==="cupos") pintarGrafico();
   actualizarInsignias();
+  if(cambioDeVista && typeof gtag === "function"){
+    // pageview virtual: cada pestaña se cuenta como una "página" propia
+    gtag('event', 'page_view', {
+      page_title: `Planilla de horario · ${v}`,
+      page_location: location.origin + location.pathname + "#" + v,
+      page_path: "/#" + v
+    });
+    evento('cambio_vista', {vista: v});
+  }
 }
 
 /* Contadores en las pestañas, para saber qué hay en cada una sin entrar. */
@@ -2966,13 +3004,22 @@ function actualizarInsignias(){
 })();
 
 
-$("#busqueda").addEventListener("input", pintarLista);
-$("#orden").addEventListener("change", pintarLista);
+let debounceBusqueda;
+$("#busqueda").addEventListener("input", ()=>{
+  pintarLista();
+  clearTimeout(debounceBusqueda);
+  debounceBusqueda = setTimeout(()=>{
+    const q = $("#busqueda").value.trim();
+    if(q) evento('search', {search_term:q});
+  }, 800);
+});
+$("#orden").addEventListener("change", ()=>{ pintarLista(); evento('cambiar_orden_lista', {orden: $("#orden").value}); });
 $("#fuente").addEventListener("change", async ()=>{
   if($("#fuente").value!=="plan") await asegurarLibres();
   pintarLista();
+  evento('cambiar_fuente_lista', {fuente: $("#fuente").value});
 });
-$("#soloDisponibles").addEventListener("change", pintarLista);
+$("#soloDisponibles").addEventListener("change", ()=>{ pintarLista(); evento('filtro_solo_disponibles', {activo: $("#soloDisponibles").checked}); });
 
 /* Selector «aprobar hasta el semestre N» */
 (function(){
@@ -2993,6 +3040,7 @@ $("#soloDisponibles").addEventListener("change", pintarLista);
     APROBADAS = new Set();
     avanceAlmacen.guardar(APROBADAS);
     pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista();
+    evento('limpiar_avance');
   });
 })();
 pintarAvance();
@@ -3020,13 +3068,16 @@ $("#genSinDias").addEventListener("change", ()=>{ RESULTADOS.length && generarHo
 $("#btnDesdeHorario").addEventListener("click", ()=>{
   for(const k of seleccion) CANDIDATAS.add(k.split("|")[0]);
   genAlmacen.guardar(); pintarCandidatas(); sincronizarGenLista(); pintarLista(); invalidarResultados();
+  evento('traer_candidatas_desde_horario');
 });
 $("#btnVaciarCand").addEventListener("click", ()=>{
   CANDIDATAS.clear(); genAlmacen.guardar(); pintarCandidatas(); sincronizarGenLista(); pintarLista();
   $("#genResultados").innerHTML=""; $("#genEstado").textContent=""; RESULTADOS=[];
+  evento('vaciar_candidatas_generador');
 });
 $("#btnLimpiarBloqueos").addEventListener("click", ()=>{
   BLOQUEADOS.clear(); genAlmacen.guardar(); pintarRejilla(); invalidarResultados();
+  evento('limpiar_bloqueos_generador');
 });
 $("#genBuscar").addEventListener("input", pintarGenLista);
 $("#genLibres").addEventListener("change", async ()=>{
@@ -3053,6 +3104,7 @@ function fijarModo(modo){
   $("#snapPanel").hidden = (modo!=="snap");
   if(modo==="snap" && grafico){ grafico.destroy(); grafico=null; }
   pintarGrafico();
+  evento('cambiar_modo_tendencia', {modo});
 }
 $("#modoMis").addEventListener("click",()=>fijarModo("mis"));
 $("#modoMateria").addEventListener("click",()=>fijarModo("materia"));
@@ -3061,7 +3113,7 @@ $("#modoSnap").addEventListener("click",()=>fijarModo("snap"));
 $("#selSnap").addEventListener("change", ()=>{ snapSel = Number($("#selSnap").value); pintarSnapshots(); });
 $("#snapPrev").addEventListener("click", ()=>moverSnapshot(-1));
 $("#snapNext").addEventListener("click", ()=>moverSnapshot(1));
-$("#selMateria").addEventListener("change", pintarGrafico);
+$("#selMateria").addEventListener("change", ()=>{ pintarGrafico(); evento('ver_tendencia_materia', {codigo: $("#selMateria").value}); });
 for(const b of document.querySelectorAll("#rangoTend button")){
   b.addEventListener("click", ()=>fijarRango(b.dataset.r));
 }
@@ -3084,6 +3136,7 @@ $("#btnImprimir").addEventListener("click", ()=>{
   irA("horario");
   // el título es el nombre que el navegador propone al guardar como PDF
   document.title = `Horario UNAL · ${$("#totalCreditos").textContent}`;
+  evento('imprimir_horario', {creditos: $("#totalCreditos").textContent, n_grupos: seleccion.length});
   window.print();
 });
 window.addEventListener("afterprint", ()=>{ document.title = TITULO_ORIGINAL; });
