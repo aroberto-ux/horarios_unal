@@ -238,6 +238,54 @@ section.panel{
   background:var(--papel); cursor:pointer;
 }
 .controles-tend .fechas button:hover{border-color:var(--tinta-suave); color:var(--tinta)}
+/* ---------- Cabecera de la gráfica (estilo Google Finance) ----------
+   El valor grande es el protagonista; al recorrer la línea con el cursor el
+   número de arriba se reemplaza por el del instante que se está mirando, en
+   vez de sacar un globo flotante que tapa los datos. */
+.tend-cabecera{
+  display:flex; flex-wrap:wrap; gap:14px 28px; align-items:flex-start;
+  justify-content:space-between; padding:16px 16px 4px;
+}
+.tend-cabecera[hidden]{display:none}
+.tc-etiqueta{
+  font:500 .72rem "IBM Plex Mono",monospace; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--tinta-suave);
+}
+.tc-valor{display:flex; align-items:baseline; gap:7px; margin-top:3px}
+.tc-valor b{
+  font-size:clamp(1.9rem,4.6vw,2.5rem); font-weight:600; line-height:1.05; letter-spacing:-.015em;
+  font-variant-numeric:tabular-nums; font-feature-settings:"tnum";  /* el número no baila al recorrer */
+}
+.tc-unidad{font-size:.85rem; color:var(--tinta-suave)}
+.tc-delta{
+  font:500 .82rem "IBM Plex Mono",monospace; font-variant-numeric:tabular-nums;
+  color:var(--tinta-suave); margin-top:4px; min-height:1.25em;
+}
+.tc-delta .cifra{font-weight:600; color:var(--tinta-suave)}
+.tc-delta.sube .cifra{color:var(--verde)}
+.tc-delta.baja .cifra{color:var(--rojo)}
+
+/* Leyenda propia: cada grupo con el valor del instante que se está mirando. */
+.tc-leyenda{display:flex; flex-direction:column; gap:2px; max-height:104px; overflow-y:auto; min-width:0}
+.tc-leyenda:empty{display:none}
+.tc-serie{display:flex; align-items:center; gap:8px; font-size:.78rem; line-height:1.4}
+.tc-serie i{width:9px; height:9px; border-radius:2px; flex:0 0 auto}
+.tc-serie .n{color:var(--tinta-suave); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:min(46vw,260px)}
+.tc-serie .v{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; font-weight:600; margin-left:auto}
+
+/* Rango: pestañas de texto, sin caja, con subrayado en la activa. */
+.controles-tend .rango{border:0; border-radius:0; overflow:visible; gap:2px}
+.controles-tend .rango button{
+  background:none; border:0; border-bottom:2px solid transparent; border-radius:0;
+  padding:5px 10px; color:var(--tinta-suave);
+  font:600 .76rem "IBM Plex Mono",monospace; letter-spacing:.02em;
+  transition:color .15s ease, border-color .15s ease;
+}
+.controles-tend .rango button+button{border-left:0}
+.controles-tend .rango button:hover{color:var(--tinta)}
+.controles-tend .rango button.activo{background:none; color:var(--verde); border-bottom-color:var(--verde)}
+
+.lienzo{cursor:crosshair}
 .lienzo{position:relative; height:min(52vh,420px); padding:12px 16px 18px}
 .lienzo .msj{
   position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
@@ -716,6 +764,15 @@ section.panel[hidden]{display:none!important}
         <button type="button" id="btnHoyFin" title="Poner la fecha final en la última lectura disponible">⇥</button>
       </div>
       <span class="periodo" id="periodoTend"></span>
+    </div>
+    <!-- Cabecera al estilo Google Finance: el número manda, la gráfica lo acompaña -->
+    <div class="tend-cabecera" id="tendCabecera" hidden>
+      <div class="tc-izq">
+        <span class="tc-etiqueta" id="tcEtiqueta">Cupos disponibles</span>
+        <div class="tc-valor"><b id="tcValor">—</b><span class="tc-unidad" id="tcUnidad">cupos</span></div>
+        <div class="tc-delta" id="tcDelta"></div>
+      </div>
+      <div class="tc-leyenda" id="tcLeyenda"></div>
     </div>
     <div class="lienzo"><canvas id="grafico"></canvas></div>
     <div id="snapPanel" hidden>
@@ -2817,6 +2874,7 @@ function docentesDe(cod){
 }
 
 function pintarDocentes(){
+  vistaTend = null; $("#tendCabecera").hidden = true;   // el barrido por docente no es una serie de tiempo
   const cod=$("#selMateria").value;
   const filas=docentesDe(cod).sort((a,b)=>b.ocup-a.ocup || b.inscritos-a.inscritos);
   msjLienzo(filas.length? null : "Esta asignatura no tiene historial de cupos todavía.");
@@ -2856,16 +2914,127 @@ function pintarDocentes(){
   });
 }
 
+/* El escalón ("stepped") sería más fiel al dato crudo (el cupo se mantiene
+   hasta la siguiente lectura), pero se ve más cuadrado que una curva suave
+   como en Google. "after" dibuja el escalón: fiel al dato, pero anguloso. */
+const TEND_ESCALON = false;
+
+const VERDE_T = "#147A46", ROJO_T = "#B3372E", NEUTRO_T = "#5C6B60";
+
+/* Relleno degradado bajo la línea (solo cuando hay una sola serie). */
+function degradadoTend(ch, color){
+  const a = ch.chartArea; if(!a) return "transparent";
+  const g = ch.ctx.createLinearGradient(0, a.top, 0, a.bottom);
+  g.addColorStop(0, color + "33");
+  g.addColorStop(1, color + "00");
+  return g;
+}
+
 function seriesPara(claves){
-  return claves.map((k,i)=>{
-    const [c,g]=k.split("|"); const m=MATERIAS.get(c);
+  const crudas = claves.map(k=>{
+    const [c,g] = k.split("|"); const m = MATERIAS.get(c);
     return {
-      label:`${m?m.nombre:c} · ${g}`,
-      data:recortar(HISTORIAL.get(k)).map(p=>({x:+p.t, y:p.cupos, anc:p.anclado||0})),
-      borderColor:PALETA[i%PALETA.length], backgroundColor:PALETA[i%PALETA.length],
-      tension:.25, pointRadius:2.5, borderWidth:2
+      label: `${m?m.nombre:c} · ${g}`,
+      datos: recortar(HISTORIAL.get(k)).map(p=>({x:+p.t, y:p.cupos, anc:p.anclado||0}))
     };
-  }).filter(d=>d.data.length);
+  }).filter(s=>s.datos.length);
+
+  const solo = crudas.length === 1;
+  return crudas.map((s,i)=>{
+    const ini = s.datos[0].y, fin = s.datos[s.datos.length-1].y;
+    const color = solo ? (fin>ini ? VERDE_T : fin<ini ? ROJO_T : NEUTRO_T)
+                       : PALETA[i % PALETA.length];
+    return {
+      label: s.label, data: s.datos, colorSerie: color,
+      borderColor: color, borderWidth: 1.9, tension: 0, stepped: TEND_ESCALON,
+      pointRadius: 0, pointHoverRadius: 4.5, pointBorderWidth: 0,
+      pointHoverBackgroundColor: color, pointHoverBorderColor: "#FFFFFF", pointHoverBorderWidth: 2,
+      fill: solo ? "origin" : false,
+      backgroundColor: solo ? (c => degradadoTend(c.chart, color)) : color
+    };
+  });
+}
+
+/* Línea vertical de seguimiento: se dibuja donde está el cursor. */
+const plugCruz = {
+  id: "cruzTend",
+  afterDatasetsDraw(ch){
+    const act = ch.getActiveElements();
+    if(!act.length || !ch.chartArea) return;
+    const x = act[0].element.x, a = ch.chartArea, g = ch.ctx;
+    g.save();
+    g.beginPath(); g.moveTo(x, a.top); g.lineTo(x, a.bottom);
+    g.lineWidth = 1; g.strokeStyle = "#A9B8AE"; g.stroke();
+    g.restore();
+  }
+};
+
+/* Raya punteada en el valor de referencia, como el "cierre anterior". */
+const plugBase = {
+  id: "baseTend",
+  beforeDatasetsDraw(ch){
+    const y0 = ch.$baseTend;
+    if(y0 == null || !ch.scales.y || !ch.chartArea) return;
+    const py = ch.scales.y.getPixelForValue(y0), a = ch.chartArea, g = ch.ctx;
+    if(py < a.top || py > a.bottom) return;
+    g.save();
+    g.setLineDash([3,4]); g.lineWidth = 1; g.strokeStyle = "#BCC9BF";
+    g.beginPath(); g.moveTo(a.left, py); g.lineTo(a.right, py); g.stroke();
+    g.restore();
+  }
+};
+
+/* Valor de una serie en un instante: la última lectura anterior o igual a ts
+   (el cupo se mantiene hasta que llega la siguiente lectura). */
+function valorEn(datos, ts){
+  if(!datos.length || ts < datos[0].x) return null;
+  let lo = 0, hi = datos.length-1, r = null;
+  while(lo <= hi){ const m = (lo+hi) >> 1; if(datos[m].x <= ts){ r = datos[m]; lo = m+1; } else hi = m-1; }
+  return r ? r.y : null;
+}
+
+/* ---------- Cabecera ---------- */
+/* Lo que se está mostrando ahora, para poder repintar la cabecera mientras el
+   cursor recorre la gráfica sin volver a calcular las series. */
+let vistaTend = null;   // {series:[{label,color,datos}], base, total, ts}
+
+function pintarCabecera(activos){
+  const cab = $("#tendCabecera");
+  if(!cab || !vistaTend){ if(cab) cab.hidden = true; return; }
+  cab.hidden = false;
+  const {series, base, finTs, valoresFin} = vistaTend;
+
+  // Con el cursor encima: valores del instante señalado. Sin él: última lectura.
+  // El valor de cada serie se busca por tiempo, no por índice: los grupos no
+  // comparten las mismas lecturas y emparejarlos por posición los desalinea.
+  let valores = valoresFin, ts = finTs;
+  if(activos && activos.length){
+    const e = activos[0];
+    const p = series[e.datasetIndex] && series[e.datasetIndex].datos[e.index];
+    if(p){ ts = p.x; valores = series.map(s=>valorEn(s.datos, ts)); }
+  }
+  const total = valores.reduce((t,v)=>t+(v||0), 0);
+
+  const solo = series.length === 1;
+  $("#tcEtiqueta").textContent = solo
+    ? series[0].label
+    : `${series.length} grupos · total de cupos`;
+  $("#tcValor").textContent = total;
+  $("#tcUnidad").textContent = total === 1 ? "cupo" : "cupos";
+
+  const dif = total - base;
+  const del = $("#tcDelta");
+  del.className = "tc-delta" + (dif>0 ? " sube" : dif<0 ? " baja" : "");
+  const flecha = dif>0 ? "▲" : dif<0 ? "▼" : "•";
+  const signo  = dif>0 ? "+" : "";
+  del.innerHTML = `<span class="cifra">${flecha} ${signo}${dif}</span> · ${fmtFecha(new Date(ts))}`;
+
+  // Leyenda propia (solo si hay varias series que distinguir).
+  const ley = $("#tcLeyenda");
+  ley.innerHTML = solo ? "" : series.map((s,i)=>
+    `<span class="tc-serie"><i style="background:${s.color}"></i>` +
+    `<span class="n">${s.label}</span><span class="v">${valores[i] ?? "—"}</span></span>`
+  ).join("");
 }
 
 function msjLienzo(txt){
@@ -2890,45 +3059,87 @@ function pintarGrafico(){
   const claves = modoTend==="mis"
     ? seleccion
     : [...(MATERIAS.get($("#selMateria").value)?.grupos.keys()||[])].map(g=>`${$("#selMateria").value}|${g}`);
-  const datasets=seriesPara(claves);
+  const datasets = seriesPara(claves);
   const v = ventana();
   const sufRango = v.personal
     ? ` entre el ${fmtFecha(new Date(v.desde))} y el ${fmtFecha(new Date(v.hasta))}`
-    : (rangoTend==="max" ? "" : ` en el rango ${rangoTend}`);
-  msjLienzo(datasets.length? null :
-    (modoTend==="mis"
+    : (rangoTend === "max" ? "" : ` en el rango ${rangoTend}`);
+  msjLienzo(datasets.length ? null :
+    (modoTend === "mis"
       ? (v.personal && seleccion.length
           ? `Tus grupos no tienen lecturas${sufRango}. Prueba con otras fechas.`
           : "Agrega grupos a tu horario para ver su tendencia.")
       : `Esta asignatura no tiene historial de cupos${sufRango}.`));
-  const ctx=$("#grafico");
+
+  const ctx = $("#grafico");
   if(grafico) grafico.destroy();
-  if(!datasets.length){ grafico=null; return; }
-  const vent=ventana();
-  grafico=new Chart(ctx,{
-    type:"line",
-    data:{datasets},
-    options:{
-      maintainAspectRatio:false, animation:false,
-      interaction:{mode:"nearest", intersect:false},
-      plugins:{
-        legend:{labels:{font:{family:"Archivo", size:11}, boxWidth:14}},
-        tooltip:{callbacks:{
-          title:its=>fmtFecha(new Date(its[0].parsed.x)),
-          label:c=>` ${c.dataset.label}: ${c.parsed.y} cupos` + (c.raw && c.raw.anc ? ` (sin lecturas en el rango; \u00faltima: ${fmtFecha(new Date(c.raw.anc))})` : "")
-        }}
+  if(!datasets.length){ grafico = null; vistaTend = null; $("#tendCabecera").hidden = true; return; }
+
+  // Referencia: total de cupos al abrir la ventana; delta: contra ese valor.
+  const series = datasets.map(d=>({label:d.label, color:d.colorSerie, datos:d.data}));
+  const valoresFin = series.map(s=>s.datos[s.datos.length-1].y);
+  vistaTend = {
+    series,
+    base:      series.reduce((t,s)=>t+s.datos[0].y, 0),
+    finTotal:  valoresFin.reduce((t,x)=>t+x, 0),
+    finTs:     Math.max(...series.map(s=>s.datos[s.datos.length-1].x)),
+    valoresFin
+  };
+  pintarCabecera(null);
+
+  // Sin forzar el cero, salvo cuando el mínimo ya lo está rozando.
+  const todos = datasets.flatMap(d=>d.data.map(p=>p.y));
+  const minY = Math.min(...todos);
+
+  grafico = new Chart(ctx, {
+    type: "line",
+    data: {datasets},
+    plugins: [plugBase, plugCruz],
+    options: {
+      maintainAspectRatio: false,
+      animation: {duration: 320, easing: "easeOutQuart"},
+      layout: {padding: {top: 8, right: 2}},
+      interaction: {mode: "index", intersect: false, axis: "x"},
+      onHover: (e, act) => pintarCabecera(act),
+      plugins: {
+        legend: {display: false},          // la leyenda la pinta la cabecera
+        tooltip: {enabled: false}          // el dato viaja al número grande
       },
-      scales:{
-        x:{type:"linear", min:vent.desde, max:vent.hasta,
-           ticks:{font:{family:"IBM Plex Mono", size:10}, maxRotation:60, autoSkip:true, maxTicksLimit:10,
-                  callback:fmtEje},
-           grid:{color:"#EEF2EA"}},
-        y:{beginAtZero:true, title:{display:true, text:"Cupos disponibles", font:{family:"Archivo", size:11}},
-           ticks:{font:{family:"IBM Plex Mono", size:10}, precision:0}, grid:{color:"#E4EADF"}}
+      scales: {
+        x: {
+          type: "linear", min: v.desde, max: v.hasta,
+          border: {display: false},
+          grid: {display: false},          // sin verticales, como Google
+          ticks: {
+            font: {family: "IBM Plex Mono", size: 10}, color: "#7A8A7E",
+            maxRotation: 0, autoSkip: true, maxTicksLimit: 6, padding: 8,
+            callback: fmtEje
+          }
+        },
+        y: {
+          position: "right",               // eje a la derecha
+          beginAtZero: false, grace: "12%",
+          suggestedMin: minY <= 3 ? 0 : undefined,
+          border: {display: false},
+          grid: {color: "#EEF2EA", drawTicks: false},
+          ticks: {
+            font: {family: "IBM Plex Mono", size: 10}, color: "#7A8A7E",
+            precision: 0, maxTicksLimit: 5, padding: 6
+          }
+        }
       }
     }
   });
+  grafico.$baseTend = vistaTend.base;
 }
+
+/* Al salir del lienzo la cabecera vuelve a la última lectura. */
+$("#grafico").addEventListener("mouseleave", ()=>{
+  if(!grafico || modoTend === "doc") return;
+  grafico.setActiveElements([]);
+  grafico.update("none");
+  pintarCabecera(null);
+});
 
 /* ================= Navegación por pestañas =================
    Una sola vista visible a la vez. El catálogo de asignaturas se queda fijo
@@ -3102,6 +3313,7 @@ function fijarModo(modo){
   $("#periodoTend").hidden = (modo==="doc");
   document.querySelector(".lienzo").hidden = (modo==="snap");
   $("#snapPanel").hidden = (modo!=="snap");
+  $("#tendCabecera").hidden = (modo==="snap" || modo==="doc");
   if(modo==="snap" && grafico){ grafico.destroy(); grafico=null; }
   pintarGrafico();
   evento('cambiar_modo_tendencia', {modo});
