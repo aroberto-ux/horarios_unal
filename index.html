@@ -268,10 +268,14 @@ section.panel{
 /* Leyenda propia: cada grupo con el valor del instante que se está mirando. */
 .tc-leyenda{display:flex; flex-direction:column; gap:2px; max-height:104px; overflow-y:auto; min-width:0}
 .tc-leyenda:empty{display:none}
-.tc-serie{display:flex; align-items:center; gap:8px; font-size:.78rem; line-height:1.4}
+.tc-serie{display:flex; align-items:center; gap:8px; font-size:.78rem; line-height:1.4; cursor:pointer; padding:1px 2px; border-radius:3px}
+.tc-serie:hover{background:var(--papel)}
 .tc-serie i{width:9px; height:9px; border-radius:2px; flex:0 0 auto}
 .tc-serie .n{color:var(--tinta-suave); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:min(46vw,260px)}
 .tc-serie .v{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; font-weight:600; margin-left:auto}
+.tc-serie.apagada{opacity:.4}
+.tc-serie.apagada i{background:transparent!important; box-shadow:inset 0 0 0 1.5px var(--tinta-suave)}
+.tc-serie.apagada .n{text-decoration:line-through}
 
 /* Rango: pestañas de texto, sin caja, con subrayado en la activa. */
 .controles-tend .rango{border:0; border-radius:0; overflow:visible; gap:2px}
@@ -2997,12 +3001,16 @@ function valorEn(datos, ts){
 /* Lo que se está mostrando ahora, para poder repintar la cabecera mientras el
    cursor recorre la gráfica sin volver a calcular las series. */
 let vistaTend = null;   // {series:[{label,color,datos}], base, total, ts}
+/* Índices de series que el usuario apagó a mano, clicando la leyenda.
+   Se reinicia cada vez que se arma una gráfica nueva (otra selección, otro
+   rango): apagar un grupo no debe sobrevivir a un cambio de vista distinto. */
+let ocultosTend = new Set();
 
 function pintarCabecera(activos){
   const cab = $("#tendCabecera");
   if(!cab || !vistaTend){ if(cab) cab.hidden = true; return; }
   cab.hidden = false;
-  const {series, base, finTs, valoresFin} = vistaTend;
+  const {series, finTs, valoresFin} = vistaTend;
 
   // Con el cursor encima: valores del instante señalado. Sin él: última lectura.
   // El valor de cada serie se busca por tiempo, no por índice: los grupos no
@@ -3013,12 +3021,18 @@ function pintarCabecera(activos){
     const p = series[e.datasetIndex] && series[e.datasetIndex].datos[e.index];
     if(p){ ts = p.x; valores = series.map(s=>valorEn(s.datos, ts)); }
   }
-  const total = valores.reduce((t,v)=>t+(v||0), 0);
+  // Las series apagadas no cuentan ni para el total ni para la referencia:
+  // desmarcar un grupo debe comportarse como si nunca hubiera estado.
+  let total = 0, base = 0, visibles = 0;
+  series.forEach((s,i)=>{
+    if(ocultosTend.has(i)) return;
+    total += (valores[i]||0); base += s.datos[0].y; visibles++;
+  });
 
   const solo = series.length === 1;
   $("#tcEtiqueta").textContent = solo
     ? series[0].label
-    : `${series.length} grupos · total de cupos`;
+    : visibles ? `${visibles} de ${series.length} grupos · total de cupos` : "Ningún grupo visible";
   $("#tcValor").textContent = total;
   $("#tcUnidad").textContent = total === 1 ? "cupo" : "cupos";
 
@@ -3028,12 +3042,17 @@ function pintarCabecera(activos){
   const flecha = dif>0 ? "▲" : dif<0 ? "▼" : "•";
   const signo  = dif>0 ? "+" : "";
   del.innerHTML = `<span class="cifra">${flecha} ${signo}${dif}</span> · ${fmtFecha(new Date(ts))}`;
+  if(grafico) grafico.$baseTend = base;
 
-  // Leyenda propia (solo si hay varias series que distinguir).
+  // Leyenda propia (solo si hay varias series que distinguir). Cada renglón
+  // es clicable: desmarca ese grupo de la gráfica y del total, igual que la
+  // leyenda nativa de Chart.js pero sin perder el número grande.
   const ley = $("#tcLeyenda");
   ley.innerHTML = solo ? "" : series.map((s,i)=>
-    `<span class="tc-serie"><i style="background:${s.color}"></i>` +
-    `<span class="n">${s.label}</span><span class="v">${valores[i] ?? "—"}</span></span>`
+    `<span class="tc-serie${ocultosTend.has(i)?" apagada":""}" data-idx="${i}" role="button" tabindex="0"
+        title="Clic para ${ocultosTend.has(i)?"mostrar":"ocultar"} este grupo en la gráfica">` +
+    `<i style="background:${s.color}"></i>` +
+    `<span class="n">${s.label}</span><span class="v">${ocultosTend.has(i)?"—":(valores[i] ?? "—")}</span></span>`
   ).join("");
 }
 
@@ -3078,6 +3097,7 @@ function pintarGrafico(){
   // Referencia: total de cupos al abrir la ventana; delta: contra ese valor.
   const series = datasets.map(d=>({label:d.label, color:d.colorSerie, datos:d.data}));
   const valoresFin = series.map(s=>s.datos[s.datos.length-1].y);
+  ocultosTend = new Set();
   vistaTend = {
     series,
     base:      series.reduce((t,s)=>t+s.datos[0].y, 0),
@@ -3139,6 +3159,30 @@ $("#grafico").addEventListener("mouseleave", ()=>{
   grafico.setActiveElements([]);
   grafico.update("none");
   pintarCabecera(null);
+});
+
+/* Clic en un renglón de la leyenda: apaga o prende ese grupo en la gráfica y
+   en el número grande, igual que la leyenda nativa de Chart.js. Delegado en
+   el contenedor porque la leyenda se reconstruye en cada pintarCabecera(). */
+function alternarSerieTend(idx){
+  if(!grafico || !vistaTend || !vistaTend.series[idx]) return;
+  if(ocultosTend.has(idx)) ocultosTend.delete(idx); else ocultosTend.add(idx);
+  const ds = grafico.data.datasets[idx];
+  if(ds) ds.hidden = ocultosTend.has(idx);
+  grafico.update();
+  pintarCabecera(null);
+  evento('alternar_serie_tendencia', {oculta: ocultosTend.has(idx)});
+}
+$("#tcLeyenda").addEventListener("click", e=>{
+  const el = e.target.closest(".tc-serie");
+  if(el) alternarSerieTend(Number(el.dataset.idx));
+});
+$("#tcLeyenda").addEventListener("keydown", e=>{
+  if(e.key!=="Enter" && e.key!==" ") return;
+  const el = e.target.closest(".tc-serie");
+  if(!el) return;
+  e.preventDefault();
+  alternarSerieTend(Number(el.dataset.idx));
 });
 
 /* ================= Navegación por pestañas =================
