@@ -2103,7 +2103,7 @@ function pintarDetalleImpresion(){
    en una misma corrida todos los puntos cuyos instantes están pegados. El
    workflow corre cada 30 minutos y un barrido tarda unos pocos, así que un
    hueco de más de 12 minutos marca corrida nueva sin ambigüedad. */
-const SNAP_UMBRAL = 12*60000;
+const SNAP_UMBRAL = 20*60000;
 let SNAPSHOTS = null;      // se reconstruye con cada carga de datos
 let snapSel = null;        // instante del snapshot que se está mirando
 
