@@ -138,7 +138,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:06-05:00",
+    "ts_lectura": "2026-08-24T14:27:17-05:00",
     "orden_lectura": 0
   },
   {
@@ -251,7 +251,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "24",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -312,7 +312,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:10-05:00",
+    "ts_lectura": "2026-08-24T14:27:19-05:00",
     "orden_lectura": 1
   },
   {
@@ -457,7 +457,7 @@
         "grupo": "(13) Grupo 13",
         "actividad": "",
         "profesores": "Mohammed EL AIDI",
-        "cupos_disponibles": "7",
+        "cupos_disponibles": "5",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -681,7 +681,7 @@
         "grupo": "(22) Grupo 22",
         "actividad": "",
         "profesores": "No informado",
-        "cupos_disponibles": "41",
+        "cupos_disponibles": "40",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -920,7 +920,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:13-05:00",
+    "ts_lectura": "2026-08-24T14:27:21-05:00",
     "orden_lectura": 2
   },
   {
@@ -969,7 +969,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Gabriel Andres Bernal Granados",
-        "cupos_disponibles": "21",
+        "cupos_disponibles": "20",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -1030,7 +1030,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:15-05:00",
+    "ts_lectura": "2026-08-24T14:27:22-05:00",
     "orden_lectura": 3
   },
   {
@@ -1047,7 +1047,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Patricia Luna Tamayo",
-        "cupos_disponibles": "29",
+        "cupos_disponibles": "28",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -1079,7 +1079,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "29",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -1143,7 +1143,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "28",
+        "cupos_disponibles": "27",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -1172,7 +1172,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:16-05:00",
+    "ts_lectura": "2026-08-24T14:27:24-05:00",
     "orden_lectura": 4
   },
   {
@@ -1413,7 +1413,7 @@
         "grupo": "(19) Grupo 19",
         "actividad": "",
         "profesores": "No informado",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -1509,7 +1509,7 @@
         "grupo": "(21) Grupo 21",
         "actividad": "",
         "profesores": "No informado",
-        "cupos_disponibles": "52",
+        "cupos_disponibles": "50",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -1765,7 +1765,7 @@
         "grupo": "(32) Grupo 32",
         "actividad": "",
         "profesores": "No informado",
-        "cupos_disponibles": "65",
+        "cupos_disponibles": "64",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -1797,7 +1797,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "",
         "profesores": "Myriam Leonor Campos Florez",
-        "cupos_disponibles": "10",
+        "cupos_disponibles": "9",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -2174,7 +2174,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:18-05:00",
+    "ts_lectura": "2026-08-24T14:27:27-05:00",
     "orden_lectura": 5
   },
   {
@@ -2191,7 +2191,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "No informado",
-        "cupos_disponibles": "33",
+        "cupos_disponibles": "32",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -2287,7 +2287,7 @@
         "grupo": "(12) Grupo 12",
         "actividad": "",
         "profesores": "Leonid Lebedev",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "19",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -2319,7 +2319,7 @@
         "grupo": "(13) Grupo 13",
         "actividad": "",
         "profesores": "Juan Carlos Hernandez Rincon",
-        "cupos_disponibles": "27",
+        "cupos_disponibles": "26",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -2511,7 +2511,7 @@
         "grupo": "(5) Grupo 5",
         "actividad": "",
         "profesores": "German Eduardo Fonseca Buitrago",
-        "cupos_disponibles": "13",
+        "cupos_disponibles": "10",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -2636,7 +2636,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:19-05:00",
+    "ts_lectura": "2026-08-24T14:27:30-05:00",
     "orden_lectura": 6
   },
   {
@@ -2941,7 +2941,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "",
         "profesores": "Eduardo Cardenas Gomez",
-        "cupos_disponibles": "28",
+        "cupos_disponibles": "27",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -3005,7 +3005,7 @@
         "grupo": "(6) Grupo 6",
         "actividad": "",
         "profesores": "No informado",
-        "cupos_disponibles": "45",
+        "cupos_disponibles": "46",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -3069,7 +3069,7 @@
         "grupo": "(8) Grupo 8",
         "actividad": "",
         "profesores": "No informado",
-        "cupos_disponibles": "36",
+        "cupos_disponibles": "35",
         "cupos_totales": "NA",
         "fecha": "26/10/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -3210,7 +3210,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:20-05:00",
+    "ts_lectura": "2026-08-24T14:27:31-05:00",
     "orden_lectura": 7
   },
   {
@@ -3223,7 +3223,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-24T14:01:22-05:00",
+    "ts_lectura": "2026-08-24T14:27:33-05:00",
     "orden_lectura": 8
   },
   {
@@ -3269,7 +3269,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:26-05:00",
+    "ts_lectura": "2026-08-24T14:27:35-05:00",
     "orden_lectura": 9
   },
   {
@@ -3315,7 +3315,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:27-05:00",
+    "ts_lectura": "2026-08-24T14:27:36-05:00",
     "orden_lectura": 10
   },
   {
@@ -3617,7 +3617,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:29-05:00",
+    "ts_lectura": "2026-08-24T14:27:37-05:00",
     "orden_lectura": 11
   },
   {
@@ -3727,7 +3727,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:30-05:00",
+    "ts_lectura": "2026-08-24T14:27:39-05:00",
     "orden_lectura": 12
   },
   {
@@ -3840,7 +3840,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "24",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -3901,7 +3901,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:42-05:00",
+    "ts_lectura": "2026-08-24T14:27:49-05:00",
     "orden_lectura": 13
   },
   {
@@ -3950,7 +3950,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Wilson Ernesto Vargas Vargas",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "29",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -3982,7 +3982,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "29",
+        "cupos_disponibles": "28",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -4011,7 +4011,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:43-05:00",
+    "ts_lectura": "2026-08-24T14:27:51-05:00",
     "orden_lectura": 14
   },
   {
@@ -4028,7 +4028,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "German Eduardo Fonseca Buitrago",
-        "cupos_disponibles": "44",
+        "cupos_disponibles": "43",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -4156,7 +4156,7 @@
         "grupo": "(14) Grupo 14",
         "actividad": "",
         "profesores": "No informado",
-        "cupos_disponibles": "99",
+        "cupos_disponibles": "98",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -4188,7 +4188,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "",
         "profesores": "Serafin Bautista Diaz",
-        "cupos_disponibles": "34",
+        "cupos_disponibles": "33",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -4345,7 +4345,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:45-05:00",
+    "ts_lectura": "2026-08-24T14:27:53-05:00",
     "orden_lectura": 15
   },
   {
@@ -4490,7 +4490,7 @@
         "grupo": "(5) Grupo 5",
         "actividad": "CLASE TEORICA",
         "profesores": "Fernando Lozano Osorno",
-        "cupos_disponibles": "24",
+        "cupos_disponibles": "23",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -4551,7 +4551,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:47-05:00",
+    "ts_lectura": "2026-08-24T14:27:55-05:00",
     "orden_lectura": 16
   },
   {
@@ -4661,7 +4661,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:49-05:00",
+    "ts_lectura": "2026-08-24T14:27:56-05:00",
     "orden_lectura": 17
   },
   {
@@ -4771,7 +4771,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:51-05:00",
+    "ts_lectura": "2026-08-24T14:27:58-05:00",
     "orden_lectura": 18
   },
   {
@@ -4889,7 +4889,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:01:52-05:00",
+    "ts_lectura": "2026-08-24T14:27:59-05:00",
     "orden_lectura": 19
   },
   {
@@ -6877,7 +6877,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:00-05:00",
+    "ts_lectura": "2026-08-24T14:28:03-05:00",
     "orden_lectura": 20
   },
   {
@@ -6926,7 +6926,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Jennifer Angel Amaya",
-        "cupos_disponibles": "24",
+        "cupos_disponibles": "22",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -7019,7 +7019,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:02-05:00",
+    "ts_lectura": "2026-08-24T14:28:05-05:00",
     "orden_lectura": 21
   },
   {
@@ -7161,7 +7161,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:03-05:00",
+    "ts_lectura": "2026-08-24T14:28:07-05:00",
     "orden_lectura": 22
   },
   {
@@ -7354,7 +7354,7 @@
         "grupo": "(9) Grupo 9",
         "actividad": "CLASE PRACTICA",
         "profesores": "Fausto Alejandro Silva España",
-        "cupos_disponibles": "16",
+        "cupos_disponibles": "15",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -7504,7 +7504,7 @@
         "grupo": "(8) Grupo 8",
         "actividad": "CLASE TEORICA",
         "profesores": "Cesar Andres Cortes Bello",
-        "cupos_disponibles": "32",
+        "cupos_disponibles": "31",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -7533,7 +7533,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:06-05:00",
+    "ts_lectura": "2026-08-24T14:28:09-05:00",
     "orden_lectura": 23
   },
   {
@@ -7675,7 +7675,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:09-05:00",
+    "ts_lectura": "2026-08-24T14:28:11-05:00",
     "orden_lectura": 24
   },
   {
@@ -7692,7 +7692,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "No informado",
-        "cupos_disponibles": "14",
+        "cupos_disponibles": "13",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -7721,7 +7721,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:11-05:00",
+    "ts_lectura": "2026-08-24T14:28:13-05:00",
     "orden_lectura": 25
   },
   {
@@ -7780,7 +7780,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Adriana Patricia Piña Fulano",
-        "cupos_disponibles": "23",
+        "cupos_disponibles": "21",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -7864,7 +7864,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "24",
+        "cupos_disponibles": "22",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -7948,7 +7948,7 @@
         "grupo": "(6) Grupo 6",
         "actividad": "CLASE TEORICA",
         "profesores": "Leonardo David Donado Garzon",
-        "cupos_disponibles": "24",
+        "cupos_disponibles": "23",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -7987,7 +7987,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:19-05:00",
+    "ts_lectura": "2026-08-24T14:28:24-05:00",
     "orden_lectura": 26
   },
   {
@@ -8036,7 +8036,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Erasmo Alfredo Rodriguez Sandoval",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "29",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8100,7 +8100,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "29",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8132,7 +8132,7 @@
         "grupo": "(5) Grupo 5",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "29",
+        "cupos_disponibles": "28",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8161,7 +8161,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:20-05:00",
+    "ts_lectura": "2026-08-24T14:28:25-05:00",
     "orden_lectura": 27
   },
   {
@@ -8178,7 +8178,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "NICOLAS ESCALANTE MORA",
-        "cupos_disponibles": "21",
+        "cupos_disponibles": "20",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8271,7 +8271,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:22-05:00",
+    "ts_lectura": "2026-08-24T14:28:27-05:00",
     "orden_lectura": 28
   },
   {
@@ -8352,7 +8352,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "William Castro Garcia",
-        "cupos_disponibles": "26",
+        "cupos_disponibles": "23",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8381,7 +8381,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:23-05:00",
+    "ts_lectura": "2026-08-24T14:28:29-05:00",
     "orden_lectura": 29
   },
   {
@@ -8430,7 +8430,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Ivan Dario Serrano Arrieta",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "24",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8491,7 +8491,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:24-05:00",
+    "ts_lectura": "2026-08-24T14:28:30-05:00",
     "orden_lectura": 30
   },
   {
@@ -8508,7 +8508,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "Angela Maria Arboleda Restrepo",
-        "cupos_disponibles": "39",
+        "cupos_disponibles": "38",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8540,7 +8540,7 @@
         "grupo": "(10) Grupo 10",
         "actividad": "",
         "profesores": "Diego Alejandro Hernandez Castañeda",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "24",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8572,7 +8572,7 @@
         "grupo": "(11) Grupo 11",
         "actividad": "",
         "profesores": "Julio Cesar Cañon Rodriguez",
-        "cupos_disponibles": "8",
+        "cupos_disponibles": "7",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8604,7 +8604,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "",
         "profesores": "Osman Benjamin Giovanny Vargas Rozo",
-        "cupos_disponibles": "35",
+        "cupos_disponibles": "34",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8828,7 +8828,7 @@
         "grupo": "(9) Grupo 9",
         "actividad": "",
         "profesores": "LINA JULIANA BULLA CASAS",
-        "cupos_disponibles": "26",
+        "cupos_disponibles": "25",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8857,7 +8857,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:25-05:00",
+    "ts_lectura": "2026-08-24T14:28:32-05:00",
     "orden_lectura": 31
   },
   {
@@ -8938,7 +8938,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Gabriel Peña Ortiz",
-        "cupos_disponibles": "11",
+        "cupos_disponibles": "10",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9529,7 +9529,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:27-05:00",
+    "ts_lectura": "2026-08-24T14:28:33-05:00",
     "orden_lectura": 32
   },
   {
@@ -9694,7 +9694,7 @@
         "grupo": "(13) Grupo 13",
         "actividad": "CLASE TEORICA",
         "profesores": "Narly Yadira Pardo Cadena",
-        "cupos_disponibles": "8",
+        "cupos_disponibles": "7",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10185,7 +10185,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:29-05:00",
+    "ts_lectura": "2026-08-24T14:28:36-05:00",
     "orden_lectura": 33
   },
   {
@@ -10198,7 +10198,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-24T14:02:31-05:00",
+    "ts_lectura": "2026-08-24T14:28:37-05:00",
     "orden_lectura": 34
   },
   {
@@ -10215,7 +10215,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Johnatan Martinez Hernandez",
-        "cupos_disponibles": "7",
+        "cupos_disponibles": "5",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10653,7 +10653,7 @@
         "grupo": "(6) Grupo 6",
         "actividad": "CLASE TEORICA",
         "profesores": "Johnatan Martinez Hernandez",
-        "cupos_disponibles": "5",
+        "cupos_disponibles": "4",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10858,7 +10858,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:33-05:00",
+    "ts_lectura": "2026-08-24T14:28:39-05:00",
     "orden_lectura": 35
   },
   {
@@ -10871,7 +10871,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-24T14:02:34-05:00",
+    "ts_lectura": "2026-08-24T14:28:41-05:00",
     "orden_lectura": 36
   },
   {
@@ -10992,7 +10992,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Aida Elena Monsalve Solorzano",
-        "cupos_disponibles": "21",
+        "cupos_disponibles": "20",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11041,7 +11041,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:35-05:00",
+    "ts_lectura": "2026-08-24T14:28:43-05:00",
     "orden_lectura": 37
   },
   {
@@ -11110,7 +11110,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Yaneli Niño Osorio",
-        "cupos_disponibles": "21",
+        "cupos_disponibles": "20",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11318,7 +11318,7 @@
         "grupo": "(6) Grupo 6",
         "actividad": "CLASE TEORICA",
         "profesores": "Olga Lucia Ruiz Convers",
-        "cupos_disponibles": "23",
+        "cupos_disponibles": "22",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11367,7 +11367,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:37-05:00",
+    "ts_lectura": "2026-08-24T14:28:44-05:00",
     "orden_lectura": 38
   },
   {
@@ -11384,7 +11384,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Cesar Augusto Romero",
-        "cupos_disponibles": "11",
+        "cupos_disponibles": "10",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11416,7 +11416,7 @@
         "grupo": "(10) Grupo 10",
         "actividad": "CLASE TEORICA",
         "profesores": "Monica Alexandra Riaño Orjuela",
-        "cupos_disponibles": "11",
+        "cupos_disponibles": "10",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11448,7 +11448,7 @@
         "grupo": "(11) Grupo 11",
         "actividad": "CLASE TEORICA",
         "profesores": "Jennly Angelica Gomez Rodriguez",
-        "cupos_disponibles": "22",
+        "cupos_disponibles": "21",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11544,7 +11544,7 @@
         "grupo": "(14) Grupo 14",
         "actividad": "CLASE TEORICA",
         "profesores": "LINDA JOHANA RUIZ GOMEZ",
-        "cupos_disponibles": "10",
+        "cupos_disponibles": "9",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11640,7 +11640,7 @@
         "grupo": "(17) Grupo 17",
         "actividad": "CLASE TEORICA",
         "profesores": "Angelica Saenz Fonseca",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "19",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11736,7 +11736,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Yaneli Niño Osorio",
-        "cupos_disponibles": "15",
+        "cupos_disponibles": "14",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11768,7 +11768,7 @@
         "grupo": "(20) Grupo 20",
         "actividad": "CLASE TEORICA",
         "profesores": "ALBA LUCIA RIAÑO RODRIGUEZ",
-        "cupos_disponibles": "24",
+        "cupos_disponibles": "23",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11928,7 +11928,7 @@
         "grupo": "(5) Grupo 5",
         "actividad": "CLASE TEORICA",
         "profesores": "Olga Lucia Ruiz Convers",
-        "cupos_disponibles": "12",
+        "cupos_disponibles": "11",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11950,7 +11950,7 @@
         "grupo": "(6) Grupo 6",
         "actividad": "CLASE TEORICA",
         "profesores": "Monica Alexandra Riaño Orjuela",
-        "cupos_disponibles": "16",
+        "cupos_disponibles": "13",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -12175,7 +12175,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:47-05:00",
+    "ts_lectura": "2026-08-24T14:28:53-05:00",
     "orden_lectura": 39
   },
   {
@@ -12188,7 +12188,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-24T14:02:49-05:00",
+    "ts_lectura": "2026-08-24T14:28:55-05:00",
     "orden_lectura": 40
   },
   {
@@ -12330,7 +12330,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:52-05:00",
+    "ts_lectura": "2026-08-24T14:28:56-05:00",
     "orden_lectura": 41
   },
   {
@@ -12343,7 +12343,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-24T14:02:54-05:00",
+    "ts_lectura": "2026-08-24T14:28:58-05:00",
     "orden_lectura": 42
   },
   {
@@ -13083,7 +13083,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:02:58-05:00",
+    "ts_lectura": "2026-08-24T14:29:00-05:00",
     "orden_lectura": 43
   },
   {
@@ -13100,7 +13100,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "CAMILO RIOS FRESNEDA",
-        "cupos_disponibles": "19",
+        "cupos_disponibles": "17",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -13265,7 +13265,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:00-05:00",
+    "ts_lectura": "2026-08-24T14:29:02-05:00",
     "orden_lectura": 44
   },
   {
@@ -13324,7 +13324,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Adriana Patricia Piña Fulano",
-        "cupos_disponibles": "19",
+        "cupos_disponibles": "17",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -13366,7 +13366,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Rafael Orland Ortiz Mosquera",
-        "cupos_disponibles": "23",
+        "cupos_disponibles": "22",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -13534,7 +13534,7 @@
         "grupo": "(7) Grupo 7",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "24",
+        "cupos_disponibles": "23",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -13615,7 +13615,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:02-05:00",
+    "ts_lectura": "2026-08-24T14:29:03-05:00",
     "orden_lectura": 45
   },
   {
@@ -13661,7 +13661,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:03-05:00",
+    "ts_lectura": "2026-08-24T14:29:04-05:00",
     "orden_lectura": 46
   },
   {
@@ -13678,7 +13678,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Ricardo Parra Arango",
-        "cupos_disponibles": "22",
+        "cupos_disponibles": "21",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -13762,7 +13762,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "24",
+        "cupos_disponibles": "23",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -13846,7 +13846,7 @@
         "grupo": "(5) Grupo 5",
         "actividad": "CLASE TEORICA",
         "profesores": "Julian David Puerto Suarez",
-        "cupos_disponibles": "22",
+        "cupos_disponibles": "21",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -13888,7 +13888,7 @@
         "grupo": "(6) Grupo 6",
         "actividad": "CLASE TEORICA",
         "profesores": "Dorian Luis Linero Segrera",
-        "cupos_disponibles": "22",
+        "cupos_disponibles": "21",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -13969,7 +13969,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:06-05:00",
+    "ts_lectura": "2026-08-24T14:29:06-05:00",
     "orden_lectura": 47
   },
   {
@@ -14018,7 +14018,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Guillermo Eduardo Avila Alvarez",
-        "cupos_disponibles": "26",
+        "cupos_disponibles": "25",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -14050,7 +14050,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Livaniel Viveros Rosero",
-        "cupos_disponibles": "29",
+        "cupos_disponibles": "27",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -14082,7 +14082,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "29",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -14111,7 +14111,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:09-05:00",
+    "ts_lectura": "2026-08-24T14:29:07-05:00",
     "orden_lectura": 48
   },
   {
@@ -14253,7 +14253,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:11-05:00",
+    "ts_lectura": "2026-08-24T14:29:09-05:00",
     "orden_lectura": 49
   },
   {
@@ -14270,7 +14270,7 @@
         "grupo": "(1) 2017293-1 Modelación matemática",
         "actividad": "CLASE TEORICA",
         "profesores": "David Leonardo Diaz Leon",
-        "cupos_disponibles": "33",
+        "cupos_disponibles": "30",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/10/2026",
         "duracion": "Asignaturas semestrales con duración entre 17 y 20 semanas",
@@ -14302,7 +14302,7 @@
         "grupo": "(2) 2017293-2 Modelación matemática",
         "actividad": "CLASE TEORICA",
         "profesores": "David Leonardo Diaz Leon",
-        "cupos_disponibles": "33",
+        "cupos_disponibles": "31",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/10/2026",
         "duracion": "Semestral",
@@ -14334,7 +14334,7 @@
         "grupo": "(1M) 2017293-1M Modelación matemática - Magistral",
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Carlos Alberto Duque Daza",
-        "cupos_disponibles": "78",
+        "cupos_disponibles": "73",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/10/2026",
         "duracion": "Semestral",
@@ -14363,7 +14363,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:12-05:00",
+    "ts_lectura": "2026-08-24T14:29:10-05:00",
     "orden_lectura": 50
   },
   {
@@ -14376,7 +14376,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-24T14:03:13-05:00",
+    "ts_lectura": "2026-08-24T14:29:12-05:00",
     "orden_lectura": 51
   },
   {
@@ -14389,7 +14389,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-24T14:03:24-05:00",
+    "ts_lectura": "2026-08-24T14:29:22-05:00",
     "orden_lectura": 52
   },
   {
@@ -14499,7 +14499,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:25-05:00",
+    "ts_lectura": "2026-08-24T14:29:23-05:00",
     "orden_lectura": 53
   },
   {
@@ -14580,7 +14580,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "14",
+        "cupos_disponibles": "11",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -14609,7 +14609,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:26-05:00",
+    "ts_lectura": "2026-08-24T14:29:25-05:00",
     "orden_lectura": 54
   },
   {
@@ -14869,7 +14869,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:28-05:00",
+    "ts_lectura": "2026-08-24T14:29:27-05:00",
     "orden_lectura": 55
   },
   {
@@ -15078,7 +15078,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Guillermo Diaz Monroy",
-        "cupos_disponibles": "37",
+        "cupos_disponibles": "36",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -15302,7 +15302,7 @@
         "grupo": "(7) Grupo 7",
         "actividad": "CLASE TEORICA",
         "profesores": "Camilo Jose Torres Jimenez",
-        "cupos_disponibles": "36",
+        "cupos_disponibles": "35",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -15331,7 +15331,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:29-05:00",
+    "ts_lectura": "2026-08-24T14:29:29-05:00",
     "orden_lectura": 56
   },
   {
@@ -15853,7 +15853,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:31-05:00",
+    "ts_lectura": "2026-08-24T14:29:32-05:00",
     "orden_lectura": 57
   },
   {
@@ -15866,7 +15866,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-24T14:03:32-05:00",
+    "ts_lectura": "2026-08-24T14:29:33-05:00",
     "orden_lectura": 58
   },
   {
@@ -15976,7 +15976,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:33-05:00",
+    "ts_lectura": "2026-08-24T14:29:34-05:00",
     "orden_lectura": 59
   },
   {
@@ -16086,7 +16086,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:34-05:00",
+    "ts_lectura": "2026-08-24T14:29:36-05:00",
     "orden_lectura": 60
   },
   {
@@ -16219,7 +16219,7 @@
         "grupo": "(12) 2024045-12 Taller de proyectos interdisciplinarios",
         "actividad": "CLASE TEORICA",
         "profesores": "Hector Julian Garcia Otalora",
-        "cupos_disponibles": "196",
+        "cupos_disponibles": "192",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -16643,7 +16643,7 @@
         "grupo": "(24) 2024045-24 Taller de proyectos interdisciplinarios",
         "actividad": "CLASE TEORICA",
         "profesores": "Hector Julian Garcia Otalora",
-        "cupos_disponibles": "198",
+        "cupos_disponibles": "196",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -16948,7 +16948,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:36-05:00",
+    "ts_lectura": "2026-08-24T14:29:38-05:00",
     "orden_lectura": 61
   },
   {
@@ -17380,7 +17380,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:37-05:00",
+    "ts_lectura": "2026-08-24T14:29:39-05:00",
     "orden_lectura": 62
   },
   {
@@ -17416,7 +17416,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-24T14:03:38-05:00",
+    "ts_lectura": "2026-08-24T14:29:40-05:00",
     "orden_lectura": 63
   },
   {
@@ -17429,7 +17429,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-24T14:03:39-05:00",
+    "ts_lectura": "2026-08-24T14:29:42-05:00",
     "orden_lectura": 64
   }
 ]
