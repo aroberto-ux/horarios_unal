@@ -1,321 +1,5 @@
 [
   {
-    "codigo": "2015938",
-    "nombre": "Acueductos",
-    "tipologia": "DISCIPLINAR OBLIGATORIA",
-    "creditos": "3",
-    "facultad": "FACULTAD DE INGENIERÍA",
-    "planes": [
-      "2542 INGENIERÍA CIVIL"
-    ],
-    "grupos": [
-      {
-        "grupo": "(1) Grupo 1",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Maria Alejandra Caicedo Londoño",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "406-227",
-            "salon_nombre": "SALON DE CLASE 406-227",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 406-227. 406-227. 406 - Carlos Alfonso Cortés Amador. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "406-227",
-            "salon_nombre": "SALON DE CLASE 406-227",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 406-227. 406-227. 406 - Carlos Alfonso Cortés Amador. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(2) Grupo 2",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Maria Alejandra Caicedo Londoño",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "406-223",
-            "salon_nombre": "SALON DE CLASE 406-223",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 406-223. 406-223. 406 - Carlos Alfonso Cortés Amador. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "406-223",
-            "salon_nombre": "SALON DE CLASE 406-223",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 406-223. 406-223. 406 - Carlos Alfonso Cortés Amador. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(3) Grupo 3",
-        "actividad": "CLASE TEORICA",
-        "profesores": "JOSE LUIS DIAZ AREVALO",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "09:00",
-            "hora_fin": "11:00",
-            "salon": "401-201",
-            "salon_nombre": "SALÓN DE CLASE 401-201",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALÓN DE CLASE 401-201. 401-201. 401 - Julio Garavito Armero. SALA DE INFORMATICA Y/O DE COMPUTO."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "09:00",
-            "hora_fin": "11:00",
-            "salon": "401-201",
-            "salon_nombre": "SALÓN DE CLASE 401-201",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
-            "lugar_raw": "SALÓN DE CLASE 401-201. 401-201. 401 - Julio Garavito Armero. SALA DE INFORMATICA Y/O DE COMPUTO."
-          }
-        ]
-      },
-      {
-        "grupo": "(4) Grupo 4",
-        "actividad": "CLASE TEORICA",
-        "profesores": "JOSE LUIS DIAZ AREVALO",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "406-231",
-            "salon_nombre": "SALON DE CLASE 406-231 (SALA TIC)",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALA DE AUDIOVISUALES",
-            "lugar_raw": "SALON DE CLASE 406-231 (SALA TIC). 406-231. 406 - Carlos Alfonso Cortés Amador. SALA DE AUDIOVISUALES."
-          },
-          {
-            "dia": "VIERNES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
-            "salon": "406-227",
-            "salon_nombre": "SALON DE CLASE 406-227",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 406-227. 406-227. 406 - Carlos Alfonso Cortés Amador. SALON."
-          }
-        ]
-      }
-    ],
-    "ts_lectura": "2026-08-25T18:11:39-05:00",
-    "orden_lectura": 0
-  },
-  {
-    "codigo": "2015939",
-    "nombre": "Alcantarillados",
-    "tipologia": "DISCIPLINAR OBLIGATORIA",
-    "creditos": "3",
-    "facultad": "FACULTAD DE INGENIERÍA",
-    "planes": [
-      "2542 INGENIERÍA CIVIL"
-    ],
-    "grupos": [
-      {
-        "grupo": "(1) Grupo 1",
-        "actividad": "CLASE TEORICA",
-        "profesores": "ALVARO MARTIN GUTIERREZ MALAXECHEBARRIA",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "406-227",
-            "salon_nombre": "SALON DE CLASE 406-227",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 406-227. 406-227. 406 - Carlos Alfonso Cortés Amador. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "14:00",
-            "hora_fin": "16:00",
-            "salon": "406-227",
-            "salon_nombre": "SALON DE CLASE 406-227",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 406-227. 406-227. 406 - Carlos Alfonso Cortés Amador. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(2) Grupo 2",
-        "actividad": "CLASE TEORICA",
-        "profesores": "ALVARO MARTIN GUTIERREZ MALAXECHEBARRIA",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "401-203",
-            "salon_nombre": "SALÓN DE CLASE 401-203",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "401-203",
-            "salon_nombre": "SALÓN DE CLASE 401-203",
-            "edificio": "401 - Julio Garavito Armero",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(3) Grupo 3",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Edder Alexander Velandia Duran",
-        "cupos_disponibles": "14",
-        "cupos_totales": "NA",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "406-229",
-            "salon_nombre": "SALON DE CLASE 406-229",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 406-229. 406-229. 406 - Carlos Alfonso Cortés Amador. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "406-229",
-            "salon_nombre": "SALON DE CLASE 406-229",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 406-229. 406-229. 406 - Carlos Alfonso Cortés Amador. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(4) Grupo 4",
-        "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "406-223",
-            "salon_nombre": "SALON DE CLASE 406-223",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 406-223. 406-223. 406 - Carlos Alfonso Cortés Amador. SALON."
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "406-223",
-            "salon_nombre": "SALON DE CLASE 406-223",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 406-223. 406-223. 406 - Carlos Alfonso Cortés Amador. SALON."
-          }
-        ]
-      },
-      {
-        "grupo": "(5) Grupo 5",
-        "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          }
-        ]
-      }
-    ],
-    "ts_lectura": "2026-08-25T18:11:43-05:00",
-    "orden_lectura": 1
-  },
-  {
     "codigo": "1000003-B",
     "nombre": "Álgebra Lineal",
     "tipologia": "FUND. OBLIGATORIA",
@@ -920,8 +604,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:11:45-05:00",
-    "orden_lectura": 2
+    "ts_lectura": "2026-08-25T18:26:56-05:00",
+    "orden_lectura": 0
   },
   {
     "codigo": "2015940",
@@ -1030,8 +714,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:11:47-05:00",
-    "orden_lectura": 3
+    "ts_lectura": "2026-08-25T18:26:58-05:00",
+    "orden_lectura": 1
   },
   {
     "codigo": "2015941",
@@ -1172,8 +856,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:11:49-05:00",
-    "orden_lectura": 4
+    "ts_lectura": "2026-08-25T18:27:00-05:00",
+    "orden_lectura": 2
   },
   {
     "codigo": "1000004-B",
@@ -1541,7 +1225,7 @@
         "grupo": "(22) Grupo 22",
         "actividad": "",
         "profesores": "No informado",
-        "cupos_disponibles": "29",
+        "cupos_disponibles": "27",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -2174,8 +1858,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:11:51-05:00",
-    "orden_lectura": 5
+    "ts_lectura": "2026-08-25T18:27:03-05:00",
+    "orden_lectura": 3
   },
   {
     "codigo": "1000006-B",
@@ -2636,8 +2320,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:11:54-05:00",
-    "orden_lectura": 6
+    "ts_lectura": "2026-08-25T18:27:05-05:00",
+    "orden_lectura": 4
   },
   {
     "codigo": "1000005-B",
@@ -3210,8 +2894,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:11:57-05:00",
-    "orden_lectura": 7
+    "ts_lectura": "2026-08-25T18:27:08-05:00",
+    "orden_lectura": 5
   },
   {
     "codigo": "2015229",
@@ -3223,8 +2907,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-25T18:12:02-05:00",
-    "orden_lectura": 8
+    "ts_lectura": "2026-08-25T18:27:13-05:00",
+    "orden_lectura": 6
   },
   {
     "codigo": "2015943",
@@ -3269,8 +2953,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:04-05:00",
-    "orden_lectura": 9
+    "ts_lectura": "2026-08-25T18:27:16-05:00",
+    "orden_lectura": 7
   },
   {
     "codigo": "2015944",
@@ -3315,8 +2999,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:05-05:00",
-    "orden_lectura": 10
+    "ts_lectura": "2026-08-25T18:27:19-05:00",
+    "orden_lectura": 8
   },
   {
     "codigo": "2015711",
@@ -3617,8 +3301,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:07-05:00",
-    "orden_lectura": 11
+    "ts_lectura": "2026-08-25T18:27:20-05:00",
+    "orden_lectura": 9
   },
   {
     "codigo": "2015948",
@@ -3727,8 +3411,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:11-05:00",
-    "orden_lectura": 12
+    "ts_lectura": "2026-08-25T18:27:23-05:00",
+    "orden_lectura": 10
   },
   {
     "codigo": "2015950",
@@ -3808,7 +3492,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Daniel Ricardo Lozano Monsalve",
-        "cupos_disponibles": "3",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -3901,8 +3585,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:25-05:00",
-    "orden_lectura": 13
+    "ts_lectura": "2026-08-25T18:40:05-05:00",
+    "orden_lectura": 12
   },
   {
     "codigo": "2015949",
@@ -4011,8 +3695,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:28-05:00",
-    "orden_lectura": 14
+    "ts_lectura": "2026-08-25T18:40:09-05:00",
+    "orden_lectura": 13
   },
   {
     "codigo": "1000007-B",
@@ -4345,8 +4029,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:30-05:00",
-    "orden_lectura": 15
+    "ts_lectura": "2026-08-25T18:40:16-05:00",
+    "orden_lectura": 14
   },
   {
     "codigo": "2026134",
@@ -4551,8 +4235,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:33-05:00",
-    "orden_lectura": 16
+    "ts_lectura": "2026-08-25T18:40:21-05:00",
+    "orden_lectura": 15
   },
   {
     "codigo": "2015954",
@@ -4661,8 +4345,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:37-05:00",
-    "orden_lectura": 17
+    "ts_lectura": "2026-08-25T18:40:22-05:00",
+    "orden_lectura": 16
   },
   {
     "codigo": "2015955",
@@ -4710,7 +4394,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Angela Barrera Puerto",
-        "cupos_disponibles": "28",
+        "cupos_disponibles": "25",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -4771,8 +4455,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:39-05:00",
-    "orden_lectura": 18
+    "ts_lectura": "2026-08-25T18:40:25-05:00",
+    "orden_lectura": 17
   },
   {
     "codigo": "1000011-B",
@@ -4788,7 +4472,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Ernesto Javier Puertas Dellepianes",
-        "cupos_disponibles": "81",
+        "cupos_disponibles": "80",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -4889,8 +4573,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:40-05:00",
-    "orden_lectura": 19
+    "ts_lectura": "2026-08-25T18:40:27-05:00",
+    "orden_lectura": 18
   },
   {
     "codigo": "1000019-B",
@@ -6877,8 +6561,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:45-05:00",
-    "orden_lectura": 20
+    "ts_lectura": "2026-08-25T18:40:31-05:00",
+    "orden_lectura": 19
   },
   {
     "codigo": "2015956",
@@ -7019,8 +6703,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:48-05:00",
-    "orden_lectura": 21
+    "ts_lectura": "2026-08-25T18:40:39-05:00",
+    "orden_lectura": 20
   },
   {
     "codigo": "2015957",
@@ -7161,8 +6845,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:12:52-05:00",
-    "orden_lectura": 22
+    "ts_lectura": "2026-08-25T18:40:45-05:00",
+    "orden_lectura": 21
   },
   {
     "codigo": "2015958",
@@ -7533,8 +7217,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:13:13-05:00",
-    "orden_lectura": 23
+    "ts_lectura": "2026-08-25T18:40:47-05:00",
+    "orden_lectura": 22
   },
   {
     "codigo": "2015959",
@@ -7675,8 +7359,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:13:17-05:00",
-    "orden_lectura": 24
+    "ts_lectura": "2026-08-25T18:40:51-05:00",
+    "orden_lectura": 23
   },
   {
     "codigo": "2022760",
@@ -7721,8 +7405,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:13:20-05:00",
-    "orden_lectura": 25
+    "ts_lectura": "2026-08-25T18:40:54-05:00",
+    "orden_lectura": 24
   },
   {
     "codigo": "2015961",
@@ -7987,8 +7671,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:14:13-05:00",
-    "orden_lectura": 26
+    "ts_lectura": "2026-08-25T18:41:03-05:00",
+    "orden_lectura": 25
   },
   {
     "codigo": "2015978",
@@ -8161,8 +7845,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:15:01-05:00",
-    "orden_lectura": 28
+    "ts_lectura": "2026-08-25T18:41:05-05:00",
+    "orden_lectura": 26
   },
   {
     "codigo": "2026135",
@@ -8271,8 +7955,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:15:03-05:00",
-    "orden_lectura": 29
+    "ts_lectura": "2026-08-25T18:41:08-05:00",
+    "orden_lectura": 27
   },
   {
     "codigo": "2015963",
@@ -8381,8 +8065,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:15:06-05:00",
-    "orden_lectura": 30
+    "ts_lectura": "2026-08-25T18:41:09-05:00",
+    "orden_lectura": 28
   },
   {
     "codigo": "2026138",
@@ -8491,8 +8175,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:15:08-05:00",
-    "orden_lectura": 31
+    "ts_lectura": "2026-08-25T18:41:11-05:00",
+    "orden_lectura": 29
   },
   {
     "codigo": "2015703",
@@ -8857,8 +8541,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:15:11-05:00",
-    "orden_lectura": 32
+    "ts_lectura": "2026-08-25T18:41:13-05:00",
+    "orden_lectura": 30
   },
   {
     "codigo": "1000044-B",
@@ -8874,7 +8558,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Beatriz Elena Urrutia Sanchez",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9529,8 +9213,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:15:15-05:00",
-    "orden_lectura": 33
+    "ts_lectura": "2026-08-25T18:41:16-05:00",
+    "orden_lectura": 31
   },
   {
     "codigo": "1000045-B",
@@ -10185,8 +9869,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:15:18-05:00",
-    "orden_lectura": 34
+    "ts_lectura": "2026-08-25T18:41:18-05:00",
+    "orden_lectura": 32
   },
   {
     "codigo": "1000049-B",
@@ -10198,8 +9882,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-25T18:15:20-05:00",
-    "orden_lectura": 35
+    "ts_lectura": "2026-08-25T18:41:20-05:00",
+    "orden_lectura": 33
   },
   {
     "codigo": "1000046-B",
@@ -10878,8 +10562,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:15:26-05:00",
-    "orden_lectura": 36
+    "ts_lectura": "2026-08-25T18:41:22-05:00",
+    "orden_lectura": 34
   },
   {
     "codigo": "1000050-B",
@@ -10891,8 +10575,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-25T18:15:30-05:00",
-    "orden_lectura": 37
+    "ts_lectura": "2026-08-25T18:41:34-05:00",
+    "orden_lectura": 35
   },
   {
     "codigo": "1000052-B",
@@ -10908,7 +10592,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Liliana Marcela Guzman Aricapa",
-        "cupos_disponibles": "9",
+        "cupos_disponibles": "7",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11061,8 +10745,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:15:33-05:00",
-    "orden_lectura": 38
+    "ts_lectura": "2026-08-25T18:41:36-05:00",
+    "orden_lectura": 36
   },
   {
     "codigo": "1000053-B",
@@ -11182,7 +10866,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Javier Rodriguez Gomez",
-        "cupos_disponibles": "5",
+        "cupos_disponibles": "4",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11234,7 +10918,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
         "profesores": "Javier Rodriguez Gomez",
-        "cupos_disponibles": "5",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11286,7 +10970,7 @@
         "grupo": "(5) Grupo 5",
         "actividad": "CLASE TEORICA",
         "profesores": "LINDA JOHANA RUIZ GOMEZ",
-        "cupos_disponibles": "6",
+        "cupos_disponibles": "5",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11387,7 +11071,3016 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-25T18:15:38-05:00",
+    "ts_lectura": "2026-08-25T18:41:38-05:00",
+    "orden_lectura": 37
+  },
+  {
+    "codigo": "1000047-B",
+    "nombre": "Inglés IV- Semestral",
+    "tipologia": "NIVELACIÓN",
+    "creditos": "3",
+    "facultad": "FACULTAD DE INGENIERÍA",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Cesar Augusto Romero",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(10) Grupo 10",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Monica Alexandra Riaño Orjuela",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(11) Grupo 11",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Jennly Angelica Gomez Rodriguez",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(12) Grupo 12",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Claudia Patricia Cortes Lora",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(13) Grupo 13",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Angelica Saenz Fonseca",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(14) Grupo 14",
+        "actividad": "CLASE TEORICA",
+        "profesores": "LINDA JOHANA RUIZ GOMEZ",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(15) Grupo 15",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Claudia Patricia Cortes Lora",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(16) Grupo 16",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Narly Yadira Pardo Cadena",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(17) Grupo 17",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Angelica Saenz Fonseca",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(18) Grupo 18",
+        "actividad": "CLASE TEORICA",
+        "profesores": "ALBA LUCIA RIAÑO RODRIGUEZ",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(19) Grupo 19",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Aida Elena Monsalve Solorzano",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Yaneli Niño Osorio",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(20) Grupo 20",
+        "actividad": "CLASE TEORICA",
+        "profesores": "ALBA LUCIA RIAÑO RODRIGUEZ",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(21) Grupo 21",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Edwin Yesid Leon Silva",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(22) Grupo 22",
+        "actividad": "CLASE TEORICA",
+        "profesores": "LINDA JOHANA RUIZ GOMEZ",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Monica Alexandra Riaño Orjuela",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Claudia Patricia Cortes Lora",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(5) Grupo 5",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Olga Lucia Ruiz Convers",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "SÁBADO",
+            "hora_inicio": "07:00",
+            "hora_fin": "11:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(6) Grupo 6",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Monica Alexandra Riaño Orjuela",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(7) Grupo 7",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Cesar Augusto Romero",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(8) Grupo 8",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Beatriz Elena Urrutia Sanchez",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(9) Grupo 9",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Keshia Hilary Howard Livingston",
+        "cupos_disponibles": "14",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
+            "salon": "397",
+            "salon_nombre": "LENGUAS",
+            "edificio": "AULAS - JARDIN BOTANICO SEDE CARIBE",
+            "tipo_espacio": "",
+            "lugar_raw": "LENGUAS. 397. AULAS - JARDIN BOTANICO SEDE CARIBE. ."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
+            "salon": "397",
+            "salon_nombre": "LENGUAS",
+            "edificio": "AULAS - JARDIN BOTANICO SEDE CARIBE",
+            "tipo_espacio": "",
+            "lugar_raw": "LENGUAS. 397. AULAS - JARDIN BOTANICO SEDE CARIBE. ."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
+            "salon": "397",
+            "salon_nombre": "LENGUAS",
+            "edificio": "AULAS - JARDIN BOTANICO SEDE CARIBE",
+            "tipo_espacio": "",
+            "lugar_raw": "LENGUAS. 397. AULAS - JARDIN BOTANICO SEDE CARIBE. ."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
+            "salon": "397",
+            "salon_nombre": "LENGUAS",
+            "edificio": "AULAS - JARDIN BOTANICO SEDE CARIBE",
+            "tipo_espacio": "",
+            "lugar_raw": "LENGUAS. 397. AULAS - JARDIN BOTANICO SEDE CARIBE. ."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-25T18:41:52-05:00",
+    "orden_lectura": 38
+  },
+  {
+    "codigo": "1000051-B",
+    "nombre": "Inglés IV- Virtual",
+    "tipologia": "NIVELACIÓN",
+    "creditos": "3",
+    "facultad": "FACULTAD DE INGENIERÍA",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [],
+    "ts_lectura": "2026-08-25T18:41:54-05:00",
     "orden_lectura": 39
+  },
+  {
+    "codigo": "2026186",
+    "nombre": "Introducción a la ingeniería civil",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": "3",
+    "facultad": "FACULTAD DE INGENIERÍA",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Carol Andrea Murillo Feo",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "401-202",
+            "salon_nombre": "SALÓN DE CLASE 401-202",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-202. 401-202. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Leonel Vega Mora",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "401-101",
+            "salon_nombre": "SALÓN DE CLASE 401-101",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-101. 401-101. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "401-101",
+            "salon_nombre": "SALÓN DE CLASE 401-101",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-101. 401-101. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "CLASE TEORICA",
+        "profesores": "CAMILO RIOS FRESNEDA",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "406-229",
+            "salon_nombre": "SALON DE CLASE 406-229",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-229. 406-229. 406 - Carlos Alfonso Cortés Amador. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Carlos Orlando Robles Roa",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-25T18:41:55-05:00",
+    "orden_lectura": 40
+  },
+  {
+    "codigo": "1000002-B",
+    "nombre": "Lecto-Escritura",
+    "tipologia": "NIVELACIÓN",
+    "creditos": "4",
+    "facultad": "FACULTAD DE INGENIERÍA",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [],
+    "ts_lectura": "2026-08-25T18:41:57-05:00",
+    "orden_lectura": 41
+  },
+  {
+    "codigo": "1000001-B",
+    "nombre": "Matemáticas Básicas",
+    "tipologia": "NIVELACIÓN",
+    "creditos": "4",
+    "facultad": "FACULTAD DE INGENIERÍA",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "No informado",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "401-101",
+            "salon_nombre": "SALÓN DE CLASE 401-101",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-101. 401-101. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(19) Grupo 19",
+        "actividad": "CLASE TEORICA",
+        "profesores": "No informado",
+        "cupos_disponibles": "4",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE TEORICA",
+        "profesores": "No informado",
+        "cupos_disponibles": "19",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "401-102",
+            "salon_nombre": "SALÓN DE CLASE 401-102",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-102. 401-102. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "01",
+            "salon_nombre": "CAPILLA",
+            "edificio": "EDIFICIO PRINCIPAL SEDE CARIBE",
+            "tipo_espacio": "",
+            "lugar_raw": "CAPILLA. 01. EDIFICIO PRINCIPAL SEDE CARIBE. ."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "01",
+            "salon_nombre": "CAPILLA",
+            "edificio": "EDIFICIO PRINCIPAL SEDE CARIBE",
+            "tipo_espacio": "",
+            "lugar_raw": "CAPILLA. 01. EDIFICIO PRINCIPAL SEDE CARIBE. ."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "01",
+            "salon_nombre": "CAPILLA",
+            "edificio": "EDIFICIO PRINCIPAL SEDE CARIBE",
+            "tipo_espacio": "",
+            "lugar_raw": "CAPILLA. 01. EDIFICIO PRINCIPAL SEDE CARIBE. ."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "01",
+            "salon_nombre": "CAPILLA",
+            "edificio": "EDIFICIO PRINCIPAL SEDE CARIBE",
+            "tipo_espacio": "",
+            "lugar_raw": "CAPILLA. 01. EDIFICIO PRINCIPAL SEDE CARIBE. ."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "A-3B",
+            "salon_nombre": "AULA MODULAR 3B",
+            "edificio": "AULAS MODULARES",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA MODULAR 3B. A-3B. AULAS MODULARES. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "A-3B",
+            "salon_nombre": "AULA MODULAR 3B",
+            "edificio": "AULAS MODULARES",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA MODULAR 3B. A-3B. AULAS MODULARES. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "A-1A",
+            "salon_nombre": "AULA MODULAR 1A",
+            "edificio": "AULAS MODULARES",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA MODULAR 1A. A-1A. AULAS MODULARES. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "13:00",
+            "hora_fin": "15:00",
+            "salon": "A-3B",
+            "salon_nombre": "AULA MODULAR 3B",
+            "edificio": "AULAS MODULARES",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA MODULAR 3B. A-3B. AULAS MODULARES. SALON."
+          },
+          {
+            "dia": "LUNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "A-1A",
+            "salon_nombre": "AULA MODULAR 1A",
+            "edificio": "AULAS MODULARES",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA MODULAR 1A. A-1A. AULAS MODULARES. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "13:00",
+            "hora_fin": "15:00",
+            "salon": "A-3B",
+            "salon_nombre": "AULA MODULAR 3B",
+            "edificio": "AULAS MODULARES",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA MODULAR 3B. A-3B. AULAS MODULARES. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "15:00",
+            "hora_fin": "17:00",
+            "salon": "A-2B",
+            "salon_nombre": "AULA MODULAR 2B",
+            "edificio": "AULAS MODULARES",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA MODULAR 2B. A-2B. AULAS MODULARES. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "13:00",
+            "hora_fin": "15:00",
+            "salon": "A-2B",
+            "salon_nombre": "AULA MODULAR 2B",
+            "edificio": "AULAS MODULARES",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA MODULAR 2B. A-2B. AULAS MODULARES. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "14",
+            "salon_nombre": "TIC 3A",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 3A. 14. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "14",
+            "salon_nombre": "TIC 3A",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 3A. 14. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "18",
+            "salon_nombre": "TIC 5B",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 5B. 18. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "19",
+            "salon_nombre": "TIC 5C",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 5C. 19. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "19",
+            "salon_nombre": "TIC 5C",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 5C. 19. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "LUNES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "LUNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE MAGISTRAL",
+        "profesores": "Ibeth Marcela Rubio Perilla",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-232",
+            "salon_nombre": "AUDITORIO B INGENIERIA",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO B INGENIERIA. 453-232. 453 - Guillermina Uribe Bone. AUDITORIO."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-232",
+            "salon_nombre": "AUDITORIO B INGENIERIA",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO B INGENIERIA. 453-232. 453 - Guillermina Uribe Bone. AUDITORIO."
+          }
+        ]
+      },
+      {
+        "grupo": "(10) Grupo 10",
+        "actividad": "CLASE MAGISTRAL",
+        "profesores": "No informado",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE MAGISTRAL",
+        "profesores": "Herbert Alonso Dueñas Ruiz",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "401-PAR-A",
+            "salon_nombre": "AUDITORIO CARLOS ALBERTO BARBERI PERDOMO (PARANINFO A)",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO CARLOS ALBERTO BARBERI PERDOMO (PARANINFO A). 401-PAR-A. 401 - Julio Garavito Armero. AUDITORIO."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-232",
+            "salon_nombre": "AUDITORIO B INGENIERIA",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO B INGENIERIA. 453-232. 453 - Guillermina Uribe Bone. AUDITORIO."
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "CLASE MAGISTRAL",
+        "profesores": "Jeanneth Galeano Penaloza",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "453-233",
+            "salon_nombre": "AUDITORIO C - ANTONIO MARÍA GÓMEZ",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO C - ANTONIO MARÍA GÓMEZ. 453-233. 453 - Guillermina Uribe Bone. AUDITORIO."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "453-233",
+            "salon_nombre": "AUDITORIO C - ANTONIO MARÍA GÓMEZ",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO C - ANTONIO MARÍA GÓMEZ. 453-233. 453 - Guillermina Uribe Bone. AUDITORIO."
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE MAGISTRAL",
+        "profesores": "Gustavo Adolfo Nieto Clavijo",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-233",
+            "salon_nombre": "AUDITORIO C - ANTONIO MARÍA GÓMEZ",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO C - ANTONIO MARÍA GÓMEZ. 453-233. 453 - Guillermina Uribe Bone. AUDITORIO."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-233",
+            "salon_nombre": "AUDITORIO C - ANTONIO MARÍA GÓMEZ",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO C - ANTONIO MARÍA GÓMEZ. 453-233. 453 - Guillermina Uribe Bone. AUDITORIO."
+          }
+        ]
+      },
+      {
+        "grupo": "(5) Grupo 5",
+        "actividad": "CLASE MAGISTRAL",
+        "profesores": "Natalia Camila Pinzon Cortes",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "212-121",
+            "salon_nombre": "AUDITORIO MARIA CRISTINA SALAZAR C",
+            "edificio": "212 - José Agustín Blanco Barros",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO MARIA CRISTINA SALAZAR C. 212-121. 212 - José Agustín Blanco Barros. AUDITORIO."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "564-S11",
+            "salon_nombre": "AUDITORIO 2 - STELLA TORRES DE YOUNG",
+            "edificio": "564 - Gloria Amparo Galeano Garcés",
+            "tipo_espacio": "",
+            "lugar_raw": "AUDITORIO 2 - STELLA TORRES DE YOUNG. 564-S11. 564 - Gloria Amparo Galeano Garcés. ."
+          }
+        ]
+      },
+      {
+        "grupo": "(6) Grupo 6",
+        "actividad": "CLASE MAGISTRAL",
+        "profesores": "Martha Cecilia Moreno Penagos",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-232",
+            "salon_nombre": "AUDITORIO B INGENIERIA",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO B INGENIERIA. 453-232. 453 - Guillermina Uribe Bone. AUDITORIO."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "453-233",
+            "salon_nombre": "AUDITORIO C - ANTONIO MARÍA GÓMEZ",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO C - ANTONIO MARÍA GÓMEZ. 453-233. 453 - Guillermina Uribe Bone. AUDITORIO."
+          }
+        ]
+      },
+      {
+        "grupo": "(7) Grupo 7",
+        "actividad": "CLASE MAGISTRAL",
+        "profesores": "Claudio Rodriguez Beltran",
+        "cupos_disponibles": "1",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "PRINCIPAL",
+            "salon_nombre": "AUD",
+            "edificio": "310-03",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUD. PRINCIPAL. 310-03. 310 - Antonio García Nossa. AUDITORIO."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "PRINCIPAL",
+            "salon_nombre": "AUD",
+            "edificio": "310-03",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUD. PRINCIPAL. 310-03. 310 - Antonio García Nossa. AUDITORIO."
+          }
+        ]
+      },
+      {
+        "grupo": "(8) Grupo 8",
+        "actividad": "CLASE MAGISTRAL",
+        "profesores": "Gabriel Ignacio Padilla Leon",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(9) Grupo 9",
+        "actividad": "CLASE MAGISTRAL",
+        "profesores": "No informado",
+        "cupos_disponibles": "9",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "PRINCIPAL",
+            "salon_nombre": "AUD",
+            "edificio": "310-03",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUD. PRINCIPAL. 310-03. 310 - Antonio García Nossa. AUDITORIO."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "12:00",
+            "hora_fin": "14:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "12:00",
+            "hora_fin": "14:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "LUNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "AULA 6",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 6",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 6. AULA 6. AULAS DE CLASE ORINOQUIA. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "AULA 6",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 6",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 6. AULA 6. AULAS DE CLASE ORINOQUIA. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "AULA 6",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 6",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 6. AULA 6. AULAS DE CLASE ORINOQUIA. SALON."
+          },
+          {
+            "dia": "LUNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "AULA 5",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 5",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 5. AULA 5. AULAS DE CLASE ORINOQUIA. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "AULA 5",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 5",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 5. AULA 5. AULAS DE CLASE ORINOQUIA. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "AULA 5",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 5",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 5. AULA 5. AULAS DE CLASE ORINOQUIA. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "AULA 6",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 6",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 6. AULA 6. AULAS DE CLASE ORINOQUIA. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "AULA 6",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 6",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 6. AULA 6. AULAS DE CLASE ORINOQUIA. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "AULA 6",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 6",
+            "edificio": "AULAS DE CLASE ORINOQUIA",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 6. AULA 6. AULAS DE CLASE ORINOQUIA. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-25T18:42:00-05:00",
+    "orden_lectura": 42
+  },
+  {
+    "codigo": "2015965",
+    "nombre": "Materiales para construcción",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": "4",
+    "facultad": "FACULTAD DE INGENIERÍA",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "CAMILO RIOS FRESNEDA",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 16/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "406-102",
+            "salon_nombre": "LABORATORIO DE ESTRUCTURAS",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "LABORATORIO DE ESTRUCTURAS. 406-102. 406 - Carlos Alfonso Cortés Amador. LABORATORIO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "406-102",
+            "salon_nombre": "LABORATORIO DE ESTRUCTURAS",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "LABORATORIO DE ESTRUCTURAS. 406-102. 406 - Carlos Alfonso Cortés Amador. LABORATORIO."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "406-102",
+            "salon_nombre": "LABORATORIO DE ESTRUCTURAS",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "LABORATORIO DE ESTRUCTURAS. 406-102. 406 - Carlos Alfonso Cortés Amador. LABORATORIO."
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Julian David Puerto Suarez; Vladimir Buelvas Hernández",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 16/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-102",
+            "salon_nombre": "LABORATORIO DE ESTRUCTURAS",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "LABORATORIO DE ESTRUCTURAS. 406-102. 406 - Carlos Alfonso Cortés Amador. LABORATORIO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-102",
+            "salon_nombre": "LABORATORIO DE ESTRUCTURAS",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "LABORATORIO DE ESTRUCTURAS. 406-102. 406 - Carlos Alfonso Cortés Amador. LABORATORIO."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-102",
+            "salon_nombre": "LABORATORIO DE ESTRUCTURAS",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "LABORATORIO DE ESTRUCTURAS. 406-102. 406 - Carlos Alfonso Cortés Amador. LABORATORIO."
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Ferney Betancourt Cardozo; Juan Manuel Lizarazo Marriaga",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 16/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "406-102",
+            "salon_nombre": "LABORATORIO DE ESTRUCTURAS",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "LABORATORIO DE ESTRUCTURAS. 406-102. 406 - Carlos Alfonso Cortés Amador. LABORATORIO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "406-102",
+            "salon_nombre": "LABORATORIO DE ESTRUCTURAS",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "LABORATORIO DE ESTRUCTURAS. 406-102. 406 - Carlos Alfonso Cortés Amador. LABORATORIO."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "406-102",
+            "salon_nombre": "LABORATORIO DE ESTRUCTURAS",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "LABORATORIO DE ESTRUCTURAS. 406-102. 406 - Carlos Alfonso Cortés Amador. LABORATORIO."
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE TEORICA",
+        "profesores": "No informado",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-231",
+            "salon_nombre": "SALON DE CLASE 406-231 (SALA TIC)",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 406-231 (SALA TIC). 406-231. 406 - Carlos Alfonso Cortés Amador. SALA DE AUDIOVISUALES."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-231",
+            "salon_nombre": "SALON DE CLASE 406-231 (SALA TIC)",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 406-231 (SALA TIC). 406-231. 406 - Carlos Alfonso Cortés Amador. SALA DE AUDIOVISUALES."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "401-102",
+            "salon_nombre": "SALÓN DE CLASE 401-102",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-102. 401-102. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-25T18:42:01-05:00",
+    "orden_lectura": 43
+  },
+  {
+    "codigo": "2015966",
+    "nombre": "Mecánica de fluidos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": "4",
+    "facultad": "FACULTAD DE INGENIERÍA",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "No informado",
+        "cupos_disponibles": "4",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "08:00",
+            "hora_fin": "09:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "409-306",
+            "salon_nombre": "PASA A SER 309",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 309. 409-306. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Adriana Patricia Piña Fulano",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "10:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Rafael Orland Ortiz Mosquera",
+        "cupos_disponibles": "15",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "10:00",
+            "hora_fin": "11:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "409-307",
+            "salon_nombre": "AUDITORIO",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO. 409-307. 409 - Luis Enrique Orduz Espinosa. AUDITORIO."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "409-307",
+            "salon_nombre": "AUDITORIO",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO. 409-307. 409 - Luis Enrique Orduz Espinosa. AUDITORIO."
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE TEORICA",
+        "profesores": "No informado",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "12:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(5) Grupo 5",
+        "actividad": "CLASE TEORICA",
+        "profesores": "No informado",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "12:00",
+            "hora_fin": "13:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(6) Grupo 6",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Luis Alejandro Morales Marin",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "15:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(7) Grupo 7",
+        "actividad": "CLASE TEORICA",
+        "profesores": "No informado",
+        "cupos_disponibles": "11",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "15:00",
+            "hora_fin": "16:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "409-312",
+            "salon_nombre": "SALON DE CLASE 409-312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 409-312. 409-312. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "409-312",
+            "salon_nombre": "SALON DE CLASE 409-312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 409-312. 409-312. 409 - Luis Enrique Orduz Espinosa. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(8) Grupo 8",
+        "actividad": "CLASE TEORICA",
+        "profesores": "No informado",
+        "cupos_disponibles": "13",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "17:00",
+            "salon": "409-309",
+            "salon_nombre": "PASA A SER 312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "PASA A SER 312. 409-309. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "409-312",
+            "salon_nombre": "SALON DE CLASE 409-312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 409-312. 409-312. 409 - Luis Enrique Orduz Espinosa. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "409-312",
+            "salon_nombre": "SALON DE CLASE 409-312",
+            "edificio": "409 - Luis Enrique Orduz Espinosa",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 409-312. 409-312. 409 - Luis Enrique Orduz Espinosa. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-25T18:42:03-05:00",
+    "orden_lectura": 44
+  },
+  {
+    "codigo": "2015967",
+    "nombre": "Mecánica de Rocas",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": "3",
+    "facultad": "FACULTAD DE INGENIERÍA",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "",
+        "profesores": "Vladimir Buelvas Hernández",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "406-231",
+            "salon_nombre": "SALON DE CLASE 406-231 (SALA TIC)",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 406-231 (SALA TIC). 406-231. 406 - Carlos Alfonso Cortés Amador. SALA DE AUDIOVISUALES."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "406-231",
+            "salon_nombre": "SALON DE CLASE 406-231 (SALA TIC)",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 406-231 (SALA TIC). 406-231. 406 - Carlos Alfonso Cortés Amador. SALA DE AUDIOVISUALES."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-25T18:42:05-05:00",
+    "orden_lectura": 45
+  },
+  {
+    "codigo": "2015968",
+    "nombre": "Mecánica de sólidos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": "4",
+    "facultad": "FACULTAD DE INGENIERÍA",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Ricardo Parra Arango",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "406-223",
+            "salon_nombre": "SALON DE CLASE 406-223",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-223. 406-223. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "406-231",
+            "salon_nombre": "SALON DE CLASE 406-231 (SALA TIC)",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 406-231 (SALA TIC). 406-231. 406 - Carlos Alfonso Cortés Amador. SALA DE AUDIOVISUALES."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "406-231",
+            "salon_nombre": "SALON DE CLASE 406-231 (SALA TIC)",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE AUDIOVISUALES",
+            "lugar_raw": "SALON DE CLASE 406-231 (SALA TIC). 406-231. 406 - Carlos Alfonso Cortés Amador. SALA DE AUDIOVISUALES."
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Juan David Oliveros Salazar",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "406-229",
+            "salon_nombre": "SALON DE CLASE 406-229",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-229. 406-229. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "406-229",
+            "salon_nombre": "SALON DE CLASE 406-229",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-229. 406-229. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "406-229",
+            "salon_nombre": "SALON DE CLASE 406-229",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-229. 406-229. 406 - Carlos Alfonso Cortés Amador. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "CLASE TEORICA",
+        "profesores": "No informado",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "406-229",
+            "salon_nombre": "SALON DE CLASE 406-229",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-229. 406-229. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "406-229",
+            "salon_nombre": "SALON DE CLASE 406-229",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-229. 406-229. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "406-229",
+            "salon_nombre": "SALON DE CLASE 406-229",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-229. 406-229. 406 - Carlos Alfonso Cortés Amador. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Ricardo Parra Arango",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-229",
+            "salon_nombre": "SALON DE CLASE 406-229",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-229. 406-229. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-229",
+            "salon_nombre": "SALON DE CLASE 406-229",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-229. 406-229. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-229",
+            "salon_nombre": "SALON DE CLASE 406-229",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-229. 406-229. 406 - Carlos Alfonso Cortés Amador. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(5) Grupo 5",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Julian David Puerto Suarez",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "406-225",
+            "salon_nombre": "SALON DE CLASE 406-225",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-225. 406-225. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "406-225",
+            "salon_nombre": "SALON DE CLASE 406-225",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-225. 406-225. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "406-225",
+            "salon_nombre": "SALON DE CLASE 406-225",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-225. 406-225. 406 - Carlos Alfonso Cortés Amador. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(6) Grupo 6",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Dorian Luis Linero Segrera",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-227",
+            "salon_nombre": "SALON DE CLASE 406-227",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-227. 406-227. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-227",
+            "salon_nombre": "SALON DE CLASE 406-227",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-227. 406-227. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-227",
+            "salon_nombre": "SALON DE CLASE 406-227",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-227. 406-227. 406 - Carlos Alfonso Cortés Amador. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(7) Grupo 7",
+        "actividad": "CLASE TEORICA",
+        "profesores": "No informado",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "406-225",
+            "salon_nombre": "SALON DE CLASE 406-225",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-225. 406-225. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "406-225",
+            "salon_nombre": "SALON DE CLASE 406-225",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-225. 406-225. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "406-225",
+            "salon_nombre": "SALON DE CLASE 406-225",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-225. 406-225. 406 - Carlos Alfonso Cortés Amador. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-25T18:42:06-05:00",
+    "orden_lectura": 46
+  },
+  {
+    "codigo": "2015969",
+    "nombre": "Mecánica de suelos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": "3",
+    "facultad": "FACULTAD DE INGENIERÍA",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1 (Inglés)",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Julio Esteban Colmenares Montañez",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "406-225",
+            "salon_nombre": "SALON DE CLASE 406-225",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-225. 406-225. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "406-225",
+            "salon_nombre": "SALON DE CLASE 406-225",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-225. 406-225. 406 - Carlos Alfonso Cortés Amador. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(2) Grupo 2",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Guillermo Eduardo Avila Alvarez",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-227",
+            "salon_nombre": "SALON DE CLASE 406-227",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-227. 406-227. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-227",
+            "salon_nombre": "SALON DE CLASE 406-227",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-227. 406-227. 406 - Carlos Alfonso Cortés Amador. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(3) Grupo 3",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Livaniel Viveros Rosero",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "406-223",
+            "salon_nombre": "SALON DE CLASE 406-223",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-223. 406-223. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "406-223",
+            "salon_nombre": "SALON DE CLASE 406-223",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-223. 406-223. 406 - Carlos Alfonso Cortés Amador. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE TEORICA",
+        "profesores": "No informado",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-223",
+            "salon_nombre": "SALON DE CLASE 406-223",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-223. 406-223. 406 - Carlos Alfonso Cortés Amador. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-223",
+            "salon_nombre": "SALON DE CLASE 406-223",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 406-223. 406-223. 406 - Carlos Alfonso Cortés Amador. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-25T18:42:08-05:00",
+    "orden_lectura": 47
+  },
+  {
+    "codigo": "2015970",
+    "nombre": "Métodos numéricos",
+    "tipologia": "FUND. OPTATIVA",
+    "creditos": "3",
+    "facultad": "FACULTAD DE INGENIERÍA",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(4) Grupo 4",
+        "actividad": "CLASE PRACTICA",
+        "profesores": "Helga Duarte",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-104",
+            "salon_nombre": "SALA DE COMPUTO 406-104",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "406-104",
+            "salon_nombre": "SALA DE COMPUTO 406-104",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(5) Grupo 5",
+        "actividad": "CLASE PRACTICA",
+        "profesores": "Oswaldo Rojas Camacho",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "401-103",
+            "salon_nombre": "SALA DE SISTEMAS 401-103",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE SISTEMAS 401-103. 401-103. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "401-103",
+            "salon_nombre": "SALA DE SISTEMAS 401-103",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE SISTEMAS 401-103. 401-103. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(8) Grupo 8",
+        "actividad": "CLASE PRACTICA",
+        "profesores": "Helga Duarte",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "406-104",
+            "salon_nombre": "SALA DE COMPUTO 406-104",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "406-104",
+            "salon_nombre": "SALA DE COMPUTO 406-104",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(9) Grupo 9",
+        "actividad": "CLASE PRACTICA",
+        "profesores": "Oswaldo Rojas Camacho",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "401-103",
+            "salon_nombre": "SALA DE SISTEMAS 401-103",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE SISTEMAS 401-103. 401-103. 401 - Julio Garavito Armero. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
+            "salon": "401-103",
+            "salon_nombre": "SALA DE SISTEMAS 401-103",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALA DE SISTEMAS 401-103. 401-103. 401 - Julio Garavito Armero. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-25T18:42:09-05:00",
+    "orden_lectura": 48
+  },
+  {
+    "codigo": "2017293",
+    "nombre": "Modelación matemática",
+    "tipologia": "FUND. OPTATIVA",
+    "creditos": "3",
+    "facultad": "FACULTAD DE INGENIERÍA",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) 2017293-1 Modelación matemática",
+        "actividad": "CLASE TEORICA",
+        "profesores": "David Leonardo Diaz Leon",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/10/2026",
+        "duracion": "Asignaturas semestrales con duración entre 17 y 20 semanas",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "453-203",
+            "salon_nombre": "SALA DE INFORMATICA 453-203",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE INFORMATICA 453-203. 453-203. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "453-203",
+            "salon_nombre": "SALA DE INFORMATICA 453-203",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE INFORMATICA 453-203. 453-203. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(2) 2017293-2 Modelación matemática",
+        "actividad": "CLASE TEORICA",
+        "profesores": "David Leonardo Diaz Leon",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/10/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "406-104",
+            "salon_nombre": "SALA DE COMPUTO 406-104",
+            "edificio": "406 - Carlos Alfonso Cortés Amador",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE COMPUTO 406-104. 406-104. 406 - Carlos Alfonso Cortés Amador. SALA DE INFORMATICA Y/O DE COMPUTO."
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "453-203",
+            "salon_nombre": "SALA DE INFORMATICA 453-203",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "SALA DE INFORMATICA Y/O DE COMPUTO",
+            "lugar_raw": "SALA DE INFORMATICA 453-203. 453-203. 453 - Guillermina Uribe Bone. SALA DE INFORMATICA Y/O DE COMPUTO."
+          }
+        ]
+      },
+      {
+        "grupo": "(1M) 2017293-1M Modelación matemática - Magistral",
+        "actividad": "CLASE MAGISTRAL",
+        "profesores": "Carlos Alberto Duque Daza",
+        "cupos_disponibles": "12",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/10/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "453-233",
+            "salon_nombre": "AUDITORIO C - ANTONIO MARÍA GÓMEZ",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO C - ANTONIO MARÍA GÓMEZ. 453-233. 453 - Guillermina Uribe Bone. AUDITORIO."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "453-232",
+            "salon_nombre": "AUDITORIO B INGENIERIA",
+            "edificio": "453 - Guillermina Uribe Bone",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO B INGENIERIA. 453-232. 453 - Guillermina Uribe Bone. AUDITORIO."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-25T18:42:11-05:00",
+    "orden_lectura": 49
+  },
+  {
+    "codigo": "2025970",
+    "nombre": "Modelos y simulación",
+    "tipologia": "FUND. OPTATIVA",
+    "creditos": "3",
+    "facultad": "FACULTAD DE INGENIERÍA",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [],
+    "ts_lectura": "2026-08-25T18:42:13-05:00",
+    "orden_lectura": 50
   }
 ]
