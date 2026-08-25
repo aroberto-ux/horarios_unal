@@ -1660,7 +1660,7 @@ function pintarLista(){
       const fila=document.createElement("div"); fila.className="grupo"; fila.dataset.k=k;
       // Con varias actividades dentro del grupo, cada sesión dice cuál es
       const varias = g.actividades.size>1;
-      const hor=g.sesiones.map(s=>
+      const hor=g.sesiones.map(s =>
         `${varias?etiquetaAct(s.act)+": ":""}${s.dia.slice(0,3)} ${deMin(s.ini)}–${deMin(s.fin)}${s.salon?" · "+s.salon:""}`).join("\n");
       const st=statsGrupo(k);
       let vel="";
@@ -2146,6 +2146,7 @@ function construirSnapshots(){
 
 const nombreDe = cod => MATERIAS.get(cod)?.nombre || cod;
 
+/* ================= NUEVA VERSIÓN: SEPARACIÓN POR TIPO DE MATERIA ================= */
 function pintarSnapshots(){
   const todos = construirSnapshots();
   const {desde, hasta} = ventana();
@@ -2174,56 +2175,95 @@ function pintarSnapshots(){
   $("#snapPrev").disabled = (i===0);
   $("#snapNext").disabled = (i===snaps.length-1);
 
-  meta.innerHTML =
-    `<b>${s.cambios.length}</b> grupo(s) en <b>${s.materias}</b> asignatura(s) · ` +
-    `<span class="baja">▼${s.tomados}</span> tomados · <span class="sube">▲${s.liberados}</span> liberados · ` +
-    `${s.estables} sin cambio` +
-    (s.nuevos ? ` · ${s.nuevos} nuevos` : "") +
-    (s.sinLectura ? ` · ${s.sinLectura} sin lectura` : "");
+  // --- CLASIFICACIÓN POR TIPO DE MATERIA ---
+  const esPlan = (cod) => !!PENSUM[nc(cod)];
+  const esElectiva = (cod) => MATERIAS.has(cod) && MATERIAS.get(cod).libre;
+  
+  const cambiosPlan = [];
+  const cambiosElectivas = [];
+  const cambiosFuera = []; // materias que no están en MATERIAS (caso borde)
+  
+  for(const c of s.cambios){
+    const cod = c.k.split("|")[0];
+    if(esPlan(cod)) cambiosPlan.push(c);
+    else if(esElectiva(cod)) cambiosElectivas.push(c);
+    else cambiosFuera.push(c);
+  }
+
+  // Estadísticas con desglose
+  const metaHTML = `
+    <b>${s.cambios.length}</b> grupo(s) en <b>${s.materias}</b> asignatura(s) ·
+    <span class="baja">▼${s.tomados}</span> tomados · <span class="sube">▲${s.liberados}</span> liberados
+    ${s.estables ? ` · ${s.estables} sin cambio` : ""}
+    ${s.nuevos ? ` · ${s.nuevos} nuevos` : ""}
+    ${s.sinLectura ? ` · ${s.sinLectura} sin lectura` : ""}
+    <br><span style="font-size:.75rem;color:var(--tinta-suave)">
+      📘 Plan: ${cambiosPlan.length} cambio(s) · 📗 Electivas: ${cambiosElectivas.length} cambio(s)
+      ${cambiosFuera.length ? ` · ⚠️ Otros: ${cambiosFuera.length}` : ""}
+    </span>
+  `;
+  meta.innerHTML = metaHTML;
 
   if(!s.cambios.length){
     lista.innerHTML = `<div class="snap-nada">En esta corrida ningún grupo movió sus cupos.<br>Se leyeron ${s.puntos.size} grupos.</div>`;
     return;
   }
 
-  // agrupar por asignatura y ordenar por cuánto se movió cada una
-  const porMat = new Map();
-  for(const c of s.cambios){
-    const cod = c.k.split("|")[0];
-    if(!porMat.has(cod)) porMat.set(cod, []);
-    porMat.get(cod).push(c);
-  }
-  const mats = [...porMat.entries()]
-    .map(([cod, cs])=>({cod, cs: cs.sort((a,b)=>Math.abs(b.d)-Math.abs(a.d)),
-                        neto: cs.reduce((t,c)=>t+c.d,0),
-                        mov: cs.reduce((t,c)=>t+Math.abs(c.d),0)}))
-    .sort((a,b)=> b.mov-a.mov || nombreDe(a.cod).localeCompare(nombreDe(b.cod),"es"));
-
-  lista.innerHTML = "";
-  for(const m of mats){
-    const div = document.createElement("div"); div.className = "snap-mat";
-    const signo = m.neto<0 ? "baja" : m.neto>0 ? "sube" : "";
-    const cab = document.createElement("button");
-    cab.type = "button"; cab.className = "snap-cab";
-    cab.title = "Ver la tendencia de esta asignatura";
-    cab.innerHTML = `<i style="background:${MATERIAS.has(m.cod)?colorDe(m.cod):"#B7CDBB"}"></i>` +
-      `<b>${nombreDe(m.cod)}</b>` +
-      `<span class="tot ${signo}">${m.neto>0?"+":""}${m.neto} cupos</span>`;
-    cab.addEventListener("click", ()=>{
-      if(!MATERIAS.has(m.cod)) return;
-      $("#selMateria").value = m.cod;
-      fijarModo("materia");
-    });
-    div.appendChild(cab);
-    for(const c of m.cs){
-      const g = c.k.slice(m.cod.length+1);
-      const cl = c.d<0 ? "baja" : "sube";
-      div.insertAdjacentHTML("beforeend",
-        `<div class="snap-fila"><span class="g">${g}</span>` +
-        `<span class="d ${cl}">${c.antes} → ${c.ahora} <span class="flecha">${c.d<0?"▼":"▲"}${Math.abs(c.d)}</span></span></div>`);
+  // Función auxiliar para renderizar un grupo de cambios
+  const renderizarCambios = (cambios, titulo, color, icono) => {
+    if(!cambios.length) return `<div class="snap-nada" style="padding:12px;font-size:.8rem;border-left:3px solid ${color};margin:4px 0">No hubo cambios en ${titulo.toLowerCase()}.</div>`;
+    
+    const porMat = new Map();
+    for(const c of cambios){
+      const cod = c.k.split("|")[0];
+      if(!porMat.has(cod)) porMat.set(cod, []);
+      porMat.get(cod).push(c);
     }
-    lista.appendChild(div);
-  }
+    const mats = [...porMat.entries()]
+      .map(([cod, cs])=>({
+        cod,
+        cs: cs.sort((a,b)=>Math.abs(b.d)-Math.abs(a.d)),
+        neto: cs.reduce((t,c)=>t+c.d,0),
+        mov: cs.reduce((t,c)=>t+Math.abs(c.d),0)
+      }))
+      .sort((a,b)=> b.mov-a.mov || nombreDe(a.cod).localeCompare(nombreDe(b.cod),"es"));
+
+    let html = `<div style="margin:10px 0 6px;font-weight:700;font-size:.82rem;color:${color}">${icono} ${titulo} (${mats.length} asignaturas)</div>`;
+    for(const m of mats){
+      const signo = m.neto<0 ? "baja" : m.neto>0 ? "sube" : "";
+      const bgColor = m.neto<0 ? "#FFF5F5" : m.neto>0 ? "#F5FFF5" : "transparent";
+      html += `<div style="border-left:3px solid ${color};padding-left:8px;margin:4px 0 8px;background:${bgColor};border-radius:3px">`;
+      html += `<div style="font-weight:600;font-size:.82rem;padding:2px 4px">${nombreDe(m.cod)} <span class="${signo}" style="font-size:.75rem">${m.neto>0?"+":""}${m.neto} cupos</span></div>`;
+      for(const c of m.cs){
+        const g = c.k.slice(m.cod.length+1);
+        const cl = c.d<0 ? "baja" : "sube";
+        html += `<div style="font-size:.72rem;padding:1px 4px 1px 12px;color:var(--tinta-suave);font-family:monospace">
+          ${g}: ${c.antes} → ${c.ahora} <span class="${cl}" style="font-weight:600">${c.d<0?"▼":"▲"}${Math.abs(c.d)}</span>
+        </div>`;
+      }
+      html += `</div>`;
+    }
+    return html;
+  };
+
+  // Renderizar las dos secciones principales
+  lista.innerHTML = `
+    <div style="border-bottom:2px solid var(--cuadricula);padding-bottom:8px;margin-bottom:8px">
+      ${renderizarCambios(cambiosPlan, 'Asignaturas del plan', '#2B5DA8', '📘')}
+    </div>
+    <div style="border-bottom:2px solid var(--cuadricula);padding-bottom:8px;margin-bottom:8px">
+      ${renderizarCambios(cambiosElectivas, 'Electivas de libre elección', '#147A46', '📗')}
+    </div>
+    ${cambiosFuera.length ? `
+      <div style="border-bottom:2px solid var(--cuadricula);padding-bottom:8px;margin-bottom:8px">
+        ${renderizarCambios(cambiosFuera, 'Otras asignaturas', '#B36F06', '⚠️')}
+      </div>
+    ` : ''}
+    <div style="font-size:.7rem;color:var(--tinta-suave);padding:4px 0;text-align:right">
+      Total: ${s.cambios.length} cambios en ${s.materias} materias · 
+      ${s.puntos.size} grupos leídos
+    </div>
+  `;
 }
 
 function moverSnapshot(paso){
@@ -2799,8 +2839,7 @@ function insigniaDemanda(k){
   const nv = NIVEL_DEM(d.velRel);
   const vel = d.velocidad>=10 ? Math.round(d.velocidad) : d.velocidad.toFixed(1);
   return `<span class="dem ${nv.cls}" title="Perdió ${d.tomados} de ${d.cap} cupos en ${
-    d.dias<1 ? Math.round(d.dias*24)+" h" : d.dias.toFixed(1)+" días"}${
-    d.agotado?", hasta agotarse":""}. Mide demanda, no calidad.">${nv.txt} · ${vel}/día</span>`;
+    d.dias<1 ? Math.round(d.dias*24)+" h" : d.dias.toFixed(1)+" días"}${d.agotado?", hasta agotarse":""}. Mide demanda, no calidad.">${nv.txt} · ${vel}/día</span>`;
 }
 
 function docentesDe(cod){
