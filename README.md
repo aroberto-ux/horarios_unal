@@ -1,3 +1,3 @@
 # horarios_unal
 
-próximamente automatizado con un tv box con Linux, Raspberry pi? never 🤮
+Felices los normales, esos seres extraños.
