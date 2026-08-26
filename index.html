@@ -295,6 +295,11 @@ section.panel{
 .elec-ver{font:600 .68rem "Archivo",sans-serif; cursor:pointer; padding:3px 9px; white-space:nowrap;
   border:1.5px solid var(--cuadricula); border-radius:99px; background:var(--papel); color:var(--tinta-suave)}
 .elec-ver:hover{border-color:var(--tinta-suave); color:var(--tinta)}
+.elec-tendencia{position:relative; height:180px; padding:14px 16px 6px; border-bottom:1px solid var(--cuadricula)}
+.elec-tendencia .msj{
+  position:absolute; inset:14px 16px 6px; display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:10px; color:var(--tinta-suave); font-size:.85rem; background:var(--blanco);
+}
 
 footer{max-width:1400px; margin:0 auto; padding:10px clamp(12px,3vw,32px) 30px; color:var(--tinta-suave); font-size:.78rem}
 footer a{color:var(--azul)}
@@ -753,6 +758,7 @@ section.panel[hidden]{display:none!important}
       <div class="snap-lista" id="snapLista"></div>
     </div>
     <div id="electivasPanel" hidden>
+      <div class="elec-tendencia" id="electivasTendencia"><canvas id="graficoElectivas"></canvas></div>
       <div class="snap-barra">
         <input type="search" id="elecBuscar" placeholder="Buscar electiva por nombre o código…" aria-label="Buscar electiva">
         <button type="button" id="elecOrden">Más cupos primero ▼</button>
@@ -1421,7 +1427,7 @@ async function asegurarLibres({repintar=true}={}){
     }catch(e){
       LIBRES.estado="error";
       if(repintar) pintarLista();
-      if(modoTend==="electivas") pintarElectivasCupos();
+      if(modoTend==="electivas"){ pintarElectivasCupos(); pintarGraficoElectivas(); }
       return false;
     }
   }
@@ -1442,7 +1448,7 @@ async function asegurarLibres({repintar=true}={}){
   // repintar:false, o que ya estuviera abierta cuando otro control (el
   // filtro "fuente" o el generador) la disparó: en cualquier caso, si es la
   // vista activa, se refresca con los datos que acaban de llegar.
-  if(modoTend==="electivas") pintarElectivasCupos();
+  if(modoTend==="electivas"){ pintarElectivasCupos(); pintarGraficoElectivas(); }
   return true;
 }
 
@@ -3029,8 +3035,106 @@ function pintarElectivasCupos(){
    haya de inmediato (la lista ya cargada, o el aviso de "cargando") y, si
    hace falta, se trae en segundo plano. asegurarLibres() ya se encarga de
    repintar este panel cuando termina, sin importar qué la disparó. */
+/* ================= Gráfica general: total de cupos de electivas =================
+   A diferencia de la lista de arriba (una foto de ahora), esto sí es una
+   serie de tiempo: cuántos cupos había en total, sumando TODAS las electivas
+   con historial, día a día. Requiere series_libre.json (el barrido diario);
+   si el repositorio todavía no lo genera, HISTORIAL no tendrá esas claves y
+   se muestra el aviso correspondiente en vez de una gráfica vacía. */
+const diaDe = ms => { const d = new Date(ms); return +new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
+
+function serieTotalElectivas(){
+  const series = [];
+  for(const m of MATERIAS.values()){
+    if(!m.libre) continue;
+    for(const g of m.grupos.values()){
+      const h = HISTORIAL.get(`${m.codigo}|${g.grupo}`);
+      if(h && h.length) series.push(h);
+    }
+  }
+  if(!series.length) return [];
+
+  // Un eje de días, no de lecturas: el barrido es diario, y mezclar además
+  // alguna lectura suelta de otra cadencia no debería multiplicar los puntos.
+  const dias = new Set();
+  for(const s of series) for(const p of s) dias.add(diaDe(+p.t));
+  const eje = [...dias].sort((a,b)=>a-b);
+
+  // Un puntero por serie que solo avanza hacia adelante: en vez de buscar
+  // desde cero en cada día (cientos de series por cientos de días), cada
+  // puntero recorre su serie una sola vez de punta a punta.
+  const punteros = series.map(()=>0);
+  return eje.map(dia=>{
+    let total = 0, n = 0;
+    series.forEach((s,i)=>{
+      while(punteros[i]+1 < s.length && diaDe(+s[punteros[i]+1].t) <= dia) punteros[i]++;
+      if(diaDe(+s[punteros[i]].t) <= dia){ total += s[punteros[i]].cupos; n++; }
+    });
+    return {t:new Date(dia), cupos:total, n};
+  });
+}
+
+let graficoElectivas = null;
+function msjGraficoElectivas(txt){
+  const cont = document.querySelector("#electivasTendencia");
+  let m = cont.querySelector(".msj");
+  if(!txt){ if(m) m.remove(); return; }
+  if(!m){ m = document.createElement("div"); m.className = "msj"; cont.appendChild(m); }
+  m.textContent = txt;
+}
+
+function pintarGraficoElectivas(){
+  const ctx = $("#graficoElectivas"); if(!ctx) return;
+  if(LIBRES.estado !== "listo"){
+    if(graficoElectivas){ graficoElectivas.destroy(); graficoElectivas=null; }
+    msjGraficoElectivas(LIBRES.estado==="error"
+      ? "No pude leer el catálogo de electivas."
+      : "Cargando el catálogo de electivas…");
+    return;
+  }
+  if(typeof Chart === "undefined"){ setTimeout(pintarGraficoElectivas, 500); return; }
+
+  const serie = serieTotalElectivas();
+  if(graficoElectivas){ graficoElectivas.destroy(); graficoElectivas=null; }
+  if(!serie.length){
+    msjGraficoElectivas("Todavía no hay historial diario de electivas (falta series_libre.json en el repositorio).");
+    return;
+  }
+  msjGraficoElectivas(null);
+
+  graficoElectivas = new Chart(ctx, {
+    type: "line",
+    data: {datasets: [{
+      label: "Total de cupos en electivas",
+      data: serie.map(p=>({x:+p.t, y:p.cupos, n:p.n})),
+      borderColor: "#8A4FBF", backgroundColor: "#8A4FBF29",
+      tension:.2, pointRadius: serie.length>60?0:2, borderWidth:2, fill:true
+    }]},
+    options: {
+      maintainAspectRatio:false, animation:false,
+      interaction:{mode:"nearest", intersect:false},
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{
+          title: its => new Date(its[0].parsed.x).toLocaleDateString("es-CO",{timeZone:"America/Bogota", day:"2-digit", month:"long", year:"numeric"}),
+          label: c => ` ${c.parsed.y} cupos en total · ${c.raw.n} electiva(s) con lectura ese día`
+        }}
+      },
+      scales:{
+        x:{type:"linear",
+           ticks:{font:{family:"IBM Plex Mono", size:10}, maxRotation:0, autoSkip:true, maxTicksLimit:8,
+                  callback:v=>new Date(v).toLocaleDateString("es-CO",{timeZone:"America/Bogota", day:"2-digit", month:"short"})},
+           grid:{color:"#EEF2EA"}},
+        y:{beginAtZero:true, title:{display:true, text:"Cupos disponibles", font:{family:"Archivo", size:11}},
+           ticks:{font:{family:"IBM Plex Mono", size:10}, precision:0}, grid:{color:"#E4EADF"}}
+      }
+    }
+  });
+}
+
 async function mostrarElectivas(){
   pintarElectivasCupos();
+  pintarGraficoElectivas();
   if(LIBRES.estado!=="listo" && LIBRES.estado!=="cargando") await asegurarLibres({repintar:false});
 }
 
