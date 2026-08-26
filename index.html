@@ -3041,8 +3041,6 @@ function pintarElectivasCupos(){
    con historial, día a día. Requiere series_libre.json (el barrido diario);
    si el repositorio todavía no lo genera, HISTORIAL no tendrá esas claves y
    se muestra el aviso correspondiente en vez de una gráfica vacía. */
-const diaDe = ms => { const d = new Date(ms); return +new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
-
 function serieTotalElectivas(){
   const series = [];
   for(const m of MATERIAS.values()){
@@ -3054,23 +3052,25 @@ function serieTotalElectivas(){
   }
   if(!series.length) return [];
 
-  // Un eje de días, no de lecturas: el barrido es diario, y mezclar además
-  // alguna lectura suelta de otra cadencia no debería multiplicar los puntos.
-  const dias = new Set();
-  for(const s of series) for(const p of s) dias.add(diaDe(+p.t));
-  const eje = [...dias].sort((a,b)=>a-b);
+  // Un punto por cada instante que de verdad se leyó, no uno por día: el
+  // barrido de electivas tarda un rato en recorrerlas todas, así que dentro
+  // del mismo día hay varias lecturas a horas distintas y cada una mueve el
+  // total en el momento exacto en que ocurrió.
+  const instantes = new Set();
+  for(const s of series) for(const p of s) instantes.add(+p.t);
+  const eje = [...instantes].sort((a,b)=>a-b);
 
   // Un puntero por serie que solo avanza hacia adelante: en vez de buscar
-  // desde cero en cada día (cientos de series por cientos de días), cada
-  // puntero recorre su serie una sola vez de punta a punta.
+  // desde cero en cada instante (cientos de series por cientos de lecturas),
+  // cada puntero recorre su serie una sola vez de punta a punta.
   const punteros = series.map(()=>0);
-  return eje.map(dia=>{
+  return eje.map(ins=>{
     let total = 0, n = 0;
     series.forEach((s,i)=>{
-      while(punteros[i]+1 < s.length && diaDe(+s[punteros[i]+1].t) <= dia) punteros[i]++;
-      if(diaDe(+s[punteros[i]].t) <= dia){ total += s[punteros[i]].cupos; n++; }
+      while(punteros[i]+1 < s.length && +s[punteros[i]+1].t <= ins) punteros[i]++;
+      if(+s[punteros[i]].t <= ins){ total += s[punteros[i]].cupos; n++; }
     });
-    return {t:new Date(dia), cupos:total, n};
+    return {t:new Date(ins), cupos:total, n};
   });
 }
 
@@ -3097,10 +3097,21 @@ function pintarGraficoElectivas(){
   const serie = serieTotalElectivas();
   if(graficoElectivas){ graficoElectivas.destroy(); graficoElectivas=null; }
   if(!serie.length){
-    msjGraficoElectivas("Todavía no hay historial diario de electivas (falta series_libre.json en el repositorio).");
+    msjGraficoElectivas("Todavía no hay historial de electivas (falta series_libre.json en el repositorio).");
     return;
   }
   msjGraficoElectivas(null);
+
+  // El eje ya no es "un punto por día": si el barrido tarda horas en pasar
+  // por todas las electivas, puede haber varias lecturas el mismo día. El
+  // formato se adapta al total cubierto, igual que en las demás gráficas.
+  const span = +serie[serie.length-1].t - +serie[0].t;
+  const fmtEjeElec = v=>{
+    const o = span <= 2*864e5  ? {hour:"2-digit", minute:"2-digit"}
+            : span <= 10*864e5 ? {day:"2-digit", month:"short", hour:"2-digit"}
+            :                    {day:"2-digit", month:"short"};
+    return new Date(v).toLocaleString("es-CO", {timeZone:"America/Bogota", ...o});
+  };
 
   graficoElectivas = new Chart(ctx, {
     type: "line",
@@ -3116,14 +3127,14 @@ function pintarGraficoElectivas(){
       plugins:{
         legend:{display:false},
         tooltip:{callbacks:{
-          title: its => new Date(its[0].parsed.x).toLocaleDateString("es-CO",{timeZone:"America/Bogota", day:"2-digit", month:"long", year:"numeric"}),
-          label: c => ` ${c.parsed.y} cupos en total · ${c.raw.n} electiva(s) con lectura ese día`
+          title: its => fmtFecha(new Date(its[0].parsed.x)),
+          label: c => ` ${c.parsed.y} cupos en total · ${c.raw.n} electiva(s) con lectura en ese momento`
         }}
       },
       scales:{
         x:{type:"linear",
            ticks:{font:{family:"IBM Plex Mono", size:10}, maxRotation:0, autoSkip:true, maxTicksLimit:8,
-                  callback:v=>new Date(v).toLocaleDateString("es-CO",{timeZone:"America/Bogota", day:"2-digit", month:"short"})},
+                  callback:fmtEjeElec},
            grid:{color:"#EEF2EA"}},
         y:{beginAtZero:true, title:{display:true, text:"Cupos disponibles", font:{family:"Archivo", size:11}},
            ticks:{font:{family:"IBM Plex Mono", size:10}, precision:0}, grid:{color:"#E4EADF"}}
