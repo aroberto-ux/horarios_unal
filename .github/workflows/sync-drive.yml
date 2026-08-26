@@ -2,7 +2,7 @@ name: Sincronizar datos desde Google Drive
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/45 * * * *'
   workflow_dispatch: {}
 
 permissions:
