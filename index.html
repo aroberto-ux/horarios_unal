@@ -281,6 +281,7 @@ section.panel{
 .snap-fila .d .flecha{font-weight:600}
 .baja{color:var(--rojo)} .sube{color:var(--verde)}
 .snap-nada{padding:28px 16px; text-align:center; color:var(--tinta-suave); font-size:.88rem}
+.snap-filtro-nota{padding:4px 0 10px; font-size:.76rem; color:var(--tinta-suave); font-style:italic}
 
 /* ---------- Electivas ordenadas por cupos ---------- */
 .elec-fila{display:flex; justify-content:space-between; align-items:flex-start; gap:12px;
@@ -742,6 +743,11 @@ section.panel[hidden]{display:none!important}
         <button type="button" id="snapPrev" title="Snapshot anterior">◀</button>
         <select id="selSnap" aria-label="Snapshot a inspeccionar"></select>
         <button type="button" id="snapNext" title="Snapshot siguiente">▶</button>
+        <select id="snapFiltro" aria-label="Filtrar por origen de la asignatura">
+          <option value="todas">Todas las asignaturas</option>
+          <option value="plan">Solo del plan</option>
+          <option value="libre">Solo libre elección</option>
+        </select>
         <span class="snap-meta" id="snapMeta"></span>
       </div>
       <div class="snap-lista" id="snapLista"></div>
@@ -2139,6 +2145,7 @@ function pintarDetalleImpresion(){
 const SNAP_UMBRAL = 6*60000;
 let SNAPSHOTS = null;      // se reconstruye con cada carga de datos
 let snapSel = null;        // instante del snapshot que se está mirando
+let filtroSnap = "todas";  // "todas" | "plan" | "libre": qué asignaturas listar
 
 function construirSnapshots(){
   if(SNAPSHOTS) return SNAPSHOTS;
@@ -2232,8 +2239,24 @@ function pintarSnapshots(){
                         mov: cs.reduce((t,c)=>t+Math.abs(c.d),0)}))
     .sort((a,b)=> b.mov-a.mov || nombreDe(a.cod).localeCompare(nombreDe(b.cod),"es"));
 
-  lista.innerHTML = "";
-  for(const m of mats){
+  // Plan o libre elección: se lee del mismo indicador que usa el resto de la
+  // página (m.libre). Si el código ya no está en el catálogo actual (un
+  // grupo que se cayó de horarios.csv entre snapshots) no se sabe a cuál
+  // bando pertenece, así que solo se ve con el filtro en "Todas".
+  const matsFiltrados = filtroSnap==="todas" ? mats : mats.filter(m=>{
+    const libre = MATERIAS.get(m.cod)?.libre;
+    if(libre===undefined) return false;
+    return filtroSnap==="libre" ? libre : !libre;
+  });
+
+  if(!matsFiltrados.length){
+    lista.innerHTML = `<div class="snap-nada">Ningún cambio de ${filtroSnap==="libre"?"libre elección":"asignaturas del plan"} en esta corrida.</div>`;
+    return;
+  }
+
+  lista.innerHTML = filtroSnap==="todas" ? "" :
+    `<div class="snap-filtro-nota">${matsFiltrados.length} de ${mats.length} asignatura(s) · ${filtroSnap==="libre"?"solo libre elección":"solo plan"}</div>`;
+  for(const m of matsFiltrados){
     const div = document.createElement("div"); div.className = "snap-mat";
     const signo = m.neto<0 ? "baja" : m.neto>0 ? "sube" : "";
     const cab = document.createElement("button");
@@ -3249,6 +3272,11 @@ $("#modoDoc").addEventListener("click",()=>fijarModo("doc"));
 $("#modoElectivas").addEventListener("click",()=>fijarModo("electivas"));
 $("#modoSnap").addEventListener("click",()=>fijarModo("snap"));
 $("#selSnap").addEventListener("change", ()=>{ snapSel = Number($("#selSnap").value); pintarSnapshots(); });
+$("#snapFiltro").addEventListener("change", ()=>{
+  filtroSnap = $("#snapFiltro").value;
+  pintarSnapshots();
+  evento('filtrar_snapshot', {filtro: filtroSnap});
+});
 $("#snapPrev").addEventListener("click", ()=>moverSnapshot(-1));
 $("#snapNext").addEventListener("click", ()=>moverSnapshot(1));
 $("#elecBuscar").addEventListener("input", ()=> pintarElectivasCupos());
