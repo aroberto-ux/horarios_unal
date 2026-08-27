@@ -725,6 +725,7 @@ section.panel[hidden]{display:none!important}
         <button id="modoMateria" role="tab">Por asignatura</button>
         <button id="modoDoc" role="tab">Docentes</button>
         <button id="modoElectivas" role="tab">Electivas por cupos</button>
+        <button id="modoPlan" role="tab">Plan por semestre</button>
         <button id="modoSnap" role="tab">Cambios por snapshot</button>
       </div>
       <select id="selMateria" aria-label="Asignatura para graficar" hidden></select>
@@ -742,7 +743,8 @@ section.panel[hidden]{display:none!important}
       </div>
       <span class="periodo" id="periodoTend"></span>
     </div>
-    <div class="lienzo"><canvas id="grafico"></canvas></div>
+    <div class="lienzo" id="lienzoPrincipal"><canvas id="grafico"></canvas></div>
+    <div class="lienzo" id="planLienzo" hidden><canvas id="graficoPlan"></canvas></div>
     <div id="snapPanel" hidden>
       <div class="snap-barra">
         <button type="button" id="snapPrev" title="Snapshot anterior">◀</button>
@@ -2931,7 +2933,14 @@ function seriesPara(claves){
 }
 
 function msjLienzo(txt){
-  const l=document.querySelector(".lienzo");
+  const l=document.getElementById("lienzoPrincipal");
+  let m=l.querySelector(".msj");
+  if(!txt){ if(m) m.remove(); return; }
+  if(!m){ m=document.createElement("div"); m.className="msj"; l.appendChild(m); }
+  m.textContent=txt;
+}
+function msjLienzoPlan(txt){
+  const l=document.getElementById("planLienzo");
   let m=l.querySelector(".msj");
   if(!txt){ if(m) m.remove(); return; }
   if(!m){ m=document.createElement("div"); m.className="msj"; l.appendChild(m); }
@@ -3149,6 +3158,123 @@ async function mostrarElectivas(){
   if(LIBRES.estado!=="listo" && LIBRES.estado!=="cargando") await asegurarLibres({repintar:false});
 }
 
+/* ================= Plan por semestre en el tiempo =================
+   Barras apiladas: para cada día, cuánto sumaban los cupos disponibles de
+   TODAS las asignaturas del plan (no solo las mías), repartido por semestre.
+   A diferencia de "Mis grupos"/"Por asignatura" (una línea por grupo) esto
+   agrega el plan entero en una sola barra por día, para ver de un vistazo si
+   el semestre en general se está llenando y en qué tramo de la carrera pega
+   más fuerte. Sí respeta el selector de rango: es una serie de tiempo como
+   cualquier otra, sirve por ejemplo para acercarse a la semana de matrículas. */
+
+// Progresión de color: azul en Nivelación, vira a cálido hacia el semestre X;
+// un gris aparte para códigos que no están en el pensum transcrito (poco
+// frecuente, pero no hay que esconderlos sumándolos en otro lado).
+const colorSemestre = s => s==="fuera"
+  ? "#93A69B"
+  : `hsl(${Math.round(212 - (s/10)*192)} 58% 45%)`;
+
+function seriesPlanPorSemestre(){
+  // sem (0..10, o "fuera") -> lista de series de cupos, una por cada grupo
+  const porSem = new Map();
+  for(const m of MATERIAS.values()){
+    if(m.libre) continue;
+    const d = plan(m.codigo);
+    const sem = d ? d.sem : "fuera";
+    for(const g of m.grupos.values()){
+      const h = HISTORIAL.get(`${m.codigo}|${g.grupo}`);
+      if(!h || !h.length) continue;
+      if(!porSem.has(sem)) porSem.set(sem, []);
+      porSem.get(sem).push(h);
+    }
+  }
+  if(!porSem.size) return {eje:[], datasets:[]};
+
+  // Eje de días: con lecturas cada 30 min no hay huecos reales, así que la
+  // unión de días con al menos una lectura cubre el semestre completo.
+  const diaDe = ms => { const d=new Date(ms); return +new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
+  const dias = new Set();
+  for(const series of porSem.values()) for(const s of series) for(const p of s) dias.add(diaDe(+p.t));
+  let eje = [...dias].sort((a,b)=>a-b);
+
+  // Orden de las pilas: Nivelación primero, I..X, y "fuera del plan" al final.
+  const claves = [...porSem.keys()].sort((a,b)=>{
+    if(a==="fuera") return 1; if(b==="fuera") return -1;
+    return a-b;
+  });
+
+  let datasets = claves.map(sem=>{
+    const series = porSem.get(sem);
+    // Un puntero por serie que solo avanza: cada una se recorre una sola vez
+    // de punta a punta en vez de buscar desde cero en cada día.
+    const punteros = series.map(()=>0);
+    const valores = eje.map(dia=>{
+      let total = 0;
+      series.forEach((s,i)=>{
+        while(punteros[i]+1 < s.length && diaDe(+s[punteros[i]+1].t) <= dia) punteros[i]++;
+        if(diaDe(+s[punteros[i]].t) <= dia) total += s[punteros[i]].cupos;
+      });
+      return total;
+    });
+    return {
+      label: sem==="fuera" ? "Fuera del plan" : (sem===0 ? "Nivelación" : `Semestre ${ROMANOS[sem]}`),
+      data: valores, backgroundColor: colorSemestre(sem), borderWidth:0
+    };
+  });
+
+  // El mismo selector de rango que usan "Mis grupos"/"Por asignatura": se
+  // recorta DESPUÉS de acumular, así que los valores en el borde ya vienen
+  // arrastrados correctamente y no hace falta anclar un punto aparte.
+  const {desde, hasta} = ventana();
+  const idxs = eje.map((_,i)=>i).filter(i => eje[i]+864e5-1 >= desde && eje[i] <= hasta);
+  eje = idxs.map(i=>eje[i]);
+  datasets = datasets.map(ds=>({...ds, data: idxs.map(i=>ds.data[i])}));
+
+  return {eje, datasets};
+}
+
+let graficoPlan = null;
+function pintarGraficoPlan(){
+  const ctx = $("#graficoPlan"); if(!ctx) return;
+  const {eje, datasets} = seriesPlanPorSemestre();
+  if(graficoPlan){ graficoPlan.destroy(); graficoPlan=null; }
+
+  if(!eje.length || !datasets.some(ds=>ds.data.some(v=>v>0))){
+    msjLienzoPlan(MATERIAS.size===0 ? "Cargando datos…" : "No hay historial de cupos del plan en el rango elegido.");
+    return;
+  }
+  msjLienzoPlan(null);
+
+  const etiquetas = eje.map(d=>new Date(d).toLocaleDateString("es-CO",{day:"2-digit", month:"short"}));
+
+  graficoPlan = new Chart(ctx, {
+    type: "bar",
+    data: {labels: etiquetas, datasets},
+    options: {
+      maintainAspectRatio:false, animation:false,
+      plugins:{
+        legend:{position:"bottom", labels:{font:{family:"Archivo", size:10}, boxWidth:12, padding:8}},
+        tooltip:{
+          callbacks:{
+            title: its => new Date(eje[its[0].dataIndex]).toLocaleDateString("es-CO",
+              {weekday:"long", day:"2-digit", month:"long", year:"numeric"}),
+            afterBody: its => {
+              const total = its.reduce((t,i)=>t+i.parsed.y, 0);
+              return [`Total ese día: ${total} cupos`];
+            }
+          }
+        }
+      },
+      scales:{
+        x:{stacked:true, ticks:{font:{family:"IBM Plex Mono", size:9}, maxRotation:0, autoSkip:true, maxTicksLimit:12},
+           grid:{display:false}},
+        y:{stacked:true, beginAtZero:true, title:{display:true, text:"Cupos disponibles", font:{family:"Archivo", size:11}},
+           ticks:{font:{family:"IBM Plex Mono", size:10}, precision:0}, grid:{color:"#E4EADF"}}
+      }
+    }
+  });
+}
+
 let esperaChart=0;
 function pintarGrafico(){
   if(modoTend==="snap"){ pintarSnapshots(); return; }   // no necesita Chart.js
@@ -3161,6 +3287,7 @@ function pintarGrafico(){
   esperaChart=0;
   if(modoTend==="snap"){ pintarSnapshots(); return; }
   if(modoTend==="doc"){ pintarDocentes(); return; }
+  if(modoTend==="plan"){ pintarGraficoPlan(); return; }
   const claves = modoTend==="mis"
     ? seleccion
     : [...(MATERIAS.get($("#selMateria").value)?.grupos.keys()||[])].map(g=>`${$("#selMateria").value}|${g}`);
@@ -3365,19 +3492,23 @@ pintarRejilla(); pintarCandidatas(); pintarGenLista();
 
 function fijarModo(modo){
   modoTend=modo;
-  const mapa={mis:"#modoMis", materia:"#modoMateria", doc:"#modoDoc", electivas:"#modoElectivas", snap:"#modoSnap"};
+  const mapa={mis:"#modoMis", materia:"#modoMateria", doc:"#modoDoc", electivas:"#modoElectivas", plan:"#modoPlan", snap:"#modoSnap"};
   for(const [m,sel] of Object.entries(mapa)) $(sel).classList.toggle("activo", m===modo);
   $("#selMateria").hidden = (modo!=="materia" && modo!=="doc");
   // Docentes y Electivas son fotos agregadas, no series de tiempo: el
   // selector de rango no aplica ahí. En Snapshots sí, porque acota qué
-  // corridas se ofrecen en la lista.
+  // corridas se ofrecen en la lista. Plan por semestre SÍ es una serie de
+  // tiempo (igual que Mis grupos/Por asignatura), así que el rango se deja
+  // disponible para poder acercarse, por ejemplo, a la semana de matrículas.
   $("#rangoTend").hidden = (modo==="doc" || modo==="electivas");
   $("#fechasTend").hidden = (modo==="doc" || modo==="electivas");
   $("#periodoTend").hidden = (modo==="doc" || modo==="electivas");
-  document.querySelector(".lienzo").hidden = (modo==="snap" || modo==="electivas");
+  $("#lienzoPrincipal").hidden = (modo==="snap" || modo==="electivas" || modo==="plan");
+  $("#planLienzo").hidden = (modo!=="plan");
   $("#snapPanel").hidden = (modo!=="snap");
   $("#electivasPanel").hidden = (modo!=="electivas");
   if((modo==="snap" || modo==="electivas") && grafico){ grafico.destroy(); grafico=null; }
+  if(modo!=="plan" && graficoPlan){ graficoPlan.destroy(); graficoPlan=null; }
   pintarGrafico();
   evento('cambiar_modo_tendencia', {modo});
 }
@@ -3385,6 +3516,7 @@ $("#modoMis").addEventListener("click",()=>fijarModo("mis"));
 $("#modoMateria").addEventListener("click",()=>fijarModo("materia"));
 $("#modoDoc").addEventListener("click",()=>fijarModo("doc"));
 $("#modoElectivas").addEventListener("click",()=>fijarModo("electivas"));
+$("#modoPlan").addEventListener("click",()=>fijarModo("plan"));
 $("#modoSnap").addEventListener("click",()=>fijarModo("snap"));
 $("#selSnap").addEventListener("change", ()=>{ snapSel = Number($("#selSnap").value); pintarSnapshots(); });
 $("#snapFiltro").addEventListener("change", ()=>{
