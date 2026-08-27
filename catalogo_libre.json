@@ -9,8 +9,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:14:37-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:09-05:00",
+    "orden_lectura": 0
   },
   {
     "codigo": "2029352",
@@ -37,17 +37,6 @@
         "grupo": "(1) Mesa: Democracia y autonomía universitaria",
         "actividad": "CLASE TALLER",
         "profesores": "Andrea Carolina Jimenez Martin",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": []
-      },
-      {
-        "grupo": "(2) Mesa: Modelo de financiación",
-        "actividad": "CLASE TALLER",
-        "profesores": "Paula Katherine Triviño Gaviria",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
@@ -89,8 +78,54 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:14:39-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:11-05:00",
+    "orden_lectura": 1
+  },
+  {
+    "codigo": "2030030",
+    "nombre": "Aguas y economía",
+    "tipologia": "LIBRE ELECCIÓN",
+    "creditos": "4",
+    "facultad": "SEDE BOGOTÁ",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1",
+        "actividad": "",
+        "profesores": "Miguel Angel Valenzuela Mahecha",
+        "cupos_disponibles": "20",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-205",
+            "salon_nombre": "SALON DE CLASE 454-205",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-205. 454-205. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "454-205",
+            "salon_nombre": "SALON DE CLASE 454-205",
+            "edificio": "454 - Luis Carlos Sarmiento Angulo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 454-205. 454-205. 454 - Luis Carlos Sarmiento Angulo. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-26T20:45:13-05:00",
+    "orden_lectura": 2
   },
   {
     "codigo": "2024279",
@@ -106,7 +141,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Eduard Alexis Larrañaga Rubio",
-        "cupos_disponibles": "50",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -135,8 +170,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:14:40-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:15-05:00",
+    "orden_lectura": 3
   },
   {
     "codigo": "2022616",
@@ -152,7 +187,7 @@
         "grupo": "(1) Alemán Electivo II",
         "actividad": "CLASE TEORICA",
         "profesores": "Diego Gonzalez Gonzalez",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -160,8 +195,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:14:41-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:17-05:00",
+    "orden_lectura": 4
   },
   {
     "codigo": "2022617",
@@ -177,7 +212,7 @@
         "grupo": "(1) Alemán Electivo III",
         "actividad": "CLASE TEORICA",
         "profesores": "Daniel Uriel Ventura Caceres",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -206,8 +241,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:14:42-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:19-05:00",
+    "orden_lectura": 5
   },
   {
     "codigo": "2021111",
@@ -219,8 +254,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:14:44-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:22-05:00",
+    "orden_lectura": 6
   },
   {
     "codigo": "2021514",
@@ -236,7 +271,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Sede Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Omar Joaquin Agudelo Suarez",
-        "cupos_disponibles": "80",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -255,8 +290,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:14:46-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:24-05:00",
+    "orden_lectura": 7
   },
   {
     "codigo": "2029102",
@@ -268,8 +303,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:14:47-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:26-05:00",
+    "orden_lectura": 8
   },
   {
     "codigo": "2018614",
@@ -281,8 +316,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:14:49-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:29-05:00",
+    "orden_lectura": 9
   },
   {
     "codigo": "2026732",
@@ -294,8 +329,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:14:50-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:40-05:00",
+    "orden_lectura": 10
   },
   {
     "codigo": "2027248",
@@ -311,7 +346,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Miguel Angel Herrera Zgaib",
-        "cupos_disponibles": "50",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -330,8 +365,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:14:51-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:42-05:00",
+    "orden_lectura": 11
   },
   {
     "codigo": "2025406",
@@ -355,8 +390,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:14:52-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:45-05:00",
+    "orden_lectura": 12
   },
   {
     "codigo": "2026433",
@@ -372,7 +407,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Joanita Jimena Barbosa Gomez",
-        "cupos_disponibles": "125",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -391,8 +426,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:14:54-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:48-05:00",
+    "orden_lectura": 13
   },
   {
     "codigo": "2015111",
@@ -404,8 +439,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:14:55-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:50-05:00",
+    "orden_lectura": 14
   },
   {
     "codigo": "2011302",
@@ -429,8 +464,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:14:57-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:53-05:00",
+    "orden_lectura": 15
   },
   {
     "codigo": "2012698",
@@ -454,8 +489,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:14:58-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:55-05:00",
+    "orden_lectura": 16
   },
   {
     "codigo": "2021140",
@@ -471,7 +506,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "",
         "profesores": "Leonardo Castañeda Colorado",
-        "cupos_disponibles": "50",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -503,7 +538,7 @@
         "grupo": "(2) Grupo 2 - Clase Presencial",
         "actividad": "",
         "profesores": "Giovanni Alejandro Pinzon Estrada",
-        "cupos_disponibles": "50",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -530,42 +565,10 @@
             "lugar_raw": "SALA DE VIDEOCONFERENCIAS. 413-116. 413 - Belisario Ruiz Wilches. SALON."
           }
         ]
-      },
-      {
-        "grupo": "(3) Grupo 3 - Clase Presencial",
-        "actividad": "",
-        "profesores": "SANTIAGO VARGAS DOMINGUEZ",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 16/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "413-116",
-            "salon_nombre": "SALA DE VIDEOCONFERENCIAS",
-            "edificio": "413 - Belisario Ruiz Wilches",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALA DE VIDEOCONFERENCIAS. 413-116. 413 - Belisario Ruiz Wilches. SALON."
-          },
-          {
-            "dia": "SÁBADO",
-            "hora_inicio": "09:00",
-            "hora_fin": "11:00",
-            "salon": "413-116",
-            "salon_nombre": "SALA DE VIDEOCONFERENCIAS",
-            "edificio": "413 - Belisario Ruiz Wilches",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALA DE VIDEOCONFERENCIAS. 413-116. 413 - Belisario Ruiz Wilches. SALON."
-          }
-        ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:00-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:45:58-05:00",
+    "orden_lectura": 17
   },
   {
     "codigo": "2026533",
@@ -581,7 +584,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial - Sede Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Egberto Bermudez Cujar",
-        "cupos_disponibles": "200",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -600,8 +603,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:01-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:00-05:00",
+    "orden_lectura": 18
   },
   {
     "codigo": "2018776",
@@ -613,8 +616,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:02-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:02-05:00",
+    "orden_lectura": 19
   },
   {
     "codigo": "2028674",
@@ -638,8 +641,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:04-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:12-05:00",
+    "orden_lectura": 20
   },
   {
     "codigo": "2024149",
@@ -651,8 +654,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:05-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:14-05:00",
+    "orden_lectura": 21
   },
   {
     "codigo": "2021146",
@@ -664,8 +667,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:06-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:16-05:00",
+    "orden_lectura": 22
   },
   {
     "codigo": "2021147",
@@ -681,7 +684,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Nubia Carmenza Moreno Sarmiento",
-        "cupos_disponibles": "55",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -700,8 +703,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:07-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:18-05:00",
+    "orden_lectura": 23
   },
   {
     "codigo": "2026274",
@@ -712,32 +715,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": [
-      {
-        "grupo": "(1) Grupo 1 - Clase Presencial - Sede Bogotá",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Angela Ines Simbaqueba Gutierrez; GUERASSIM VORONKOV",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "24/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "17:00",
-            "hora_fin": "20:00",
-            "salon": "104-100",
-            "salon_nombre": "AUDITORIO LEON DE GREFF",
-            "edificio": "104 - Auditorio Leon de Greiff",
-            "tipo_espacio": "AUDITORIO",
-            "lugar_raw": "AUDITORIO LEON DE GREFF. 104-100. 104 - Auditorio Leon de Greiff. AUDITORIO."
-          }
-        ]
-      }
-    ],
-    "ts_lectura": "2026-08-14T14:15:09-05:00",
-    "orden_lectura": -1
+    "grupos": [],
+    "ts_lectura": "2026-08-26T20:46:22-05:00",
+    "orden_lectura": 24
   },
   {
     "codigo": "2023912",
@@ -749,8 +729,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:10-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:24-05:00",
+    "orden_lectura": 25
   },
   {
     "codigo": "2029655",
@@ -766,7 +746,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Andrea Carolina Jimenez Martin",
-        "cupos_disponibles": "201",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -785,8 +765,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:12-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:26-05:00",
+    "orden_lectura": 26
   },
   {
     "codigo": "2022287",
@@ -802,7 +782,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORÍCA",
         "profesores": "Liven Fernando Martinez Bernal",
-        "cupos_disponibles": "76",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -821,8 +801,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:13-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:28-05:00",
+    "orden_lectura": 27
   },
   {
     "codigo": "1000129-B",
@@ -838,7 +818,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Grupo Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Diego Alexander Garzon Alvarado; EDUARDO ALFONSO RUEDA BARRERA",
-        "cupos_disponibles": "500",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -857,8 +837,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:14-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:30-05:00",
+    "orden_lectura": 28
   },
   {
     "codigo": "2021770",
@@ -874,7 +854,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "",
         "profesores": "Eulises Torres",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -893,8 +873,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:16-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:33-05:00",
+    "orden_lectura": 29
   },
   {
     "codigo": "2029485",
@@ -906,8 +886,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:17-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:41-05:00",
+    "orden_lectura": 30
   },
   {
     "codigo": "2027992",
@@ -923,7 +903,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "JUAN CARLOS MONTOYA AGUDELO",
-        "cupos_disponibles": "150",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -942,8 +922,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:18-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:44-05:00",
+    "orden_lectura": 31
   },
   {
     "codigo": "2027937",
@@ -970,7 +950,7 @@
         "grupo": "(1) Grupo Bogotá",
         "actividad": "",
         "profesores": "Fernando José Rodríguez Mesa",
-        "cupos_disponibles": "285",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -982,17 +962,6 @@
         "actividad": "",
         "profesores": "Fernando José Rodríguez Mesa",
         "cupos_disponibles": "15",
-        "cupos_totales": "NA",
-        "fecha": "",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": []
-      },
-      {
-        "grupo": "(2) Grupo Medellín",
-        "actividad": "",
-        "profesores": "Fernando José Rodríguez Mesa",
-        "cupos_disponibles": "30",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -1022,8 +991,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:20-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:46-05:00",
+    "orden_lectura": 32
   },
   {
     "codigo": "2029730",
@@ -1035,8 +1004,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:21-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:48-05:00",
+    "orden_lectura": 33
   },
   {
     "codigo": "2029911",
@@ -1047,21 +1016,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": [
-      {
-        "grupo": "(1) Grupo 1 - Clase Presencial",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Jorge Enrique Londono Pinzón; Jairo Danilo Moreno Hernandez",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": []
-      }
-    ],
-    "ts_lectura": "2026-08-14T14:15:23-05:00",
-    "orden_lectura": -1
+    "grupos": [],
+    "ts_lectura": "2026-08-26T20:46:51-05:00",
+    "orden_lectura": 34
   },
   {
     "codigo": "2029656",
@@ -1073,8 +1030,44 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:24-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:53-05:00",
+    "orden_lectura": 35
+  },
+  {
+    "codigo": "2030035",
+    "nombre": "Cátedra de Sede Jorge Eliécer Gaitán: territorios, conflictos y paz en la Colombia contemporánea",
+    "tipologia": "LIBRE ELECCIÓN",
+    "creditos": "3",
+    "facultad": "SEDE BOGOTÁ",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1 - Clase Presencial - Sede Bogotá",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Andres Leonardo Gongora Sierra; Ginna Marcela Rivera Rodriguez",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 16/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "19:00",
+            "salon": "225-AUD1",
+            "salon_nombre": "AUDITORIO VIRGINIA GUTIERREZ",
+            "edificio": "225 - Rogelio Salmona",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO VIRGINIA GUTIERREZ. 225-AUD1. 225 - Rogelio Salmona. AUDITORIO."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-26T20:46:55-05:00",
+    "orden_lectura": 36
   },
   {
     "codigo": "2029813",
@@ -1086,8 +1079,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:26-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:46:58-05:00",
+    "orden_lectura": 37
   },
   {
     "codigo": "2029912",
@@ -1098,21 +1091,45 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
+    "grupos": [],
+    "ts_lectura": "2026-08-26T20:47:00-05:00",
+    "orden_lectura": 38
+  },
+  {
+    "codigo": "2030039",
+    "nombre": "Cátedra de sede manuel ancízar  160 años: más que humanos: IA, salud y posthumanismo",
+    "tipologia": "LIBRE ELECCIÓN",
+    "creditos": "3",
+    "facultad": "SEDE BOGOTÁ",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
     "grupos": [
       {
         "grupo": "(1) Grupo 1 - Clase Presencial - Sede Bogotá",
         "actividad": "CLASE TEORICA",
-        "profesores": "Diego Alejandro Torres Galindo",
+        "profesores": "LIZ KAREN HERRERA QUINTERO",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
-        "fecha": "",
+        "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
-        "sesiones": []
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "19:00",
+            "salon": "861-141",
+            "salon_nombre": "AUDITORIO CENTRO DE CONVENCIONES ALFONSO LOPEZ PUMAREJO",
+            "edificio": "861 - Uriel Gutiérrez",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO CENTRO DE CONVENCIONES ALFONSO LOPEZ PUMAREJO. 861-141. 861 - Uriel Gutiérrez. AUDITORIO."
+          }
+        ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:27-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:02-05:00",
+    "orden_lectura": 39
   },
   {
     "codigo": "2029812",
@@ -1124,8 +1141,116 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:28-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:10-05:00",
+    "orden_lectura": 40
+  },
+  {
+    "codigo": "2030040",
+    "nombre": "Cátedra de Sede Marta Traba: 140 Años de formación artística en Colombia",
+    "tipologia": "LIBRE ELECCIÓN",
+    "creditos": "3",
+    "facultad": "SEDE BOGOTÁ",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1 - Clase Presencial - Sede Bogotá",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Ana Maria Lozano Rocha; William Alfonso Lopez Rosas; David Lozano Moreno",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 16/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "19:00",
+            "salon": "225-AUD1",
+            "salon_nombre": "AUDITORIO VIRGINIA GUTIERREZ",
+            "edificio": "225 - Rogelio Salmona",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO VIRGINIA GUTIERREZ. 225-AUD1. 225 - Rogelio Salmona. AUDITORIO."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-26T20:47:13-05:00",
+    "orden_lectura": 41
+  },
+  {
+    "codigo": "2030033",
+    "nombre": "Cátedra José Celestino Mutis: Colombia viva 60 años descubriendo biodiversidad que nos define",
+    "tipologia": "LIBRE ELECCIÓN",
+    "creditos": "3",
+    "facultad": "SEDE BOGOTÁ",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1 - Clase Presencial - Sede Bogotá",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Jose Ernesto Mancera Pineda",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 16/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MARTES",
+            "hora_inicio": "16:00",
+            "hora_fin": "19:00",
+            "salon": "861-141",
+            "salon_nombre": "AUDITORIO CENTRO DE CONVENCIONES ALFONSO LOPEZ PUMAREJO",
+            "edificio": "861 - Uriel Gutiérrez",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO CENTRO DE CONVENCIONES ALFONSO LOPEZ PUMAREJO. 861-141. 861 - Uriel Gutiérrez. AUDITORIO."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-26T20:47:15-05:00",
+    "orden_lectura": 42
+  },
+  {
+    "codigo": "2030034",
+    "nombre": "Cátedra Manuel Ancízar: La era de la longevidad: vivir más y vivir mejor",
+    "tipologia": "LIBRE ELECCIÓN",
+    "creditos": "3",
+    "facultad": "SEDE BOGOTÁ",
+    "planes": [
+      "2542 INGENIERÍA CIVIL"
+    ],
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1 - Clase Presencial - Sede Bogotá",
+        "actividad": "CLASE TEORICA",
+        "profesores": "MILENA LIMA DE MORAES",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 16/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "19:00",
+            "salon": "861-141",
+            "salon_nombre": "AUDITORIO CENTRO DE CONVENCIONES ALFONSO LOPEZ PUMAREJO",
+            "edificio": "861 - Uriel Gutiérrez",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO CENTRO DE CONVENCIONES ALFONSO LOPEZ PUMAREJO. 861-141. 861 - Uriel Gutiérrez. AUDITORIO."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-26T20:47:17-05:00",
+    "orden_lectura": 43
   },
   {
     "codigo": "1000134-B",
@@ -1137,8 +1262,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:29-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:19-05:00",
+    "orden_lectura": 44
   },
   {
     "codigo": "1000176-B",
@@ -1154,7 +1279,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Grupo Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Harold Enrique Tenorio Quiñones",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1173,8 +1298,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:31-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:21-05:00",
+    "orden_lectura": 45
   },
   {
     "codigo": "1000170-B",
@@ -1190,7 +1315,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Grupo Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "ALVARO RIVAS GUZMAN",
-        "cupos_disponibles": "50",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1209,8 +1334,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:32-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:23-05:00",
+    "orden_lectura": 46
   },
   {
     "codigo": "1000159-B",
@@ -1226,7 +1351,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Grupo Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "LUZ MARINA OCAMPO CARMONA",
-        "cupos_disponibles": "40",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1255,8 +1380,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:34-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:25-05:00",
+    "orden_lectura": 47
   },
   {
     "codigo": "1000158-B",
@@ -1272,7 +1397,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Grupo Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Maria Del Rosario Rojas Robles",
-        "cupos_disponibles": "200",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1291,8 +1416,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:35-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:28-05:00",
+    "orden_lectura": 48
   },
   {
     "codigo": "1000175-B",
@@ -1308,7 +1433,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Grupo Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Eduardo Antonio Restrepo Uribe",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1327,8 +1452,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:36-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:30-05:00",
+    "orden_lectura": 49
   },
   {
     "codigo": "1000164-B",
@@ -1340,8 +1465,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:38-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:38-05:00",
+    "orden_lectura": 50
   },
   {
     "codigo": "1000141-B",
@@ -1356,8 +1481,8 @@
       {
         "grupo": "(1) Grupo 1 - Clase Remota - Sede Bogotá",
         "actividad": "CLASE TEORICA",
-        "profesores": "Nestor Hernando Campos Campos; Jose Ernesto Mancera Pineda",
-        "cupos_disponibles": "50",
+        "profesores": "Jose Ernesto Mancera Pineda",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1376,8 +1501,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:39-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:40-05:00",
+    "orden_lectura": 51
   },
   {
     "codigo": "1000089-B",
@@ -1393,7 +1518,7 @@
         "grupo": "(1) Grupo 1 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1481,7 +1606,7 @@
         "grupo": "(13) Grupo 13 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "14",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1503,7 +1628,7 @@
         "grupo": "(14) Grupo 14 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1525,7 +1650,7 @@
         "grupo": "(15) Grupo 15 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "15",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1547,7 +1672,7 @@
         "grupo": "(16) Grupo 16 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "2",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1569,7 +1694,7 @@
         "grupo": "(17) Grupo 17 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "18",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1591,7 +1716,7 @@
         "grupo": "(18) Grupo 18 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "17",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1635,7 +1760,7 @@
         "grupo": "(2) Grupo 2 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "8",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1657,7 +1782,7 @@
         "grupo": "(20) Grupo 20 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1701,7 +1826,7 @@
         "grupo": "(3) Grupo 3 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1745,7 +1870,7 @@
         "grupo": "(5) Grupo 5 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "17",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1767,7 +1892,7 @@
         "grupo": "(6) Grupo 6 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "4",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1811,7 +1936,7 @@
         "grupo": "(9) Grupo 9 - Clase Virtual",
         "actividad": "CLASE TEORICA",
         "profesores": "Jasmin Garcia Pineros",
-        "cupos_disponibles": "13",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1830,8 +1955,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:40-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:43-05:00",
+    "orden_lectura": 52
   },
   {
     "codigo": "1000160-B",
@@ -1843,8 +1968,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:42-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:45-05:00",
+    "orden_lectura": 53
   },
   {
     "codigo": "1000168-B",
@@ -1860,7 +1985,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Grupo Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Adriana Isabel Orjuela Martinez; SANDRA PATRICIA DAZA CAICEDO",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1879,8 +2004,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:43-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:48-05:00",
+    "orden_lectura": 54
   },
   {
     "codigo": "1000167-B",
@@ -1896,7 +2021,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Grupo Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Alberto Sanchez Alfaro",
-        "cupos_disponibles": "156",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1915,8 +2040,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:44-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:50-05:00",
+    "orden_lectura": 55
   },
   {
     "codigo": "1000172-B",
@@ -1932,7 +2057,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Grupo Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Monica Reinartz Estrada",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -1961,8 +2086,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:46-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:52-05:00",
+    "orden_lectura": 56
   },
   {
     "codigo": "1000145-B",
@@ -1978,7 +2103,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Sede Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Viviana Vargas Franco",
-        "cupos_disponibles": "60",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -1986,8 +2111,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:47-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:54-05:00",
+    "orden_lectura": 57
   },
   {
     "codigo": "1000165-B",
@@ -1999,8 +2124,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:48-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:57-05:00",
+    "orden_lectura": 58
   },
   {
     "codigo": "1000173-B",
@@ -2016,7 +2141,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Grupo Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "MONICA AYDE VALLEJO VELASQUEZ",
-        "cupos_disponibles": "50",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -2045,8 +2170,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:50-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:47:59-05:00",
+    "orden_lectura": 59
   },
   {
     "codigo": "1000162-B",
@@ -2058,8 +2183,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:51-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:08-05:00",
+    "orden_lectura": 60
   },
   {
     "codigo": "1000128-B",
@@ -2071,8 +2196,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:52-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:10-05:00",
+    "orden_lectura": 61
   },
   {
     "codigo": "1000171-B",
@@ -2088,7 +2213,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Grupo Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "María Luisa Villalba Morales",
-        "cupos_disponibles": "40",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -2107,8 +2232,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:54-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:13-05:00",
+    "orden_lectura": 62
   },
   {
     "codigo": "1000163-B",
@@ -2120,8 +2245,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:55-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:15-05:00",
+    "orden_lectura": 63
   },
   {
     "codigo": "1000174-B",
@@ -2137,7 +2262,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Grupo Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -2156,8 +2281,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:56-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:17-05:00",
+    "orden_lectura": 64
   },
   {
     "codigo": "1000169-B",
@@ -2173,7 +2298,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Grupo Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Julian Alejandro Osorio Osorio",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -2192,8 +2317,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:15:58-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:19-05:00",
+    "orden_lectura": 65
   },
   {
     "codigo": "1000161-B",
@@ -2205,8 +2330,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:15:59-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:22-05:00",
+    "orden_lectura": 66
   },
   {
     "codigo": "2028643",
@@ -2222,7 +2347,7 @@
         "grupo": "(1) Grupo 1 - Virtual Bogotá",
         "actividad": "",
         "profesores": "Jose Ismael Peña Reyes",
-        "cupos_disponibles": "100",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -2241,8 +2366,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:00-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:25-05:00",
+    "orden_lectura": 67
   },
   {
     "codigo": "1000157-B",
@@ -2254,8 +2379,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:02-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:28-05:00",
+    "orden_lectura": 68
   },
   {
     "codigo": "2029903",
@@ -2271,7 +2396,7 @@
         "grupo": "(1) Grupo 1 Cesar Ayala Diago",
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Cesar Augusto Ayala Diago",
-        "cupos_disponibles": "78",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -2279,8 +2404,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:03-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:30-05:00",
+    "orden_lectura": 69
   },
   {
     "codigo": "2029864",
@@ -2296,7 +2421,7 @@
         "grupo": "(1) Chino Electivo III",
         "actividad": "CLASE TEORICA",
         "profesores": "JESSICA LUCIA MORENO NOVOA",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -2304,8 +2429,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:04-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:39-05:00",
+    "orden_lectura": 70
   },
   {
     "codigo": "2021758",
@@ -2321,7 +2446,7 @@
         "grupo": "(1) Grupo 1 - Chino Electivo I",
         "actividad": "CLASE TEORICA",
         "profesores": "JESSICA LUCIA MORENO NOVOA",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -2353,7 +2478,7 @@
         "grupo": "(2) Grupo 2 - Chino Electivo I",
         "actividad": "CLASE TEORICA",
         "profesores": "JESSICA LUCIA MORENO NOVOA",
-        "cupos_disponibles": "26",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -2382,8 +2507,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:05-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:42-05:00",
+    "orden_lectura": 71
   },
   {
     "codigo": "2021760",
@@ -2399,7 +2524,7 @@
         "grupo": "(1) Chino Electivo II",
         "actividad": "CHINO II",
         "profesores": "JESSICA LUCIA MORENO NOVOA",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -2407,8 +2532,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:07-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:44-05:00",
+    "orden_lectura": 72
   },
   {
     "codigo": "2016133",
@@ -2424,7 +2549,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Alvaro Ibata Ceballos",
-        "cupos_disponibles": "100",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -2443,8 +2568,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:08-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:47-05:00",
+    "orden_lectura": 73
   },
   {
     "codigo": "2021142",
@@ -2460,7 +2585,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "Raul Eduardo Gomez Torres",
-        "cupos_disponibles": "46",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -2492,7 +2617,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "",
         "profesores": "Raul Eduardo Gomez Torres",
-        "cupos_disponibles": "46",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -2521,8 +2646,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:10-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:49-05:00",
+    "orden_lectura": 74
   },
   {
     "codigo": "2028571",
@@ -2538,7 +2663,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Diana Carolina Florez Bayona",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -2557,8 +2682,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:11-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:52-05:00",
+    "orden_lectura": 75
   },
   {
     "codigo": "2029900",
@@ -2574,7 +2699,7 @@
         "grupo": "(1) GRUPO 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Oscar Antonio Caballero Rodriguez",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -2593,8 +2718,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:12-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:54-05:00",
+    "orden_lectura": 76
   },
   {
     "codigo": "2023244",
@@ -2639,8 +2764,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:13-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:56-05:00",
+    "orden_lectura": 77
   },
   {
     "codigo": "2026204",
@@ -2656,7 +2781,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE SEMINARIO",
         "profesores": "Ramon Elberto Uribe Galves",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -2685,8 +2810,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:15-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:48:58-05:00",
+    "orden_lectura": 78
   },
   {
     "codigo": "2019336",
@@ -2698,8 +2823,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:16-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:00-05:00",
+    "orden_lectura": 79
   },
   {
     "codigo": "2028569",
@@ -2734,8 +2859,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:17-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:10-05:00",
+    "orden_lectura": 80
   },
   {
     "codigo": "2029421",
@@ -2751,7 +2876,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Jenniffer Vargas Reina",
-        "cupos_disponibles": "60",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -2770,8 +2895,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:18-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:13-05:00",
+    "orden_lectura": 81
   },
   {
     "codigo": "2026908",
@@ -2783,8 +2908,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:20-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:15-05:00",
+    "orden_lectura": 82
   },
   {
     "codigo": "2017564",
@@ -2795,32 +2920,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": [
-      {
-        "grupo": "(1) Grupo 1",
-        "actividad": "",
-        "profesores": "MARTA NUBIA VELASQUEZ RICO",
-        "cupos_disponibles": "30",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "MARTES",
-            "hora_inicio": "09:00",
-            "hora_fin": "12:00",
-            "salon": "610-111",
-            "salon_nombre": "AULA 111",
-            "edificio": "610 - CISU - Centro de Integración de Servicios Universitarios",
-            "tipo_espacio": "",
-            "lugar_raw": "AULA 111. 610-111. 610 - CISU - Centro de Integración de Servicios Universitarios. ."
-          }
-        ]
-      }
-    ],
-    "ts_lectura": "2026-08-14T14:16:21-05:00",
-    "orden_lectura": -1
+    "grupos": [],
+    "ts_lectura": "2026-08-26T20:49:17-05:00",
+    "orden_lectura": 83
   },
   {
     "codigo": "2011303",
@@ -2832,8 +2934,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:22-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:19-05:00",
+    "orden_lectura": 84
   },
   {
     "codigo": "2027223",
@@ -2980,8 +3082,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:23-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:21-05:00",
+    "orden_lectura": 85
   },
   {
     "codigo": "2027224",
@@ -3118,8 +3220,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:25-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:23-05:00",
+    "orden_lectura": 86
   },
   {
     "codigo": "2021152",
@@ -3130,32 +3232,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": [
-      {
-        "grupo": "(1) Grupo 1 - Clase Remota - Sede Bogotá",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Jose Jairo Giraldo Gallo",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "27/08/2026 - 17/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "17:00",
-            "hora_fin": "20:00",
-            "salon": "EXT-BOG",
-            "salon_nombre": "NO NECESITA SALON",
-            "edificio": "ESPACIOS EXTERNOS DE LA UNIVERSIDAD",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "NO NECESITA SALON. EXT-BOG. ESPACIOS EXTERNOS DE LA UNIVERSIDAD. SALON."
-          }
-        ]
-      }
-    ],
-    "ts_lectura": "2026-08-14T14:16:26-05:00",
-    "orden_lectura": -1
+    "grupos": [],
+    "ts_lectura": "2026-08-26T20:49:25-05:00",
+    "orden_lectura": 87
   },
   {
     "codigo": "7000293-B",
@@ -3171,7 +3250,7 @@
         "grupo": "(3) Grupo Amazonia",
         "actividad": "CALSE TEORICA",
         "profesores": "Sonia Patricia Carreño Moreno",
-        "cupos_disponibles": "2",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -3179,8 +3258,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:27-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:27-05:00",
+    "orden_lectura": 88
   },
   {
     "codigo": "2029500",
@@ -3192,8 +3271,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:28-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:29-05:00",
+    "orden_lectura": 89
   },
   {
     "codigo": "2029512",
@@ -3209,7 +3288,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "David Alberto Roll Velez",
-        "cupos_disponibles": "50",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -3228,8 +3307,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:30-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:39-05:00",
+    "orden_lectura": 90
   },
   {
     "codigo": "2026702",
@@ -3245,7 +3324,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "Daniel Alberto Libreros Caicedo",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -3264,8 +3343,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:31-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:42-05:00",
+    "orden_lectura": 91
   },
   {
     "codigo": "2028615",
@@ -3277,8 +3356,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:32-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:45-05:00",
+    "orden_lectura": 92
   },
   {
     "codigo": "2026205",
@@ -3294,7 +3373,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "Diego Isaías Peña Porras",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -3313,8 +3392,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:33-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:47-05:00",
+    "orden_lectura": 93
   },
   {
     "codigo": "2025976",
@@ -3330,7 +3409,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Antonio Jose Mejia Umaña",
-        "cupos_disponibles": "24",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -3359,8 +3438,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:35-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:49-05:00",
+    "orden_lectura": 94
   },
   {
     "codigo": "2020414",
@@ -3372,8 +3451,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:36-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:51-05:00",
+    "orden_lectura": 95
   },
   {
     "codigo": "2022180",
@@ -3385,8 +3464,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:37-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:54-05:00",
+    "orden_lectura": 96
   },
   {
     "codigo": "2020915",
@@ -3398,8 +3477,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:38-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:56-05:00",
+    "orden_lectura": 97
   },
   {
     "codigo": "2028647",
@@ -3411,8 +3490,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:39-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:49:58-05:00",
+    "orden_lectura": 98
   },
   {
     "codigo": "2029283",
@@ -3424,8 +3503,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:41-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:00-05:00",
+    "orden_lectura": 99
   },
   {
     "codigo": "2029398",
@@ -3441,7 +3520,7 @@
         "grupo": "(1) GRUPO 1",
         "actividad": "CLASE TEORICA",
         "profesores": "JUAN GABRIEL GOMEZ ALBARELLO",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -3460,8 +3539,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:42-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:09-05:00",
+    "orden_lectura": 100
   },
   {
     "codigo": "2023915",
@@ -3477,7 +3556,7 @@
         "grupo": "(1) GRUPO 1 (2023915)",
         "actividad": "CLASE TEORICA",
         "profesores": "Alvaro Daniel Reyes Gomez",
-        "cupos_disponibles": "55",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -3496,8 +3575,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:43-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:12-05:00",
+    "orden_lectura": 101
   },
   {
     "codigo": "2015633",
@@ -3513,7 +3592,7 @@
         "grupo": "(1) Grupo 1 - 2015633",
         "actividad": "CLASE TEORICA",
         "profesores": "Alvaro Daniel Reyes Gomez",
-        "cupos_disponibles": "55",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -3532,8 +3611,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:45-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:14-05:00",
+    "orden_lectura": 102
   },
   {
     "codigo": "2029789",
@@ -3544,21 +3623,9 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": [
-      {
-        "grupo": "(1) Grupo 1 - Clase presencial",
-        "actividad": "CLASE TEORICA",
-        "profesores": "CLARA ROCIO RODRIGUEZ PICO",
-        "cupos_disponibles": "0",
-        "cupos_totales": "NA",
-        "fecha": "",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": []
-      }
-    ],
-    "ts_lectura": "2026-08-14T14:16:46-05:00",
-    "orden_lectura": -1
+    "grupos": [],
+    "ts_lectura": "2026-08-26T20:50:16-05:00",
+    "orden_lectura": 103
   },
   {
     "codigo": "2024990",
@@ -3570,8 +3637,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:47-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:19-05:00",
+    "orden_lectura": 104
   },
   {
     "codigo": "2022188",
@@ -3583,8 +3650,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:48-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:21-05:00",
+    "orden_lectura": 105
   },
   {
     "codigo": "2025336",
@@ -3600,7 +3667,7 @@
         "grupo": "(2) Grupo 2 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -3629,8 +3696,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:50-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:23-05:00",
+    "orden_lectura": 106
   },
   {
     "codigo": "2025814",
@@ -3646,7 +3713,7 @@
         "grupo": "(1) Electiva en Lengua Coreana II",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -3675,8 +3742,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:51-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:26-05:00",
+    "orden_lectura": 107
   },
   {
     "codigo": "2027940",
@@ -3688,8 +3755,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:52-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:28-05:00",
+    "orden_lectura": 108
   },
   {
     "codigo": "2027941",
@@ -3705,7 +3772,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "EDMON CASTELL GINOVART",
-        "cupos_disponibles": "200",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -3724,8 +3791,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:54-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:30-05:00",
+    "orden_lectura": 109
   },
   {
     "codigo": "2019054",
@@ -3737,8 +3804,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:55-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:41-05:00",
+    "orden_lectura": 110
   },
   {
     "codigo": "2021154",
@@ -3754,7 +3821,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORÍCA",
         "profesores": "Dario Indalecio Restrepo Botero",
-        "cupos_disponibles": "150",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -3783,8 +3850,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:56-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:43-05:00",
+    "orden_lectura": 111
   },
   {
     "codigo": "2018617",
@@ -3796,8 +3863,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:16:58-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:45-05:00",
+    "orden_lectura": 112
   },
   {
     "codigo": "2029676",
@@ -3842,8 +3909,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:16:59-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:48-05:00",
+    "orden_lectura": 113
   },
   {
     "codigo": "2029371",
@@ -3859,7 +3926,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Aurelio Alberto Horta Mesa",
-        "cupos_disponibles": "130",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -3878,8 +3945,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:00-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:50-05:00",
+    "orden_lectura": 114
   },
   {
     "codigo": "2029870",
@@ -3891,8 +3958,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:17:02-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:52-05:00",
+    "orden_lectura": 115
   },
   {
     "codigo": "2017803",
@@ -3904,8 +3971,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:17:03-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:55-05:00",
+    "orden_lectura": 116
   },
   {
     "codigo": "2015705",
@@ -3921,7 +3988,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -3953,7 +4020,7 @@
         "grupo": "(2) Grupo 2 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -3982,8 +4049,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:04-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:50:57-05:00",
+    "orden_lectura": 117
   },
   {
     "codigo": "2015706",
@@ -3999,7 +4066,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -4028,8 +4095,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:06-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:00-05:00",
+    "orden_lectura": 118
   },
   {
     "codigo": "2024999",
@@ -4040,9 +4107,32 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": [],
-    "ts_lectura": "2026-08-14T14:17:08-05:00",
-    "orden_lectura": -1
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1 - Presencial",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Jorge Enrique Londono Pinzón; Jairo Danilo Moreno Hernandez",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 16/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "16:00",
+            "hora_fin": "19:00",
+            "salon": "303C-004",
+            "salon_nombre": "TEATRO NUEVOS ESPACIOS DE LAS ARTES",
+            "edificio": "303 - EDIFICIO DE LAS ARTES SEDE BOGOTA",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "TEATRO NUEVOS ESPACIOS DE LAS ARTES. 303C-004. 303 - EDIFICIO DE LAS ARTES SEDE BOGOTA. AUDITORIO."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-26T20:51:02-05:00",
+    "orden_lectura": 119
   },
   {
     "codigo": "2026000",
@@ -4054,8 +4144,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:17:09-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:11-05:00",
+    "orden_lectura": 120
   },
   {
     "codigo": "2025997",
@@ -4067,8 +4157,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:17:10-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:14-05:00",
+    "orden_lectura": 121
   },
   {
     "codigo": "2021849",
@@ -4084,7 +4174,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "No informado",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -4103,8 +4193,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:12-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:16-05:00",
+    "orden_lectura": 122
   },
   {
     "codigo": "2027716",
@@ -4116,8 +4206,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:17:13-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:18-05:00",
+    "orden_lectura": 123
   },
   {
     "codigo": "2026001",
@@ -4129,8 +4219,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:17:14-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:21-05:00",
+    "orden_lectura": 124
   },
   {
     "codigo": "2026002",
@@ -4142,8 +4232,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:17:15-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:23-05:00",
+    "orden_lectura": 125
   },
   {
     "codigo": "2024077",
@@ -4155,8 +4245,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:17:17-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:25-05:00",
+    "orden_lectura": 126
   },
   {
     "codigo": "2026501",
@@ -4172,7 +4262,7 @@
         "grupo": "(1) Grupo 1 - (VIRTUAL)",
         "actividad": "",
         "profesores": "Diego Alejandro Torres Galindo",
-        "cupos_disponibles": "500",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -4191,8 +4281,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:19-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:28-05:00",
+    "orden_lectura": 127
   },
   {
     "codigo": "2026053",
@@ -4401,8 +4491,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:20-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:31-05:00",
+    "orden_lectura": 128
   },
   {
     "codigo": "2027096",
@@ -4611,8 +4701,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:22-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:33-05:00",
+    "orden_lectura": 129
   },
   {
     "codigo": "2022625",
@@ -4628,7 +4718,7 @@
         "grupo": "(1) Francés Electivo I",
         "actividad": "CLASE TEORICA",
         "profesores": "Ceymy De Los Angeles Rodriguez Forero",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -4657,8 +4747,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:23-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:42-05:00",
+    "orden_lectura": 130
   },
   {
     "codigo": "2022626",
@@ -4674,7 +4764,7 @@
         "grupo": "(1) Francés Electivo II",
         "actividad": "CLASE TEORICA",
         "profesores": "Nadid Hernandez Hernandez",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -4682,8 +4772,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:24-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:44-05:00",
+    "orden_lectura": 131
   },
   {
     "codigo": "2022627",
@@ -4699,7 +4789,7 @@
         "grupo": "(1) Francés Electivo III",
         "actividad": "CLASE TEORICA",
         "profesores": "Fabio Alejandro Pulido Sandoval",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -4728,8 +4818,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:26-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:47-05:00",
+    "orden_lectura": 132
   },
   {
     "codigo": "2026739",
@@ -4745,7 +4835,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "YENCY CONTRERAS ORTIZ",
-        "cupos_disponibles": "43",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -4774,8 +4864,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:27-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:50-05:00",
+    "orden_lectura": 133
   },
   {
     "codigo": "2017810",
@@ -4791,7 +4881,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Jesus Orlando Rangel Churio; Marisol Amaya Marquez; ALEXIS JARAMILLO JUSTINICO",
-        "cupos_disponibles": "18",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -4820,8 +4910,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:28-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:52-05:00",
+    "orden_lectura": 134
   },
   {
     "codigo": "2021149",
@@ -4837,7 +4927,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Carlos Augusto Hernandez Rodriguez",
-        "cupos_disponibles": "90",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -4856,8 +4946,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:30-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:54-05:00",
+    "orden_lectura": 135
   },
   {
     "codigo": "2028914",
@@ -4869,8 +4959,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:17:31-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:56-05:00",
+    "orden_lectura": 136
   },
   {
     "codigo": "2020994",
@@ -4886,7 +4976,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Elena Luisa Margarita Brochero",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -4905,8 +4995,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:32-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:51:58-05:00",
+    "orden_lectura": 137
   },
   {
     "codigo": "2023215",
@@ -4918,8 +5008,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:17:33-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:00-05:00",
+    "orden_lectura": 138
   },
   {
     "codigo": "2020404",
@@ -4931,8 +5021,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:17:35-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:03-05:00",
+    "orden_lectura": 139
   },
   {
     "codigo": "1000151-B",
@@ -4944,8 +5034,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:17:36-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:12-05:00",
+    "orden_lectura": 140
   },
   {
     "codigo": "2029505",
@@ -4961,7 +5051,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "Diana Marcela Rojas Rivera",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -4980,8 +5070,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:37-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:14-05:00",
+    "orden_lectura": 141
   },
   {
     "codigo": "2023250",
@@ -5026,8 +5116,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:39-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:17-05:00",
+    "orden_lectura": 142
   },
   {
     "codigo": "2029607",
@@ -5043,7 +5133,7 @@
         "grupo": "(1) GRUPO 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Andres Lopez Restrepo",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -5062,8 +5152,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:40-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:19-05:00",
+    "orden_lectura": 143
   },
   {
     "codigo": "2015191",
@@ -5079,7 +5169,7 @@
         "grupo": "(1) Grupo 1- Presencial",
         "actividad": "CLASE MAGISTRAL",
         "profesores": "Silvia Juliana Becerra Ostos",
-        "cupos_disponibles": "45",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -5111,7 +5201,7 @@
         "grupo": "(2) Grupo 2- Presencial",
         "actividad": "CLASE MAGISTRAL",
         "profesores": "David Alberto Roll Velez",
-        "cupos_disponibles": "45",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -5140,8 +5230,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:41-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:22-05:00",
+    "orden_lectura": 144
   },
   {
     "codigo": "2023286",
@@ -5186,8 +5276,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:42-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:24-05:00",
+    "orden_lectura": 145
   },
   {
     "codigo": "2026054",
@@ -5616,8 +5706,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:44-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:26-05:00",
+    "orden_lectura": 146
   },
   {
     "codigo": "2026055",
@@ -5994,8 +6084,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:45-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:29-05:00",
+    "orden_lectura": 147
   },
   {
     "codigo": "2026056",
@@ -6268,8 +6358,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:46-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:31-05:00",
+    "orden_lectura": 148
   },
   {
     "codigo": "2028496",
@@ -6285,7 +6375,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "JUAN DAVID GARCIA ARTEAGA",
-        "cupos_disponibles": "26",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -6293,8 +6383,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:48-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:33-05:00",
+    "orden_lectura": 149
   },
   {
     "codigo": "2023251",
@@ -6339,8 +6429,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:49-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:42-05:00",
+    "orden_lectura": 150
   },
   {
     "codigo": "2026057",
@@ -6487,8 +6577,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:50-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:45-05:00",
+    "orden_lectura": 151
   },
   {
     "codigo": "2027100",
@@ -6635,8 +6725,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:52-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:47-05:00",
+    "orden_lectura": 152
   },
   {
     "codigo": "2026058",
@@ -6917,8 +7007,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:53-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:50-05:00",
+    "orden_lectura": 153
   },
   {
     "codigo": "2027101",
@@ -7127,8 +7217,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:54-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:52-05:00",
+    "orden_lectura": 154
   },
   {
     "codigo": "2011183",
@@ -7152,8 +7242,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:55-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:54-05:00",
+    "orden_lectura": 155
   },
   {
     "codigo": "2026630",
@@ -7177,8 +7267,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:57-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:52:57-05:00",
+    "orden_lectura": 156
   },
   {
     "codigo": "2026631",
@@ -7202,8 +7292,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:17:58-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:00-05:00",
+    "orden_lectura": 157
   },
   {
     "codigo": "2028821",
@@ -7227,8 +7317,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:00-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:02-05:00",
+    "orden_lectura": 158
   },
   {
     "codigo": "2028822",
@@ -7252,8 +7342,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:01-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:04-05:00",
+    "orden_lectura": 159
   },
   {
     "codigo": "2014269",
@@ -7277,8 +7367,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:02-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:15-05:00",
+    "orden_lectura": 160
   },
   {
     "codigo": "2011283",
@@ -7302,8 +7392,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:03-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:18-05:00",
+    "orden_lectura": 161
   },
   {
     "codigo": "2023216",
@@ -7318,8 +7408,8 @@
       {
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
-        "profesores": "Eduard Alexis Larrañaga Rubio; DAVID FELIPE BAMBAGUE SICHACA",
-        "cupos_disponibles": "40",
+        "profesores": "Jorge Enrique Garcia Farieta; Mario Armando Higuera Garzon",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -7351,7 +7441,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Eduard Alexis Larrañaga Rubio; DAVID FELIPE BAMBAGUE SICHACA",
-        "cupos_disponibles": "40",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -7380,8 +7470,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:05-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:20-05:00",
+    "orden_lectura": 162
   },
   {
     "codigo": "2025981",
@@ -7397,7 +7487,7 @@
         "grupo": "(1) Grupo 1 - Introducción a la cultura Contemporanea Alemana",
         "actividad": "CLASE TEORICA",
         "profesores": "Mathias Diederich",
-        "cupos_disponibles": "26",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -7408,7 +7498,7 @@
         "grupo": "(2) Grupo 2 - Introducción a la cultura Contemporanea Alemana",
         "actividad": "CLASE TEORICA",
         "profesores": "Mathias Diederich",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -7416,8 +7506,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:06-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:22-05:00",
+    "orden_lectura": 163
   },
   {
     "codigo": "2025053",
@@ -7433,7 +7523,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "",
         "profesores": "No informado",
-        "cupos_disponibles": "50",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -7462,8 +7552,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:08-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:24-05:00",
+    "orden_lectura": 164
   },
   {
     "codigo": "2029556",
@@ -7479,7 +7569,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "",
         "profesores": "Zsoka Horvath",
-        "cupos_disponibles": "50",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -7508,8 +7598,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:09-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:27-05:00",
+    "orden_lectura": 165
   },
   {
     "codigo": "2025063",
@@ -7521,8 +7611,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:10-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:29-05:00",
+    "orden_lectura": 166
   },
   {
     "codigo": "2026987",
@@ -7534,8 +7624,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:11-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:31-05:00",
+    "orden_lectura": 167
   },
   {
     "codigo": "2029615",
@@ -7551,7 +7641,7 @@
         "grupo": "(1) Grupo 1 - Italiano, historia, sociedad y cultura",
         "actividad": "",
         "profesores": "Pablo Reyes Pozzi",
-        "cupos_disponibles": "37",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -7559,8 +7649,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:13-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:34-05:00",
+    "orden_lectura": 168
   },
   {
     "codigo": "2022630",
@@ -7572,8 +7662,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:14-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:36-05:00",
+    "orden_lectura": 169
   },
   {
     "codigo": "2022631",
@@ -7589,7 +7679,7 @@
         "grupo": "(2) Grupo 2 - Italiano Electivo II",
         "actividad": "CLASE TEORICA",
         "profesores": "Pablo Reyes Pozzi",
-        "cupos_disponibles": "22",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -7597,8 +7687,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:16-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:46-05:00",
+    "orden_lectura": 170
   },
   {
     "codigo": "2021471",
@@ -7614,7 +7704,7 @@
         "grupo": "(1) Grupo 1 - Japonés Electivo I",
         "actividad": "CLASE TEORICA",
         "profesores": "Yeny Mireya Echeverria Barajas",
-        "cupos_disponibles": "27",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -7643,8 +7733,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:18-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:48-05:00",
+    "orden_lectura": 171
   },
   {
     "codigo": "2021472",
@@ -7660,7 +7750,7 @@
         "grupo": "(1) Grupo 1 - Japonés Electivo II",
         "actividad": "CLASE TEORICA",
         "profesores": "Yeny Mireya Echeverria Barajas",
-        "cupos_disponibles": "26",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -7689,8 +7779,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:19-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:51-05:00",
+    "orden_lectura": 172
   },
   {
     "codigo": "2021473",
@@ -7706,7 +7796,7 @@
         "grupo": "(1) Grupo 1 - Japonés Electivo III",
         "actividad": "CLASE TEORICA",
         "profesores": "Yeny Mireya Echeverria Barajas",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -7735,8 +7825,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:20-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:54-05:00",
+    "orden_lectura": 173
   },
   {
     "codigo": "2017949",
@@ -7748,8 +7838,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:22-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:56-05:00",
+    "orden_lectura": 174
   },
   {
     "codigo": "2029790",
@@ -7765,7 +7855,7 @@
         "grupo": "(1) GRUPO 1",
         "actividad": "CLASE TEORICA",
         "profesores": "GIOVANNI MOLANO CRUZ",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -7784,8 +7874,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:23-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:53:59-05:00",
+    "orden_lectura": 175
   },
   {
     "codigo": "2023919",
@@ -7801,7 +7891,7 @@
         "grupo": "(1) Grupo 1 - 2023919",
         "actividad": "CLASE TEORICA",
         "profesores": "Alvaro Daniel Reyes Gomez",
-        "cupos_disponibles": "55",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -7820,8 +7910,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:24-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:01-05:00",
+    "orden_lectura": 176
   },
   {
     "codigo": "2029046",
@@ -7837,7 +7927,29 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Sede Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Maria Clemencia Del Pilar Castro Vergara; Sebastian Cuellar Sarmiento; Claudia Patricia Sierra Pardo",
-        "cupos_disponibles": "250",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 16/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "10:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      },
+      {
+        "grupo": "(6) Grupo 6 - Clase Remota - Sede Orinoquía",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Adriana Isabel Orjuela Martinez",
+        "cupos_disponibles": "19",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -7856,8 +7968,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:26-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:03-05:00",
+    "orden_lectura": 177
   },
   {
     "codigo": "2028036",
@@ -7873,7 +7985,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "WILLIAM CHAVARRO ROJAS",
-        "cupos_disponibles": "46",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -7902,8 +8014,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:27-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:05-05:00",
+    "orden_lectura": 178
   },
   {
     "codigo": "2027041",
@@ -7914,9 +8026,32 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:28-05:00",
-    "orden_lectura": -1
+    "grupos": [
+      {
+        "grupo": "(1) Grupo 1 (La esquizofrenia:del trastorno a la estructura)",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Gloria Gomez",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "10:00",
+            "hora_fin": "13:00",
+            "salon": "212-104",
+            "salon_nombre": "AULA 104",
+            "edificio": "212 - José Agustín Blanco Barros",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA 104. 212-104. 212 - José Agustín Blanco Barros. SALON."
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-26T20:54:08-05:00",
+    "orden_lectura": 179
   },
   {
     "codigo": "2026611",
@@ -7932,7 +8067,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "German Dario Florez Acero",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -7951,8 +8086,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:30-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:19-05:00",
+    "orden_lectura": 180
   },
   {
     "codigo": "2024401",
@@ -7964,8 +8099,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:31-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:21-05:00",
+    "orden_lectura": 181
   },
   {
     "codigo": "2029557",
@@ -7981,7 +8116,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "",
         "profesores": "Zsoka Horvath",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -8010,8 +8145,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:32-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:24-05:00",
+    "orden_lectura": 182
   },
   {
     "codigo": "2029844",
@@ -8027,7 +8162,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Zsoka Horvath",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -8056,8 +8191,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:34-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:26-05:00",
+    "orden_lectura": 183
   },
   {
     "codigo": "2023240",
@@ -8073,7 +8208,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Francelina Muchavisoy Becerra",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8102,8 +8237,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:35-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:28-05:00",
+    "orden_lectura": 184
   },
   {
     "codigo": "2029611",
@@ -8119,7 +8254,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "Francelina Muchavisoy Becerra",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8148,8 +8283,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:36-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:30-05:00",
+    "orden_lectura": 185
   },
   {
     "codigo": "2023241",
@@ -8165,7 +8300,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Rafael Segundo Mercado Epieyu",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -8194,8 +8329,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:38-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:32-05:00",
+    "orden_lectura": 186
   },
   {
     "codigo": "2016253",
@@ -8211,7 +8346,7 @@
         "grupo": "(1) Grupo 1 - Lingüística Italiana",
         "actividad": "",
         "profesores": "Rodolfo Suarez Ortega",
-        "cupos_disponibles": "26",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -8240,8 +8375,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:39-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:35-05:00",
+    "orden_lectura": 187
   },
   {
     "codigo": "2022221",
@@ -8257,7 +8392,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Juan Diego Antonio Pablo Caicedo Gonzalez",
-        "cupos_disponibles": "90",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -8276,8 +8411,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:40-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:37-05:00",
+    "orden_lectura": 188
   },
   {
     "codigo": "2023218",
@@ -8289,8 +8424,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:42-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:40-05:00",
+    "orden_lectura": 189
   },
   {
     "codigo": "2027191",
@@ -8306,7 +8441,7 @@
         "grupo": "(1) Grupo 1 (2026-2S)",
         "actividad": "",
         "profesores": "MIGUEL ANTONIO MORÓN CAMPOS",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8325,8 +8460,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:43-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:49-05:00",
+    "orden_lectura": 190
   },
   {
     "codigo": "2020922",
@@ -8338,8 +8473,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:44-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:51-05:00",
+    "orden_lectura": 191
   },
   {
     "codigo": "2020933",
@@ -8351,8 +8486,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:46-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:53-05:00",
+    "orden_lectura": 192
   },
   {
     "codigo": "2025828",
@@ -8364,8 +8499,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:47-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:55-05:00",
+    "orden_lectura": 193
   },
   {
     "codigo": "2025703",
@@ -8381,7 +8516,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Maguemati Wabgou",
-        "cupos_disponibles": "50",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -8391,17 +8526,17 @@
             "dia": "MARTES",
             "hora_inicio": "14:00",
             "hora_fin": "17:00",
-            "salon": "201-211",
-            "salon_nombre": "SALON DE CLASE",
-            "edificio": "201 - Arturo Valencia Zea",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE. 201-211. 201 - Arturo Valencia Zea. SALON."
+            "salon": "610-101",
+            "salon_nombre": "AUDITORIO 101",
+            "edificio": "610 - CISU - Centro de Integración de Servicios Universitarios",
+            "tipo_espacio": "",
+            "lugar_raw": "AUDITORIO 101. 610-101. 610 - CISU - Centro de Integración de Servicios Universitarios. ."
           }
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:48-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:57-05:00",
+    "orden_lectura": 194
   },
   {
     "codigo": "2018622",
@@ -8413,8 +8548,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:50-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:54:59-05:00",
+    "orden_lectura": 195
   },
   {
     "codigo": "2018623",
@@ -8426,8 +8561,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:51-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:02-05:00",
+    "orden_lectura": 196
   },
   {
     "codigo": "2022225",
@@ -8443,7 +8578,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Ricardo Montezuma Enriquez",
-        "cupos_disponibles": "100",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -8462,8 +8597,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:52-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:04-05:00",
+    "orden_lectura": 197
   },
   {
     "codigo": "2026688",
@@ -8479,7 +8614,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "Fabian Rodolfo Acosta Sanchez",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -8508,8 +8643,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:53-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:06-05:00",
+    "orden_lectura": 198
   },
   {
     "codigo": "2024006",
@@ -8525,7 +8660,7 @@
         "grupo": "(1) GRUPO 1 (Muerte, duelo y venganza - 2024006)",
         "actividad": "CLASE TEORICA",
         "profesores": "Maria Alejandra Tapia Millan",
-        "cupos_disponibles": "55",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8544,8 +8679,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:55-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:08-05:00",
+    "orden_lectura": 199
   },
   {
     "codigo": "2028610",
@@ -8557,8 +8692,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:56-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:17-05:00",
+    "orden_lectura": 200
   },
   {
     "codigo": "2027394",
@@ -8570,8 +8705,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:18:58-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:19-05:00",
+    "orden_lectura": 201
   },
   {
     "codigo": "2024994",
@@ -8587,7 +8722,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "Aleida Dianey Clavijo Grimaldo",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8606,8 +8741,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:18:59-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:21-05:00",
+    "orden_lectura": 202
   },
   {
     "codigo": "2022229",
@@ -8619,8 +8754,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:01-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:22-05:00",
+    "orden_lectura": 203
   },
   {
     "codigo": "2024221",
@@ -8636,7 +8771,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "ISAAC QUILCUE PUMBA",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8655,8 +8790,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:02-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:24-05:00",
+    "orden_lectura": 204
   },
   {
     "codigo": "2028288",
@@ -8672,7 +8807,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "ISAAC QUILCUE PUMBA",
-        "cupos_disponibles": "18",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8691,8 +8826,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:04-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:26-05:00",
+    "orden_lectura": 205
   },
   {
     "codigo": "2023217",
@@ -8708,7 +8843,7 @@
         "grupo": "(1) Grupo 01",
         "actividad": "",
         "profesores": "Benjamin Calvo Mozo",
-        "cupos_disponibles": "40",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -8737,8 +8872,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:05-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:28-05:00",
+    "orden_lectura": 206
   },
   {
     "codigo": "2029650",
@@ -8754,7 +8889,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "CLAUDIA MARINA MUÑOZ DIAZ",
-        "cupos_disponibles": "50",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -8773,8 +8908,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:07-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:30-05:00",
+    "orden_lectura": 207
   },
   {
     "codigo": "2021118",
@@ -8786,8 +8921,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:08-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:33-05:00",
+    "orden_lectura": 208
   },
   {
     "codigo": "2028465",
@@ -8803,7 +8938,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial - Sede Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Egberto Bermudez Cujar",
-        "cupos_disponibles": "200",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8822,8 +8957,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:10-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:35-05:00",
+    "orden_lectura": 209
   },
   {
     "codigo": "2021160",
@@ -8839,7 +8974,7 @@
         "grupo": "(1) Grupo 1 - Clase Remota - Sede Bogotá",
         "actividad": "CLASE TEORICA",
         "profesores": "Jairo Alexis Rodriguez Lopez",
-        "cupos_disponibles": "200",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -8868,8 +9003,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:11-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:45-05:00",
+    "orden_lectura": 210
   },
   {
     "codigo": "2026444",
@@ -8881,8 +9016,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:12-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:48-05:00",
+    "orden_lectura": 211
   },
   {
     "codigo": "2029315",
@@ -8894,8 +9029,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:13-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:51-05:00",
+    "orden_lectura": 212
   },
   {
     "codigo": "2029728",
@@ -8911,7 +9046,7 @@
         "grupo": "(1) GRUPO 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Ivonne Patricia Leon Peñuela; Julio Rafael Quiñones Paez",
-        "cupos_disponibles": "35",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8930,8 +9065,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:15-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:53-05:00",
+    "orden_lectura": 213
   },
   {
     "codigo": "2025665",
@@ -8947,7 +9082,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Natalia Gutierrez Echeverry",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -8966,8 +9101,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:16-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:56-05:00",
+    "orden_lectura": 214
   },
   {
     "codigo": "2029896",
@@ -8983,7 +9118,7 @@
         "grupo": "(1) GRUPO 1",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -8991,8 +9126,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:18-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:55:58-05:00",
+    "orden_lectura": 215
   },
   {
     "codigo": "2021478",
@@ -9008,7 +9143,7 @@
         "grupo": "(1) Grupo 1 - Portugués Electivo I",
         "actividad": "CLASE TEORICA",
         "profesores": "Lina Lucia Oliveira Da Silva",
-        "cupos_disponibles": "28",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9037,8 +9172,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:19-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:00-05:00",
+    "orden_lectura": 216
   },
   {
     "codigo": "2021479",
@@ -9054,7 +9189,7 @@
         "grupo": "(1) Grupo 1 - Portugués Electivo II",
         "actividad": "CLASE TEORICA",
         "profesores": "Lina Lucia Oliveira Da Silva",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9083,8 +9218,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:20-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:02-05:00",
+    "orden_lectura": 217
   },
   {
     "codigo": "2021480",
@@ -9100,7 +9235,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "9",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9129,8 +9264,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:21-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:04-05:00",
+    "orden_lectura": 218
   },
   {
     "codigo": "2026065",
@@ -9277,8 +9412,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:23-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:06-05:00",
+    "orden_lectura": 219
   },
   {
     "codigo": "2027119",
@@ -9425,8 +9560,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:24-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:15-05:00",
+    "orden_lectura": 220
   },
   {
     "codigo": "2029561",
@@ -9560,8 +9695,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:26-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:17-05:00",
+    "orden_lectura": 221
   },
   {
     "codigo": "2029562",
@@ -9577,7 +9712,7 @@
         "grupo": "(2) Grupo 2 - Ingeniería Química",
         "actividad": "CLASE TEORICA",
         "profesores": "Leonardo David Donado Garzon",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -9585,8 +9720,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:27-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:19-05:00",
+    "orden_lectura": 222
   },
   {
     "codigo": "2016762",
@@ -9598,8 +9733,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:28-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:21-05:00",
+    "orden_lectura": 223
   },
   {
     "codigo": "2016763",
@@ -9611,8 +9746,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:30-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:23-05:00",
+    "orden_lectura": 224
   },
   {
     "codigo": "2022240",
@@ -9628,7 +9763,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "NELLY ESTHER CALIZ ROMERO",
-        "cupos_disponibles": "15",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -9647,8 +9782,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:31-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:26-05:00",
+    "orden_lectura": 225
   },
   {
     "codigo": "2024008",
@@ -9659,9 +9794,32 @@
     "planes": [
       "2542 INGENIERÍA CIVIL"
     ],
-    "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:33-05:00",
-    "orden_lectura": -1
+    "grupos": [
+      {
+        "grupo": "(1) GRUPO 1 (Psicoanálisis, Sujeto y problemáticas - 2024008)",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Jairo Enrique Gallo Acosta",
+        "cupos_disponibles": "0",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 17/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "12:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          }
+        ]
+      }
+    ],
+    "ts_lectura": "2026-08-26T20:56:28-05:00",
+    "orden_lectura": 226
   },
   {
     "codigo": "2021483",
@@ -9677,7 +9835,7 @@
         "grupo": "(1) Grupo 1 (2021483)",
         "actividad": "CLASE TEORICA",
         "profesores": "Beatriz Eugenia Ramos Gonzalez",
-        "cupos_disponibles": "55",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -9696,8 +9854,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:34-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:30-05:00",
+    "orden_lectura": 227
   },
   {
     "codigo": "2021485",
@@ -9713,7 +9871,7 @@
         "grupo": "(1) Grupo 1 - (Psioanálisis y psicoterapias - 2021485)",
         "actividad": "CLASE TEORICA",
         "profesores": "Carmen Lucia Diaz Leguizamon",
-        "cupos_disponibles": "55",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -9732,8 +9890,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:35-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:32-05:00",
+    "orden_lectura": 228
   },
   {
     "codigo": "2029382",
@@ -9749,7 +9907,7 @@
         "grupo": "(1) GRUPO 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Maria Teresa Pinto Ocampo",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -9768,8 +9926,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:36-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:34-05:00",
+    "orden_lectura": 229
   },
   {
     "codigo": "2025691",
@@ -9785,7 +9943,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Oscar Andres Lizarazo Cortes",
-        "cupos_disponibles": "30",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -9804,8 +9962,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:38-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:44-05:00",
+    "orden_lectura": 230
   },
   {
     "codigo": "2025419",
@@ -9817,8 +9975,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:39-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:46-05:00",
+    "orden_lectura": 231
   },
   {
     "codigo": "2029856",
@@ -9834,27 +9992,27 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Sara Eloisa Del Castillo Matamoros",
-        "cupos_disponibles": "65",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
         "jornada": "DIURNO",
         "sesiones": [
           {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "14:00",
-            "hora_fin": "17:00",
-            "salon": "228-202",
-            "salon_nombre": "SALON DE CLASE 202",
-            "edificio": "228 - Nelly Garzón Alarcón",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 202. 228-202. 228 - Nelly Garzón Alarcón. SALON."
+            "dia": "JUEVES",
+            "hora_inicio": "13:00",
+            "hora_fin": "16:00",
+            "salon": "471-122",
+            "salon_nombre": "AUDITORIO JOSE MARIA LOMBANA BORRENECHE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO JOSE MARIA LOMBANA BORRENECHE. 471-122. 471 - José Félix Patiño Restrepo. AUDITORIO."
           }
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:41-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:48-05:00",
+    "orden_lectura": 232
   },
   {
     "codigo": "1000152-B",
@@ -9866,8 +10024,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:42-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:49-05:00",
+    "orden_lectura": 233
   },
   {
     "codigo": "2029777",
@@ -9879,8 +10037,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:43-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:51-05:00",
+    "orden_lectura": 234
   },
   {
     "codigo": "2029778",
@@ -9896,7 +10054,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "Juan Sebastian Paramo Rueda",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -9925,8 +10083,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:44-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:53-05:00",
+    "orden_lectura": 235
   },
   {
     "codigo": "2029414",
@@ -9938,8 +10096,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:46-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:55-05:00",
+    "orden_lectura": 236
   },
   {
     "codigo": "2029281",
@@ -9955,7 +10113,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Edgar Eduardo Romero Castro",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -9974,8 +10132,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:47-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:56:58-05:00",
+    "orden_lectura": 237
   },
   {
     "codigo": "2026834",
@@ -9991,7 +10149,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "",
         "profesores": "Moises Ildefonso Cetre Castillo",
-        "cupos_disponibles": "40",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -10010,8 +10168,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:49-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:00-05:00",
+    "orden_lectura": 238
   },
   {
     "codigo": "2028300",
@@ -10027,7 +10185,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Moises Ildefonso Cetre Castillo",
-        "cupos_disponibles": "40",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -10046,8 +10204,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:50-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:02-05:00",
+    "orden_lectura": 239
   },
   {
     "codigo": "2024124",
@@ -10063,7 +10221,7 @@
         "grupo": "(1) Grupo 1 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Juan Diego Antonio Pablo Caicedo Gonzalez",
-        "cupos_disponibles": "130",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "26/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -10082,8 +10240,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:51-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:12-05:00",
+    "orden_lectura": 240
   },
   {
     "codigo": "2024476",
@@ -10095,8 +10253,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:52-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:14-05:00",
+    "orden_lectura": 241
   },
   {
     "codigo": "2024464",
@@ -10108,8 +10266,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:53-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:16-05:00",
+    "orden_lectura": 242
   },
   {
     "codigo": "2024461",
@@ -10121,8 +10279,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:55-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:19-05:00",
+    "orden_lectura": 243
   },
   {
     "codigo": "2018842",
@@ -10138,7 +10296,7 @@
         "grupo": "(6) Grupo 6 - Juan Manuel Carvajalino",
         "actividad": "CLASE TEORICO PRACTICA",
         "profesores": "Juan Manuel Carvajalino Fernandez",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "",
         "duracion": "Semestral",
@@ -10146,8 +10304,8 @@
         "sesiones": []
       }
     ],
-    "ts_lectura": "2026-08-14T14:19:56-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:21-05:00",
+    "orden_lectura": 244
   },
   {
     "codigo": "2024622",
@@ -10159,8 +10317,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:57-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:23-05:00",
+    "orden_lectura": 245
   },
   {
     "codigo": "2020932",
@@ -10172,8 +10330,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:19:59-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:25-05:00",
+    "orden_lectura": 246
   },
   {
     "codigo": "2018627",
@@ -10185,8 +10343,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:20:00-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:27-05:00",
+    "orden_lectura": 247
   },
   {
     "codigo": "2018628",
@@ -10198,8 +10356,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:20:01-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:29-05:00",
+    "orden_lectura": 248
   },
   {
     "codigo": "2018632",
@@ -10211,8 +10369,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:20:02-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:31-05:00",
+    "orden_lectura": 249
   },
   {
     "codigo": "2018633",
@@ -10224,8 +10382,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:20:04-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:41-05:00",
+    "orden_lectura": 250
   },
   {
     "codigo": "2018626",
@@ -10237,8 +10395,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:20:05-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:43-05:00",
+    "orden_lectura": 251
   },
   {
     "codigo": "2018634",
@@ -10250,8 +10408,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:20:07-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:46-05:00",
+    "orden_lectura": 252
   },
   {
     "codigo": "2029331",
@@ -10263,8 +10421,8 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-14T14:20:08-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:48-05:00",
+    "orden_lectura": 253
   },
   {
     "codigo": "2015725",
@@ -10280,7 +10438,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "NEZAKET BAYKAL",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -10312,7 +10470,7 @@
         "grupo": "(2) Grupo 2 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "NEZAKET BAYKAL",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -10344,7 +10502,7 @@
         "grupo": "(3) Grupo 3 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Betul Ozen",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -10373,8 +10531,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:20:10-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:50-05:00",
+    "orden_lectura": 254
   },
   {
     "codigo": "2015732",
@@ -10390,7 +10548,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "NEZAKET BAYKAL",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -10422,7 +10580,7 @@
         "grupo": "(2) Grupo 2 - Clase presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "Betul Ozen",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -10451,8 +10609,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:20:11-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:52-05:00",
+    "orden_lectura": 255
   },
   {
     "codigo": "2027134",
@@ -10468,7 +10626,7 @@
         "grupo": "(1) Grupo 1 - Clase Presencial",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "50",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -10497,8 +10655,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:20:12-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:54-05:00",
+    "orden_lectura": 256
   },
   {
     "codigo": "2023242",
@@ -10514,7 +10672,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Norberto Farekatde Maribba",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10546,7 +10704,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Norberto Farekatde Maribba",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10575,8 +10733,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:20:14-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:56-05:00",
+    "orden_lectura": 257
   },
   {
     "codigo": "2023243",
@@ -10592,7 +10750,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Norberto Farekatde Maribba",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10624,7 +10782,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Norberto Farekatde Maribba",
-        "cupos_disponibles": "20",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10653,8 +10811,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:20:15-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:57:58-05:00",
+    "orden_lectura": 258
   },
   {
     "codigo": "2016197",
@@ -10699,8 +10857,8 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:20:16-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:58:00-05:00",
+    "orden_lectura": 259
   },
   {
     "codigo": "2025156",
@@ -10735,7 +10893,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-14T14:20:18-05:00",
-    "orden_lectura": -1
+    "ts_lectura": "2026-08-26T20:58:11-05:00",
+    "orden_lectura": 260
   }
 ]
