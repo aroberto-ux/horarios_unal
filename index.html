@@ -301,6 +301,17 @@ section.panel{
   text-align:center; padding:10px; color:var(--tinta-suave); font-size:.85rem; background:var(--blanco);
 }
 
+/* ---------- Plan por semestre: pequeños múltiplos ---------- */
+.plan-multi{padding:6px 16px 18px; border-top:1px solid var(--cuadricula)}
+.plan-multi-titulo{font-size:.78rem; color:var(--tinta-suave); padding-top:12px; margin-bottom:10px}
+.plan-multi-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px}
+.plan-mini{border:1px solid var(--cuadricula); border-radius:var(--radio); padding:8px 10px; background:var(--blanco)}
+.plan-mini .cab{display:flex; justify-content:space-between; align-items:baseline; gap:6px; margin-bottom:2px}
+.plan-mini .cab b{font-size:.76rem; font-weight:600}
+.plan-mini .cab span{font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600; color:var(--tinta-suave); white-space:nowrap}
+.plan-mini canvas{display:block; width:100%!important; height:56px!important}
+.plan-mini .pie{font-family:"IBM Plex Mono",monospace; font-size:.62rem; color:var(--tinta-suave); margin-top:3px; text-align:right}
+
 footer{max-width:1400px; margin:0 auto; padding:10px clamp(12px,3vw,32px) 30px; color:var(--tinta-suave); font-size:.78rem}
 footer a{color:var(--azul)}
 
@@ -744,7 +755,13 @@ section.panel[hidden]{display:none!important}
       <span class="periodo" id="periodoTend"></span>
     </div>
     <div class="lienzo" id="lienzoPrincipal"><canvas id="grafico"></canvas></div>
-    <div class="lienzo" id="planLienzo" hidden><canvas id="graficoPlan"></canvas></div>
+    <div id="planPanel" hidden>
+      <div class="lienzo" id="planLienzo"><canvas id="graficoPlan"></canvas></div>
+      <div class="plan-multi">
+        <div class="plan-multi-titulo">% de cupos disponibles por semestre, cada uno contra su propio máximo histórico registrado</div>
+        <div class="plan-multi-grid" id="planMultiGrid"></div>
+      </div>
+    </div>
     <div id="snapPanel" hidden>
       <div class="snap-barra">
         <button type="button" id="snapPrev" title="Snapshot anterior">◀</button>
@@ -3159,13 +3176,22 @@ async function mostrarElectivas(){
 }
 
 /* ================= Plan por semestre en el tiempo =================
-   Barras apiladas: para cada día, cuánto sumaban los cupos disponibles de
-   TODAS las asignaturas del plan (no solo las mías), repartido por semestre.
-   A diferencia de "Mis grupos"/"Por asignatura" (una línea por grupo) esto
-   agrega el plan entero en una sola barra por día, para ver de un vistazo si
-   el semestre en general se está llenando y en qué tramo de la carrera pega
-   más fuerte. Sí respeta el selector de rango: es una serie de tiempo como
-   cualquier otra, sirve por ejemplo para acercarse a la semana de matrículas. */
+   Dos vistas complementarias, no una sola gráfica:
+
+   1) Composición diaria (área apilada al 100%): de los cupos que quedan
+      disponibles HOY en todo el plan, qué porción le corresponde a cada
+      semestre. Aquí sí tiene sentido apilar, porque cada día suma 100%.
+
+   2) Pequeños múltiplos: una mini-gráfica por semestre con el % de cupos que
+      le quedan CONTRA SU PROPIO máximo histórico. Esto es lo que resuelve el
+      problema real de la versión anterior (una sola barra apilada en cupos
+      absolutos): Cálculo diferencial con 500 cupos tapaba visualmente a un
+      semestre IX con 40. En porcentaje propio, cada semestre se compara
+      contra sí mismo, así que si el semestre IX se vació al 90% se nota
+      igual de fuerte que si el I se vació al 20%, sin importar el tamaño.
+
+   Ambas respetan el selector de rango: son series de tiempo, sirven por
+   ejemplo para acercarse a la semana de matrículas. */
 
 // Progresión de color: azul en Nivelación, vira a cálido hacia el semestre X;
 // un gris aparte para códigos que no están en el pensum transcrito (poco
@@ -3197,7 +3223,7 @@ function seriesPlanPorSemestre(){
   for(const series of porSem.values()) for(const s of series) for(const p of s) dias.add(diaDe(+p.t));
   let eje = [...dias].sort((a,b)=>a-b);
 
-  // Orden de las pilas: Nivelación primero, I..X, y "fuera del plan" al final.
+  // Orden: Nivelación primero, I..X, y "fuera del plan" al final.
   const claves = [...porSem.keys()].sort((a,b)=>{
     if(a==="fuera") return 1; if(b==="fuera") return -1;
     return a-b;
@@ -3205,6 +3231,11 @@ function seriesPlanPorSemestre(){
 
   let datasets = claves.map(sem=>{
     const series = porSem.get(sem);
+    // Capacidad = suma del máximo histórico de cada grupo (el mismo criterio
+    // que ya usa demandaGrupo() para estimar cupo total). Es un número fijo,
+    // no cambia con el rango: acercarse a una semana no debe encoger la vara
+    // con la que se mide el semestre completo.
+    const capacidad = series.reduce((t,s)=>t+Math.max(...s.map(p=>p.cupos)), 0);
     // Un puntero por serie que solo avanza: cada una se recorre una sola vez
     // de punta a punta en vez de buscar desde cero en cada día.
     const punteros = series.map(()=>0);
@@ -3218,19 +3249,72 @@ function seriesPlanPorSemestre(){
     });
     return {
       label: sem==="fuera" ? "Fuera del plan" : (sem===0 ? "Nivelación" : `Semestre ${ROMANOS[sem]}`),
-      data: valores, backgroundColor: colorSemestre(sem), borderWidth:0
+      data: valores, color: colorSemestre(sem), capacidad
     };
   });
 
   // El mismo selector de rango que usan "Mis grupos"/"Por asignatura": se
   // recorta DESPUÉS de acumular, así que los valores en el borde ya vienen
-  // arrastrados correctamente y no hace falta anclar un punto aparte.
+  // arrastrados correctamente y no hace falta anclar un punto aparte. La
+  // capacidad NO se recorta: es una propiedad fija del semestre, no de la
+  // ventana que se esté mirando.
   const {desde, hasta} = ventana();
   const idxs = eje.map((_,i)=>i).filter(i => eje[i]+864e5-1 >= desde && eje[i] <= hasta);
   eje = idxs.map(i=>eje[i]);
   datasets = datasets.map(ds=>({...ds, data: idxs.map(i=>ds.data[i])}));
 
   return {eje, datasets};
+}
+
+/* Convierte cupos absolutos en % del total de ESE día (cada columna suma
+   100), para el área apilada de composición. */
+function normalizarA100(datasets){
+  const n = datasets[0]?.data.length || 0;
+  const totales = Array.from({length:n}, (_,i)=> datasets.reduce((t,ds)=>t+ds.data[i], 0));
+  return datasets.map(ds=>({
+    ...ds,
+    data: ds.data.map((v,i)=> totales[i]>0 ? v/totales[i]*100 : 0)
+  }));
+}
+
+/* Mini-gráfica de un semestre: % de cupos disponibles contra SU PROPIO
+   máximo, siempre en la misma escala 0-100% para que se puedan comparar a
+   ojo. Dibujo directo en canvas (como el sparkline del catálogo), no
+   Chart.js: son hasta 11 a la vez y no hace falta la maquinaria completa. */
+function sparklinePlan(canvas, valores, capacidad){
+  const ctx=canvas.getContext("2d"), W=canvas.width=200*2, H=canvas.height=56*2;
+  canvas.style.width="100%"; canvas.style.height="56px";
+  ctx.clearRect(0,0,W,H);
+  if(!valores.length || !capacidad) return;
+  const pct = valores.map(v=>Math.max(0, Math.min(100, v/capacidad*100)));
+  ctx.lineWidth=2.5; ctx.strokeStyle="#2B5DA8"; ctx.beginPath();
+  pct.forEach((p,i)=>{
+    const x=4+(W-8)*(i/((pct.length-1)||1));
+    const y=H-4-(H-8)*(p/100);
+    i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+  });
+  ctx.stroke();
+  ctx.lineTo(W-4,H-4); ctx.lineTo(4,H-4); ctx.closePath();
+  ctx.fillStyle="#2B5DA826"; ctx.fill();
+  const ult = pct[pct.length-1];
+  ctx.fillStyle = ult<=15 ? "#B3372E" : "#147A46";
+  ctx.beginPath(); ctx.arc(W-4, H-4-(H-8)*(ult/100), 4.5, 0, 7); ctx.fill();
+}
+
+function pintarPlanMultiples(datasets){
+  const cont = $("#planMultiGrid"); if(!cont) return;
+  if(!datasets.length){ cont.innerHTML = ""; return; }
+  cont.innerHTML = datasets.map(ds=>{
+    const ultimo = ds.data.length ? ds.data[ds.data.length-1] : 0;
+    const pct = ds.capacidad>0 ? Math.round(ultimo/ds.capacidad*100) : null;
+    return `<div class="plan-mini">
+      <div class="cab"><b>${ds.label}</b><span>${pct===null?"sin dato":pct+"%"}</span></div>
+      <canvas></canvas>
+      <div class="pie">Cupo máx. registrado: ${ds.capacidad}</div>
+    </div>`;
+  }).join("");
+  const tarjetas = cont.querySelectorAll(".plan-mini");
+  datasets.forEach((ds,i)=> sparklinePlan(tarjetas[i].querySelector("canvas"), ds.data, ds.capacidad));
 }
 
 let graficoPlan = null;
@@ -3241,26 +3325,37 @@ function pintarGraficoPlan(){
 
   if(!eje.length || !datasets.some(ds=>ds.data.some(v=>v>0))){
     msjLienzoPlan(MATERIAS.size===0 ? "Cargando datos…" : "No hay historial de cupos del plan en el rango elegido.");
+    pintarPlanMultiples([]);
     return;
   }
   msjLienzoPlan(null);
+  pintarPlanMultiples(datasets);
 
   const etiquetas = eje.map(d=>new Date(d).toLocaleDateString("es-CO",{day:"2-digit", month:"short"}));
+  const datasetsPct = normalizarA100(datasets);
 
   graficoPlan = new Chart(ctx, {
-    type: "bar",
-    data: {labels: etiquetas, datasets},
+    type: "line",
+    data: {
+      labels: etiquetas,
+      datasets: datasetsPct.map(ds=>({
+        label: ds.label, data: ds.data,
+        borderColor: ds.color, backgroundColor: ds.color+"55",
+        fill:true, tension:.15, pointRadius:0, borderWidth:1.25
+      }))
+    },
     options: {
       maintainAspectRatio:false, animation:false,
+      interaction:{mode:"index", intersect:false},
       plugins:{
         legend:{position:"bottom", labels:{font:{family:"Archivo", size:10}, boxWidth:12, padding:8}},
         tooltip:{
           callbacks:{
             title: its => new Date(eje[its[0].dataIndex]).toLocaleDateString("es-CO",
               {weekday:"long", day:"2-digit", month:"long", year:"numeric"}),
-            afterBody: its => {
-              const total = its.reduce((t,i)=>t+i.parsed.y, 0);
-              return [`Total ese día: ${total} cupos`];
+            label: c => {
+              const raw = datasets[c.datasetIndex].data[c.dataIndex];
+              return ` ${c.dataset.label}: ${c.parsed.y.toFixed(1)}% de lo disponible hoy (${raw} cupos)`;
             }
           }
         }
@@ -3268,8 +3363,9 @@ function pintarGraficoPlan(){
       scales:{
         x:{stacked:true, ticks:{font:{family:"IBM Plex Mono", size:9}, maxRotation:0, autoSkip:true, maxTicksLimit:12},
            grid:{display:false}},
-        y:{stacked:true, beginAtZero:true, title:{display:true, text:"Cupos disponibles", font:{family:"Archivo", size:11}},
-           ticks:{font:{family:"IBM Plex Mono", size:10}, precision:0}, grid:{color:"#E4EADF"}}
+        y:{stacked:true, min:0, max:100,
+           title:{display:true, text:"% de los cupos disponibles ese día", font:{family:"Archivo", size:11}},
+           ticks:{font:{family:"IBM Plex Mono", size:10}, callback:v=>v+"%"}, grid:{color:"#E4EADF"}}
       }
     }
   });
@@ -3504,7 +3600,7 @@ function fijarModo(modo){
   $("#fechasTend").hidden = (modo==="doc" || modo==="electivas");
   $("#periodoTend").hidden = (modo==="doc" || modo==="electivas");
   $("#lienzoPrincipal").hidden = (modo==="snap" || modo==="electivas" || modo==="plan");
-  $("#planLienzo").hidden = (modo!=="plan");
+  $("#planPanel").hidden = (modo!=="plan");
   $("#snapPanel").hidden = (modo!=="snap");
   $("#electivasPanel").hidden = (modo!=="electivas");
   if((modo==="snap" || modo==="electivas") && grafico){ grafico.destroy(); grafico=null; }
