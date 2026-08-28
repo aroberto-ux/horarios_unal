@@ -138,7 +138,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:37:38-05:00",
+    "ts_lectura": "2026-08-27T23:52:35-05:00",
     "orden_lectura": 0
   },
   {
@@ -312,7 +312,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:37:39-05:00",
+    "ts_lectura": "2026-08-27T23:52:37-05:00",
     "orden_lectura": 1
   },
   {
@@ -920,7 +920,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:37:41-05:00",
+    "ts_lectura": "2026-08-27T23:52:39-05:00",
     "orden_lectura": 2
   },
   {
@@ -1030,7 +1030,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:37:42-05:00",
+    "ts_lectura": "2026-08-27T23:52:40-05:00",
     "orden_lectura": 3
   },
   {
@@ -1172,7 +1172,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:37:43-05:00",
+    "ts_lectura": "2026-08-27T23:52:42-05:00",
     "orden_lectura": 4
   },
   {
@@ -1317,7 +1317,7 @@
         "grupo": "(14) Grupo 14",
         "actividad": "",
         "profesores": "JOSÉ SEBASTIÁN NARANJO SPADAFORA",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -1541,7 +1541,7 @@
         "grupo": "(22) Grupo 22",
         "actividad": "",
         "profesores": "EDWIN RODRIGO CELIS MONTEALEGRE",
-        "cupos_disponibles": "23",
+        "cupos_disponibles": "22",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -1637,7 +1637,7 @@
         "grupo": "(27) Grupo 27",
         "actividad": "",
         "profesores": "JHOAN SEBASTIAN TENJO GARCIA",
-        "cupos_disponibles": "21",
+        "cupos_disponibles": "20",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -1668,7 +1668,7 @@
       {
         "grupo": "(28) Grupo 28",
         "actividad": "",
-        "profesores": "No informado",
+        "profesores": "Gabriel Ignacio Padilla Leon",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -1764,8 +1764,8 @@
       {
         "grupo": "(32) Grupo 32",
         "actividad": "",
-        "profesores": "No informado",
-        "cupos_disponibles": "0",
+        "profesores": "Ibeth Marcela Rubio Perilla",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -2174,7 +2174,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:37:46-05:00",
+    "ts_lectura": "2026-08-27T23:52:45-05:00",
     "orden_lectura": 5
   },
   {
@@ -2414,7 +2414,7 @@
       {
         "grupo": "(2) Grupo 2",
         "actividad": "",
-        "profesores": "EDIXON MANUEL ROJAS SANTANA",
+        "profesores": "Camilo Ernesto Medina Gonzalez",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -2636,7 +2636,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:37:47-05:00",
+    "ts_lectura": "2026-08-27T23:52:48-05:00",
     "orden_lectura": 6
   },
   {
@@ -3210,7 +3210,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:37:49-05:00",
+    "ts_lectura": "2026-08-27T23:52:51-05:00",
     "orden_lectura": 7
   },
   {
@@ -3223,7 +3223,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-27T08:37:51-05:00",
+    "ts_lectura": "2026-08-27T23:52:52-05:00",
     "orden_lectura": 8
   },
   {
@@ -3269,7 +3269,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:37:52-05:00",
+    "ts_lectura": "2026-08-27T23:52:56-05:00",
     "orden_lectura": 9
   },
   {
@@ -3315,7 +3315,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:37:55-05:00",
+    "ts_lectura": "2026-08-27T23:52:57-05:00",
     "orden_lectura": 10
   },
   {
@@ -3617,7 +3617,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:37:56-05:00",
+    "ts_lectura": "2026-08-27T23:52:59-05:00",
     "orden_lectura": 11
   },
   {
@@ -3727,7 +3727,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:00-05:00",
+    "ts_lectura": "2026-08-27T23:53:01-05:00",
     "orden_lectura": 12
   },
   {
@@ -3743,7 +3743,7 @@
       {
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "Darwin Humberto Mora Villota",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -3839,7 +3839,7 @@
       {
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "German Andres Mora Casas",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -3871,7 +3871,7 @@
       {
         "grupo": "(5) Grupo 5",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "THOMAS FEDERICO ROJAS VALLEJO",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -3901,7 +3901,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:12-05:00",
+    "ts_lectura": "2026-08-27T23:53:10-05:00",
     "orden_lectura": 13
   },
   {
@@ -3981,7 +3981,7 @@
       {
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "ELKIN DARIO CAÑON BUITRAGO",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -4011,7 +4011,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:14-05:00",
+    "ts_lectura": "2026-08-27T23:53:12-05:00",
     "orden_lectura": 14
   },
   {
@@ -4091,7 +4091,7 @@
       {
         "grupo": "(12) Grupo 12",
         "actividad": "",
-        "profesores": "No informado",
+        "profesores": "Gustavo Adolfo Nieto Clavijo",
         "cupos_disponibles": "8",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -4134,11 +4134,11 @@
             "dia": "LUNES",
             "hora_inicio": "18:00",
             "hora_fin": "20:00",
-            "salon": "453-103",
-            "salon_nombre": "SALON DE CLASE 453-103",
+            "salon": "453-109",
+            "salon_nombre": "SALON DE CLASE 453-109",
             "edificio": "453 - Guillermina Uribe Bone",
             "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 453-103. 453-103. 453 - Guillermina Uribe Bone. SALON."
+            "lugar_raw": "SALON DE CLASE 453-109. 453-109. 453 - Guillermina Uribe Bone. SALON."
           },
           {
             "dia": "MIÉRCOLES",
@@ -4219,7 +4219,7 @@
       {
         "grupo": "(4) Grupo 4",
         "actividad": "",
-        "profesores": "EDIXON MANUEL ROJAS SANTANA",
+        "profesores": "CARLOS SNEYDER OTALORA ALDANA",
         "cupos_disponibles": "28",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -4345,7 +4345,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:15-05:00",
+    "ts_lectura": "2026-08-27T23:53:14-05:00",
     "orden_lectura": 15
   },
   {
@@ -4521,7 +4521,7 @@
       {
         "grupo": "(6) Grupo 6",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "Jose Dario Moreno Pineda",
         "cupos_disponibles": "22",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -4551,7 +4551,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:17-05:00",
+    "ts_lectura": "2026-08-27T23:53:17-05:00",
     "orden_lectura": 16
   },
   {
@@ -4661,7 +4661,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:18-05:00",
+    "ts_lectura": "2026-08-27T23:53:19-05:00",
     "orden_lectura": 17
   },
   {
@@ -4771,7 +4771,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:19-05:00",
+    "ts_lectura": "2026-08-27T23:53:20-05:00",
     "orden_lectura": 18
   },
   {
@@ -4820,7 +4820,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Néstor Fernando Perez Buitrago",
-        "cupos_disponibles": "10",
+        "cupos_disponibles": "11",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -4889,7 +4889,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:21-05:00",
+    "ts_lectura": "2026-08-27T23:53:22-05:00",
     "orden_lectura": 19
   },
   {
@@ -6877,7 +6877,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:24-05:00",
+    "ts_lectura": "2026-08-27T23:53:26-05:00",
     "orden_lectura": 20
   },
   {
@@ -7019,7 +7019,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:25-05:00",
+    "ts_lectura": "2026-08-27T23:53:28-05:00",
     "orden_lectura": 21
   },
   {
@@ -7035,7 +7035,7 @@
       {
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE PRACTICA",
-        "profesores": "No informado",
+        "profesores": "RICARDO ANDRES VARGAS ECHAVARRIA",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -7161,7 +7161,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:27-05:00",
+    "ts_lectura": "2026-08-27T23:53:31-05:00",
     "orden_lectura": 22
   },
   {
@@ -7232,11 +7232,11 @@
             "dia": "VIERNES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "214-127",
-            "salon_nombre": "GABINETE DE TOPOGRAFIA",
-            "edificio": "214 - Antonio Nariño",
-            "tipo_espacio": "LABORATORIO",
-            "lugar_raw": "GABINETE DE TOPOGRAFIA. 214-127. 214 - Antonio Nariño. LABORATORIO."
+            "salon": "401-104",
+            "salon_nombre": "SALÓN DE CLASE 401-104",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALÓN DE CLASE 401-104. 401-104. 401 - Julio Garavito Armero. SALON."
           }
         ]
       },
@@ -7428,11 +7428,11 @@
             "dia": "JUEVES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "214-124",
-            "salon_nombre": "SALON DE CLASES",
-            "edificio": "214 - Antonio Nariño",
+            "salon": "401-203",
+            "salon_nombre": "SALÓN DE CLASE 401-203",
+            "edificio": "401 - Julio Garavito Armero",
             "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASES. 214-124. 214 - Antonio Nariño. SALON."
+            "lugar_raw": "SALÓN DE CLASE 401-203. 401-203. 401 - Julio Garavito Armero. SALON."
           }
         ]
       },
@@ -7533,7 +7533,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:28-05:00",
+    "ts_lectura": "2026-08-27T23:53:33-05:00",
     "orden_lectura": 23
   },
   {
@@ -7675,7 +7675,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:30-05:00",
+    "ts_lectura": "2026-08-27T23:53:34-05:00",
     "orden_lectura": 24
   },
   {
@@ -7721,7 +7721,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:31-05:00",
+    "ts_lectura": "2026-08-27T23:53:35-05:00",
     "orden_lectura": 25
   },
   {
@@ -7842,28 +7842,28 @@
             "dia": "MARTES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "214-122",
-            "salon_nombre": "SALON POSTGRADOS",
+            "salon": "214-127",
+            "salon_nombre": "GABINETE DE TOPOGRAFIA",
             "edificio": "214 - Antonio Nariño",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON POSTGRADOS. 214-122. 214 - Antonio Nariño. SALON."
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "GABINETE DE TOPOGRAFIA. 214-127. 214 - Antonio Nariño. LABORATORIO."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "214-122",
-            "salon_nombre": "SALON POSTGRADOS",
+            "salon": "214-127",
+            "salon_nombre": "GABINETE DE TOPOGRAFIA",
             "edificio": "214 - Antonio Nariño",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON POSTGRADOS. 214-122. 214 - Antonio Nariño. SALON."
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "GABINETE DE TOPOGRAFIA. 214-127. 214 - Antonio Nariño. LABORATORIO."
           }
         ]
       },
       {
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "Camilo Andrés Caro Galindo",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -7905,7 +7905,7 @@
       {
         "grupo": "(5) Grupo 5",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "Paula Angelica Solarte Blandon",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -7987,7 +7987,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:41-05:00",
+    "ts_lectura": "2026-08-27T23:53:45-05:00",
     "orden_lectura": 26
   },
   {
@@ -8161,7 +8161,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:42-05:00",
+    "ts_lectura": "2026-08-27T23:53:46-05:00",
     "orden_lectura": 27
   },
   {
@@ -8271,7 +8271,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:44-05:00",
+    "ts_lectura": "2026-08-27T23:53:48-05:00",
     "orden_lectura": 28
   },
   {
@@ -8319,7 +8319,7 @@
       {
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "Diego Enrique Machuca Duarte",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -8381,7 +8381,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:46-05:00",
+    "ts_lectura": "2026-08-27T23:53:49-05:00",
     "orden_lectura": 29
   },
   {
@@ -8491,7 +8491,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:48-05:00",
+    "ts_lectura": "2026-08-27T23:53:51-05:00",
     "orden_lectura": 30
   },
   {
@@ -8857,7 +8857,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:50-05:00",
+    "ts_lectura": "2026-08-27T23:53:52-05:00",
     "orden_lectura": 31
   },
   {
@@ -8874,7 +8874,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Beatriz Elena Urrutia Sanchez",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -8884,21 +8884,21 @@
             "dia": "LUNES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-308",
+            "salon_nombre": "AULA TEORICA",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA TEORICA. 471-308. 471 - José Félix Patiño Restrepo. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-308",
+            "salon_nombre": "AULA TEORICA",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA TEORICA. 471-308. 471 - José Félix Patiño Restrepo. SALON."
           }
         ]
       },
@@ -8906,7 +8906,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Yaneli Niño Osorio",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -8916,21 +8916,21 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-217",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-217. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "VIERNES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-217",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-217. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -8938,7 +8938,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Gabriel Peña Ortiz",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -8948,11 +8948,11 @@
             "dia": "SÁBADO",
             "hora_inicio": "07:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "500-301",
+            "salon_nombre": "SALON DE CLASE 301",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 301. 500-301. 500 - Ciencias Agrarias. SALON."
           }
         ]
       },
@@ -8960,7 +8960,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
         "profesores": "Liliana Marcela Guzman Aricapa",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -8970,21 +8970,21 @@
             "dia": "LUNES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-234",
+            "salon_nombre": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS. 224-234. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "610-313",
+            "salon_nombre": "Salon 610-313",
+            "edificio": "610 - CISU - Centro de Integración de Servicios Universitarios",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "Salon 610-313. 610-313. 610 - CISU - Centro de Integración de Servicios Universitarios. ."
           }
         ]
       },
@@ -8992,7 +8992,7 @@
         "grupo": "(5) Grupo 5",
         "actividad": "CLASE TEORICA",
         "profesores": "Beatriz Elena Urrutia Sanchez",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9002,21 +9002,21 @@
             "dia": "MARTES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-234",
+            "salon_nombre": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS. 224-234. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-234",
+            "salon_nombre": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS. 224-234. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -9056,7 +9056,7 @@
         "grupo": "(7) Grupo 7",
         "actividad": "CLASE TEORICA",
         "profesores": "JOSE JONATHAN MAESTRE HERRERA",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9066,21 +9066,21 @@
             "dia": "MARTES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "500-129",
+            "salon_nombre": "SALON DE CLASE 129",
+            "edificio": "500 - Ciencias Agrarias",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "SALON DE CLASE 129. 500-129. 500 - Ciencias Agrarias. ."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "500-129",
+            "salon_nombre": "SALON DE CLASE 129",
+            "edificio": "500 - Ciencias Agrarias",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "SALON DE CLASE 129. 500-129. 500 - Ciencias Agrarias. ."
           }
         ]
       },
@@ -9088,7 +9088,7 @@
         "grupo": "(8) Grupo 8",
         "actividad": "CLASE TEORICA",
         "profesores": "Beymar Leonardo Solorzano Alviz",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9108,11 +9108,11 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-506",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 471-506. 471 - José Félix Patiño Restrepo. SALON."
           }
         ]
       },
@@ -9130,21 +9130,21 @@
             "dia": "MARTES",
             "hora_inicio": "18:00",
             "hora_fin": "20:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-222A",
+            "salon_nombre": "AULA TEORICA",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "AULA TEORICA. 471-222A. 471 - José Félix Patiño Restrepo. LABORATORIO."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "18:00",
             "hora_fin": "20:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-222A",
+            "salon_nombre": "AULA TEORICA",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "AULA TEORICA. 471-222A. 471 - José Félix Patiño Restrepo. LABORATORIO."
           },
           {
             "dia": "LUNES",
@@ -9529,7 +9529,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:52-05:00",
+    "ts_lectura": "2026-08-27T23:53:59-05:00",
     "orden_lectura": 32
   },
   {
@@ -9556,21 +9556,21 @@
             "dia": "LUNES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-233",
+            "salon_nombre": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS. 224-233. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-233",
+            "salon_nombre": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS. 224-233. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "MIÉRCOLES",
@@ -9584,13 +9584,13 @@
           },
           {
             "dia": "VIERNES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "AUDITORIO",
-            "salon_nombre": "AUDITORIO",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
+            "salon": "AULA 2",
+            "salon_nombre": "AULA DE CLASE ORINOQUIA 2",
             "edificio": "AULAS DE CLASE ORINOQUIA",
-            "tipo_espacio": "",
-            "lugar_raw": "AUDITORIO. AUDITORIO. AULAS DE CLASE ORINOQUIA. ."
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA DE CLASE ORINOQUIA 2. AULA 2. AULAS DE CLASE ORINOQUIA. SALON."
           }
         ]
       },
@@ -9598,7 +9598,7 @@
         "grupo": "(10) Grupo 10",
         "actividad": "CLASE TEORICA",
         "profesores": "Jesica paola Rendon Alfonso",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "3",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9608,21 +9608,21 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "500-129",
+            "salon_nombre": "SALON DE CLASE 129",
+            "edificio": "500 - Ciencias Agrarias",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "SALON DE CLASE 129. 500-129. 500 - Ciencias Agrarias. ."
           },
           {
             "dia": "VIERNES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-233",
+            "salon_nombre": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS. 224-233. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -9630,7 +9630,7 @@
         "grupo": "(11) Grupo 11",
         "actividad": "CLASE TEORICA",
         "profesores": "JOSE JONATHAN MAESTRE HERRERA",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9640,11 +9640,11 @@
             "dia": "LUNES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-222",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-222. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "MIÉRCOLES",
@@ -9662,7 +9662,7 @@
         "grupo": "(12) Grupo 12",
         "actividad": "CLASE TEORICA",
         "profesores": "LINDA JOHANA RUIZ GOMEZ",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9682,11 +9682,11 @@
             "dia": "JUEVES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "610-312",
+            "salon_nombre": "Salon 610-312",
+            "edificio": "610 - CISU - Centro de Integración de Servicios Universitarios",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "Salon 610-312. 610-312. 610 - CISU - Centro de Integración de Servicios Universitarios. ."
           }
         ]
       },
@@ -9726,7 +9726,7 @@
         "grupo": "(14) Grupo 14",
         "actividad": "CLASE TEORICA",
         "profesores": "Angelica Saenz Fonseca",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9736,21 +9736,21 @@
             "dia": "MARTES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-222",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-222. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-222",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-222. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -9768,21 +9768,21 @@
             "dia": "LUNES",
             "hora_inicio": "18:00",
             "hora_fin": "20:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-114",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 471-114. 471 - José Félix Patiño Restrepo. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "18:00",
             "hora_fin": "20:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-114",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 471-114. 471 - José Félix Patiño Restrepo. SALON."
           }
         ]
       },
@@ -9790,7 +9790,7 @@
         "grupo": "(16) Grupo 16",
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Gabriel Peña Ortiz",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "3",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9800,21 +9800,21 @@
             "dia": "MARTES",
             "hora_inicio": "18:00",
             "hora_fin": "20:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-506",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 471-506. 471 - José Félix Patiño Restrepo. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "18:00",
             "hora_fin": "20:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-506",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 471-506. 471 - José Félix Patiño Restrepo. SALON."
           }
         ]
       },
@@ -9854,7 +9854,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Jesica paola Rendon Alfonso",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9874,11 +9874,11 @@
             "dia": "VIERNES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-233",
+            "salon_nombre": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS. 224-233. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -9886,7 +9886,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
         "profesores": "Adriana Marlen Sanchez Riaño",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9896,11 +9896,11 @@
             "dia": "SÁBADO",
             "hora_inicio": "07:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "500-129",
+            "salon_nombre": "SALON DE CLASE 129",
+            "edificio": "500 - Ciencias Agrarias",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "SALON DE CLASE 129. 500-129. 500 - Ciencias Agrarias. ."
           }
         ]
       },
@@ -9950,21 +9950,21 @@
             "dia": "MARTES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-216",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-216. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-216",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-216. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -9972,7 +9972,7 @@
         "grupo": "(7) Grupo 7",
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Gabriel Peña Ortiz",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9982,11 +9982,11 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-222A",
+            "salon_nombre": "AULA TEORICA",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "AULA TEORICA. 471-222A. 471 - José Félix Patiño Restrepo. LABORATORIO."
           },
           {
             "dia": "VIERNES",
@@ -10004,7 +10004,7 @@
         "grupo": "(8) Grupo 8",
         "actividad": "CLASE TEORICA",
         "profesores": "Johnatan Martinez Hernandez",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10014,21 +10014,21 @@
             "dia": "LUNES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-217",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-217. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-217",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-217. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -10046,11 +10046,11 @@
             "dia": "MARTES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-217",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-217. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "JUEVES",
@@ -10063,9 +10063,9 @@
             "lugar_raw": ""
           },
           {
-            "dia": "MARTES",
-            "hora_inicio": "17:00",
-            "hora_fin": "19:00",
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
             "salon": "",
             "salon_nombre": "",
             "edificio": "",
@@ -10073,9 +10073,39 @@
             "lugar_raw": ""
           },
           {
-            "dia": "JUEVES",
-            "hora_inicio": "17:00",
-            "hora_fin": "19:00",
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "SÁBADO",
+            "hora_inicio": "07:00",
+            "hora_fin": "11:00",
             "salon": "",
             "salon_nombre": "",
             "edificio": "",
@@ -10104,6 +10134,26 @@
           },
           {
             "dia": "MIÉRCOLES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "MIÉRCOLES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
             "salon": "",
@@ -10115,6 +10165,16 @@
           {
             "dia": "VIERNES",
             "hora_inicio": "09:00",
+            "hora_fin": "11:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "SÁBADO",
+            "hora_inicio": "07:00",
             "hora_fin": "11:00",
             "salon": "",
             "salon_nombre": "",
@@ -10185,7 +10245,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:54-05:00",
+    "ts_lectura": "2026-08-27T23:54:02-05:00",
     "orden_lectura": 33
   },
   {
@@ -10198,7 +10258,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-27T08:38:56-05:00",
+    "ts_lectura": "2026-08-27T23:54:03-05:00",
     "orden_lectura": 34
   },
   {
@@ -10215,7 +10275,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Johnatan Martinez Hernandez",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10225,21 +10285,21 @@
             "dia": "LUNES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-113",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 471-113. 471 - José Félix Patiño Restrepo. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-234",
+            "salon_nombre": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS. 224-234. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -10247,7 +10307,7 @@
         "grupo": "(10) Grupo 10",
         "actividad": "CLASE TEORICA",
         "profesores": "Jennly Angelica Gomez Rodriguez",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "3",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10257,21 +10317,21 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "500-128",
+            "salon_nombre": "SALON DE CLASE 128",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 128. 500-128. 500 - Ciencias Agrarias. SALON."
           },
           {
             "dia": "VIERNES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-234",
+            "salon_nombre": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS. 224-234. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -10279,7 +10339,7 @@
         "grupo": "(11) Grupo 11",
         "actividad": "CLASE TEORICA",
         "profesores": "Angelica Saenz Fonseca",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10289,21 +10349,21 @@
             "dia": "LUNES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-112",
+            "salon_nombre": "SALON",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON. 471-112. 471 - José Félix Patiño Restrepo. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "500-129",
+            "salon_nombre": "SALON DE CLASE 129",
+            "edificio": "500 - Ciencias Agrarias",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "SALON DE CLASE 129. 500-129. 500 - Ciencias Agrarias. ."
           }
         ]
       },
@@ -10311,7 +10371,7 @@
         "grupo": "(12) Grupo 12",
         "actividad": "CLASE TEORICA",
         "profesores": "Liliana Marcela Guzman Aricapa",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10321,21 +10381,21 @@
             "dia": "MARTES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-151",
+            "salon_nombre": "NO EXISTE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "NO EXISTE. 471-151. 471 - José Félix Patiño Restrepo. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "471-222B",
+            "salon_nombre": "AULA TEORICA",
+            "edificio": "471 - José Félix Patiño Restrepo",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "AULA TEORICA. 471-222B. 471 - José Félix Patiño Restrepo. ."
           }
         ]
       },
@@ -10375,7 +10435,7 @@
         "grupo": "(14) Grupo 14",
         "actividad": "CLASE TEORICA",
         "profesores": "Angelica Saenz Fonseca",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10385,21 +10445,21 @@
             "dia": "JUEVES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-222",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-222. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "VIERNES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-217",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-217. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -10407,7 +10467,7 @@
         "grupo": "(15) Grupo 15",
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Gabriel Peña Ortiz",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/10/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10439,7 +10499,7 @@
         "grupo": "(16) Grupo 16",
         "actividad": "CLASE TEORICA",
         "profesores": "Olga Lucia Ruiz Convers",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10449,21 +10509,21 @@
             "dia": "MARTES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-115",
+            "salon_nombre": "AULA PARA MEDICINA FISICA Y REHABILITACION",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA PARA MEDICINA FISICA Y REHABILITACION. 471-115. 471 - José Félix Patiño Restrepo. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-112",
+            "salon_nombre": "SALON",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON. 471-112. 471 - José Félix Patiño Restrepo. SALON."
           }
         ]
       },
@@ -10471,7 +10531,7 @@
         "grupo": "(17) Grupo 17",
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Gabriel Peña Ortiz",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10481,21 +10541,21 @@
             "dia": "LUNES",
             "hora_inicio": "18:00",
             "hora_fin": "20:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "500-128",
+            "salon_nombre": "SALON DE CLASE 128",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 128. 500-128. 500 - Ciencias Agrarias. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "18:00",
             "hora_fin": "20:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "500-128",
+            "salon_nombre": "SALON DE CLASE 128",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 128. 500-128. 500 - Ciencias Agrarias. SALON."
           }
         ]
       },
@@ -10503,7 +10563,7 @@
         "grupo": "(18) Grupo 18",
         "actividad": "CLASE TEORICA",
         "profesores": "Narly Yadira Pardo Cadena",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10513,21 +10573,21 @@
             "dia": "MARTES",
             "hora_inicio": "18:00",
             "hora_fin": "20:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "500-128",
+            "salon_nombre": "SALON DE CLASE 128",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 128. 500-128. 500 - Ciencias Agrarias. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "18:00",
             "hora_fin": "20:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "500-128",
+            "salon_nombre": "SALON DE CLASE 128",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 128. 500-128. 500 - Ciencias Agrarias. SALON."
           }
         ]
       },
@@ -10535,7 +10595,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Jesica paola Rendon Alfonso",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10545,21 +10605,21 @@
             "dia": "MARTES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-308",
+            "salon_nombre": "AULA TEORICA",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA TEORICA. 471-308. 471 - José Félix Patiño Restrepo. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-217",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-217. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -10567,7 +10627,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "JESUS DAVID TORRES RODRIGUEZ",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "3",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10577,21 +10637,21 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "610-312",
+            "salon_nombre": "Salon 610-312",
+            "edificio": "610 - CISU - Centro de Integración de Servicios Universitarios",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "Salon 610-312. 610-312. 610 - CISU - Centro de Integración de Servicios Universitarios. ."
           },
           {
             "dia": "VIERNES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-234",
+            "salon_nombre": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS. 224-234. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -10609,11 +10669,11 @@
             "dia": "SÁBADO",
             "hora_inicio": "07:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-113",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 471-113. 471 - José Félix Patiño Restrepo. SALON."
           }
         ]
       },
@@ -10621,7 +10681,7 @@
         "grupo": "(5) Grupo 5",
         "actividad": "CLASE TEORICA",
         "profesores": "Johnatan Martinez Hernandez",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10631,21 +10691,21 @@
             "dia": "LUNES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-506",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 471-506. 471 - José Félix Patiño Restrepo. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-234",
+            "salon_nombre": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS. 224-234. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -10673,11 +10733,11 @@
             "dia": "JUEVES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-217",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-217. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -10685,7 +10745,7 @@
         "grupo": "(7) Grupo 7",
         "actividad": "CLASE TEORICA",
         "profesores": "Jesica paola Rendon Alfonso",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10695,21 +10755,21 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "201-114",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "201 - Arturo Valencia Zea",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 201-114. 201 - Arturo Valencia Zea. SALON."
           },
           {
             "dia": "VIERNES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-233",
+            "salon_nombre": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS. 224-233. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -10717,7 +10777,7 @@
         "grupo": "(8) Grupo 8",
         "actividad": "CLASE TEORICA",
         "profesores": "Beatriz Elena Urrutia Sanchez",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10727,21 +10787,21 @@
             "dia": "LUNES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-112",
+            "salon_nombre": "SALON",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON. 471-112. 471 - José Félix Patiño Restrepo. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-222A",
+            "salon_nombre": "AULA TEORICA",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "LABORATORIO",
+            "lugar_raw": "AULA TEORICA. 471-222A. 471 - José Félix Patiño Restrepo. LABORATORIO."
           }
         ]
       },
@@ -10759,6 +10819,16 @@
             "dia": "MARTES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
+            "salon": "224-233",
+            "salon_nombre": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS. 224-233. 224 - Manuel Ancizar. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "11:00",
+            "hora_fin": "13:00",
             "salon": "",
             "salon_nombre": "",
             "edificio": "",
@@ -10766,9 +10836,19 @@
             "lugar_raw": ""
           },
           {
-            "dia": "JUEVES",
-            "hora_inicio": "11:00",
-            "hora_fin": "13:00",
+            "dia": "LUNES",
+            "hora_inicio": "15:00",
+            "hora_fin": "17:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
+            "tipo_espacio": "",
+            "lugar_raw": ""
+          },
+          {
+            "dia": "VIERNES",
+            "hora_inicio": "07:00",
+            "hora_fin": "09:00",
             "salon": "",
             "salon_nombre": "",
             "edificio": "",
@@ -10816,24 +10896,24 @@
             "lugar_raw": "CAPILLA. 01. EDIFICIO PRINCIPAL SEDE CARIBE. ."
           },
           {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "07:00",
-            "hora_fin": "09:00",
-            "salon": "17",
-            "salon_nombre": "TIC 5A",
-            "edificio": "EDIFICIO AULAS DE CLASE",
+            "dia": "LUNES",
+            "hora_inicio": "15:00",
+            "hora_fin": "17:00",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
             "tipo_espacio": "",
-            "lugar_raw": "TIC 5A. 17. EDIFICIO AULAS DE CLASE. ."
+            "lugar_raw": ""
           },
           {
             "dia": "VIERNES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "17",
-            "salon_nombre": "TIC 5A",
-            "edificio": "EDIFICIO AULAS DE CLASE",
+            "salon": "",
+            "salon_nombre": "",
+            "edificio": "",
             "tipo_espacio": "",
-            "lugar_raw": "TIC 5A. 17. EDIFICIO AULAS DE CLASE. ."
+            "lugar_raw": ""
           },
           {
             "dia": "MARTES",
@@ -10878,7 +10958,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:38:58-05:00",
+    "ts_lectura": "2026-08-27T23:54:06-05:00",
     "orden_lectura": 35
   },
   {
@@ -10891,7 +10971,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-27T08:38:59-05:00",
+    "ts_lectura": "2026-08-27T23:54:07-05:00",
     "orden_lectura": 36
   },
   {
@@ -10908,7 +10988,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Liliana Marcela Guzman Aricapa",
-        "cupos_disponibles": "5",
+        "cupos_disponibles": "7",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10918,11 +10998,11 @@
             "dia": "LUNES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "610-312",
+            "salon_nombre": "Salon 610-312",
+            "edificio": "610 - CISU - Centro de Integración de Servicios Universitarios",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "Salon 610-312. 610-312. 610 - CISU - Centro de Integración de Servicios Universitarios. ."
           },
           {
             "dia": "MARTES",
@@ -10938,21 +11018,21 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "610-312",
+            "salon_nombre": "Salon 610-312",
+            "edificio": "610 - CISU - Centro de Integración de Servicios Universitarios",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "Salon 610-312. 610-312. 610 - CISU - Centro de Integración de Servicios Universitarios. ."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "500-203",
+            "salon_nombre": "SALON DE CLASE 203",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 203. 500-203. 500 - Ciencias Agrarias. SALON."
           }
         ]
       },
@@ -10970,41 +11050,41 @@
             "dia": "LUNES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "500-129",
+            "salon_nombre": "SALON DE CLASE 129",
+            "edificio": "500 - Ciencias Agrarias",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "SALON DE CLASE 129. 500-129. 500 - Ciencias Agrarias. ."
           },
           {
             "dia": "MARTES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-217",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-217. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-217",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-217. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-217",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-217. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -11012,7 +11092,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Aida Elena Monsalve Solorzano",
-        "cupos_disponibles": "3",
+        "cupos_disponibles": "5",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11061,7 +11141,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:02-05:00",
+    "ts_lectura": "2026-08-27T23:54:09-05:00",
     "orden_lectura": 37
   },
   {
@@ -11078,7 +11158,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Jennly Angelica Gomez Rodriguez",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11088,41 +11168,41 @@
             "dia": "LUNES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "228-305",
+            "salon_nombre": "SALON DE CLASE 305",
+            "edificio": "228 - Nelly Garzón Alarcón",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 305. 228-305. 228 - Nelly Garzón Alarcón. SALON."
           },
           {
             "dia": "MARTES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "228-305",
+            "salon_nombre": "SALON DE CLASE 305",
+            "edificio": "228 - Nelly Garzón Alarcón",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 305. 228-305. 228 - Nelly Garzón Alarcón. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "228-305",
+            "salon_nombre": "SALON DE CLASE 305",
+            "edificio": "228 - Nelly Garzón Alarcón",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 305. 228-305. 228 - Nelly Garzón Alarcón. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "228-305",
+            "salon_nombre": "SALON DE CLASE 305",
+            "edificio": "228 - Nelly Garzón Alarcón",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 305. 228-305. 228 - Nelly Garzón Alarcón. SALON."
           }
         ]
       },
@@ -11130,7 +11210,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Yaneli Niño Osorio",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11160,21 +11240,21 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "201-211",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "201 - Arturo Valencia Zea",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 201-211. 201 - Arturo Valencia Zea. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-222",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-222. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -11286,58 +11366,6 @@
         "grupo": "(5) Grupo 5",
         "actividad": "CLASE TEORICA",
         "profesores": "LINDA JOHANA RUIZ GOMEZ",
-        "cupos_disponibles": "1",
-        "cupos_totales": "NA",
-        "fecha": "24/08/2026 - 12/12/2026",
-        "duracion": "Semestral",
-        "jornada": "DIURNO",
-        "sesiones": [
-          {
-            "dia": "LUNES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "16:00",
-            "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          }
-        ]
-      },
-      {
-        "grupo": "(6) Grupo 6",
-        "actividad": "CLASE TEORICA",
-        "profesores": "Olga Lucia Ruiz Convers",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
@@ -11346,8 +11374,8 @@
         "sesiones": [
           {
             "dia": "LUNES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
             "salon": "",
             "salon_nombre": "",
             "edificio": "",
@@ -11356,8 +11384,8 @@
           },
           {
             "dia": "MARTES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
             "salon": "",
             "salon_nombre": "",
             "edificio": "",
@@ -11366,8 +11394,8 @@
           },
           {
             "dia": "MIÉRCOLES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
             "salon": "",
             "salon_nombre": "",
             "edificio": "",
@@ -11376,18 +11404,70 @@
           },
           {
             "dia": "JUEVES",
+            "hora_inicio": "16:00",
+            "hora_fin": "18:00",
+            "salon": "610-313",
+            "salon_nombre": "Salon 610-313",
+            "edificio": "610 - CISU - Centro de Integración de Servicios Universitarios",
+            "tipo_espacio": "",
+            "lugar_raw": "Salon 610-313. 610-313. 610 - CISU - Centro de Integración de Servicios Universitarios. ."
+          }
+        ]
+      },
+      {
+        "grupo": "(6) Grupo 6",
+        "actividad": "CLASE TEORICA",
+        "profesores": "Olga Lucia Ruiz Convers",
+        "cupos_disponibles": "2",
+        "cupos_totales": "NA",
+        "fecha": "24/08/2026 - 12/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
             "hora_inicio": "18:00",
             "hora_fin": "20:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "228-306",
+            "salon_nombre": "SALON DE CLASE 306",
+            "edificio": "228 - Nelly Garzón Alarcón",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 306. 228-306. 228 - Nelly Garzón Alarcón. SALON."
+          },
+          {
+            "dia": "MARTES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "228-306",
+            "salon_nombre": "SALON DE CLASE 306",
+            "edificio": "228 - Nelly Garzón Alarcón",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 306. 228-306. 228 - Nelly Garzón Alarcón. SALON."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "228-306",
+            "salon_nombre": "SALON DE CLASE 306",
+            "edificio": "228 - Nelly Garzón Alarcón",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 306. 228-306. 228 - Nelly Garzón Alarcón. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "228-306",
+            "salon_nombre": "SALON DE CLASE 306",
+            "edificio": "228 - Nelly Garzón Alarcón",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 306. 228-306. 228 - Nelly Garzón Alarcón. SALON."
           }
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:04-05:00",
+    "ts_lectura": "2026-08-27T23:54:10-05:00",
     "orden_lectura": 38
   },
   {
@@ -11404,7 +11484,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Cesar Augusto Romero",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11436,7 +11516,7 @@
         "grupo": "(10) Grupo 10",
         "actividad": "CLASE TEORICA",
         "profesores": "Monica Alexandra Riaño Orjuela",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11446,11 +11526,11 @@
             "dia": "MARTES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-114",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 471-114. 471 - José Félix Patiño Restrepo. SALON."
           },
           {
             "dia": "JUEVES",
@@ -11468,7 +11548,7 @@
         "grupo": "(11) Grupo 11",
         "actividad": "CLASE TEORICA",
         "profesores": "Jennly Angelica Gomez Rodriguez",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11488,11 +11568,11 @@
             "dia": "JUEVES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "500-301",
+            "salon_nombre": "SALON DE CLASE 301",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 301. 500-301. 500 - Ciencias Agrarias. SALON."
           }
         ]
       },
@@ -11520,11 +11600,11 @@
             "dia": "VIERNES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-112",
+            "salon_nombre": "SALON",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON. 471-112. 471 - José Félix Patiño Restrepo. SALON."
           }
         ]
       },
@@ -11532,7 +11612,7 @@
         "grupo": "(13) Grupo 13",
         "actividad": "CLASE TEORICA",
         "profesores": "Angelica Saenz Fonseca",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11552,11 +11632,11 @@
             "dia": "VIERNES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-217",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-217. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -11574,11 +11654,11 @@
             "dia": "LUNES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "610-312",
+            "salon_nombre": "Salon 610-312",
+            "edificio": "610 - CISU - Centro de Integración de Servicios Universitarios",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "Salon 610-312. 610-312. 610 - CISU - Centro de Integración de Servicios Universitarios. ."
           },
           {
             "dia": "MIÉRCOLES",
@@ -11606,11 +11686,11 @@
             "dia": "MARTES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-233",
+            "salon_nombre": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS. 224-233. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "JUEVES",
@@ -11660,7 +11740,7 @@
         "grupo": "(17) Grupo 17",
         "actividad": "CLASE TEORICA",
         "profesores": "Angelica Saenz Fonseca",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11670,21 +11750,21 @@
             "dia": "LUNES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-114",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 471-114. 471 - José Félix Patiño Restrepo. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-115",
+            "salon_nombre": "AULA PARA MEDICINA FISICA Y REHABILITACION",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA PARA MEDICINA FISICA Y REHABILITACION. 471-115. 471 - José Félix Patiño Restrepo. SALON."
           }
         ]
       },
@@ -11692,7 +11772,7 @@
         "grupo": "(18) Grupo 18",
         "actividad": "CLASE TEORICA",
         "profesores": "ALBA LUCIA RIAÑO RODRIGUEZ",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11724,7 +11804,7 @@
         "grupo": "(19) Grupo 19",
         "actividad": "CLASE TEORICA",
         "profesores": "Aida Elena Monsalve Solorzano",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11734,21 +11814,21 @@
             "dia": "MARTES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "500-203",
+            "salon_nombre": "SALON DE CLASE 203",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 203. 500-203. 500 - Ciencias Agrarias. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "500-203",
+            "salon_nombre": "SALON DE CLASE 203",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 203. 500-203. 500 - Ciencias Agrarias. SALON."
           }
         ]
       },
@@ -11756,7 +11836,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Yaneli Niño Osorio",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11766,21 +11846,21 @@
             "dia": "MARTES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-234",
+            "salon_nombre": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS. 224-234. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-222",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-222. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -11788,7 +11868,7 @@
         "grupo": "(20) Grupo 20",
         "actividad": "CLASE TEORICA",
         "profesores": "ALBA LUCIA RIAÑO RODRIGUEZ",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11820,7 +11900,7 @@
         "grupo": "(21) Grupo 21",
         "actividad": "CLASE TEORICA",
         "profesores": "Edwin Yesid Leon Silva",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11852,7 +11932,7 @@
         "grupo": "(22) Grupo 22",
         "actividad": "CLASE TEORICA",
         "profesores": "LINDA JOHANA RUIZ GOMEZ",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11884,7 +11964,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Monica Alexandra Riaño Orjuela",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11894,21 +11974,21 @@
             "dia": "MARTES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-233",
+            "salon_nombre": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS. 224-233. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "JUEVES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-112",
+            "salon_nombre": "SALON",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON. 471-112. 471 - José Félix Patiño Restrepo. SALON."
           }
         ]
       },
@@ -11916,7 +11996,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
         "profesores": "Claudia Patricia Cortes Lora",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11926,21 +12006,21 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "500-128",
+            "salon_nombre": "SALON DE CLASE 128",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 128. 500-128. 500 - Ciencias Agrarias. SALON."
           },
           {
             "dia": "VIERNES",
             "hora_inicio": "07:00",
             "hora_fin": "09:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
+            "salon": "471-222B",
+            "salon_nombre": "AULA TEORICA",
+            "edificio": "471 - José Félix Patiño Restrepo",
             "tipo_espacio": "",
-            "lugar_raw": ""
+            "lugar_raw": "AULA TEORICA. 471-222B. 471 - José Félix Patiño Restrepo. ."
           }
         ]
       },
@@ -11948,7 +12028,7 @@
         "grupo": "(5) Grupo 5",
         "actividad": "CLASE TEORICA",
         "profesores": "Olga Lucia Ruiz Convers",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11958,11 +12038,11 @@
             "dia": "SÁBADO",
             "hora_inicio": "07:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "500-303",
+            "salon_nombre": "SALON DE CLASE 303",
+            "edificio": "500 - Ciencias Agrarias",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE 303. 500-303. 500 - Ciencias Agrarias. SALON."
           }
         ]
       },
@@ -11970,7 +12050,7 @@
         "grupo": "(6) Grupo 6",
         "actividad": "CLASE TEORICA",
         "profesores": "Monica Alexandra Riaño Orjuela",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -11980,21 +12060,21 @@
             "dia": "LUNES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-233",
+            "salon_nombre": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS. 224-233. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-233",
+            "salon_nombre": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN GEOFISICA - GEOCIENCIAS. 224-233. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -12034,7 +12114,7 @@
         "grupo": "(8) Grupo 8",
         "actividad": "CLASE TEORICA",
         "profesores": "Beatriz Elena Urrutia Sanchez",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -12044,21 +12124,21 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "471-113",
+            "salon_nombre": "SALON DE CLASE",
+            "edificio": "471 - José Félix Patiño Restrepo",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE. 471-113. 471 - José Félix Patiño Restrepo. SALON."
           },
           {
             "dia": "VIERNES",
             "hora_inicio": "09:00",
             "hora_fin": "11:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-234",
+            "salon_nombre": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS. 224-234. 224 - Manuel Ancizar. SALON."
           }
         ]
       },
@@ -12076,21 +12156,21 @@
             "dia": "LUNES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-222",
+            "salon_nombre": "SALON DE CLASE - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE CLASE - GEOCIENCIAS. 224-222. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "224-234",
+            "salon_nombre": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS",
+            "edificio": "224 - Manuel Ancizar",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "SALON DE POSGRADO EN METEOROLOGIA - GEOCIENCIAS. 224-234. 224 - Manuel Ancizar. SALON."
           },
           {
             "dia": "MIÉRCOLES",
@@ -12111,26 +12191,6 @@
             "edificio": "AULAS - JARDIN BOTANICO SEDE CARIBE",
             "tipo_espacio": "",
             "lugar_raw": "LENGUAS. 397. AULAS - JARDIN BOTANICO SEDE CARIBE. ."
-          },
-          {
-            "dia": "MARTES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
-          },
-          {
-            "dia": "JUEVES",
-            "hora_inicio": "18:00",
-            "hora_fin": "20:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
           },
           {
             "dia": "MARTES",
@@ -12195,7 +12255,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:14-05:00",
+    "ts_lectura": "2026-08-27T23:54:20-05:00",
     "orden_lectura": 39
   },
   {
@@ -12208,7 +12268,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-27T08:39:16-05:00",
+    "ts_lectura": "2026-08-27T23:54:22-05:00",
     "orden_lectura": 40
   },
   {
@@ -12299,21 +12359,21 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "",
-            "salon_nombre": "",
-            "edificio": "",
-            "tipo_espacio": "",
-            "lugar_raw": ""
+            "salon": "401-PAR-B",
+            "salon_nombre": "AUDITORIO JUAN BAUTISTA GOMES RODRIGUEZ (PARANINFO B)",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO JUAN BAUTISTA GOMES RODRIGUEZ (PARANINFO B). 401-PAR-B. 401 - Julio Garavito Armero. AUDITORIO."
           },
           {
             "dia": "VIERNES",
             "hora_inicio": "11:00",
             "hora_fin": "13:00",
-            "salon": "406-229",
-            "salon_nombre": "SALON DE CLASE 406-229",
-            "edificio": "406 - Carlos Alfonso Cortés Amador",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 406-229. 406-229. 406 - Carlos Alfonso Cortés Amador. SALON."
+            "salon": "401-PAR-B",
+            "salon_nombre": "AUDITORIO JUAN BAUTISTA GOMES RODRIGUEZ (PARANINFO B)",
+            "edificio": "401 - Julio Garavito Armero",
+            "tipo_espacio": "AUDITORIO",
+            "lugar_raw": "AUDITORIO JUAN BAUTISTA GOMES RODRIGUEZ (PARANINFO B). 401-PAR-B. 401 - Julio Garavito Armero. AUDITORIO."
           }
         ]
       },
@@ -12350,7 +12410,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:18-05:00",
+    "ts_lectura": "2026-08-27T23:54:23-05:00",
     "orden_lectura": 41
   },
   {
@@ -12363,7 +12423,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-27T08:39:19-05:00",
+    "ts_lectura": "2026-08-27T23:54:26-05:00",
     "orden_lectura": 42
   },
   {
@@ -12858,7 +12918,7 @@
         "grupo": "(6) Grupo 6",
         "actividad": "CLASE MAGISTRAL",
         "profesores": "DANIEL FELIPE SUÁREZ LEÓN",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -12890,7 +12950,7 @@
         "grupo": "(7) Grupo 7",
         "actividad": "CLASE MAGISTRAL",
         "profesores": "SERGIO ANDRES TAMAYO LÓPEZ",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -13004,6 +13064,16 @@
             "dia": "MARTES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
+            "salon": "21-325-328",
+            "salon_nombre": "AULA GENERAL",
+            "edificio": "BLOQUE 21",
+            "tipo_espacio": "SALON",
+            "lugar_raw": "AULA GENERAL. 21-325-328. BLOQUE 21. SALON."
+          },
+          {
+            "dia": "JUEVES",
+            "hora_inicio": "14:00",
+            "hora_fin": "16:00",
             "salon": "",
             "salon_nombre": "",
             "edificio": "",
@@ -13103,7 +13173,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:21-05:00",
+    "ts_lectura": "2026-08-27T23:54:31-05:00",
     "orden_lectura": 43
   },
   {
@@ -13285,7 +13355,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:23-05:00",
+    "ts_lectura": "2026-08-27T23:54:32-05:00",
     "orden_lectura": 44
   },
   {
@@ -13301,7 +13371,7 @@
       {
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "Paula Angelica Solarte Blandon",
         "cupos_disponibles": "4",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -13427,7 +13497,7 @@
       {
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "Camilo Andrés Caro Galindo",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -13553,7 +13623,7 @@
       {
         "grupo": "(7) Grupo 7",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "SERGIO ALEJANDRO RIVERA MONROY",
         "cupos_disponibles": "11",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -13595,7 +13665,7 @@
       {
         "grupo": "(8) Grupo 8",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "SERGIO ALEJANDRO RIVERA MONROY",
         "cupos_disponibles": "13",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -13635,7 +13705,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:24-05:00",
+    "ts_lectura": "2026-08-27T23:54:34-05:00",
     "orden_lectura": 45
   },
   {
@@ -13652,7 +13722,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "Vladimir Buelvas Hernández",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -13681,7 +13751,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:26-05:00",
+    "ts_lectura": "2026-08-27T23:54:35-05:00",
     "orden_lectura": 46
   },
   {
@@ -13739,7 +13809,7 @@
       {
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
-        "profesores": "Juan David Oliveros Salazar",
+        "profesores": "Daniel Felipe Rodriguez Ramirez",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -13781,7 +13851,7 @@
       {
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "Juan David Oliveros Salazar",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -13989,7 +14059,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:28-05:00",
+    "ts_lectura": "2026-08-27T23:54:37-05:00",
     "orden_lectura": 47
   },
   {
@@ -14101,7 +14171,7 @@
       {
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "Ronald Steve Garzon Espejo",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -14131,7 +14201,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:29-05:00",
+    "ts_lectura": "2026-08-27T23:54:39-05:00",
     "orden_lectura": 48
   },
   {
@@ -14273,7 +14343,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:31-05:00",
+    "ts_lectura": "2026-08-27T23:54:41-05:00",
     "orden_lectura": 49
   },
   {
@@ -14383,7 +14453,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:32-05:00",
+    "ts_lectura": "2026-08-27T23:54:42-05:00",
     "orden_lectura": 50
   },
   {
@@ -14396,7 +14466,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-27T08:39:33-05:00",
+    "ts_lectura": "2026-08-27T23:54:43-05:00",
     "orden_lectura": 51
   },
   {
@@ -14409,7 +14479,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-27T08:39:43-05:00",
+    "ts_lectura": "2026-08-27T23:54:53-05:00",
     "orden_lectura": 52
   },
   {
@@ -14519,7 +14589,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:45-05:00",
+    "ts_lectura": "2026-08-27T23:54:54-05:00",
     "orden_lectura": 53
   },
   {
@@ -14599,7 +14669,7 @@
       {
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "Maria Constanza Garcia Alicastro",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
@@ -14629,7 +14699,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:46-05:00",
+    "ts_lectura": "2026-08-27T23:54:55-05:00",
     "orden_lectura": 54
   },
   {
@@ -14848,6 +14918,26 @@
           },
           {
             "dia": "LUNES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
+            "salon": "14",
+            "salon_nombre": "TIC 3A",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 3A. 14. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "17:00",
+            "hora_fin": "19:00",
+            "salon": "14",
+            "salon_nombre": "TIC 3A",
+            "edificio": "EDIFICIO AULAS DE CLASE",
+            "tipo_espacio": "",
+            "lugar_raw": "TIC 3A. 14. EDIFICIO AULAS DE CLASE. ."
+          },
+          {
+            "dia": "LUNES",
             "hora_inicio": "14:00",
             "hora_fin": "16:00",
             "salon": "AULA 6",
@@ -14889,7 +14979,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:47-05:00",
+    "ts_lectura": "2026-08-27T23:54:57-05:00",
     "orden_lectura": 55
   },
   {
@@ -15172,21 +15262,53 @@
             "dia": "MIÉRCOLES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "405-209",
-            "salon_nombre": "SALA TIC ESTADISTICA",
-            "edificio": "405 - Posgrados Matemáticas y Física",
+            "salon": "404-200B",
+            "salon_nombre": "SALON DE CLASE DEPARTAMENTO DE ESTADISTICA",
+            "edificio": "404 - Yu Takeuchi",
             "tipo_espacio": "SALON",
-            "lugar_raw": "SALA TIC ESTADISTICA. 405-209. 405 - Posgrados Matemáticas y Física. SALON."
+            "lugar_raw": "SALON DE CLASE DEPARTAMENTO DE ESTADISTICA. 404-200B. 404 - Yu Takeuchi. SALON."
           },
           {
             "dia": "VIERNES",
             "hora_inicio": "16:00",
             "hora_fin": "18:00",
-            "salon": "405-209",
-            "salon_nombre": "SALA TIC ESTADISTICA",
-            "edificio": "405 - Posgrados Matemáticas y Física",
+            "salon": "404-200B",
+            "salon_nombre": "SALON DE CLASE DEPARTAMENTO DE ESTADISTICA",
+            "edificio": "404 - Yu Takeuchi",
             "tipo_espacio": "SALON",
-            "lugar_raw": "SALA TIC ESTADISTICA. 405-209. 405 - Posgrados Matemáticas y Física. SALON."
+            "lugar_raw": "SALON DE CLASE DEPARTAMENTO DE ESTADISTICA. 404-200B. 404 - Yu Takeuchi. SALON."
+          }
+        ]
+      },
+      {
+        "grupo": "(24) Grupo 24",
+        "actividad": "CLASE TEORICA",
+        "profesores": "ELIAN FERNANDO ESPITIA RINCÓN",
+        "cupos_disponibles": "46",
+        "cupos_totales": "NA",
+        "fecha": "27/08/2026 - 16/12/2026",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": [
+          {
+            "dia": "LUNES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "564-205",
+            "salon_nombre": "SALON 205",
+            "edificio": "564 - Gloria Amparo Galeano Garcés",
+            "tipo_espacio": "",
+            "lugar_raw": "SALON 205. 564-205. 564 - Gloria Amparo Galeano Garcés. ."
+          },
+          {
+            "dia": "MIÉRCOLES",
+            "hora_inicio": "18:00",
+            "hora_fin": "20:00",
+            "salon": "564-205",
+            "salon_nombre": "SALON 205",
+            "edificio": "564 - Gloria Amparo Galeano Garcés",
+            "tipo_espacio": "",
+            "lugar_raw": "SALON 205. 564-205. 564 - Gloria Amparo Galeano Garcés. ."
           }
         ]
       },
@@ -15351,7 +15473,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:49-05:00",
+    "ts_lectura": "2026-08-27T23:54:59-05:00",
     "orden_lectura": 56
   },
   {
@@ -15400,7 +15522,7 @@
         "grupo": "(10) Grupo 10",
         "actividad": "",
         "profesores": "Tito Florez Calderon",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -15688,7 +15810,7 @@
         "grupo": "(6) Grupo 6",
         "actividad": "",
         "profesores": "SERGIO CAMILO ESPINOSA BOTERO",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -15784,7 +15906,7 @@
         "grupo": "(9) Grupo 9",
         "actividad": "",
         "profesores": "Alvaro Reynel Córdoba",
-        "cupos_disponibles": "12",
+        "cupos_disponibles": "6",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -15873,7 +15995,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:51-05:00",
+    "ts_lectura": "2026-08-27T23:55:01-05:00",
     "orden_lectura": 57
   },
   {
@@ -15886,7 +16008,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-27T08:39:52-05:00",
+    "ts_lectura": "2026-08-27T23:55:04-05:00",
     "orden_lectura": 58
   },
   {
@@ -15996,7 +16118,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:54-05:00",
+    "ts_lectura": "2026-08-27T23:55:05-05:00",
     "orden_lectura": 59
   },
   {
@@ -16045,7 +16167,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "",
         "profesores": "Servio Javier Contreras Guerrero",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "5",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -16077,7 +16199,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "",
         "profesores": "Samuel Fernando Mesa Giraldo",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "5",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -16106,7 +16228,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:56-05:00",
+    "ts_lectura": "2026-08-27T23:55:07-05:00",
     "orden_lectura": 60
   },
   {
@@ -16122,7 +16244,7 @@
       {
         "grupo": "(1) 2024045-1 Taller de proyectos interdisciplinarios",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "Hector Julian Garcia Otalora",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
@@ -16132,16 +16254,6 @@
           {
             "dia": "LUNES",
             "hora_inicio": "14:00",
-            "hora_fin": "15:00",
-            "salon": "454-207",
-            "salon_nombre": "SALON DE CLASE 454-207",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-207. 454-207. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "LUNES",
-            "hora_inicio": "15:00",
             "hora_fin": "16:00",
             "salon": "454-207",
             "salon_nombre": "SALON DE CLASE 454-207",
@@ -16152,16 +16264,6 @@
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "14:00",
-            "hora_fin": "15:00",
-            "salon": "454-207",
-            "salon_nombre": "SALON DE CLASE 454-207",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-207. 454-207. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "15:00",
             "hora_fin": "16:00",
             "salon": "454-207",
             "salon_nombre": "SALON DE CLASE 454-207",
@@ -16248,16 +16350,6 @@
           {
             "dia": "LUNES",
             "hora_inicio": "14:00",
-            "hora_fin": "15:00",
-            "salon": "454-102",
-            "salon_nombre": "AUDITORIO LUIS CARLOS SARMIENTO ANGULO",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "AUDITORIO",
-            "lugar_raw": "AUDITORIO LUIS CARLOS SARMIENTO ANGULO. 454-102. 454 - Luis Carlos Sarmiento Angulo. AUDITORIO."
-          },
-          {
-            "dia": "LUNES",
-            "hora_inicio": "15:00",
             "hora_fin": "16:00",
             "salon": "454-102",
             "salon_nombre": "AUDITORIO LUIS CARLOS SARMIENTO ANGULO",
@@ -16268,16 +16360,6 @@
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "14:00",
-            "hora_fin": "15:00",
-            "salon": "454-102",
-            "salon_nombre": "AUDITORIO LUIS CARLOS SARMIENTO ANGULO",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "AUDITORIO",
-            "lugar_raw": "AUDITORIO LUIS CARLOS SARMIENTO ANGULO. 454-102. 454 - Luis Carlos Sarmiento Angulo. AUDITORIO."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "15:00",
             "hora_fin": "16:00",
             "salon": "454-102",
             "salon_nombre": "AUDITORIO LUIS CARLOS SARMIENTO ANGULO",
@@ -16290,7 +16372,7 @@
       {
         "grupo": "(13) 2024045-13 Taller de proyectos interdisciplinarios",
         "actividad": "CLASE TEORICA",
-        "profesores": "No informado",
+        "profesores": "Hector Julian Garcia Otalora",
         "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
@@ -16300,16 +16382,6 @@
           {
             "dia": "LUNES",
             "hora_inicio": "16:00",
-            "hora_fin": "17:00",
-            "salon": "454-207",
-            "salon_nombre": "SALON DE CLASE 454-207",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-207. 454-207. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "LUNES",
-            "hora_inicio": "17:00",
             "hora_fin": "18:00",
             "salon": "454-207",
             "salon_nombre": "SALON DE CLASE 454-207",
@@ -16320,16 +16392,6 @@
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "16:00",
-            "hora_fin": "17:00",
-            "salon": "454-207",
-            "salon_nombre": "SALON DE CLASE 454-207",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "SALON",
-            "lugar_raw": "SALON DE CLASE 454-207. 454-207. 454 - Luis Carlos Sarmiento Angulo. SALON."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "17:00",
             "hora_fin": "18:00",
             "salon": "454-207",
             "salon_nombre": "SALON DE CLASE 454-207",
@@ -16672,16 +16734,6 @@
           {
             "dia": "LUNES",
             "hora_inicio": "16:00",
-            "hora_fin": "17:00",
-            "salon": "454-102",
-            "salon_nombre": "AUDITORIO LUIS CARLOS SARMIENTO ANGULO",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "AUDITORIO",
-            "lugar_raw": "AUDITORIO LUIS CARLOS SARMIENTO ANGULO. 454-102. 454 - Luis Carlos Sarmiento Angulo. AUDITORIO."
-          },
-          {
-            "dia": "LUNES",
-            "hora_inicio": "17:00",
             "hora_fin": "18:00",
             "salon": "454-102",
             "salon_nombre": "AUDITORIO LUIS CARLOS SARMIENTO ANGULO",
@@ -16692,16 +16744,6 @@
           {
             "dia": "MIÉRCOLES",
             "hora_inicio": "16:00",
-            "hora_fin": "17:00",
-            "salon": "454-102",
-            "salon_nombre": "AUDITORIO LUIS CARLOS SARMIENTO ANGULO",
-            "edificio": "454 - Luis Carlos Sarmiento Angulo",
-            "tipo_espacio": "AUDITORIO",
-            "lugar_raw": "AUDITORIO LUIS CARLOS SARMIENTO ANGULO. 454-102. 454 - Luis Carlos Sarmiento Angulo. AUDITORIO."
-          },
-          {
-            "dia": "MIÉRCOLES",
-            "hora_inicio": "17:00",
             "hora_fin": "18:00",
             "salon": "454-102",
             "salon_nombre": "AUDITORIO LUIS CARLOS SARMIENTO ANGULO",
@@ -16968,7 +17010,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:39:58-05:00",
+    "ts_lectura": "2026-08-27T23:55:10-05:00",
     "orden_lectura": 61
   },
   {
@@ -17400,7 +17442,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:40:00-05:00",
+    "ts_lectura": "2026-08-27T23:55:11-05:00",
     "orden_lectura": 62
   },
   {
@@ -17436,7 +17478,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-27T08:40:01-05:00",
+    "ts_lectura": "2026-08-27T23:55:13-05:00",
     "orden_lectura": 63
   },
   {
@@ -17449,7 +17491,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-27T08:40:03-05:00",
+    "ts_lectura": "2026-08-27T23:55:14-05:00",
     "orden_lectura": 64
   }
 ]
