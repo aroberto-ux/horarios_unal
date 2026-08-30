@@ -138,7 +138,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:06-05:00",
+    "ts_lectura": "2026-08-30T12:05:02-05:00",
     "orden_lectura": 0
   },
   {
@@ -312,7 +312,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:07-05:00",
+    "ts_lectura": "2026-08-30T12:05:04-05:00",
     "orden_lectura": 1
   },
   {
@@ -920,7 +920,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:09-05:00",
+    "ts_lectura": "2026-08-30T12:05:06-05:00",
     "orden_lectura": 2
   },
   {
@@ -1001,7 +1001,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "YON ALEXANDER BOLAÑOS DIAZ",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -1030,7 +1030,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:11-05:00",
+    "ts_lectura": "2026-08-30T12:05:07-05:00",
     "orden_lectura": 3
   },
   {
@@ -1172,7 +1172,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:12-05:00",
+    "ts_lectura": "2026-08-30T12:05:09-05:00",
     "orden_lectura": 4
   },
   {
@@ -2174,7 +2174,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:14-05:00",
+    "ts_lectura": "2026-08-30T12:05:12-05:00",
     "orden_lectura": 5
   },
   {
@@ -2636,7 +2636,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:16-05:00",
+    "ts_lectura": "2026-08-30T12:05:15-05:00",
     "orden_lectura": 6
   },
   {
@@ -3210,7 +3210,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:18-05:00",
+    "ts_lectura": "2026-08-30T12:05:17-05:00",
     "orden_lectura": 7
   },
   {
@@ -3223,7 +3223,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-29T17:05:19-05:00",
+    "ts_lectura": "2026-08-30T12:05:19-05:00",
     "orden_lectura": 8
   },
   {
@@ -3269,7 +3269,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:21-05:00",
+    "ts_lectura": "2026-08-30T12:05:20-05:00",
     "orden_lectura": 9
   },
   {
@@ -3315,7 +3315,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:22-05:00",
+    "ts_lectura": "2026-08-30T12:05:22-05:00",
     "orden_lectura": 10
   },
   {
@@ -3617,7 +3617,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:24-05:00",
+    "ts_lectura": "2026-08-30T12:05:24-05:00",
     "orden_lectura": 11
   },
   {
@@ -3759,7 +3759,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:26-05:00",
+    "ts_lectura": "2026-08-30T12:05:26-05:00",
     "orden_lectura": 12
   },
   {
@@ -3933,7 +3933,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:36-05:00",
+    "ts_lectura": "2026-08-30T12:05:38-05:00",
     "orden_lectura": 13
   },
   {
@@ -4043,7 +4043,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:37-05:00",
+    "ts_lectura": "2026-08-30T12:05:40-05:00",
     "orden_lectura": 14
   },
   {
@@ -4377,7 +4377,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:39-05:00",
+    "ts_lectura": "2026-08-30T12:05:42-05:00",
     "orden_lectura": 15
   },
   {
@@ -4583,7 +4583,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:40-05:00",
+    "ts_lectura": "2026-08-30T12:05:43-05:00",
     "orden_lectura": 16
   },
   {
@@ -4693,7 +4693,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:42-05:00",
+    "ts_lectura": "2026-08-30T12:05:45-05:00",
     "orden_lectura": 17
   },
   {
@@ -4803,7 +4803,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:44-05:00",
+    "ts_lectura": "2026-08-30T12:05:47-05:00",
     "orden_lectura": 18
   },
   {
@@ -4921,7 +4921,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:46-05:00",
+    "ts_lectura": "2026-08-30T12:05:49-05:00",
     "orden_lectura": 19
   },
   {
@@ -6909,7 +6909,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:49-05:00",
+    "ts_lectura": "2026-08-30T12:05:54-05:00",
     "orden_lectura": 20
   },
   {
@@ -7051,7 +7051,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:51-05:00",
+    "ts_lectura": "2026-08-30T12:05:56-05:00",
     "orden_lectura": 21
   },
   {
@@ -7193,7 +7193,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:52-05:00",
+    "ts_lectura": "2026-08-30T12:05:57-05:00",
     "orden_lectura": 22
   },
   {
@@ -7565,7 +7565,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:54-05:00",
+    "ts_lectura": "2026-08-30T12:06:00-05:00",
     "orden_lectura": 23
   },
   {
@@ -7707,7 +7707,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:56-05:00",
+    "ts_lectura": "2026-08-30T12:06:02-05:00",
     "orden_lectura": 24
   },
   {
@@ -7753,7 +7753,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:05:59-05:00",
+    "ts_lectura": "2026-08-30T12:06:04-05:00",
     "orden_lectura": 25
   },
   {
@@ -8019,7 +8019,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:08-05:00",
+    "ts_lectura": "2026-08-30T12:06:13-05:00",
     "orden_lectura": 26
   },
   {
@@ -8193,7 +8193,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:10-05:00",
+    "ts_lectura": "2026-08-30T12:06:15-05:00",
     "orden_lectura": 27
   },
   {
@@ -8303,7 +8303,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:12-05:00",
+    "ts_lectura": "2026-08-30T12:06:17-05:00",
     "orden_lectura": 28
   },
   {
@@ -8413,7 +8413,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:14-05:00",
+    "ts_lectura": "2026-08-30T12:06:18-05:00",
     "orden_lectura": 29
   },
   {
@@ -8523,7 +8523,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:15-05:00",
+    "ts_lectura": "2026-08-30T12:06:20-05:00",
     "orden_lectura": 30
   },
   {
@@ -8889,7 +8889,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:17-05:00",
+    "ts_lectura": "2026-08-30T12:06:22-05:00",
     "orden_lectura": 31
   },
   {
@@ -9581,7 +9581,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:19-05:00",
+    "ts_lectura": "2026-08-30T12:06:24-05:00",
     "orden_lectura": 32
   },
   {
@@ -9714,7 +9714,7 @@
         "grupo": "(12) Grupo 12",
         "actividad": "CLASE TEORICA",
         "profesores": "LINDA JOHANA RUIZ GOMEZ",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -10297,7 +10297,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:22-05:00",
+    "ts_lectura": "2026-08-30T12:06:27-05:00",
     "orden_lectura": 33
   },
   {
@@ -10310,7 +10310,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-29T17:06:23-05:00",
+    "ts_lectura": "2026-08-30T12:06:29-05:00",
     "orden_lectura": 34
   },
   {
@@ -11010,7 +11010,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:25-05:00",
+    "ts_lectura": "2026-08-30T12:06:31-05:00",
     "orden_lectura": 35
   },
   {
@@ -11023,7 +11023,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-29T17:06:26-05:00",
+    "ts_lectura": "2026-08-30T12:06:33-05:00",
     "orden_lectura": 36
   },
   {
@@ -11193,7 +11193,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:28-05:00",
+    "ts_lectura": "2026-08-30T12:06:34-05:00",
     "orden_lectura": 37
   },
   {
@@ -11519,7 +11519,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:29-05:00",
+    "ts_lectura": "2026-08-30T12:06:35-05:00",
     "orden_lectura": 38
   },
   {
@@ -11952,7 +11952,7 @@
         "grupo": "(21) Grupo 21",
         "actividad": "CLASE TEORICA",
         "profesores": "Edwin Yesid Leon Silva",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -12307,7 +12307,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:39-05:00",
+    "ts_lectura": "2026-08-30T12:06:46-05:00",
     "orden_lectura": 39
   },
   {
@@ -12320,7 +12320,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-29T17:06:40-05:00",
+    "ts_lectura": "2026-08-30T12:06:48-05:00",
     "orden_lectura": 40
   },
   {
@@ -12462,7 +12462,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:42-05:00",
+    "ts_lectura": "2026-08-30T12:06:49-05:00",
     "orden_lectura": 41
   },
   {
@@ -12475,7 +12475,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-29T17:06:44-05:00",
+    "ts_lectura": "2026-08-30T12:06:52-05:00",
     "orden_lectura": 42
   },
   {
@@ -13225,7 +13225,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:47-05:00",
+    "ts_lectura": "2026-08-30T12:06:54-05:00",
     "orden_lectura": 43
   },
   {
@@ -13407,7 +13407,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:48-05:00",
+    "ts_lectura": "2026-08-30T12:06:56-05:00",
     "orden_lectura": 44
   },
   {
@@ -13757,7 +13757,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:50-05:00",
+    "ts_lectura": "2026-08-30T12:06:57-05:00",
     "orden_lectura": 45
   },
   {
@@ -13803,7 +13803,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:51-05:00",
+    "ts_lectura": "2026-08-30T12:06:59-05:00",
     "orden_lectura": 46
   },
   {
@@ -14111,7 +14111,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:53-05:00",
+    "ts_lectura": "2026-08-30T12:07:01-05:00",
     "orden_lectura": 47
   },
   {
@@ -14128,7 +14128,7 @@
         "grupo": "(1) Grupo 1 (Inglés)",
         "actividad": "CLASE TEORICA",
         "profesores": "Julio Esteban Colmenares Montañez",
-        "cupos_disponibles": "25",
+        "cupos_disponibles": "4",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -14160,7 +14160,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Guillermo Eduardo Avila Alvarez",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -14192,7 +14192,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Livaniel Viveros Rosero",
-        "cupos_disponibles": "5",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -14224,7 +14224,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
         "profesores": "Ronald Steve Garzon Espejo",
-        "cupos_disponibles": "4",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -14253,7 +14253,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:55-05:00",
+    "ts_lectura": "2026-08-30T12:07:02-05:00",
     "orden_lectura": 48
   },
   {
@@ -14395,7 +14395,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:57-05:00",
+    "ts_lectura": "2026-08-30T12:07:04-05:00",
     "orden_lectura": 49
   },
   {
@@ -14505,7 +14505,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:06:58-05:00",
+    "ts_lectura": "2026-08-30T12:07:05-05:00",
     "orden_lectura": 50
   },
   {
@@ -14518,7 +14518,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-29T17:07:00-05:00",
+    "ts_lectura": "2026-08-30T12:07:07-05:00",
     "orden_lectura": 51
   },
   {
@@ -14531,7 +14531,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-29T17:07:10-05:00",
+    "ts_lectura": "2026-08-30T12:07:16-05:00",
     "orden_lectura": 52
   },
   {
@@ -14641,7 +14641,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:07:11-05:00",
+    "ts_lectura": "2026-08-30T12:07:17-05:00",
     "orden_lectura": 53
   },
   {
@@ -14751,7 +14751,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:07:13-05:00",
+    "ts_lectura": "2026-08-30T12:07:19-05:00",
     "orden_lectura": 54
   },
   {
@@ -15031,7 +15031,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:07:14-05:00",
+    "ts_lectura": "2026-08-30T12:07:21-05:00",
     "orden_lectura": 55
   },
   {
@@ -15557,7 +15557,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:07:16-05:00",
+    "ts_lectura": "2026-08-30T12:07:24-05:00",
     "orden_lectura": 56
   },
   {
@@ -16079,7 +16079,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:07:18-05:00",
+    "ts_lectura": "2026-08-30T12:07:26-05:00",
     "orden_lectura": 57
   },
   {
@@ -16092,7 +16092,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-29T17:07:20-05:00",
+    "ts_lectura": "2026-08-30T12:07:28-05:00",
     "orden_lectura": 58
   },
   {
@@ -16202,7 +16202,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:07:21-05:00",
+    "ts_lectura": "2026-08-30T12:07:30-05:00",
     "orden_lectura": 59
   },
   {
@@ -16251,7 +16251,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "",
         "profesores": "Servio Javier Contreras Guerrero",
-        "cupos_disponibles": "5",
+        "cupos_disponibles": "4",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -16312,7 +16312,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:07:22-05:00",
+    "ts_lectura": "2026-08-30T12:07:31-05:00",
     "orden_lectura": 60
   },
   {
@@ -17094,7 +17094,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:07:24-05:00",
+    "ts_lectura": "2026-08-30T12:07:34-05:00",
     "orden_lectura": 61
   },
   {
@@ -17526,7 +17526,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:07:26-05:00",
+    "ts_lectura": "2026-08-30T12:07:36-05:00",
     "orden_lectura": 62
   },
   {
@@ -17562,7 +17562,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-08-29T17:07:27-05:00",
+    "ts_lectura": "2026-08-30T12:07:38-05:00",
     "orden_lectura": 63
   },
   {
@@ -17575,7 +17575,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-08-29T17:07:28-05:00",
+    "ts_lectura": "2026-08-30T12:07:39-05:00",
     "orden_lectura": 64
   }
 ]
