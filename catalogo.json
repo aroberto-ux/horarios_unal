@@ -138,7 +138,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:04:24-05:00",
+    "ts_lectura": "2026-09-03T10:19:49-05:00",
     "orden_lectura": 0
   },
   {
@@ -312,7 +312,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:04:29-05:00",
+    "ts_lectura": "2026-09-03T10:19:53-05:00",
     "orden_lectura": 1
   },
   {
@@ -930,7 +930,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:04:33-05:00",
+    "ts_lectura": "2026-09-03T10:19:56-05:00",
     "orden_lectura": 2
   },
   {
@@ -1072,7 +1072,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:04:37-05:00",
+    "ts_lectura": "2026-09-03T10:19:58-05:00",
     "orden_lectura": 3
   },
   {
@@ -1214,7 +1214,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:04:39-05:00",
+    "ts_lectura": "2026-09-03T10:19:59-05:00",
     "orden_lectura": 4
   },
   {
@@ -2236,7 +2236,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:04:45-05:00",
+    "ts_lectura": "2026-09-03T10:20:05-05:00",
     "orden_lectura": 5
   },
   {
@@ -2381,7 +2381,7 @@
         "grupo": "(13) Grupo 13",
         "actividad": "",
         "profesores": "Juan Carlos Hernandez Rincon",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -2698,7 +2698,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:04:48-05:00",
+    "ts_lectura": "2026-09-03T10:20:08-05:00",
     "orden_lectura": 6
   },
   {
@@ -3272,7 +3272,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:04:50-05:00",
+    "ts_lectura": "2026-09-03T10:20:10-05:00",
     "orden_lectura": 7
   },
   {
@@ -3285,7 +3285,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-03T10:04:52-05:00",
+    "ts_lectura": "2026-09-03T10:20:14-05:00",
     "orden_lectura": 8
   },
   {
@@ -3331,7 +3331,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:04:55-05:00",
+    "ts_lectura": "2026-09-03T10:20:16-05:00",
     "orden_lectura": 9
   },
   {
@@ -3377,7 +3377,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:04:56-05:00",
+    "ts_lectura": "2026-09-03T10:20:17-05:00",
     "orden_lectura": 10
   },
   {
@@ -3679,7 +3679,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:04:58-05:00",
+    "ts_lectura": "2026-09-03T10:20:19-05:00",
     "orden_lectura": 11
   },
   {
@@ -3789,7 +3789,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:04:59-05:00",
+    "ts_lectura": "2026-09-03T10:20:22-05:00",
     "orden_lectura": 12
   },
   {
@@ -3931,7 +3931,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:11-05:00",
+    "ts_lectura": "2026-09-03T10:20:33-05:00",
     "orden_lectura": 13
   },
   {
@@ -4073,7 +4073,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:15-05:00",
+    "ts_lectura": "2026-09-03T10:20:37-05:00",
     "orden_lectura": 14
   },
   {
@@ -4407,7 +4407,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:17-05:00",
+    "ts_lectura": "2026-09-03T10:20:40-05:00",
     "orden_lectura": 15
   },
   {
@@ -4581,7 +4581,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:18-05:00",
+    "ts_lectura": "2026-09-03T10:20:45-05:00",
     "orden_lectura": 16
   },
   {
@@ -4691,7 +4691,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:20-05:00",
+    "ts_lectura": "2026-09-03T10:20:50-05:00",
     "orden_lectura": 17
   },
   {
@@ -4801,7 +4801,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:21-05:00",
+    "ts_lectura": "2026-09-03T10:20:52-05:00",
     "orden_lectura": 18
   },
   {
@@ -4919,7 +4919,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:22-05:00",
+    "ts_lectura": "2026-09-03T10:21:00-05:00",
     "orden_lectura": 19
   },
   {
@@ -6907,7 +6907,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:27-05:00",
+    "ts_lectura": "2026-09-03T10:21:05-05:00",
     "orden_lectura": 20
   },
   {
@@ -7049,7 +7049,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:28-05:00",
+    "ts_lectura": "2026-09-03T10:21:08-05:00",
     "orden_lectura": 21
   },
   {
@@ -7191,7 +7191,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:32-05:00",
+    "ts_lectura": "2026-09-03T10:21:09-05:00",
     "orden_lectura": 22
   },
   {
@@ -7563,7 +7563,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:33-05:00",
+    "ts_lectura": "2026-09-03T10:21:13-05:00",
     "orden_lectura": 23
   },
   {
@@ -7673,7 +7673,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:35-05:00",
+    "ts_lectura": "2026-09-03T10:21:14-05:00",
     "orden_lectura": 24
   },
   {
@@ -7690,7 +7690,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "",
         "profesores": "No informado",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "2",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -7722,7 +7722,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "",
         "profesores": "Angela Barrera Puerto",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "3",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -7751,7 +7751,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:36-05:00",
+    "ts_lectura": "2026-09-03T10:21:16-05:00",
     "orden_lectura": 25
   },
   {
@@ -8020,7 +8020,7 @@
         "grupo": "(7) Grupo 7",
         "actividad": "CLASE TEORICA",
         "profesores": "No informado",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "22",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8057,9 +8057,20 @@
             "lugar_raw": ""
           }
         ]
+      },
+      {
+        "grupo": "(8) Grupo 8",
+        "actividad": "CLASE TEORICA",
+        "profesores": "No informado",
+        "cupos_disponibles": "24",
+        "cupos_totales": "NA",
+        "fecha": "",
+        "duracion": "Semestral",
+        "jornada": "DIURNO",
+        "sesiones": []
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:49-05:00",
+    "ts_lectura": "2026-09-03T10:21:25-05:00",
     "orden_lectura": 26
   },
   {
@@ -8233,7 +8244,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:53-05:00",
+    "ts_lectura": "2026-09-03T10:21:27-05:00",
     "orden_lectura": 27
   },
   {
@@ -8282,7 +8293,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Leonel Vega Mora",
-        "cupos_disponibles": "16",
+        "cupos_disponibles": "17",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8314,7 +8325,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Leonel Vega Mora",
-        "cupos_disponibles": "4",
+        "cupos_disponibles": "3",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8343,7 +8354,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:55-05:00",
+    "ts_lectura": "2026-09-03T10:21:29-05:00",
     "orden_lectura": 28
   },
   {
@@ -8453,7 +8464,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:05:58-05:00",
+    "ts_lectura": "2026-09-03T10:21:30-05:00",
     "orden_lectura": 29
   },
   {
@@ -8563,7 +8574,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:06:00-05:00",
+    "ts_lectura": "2026-09-03T10:21:33-05:00",
     "orden_lectura": 30
   },
   {
@@ -8929,7 +8940,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:06:01-05:00",
+    "ts_lectura": "2026-09-03T10:21:35-05:00",
     "orden_lectura": 31
   },
   {
@@ -9621,7 +9632,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:06:05-05:00",
+    "ts_lectura": "2026-09-03T10:21:37-05:00",
     "orden_lectura": 32
   },
   {
@@ -10357,7 +10368,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:06:08-05:00",
+    "ts_lectura": "2026-09-03T10:21:40-05:00",
     "orden_lectura": 33
   },
   {
@@ -10370,7 +10381,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-03T10:06:10-05:00",
+    "ts_lectura": "2026-09-03T10:21:43-05:00",
     "orden_lectura": 34
   },
   {
@@ -11070,7 +11081,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:06:14-05:00",
+    "ts_lectura": "2026-09-03T10:21:45-05:00",
     "orden_lectura": 35
   },
   {
@@ -11083,7 +11094,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-03T10:06:15-05:00",
+    "ts_lectura": "2026-09-03T10:21:46-05:00",
     "orden_lectura": 36
   },
   {
@@ -11253,7 +11264,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:06:17-05:00",
+    "ts_lectura": "2026-09-03T10:21:48-05:00",
     "orden_lectura": 37
   },
   {
@@ -11579,7 +11590,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:06:18-05:00",
+    "ts_lectura": "2026-09-03T10:21:49-05:00",
     "orden_lectura": 38
   },
   {
@@ -12367,7 +12378,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:06:41-05:00",
+    "ts_lectura": "2026-09-03T10:22:16-05:00",
     "orden_lectura": 39
   },
   {
@@ -12380,7 +12391,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-03T10:06:46-05:00",
+    "ts_lectura": "2026-09-03T10:22:33-05:00",
     "orden_lectura": 40
   },
   {
@@ -12522,7 +12533,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:06:48-05:00",
+    "ts_lectura": "2026-09-03T10:22:34-05:00",
     "orden_lectura": 41
   },
   {
@@ -12535,7 +12546,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-03T10:06:50-05:00",
+    "ts_lectura": "2026-09-03T10:22:36-05:00",
     "orden_lectura": 42
   },
   {
@@ -13315,7 +13326,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:06:54-05:00",
+    "ts_lectura": "2026-09-03T10:22:39-05:00",
     "orden_lectura": 43
   },
   {
@@ -13332,7 +13343,7 @@
         "grupo": "(1) Grupo 1",
         "actividad": "CLASE TEORICA",
         "profesores": "Edwin Alexander Prieto Saavedra; CAMILO RIOS FRESNEDA",
-        "cupos_disponibles": "2",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -13374,7 +13385,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "Julian David Puerto Suarez; Vladimir Buelvas Hernández",
-        "cupos_disponibles": "2",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 16/12/2026",
         "duracion": "Semestral",
@@ -13458,7 +13469,7 @@
         "grupo": "(4) Grupo 4",
         "actividad": "CLASE TEORICA",
         "profesores": "Edwin Alexander Prieto Saavedra",
-        "cupos_disponibles": "2",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -13497,7 +13508,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:06:59-05:00",
+    "ts_lectura": "2026-09-03T10:22:43-05:00",
     "orden_lectura": 44
   },
   {
@@ -13847,7 +13858,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:03-05:00",
+    "ts_lectura": "2026-09-03T10:23:08-05:00",
     "orden_lectura": 45
   },
   {
@@ -13893,7 +13904,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:08-05:00",
+    "ts_lectura": "2026-09-03T10:23:11-05:00",
     "orden_lectura": 46
   },
   {
@@ -14159,7 +14170,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:12-05:00",
+    "ts_lectura": "2026-09-03T10:23:18-05:00",
     "orden_lectura": 47
   },
   {
@@ -14301,7 +14312,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:14-05:00",
+    "ts_lectura": "2026-09-03T10:23:21-05:00",
     "orden_lectura": 48
   },
   {
@@ -14507,7 +14518,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:17-05:00",
+    "ts_lectura": "2026-09-03T10:23:24-05:00",
     "orden_lectura": 49
   },
   {
@@ -14617,7 +14628,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:20-05:00",
+    "ts_lectura": "2026-09-03T10:23:28-05:00",
     "orden_lectura": 50
   },
   {
@@ -14630,7 +14641,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-03T10:07:22-05:00",
+    "ts_lectura": "2026-09-03T10:23:29-05:00",
     "orden_lectura": 51
   },
   {
@@ -14708,7 +14719,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:35-05:00",
+    "ts_lectura": "2026-09-03T10:23:44-05:00",
     "orden_lectura": 52
   },
   {
@@ -14818,7 +14829,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:37-05:00",
+    "ts_lectura": "2026-09-03T10:23:45-05:00",
     "orden_lectura": 53
   },
   {
@@ -14928,7 +14939,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:38-05:00",
+    "ts_lectura": "2026-09-03T10:23:47-05:00",
     "orden_lectura": 54
   },
   {
@@ -15208,7 +15219,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:41-05:00",
+    "ts_lectura": "2026-09-03T10:23:49-05:00",
     "orden_lectura": 55
   },
   {
@@ -15734,7 +15745,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:43-05:00",
+    "ts_lectura": "2026-09-03T10:23:52-05:00",
     "orden_lectura": 56
   },
   {
@@ -16256,7 +16267,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:46-05:00",
+    "ts_lectura": "2026-09-03T10:23:54-05:00",
     "orden_lectura": 57
   },
   {
@@ -16302,7 +16313,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:49-05:00",
+    "ts_lectura": "2026-09-03T10:23:56-05:00",
     "orden_lectura": 58
   },
   {
@@ -16412,7 +16423,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:51-05:00",
+    "ts_lectura": "2026-09-03T10:23:59-05:00",
     "orden_lectura": 59
   },
   {
@@ -16522,7 +16533,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:52-05:00",
+    "ts_lectura": "2026-09-03T10:24:01-05:00",
     "orden_lectura": 60
   },
   {
@@ -17304,7 +17315,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:54-05:00",
+    "ts_lectura": "2026-09-03T10:24:04-05:00",
     "orden_lectura": 61
   },
   {
@@ -17736,7 +17747,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:07:59-05:00",
+    "ts_lectura": "2026-09-03T10:24:06-05:00",
     "orden_lectura": 62
   },
   {
@@ -17772,7 +17783,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-03T10:08:02-05:00",
+    "ts_lectura": "2026-09-03T10:24:09-05:00",
     "orden_lectura": 63
   },
   {
@@ -17785,7 +17796,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-03T10:08:03-05:00",
+    "ts_lectura": "2026-09-03T10:24:11-05:00",
     "orden_lectura": 64
   }
 ]
