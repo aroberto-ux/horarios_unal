@@ -138,7 +138,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:46:53-05:00",
+    "ts_lectura": "2026-09-06T12:57:37-05:00",
     "orden_lectura": 0
   },
   {
@@ -312,7 +312,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:47:12-05:00",
+    "ts_lectura": "2026-09-06T12:57:39-05:00",
     "orden_lectura": 1
   },
   {
@@ -930,7 +930,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:47:14-05:00",
+    "ts_lectura": "2026-09-06T12:57:41-05:00",
     "orden_lectura": 2
   },
   {
@@ -1072,7 +1072,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:47:15-05:00",
+    "ts_lectura": "2026-09-06T12:57:42-05:00",
     "orden_lectura": 3
   },
   {
@@ -1214,7 +1214,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:47:36-05:00",
+    "ts_lectura": "2026-09-06T12:57:44-05:00",
     "orden_lectura": 4
   },
   {
@@ -2332,7 +2332,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:47:38-05:00",
+    "ts_lectura": "2026-09-06T12:57:46-05:00",
     "orden_lectura": 5
   },
   {
@@ -2794,7 +2794,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:47:40-05:00",
+    "ts_lectura": "2026-09-06T12:57:48-05:00",
     "orden_lectura": 6
   },
   {
@@ -2907,7 +2907,7 @@
         "grupo": "(13) Grupo 13",
         "actividad": "",
         "profesores": "Natalia Camila Pinzon Cortes",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -3496,7 +3496,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:47:43-05:00",
+    "ts_lectura": "2026-09-06T12:57:50-05:00",
     "orden_lectura": 7
   },
   {
@@ -3509,7 +3509,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-05T20:47:44-05:00",
+    "ts_lectura": "2026-09-06T12:57:52-05:00",
     "orden_lectura": 8
   },
   {
@@ -3555,7 +3555,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:47:45-05:00",
+    "ts_lectura": "2026-09-06T12:57:54-05:00",
     "orden_lectura": 9
   },
   {
@@ -3601,7 +3601,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:47:47-05:00",
+    "ts_lectura": "2026-09-06T12:57:56-05:00",
     "orden_lectura": 10
   },
   {
@@ -3903,7 +3903,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:47:49-05:00",
+    "ts_lectura": "2026-09-06T12:57:58-05:00",
     "orden_lectura": 11
   },
   {
@@ -4013,7 +4013,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:47:50-05:00",
+    "ts_lectura": "2026-09-06T12:58:00-05:00",
     "orden_lectura": 12
   },
   {
@@ -4062,7 +4062,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Daniel Ricardo Lozano Monsalve",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -4155,7 +4155,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:03-05:00",
+    "ts_lectura": "2026-09-06T12:58:11-05:00",
     "orden_lectura": 13
   },
   {
@@ -4297,7 +4297,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:05-05:00",
+    "ts_lectura": "2026-09-06T12:58:13-05:00",
     "orden_lectura": 14
   },
   {
@@ -4631,7 +4631,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:06-05:00",
+    "ts_lectura": "2026-09-06T12:58:14-05:00",
     "orden_lectura": 15
   },
   {
@@ -4805,7 +4805,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:08-05:00",
+    "ts_lectura": "2026-09-06T12:58:16-05:00",
     "orden_lectura": 16
   },
   {
@@ -4915,7 +4915,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:09-05:00",
+    "ts_lectura": "2026-09-06T12:58:18-05:00",
     "orden_lectura": 17
   },
   {
@@ -5025,7 +5025,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:10-05:00",
+    "ts_lectura": "2026-09-06T12:58:19-05:00",
     "orden_lectura": 18
   },
   {
@@ -5143,7 +5143,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:12-05:00",
+    "ts_lectura": "2026-09-06T12:58:20-05:00",
     "orden_lectura": 19
   },
   {
@@ -7131,7 +7131,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:16-05:00",
+    "ts_lectura": "2026-09-06T12:58:25-05:00",
     "orden_lectura": 20
   },
   {
@@ -7273,7 +7273,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:18-05:00",
+    "ts_lectura": "2026-09-06T12:58:26-05:00",
     "orden_lectura": 21
   },
   {
@@ -7415,7 +7415,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:20-05:00",
+    "ts_lectura": "2026-09-06T12:58:28-05:00",
     "orden_lectura": 22
   },
   {
@@ -7787,7 +7787,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:22-05:00",
+    "ts_lectura": "2026-09-06T12:58:29-05:00",
     "orden_lectura": 23
   },
   {
@@ -7897,7 +7897,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:23-05:00",
+    "ts_lectura": "2026-09-06T12:58:31-05:00",
     "orden_lectura": 24
   },
   {
@@ -7975,7 +7975,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:25-05:00",
+    "ts_lectura": "2026-09-06T12:58:32-05:00",
     "orden_lectura": 25
   },
   {
@@ -8034,7 +8034,7 @@
         "grupo": "(2) Grupo 2",
         "actividad": "CLASE TEORICA",
         "profesores": "MANUEL ANDRES NIÑO SILVA; Adriana Patricia Piña Fulano",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8244,7 +8244,7 @@
         "grupo": "(7) Grupo 7",
         "actividad": "CLASE TEORICA",
         "profesores": "SERGIO ALEJANDRO RIVERA MONROY; Rafael Orland Ortiz Mosquera",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -8325,7 +8325,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:35-05:00",
+    "ts_lectura": "2026-09-06T12:58:42-05:00",
     "orden_lectura": 26
   },
   {
@@ -8499,7 +8499,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:37-05:00",
+    "ts_lectura": "2026-09-06T12:58:43-05:00",
     "orden_lectura": 27
   },
   {
@@ -8609,7 +8609,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:38-05:00",
+    "ts_lectura": "2026-09-06T12:58:44-05:00",
     "orden_lectura": 28
   },
   {
@@ -8719,7 +8719,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:39-05:00",
+    "ts_lectura": "2026-09-06T12:58:46-05:00",
     "orden_lectura": 29
   },
   {
@@ -8829,7 +8829,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:41-05:00",
+    "ts_lectura": "2026-09-06T12:58:48-05:00",
     "orden_lectura": 30
   },
   {
@@ -9038,7 +9038,7 @@
         "grupo": "(5) Grupo 5 - Virtual",
         "actividad": "",
         "profesores": "Cesar Augusto Roa Lemus",
-        "cupos_disponibles": "0",
+        "cupos_disponibles": "1",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -9195,7 +9195,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:43-05:00",
+    "ts_lectura": "2026-09-06T12:58:50-05:00",
     "orden_lectura": 31
   },
   {
@@ -9276,7 +9276,7 @@
         "grupo": "(3) Grupo 3",
         "actividad": "CLASE TEORICA",
         "profesores": "Luis Gabriel Peña Ortiz",
-        "cupos_disponibles": "2",
+        "cupos_disponibles": "3",
         "cupos_totales": "NA",
         "fecha": "24/08/2026 - 12/12/2026",
         "duracion": "Semestral",
@@ -9887,7 +9887,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:45-05:00",
+    "ts_lectura": "2026-09-06T12:58:52-05:00",
     "orden_lectura": 32
   },
   {
@@ -10623,7 +10623,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:48-05:00",
+    "ts_lectura": "2026-09-06T12:58:55-05:00",
     "orden_lectura": 33
   },
   {
@@ -10636,7 +10636,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-05T20:48:50-05:00",
+    "ts_lectura": "2026-09-06T12:58:56-05:00",
     "orden_lectura": 34
   },
   {
@@ -11336,7 +11336,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:52-05:00",
+    "ts_lectura": "2026-09-06T12:58:59-05:00",
     "orden_lectura": 35
   },
   {
@@ -11349,7 +11349,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-05T20:48:54-05:00",
+    "ts_lectura": "2026-09-06T12:59:00-05:00",
     "orden_lectura": 36
   },
   {
@@ -11519,7 +11519,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:55-05:00",
+    "ts_lectura": "2026-09-06T12:59:02-05:00",
     "orden_lectura": 37
   },
   {
@@ -11845,7 +11845,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:48:57-05:00",
+    "ts_lectura": "2026-09-06T12:59:04-05:00",
     "orden_lectura": 38
   },
   {
@@ -12633,7 +12633,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:08-05:00",
+    "ts_lectura": "2026-09-06T12:59:12-05:00",
     "orden_lectura": 39
   },
   {
@@ -12646,7 +12646,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-05T20:49:09-05:00",
+    "ts_lectura": "2026-09-06T12:59:14-05:00",
     "orden_lectura": 40
   },
   {
@@ -12788,7 +12788,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:11-05:00",
+    "ts_lectura": "2026-09-06T12:59:16-05:00",
     "orden_lectura": 41
   },
   {
@@ -12801,7 +12801,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-05T20:49:14-05:00",
+    "ts_lectura": "2026-09-06T12:59:18-05:00",
     "orden_lectura": 42
   },
   {
@@ -13581,7 +13581,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:17-05:00",
+    "ts_lectura": "2026-09-06T12:59:21-05:00",
     "orden_lectura": 43
   },
   {
@@ -13763,7 +13763,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:18-05:00",
+    "ts_lectura": "2026-09-06T12:59:23-05:00",
     "orden_lectura": 44
   },
   {
@@ -14103,7 +14103,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:20-05:00",
+    "ts_lectura": "2026-09-06T12:59:24-05:00",
     "orden_lectura": 45
   },
   {
@@ -14149,7 +14149,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:21-05:00",
+    "ts_lectura": "2026-09-06T12:59:26-05:00",
     "orden_lectura": 46
   },
   {
@@ -14415,7 +14415,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:23-05:00",
+    "ts_lectura": "2026-09-06T12:59:28-05:00",
     "orden_lectura": 47
   },
   {
@@ -14557,7 +14557,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:25-05:00",
+    "ts_lectura": "2026-09-06T12:59:29-05:00",
     "orden_lectura": 48
   },
   {
@@ -14763,7 +14763,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:26-05:00",
+    "ts_lectura": "2026-09-06T12:59:31-05:00",
     "orden_lectura": 49
   },
   {
@@ -14873,7 +14873,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:28-05:00",
+    "ts_lectura": "2026-09-06T12:59:32-05:00",
     "orden_lectura": 50
   },
   {
@@ -14886,7 +14886,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-05T20:49:29-05:00",
+    "ts_lectura": "2026-09-06T12:59:34-05:00",
     "orden_lectura": 51
   },
   {
@@ -14964,7 +14964,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:41-05:00",
+    "ts_lectura": "2026-09-06T12:59:44-05:00",
     "orden_lectura": 52
   },
   {
@@ -15074,7 +15074,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:42-05:00",
+    "ts_lectura": "2026-09-06T12:59:45-05:00",
     "orden_lectura": 53
   },
   {
@@ -15184,7 +15184,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:44-05:00",
+    "ts_lectura": "2026-09-06T12:59:46-05:00",
     "orden_lectura": 54
   },
   {
@@ -15506,7 +15506,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:46-05:00",
+    "ts_lectura": "2026-09-06T12:59:49-05:00",
     "orden_lectura": 55
   },
   {
@@ -16000,7 +16000,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:48-05:00",
+    "ts_lectura": "2026-09-06T12:59:50-05:00",
     "orden_lectura": 56
   },
   {
@@ -16522,7 +16522,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:50-05:00",
+    "ts_lectura": "2026-09-06T12:59:52-05:00",
     "orden_lectura": 57
   },
   {
@@ -16568,7 +16568,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:51-05:00",
+    "ts_lectura": "2026-09-06T12:59:54-05:00",
     "orden_lectura": 58
   },
   {
@@ -16678,7 +16678,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:53-05:00",
+    "ts_lectura": "2026-09-06T12:59:55-05:00",
     "orden_lectura": 59
   },
   {
@@ -16788,7 +16788,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:55-05:00",
+    "ts_lectura": "2026-09-06T12:59:57-05:00",
     "orden_lectura": 60
   },
   {
@@ -16901,7 +16901,7 @@
         "grupo": "(12) 2024045-12 Taller de proyectos interdisciplinarios",
         "actividad": "CLASE TEORICA",
         "profesores": "Hector Julian Garcia Otalora",
-        "cupos_disponibles": "12",
+        "cupos_disponibles": "13",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -17285,7 +17285,7 @@
         "grupo": "(24) 2024045-24 Taller de proyectos interdisciplinarios",
         "actividad": "CLASE TEORICA",
         "profesores": "Hector Julian Garcia Otalora",
-        "cupos_disponibles": "1",
+        "cupos_disponibles": "0",
         "cupos_totales": "NA",
         "fecha": "27/08/2026 - 17/12/2026",
         "duracion": "Semestral",
@@ -17622,7 +17622,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:49:57-05:00",
+    "ts_lectura": "2026-09-06T12:59:59-05:00",
     "orden_lectura": 61
   },
   {
@@ -18164,7 +18164,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:50:00-05:00",
+    "ts_lectura": "2026-09-06T13:00:01-05:00",
     "orden_lectura": 62
   },
   {
@@ -18200,7 +18200,7 @@
         ]
       }
     ],
-    "ts_lectura": "2026-09-05T20:50:01-05:00",
+    "ts_lectura": "2026-09-06T13:00:02-05:00",
     "orden_lectura": 63
   },
   {
@@ -18213,7 +18213,7 @@
       "2542 INGENIERÍA CIVIL"
     ],
     "grupos": [],
-    "ts_lectura": "2026-09-05T20:50:02-05:00",
+    "ts_lectura": "2026-09-06T13:00:04-05:00",
     "orden_lectura": 64
   }
 ]
