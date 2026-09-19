@@ -27,25 +27,20 @@ jobs:
           python -m pip install --upgrade pip
           pip install selenium
 
-      - name: Install Chrome and ChromeDriver
+      # No instalamos Chrome ni ChromeDriver a mano: el runner ya trae un
+      # navegador preinstalado, y Selenium 4.6+ (Selenium Manager) resuelve
+      # solo la versión correcta de chromedriver en tiempo de ejecución.
+      # Instalar Chrome manualmente aquí causaba un choque de versiones
+      # entre el chromium preinstalado y el chromedriver bajado a mano.
+      - name: Install Xvfb
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget gnupg unzip xvfb
-          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-          CHROME_VERSION=$(google-chrome-stable --version | grep -oP '\d+\.\d+\.\d+\.\d+')
-          wget -q "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chromedriver-linux64.zip"
-          unzip chromedriver-linux64.zip
-          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
-          chmod +x /usr/local/bin/chromedriver
+          sudo apt-get install -y xvfb
 
       - name: Setup virtual display
         run: |
           Xvfb :99 -screen 0 1920x1080x24 &
           echo "DISPLAY=:99" >> $GITHUB_ENV
-          echo "CHROME_BIN=/usr/bin/google-chrome-stable" >> $GITHUB_ENV
 
       # A partir de aquí SÍ enrutamos por el dongle: solo el tráfico del
       # scraper hacia el SIA necesita salir por IP residencial. Todo lo de
