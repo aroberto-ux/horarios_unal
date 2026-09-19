@@ -3,7 +3,7 @@ name: Scraper course-finder (sale por IP residencial vía Tailscale)
 on:
   workflow_dispatch:      # ejecutar manualmente desde la pestaña Actions
   schedule:
-    - cron: "0 */6 * * *"  # cada 6 horas; ajusta a gusto
+    - cron: "*/10 * * * *"  # cada 6 horas; ajusta a gusto
 
 jobs:
   scrape:
