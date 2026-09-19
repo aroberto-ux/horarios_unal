@@ -3,11 +3,13 @@ name: Scraper course-finder (sale por IP residencial vía Tailscale)
 on:
   workflow_dispatch:      # ejecutar manualmente desde la pestaña Actions
   schedule:
-    - cron: "*/10 * * * *"  # cada 6 horas; ajusta a gusto
+    - cron: "0 */6 * * *"  # cada 6 horas; ajusta a gusto
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # necesario para que git-auto-commit-action pueda hacer push
     steps:
       - uses: actions/checkout@v4
 
@@ -21,9 +23,11 @@ jobs:
           tags: tag:ci
 
       - name: Enrutar la salida por el dongle (exit node)
+        env:
+          # Crea este secret con la IP de Tailscale del dongle (formato 100.x.x.x),
+          # visible en https://login.tailscale.com/admin/machines
+          EXIT_NODE: ${{ secrets.TS_EXIT_NODE_IP }}
         run: |
-          # Reemplaza "homatics-dongle" por el nombre real del dispositivo
-          # tal como aparece en https://login.tailscale.com/admin/machines
           sudo tailscale set --exit-node=100.115.208.79 --exit-node-allow-lan-access=false
           sleep 5
           echo "IP de salida actual:"
@@ -49,3 +53,9 @@ jobs:
             horarios.csv
             catalogo.json
             course_finder_raw.json
+
+      - name: Comitear los datos actualizados al repo
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Actualizar datos de course-finder [skip ci]"
+          file_pattern: "grupos.csv horarios.csv catalogo.json"
