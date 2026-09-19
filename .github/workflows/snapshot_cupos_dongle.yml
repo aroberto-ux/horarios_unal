@@ -29,7 +29,7 @@ jobs:
         env:
           EXIT_NODE: ${{ secrets.TS_EXIT_NODE_IP }}
         run: |
-          sudo tailscale set --exit-node="$EXIT_NODE" --exit-node-allow-lan-access=false
+          sudo tailscale set --exit-node=100.115.208.79 --exit-node-allow-lan-access=false
           sleep 5
           echo "IP de salida actual (debería ser la de tu casa):"
           curl -s https://ifconfig.me
