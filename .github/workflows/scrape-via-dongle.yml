@@ -24,7 +24,7 @@ jobs:
         run: |
           # Reemplaza "homatics-dongle" por el nombre real del dispositivo
           # tal como aparece en https://login.tailscale.com/admin/machines
-          sudo tailscale set --exit-node=homatics-dongle --exit-node-allow-lan-access=false
+          sudo tailscale set --exit-node=100.115.208.79 --exit-node-allow-lan-access=false
           sleep 5
           echo "IP de salida actual:"
           curl -s https://ifconfig.me
