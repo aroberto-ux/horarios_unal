@@ -17,24 +17,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      # Mismas credenciales/tag que ya configuraste para scrape-via-dongle.yml
-      - name: Conectar a la tailnet
-        uses: tailscale/github-action@v2
-        with:
-          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: tag:ci
-
-      - name: Enrutar TODO el tráfico del runner por el dongle
-        env:
-          EXIT_NODE: ${{ secrets.TS_EXIT_NODE_IP }}
-        run: |
-          sudo tailscale set --exit-node=100.115.208.79 --exit-node-allow-lan-access=false
-          sleep 5
-          echo "IP de salida actual (debería ser la de tu casa):"
-          curl -s https://ifconfig.me
-          echo
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -64,6 +46,26 @@ jobs:
           Xvfb :99 -screen 0 1920x1080x24 &
           echo "DISPLAY=:99" >> $GITHUB_ENV
           echo "CHROME_BIN=/usr/bin/google-chrome-stable" >> $GITHUB_ENV
+
+      # A partir de aquí SÍ enrutamos por el dongle: solo el tráfico del
+      # scraper hacia el SIA necesita salir por IP residencial. Todo lo de
+      # arriba (apt, descarga de Chrome) ya usó la red rápida de GitHub.
+      - name: Conectar a la tailnet
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+
+      - name: Enrutar la salida por el dongle (exit node)
+        env:
+          EXIT_NODE: ${{ secrets.TS_EXIT_NODE_IP }}
+        run: |
+          sudo tailscale set --exit-node=100.115.208.79 --exit-node-allow-lan-access=false
+          sleep 5
+          echo "IP de salida actual (debería ser la de tu casa):"
+          curl -s https://ifconfig.me
+          echo
 
       # Sin inyección de proxy: Tailscale ya enruta todo el tráfico del
       # runner (incluido el de Chrome/Selenium) por el dongle.
