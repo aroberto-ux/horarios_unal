@@ -1,0 +1,51 @@
+name: Scraper course-finder (sale por IP residencial vía Tailscale)
+
+on:
+  workflow_dispatch:      # ejecutar manualmente desde la pestaña Actions
+  schedule:
+    - cron: "0 */6 * * *"  # cada 6 horas; ajusta a gusto
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Requiere crear un OAuth client en https://login.tailscale.com/admin/settings/oauth
+      # y guardar id/secret como Secrets del repo (Settings > Secrets and variables > Actions)
+      - name: Conectar a la tailnet
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+
+      - name: Enrutar la salida por el dongle (exit node)
+        run: |
+          # Reemplaza "homatics-dongle" por el nombre real del dispositivo
+          # tal como aparece en https://login.tailscale.com/admin/machines
+          sudo tailscale set --exit-node=homatics-dongle --exit-node-allow-lan-access=false
+          sleep 5
+          echo "IP de salida actual:"
+          curl -s https://ifconfig.me
+          echo
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install requests
+
+      - name: Correr el scraper
+        run: python course_finder_scraper.py
+
+      - name: Publicar resultados como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: resultados-course-finder
+          path: |
+            grupos.csv
+            horarios.csv
+            catalogo.json
+            course_finder_raw.json
