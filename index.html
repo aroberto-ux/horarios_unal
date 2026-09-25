@@ -538,10 +538,75 @@ footer a{color:var(--azul)}
 }
 
 #panelAvance{grid-column:1 / -1}
+#panelPlaneador{grid-column:1 / -1}
 section.panel[hidden]{display:none!important}
 /* En las vistas panorámicas (plan y cupos) el catálogo estorba más que ayuda */
 .marco.ancho{grid-template-columns:1fr}
 .marco.ancho #panelMaterias{display:none}
+
+/* ---------- Planeador de semestres futuros ---------- */
+.plan-cols{display:flex; gap:10px; padding:14px 16px; overflow-x:auto}
+.plan-col{min-width:200px; max-width:220px; flex:0 0 auto; display:flex; flex-direction:column;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel)}
+.plan-col .pc-cab{display:flex; align-items:center; gap:6px; padding:8px 10px;
+  border-bottom:1px solid var(--cuadricula); background:var(--blanco); border-radius:var(--radio) var(--radio) 0 0}
+.plan-col .pc-cab input.pc-nombre{flex:1; min-width:0; font:700 .8rem "Archivo",sans-serif; border:0; background:none; color:var(--tinta)}
+.plan-col .pc-cab input.pc-nombre:focus{outline:none}
+
+/* El tope de créditos de cada semestre se ve como texto y se edita al pasar el ratón */
+.plan-col .pc-cred{
+  display:inline-flex; align-items:center;
+  font-family:"IBM Plex Mono",monospace; font-size:.68rem; color:var(--tinta-suave); white-space:nowrap;
+}
+.plan-col .pc-cred .pc-actual{font-weight:700; color:var(--tinta)}
+.plan-col .pc-cred.tope .pc-actual{color:var(--rojo)}
+.plan-col .pc-cred .pc-sep{margin:0 2px; opacity:.5}
+.plan-col .pc-tope{
+  width:32px; font:700 .68rem "IBM Plex Mono",monospace;
+  border:1.5px solid transparent; border-radius:3px; background:transparent;
+  color:inherit; padding:1px 2px; text-align:center;
+  -moz-appearance:textfield;
+}
+.plan-col .pc-tope::-webkit-outer-spin-button,
+.plan-col .pc-tope::-webkit-inner-spin-button{-webkit-appearance:none; margin:0}
+.plan-col .pc-tope:hover{border-color:var(--cuadricula); background:var(--blanco)}
+.plan-col .pc-tope:focus{outline:none; border-color:var(--azul); background:var(--blanco); color:var(--tinta)}
+
+.plan-col .pc-quitar{border:0; background:none; color:var(--tinta-suave); cursor:pointer; font-size:.85rem}
+.plan-col .pc-quitar:hover{color:var(--rojo)}
+.plan-item{display:flex; align-items:flex-start; gap:6px; padding:6px 8px; margin:6px 8px 0;
+  border:1.5px solid var(--cuadricula); border-left-width:4px; border-radius:4px; background:var(--blanco); font-size:.76rem}
+.plan-item.comp-B{border-left-color:var(--ambar)}
+.plan-item.comp-C{border-left-color:var(--azul)}
+.plan-item.comp-L{border-left-color:#8A4FBF}
+.plan-item.bloq{background:var(--ambar-claro)}
+.plan-item .pi-t{flex:1; min-width:0}
+.plan-item .pi-t b{display:block; font-weight:600}
+.plan-item .pi-t span{font-family:"IBM Plex Mono",monospace; font-size:.64rem; color:var(--tinta-suave)}
+.plan-item .pi-warn{display:block; font-size:.64rem; color:var(--ambar); margin-top:2px}
+.plan-item .pi-x{border:0; background:none; cursor:pointer; color:var(--tinta-suave); font-size:.8rem}
+.plan-item .pi-x:hover{color:var(--rojo)}
+.plan-col select{margin:8px; font:500 .74rem "Archivo",sans-serif; padding:5px 6px;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco)}
+.plan-acciones{display:flex; gap:8px; flex-wrap:wrap; padding:0 16px 14px; align-items:center}
+.plan-acciones button{font:600 .78rem "Archivo",sans-serif; padding:6px 12px;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta); cursor:pointer}
+.plan-acciones button:hover{border-color:var(--tinta-suave)}
+
+/* Input del tope global junto a los botones del planeador */
+.plan-acciones .plan-tope{
+  display:inline-flex; align-items:center; gap:6px;
+  font:600 .78rem "Archivo",sans-serif; color:var(--tinta-suave);
+}
+.plan-acciones .plan-tope input{
+  width:56px; font:700 .78rem "IBM Plex Mono",monospace;
+  padding:5px 6px; border:1.5px solid var(--cuadricula); border-radius:var(--radio);
+  background:var(--papel); color:var(--tinta); text-align:center;
+  -moz-appearance:textfield;
+}
+.plan-acciones .plan-tope input::-webkit-outer-spin-button,
+.plan-acciones .plan-tope input::-webkit-inner-spin-button{-webkit-appearance:none; margin:0}
+.plan-acciones .plan-tope input:focus{outline:none; border-color:var(--azul)}
 
 /* ---------- Impresión ---------- */
 @page{size:A4 portrait; margin:12mm}
@@ -553,7 +618,7 @@ section.panel[hidden]{display:none!important}
   h1 small{color:var(--tinta-suave); letter-spacing:.18em}
   .estado, #btnImprimir, .tabs{display:none}
   .marco{display:block; max-width:none; padding:10px 0 0}
-  #panelMaterias, #panelTendencias, #panelAvance, #panelGenerador, footer{display:none!important}
+  #panelMaterias, #panelTendencias, #panelAvance, #panelPlaneador, #panelGenerador, footer{display:none!important}
   section.panel{border:none; box-shadow:none; overflow:visible}
   .panel > .titulo{padding:0 0 6px}
   .resumen{padding:8px 0; border-bottom:none; font-size:.72rem}
@@ -713,6 +778,27 @@ section.panel[hidden]{display:none!important}
       <span><i style="opacity:.55"></i>Te falta prerrequisito</span>
       <span class="mono">Borde: <b style="color:var(--ambar)">■</b> fundamentación · <b style="color:var(--azul)">■</b> disciplinar · <b style="color:#00A5E0">■</b> libre elección · <b style="color:#8A4FBF">■</b> nivelación</span>
       <span><i style="border-style:dashed"></i>Casilla flexible (electiva u optativa)</span>
+    </div>
+  </section>
+
+  <!-- Planeador de semestres futuros -->
+  <section class="panel" id="panelPlaneador" aria-label="Planear los semestres que faltan">
+    <div class="titulo"><h2>Planear lo que falta</h2><span class="dato" id="planResumen"></span></div>
+    <p class="gen-ayuda" style="padding:10px 16px 0">
+      Agrega a cada semestre las materias que piensas ver. Si a alguna le falta un prerrequisito
+      o créditos que todavía no pusiste antes, queda marcada en ámbar (no se bloquea: puede que
+      ya la tengas homologada). Las materias de nivelación no aparecen aquí.
+    </p>
+    <div class="plan-cols" id="planCols"></div>
+    <div class="plan-acciones">
+      <button type="button" id="btnPlanAuto">Autocompletar</button>
+      <label class="plan-tope" for="planTopeGlobal">
+        Máx. créditos/semestre
+        <input type="number" id="planTopeGlobal" min="1" max="60" step="1" value="24"
+               inputmode="numeric" aria-label="Tope de créditos por semestre">
+      </label>
+      <button type="button" id="btnPlanSemestre">+ Agregar semestre</button>
+      <button type="button" id="btnPlanVaciar">Vaciar plan</button>
     </div>
   </section>
 
@@ -1866,7 +1952,8 @@ function alternarAprobada(cod){
   const seMarca = !APROBADAS.has(cod);
   if(APROBADAS.has(cod)) APROBADAS.delete(cod); else APROBADAS.add(cod);
   avanceAlmacen.guardar(APROBADAS);
-  pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista();
+  if(seMarca){ for(const s of PLAN) s.items = s.items.filter(x=>x!==cod); planAlmacen.guardar(PLAN); }
+  pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista(); pintarPlaneador();
   evento(seMarca ? 'marcar_aprobada' : 'desmarcar_aprobada', {codigo: cod});
 }
 
@@ -2116,7 +2203,8 @@ function aprobarHasta(sem){
   for(const [cod,d] of Object.entries(PENSUM)) if(!d.opt && d.sem<=sem) APROBADAS.add(cod);
   for(const r of RANURAS) if(r.sem<=sem) APROBADAS.add(r.id);
   avanceAlmacen.guardar(APROBADAS);
-  pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista();
+  for(const s of PLAN) s.items = s.items.filter(x=>!APROBADAS.has(x)); planAlmacen.guardar(PLAN);
+  pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista(); pintarPlaneador();
   evento('aprobar_hasta_semestre', {semestre: sem});
 }
 
@@ -3193,13 +3281,266 @@ function pintarGrafico(){
   });
 }
 
+/* ================= Planeador de semestres futuros =================
+   Mismo universo de "casillas" que la mini-malla (PENSUM sin las opt + RANURAS),
+   pero editable hacia adelante: el usuario decide en qué semestre futuro pone
+   cada una. Los prerrequisitos y los requisitos por créditos se comprueban
+   contra lo YA aprobado más lo que puso en semestres ANTERIORES del plan
+   (nunca del mismo semestre: eso sería inscribirlo en paralelo). No bloquea,
+   solo avisa —igual que el resto de la página— porque puede haber
+   homologaciones que el pensum no conoce.
+
+   Las materias de nivelación (sem 0) quedan fuera: no son parte del plan
+   profesional y solo estorban en la proyección hacia adelante. */
+const planAlmacen = {
+  leer(){
+    try{
+      const v = JSON.parse(localStorage.getItem("planFuturoUNAL")||"null");
+      const p = (Array.isArray(v) && v.length) ? v : [{nombre:"Semestre 1", items:[]}];
+      // Barrido: si alguien tenía nivelación guardada de una versión anterior,
+      // se descarta en silencio.
+      let cambio = false;
+      for(const s of p){
+        if(!Array.isArray(s.items)){ s.items = []; cambio = true; continue; }
+        const limpio = s.items.filter(id => !esNivelacion(id));
+        if(limpio.length !== s.items.length){ s.items = limpio; cambio = true; }
+      }
+      if(!p.length) p.push({nombre:"Semestre 1", items:[]});
+      if(cambio) planAlmacen.guardar(p);
+      return p;
+    }catch(e){ return [{nombre:"Semestre 1", items:[]}]; }
+  },
+  guardar(v){ try{ localStorage.setItem("planFuturoUNAL", JSON.stringify(v)); }catch(e){} }
+};
+let PLAN = planAlmacen.leer();
+
+/* ================= Topes de créditos del planeador =================
+   TOPE_PLAN es el tope global; cada semestre puede sobrescribirlo con su
+   propio campo `tope`. TOPE_CREDITOS (24) se queda intacto para el aviso del
+   horario real, que sí depende del PAPA en el SIA. */
+let TOPE_PLAN = (()=>{
+  try{
+    const v = Number(localStorage.getItem("planTopeUNAL"));
+    return Number.isFinite(v) && v >= 1 ? v : TOPE_CREDITOS;
+  }catch(e){ return TOPE_CREDITOS; }
+})();
+function guardarTopePlan(v){
+  TOPE_PLAN = v;
+  try{ localStorage.setItem("planTopeUNAL", String(v)); }catch(e){}
+}
+/* Tope efectivo de un semestre: el propio si lo tiene, si no el global. */
+const topeDe = sem => (Number.isFinite(sem.tope) && sem.tope >= 1) ? sem.tope : TOPE_PLAN;
+
+/* Las materias de nivelación (sem 0) no forman parte del plan profesional:
+   quedan fuera del planeador, del autocompletar y del selector de agregar. */
+const esNivelacion = id => {
+  const d = PENSUM[id];
+  return !!d && d.sem === 0;
+};
+
+function itemsPlaneables(){
+  const out = [];
+  for(const [cod,d] of Object.entries(PENSUM)){
+    // ni optativas sueltas ni nivelación: solo el plan profesional
+    if(d.opt || d.sem === 0) continue;
+    out.push({id:cod, tipo:"asig", ...d});
+  }
+  for(const r of RANURAS) out.push({id:r.id, tipo:"ranura", ...r});
+  return out;
+}
+function itemPorId(id){
+  if(PENSUM[id] && !PENSUM[id].opt) return {id, tipo:"asig", ...PENSUM[id]};
+  if(RANURA[id]) return {id, tipo:"ranura", ...RANURA[id]};
+  return null;
+}
+
+/* Créditos acumulados (por componente) justo antes del semestre semIdx del plan. */
+function creditosHastaPlan(semIdx){
+  const t = {...creditosAprobados()};
+  for(let i=0;i<semIdx;i++) for(const id of PLAN[i].items){
+    const it = itemPorId(id); if(!it) continue;
+    t[it.comp] = (t[it.comp]||0) + it.cr;
+    t.TOT += it.cr;
+  }
+  return t;
+}
+/* Códigos "disponibles" (aprobados + puestos antes) al llegar al semestre semIdx. */
+function codigosHastaPlan(semIdx){
+  const s = new Set(APROBADAS);
+  for(let i=0;i<semIdx;i++) for(const id of PLAN[i].items) s.add(id);
+  return s;
+}
+/* ¿Se puede poner este item en este semestre del plan? Nunca bloquea —solo
+   avisa—, igual que el resto de la página: puede haber homologaciones. */
+function evaluarEnPlan(id, semIdx){
+  const it = itemPorId(id); if(!it) return {ok:true, faltan:[], ca:null};
+  const previos = codigosHastaPlan(semIdx);
+  const faltan = [];
+  for(const r of (it.req||[])){
+    const ops = [].concat(r);
+    if(!ops.some(o=>previos.has(o))) faltan.push(ops);
+  }
+  let ca = null;
+  if(it.ca){
+    const tengo = creditosHastaPlan(semIdx)[it.ca.comp] || 0;
+    if(tengo < it.ca.n) ca = {...it.ca, tengo, faltan: it.ca.n - tengo};
+  }
+  return {ok: faltan.length===0 && !ca, faltan, ca};
+}
+
+function pintarPlaneador(){
+  const cont = $("#planCols"); if(!cont) return;
+  cont.innerHTML = "";
+  const usados = new Set(PLAN.flatMap(s=>s.items));
+  let totalCr = 0;
+
+  PLAN.forEach((sem, i)=>{
+    const col = document.createElement("div"); col.className="plan-col";
+    const tope    = topeDe(sem);
+    const credCol = sem.items.reduce((t,id)=>t+(itemPorId(id)?.cr||0),0);
+    totalCr += credCol;
+
+    col.innerHTML = `<div class="pc-cab">
+      <input type="text" class="pc-nombre" value="${esc(sem.nombre)}" aria-label="Nombre del semestre">
+      <span class="pc-cred ${credCol>tope?'tope':''}" title="Créditos del semestre / tope">
+        <span class="pc-actual">${credCol}</span><span class="pc-sep">/</span><input
+          type="number" class="pc-tope" value="${tope}" min="1" max="60" step="1"
+          aria-label="Tope de créditos del semestre"
+          title="Máximo de créditos para este semestre">
+      </span>
+      <button type="button" class="pc-quitar" title="Quitar este semestre" aria-label="Quitar semestre">✕</button>
+    </div>`;
+
+    col.querySelector(".pc-nombre").addEventListener("change", e=>{
+      sem.nombre = e.target.value || sem.nombre; planAlmacen.guardar(PLAN);
+    });
+
+    /* Cambiar el tope de un semestre recalcula el plan entero: el autocompletado
+       vuelve a repartir las materias respetando el nuevo techo. */
+    col.querySelector(".pc-tope").addEventListener("change", e=>{
+      const v = Math.max(1, Math.min(60, Math.round(Number(e.target.value)||TOPE_PLAN)));
+      sem.tope = v;
+      planAlmacen.guardar(PLAN);
+      autocompletarPlan();                        // ya llama a pintarPlaneador()
+      evento('cambiar_tope_semestre_plan', {tope:v, semestre:i});
+    });
+
+    col.querySelector(".pc-quitar").addEventListener("click", ()=>{
+      if(sem.items.length && !confirm("Este semestre tiene materias. ¿Quitarlo de todas formas?")) return;
+      PLAN.splice(i,1);
+      if(!PLAN.length) PLAN.push({nombre:"Semestre 1", items:[]});
+      planAlmacen.guardar(PLAN); pintarPlaneador();
+    });
+
+    for(const id of sem.items){
+      const it = itemPorId(id); if(!it) continue;
+      const ev = evaluarEnPlan(id, i);
+      const div = document.createElement("div");
+      div.className = `plan-item comp-${it.comp}${ev.ok?"":" bloq"}`;
+      const warn = ev.ok ? "" : `<span class="pi-warn">${
+        ev.faltan.length ? "Falta antes: "+ev.faltan.map(listaOps).join(", ") : ""
+      }${ev.ca ? " "+textoCA(ev.ca) : ""}</span>`;
+      div.innerHTML = `<span class="pi-t"><b>${esc(it.nom)}</b><span>${it.tipo==="asig"?id+" · ":""}${it.cr} cr</span>${warn}</span>
+        <button type="button" class="pi-x" aria-label="Quitar ${esc(it.nom)}">✕</button>`;
+      div.querySelector(".pi-x").addEventListener("click", ()=>{
+        sem.items = sem.items.filter(x=>x!==id);
+        planAlmacen.guardar(PLAN); pintarPlaneador();
+      });
+      col.appendChild(div);
+    }
+
+    const sel = document.createElement("select");
+    sel.innerHTML = `<option value="">+ agregar materia…</option>`;
+    itemsPlaneables()
+      .filter(it => !APROBADAS.has(it.id) && !usados.has(it.id))
+      .filter(it => !(it.tipo==="ranura" && asignacionRanuras().has(it.id)))
+      .sort((a,b)=>a.nom.localeCompare(b.nom,"es"))
+      .forEach(it => sel.insertAdjacentHTML("beforeend", `<option value="${it.id}">${esc(it.nom)} (${it.cr} cr)</option>`));
+    sel.addEventListener("change", ()=>{
+      if(!sel.value) return;
+      sem.items.push(sel.value);
+      planAlmacen.guardar(PLAN); pintarPlaneador();
+      evento('agregar_a_plan_futuro', {id: sel.value, semestre: i});
+    });
+    col.appendChild(sel);
+    cont.appendChild(col);
+  });
+
+  $("#planResumen").textContent = `${PLAN.length} semestre(s) planeados · ${totalCr} créditos en total`;
+}
+
+/* Reparte de una vez todo lo pendiente, semestre a semestre, priorizando lo
+   que más desbloquea (mismo criterio que el orden "prioridad" del catálogo) y
+   sin pasarse del tope de créditos de cada semestre (el suyo si lo tiene, si
+   no el global). Conserva los nombres de semestres que ya existían y crea los
+   que hagan falta. */
+function autocompletarPlan(){
+  for(const s of PLAN) s.items = [];
+  let pendientes = itemsPlaneables()
+    .filter(it => !APROBADAS.has(it.id))
+    .filter(it => !(it.tipo==="ranura" && asignacionRanuras().has(it.id)));
+
+  let i = 0, vueltasSinAvance = 0;
+  while(pendientes.length && vueltasSinAvance <= 2){
+    if(!PLAN[i]) PLAN.push({nombre:`Semestre ${PLAN.length+1}`, items:[]});
+    const sem  = PLAN[i];
+    const tope = topeDe(sem);
+    let credCol = 0;
+    const candidatas = pendientes
+      .filter(it => evaluarEnPlan(it.id, i).ok)
+      .sort((a,b)=> (b.tipo==="asig"?alcance(b.id):0) - (a.tipo==="asig"?alcance(a.id):0));
+    let avanzo = false;
+    for(const it of candidatas){
+      if(credCol + it.cr > tope) continue;
+      sem.items.push(it.id); credCol += it.cr; avanzo = true;
+      pendientes = pendientes.filter(p=>p.id!==it.id);
+    }
+    vueltasSinAvance = avanzo ? 0 : vueltasSinAvance+1;
+    i++;
+  }
+  if(pendientes.length) alert(
+    `${pendientes.length} materia(s) no se pudieron ubicar automáticamente ` +
+    `(puede que su prerrequisito no esté ni aprobado ni en el plan). Agrégalas a mano.`
+  );
+  planAlmacen.guardar(PLAN); pintarPlaneador();
+  evento('autocompletar_plan_futuro', {semestres: PLAN.length});
+}
+
+$("#btnPlanAuto").addEventListener("click", autocompletarPlan);
+$("#btnPlanSemestre").addEventListener("click", ()=>{
+  PLAN.push({nombre:`Semestre ${PLAN.length+1}`, items:[]});
+  planAlmacen.guardar(PLAN); pintarPlaneador();
+});
+$("#btnPlanVaciar").addEventListener("click", ()=>{
+  if(!confirm("Se borrará todo el plan de semestres futuros. ¿Sigo?")) return;
+  PLAN = [{nombre:"Semestre 1", items:[]}];
+  planAlmacen.guardar(PLAN); pintarPlaneador();
+});
+
+/* Tope global del planeador. Al cambiarlo, los semestres que no tenían tope
+   propio lo heredan y el plan se re-reparte; los que sí lo tenían lo conservan. */
+(function topeGlobal(){
+  const inp = $("#planTopeGlobal");
+  if(!inp) return;
+  inp.value = TOPE_PLAN;
+  inp.addEventListener("change", ()=>{
+    const v = Math.max(1, Math.min(60, Math.round(Number(inp.value)||TOPE_CREDITOS)));
+    inp.value = v;
+    guardarTopePlan(v);
+    autocompletarPlan();
+    evento('cambiar_tope_global_plan', {tope:v});
+  });
+})();
+
+pintarPlaneador();
+
 /* ================= Navegación por pestañas =================
    Una sola vista visible a la vez. El catálogo de asignaturas se queda fijo
    en las vistas donde se usa (armar el horario a mano y elegir candidatas), y
    se retira en las panorámicas (la malla y las gráficas de cupos), que
    agradecen todo el ancho. */
 const VISTAS = {
-  horario:   {paneles:["#panelHorario","#panelAvance"], lado:true },
+  horario:   {paneles:["#panelHorario","#panelAvance","#panelPlaneador"], lado:true },
   generador: {paneles:["#panelGenerador"],              lado:false},
   cupos:     {paneles:["#panelTendencias"],             lado:false}
 };
@@ -3302,7 +3643,7 @@ $("#soloDisponibles").addEventListener("change", ()=>{ pintarLista(); evento('fi
     if(!confirm("Se borrarán todas las asignaturas que marcaste como aprobadas. ¿Sigo?")) return;
     APROBADAS = new Set();
     avanceAlmacen.guardar(APROBADAS);
-    pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista();
+    pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista(); pintarPlaneador();
     evento('limpiar_avance');
   });
 })();
