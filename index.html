@@ -415,6 +415,30 @@ footer a{color:var(--azul)}
 .malla .caja.ranura.comp-L{border-left-color:#00A5E0}
 .malla .caja[disabled]{cursor:default; opacity:1}
 .malla .caja[disabled] .c{font-style:normal; color:var(--verde)}
+
+/* Marcas del plan futuro sobre una caja de la malla. El color se pasa por
+   variables CSS desde pintarAvance: --plan-color es el tono saturado (borde
+   derecho y etiqueta) y --plan-bg su versión blanqueada para el fondo. */
+.malla .caja.en-plan{
+  position: relative;
+  padding-right: 32px;
+  border-right: 4px solid var(--plan-color);
+  background: var(--plan-bg);
+}
+.malla .caja.en-plan.ok{background: var(--plan-bg)}
+.malla .caja.en-plan.encurso{background: var(--plan-bg)}
+.malla .caja.en-plan::after{
+  content: attr(data-plan-badge);
+  position: absolute;
+  top: 2px; right: 3px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: .55rem; font-weight: 700; line-height: 1.6;
+  padding: 0 5px;
+  border-radius: 99px;
+  background: var(--plan-color);
+  color: #fff;
+  letter-spacing: .02em;
+}
 .leyenda{display:flex; flex-wrap:wrap; gap:6px 16px; padding:0 16px 14px; font-size:.74rem; color:var(--tinta-suave)}
 .leyenda span{display:inline-flex; align-items:center; gap:5px}
 .leyenda i{width:12px; height:12px; border-radius:3px; border:1.5px solid var(--cuadricula); display:inline-block}
@@ -553,6 +577,15 @@ section.panel[hidden]{display:none!important}
 .plan-col .pc-cab input.pc-nombre{flex:1; min-width:0; font:700 .8rem "Archivo",sans-serif; border:0; background:none; color:var(--tinta)}
 .plan-col .pc-cab input.pc-nombre:focus{outline:none}
 
+/* El puntito de color de la cabecera del semestre planeado. Se rellena desde
+   pintarPlaneador con --plan-color y coincide con el color que usan las
+   materias de ese mismo semestre dentro de la malla del pensum. */
+.plan-col .pc-cab .pc-dot{
+  flex: 0 0 auto; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--plan-color, var(--cuadricula));
+  box-shadow: 0 0 0 1.5px var(--blanco) inset;
+}
+
 /* El tope de créditos de cada semestre se ve como texto y se edita al pasar el ratón */
 .plan-col .pc-cred{
   display:inline-flex; align-items:center;
@@ -586,8 +619,12 @@ section.panel[hidden]{display:none!important}
 .plan-item .pi-warn{display:block; font-size:.64rem; color:var(--ambar); margin-top:2px}
 .plan-item .pi-x{border:0; background:none; cursor:pointer; color:var(--tinta-suave); font-size:.8rem}
 .plan-item .pi-x:hover{color:var(--rojo)}
+
+/* El selector de "+ agregar materia…" del planeador y sus mensajes */
 .plan-col select{margin:8px; font:500 .74rem "Archivo",sans-serif; padding:5px 6px;
-  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco)}
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco); color:var(--tinta)}
+.plan-col select:disabled{opacity:.65; cursor:not-allowed; font-style:italic}
+
 .plan-acciones{display:flex; gap:8px; flex-wrap:wrap; padding:0 16px 14px; align-items:center}
 .plan-acciones button{font:600 .78rem "Archivo",sans-serif; padding:6px 12px;
   border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta); cursor:pointer}
@@ -778,6 +815,7 @@ section.panel[hidden]{display:none!important}
       <span><i style="opacity:.55"></i>Te falta prerrequisito</span>
       <span class="mono">Borde: <b style="color:var(--ambar)">■</b> fundamentación · <b style="color:var(--azul)">■</b> disciplinar · <b style="color:#00A5E0">■</b> libre elección · <b style="color:#8A4FBF">■</b> nivelación</span>
       <span><i style="border-style:dashed"></i>Casilla flexible (electiva u optativa)</span>
+      <span class="mono">Planeada: la etiqueta <b>P1</b>, <b>P2</b>… marca el semestre en «Planear lo que falta».</span>
     </div>
   </section>
 
@@ -787,7 +825,11 @@ section.panel[hidden]{display:none!important}
     <p class="gen-ayuda" style="padding:10px 16px 0">
       Agrega a cada semestre las materias que piensas ver. Si a alguna le falta un prerrequisito
       o créditos que todavía no pusiste antes, queda marcada en ámbar (no se bloquea: puede que
-      ya la tengas homologada). Las materias de nivelación no aparecen aquí.
+      ya la tengas homologada). Las materias de nivelación no aparecen aquí, y en «+ agregar
+      materia…» solo se ofrecen las que ya cumplen prerrequisitos con lo que llevas marcado.
+      Cada semestre tiene su color (el puntito de su cabecera): en el pensum de arriba las materias
+      planeadas aparecen pintadas con ese color y la etiqueta <span class="mono">P1</span>,
+      <span class="mono">P2</span>…
     </p>
     <div class="plan-cols" id="planCols"></div>
     <div class="plan-acciones">
@@ -871,6 +913,22 @@ const $ = s => document.querySelector(s);
 const REPO_RAW = "https://raw.githubusercontent.com/aroberto-ux/horarios_unal/main/";
 const DIAS = ["LUNES","MARTES","MIÉRCOLES","JUEVES","VIERNES","SÁBADO"];
 const PALETA = ["#2B5DA8","#147A46","#8A4FBF","#B36F06","#0E7C86","#A63D6F","#5A6B2F","#7A4A21"];
+
+/* Paleta de los semestres del plan futuro. Se usa en dos sitios que deben
+   coincidir visualmente:
+     · el puntito de color de la cabecera de cada columna del planeador,
+     · el borde derecho y la etiqueta «P1», «P2»… de las cajas de la malla. */
+const PALETA_PLAN = [
+  "#2B5DA8", "#147A46", "#8A4FBF", "#B36F06", "#0E7C86", "#A63D6F",
+  "#5A6B2F", "#7A4A21", "#4B3B8F", "#0A6E4A", "#B3372E", "#3F5B8B"
+];
+/* Mezcla un hex con blanco. f=0 deja el color tal cual; f=1 lo blanquea. */
+function aclarar(hex, f){
+  const h = String(hex).replace("#","");
+  const r = parseInt(h.slice(0,2),16), g = parseInt(h.slice(2,4),16), b = parseInt(h.slice(4,6),16);
+  const m = x => Math.round(x + (255-x)*f);
+  return `rgb(${m(r)},${m(g)},${m(b)})`;
+}
 
 /* ---- Analítica: helper único para no repetir el chequeo de gtag ---- */
 function evento(nombre, params){
@@ -2103,11 +2161,33 @@ function pintarAvisosPlan(creditos){
 }
 
 /* ================= Mini-malla y avance ================= */
+
+/* Marca en una caja de la malla las del plan futuro: borde derecho con el
+   color del semestre en «Planear lo que falta», fondo blanqueado con ese
+   color y una etiqueta «P1», «P2»… en la esquina superior derecha. El color
+   se pasa por variables CSS para que coincida con el puntito de la cabecera
+   de esa misma columna. */
+function marcarPlanEnCaja(b, pi){
+  if(pi == null) return;
+  const c = PALETA_PLAN[pi % PALETA_PLAN.length];
+  b.classList.add("en-plan");
+  b.style.setProperty("--plan-color", c);
+  b.style.setProperty("--plan-bg", aclarar(c, 0.88));
+  b.dataset.planBadge = `P${pi+1}`;
+  b.title = (b.title ? b.title + " · " : "") + `Planeada en el semestre ${pi+1} de «Planear lo que falta».`;
+}
+
 function pintarAvance(){
   const cont = $("#malla"); if(!cont) return;
   const t = creditosAprobados();
   const enHorario = codigosSeleccion();
   const cubiertas = asignacionRanuras();
+
+  /* Mapa id -> índice de semestre planeado. Se reconstruye en cada repintado
+     de la malla, así que cualquier cambio del planeador (agregar, quitar,
+     autocompletar) se refleja al instante. */
+  const planIdx = new Map();
+  PLAN.forEach((sem, i) => sem.items.forEach(id => planIdx.set(id, i)));
 
   // Barras por componente
   const barras = $("#barrasAvance");
@@ -2147,14 +2227,14 @@ function pintarAvance(){
     });
     for(const it of items){
       col.appendChild(it.tipo==="asig"
-        ? cajaAsignatura(it.cod, it.d, enHorario)
-        : cajaRanura(it.r, cubiertas, enHorario));
+        ? cajaAsignatura(it.cod, it.d, enHorario, planIdx)
+        : cajaRanura(it.r, cubiertas, enHorario, planIdx));
     }
     cont.appendChild(col);
   }
 }
 
-function cajaAsignatura(cod, d, enHorario){
+function cajaAsignatura(cod, d, enHorario, planIdx){
   const ev = evaluar(cod);
   const b = document.createElement("button");
   b.type="button"; b.className=`caja comp-${d.comp}`;
@@ -2165,11 +2245,12 @@ function cajaAsignatura(cod, d, enHorario){
     : ev.faltan.length ? "Falta: " + ev.faltan.map(listaOps).join(", ")
     : ev.ca ? "Falta: " + textoCA(ev.ca)
     : "Puedes inscribirla";
+  marcarPlanEnCaja(b, planIdx ? planIdx.get(cod) : undefined);
   b.addEventListener("click", ()=>alternarAprobada(cod));
   return b;
 }
 
-function cajaRanura(r, cubiertas, enHorario){
+function cajaRanura(r, cubiertas, enHorario, planIdx){
   const ev = evaluarRanura(r, cubiertas);
   const b = document.createElement("button");
   b.type="button"; b.className=`caja ranura comp-${r.comp}`;
@@ -2193,6 +2274,7 @@ function cajaRanura(r, cubiertas, enHorario){
       : "Márcala cuando apruebes una electiva que ocupe esta casilla";
     b.addEventListener("click", ()=>alternarAprobada(r.id));
   }
+  marcarPlanEnCaja(b, planIdx ? planIdx.get(r.id) : undefined);
   return b;
 }
 
@@ -3400,7 +3482,14 @@ function pintarPlaneador(){
     const credCol = sem.items.reduce((t,id)=>t+(itemPorId(id)?.cr||0),0);
     totalCr += credCol;
 
+    /* El puntito de la cabecera lleva el color de este semestre planeado,
+       el mismo que usará la malla del pensum para las materias que están
+       aquí. Se pasa como variable CSS. */
+    const colorPlan = PALETA_PLAN[i % PALETA_PLAN.length];
+    col.style.setProperty("--plan-color", colorPlan);
+
     col.innerHTML = `<div class="pc-cab">
+      <span class="pc-dot" aria-hidden="true" title="Color del semestre planeado"></span>
       <input type="text" class="pc-nombre" value="${esc(sem.nombre)}" aria-label="Nombre del semestre">
       <span class="pc-cred ${credCol>tope?'tope':''}" title="Créditos del semestre / tope">
         <span class="pc-actual">${credCol}</span><span class="pc-sep">/</span><input
@@ -3449,13 +3538,28 @@ function pintarPlaneador(){
       col.appendChild(div);
     }
 
-    const sel = document.createElement("select");
-    sel.innerHTML = `<option value="">+ agregar materia…</option>`;
-    itemsPlaneables()
+    /* Selector de "+ agregar materia…". Solo se ofrecen las materias cuyos
+       prerrequisitos ya están cubiertos por lo aprobado más lo puesto en
+       semestres ANTERIORES de este plan (evaluarEnPlan con el índice del
+       semestre actual hace exactamente eso). Así no se puede meter una
+       materia a la fuerza en un semestre donde todavía no la puedes ver.
+       El usuario sigue pudiendo reorganizar lo que ya esté puesto. */
+    const opciones = itemsPlaneables()
       .filter(it => !APROBADAS.has(it.id) && !usados.has(it.id))
       .filter(it => !(it.tipo==="ranura" && asignacionRanuras().has(it.id)))
-      .sort((a,b)=>a.nom.localeCompare(b.nom,"es"))
-      .forEach(it => sel.insertAdjacentHTML("beforeend", `<option value="${it.id}">${esc(it.nom)} (${it.cr} cr)</option>`));
+      .filter(it => evaluarEnPlan(it.id, i).ok)
+      .sort((a,b)=>a.nom.localeCompare(b.nom,"es"));
+
+    const sel = document.createElement("select");
+    if(opciones.length){
+      sel.innerHTML = `<option value="">+ agregar materia…</option>`;
+      opciones.forEach(it => sel.insertAdjacentHTML("beforeend",
+        `<option value="${it.id}">${esc(it.nom)} (${it.cr} cr)</option>`));
+    }else{
+      sel.innerHTML = `<option value="">Sin materias disponibles todavía</option>`;
+      sel.disabled = true;
+      sel.title = "Aprueba o adelanta los prerrequisitos de otra materia en un semestre anterior para que aparezca aquí.";
+    }
     sel.addEventListener("change", ()=>{
       if(!sel.value) return;
       sem.items.push(sel.value);
@@ -3467,6 +3571,11 @@ function pintarPlaneador(){
   });
 
   $("#planResumen").textContent = `${PLAN.length} semestre(s) planeados · ${totalCr} créditos en total`;
+
+  /* Cada vez que el plan cambia, la malla del pensum se repinta para que las
+     materias planeadas aparezcan con su color y su etiqueta P1, P2… así el
+     usuario ve al instante el efecto de lo que acaba de agregar. */
+  pintarAvance();
 }
 
 /* Reparte de una vez todo lo pendiente, semestre a semestre, priorizando lo
