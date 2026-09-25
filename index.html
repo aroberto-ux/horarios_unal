@@ -629,6 +629,8 @@ section.panel[hidden]{display:none!important}
 .plan-acciones button{font:600 .78rem "Archivo",sans-serif; padding:6px 12px;
   border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta); cursor:pointer}
 .plan-acciones button:hover{border-color:var(--tinta-suave)}
+.plan-acciones button.primario{background:var(--tinta); color:var(--papel); border-color:var(--tinta)}
+.plan-acciones button.primario:hover{opacity:.88}
 
 /* Input del tope global junto a los botones del planeador */
 .plan-acciones .plan-tope{
@@ -677,6 +679,36 @@ section.panel[hidden]{display:none!important}
   #detalleImpresion th{background:var(--papel); font-size:.56rem; letter-spacing:.08em; text-transform:uppercase}
   #detalleImpresion thead{display:table-header-group}
   #detalleImpresion tr{break-inside:avoid; page-break-inside:avoid}
+
+  /* ----- Modo «imprimir plan»: solo el planeador, en rejilla -----
+     body.imprimir-plan lo activa el botón «Imprimir plan». Se sobreescribe
+     la regla general que ocultaba #panelPlaneador para que aparezca él y
+     desaparezca el resto. La rejilla se vuelve estática (grid de 3 col) en
+     vez de scroll horizontal, y se quitan los controles interactivos. */
+  body.imprimir-plan #panelPlaneador{display:block!important}
+  body.imprimir-plan #panelHorario,
+  body.imprimir-plan #panelAvance,
+  body.imprimir-plan #panelMaterias,
+  body.imprimir-plan #panelTendencias,
+  body.imprimir-plan #panelGenerador,
+  body.imprimir-plan footer{display:none!important}
+  body.imprimir-plan .plan-acciones{display:none}
+  body.imprimir-plan #panelPlaneador .gen-ayuda{display:none}
+  body.imprimir-plan .plan-cols{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:8px;
+    padding:6px 0; overflow:visible;
+  }
+  body.imprimir-plan .plan-col{min-width:0; max-width:none}
+  body.imprimir-plan .plan-col select{display:none}
+  body.imprimir-plan .plan-col .pc-quitar{display:none}
+  body.imprimir-plan .plan-col .pc-tope{
+    border:0!important; background:transparent!important; width:auto;
+    color:inherit; padding:0; text-align:left;
+  }
+  body.imprimir-plan .plan-col .pc-cab input.pc-nombre{
+    border:0; background:transparent; font-weight:700;
+  }
+  body.imprimir-plan .plan-item{break-inside:avoid; page-break-inside:avoid}
 }
 </style>
 </head>
@@ -823,17 +855,19 @@ section.panel[hidden]{display:none!important}
   <section class="panel" id="panelPlaneador" aria-label="Planear los semestres que faltan">
     <div class="titulo"><h2>Planear lo que falta</h2><span class="dato" id="planResumen"></span></div>
     <p class="gen-ayuda" style="padding:10px 16px 0">
-      Agrega a cada semestre las materias que piensas ver. Si a alguna le falta un prerrequisito
-      o créditos que todavía no pusiste antes, queda marcada en ámbar (no se bloquea: puede que
-      ya la tengas homologada). Las materias de nivelación no aparecen aquí, y en «+ agregar
-      materia…» solo se ofrecen las que ya cumplen prerrequisitos con lo que llevas marcado.
-      Cada semestre tiene su color (el puntito de su cabecera): en el pensum de arriba las materias
-      planeadas aparecen pintadas con ese color y la etiqueta <span class="mono">P1</span>,
-      <span class="mono">P2</span>…
+      Agrega a cada semestre las materias que piensas ver. El nombre por defecto de cada columna
+      es el periodo académico real (partiendo de <span class="mono">2026-2</span>), pero lo puedes
+      editar. Si a alguna materia le falta un prerrequisito o créditos que todavía no pusiste antes,
+      queda marcada en ámbar (no se bloquea: puede que ya la tengas homologada). Las materias de
+      nivelación no aparecen aquí, y en «+ agregar materia…» solo se ofrecen las que ya cumplen
+      prerrequisitos con lo que llevas marcado. Cada semestre tiene su color (el puntito de su
+      cabecera): en el pensum de arriba las materias planeadas aparecen pintadas con ese color
+      y la etiqueta <span class="mono">P1</span>, <span class="mono">P2</span>…
     </p>
     <div class="plan-cols" id="planCols"></div>
     <div class="plan-acciones">
       <button type="button" id="btnPlanAuto">Autocompletar</button>
+      <button type="button" id="btnImprimirPlan" class="primario" title="Imprime solo el plan; en el diálogo puedes elegir «Guardar como PDF»">Imprimir plan</button>
       <label class="plan-tope" for="planTopeGlobal">
         Máx. créditos/semestre
         <input type="number" id="planTopeGlobal" min="1" max="60" step="1" value="24"
@@ -929,6 +963,22 @@ function aclarar(hex, f){
   const m = x => Math.round(x + (255-x)*f);
   return `rgb(${m(r)},${m(g)},${m(b)})`;
 }
+
+/* ================= Periodo académico de los semestres planeados =================
+   El punto de partida es el semestre en curso. Para la UNAL, un año tiene dos
+   periodos: «-1» (enero–junio) y «-2» (julio–diciembre). Los semestres del
+   plan futuro se numeran desde aquí: el primero es el actual, el siguiente
+   el que viene, y así. */
+const PERIODO_BASE = {year: 2026, sem: 2};   // semestre actual: 2026-2
+function etiquetaPeriodo(idx){
+  const total = (PERIODO_BASE.year * 2 + (PERIODO_BASE.sem - 1)) + idx;
+  const y = Math.floor(total / 2);
+  const s = (total % 2) + 1;
+  return `${y}-${s}`;
+}
+/* Reconocer los nombres por defecto que venían de versiones anteriores, para
+   poder renombrarlos al nuevo formato. Los personalizados no se tocan. */
+const NOMBRE_POR_DEFECTO = /^Semestre\s+\d+$/i;
 
 /* ---- Analítica: helper único para no repetir el chequeo de gtag ---- */
 function evento(nombre, params){
@@ -2164,9 +2214,9 @@ function pintarAvisosPlan(creditos){
 
 /* Marca en una caja de la malla las del plan futuro: borde derecho con el
    color del semestre en «Planear lo que falta», fondo blanqueado con ese
-   color y una etiqueta «P1», «P2»… en la esquina superior derecha. El color
-   se pasa por variables CSS para que coincida con el puntito de la cabecera
-   de esa misma columna. */
+   color y una etiqueta con la inicial del periodo («2026-2» → «P1», etc.).
+   En realidad la etiqueta es «P1», «P2»… siguiendo el índice del semestre
+   planeado, para no meter texto largo en una caja de 96px. */
 function marcarPlanEnCaja(b, pi){
   if(pi == null) return;
   const c = PALETA_PLAN[pi % PALETA_PLAN.length];
@@ -2174,7 +2224,7 @@ function marcarPlanEnCaja(b, pi){
   b.style.setProperty("--plan-color", c);
   b.style.setProperty("--plan-bg", aclarar(c, 0.88));
   b.dataset.planBadge = `P${pi+1}`;
-  b.title = (b.title ? b.title + " · " : "") + `Planeada en el semestre ${pi+1} de «Planear lo que falta».`;
+  b.title = (b.title ? b.title + " · " : "") + `Planeada en ${etiquetaPeriodo(pi)} (semestre ${pi+1} del plan).`;
 }
 
 function pintarAvance(){
@@ -3378,19 +3428,24 @@ const planAlmacen = {
   leer(){
     try{
       const v = JSON.parse(localStorage.getItem("planFuturoUNAL")||"null");
-      const p = (Array.isArray(v) && v.length) ? v : [{nombre:"Semestre 1", items:[]}];
-      // Barrido: si alguien tenía nivelación guardada de una versión anterior,
-      // se descarta en silencio.
+      const p = (Array.isArray(v) && v.length) ? v : [{nombre: etiquetaPeriodo(0), items:[]}];
       let cambio = false;
-      for(const s of p){
-        if(!Array.isArray(s.items)){ s.items = []; cambio = true; continue; }
+      p.forEach((s, i) => {
+        if(!Array.isArray(s.items)){ s.items = []; cambio = true; }
+        // Nivelación: no entra al planeador.
         const limpio = s.items.filter(id => !esNivelacion(id));
         if(limpio.length !== s.items.length){ s.items = limpio; cambio = true; }
-      }
-      if(!p.length) p.push({nombre:"Semestre 1", items:[]});
+        // Nombre por defecto → etiqueta del periodo real (2026-2, 2027-1…).
+        // Si el usuario lo personalizó, se respeta tal cual.
+        if(!s.nombre || NOMBRE_POR_DEFECTO.test(s.nombre)){
+          const auto = etiquetaPeriodo(i);
+          if(s.nombre !== auto){ s.nombre = auto; cambio = true; }
+        }
+      });
+      if(!p.length) p.push({nombre: etiquetaPeriodo(0), items:[]});
       if(cambio) planAlmacen.guardar(p);
       return p;
-    }catch(e){ return [{nombre:"Semestre 1", items:[]}]; }
+    }catch(e){ return [{nombre: etiquetaPeriodo(0), items:[]}]; }
   },
   guardar(v){ try{ localStorage.setItem("planFuturoUNAL", JSON.stringify(v)); }catch(e){} }
 };
@@ -3490,7 +3545,8 @@ function pintarPlaneador(){
 
     col.innerHTML = `<div class="pc-cab">
       <span class="pc-dot" aria-hidden="true" title="Color del semestre planeado"></span>
-      <input type="text" class="pc-nombre" value="${esc(sem.nombre)}" aria-label="Nombre del semestre">
+      <input type="text" class="pc-nombre" value="${esc(sem.nombre)}" aria-label="Nombre del semestre"
+             title="Periodo académico por defecto: ${etiquetaPeriodo(i)} (editable)">
       <span class="pc-cred ${credCol>tope?'tope':''}" title="Créditos del semestre / tope">
         <span class="pc-actual">${credCol}</span><span class="pc-sep">/</span><input
           type="number" class="pc-tope" value="${tope}" min="1" max="60" step="1"
@@ -3501,7 +3557,7 @@ function pintarPlaneador(){
     </div>`;
 
     col.querySelector(".pc-nombre").addEventListener("change", e=>{
-      sem.nombre = e.target.value || sem.nombre; planAlmacen.guardar(PLAN);
+      sem.nombre = e.target.value || etiquetaPeriodo(i); planAlmacen.guardar(PLAN);
     });
 
     /* Cambiar el tope de un semestre recalcula el plan entero: el autocompletado
@@ -3517,7 +3573,7 @@ function pintarPlaneador(){
     col.querySelector(".pc-quitar").addEventListener("click", ()=>{
       if(sem.items.length && !confirm("Este semestre tiene materias. ¿Quitarlo de todas formas?")) return;
       PLAN.splice(i,1);
-      if(!PLAN.length) PLAN.push({nombre:"Semestre 1", items:[]});
+      if(!PLAN.length) PLAN.push({nombre: etiquetaPeriodo(0), items:[]});
       planAlmacen.guardar(PLAN); pintarPlaneador();
     });
 
@@ -3591,7 +3647,7 @@ function autocompletarPlan(){
 
   let i = 0, vueltasSinAvance = 0;
   while(pendientes.length && vueltasSinAvance <= 2){
-    if(!PLAN[i]) PLAN.push({nombre:`Semestre ${PLAN.length+1}`, items:[]});
+    if(!PLAN[i]) PLAN.push({nombre: etiquetaPeriodo(PLAN.length), items:[]});
     const sem  = PLAN[i];
     const tope = topeDe(sem);
     let credCol = 0;
@@ -3617,12 +3673,14 @@ function autocompletarPlan(){
 
 $("#btnPlanAuto").addEventListener("click", autocompletarPlan);
 $("#btnPlanSemestre").addEventListener("click", ()=>{
-  PLAN.push({nombre:`Semestre ${PLAN.length+1}`, items:[]});
+  const idx = PLAN.length;
+  PLAN.push({nombre: etiquetaPeriodo(idx), items:[]});
   planAlmacen.guardar(PLAN); pintarPlaneador();
+  evento('agregar_semestre_plan', {indice: idx, periodo: etiquetaPeriodo(idx)});
 });
 $("#btnPlanVaciar").addEventListener("click", ()=>{
   if(!confirm("Se borrará todo el plan de semestres futuros. ¿Sigo?")) return;
-  PLAN = [{nombre:"Semestre 1", items:[]}];
+  PLAN = [{nombre: etiquetaPeriodo(0), items:[]}];
   planAlmacen.guardar(PLAN); pintarPlaneador();
 });
 
@@ -3640,6 +3698,34 @@ $("#btnPlanVaciar").addEventListener("click", ()=>{
     evento('cambiar_tope_global_plan', {tope:v});
   });
 })();
+
+/* ---------- Botón «Imprimir plan» ----------
+   Imprime SOLO el panel del planeador, en modo rejilla (3 columnas), sin
+   botones, sin selects y sin la ayuda. Se activa con la clase
+   body.imprimir-plan, que la @media print usa para reescribir la visibilidad.
+   El nombre que el navegador propone al «Guardar como PDF» sale del <title>. */
+$("#btnImprimirPlan").addEventListener("click", ()=>{
+  const vacio = PLAN.every(s => !s.items.length);
+  if(vacio){
+    alert("El plan está vacío: agrega al menos una materia antes de imprimir.");
+    return;
+  }
+  irA("horario");                       // el planeador vive en la vista Horario
+  document.body.classList.add("imprimir-plan");
+  const tituloOriginal = document.title;
+  document.title = `Plan de estudios · ${PLAN.length} semestre(s)`;
+  evento('imprimir_plan_futuro', {
+    semestres: PLAN.length,
+    materias: PLAN.reduce((t,s)=>t+s.items.length, 0)
+  });
+  window.print();
+  // afterprint no es universalmente fiable; se limpia aquí y en el listener
+  document.body.classList.remove("imprimir-plan");
+  document.title = tituloOriginal;
+});
+window.addEventListener("afterprint", ()=>{
+  document.body.classList.remove("imprimir-plan");
+});
 
 pintarPlaneador();
 
