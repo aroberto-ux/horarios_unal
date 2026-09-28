@@ -551,6 +551,45 @@ footer a{color:var(--azul)}
 .gen-card ul .comp.libre{background:var(--verde-claro); color:var(--verde)}
 .gen-card ul .comp.prof-ok{background:var(--verde-claro); color:var(--verde)}
 
+/* ---------- Comparar horarios ---------- */
+.cmp-btn{width:100%; margin-top:6px; font:600 .78rem "Archivo",sans-serif; padding:6px; cursor:pointer;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta-suave)}
+.cmp-btn:hover{border-color:var(--tinta-suave)}
+.cmp-btn.on{border-color:var(--azul); background:var(--azul-claro); color:var(--azul)}
+.gen-comparar{padding:14px 16px; border-bottom:1px solid var(--cuadricula); background:var(--papel)}
+.gen-comparar[hidden]{display:none}
+.cmp-cab{display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:8px; font-size:.78rem; color:var(--tinta-suave)}
+.cmp-cab b{color:var(--tinta); letter-spacing:.06em; text-transform:uppercase; font-size:.8rem}
+.cmp-scroll{overflow-x:auto}
+.cmp-tabla{border-collapse:collapse; width:100%; min-width:520px; font-size:.78rem; background:var(--blanco)}
+.cmp-tabla th,.cmp-tabla td{border:1px solid var(--cuadricula); padding:6px 8px; text-align:left; vertical-align:top}
+.cmp-tabla th{background:var(--papel); font-weight:600}
+.cmp-tabla thead th{text-align:center}
+.cmp-tabla td.mejor{background:var(--verde-claro); color:var(--verde); font-weight:600}
+.cmp-tabla .gen-mini{min-width:150px; margin:0}
+.cmp-tabla button{font:600 .72rem "Archivo",sans-serif; padding:3px 9px; cursor:pointer; margin:4px 2px 0;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta-suave)}
+.cmp-tabla button:hover{border-color:var(--tinta-suave); color:var(--tinta)}
+.cmp-tabla button.usar-cmp{border-color:var(--azul); color:var(--azul)}
+
+/* ---------- Fecha estimada de grado ---------- */
+.plan-grado{margin:0 16px 10px; padding:9px 12px; font-size:.82rem; line-height:1.45;
+  border-left:3px solid var(--verde); background:var(--verde-claro); border-radius:0 var(--radio) var(--radio) 0}
+.plan-grado small{display:block; color:var(--tinta-suave); margin-top:2px; font-size:.74rem}
+
+/* ---------- Mis datos: respaldo y plan de estudios ---------- */
+.datos{max-width:1400px; margin:0 auto; padding:0 clamp(12px,3vw,32px) 10px}
+.datos > summary{cursor:pointer; font:700 .8rem "Archivo",sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--tinta-suave); padding:10px 0}
+.datos-cuerpo{display:grid; grid-template-columns:1fr 1fr; gap:14px 28px; background:var(--blanco);
+  border:1px solid var(--cuadricula); border-radius:var(--radio); padding:14px 16px; box-shadow:var(--sombra)}
+@media(max-width:900px){ .datos-cuerpo{grid-template-columns:1fr} }
+.datos-cuerpo h3{font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--tinta-suave); margin:0 0 6px}
+.datos-cuerpo button{font:600 .78rem "Archivo",sans-serif; padding:5px 12px; cursor:pointer; margin:0 6px 6px 0;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta)}
+.datos-cuerpo button:hover:not(:disabled){border-color:var(--tinta-suave)}
+.datos-cuerpo button:disabled{opacity:.5; cursor:not-allowed}
+#datosMsg{grid-column:1/-1; font-size:.78rem; color:var(--ambar); min-height:1em}
+
 /* ---------- Preferencias de profesor en el generador ---------- */
 .gen-prof{padding:14px 16px; border-top:1px solid var(--cuadricula)}
 .gen-prof h3{font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--tinta-suave); margin:0 0 8px}
@@ -827,6 +866,8 @@ section.panel[hidden]{display:none!important}
     <div class="titulo"><h2>Mi horario</h2>
       <div class="titulo-acciones">
         <span class="dato" id="totalCreditos">0 créditos</span>
+        <button type="button" id="btnCopiarEnlace" class="btn-ics"
+          title="Copia un enlace con tu horario para mandárselo a alguien">Copiar enlace</button>
         <button type="button" id="btnExportarICS" class="btn-ics"
           title="Descarga tus clases como archivo .ics para importarlas a Google Calendar, Outlook, Apple Calendar, etc.">Exportar a calendario</button>
       </div>
@@ -925,6 +966,7 @@ section.panel[hidden]{display:none!important}
       <label id="lblSinDias" hidden><input type="checkbox" id="genSinDias" checked> sin abrir días nuevos</label>
     </div>
     <div id="genEstado"></div>
+    <div class="gen-comparar" id="genComparar" hidden></div>
     <div class="gen-res" id="genResultados"></div>
   </section>
 
@@ -966,6 +1008,7 @@ section.panel[hidden]{display:none!important}
       y la etiqueta <span class="mono">P1</span>, <span class="mono">P2</span>…
     </p>
     <div class="plan-cols" id="planCols"></div>
+    <div class="plan-grado" id="planGrado"></div>
     <div class="plan-acciones">
       <button type="button" id="btnPlanAuto">Autocompletar</button>
       <button type="button" id="btnImprimirPlan" class="primario" title="Imprime solo el plan; en el diálogo puedes elegir «Guardar como PDF»">Imprimir plan</button>
@@ -1032,6 +1075,28 @@ section.panel[hidden]{display:none!important}
   </section>
 
 </div>
+
+<details class="datos" id="panelDatos">
+  <summary>Mis datos y plan de estudios</summary>
+  <div class="datos-cuerpo">
+    <div>
+      <h3>Respaldo</h3>
+      <p class="gen-ayuda">Tu avance, horario, plan y preferencias viven solo en este navegador. Descárgalos para llevarlos a otro equipo o para no perderlos si borras los datos del navegador.</p>
+      <button type="button" id="btnBackup">Descargar respaldo</button>
+      <button type="button" id="btnRestaurar">Cargar respaldo…</button>
+      <input type="file" id="fileRestaurar" accept="application/json,.json" hidden>
+    </div>
+    <div>
+      <h3>Plan de estudios</h3>
+      <p class="gen-ayuda" id="pensumInfo"></p>
+      <button type="button" id="btnPensumPlantilla">Descargar plantilla</button>
+      <button type="button" id="btnPensumCargar">Cargar otro plan…</button>
+      <button type="button" id="btnPensumReset">Volver a Ingeniería Civil</button>
+      <input type="file" id="filePensum" accept="application/json,.json" hidden>
+    </div>
+    <div id="datosMsg" role="status"></div>
+  </div>
+</details>
 
 <footer>
   Datos tomados del SIA por <a href="https://github.com/aroberto-ux/horarios_unal">horarios_unal</a>.
@@ -1234,7 +1299,7 @@ const fmtFechaCorta = d => d.toLocaleDateString("es-CO",{timeZone:"America/Bogot
    req (prerrequisitos; un arreglo anidado significa "cualquiera de"),
    ca ({n, comp} = créditos aprobados exigidos de ese componente). */
 const MAT = "Matemáticas y estadística", ICB = "Ingeniería civil básica disciplinar";
-const PENSUM = {
+const PENSUM_CIVIL = {
   /* --- Nivelación --- */
   "1000001":{nom:"Matemáticas básicas",     sem:0, cr:4, comp:"P", agr:"Matemática básica"},
   "1000002":{nom:"Lecto-escritura",         sem:0, cr:4, comp:"P", agr:"Lecto-escritura"},
@@ -1343,9 +1408,9 @@ const PENSUM = {
 };
 
 /* Créditos que exige el plan por componente (Acuerdo 026 de 2015). */
-const META = {B:48, C:96, L:36, TOT:180};
+const META_CIVIL = {B:48, C:96, L:36, TOT:180};
 const NOMBRE_COMP = {P:"Nivelación", B:"Fundamentación", C:"Disciplinar", L:"Libre elección"};
-const ROMANOS = ["Nivel.","I","II","III","IV","V","VI","VII","VIII","IX","X"];
+const ROMANOS = ["Nivel.","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI"];
 /* ================= Casillas del componente flexible =================
    La malla dibuja 17 casillas que no tienen código fijo: las electivas de
    libre elección y las optativas. Se listan aquí para que el avance incluya
@@ -1359,7 +1424,7 @@ const ROMANOS = ["Nivel.","I","II","III","IV","V","VI","VII","VIII","IX","X"];
    parte, así que se marcan a mano.
 
    Suma de libre elección: 2+3+4+3+3+3 + 9 (prof. IX) + 6 (prof. X) + 3 = 36. */
-const RANURAS = [
+const RANURAS_CIVIL = [
   {id:"ELEC1",  sem:1,  cr:2, comp:"L", agr:"Humanidades",                nom:"Electiva"},
   {id:"ELEC2",  sem:2,  cr:3, comp:"L", agr:"Humanidades",                nom:"Electiva"},
   {id:"ELEC4",  sem:4,  cr:4, comp:"L", agr:"Física",                     nom:"Electiva"},
@@ -1380,13 +1445,48 @@ const RANURAS = [
   {id:"COBRAS", sem:10, cr:3, comp:"C", agr:"Construcción", nom:"Construcción de obras civiles", grupo:"const"},
   {id:"TGRADO", sem:10, cr:6, comp:"C", agr:"Asignaturas especiales", nom:"Trabajo de grado", grupo:"grado", ca:{n:77, comp:"C"}}
 ];
-const RANURA = Object.fromEntries(RANURAS.map(r=>[r.id, r]));
-const GRUPOS_RANURA = {
+const GRUPOS_RANURA_CIVIL = {
   herr : ["2015734","2016375","2025971","2025970","2017293","2015942","2015970","2022761"],
   tec  : ["2015977","2026136","2024045","2015975","2026137","2015952","2015967","2022760","2015229","2016183"],
   const: ["2015943","2015944","2015945"],
   grado: ["2015296","2015299"]
 };
+
+/* ================= Plan de estudios activo =================
+   Por defecto, Ingeniería Civil (arriba). Quien estudie otra carrera carga su
+   propio plan desde «Mis datos»: un JSON con la misma forma que la plantilla
+   que se descarga allí, guardado en este navegador. Los horarios y cupos salen
+   del catálogo del repositorio, que es independiente del plan. */
+function validarPensum(v){
+  if(!v || typeof v!=="object") return "el archivo no es un objeto JSON";
+  const P = v.PENSUM;
+  if(!P || typeof P!=="object" || !Object.keys(P).length) return "falta PENSUM (o está vacío)";
+  for(const [c,d] of Object.entries(P)){
+    if(!d || typeof d.nom!=="string" || !d.nom) return `«${c}»: falta nom`;
+    if(!Number.isInteger(d.sem) || d.sem<0 || d.sem>16) return `«${c}»: sem debe ser un entero de 0 a 16`;
+    if(!(d.cr>0)) return `«${c}»: cr debe ser mayor que 0`;
+    if(typeof d.comp!=="string" || d.comp.length!==1 || !"PBCL".includes(d.comp)) return `«${c}»: comp debe ser P, B, C o L`;
+    for(const r of (d.req||[])) for(const q of [].concat(r))
+      if(!P[q]) return `«${c}»: el prerrequisito «${q}» no existe en PENSUM`;
+  }
+  const M = v.META;
+  if(!M || !["B","C","L","TOT"].every(k=>Number.isFinite(M[k]))) return "META debe traer B, C, L y TOT (créditos exigidos)";
+  for(const r of (v.RANURAS||[]))
+    if(!r || !r.id || !Number.isInteger(r.sem) || !(r.cr>0) || typeof r.comp!=="string" || !"PBCL".includes(r.comp))
+      return `RANURAS: casilla inválida (${r && r.id || "sin id"})`;
+  return null;
+}
+const PLAN_PERSONAL = (()=>{
+  try{ const v = JSON.parse(localStorage.getItem("pensumUNAL")||"null"); return v && validarPensum(v)===null ? v : null; }
+  catch(e){ return null; }
+})();
+const PLAN_NOMBRE   = PLAN_PERSONAL ? (PLAN_PERSONAL.nombre || "Plan personalizado") : "Ingeniería Civil";
+const PENSUM        = PLAN_PERSONAL ? PLAN_PERSONAL.PENSUM : PENSUM_CIVIL;
+const META          = PLAN_PERSONAL ? PLAN_PERSONAL.META : META_CIVIL;
+const RANURAS       = PLAN_PERSONAL ? (PLAN_PERSONAL.RANURAS || []) : RANURAS_CIVIL;
+const GRUPOS_RANURA = PLAN_PERSONAL ? (PLAN_PERSONAL.GRUPOS_RANURA || {}) : GRUPOS_RANURA_CIVIL;
+const RANURA        = Object.fromEntries(RANURAS.map(r=>[r.id, r]));
+const MAX_SEM       = Math.max(...Object.values(PENSUM).map(d=>d.sem), ...RANURAS.map(r=>r.sem));
 
 /* Tope de créditos por semestre. El SIA lo calcula con el PAPA; 24 es el
    máximo habitual, así que solo sirve de alerta, no de bloqueo. */
@@ -1801,6 +1901,7 @@ async function cargarDatos(){
     $("#conteoMaterias").textContent = textoConteo();
 
     pintarLista(); pintarHorario(); pintarAvance(); pintarCandidatas(); pintarGenLista(); prepararTendencias();
+    aplicarEnlaceCompartido();
     try{ pintarGrafico(); }catch(e){ msjLienzo("La gráfica falló al dibujarse. Recarga la página para intentar de nuevo."); }
   }catch(e){
     estado.innerHTML = '<span class="punto err"></span>Error al leer los CSV <button id="btnRecargar" type="button">reintentar</button>';
@@ -2073,7 +2174,7 @@ function bloquePlan(m, ev){
   const partes = [];
 
   if(ev.estado==="fuera"){
-    partes.push(`<span class="cadena">No aparece en el plan obligatorio de Ingeniería Civil: se cuenta como libre elección.</span>`);
+    partes.push(`<span class="cadena">No aparece en el plan obligatorio de ${PLAN_NOMBRE}: se cuenta como libre elección.</span>`);
   }else{
     const d = ev.d;
     partes.push(`<span class="cadena">${ROMANOS[d.sem]} · ${d.agr}${d.opt?" · optativa":""}</span>`);
@@ -2369,7 +2470,7 @@ function pintarAvance(){
   for(const r of RANURAS) mete(r.sem, {tipo:"ranura", r});
 
   cont.innerHTML="";
-  for(let s=0; s<=10; s++){
+  for(let s=0; s<=MAX_SEM; s++){
     const col=document.createElement("div"); col.className="col";
     col.insertAdjacentHTML("beforeend", `<div class="cab">${s===0?"NIVEL.":"SEM "+ROMANOS[s]}</div>`);
     // las asignaturas con código van primero; las casillas flexibles, al final
@@ -2660,6 +2761,7 @@ let BLOQUEADOS = new Set(_gen0.bloq || []);   // "DIA|minuto"
 let PROF_EVITAR    = new Set(_gen0.evitar || []);
 let PROF_PRIORIZAR = new Set(_gen0.prior  || []);
 let RESULTADOS = [];
+let COMPARAR = [];   // hasta 3 horarios elegidos para verlos lado a lado: {n, combo, mini}
 
 /* El SIA no es consistente con tildes y mayúsculas entre periodos, así que se
    compara sin ellas. */
@@ -2769,6 +2871,7 @@ function generarHorarios(){
   const estado = $("#genEstado"), caja = $("#genResultados");
   const mats = [...CANDIDATAS].map(c=>MATERIAS.get(c)).filter(Boolean);
   caja.innerHTML=""; RESULTADOS=[]; estado.className="";
+  COMPARAR=[]; pintarComparacion();
 
   if(!mats.length){
     estado.textContent = "Primero elige al menos una materia.";
@@ -2923,6 +3026,7 @@ function pintarResultados(){
   /* Se reordena el arreglo, no una copia: así «usar este horario» y cualquier
      inspección posterior ven el mismo orden que la pantalla. */
   RESULTADOS = ordenarResultados(RESULTADOS);
+  if(COMPARAR.length){ COMPARAR = []; pintarComparacion(); }   // cambió el orden: los números ya no corresponden
   const conM = RESULTADOS.map(c=>({combo:c, m:metricas(c)}));
 
   // rango horario común, para que las miniaturas se puedan comparar de un vistazo
@@ -3007,7 +3111,81 @@ function tarjetaHorario({combo, m}, n, lo, hi, puestos){
   btn.textContent = art.classList.contains("puesto") ? "✓ Es el que tienes puesto" : "Usar este horario";
   btn.addEventListener("click", ()=>usarHorario(claves));
   art.appendChild(btn);
+
+  const cmp=document.createElement("button"); cmp.type="button"; cmp.className="cmp-btn";
+  const activo = ()=>COMPARAR.some(x=>x.combo===combo);
+  cmp._pintar = ()=>{ cmp.textContent = activo() ? "✓ En la comparación" : "Comparar"; cmp.classList.toggle("on", activo()); };
+  cmp._pintar();
+  cmp.addEventListener("click", ()=>{
+    const i = COMPARAR.findIndex(x=>x.combo===combo);
+    if(i>=0) COMPARAR.splice(i,1);
+    else if(COMPARAR.length>=3) return pintarComparacion("Se comparan hasta 3 a la vez: quita uno primero.");
+    else COMPARAR.push({n, combo, mini: art.querySelector(".gen-mini").cloneNode(true)});
+    pintarComparacion();
+  });
+  art.appendChild(cmp);
   return art;
+}
+
+const textoHuecos = h => h ? `${Math.floor(h/60)}h${h%60?String(h%60).padStart(2,"0"):""}` : "sin huecos";
+function pintarComparacion(aviso){
+  const cont = $("#genComparar"); if(!cont) return;
+  document.querySelectorAll(".cmp-btn").forEach(b=>b._pintar && b._pintar());
+  if(!COMPARAR.length){ cont.hidden = true; cont.innerHTML = ""; return; }
+  cont.hidden = false;
+  if(COMPARAR.length===1){
+    cont.innerHTML = `<div class="cmp-cab"><b>Comparar</b><span>Elige al menos otro horario con el botón «Comparar».</span></div>`;
+    return;
+  }
+  const prio = normSetProf(PROF_PRIORIZAR);
+  const datos = COMPARAR.map(x=>{
+    const cupos = x.combo.map(e=>e.g.cupos).filter(c=>c!==null);
+    return {x, m:metricas(x.combo),
+      cr:[...new Set(x.combo.map(e=>e.m.codigo))].reduce((t,c)=>t+Number(MATERIAS.get(c)?.creditos||0),0),
+      minCupos: cupos.length ? Math.min(...cupos) : null,
+      estrellas: x.combo.filter(e=>!e.relleno && tieneProf(e.g,prio)).length};
+  });
+  // dir: -1 = menos es mejor, 1 = más es mejor, 0 = sin juicio
+  const filas = [
+    ["Días en la universidad", d=>d.m.dias,   d=>String(d.m.dias), -1],
+    ["Horas de hueco",         d=>d.m.huecos, d=>textoHuecos(d.m.huecos), -1],
+    ["Entras",                 d=>d.m.ini,    d=>deMin(d.m.ini), 1],
+    ["Sales",                  d=>d.m.fin,    d=>deMin(d.m.fin), -1],
+    ["Créditos",               d=>d.cr,       d=>String(d.cr), 0],
+    ["Cupos del grupo más justo", d=>d.minCupos, d=>d.minCupos===null?"—":String(d.minCupos), 1],
+  ];
+  if(prio.size) filas.push(["Docentes que priorizas", d=>d.estrellas, d=>d.estrellas?"★ "+d.estrellas:"0", 1]);
+  const celdas = (f,dir,txt)=>{
+    const v = datos.map(f), ok = v.filter(Number.isFinite);
+    const mejor = (dir && ok.length>1 && new Set(ok).size>1) ? (dir<0?Math.min(...ok):Math.max(...ok)) : null;
+    return datos.map((d,i)=>`<td${mejor!==null && v[i]===mejor?' class="mejor"':''}>${txt(d)}</td>`).join("");
+  };
+  // una fila por materia: qué grupo y con quién queda en cada opción
+  const mats = new Map();
+  for(const x of COMPARAR) for(const {m} of x.combo) mats.set(m.codigo, m.nombre);
+  const filasMat = [...mats].map(([cod,nom])=>{
+    const cel = datos.map(d=>{
+      const es = d.x.combo.filter(e=>e.m.codigo===cod);
+      return `<td>${es.length ? es.map(e=>`${esc(e.g.grupo)}<br><span style="color:var(--tinta-suave)">${esc(e.g.profesores||"Sin profesor")}</span>`).join("<hr>") : "—"}</td>`;
+    }).join("");
+    return `<tr><th>${esc(nom)}</th>${cel}</tr>`;
+  }).join("");
+
+  cont.innerHTML = `<div class="cmp-cab"><b>Comparando ${datos.length} horarios</b>` +
+    `<span>${esc(aviso||"En verde, el mejor en cada fila.")} <button type="button" id="cmpLimpiar" class="cmp-x">Quitar todos</button></span></div>` +
+    `<div class="cmp-scroll"><table class="cmp-tabla"><thead><tr><th></th>` +
+    datos.map((d,i)=>`<th>Opción ${d.x.n}<br><button type="button" data-q="${i}">Quitar</button><button type="button" class="usar-cmp" data-u="${i}">Usar</button></th>`).join("") +
+    `</tr></thead><tbody><tr><th>Semana</th>${datos.map((d,i)=>`<td class="cmp-mini" data-m="${i}"></td>`).join("")}</tr>` +
+    filas.map(([t,f,txt,dir])=>`<tr><th>${t}</th>${celdas(f,dir,txt)}</tr>`).join("") +
+    filasMat + `</tbody></table></div>`;
+  datos.forEach((d,i)=>cont.querySelector(`[data-m="${i}"]`).appendChild(d.x.mini.cloneNode(true)));
+  cont.querySelectorAll("[data-q]").forEach(b=>b.addEventListener("click",()=>{ COMPARAR.splice(+b.dataset.q,1); pintarComparacion(); }));
+  cont.querySelectorAll("[data-u]").forEach(b=>b.addEventListener("click",()=>{
+    const d = datos[+b.dataset.u];
+    usarHorario(d.x.combo.map(({m,g})=>`${m.codigo}|${g.grupo}`));
+  }));
+  $("#cmpLimpiar").addEventListener("click",()=>{ COMPARAR=[]; pintarComparacion(); });
+  evento('comparar_horarios', {n: datos.length});
 }
 
 function usarHorario(claves){
@@ -3031,6 +3209,7 @@ function alternarCandidata(cod){
 function invalidarResultados(){
   if(!RESULTADOS.length) return;
   RESULTADOS = [];
+  COMPARAR = []; pintarComparacion();
   $("#genResultados").innerHTML = "";
   $("#genEstado").className = "";
   $("#genEstado").textContent = "Cambiaste algo: vuelve a generar para ver los horarios actualizados.";
@@ -3781,6 +3960,31 @@ function evaluarEnPlan(id, semIdx){
   return {ok: faltan.length===0 && !ca, faltan, ca};
 }
 
+/* Fecha estimada de terminación: los créditos que faltan se reparten primero en
+   los semestres ya planeados y lo que sobre se proyecta al ritmo promedio de
+   esos semestres (o al tope, si no has planeado nada). Es una cuenta de
+   créditos: no sabe de prerrequisitos que retrasen ni de la nivelación. */
+function pintarGrado(){
+  const el = $("#planGrado"); if(!el) return;
+  const apr = creditosAprobados().TOT, falta = Math.max(0, META.TOT - apr);
+  if(!falta){ el.innerHTML = `<b>Ya cubres los ${META.TOT} créditos del plan.</b>`; return; }
+  let planCr = 0, ultimo = -1, conItems = 0;
+  PLAN.forEach((sem,i)=>{
+    if(!sem.items.length) return;
+    planCr += sem.items.reduce((t,id)=>t+(itemPorId(id)?.cr||0), 0);
+    ultimo = i; conItems++;
+  });
+  const sinPlanear = Math.max(0, falta - planCr);
+  const ritmo = Math.max(1, conItems ? Math.round(planCr/conItems) : TOPE_PLAN);
+  const extra = sinPlanear ? Math.ceil(sinPlanear/ritmo) : 0;
+  const idxFin = ultimo + extra, n = idxFin + 1;
+  el.innerHTML = `Fecha estimada de terminación: <b>${etiquetaPeriodo(idxFin)}</b> ` +
+    `(${n} semestre(s) desde ${etiquetaPeriodo(0)})` +
+    `<small>Te faltan ${falta} de ${META.TOT} créditos: ${Math.min(planCr,falta)} ya están en tu plan` +
+    (sinPlanear ? ` y los otros ${sinPlanear} se proyectan a ~${ritmo} cr por semestre (${extra} más)` : "") +
+    `. Es una cuenta de créditos: no considera prerrequisitos que puedan retrasarte ni la nivelación.</small>`;
+}
+
 function pintarPlaneador(){
   const cont = $("#planCols"); if(!cont) return;
   cont.innerHTML = "";
@@ -3914,6 +4118,7 @@ function pintarPlaneador(){
   });
 
   $("#planResumen").textContent = `${PLAN.length} semestre(s) planeados · ${totalCr} créditos en total`;
+  pintarGrado();
 
   /* Cada vez que el plan cambia, la malla del pensum se repinta para que las
      materias planeadas aparezcan con su color y su etiqueta P1, P2… así el
@@ -4110,7 +4315,7 @@ $("#soloDisponibles").addEventListener("change", ()=>{ pintarLista(); evento('fi
 /* Selector «aprobar hasta el semestre N» */
 (function(){
   const sel = $("#hastaSem");
-  for(let s=0; s<=10; s++){
+  for(let s=0; s<=MAX_SEM; s++){
     const o=document.createElement("option");
     o.value=String(s); o.textContent = s===0 ? "Nivelación" : "Semestre "+ROMANOS[s];
     sel.appendChild(o);
@@ -4263,6 +4468,104 @@ function generarICS(desdeStr, hastaStr){
   lineas.push("END:VCALENDAR");
   return lineas.join("\r\n");
 }
+
+/* ================= Compartir por enlace =================
+   El horario viaja en el hash de la URL («#h=codigo|grupo,codigo|grupo»), así
+   que no hace falta servidor. Quien lo abre decide si reemplaza el suyo. */
+let _enlaceAplicado = false;
+function aplicarEnlaceCompartido(){
+  if(_enlaceAplicado) return; _enlaceAplicado = true;
+  const m = /[#&]h=([^&]*)/.exec(location.hash); if(!m) return;
+  let claves = []; try{ claves = decodeURIComponent(m[1]).split(",").filter(Boolean); }catch(e){}
+  const validas = claves.filter(k=>{ const [c,g] = k.split("|"); return MATERIAS.get(c)?.grupos.has(g); });
+  try{ history.replaceState(null,"",location.href.split("#")[0]); }catch(e){}
+  if(!validas.length){ alert("El enlace no trae ningún grupo que exista en el catálogo actual (puede ser de otro semestre)."); return; }
+  const perdidos = claves.length - validas.length;
+  if(!confirm(`Este enlace trae un horario de ${validas.length} grupo(s)${perdidos?` (${perdidos} ya no existen)`:""}. ¿Cargarlo? Reemplaza el horario que tienes ahora.`)) return;
+  seleccion = validas; almacen.guardar(seleccion);
+  pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista(); pintarPlaneador();
+  evento('abrir_enlace_compartido', {grupos: validas.length});
+}
+$("#btnCopiarEnlace").addEventListener("click", async ()=>{
+  const b = $("#btnCopiarEnlace"), txt = b.textContent;
+  if(!seleccion.length){ b.textContent = "Sin grupos"; setTimeout(()=>b.textContent=txt, 1800); return; }
+  const url = location.href.split("#")[0] + "#h=" + encodeURIComponent(seleccion.join(","));
+  try{ await navigator.clipboard.writeText(url); b.textContent = "¡Copiado!"; setTimeout(()=>b.textContent=txt, 1800); }
+  catch(e){ prompt("Copia este enlace:", url); }
+  evento('copiar_enlace_horario', {grupos: seleccion.length});
+});
+
+/* ================= Mis datos: respaldo y plan de estudios ================= */
+const CLAVES_RESPALDO = ["avanceUNAL","miHorarioUNAL","generadorUNAL","planFuturoUNAL","planTopeUNAL",
+  "icsRangoUNAL","pensumUNAL","rangoTendUNAL","rangoPersonalUNAL","vistaUNAL"];
+function descargarTexto(nombre, texto){
+  const url = URL.createObjectURL(new Blob([texto], {type:"application/json;charset=utf-8"}));
+  const a = document.createElement("a"); a.href = url; a.download = nombre;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url), 4000);
+}
+const leerArchivoJSON = f => new Promise((ok,mal)=>{
+  const r = new FileReader();
+  r.onload = ()=>{ try{ ok(JSON.parse(r.result)); }catch(e){ mal(new Error("no es un JSON válido")); } };
+  r.onerror = ()=>mal(new Error("no pude leer el archivo")); r.readAsText(f);
+});
+(function misDatos(){
+  const msg = t => { $("#datosMsg").textContent = t; };
+  $("#btnBackup").addEventListener("click", ()=>{
+    const datos = {};
+    for(const k of CLAVES_RESPALDO){ try{ const v = localStorage.getItem(k); if(v!==null) datos[k] = v; }catch(e){} }
+    descargarTexto(`respaldo-horarios-unal-${fechaISOLocal(new Date())}.json`,
+      JSON.stringify({app:"horarios_unal", version:1, fecha:new Date().toISOString(), datos}, null, 1));
+    msg(`Respaldo descargado (${Object.keys(datos).length} apartados).`);
+    evento('descargar_respaldo');
+  });
+  $("#btnRestaurar").addEventListener("click", ()=>$("#fileRestaurar").click());
+  $("#fileRestaurar").addEventListener("change", async e=>{
+    const f = e.target.files[0]; e.target.value = ""; if(!f) return;
+    try{
+      const j = await leerArchivoJSON(f);
+      if(!j || j.app!=="horarios_unal" || !j.datos || typeof j.datos!=="object") throw new Error("no parece un respaldo de esta página");
+      if(j.datos.pensumUNAL){
+        let p = null; try{ p = JSON.parse(j.datos.pensumUNAL); }catch(x){}
+        const err = validarPensum(p); if(err) throw new Error("el plan de estudios del respaldo es inválido: "+err);
+      }
+      if(!confirm("Esto reemplaza lo que tienes guardado en este navegador (avance, horario, plan, preferencias). ¿Continuar?")) return;
+      for(const k of CLAVES_RESPALDO){
+        try{ if(typeof j.datos[k]==="string") localStorage.setItem(k, j.datos[k]); else localStorage.removeItem(k); }catch(x){}
+      }
+      evento('restaurar_respaldo'); location.reload();
+    }catch(err){ msg("No pude restaurar: "+err.message+"."); }
+  });
+
+  $("#pensumInfo").textContent = PLAN_PERSONAL
+    ? `Plan cargado: ${PLAN_NOMBRE} (${Object.keys(PENSUM).length} asignaturas, ${META.TOT} créditos).`
+    : "Ingeniería Civil (plan 2542), el que trae la página. Para otra carrera, descarga la plantilla, reemplaza su contenido y cárgala.";
+  $("#btnPensumReset").disabled = !PLAN_PERSONAL;
+  $("#btnPensumPlantilla").addEventListener("click", ()=>{
+    descargarTexto("plan-de-estudios.json", JSON.stringify(
+      {nombre:PLAN_NOMBRE, PENSUM, META, RANURAS, GRUPOS_RANURA}, null, 1));
+    msg("Plantilla descargada: PENSUM (cada asignatura con nom, sem, cr, comp, req…), META, RANURAS y GRUPOS_RANURA.");
+  });
+  const cambiarPlan = valor => {
+    if(!confirm("Cambiar de plan borra tu avance marcado y tu plan de semestres, porque son de otro plan. Si los quieres, descarga primero un respaldo. ¿Continuar?")) return false;
+    try{
+      if(valor) localStorage.setItem("pensumUNAL", valor); else localStorage.removeItem("pensumUNAL");
+      localStorage.removeItem("avanceUNAL"); localStorage.removeItem("planFuturoUNAL");
+    }catch(e){ msg("No pude guardar el cambio en este navegador."); return false; }
+    location.reload(); return true;
+  };
+  $("#btnPensumCargar").addEventListener("click", ()=>$("#filePensum").click());
+  $("#filePensum").addEventListener("change", async e=>{
+    const f = e.target.files[0]; e.target.value = ""; if(!f) return;
+    try{
+      const j = await leerArchivoJSON(f), err = validarPensum(j);
+      if(err) throw new Error(err);
+      if(cambiarPlan(JSON.stringify(j))) evento('cargar_plan_personalizado');
+    }catch(err){ msg("Ese plan no sirve: "+err.message+"."); }
+  });
+  $("#btnPensumReset").addEventListener("click", ()=>cambiarPlan(null));
+  const h1 = document.querySelector("body > header h1 small"); if(h1) h1.textContent = PLAN_NOMBRE;
+})();
 
 (function exportarICS(){
   const btn = $("#btnExportarICS"), barra = $("#icsBarra");
