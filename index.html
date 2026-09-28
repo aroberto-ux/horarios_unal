@@ -177,6 +177,32 @@ section.panel{
   background:var(--rojo-claro); color:var(--rojo); font-size:.85rem; font-weight:600}
 #avisoConflicto.visible{display:block}
 
+/* ---------- Exportar a calendario (.ics) ---------- */
+.titulo-acciones{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+.btn-ics{
+  font:600 .68rem "IBM Plex Mono",monospace; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--azul); background:var(--azul-claro); border:1.5px solid var(--azul);
+  border-radius:var(--radio); padding:4px 9px; cursor:pointer;
+}
+.btn-ics:hover{background:var(--azul); color:#fff}
+.btn-ics:disabled{
+  opacity:1; cursor:not-allowed; background:var(--papel); color:var(--tinta-suave); border-color:var(--cuadricula);
+}
+.ics-barra{display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center;
+  padding:10px 16px; border-bottom:1px solid var(--cuadricula); background:var(--papel); font-size:.78rem}
+.ics-barra[hidden]{display:none}
+.ics-barra label{color:var(--tinta-suave)}
+.ics-barra input[type="date"]{
+  font:500 .78rem "IBM Plex Mono",monospace; color:var(--tinta);
+  padding:5px 7px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco);
+}
+.ics-barra input[type="date"]:focus{outline:none; border-color:var(--azul)}
+.ics-barra button{
+  font:600 .76rem "Archivo",sans-serif; padding:6px 12px; cursor:pointer;
+  border:1.5px solid var(--tinta); border-radius:var(--radio); background:var(--tinta); color:var(--papel);
+}
+.ics-barra button:hover{opacity:.88}
+
 .grilla-envoltura{padding:16px; overflow-x:auto}
 .grilla{
   display:grid; grid-template-columns:52px repeat(6, minmax(96px,1fr));
@@ -523,6 +549,30 @@ footer a{color:var(--azul)}
 .gen-mini .mses.rel{opacity:.75; background-image:repeating-linear-gradient(45deg,#0000,#0000 2px,#ffffff70 2px,#ffffff70 4px)}
 .gen-card ul li.relleno b{font-weight:500}
 .gen-card ul .comp.libre{background:var(--verde-claro); color:var(--verde)}
+.gen-card ul .comp.prof-ok{background:var(--verde-claro); color:var(--verde)}
+
+/* ---------- Preferencias de profesor en el generador ---------- */
+.gen-prof{padding:14px 16px; border-top:1px solid var(--cuadricula)}
+.gen-prof h3{font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--tinta-suave); margin:0 0 8px}
+.gen-prof-cols{display:grid; grid-template-columns:1fr 1fr; gap:14px 22px}
+@media(max-width:900px){ .gen-prof-cols{grid-template-columns:1fr} }
+.gen-prof-col label{display:block; font:700 .74rem "Archivo",sans-serif; letter-spacing:.06em; text-transform:uppercase; margin-bottom:5px}
+.gen-prof-col.evitar label{color:var(--rojo)}
+.gen-prof-col.priorizar label{color:var(--verde)}
+.gen-prof-add{display:flex; gap:6px; margin-bottom:8px}
+.gen-prof-add input{
+  flex:1; min-width:0; font:400 .82rem "Archivo",sans-serif; color:var(--tinta);
+  padding:6px 10px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco)}
+.gen-prof-add input:focus{outline:none; border-color:var(--azul)}
+.gen-prof-add button{
+  font:600 .78rem "Archivo",sans-serif; padding:5px 12px; cursor:pointer;
+  border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta)}
+.gen-prof-add button:hover{border-color:var(--tinta-suave)}
+.gen-prof-col.evitar .gen-chip{border-color:var(--rojo); background:var(--rojo-claro); color:var(--rojo)}
+.gen-prof-col.priorizar .gen-chip{border-color:var(--verde); background:var(--verde-claro); color:var(--verde)}
+.gen-prof-col .gen-chip .n{color:inherit; opacity:.75}
+.gen-prof-col .gen-chip button{color:inherit}
+#profMsg{margin-top:8px; font-size:.78rem; color:var(--ambar); min-height:1em}
 .gen-card ul .dem{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.62rem;
   font-weight:600; border-radius:99px; padding:0 6px; margin-top:2px}
 .dem.alta {background:var(--rojo-claro);  color:var(--rojo)}
@@ -624,6 +674,21 @@ section.panel[hidden]{display:none!important}
 .plan-col select{margin:8px; font:500 .74rem "Archivo",sans-serif; padding:5px 6px;
   border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--blanco); color:var(--tinta)}
 .plan-col select:disabled{opacity:.65; cursor:not-allowed; font-style:italic}
+
+/* Botón «Ver horarios posibles» al pie de cada columna del planeador: manda
+   las materias de ese semestre al generador. margin-top:auto lo empuja al
+   fondo de la tarjeta (la columna es flex-column) sin importar cuántos
+   ítems tenga arriba, así todas las columnas quedan parejas. */
+.plan-col .pc-vergen{
+  margin:8px; margin-top:auto; font:600 .74rem "Archivo",sans-serif; padding:7px 8px;
+  border:1.5px solid var(--azul); border-radius:var(--radio);
+  background:var(--azul-claro); color:var(--azul); cursor:pointer; text-align:center;
+}
+.plan-col .pc-vergen:hover{background:var(--azul); color:#fff}
+.plan-col .pc-vergen:disabled{
+  opacity:1; cursor:not-allowed; border-color:var(--cuadricula);
+  background:var(--papel); color:var(--tinta-suave);
+}
 
 .plan-acciones{display:flex; gap:8px; flex-wrap:wrap; padding:0 16px 14px; align-items:center}
 .plan-acciones button{font:600 .78rem "Archivo",sans-serif; padding:6px 12px;
@@ -759,7 +824,19 @@ section.panel[hidden]{display:none!important}
 
   <!-- Grilla semanal -->
   <section class="panel" id="panelHorario" aria-label="Mi horario semanal" role="tabpanel" aria-labelledby="tab-horario">
-    <div class="titulo"><h2>Mi horario</h2><span class="dato" id="totalCreditos">0 créditos</span></div>
+    <div class="titulo"><h2>Mi horario</h2>
+      <div class="titulo-acciones">
+        <span class="dato" id="totalCreditos">0 créditos</span>
+        <button type="button" id="btnExportarICS" class="btn-ics"
+          title="Descarga tus clases como archivo .ics para importarlas a Google Calendar, Outlook, Apple Calendar, etc.">Exportar a calendario</button>
+      </div>
+    </div>
+    <div class="ics-barra" id="icsBarra" hidden>
+      <label for="icsDesde">Primer día de clases</label><input type="date" id="icsDesde">
+      <label for="icsHasta">Último día de clases</label><input type="date" id="icsHasta">
+      <button type="button" id="icsDescargar">Descargar .ics</button>
+      <span class="snap-meta" id="icsMeta"></span>
+    </div>
     <div class="resumen" id="chips"></div>
     <div id="avisoConflicto" role="alert"></div>
     <details id="avisoPlan"></details>
@@ -800,6 +877,30 @@ section.panel[hidden]{display:none!important}
           <button type="button" id="btnLimpiarBloqueos">Despintar todo</button>
         </div>
       </div>
+    </div>
+    <div class="gen-prof" id="genProf">
+      <h3>Profesores</h3>
+      <p class="gen-ayuda">Escribe un nombre y elígelo de la lista. <b>Evitar</b> descarta todos los grupos de ese docente. <b>Priorizar</b> no descarta nada: pone primero los horarios que lo incluyan.</p>
+      <div class="gen-prof-cols">
+        <div class="gen-prof-col evitar">
+          <label for="profEvitarIn">Evitar</label>
+          <div class="gen-prof-add">
+            <input id="profEvitarIn" list="listaDocentes" placeholder="Buscar docente…" autocomplete="off">
+            <button type="button" id="profEvitarBtn">Agregar</button>
+          </div>
+          <div class="gen-chips" id="profEvitarChips"></div>
+        </div>
+        <div class="gen-prof-col priorizar">
+          <label for="profPriorizarIn">Priorizar</label>
+          <div class="gen-prof-add">
+            <input id="profPriorizarIn" list="listaDocentes" placeholder="Buscar docente…" autocomplete="off">
+            <button type="button" id="profPriorizarBtn">Agregar</button>
+          </div>
+          <div class="gen-chips" id="profPriorizarChips"></div>
+        </div>
+      </div>
+      <datalist id="listaDocentes"></datalist>
+      <div id="profMsg" role="status"></div>
     </div>
     <div class="gen-opciones" style="padding:12px 16px; border-top:1px solid var(--cuadricula)">
       <button type="button" id="btnGenerar">Generar horarios</button>
@@ -1107,6 +1208,7 @@ const numCupos = v => {
 };
 const deMin = m => `${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`;
 const fmtFecha = d => d.toLocaleString("es-CO",{timeZone:"America/Bogota",day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"});
+const fmtFechaCorta = d => d.toLocaleDateString("es-CO",{timeZone:"America/Bogota",day:"numeric",month:"short"});
 
 /* ================= Pensum: Ingeniería Civil (plan 2542) =================
    Transcrito de la malla curricular del 19/04/2016 (Acuerdo 257 de 2008 del
@@ -1904,8 +2006,9 @@ function pintarLista(){
       const st=statsGrupo(k);
       let vel="";
       if(st && st.vel7>0){
-        const dias=st.actual>0? Math.max(1, Math.ceil(st.actual/(st.vel7/7))) : 0;
-        vel=`<span class="vel" title="Cupos tomados en los últimos 7 días">▼${st.vel7} en 7d${(st.actual>0&&dias<=30)?` · ~${dias}d`:""}</span>`;
+        const est = estimarAgotamiento(st.actual, st.vel7);
+        const tt = `Cupos tomados en los últimos 7 días.${est?` A este ritmo se agotaría el ${fmtFechaCorta(est.fecha)}.`:""}`;
+        vel=`<span class="vel" title="${tt}">▼${st.vel7} en 7d${est?` · ${textoAgotamiento(est,true)}`:""}</span>`;
       }else if(st && st.vel7<0){
         vel=`<span class="vel sube" title="Cupos liberados en los últimos 7 días">▲${-st.vel7} en 7d</span>`;
       }
@@ -2083,6 +2186,7 @@ function pintarHorario(){
   // créditos
   const cred=[...new Set(seleccion.map(k=>k.split("|")[0]))].reduce((t,c)=>t+Number(MATERIAS.get(c)?.creditos||0),0);
   $("#totalCreditos").textContent=`${cred} créditos`;
+  const btnICS = $("#btnExportarICS"); if(btnICS) btnICS.disabled = !seleccion.length;
 
   // chips
   const chips=$("#chips"); chips.innerHTML="";
@@ -2544,12 +2648,30 @@ const GEN_NODOS  = 400000;  // techo de seguridad para no congelar el navegador
 const genAlmacen = {
   leer(){ try{ return JSON.parse(localStorage.getItem("generadorUNAL")||"{}"); }catch(e){ return {}; } },
   guardar(){ try{ localStorage.setItem("generadorUNAL",
-    JSON.stringify({cand:[...CANDIDATAS], bloq:[...BLOQUEADOS]})); }catch(e){} }
+    JSON.stringify({cand:[...CANDIDATAS], bloq:[...BLOQUEADOS],
+      evitar:[...PROF_EVITAR], prior:[...PROF_PRIORIZAR]})); }catch(e){} }
 };
 const _gen0 = genAlmacen.leer();
 let CANDIDATAS = new Set(_gen0.cand || []);
 let BLOQUEADOS = new Set(_gen0.bloq || []);   // "DIA|minuto"
+/* Preferencias de docente, con el nombre tal cual lo escribe el SIA. Evitar es
+   un filtro duro (esos grupos ni entran al producto cartesiano); priorizar es
+   solo un criterio de orden, así que nunca deja sin horarios a nadie. */
+let PROF_EVITAR    = new Set(_gen0.evitar || []);
+let PROF_PRIORIZAR = new Set(_gen0.prior  || []);
 let RESULTADOS = [];
+
+/* El SIA no es consistente con tildes y mayúsculas entre periodos, así que se
+   compara sin ellas. */
+const normProf = s => (s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+  .toLowerCase().replace(/\s+/g," ").trim();
+const normSetProf = set => new Set([...set].map(normProf));
+/* ¿Alguno de los docentes del grupo está en el conjunto (ya normalizado)?
+   Un grupo puede traer dos docentes separados por «;» o «/». */
+function tieneProf(g, setNorm){
+  if(!setNorm.size) return false;
+  return partirDocentes(g.profesores).some(n=>setNorm.has(normProf(n)));
+}
 
 const franja = (dia, min) => `${dia}|${min}`;
 
@@ -2598,11 +2720,13 @@ function metricas(combo){
    3. y, dentro de eso, tapar la mayor cantidad de hueco posible. */
 function paquetesElectivos(soloCupos){
   const out = [];
+  const evit = normSetProf(PROF_EVITAR);
   for(const m of MATERIAS.values()){
     if(!m.libre || m.multi) continue;          // las multicomponente no se rellenan solas
     for(const g of m.grupos.values()){
       if(!g.sesiones.length) continue;         // sin horario publicado no se puede encajar
       if(chocaBloqueo(g)) continue;
+      if(tieneProf(g, evit)) continue;         // docente que el usuario prefiere evitar
       if(soloCupos && g.cupos!==null && g.cupos<=0) continue;
       out.push({m, g});
     }
@@ -2652,6 +2776,7 @@ function generarHorarios(){
   }
 
   const soloCupos = $("#genSoloCupos").checked;
+  const evit = normSetProf(PROF_EVITAR), prio = normSetProf(PROF_PRIORIZAR);
   // Una decisión por COMPONENTE: una asignatura con magistral y teórica
   // separadas aporta dos elecciones al producto, no una.
   const ops = [], sinSalida = [];
@@ -2665,9 +2790,13 @@ function generarHorarios(){
       const fam = fam0.fam;
       const todos = fam0.grupos.map(n=>m.grupos.get(n));
       const librePorBloqueo = todos.filter(g=>!chocaBloqueo(g));
-      const gs = soloCupos ? librePorBloqueo.filter(g=>g.cupos===null||g.cupos>0) : librePorBloqueo;
+      const sinEvitados = evit.size ? librePorBloqueo.filter(g=>!tieneProf(g,evit)) : librePorBloqueo;
+      const gs0 = soloCupos ? sinEvitados.filter(g=>g.cupos===null||g.cupos>0) : sinEvitados;
+      // Los del docente priorizado se exploran primero: si el backtracking se
+      // corta en GEN_LIMITE, lo que queda fuera no es lo que el usuario quería.
+      const gs = prio.size ? [...gs0].sort((a,b)=>tieneProf(b,prio)-tieneProf(a,prio)) : gs0;
       const nom = (m.multi && fam) ? `${m.nombre} (${fam.etiqueta.toLowerCase()})` : m.nombre;
-      if(!gs.length) sinSalida.push({nom, todos:todos.length, tras:librePorBloqueo.length});
+      if(!gs.length) sinSalida.push({nom, todos:todos.length, tras:librePorBloqueo.length, sinEv:sinEvitados.length});
       ops.push({m, fam, gs, nom});
     }
   }
@@ -2676,7 +2805,9 @@ function generarHorarios(){
     estado.innerHTML = "No hay ningún horario posible:<ul>" + sinSalida.map(x=>{
       const causa = x.tras===0
         ? `sus ${x.todos} grupo(s) chocan con las franjas que bloqueaste`
-        : `los ${x.tras} grupo(s) que te sirven están sin cupos`;
+        : x.sinEv===0
+        ? `los ${x.tras} grupo(s) que no chocan con tus franjas los dictan docentes que quieres evitar (quita alguno de la lista «Evitar»)`
+        : `los ${x.sinEv} grupo(s) que te sirven están sin cupos`;
       return `<li><b>${x.nom}</b>: ${causa}.</li>`;
     }).join("") + "</ul>";
     evento('generar_horario', {n_materias: mats.length, n_resultados: 0, exito:false});
@@ -2736,6 +2867,14 @@ function generarHorarios(){
     }
   }
 
+  if(evit.size) extra += ` Se descartaron los grupos de ${evit.size} docente(s) que evitas.`;
+  if(prio.size){
+    const conPrio = RESULTADOS.filter(c=>c.some(e=>!e.relleno && tieneProf(e.g,prio))).length;
+    extra += conPrio
+      ? ` ${conPrio} horario(s) incluyen a un docente que priorizas y van primero.`
+      : ` Ningún horario incluye a los docentes que priorizas (no dictan las materias elegidas o chocan con tus franjas).`;
+  }
+
   if($("#genOrden").value==="demanda"){
     const conDatos = RESULTADOS.filter(c=>demandaCombo(c).n>0).length;
     extra += conDatos
@@ -2759,7 +2898,13 @@ const GEN_RELLENO_TOPE = 40;
 /* Ordena las combinaciones según el criterio elegido arriba. */
 function ordenarResultados(lista){
   const modo = $("#genOrden").value;
-  return lista.map(c=>({c, m:metricas(c), d:modo==="demanda"?demandaCombo(c):null})).sort((a,b)=>{
+  // Docentes priorizados: cuántas materias del horario los tienen. Va ANTES del
+  // criterio elegido (es lo único que el usuario pidió explícitamente), y el
+  // criterio desempata dentro de cada nivel.
+  const prio = normSetProf(PROF_PRIORIZAR);
+  const puntos = c => prio.size ? c.filter(e=>!e.relleno && tieneProf(e.g,prio)).length : 0;
+  return lista.map(c=>({c, p:puntos(c), m:metricas(c), d:modo==="demanda"?demandaCombo(c):null})).sort((a,b)=>{
+    if(b.p!==a.p) return b.p-a.p;
     if(modo==="dias")     return a.m.dias-b.m.dias || a.m.huecos-b.m.huecos;
     if(modo==="tarde")    return b.m.ini-a.m.ini   || a.m.huecos-b.m.huecos;
     if(modo==="temprano") return a.m.fin-b.m.fin   || a.m.huecos-b.m.huecos;
@@ -2841,13 +2986,19 @@ function tarjetaHorario({combo, m}, n, lo, hi, puestos){
 
   // El cuadrito repite el color del bloque en la miniatura y en la grilla
   const lista=document.createElement("ul");
+  const prioT = normSetProf(PROF_PRIORIZAR);
   lista.innerHTML = combo.map(({m:mat,g,fam,relleno})=>{
     const cu = g.cupos===null ? "" : ` · ${g.cupos} cupos`;
     const et = (mat.multi && fam) ? `<span class="comp">${fam.etiqueta}</span>` : "";
     const rl = relleno ? `<span class="comp libre">Electiva</span>` : "";
+    const pf = (!relleno && tieneProf(g,prioT))
+      ? `<span class="comp prof-ok" title="Docente que priorizas">★ ${esc(partirDocentes(g.profesores).filter(n=>prioT.has(normProf(n))).join(" · "))}</span>` : "";
     const dm = insigniaDemanda(`${mat.codigo}|${g.grupo}`);
+    const stG = statsGrupo(`${mat.codigo}|${g.grupo}`);
+    const estG = stG ? estimarAgotamiento(stG.actual, stG.vel7) : null;
+    const ag = estG ? `<span class="vel" title="Cupos tomados en los últimos 7 días">${textoAgotamiento(estG,false)}</span>` : "";
     return `<li${relleno?' class="relleno"':''}><i style="background:${colorDe(mat.codigo)}"></i>`+
-           `<span><b>${mat.nombre}</b>${rl}${et}${g.grupo}${cu}${dm?"<br>"+dm:""}</span></li>`;
+           `<span><b>${mat.nombre}</b>${rl}${et}${g.grupo}${cu}${pf?"<br>"+pf:""}${dm?"<br>"+dm:""}${ag?"<br>"+ag:""}</span></li>`;
   }).join("");
   art.appendChild(lista);
 
@@ -2900,6 +3051,85 @@ function pintarCandidatas(){
   const cred=vivas.reduce((t,c)=>t+Number(MATERIAS.get(c).creditos||0),0);
   $("#genResumen").textContent = vivas.length ? `${vivas.length} materias · ${cred} créditos` : "";
   actualizarInsignias();
+  pintarProfesores();
+}
+
+/* ================= Preferencias de profesor (UI) ================= */
+/* nombre -> Set de asignaturas que dicta. Si hay materias candidatas, la lista
+   desplegable ofrece solo a sus docentes (lo que de verdad importa al generar);
+   sin candidatas ofrece a todos. Al agregar se busca siempre en todo el catálogo. */
+function docentesConocidos(soloCandidatas){
+  const out = new Map();
+  for(const m of MATERIAS.values()){
+    if(soloCandidatas && !CANDIDATAS.has(m.codigo)) continue;
+    for(const g of m.grupos.values())
+      for(const n of partirDocentes(g.profesores)){
+        if(!out.has(n)) out.set(n, new Set());
+        out.get(n).add(m.nombre);
+      }
+  }
+  return out;
+}
+/* En cuántos grupos de las materias elegidas aparece este docente. */
+function gruposDeDocente(nombre){
+  const nn = normProf(nombre); let n = 0;
+  for(const c of CANDIDATAS){
+    const m = MATERIAS.get(c); if(!m) continue;
+    for(const g of m.grupos.values())
+      if(partirDocentes(g.profesores).some(x=>normProf(x)===nn)) n++;
+  }
+  return n;
+}
+function pintarProfesores(){
+  const dl = $("#listaDocentes"); if(!dl) return;
+  let base = docentesConocidos(true);
+  if(!base.size) base = docentesConocidos(false);
+  dl.innerHTML = [...base.entries()]
+    .sort((a,b)=>a[0].localeCompare(b[0],"es"))
+    .map(([n,ms])=>`<option value="${esc(n)}" label="${esc([...ms].slice(0,2).join(", "))}"></option>`).join("");
+
+  for(const [tipo, set, id] of [["evitar",PROF_EVITAR,"#profEvitarChips"],["priorizar",PROF_PRIORIZAR,"#profPriorizarChips"]]){
+    const caja = $(id); if(!caja) continue;
+    caja.innerHTML = "";
+    if(!set.size){ caja.innerHTML = '<span class="gen-vacio">Ninguno.</span>'; continue; }
+    for(const nombre of set){
+      const ch = document.createElement("span"); ch.className = "gen-chip";
+      const n = gruposDeDocente(nombre);
+      ch.innerHTML = `${esc(nombre)} <span class="n" title="Grupos suyos entre las materias elegidas">${n} gr.</span>`+
+        `<button type="button" aria-label="Quitar a ${esc(nombre)}">✕</button>`;
+      ch.querySelector("button").addEventListener("click", ()=>{
+        set.delete(nombre); $("#profMsg").textContent = "";
+        genAlmacen.guardar(); pintarProfesores(); invalidarResultados();
+      });
+      caja.appendChild(ch);
+    }
+  }
+}
+function agregarProf(tipo){
+  const inp = $(tipo==="evitar" ? "#profEvitarIn" : "#profPriorizarIn"), msg = $("#profMsg");
+  const txt = inp.value.trim(); msg.textContent = "";
+  if(!txt) return;
+  const nt = normProf(txt), todos = [...docentesConocidos(false).keys()];
+  let hallados = todos.filter(n=>normProf(n)===nt);
+  if(!hallados.length) hallados = todos.filter(n=>normProf(n).includes(nt));
+  // el mismo docente escrito con y sin tilde cuenta como uno solo
+  const unicos = [...new Map(hallados.map(n=>[normProf(n), n])).values()];
+  if(!unicos.length){ msg.textContent = `No encuentro a «${txt}» en el catálogo. Elígelo de la lista desplegable.`; return; }
+  if(unicos.length>1){
+    msg.textContent = `«${txt}» coincide con ${unicos.length} docentes (${unicos.slice(0,3).join(", ")}${unicos.length>3?"…":""}). Escribe más del nombre.`;
+    return;
+  }
+  const nombre = unicos[0];
+  const propio = tipo==="evitar" ? PROF_EVITAR : PROF_PRIORIZAR;
+  const otro   = tipo==="evitar" ? PROF_PRIORIZAR : PROF_EVITAR;
+  for(const x of [...otro]) if(normProf(x)===normProf(nombre)){
+    otro.delete(x);
+    msg.textContent = `${nombre} estaba en «${tipo==="evitar"?"Priorizar":"Evitar"}»; lo moví a «${tipo==="evitar"?"Evitar":"Priorizar"}».`;
+  }
+  if(![...propio].some(x=>normProf(x)===normProf(nombre))) propio.add(nombre);
+  inp.value = "";
+  genAlmacen.guardar(); pintarProfesores(); invalidarResultados();
+  evento(tipo==="evitar" ? 'evitar_profesor' : 'priorizar_profesor', {docente:nombre});
 }
 
 /* Selector propio del generador: solo materias, sin grupos. Elegir grupo es
@@ -3008,6 +3238,31 @@ function statsGrupo(k){
   for(const p of h){ if(+p.t<=corte) ref=p; else break; }
   const vel7=ref.cupos-actual; // >0: se está llenando; <0: liberó cupos
   return {actual, maxHist, inscritos:Math.max(0,maxHist-actual), vel7};
+}
+
+/* ================= Estimado de cuándo se agota un cupo =================
+   A partir de cuántos cupos quedan y a qué ritmo se están tomando (en
+   cupos/semana, el mismo vel7 que ya se muestra en toda la página), proyecta
+   en cuántos días llegaría a cero y qué fecha sería esa. No es una promesa
+   —el ritmo de inscripción cambia de un día a otro, sobre todo cerca de la
+   fecha límite— así que:
+   · si el grupo no se está vaciando (vel7<=0) no hay nada que proyectar,
+   · y si al ritmo actual faltarían más de dos meses, la proyección es tan
+     ruidosa que estorba más de lo que ayuda, y se omite. */
+const AGOTAMIENTO_TOPE_DIAS = 60;
+function estimarAgotamiento(actual, vel7Semana){
+  if(!(actual>0) || !(vel7Semana>0)) return null;
+  const dias = actual/(vel7Semana/7);
+  if(!Number.isFinite(dias) || dias>AGOTAMIENTO_TOPE_DIAS) return null;
+  return {dias, fecha:new Date(Date.now()+dias*864e5)};
+}
+/* Texto corto para meter dentro de un chip ya existente (·~5d) o largo para
+   un tooltip / línea propia con la fecha completa. */
+function textoAgotamiento(est, corto){
+  if(!est) return "";
+  const d = Math.max(1, Math.round(est.dias));
+  if(corto) return d<=2 ? "¡ya casi!" : `~${d} d`;
+  return d<=2 ? "se agotaría en horas o mañana" : `se agotaría ~${fmtFechaCorta(est.fecha)} (${d} días)`;
 }
 
 /* ================= Demanda: qué tan rápido vuelan los cupos =================
@@ -3221,8 +3476,9 @@ function pintarElectivasCupos(){
     const detalle = f.grupos.length>1
       ? f.grupos.map(g=>`${g.grupo}: ${textoCupos(g.cupos)}`).join(" · ")
       : `Grupo ${f.grupos[0]?.grupo ?? "—"}`;
+    const estE = f.vel7>0 ? estimarAgotamiento(f.total, f.vel7) : null;
     const vel = f.vel7>0
-      ? `<span class="vel" title="Cupos tomados en los últimos 7 días, sumando sus grupos">▼${f.vel7} en 7d</span>`
+      ? `<span class="vel" title="Cupos tomados en los últimos 7 días, sumando sus grupos${estE?`. A este ritmo se agotaría el ${fmtFechaCorta(estE.fecha)}.`:""}">▼${f.vel7} en 7d${estE?` · ${textoAgotamiento(estE,true)}`:""}</span>`
       : f.vel7<0
       ? `<span class="vel sube" title="Cupos liberados en los últimos 7 días, sumando sus grupos">▲${-f.vel7} en 7d</span>`
       : "";
@@ -3623,6 +3879,37 @@ function pintarPlaneador(){
       evento('agregar_a_plan_futuro', {id: sel.value, semestre: i});
     });
     col.appendChild(sel);
+
+    /* «Ver horarios posibles»: manda al generador las materias de este
+       semestre que sí corresponden a una asignatura real del catálogo
+       (MATERIAS, que viene de horarios.csv). Las ranuras —casillas de
+       electiva u optativa sin materia concreta todavía— no tienen grupos
+       que combinar, así que se quedan fuera y se avisa cuántas fueron. */
+    const codigosReales = sem.items.filter(id => MATERIAS.has(id));
+    const btnVerGen = document.createElement("button");
+    btnVerGen.type = "button";
+    btnVerGen.className = "pc-vergen";
+    btnVerGen.textContent = "Ver horarios posibles →";
+    btnVerGen.disabled = !codigosReales.length;
+    btnVerGen.title = codigosReales.length
+      ? `Reemplaza las materias del generador por las ${codigosReales.length} de este semestre y muestra los horarios que se pueden armar.`
+      : "Agrega materias a este semestre (que ya estén en el catálogo actual) para poder generar sus horarios.";
+    btnVerGen.addEventListener("click", ()=>{
+      const codigos = sem.items.filter(id => MATERIAS.has(id));
+      if(!codigos.length) return;
+      const ranurasFuera = sem.items.length - codigos.length;
+      CANDIDATAS = new Set(codigos);
+      genAlmacen.guardar();
+      pintarCandidatas(); sincronizarGenLista(); pintarLista(); pintarGenLista(); invalidarResultados();
+      irA("generador", {foco:true});
+      $("#genEstado").className = "";
+      $("#genEstado").textContent = ranurasFuera
+        ? `Se trajeron ${codigos.length} materia(s) de «${sem.nombre}». ${ranurasFuera} casilla(s) de electiva/optativa sin materia concreta no se incluyeron: agrégalas a mano si quieres. Pulsa «Generar horarios».`
+        : `Se trajeron ${codigos.length} materia(s) de «${sem.nombre}». Pulsa «Generar horarios» para verlos.`;
+      evento('ver_horarios_desde_plan', {semestre: i, materias: codigos.length});
+    });
+    col.appendChild(btnVerGen);
+
     cont.appendChild(col);
   });
 
@@ -3846,6 +4133,11 @@ pintarAvance();
 
 /* Generador */
 $("#btnGenerar").addEventListener("click", generarHorarios);
+for(const tipo of ["evitar","priorizar"]){
+  const cap = tipo==="evitar" ? "Evitar" : "Priorizar";
+  $("#prof"+cap+"Btn").addEventListener("click", ()=>agregarProf(tipo));
+  $("#prof"+cap+"In").addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); agregarProf(tipo); } });
+}
 $("#genOrden").addEventListener("change", ()=>{
   if(!RESULTADOS.length) return;
   // Con relleno activo hay que rehacerlo: el criterio decide cuáles son los
@@ -3887,6 +4179,120 @@ $("#genLibres").addEventListener("change", async ()=>{
   pintarGenLista();
 });
 pintarRejilla(); pintarCandidatas(); pintarGenLista();
+
+/* ================= Exportar horario a calendario (.ics) =================
+   Genera un archivo .ics con una serie semanal (RRULE) por cada sesión de
+   cada grupo inscrito, acotada entre el primer y el último día de clases
+   que indique la persona: la página no conoce el calendario académico
+   oficial del semestre (cambia cada periodo), así que hay que pedirlo en
+   vez de inventar una fecha. Las horas se escriben en UTC restando la
+   diferencia fija de Bogotá (UTC-5, sin horario de verano) para que el
+   evento caiga a la hora correcta sin depender de que el programa de
+   calendario del usuario reconozca el TZID "America/Bogota". */
+const TZ_OFFSET_BOGOTA_MIN = 300; // UTC-5 todo el año
+const DIA_ICS = {LUNES:"MO", MARTES:"TU", "MIÉRCOLES":"WE", JUEVES:"TH", VIERNES:"FR", "SÁBADO":"SA"};
+const DIA_JS  = {LUNES:1, MARTES:2, "MIÉRCOLES":3, JUEVES:4, VIERNES:5, "SÁBADO":6};
+
+function icsUTC(y, mo, d, minutosLocal){
+  const dt = new Date(Date.UTC(y, mo-1, d, 0, minutosLocal + TZ_OFFSET_BOGOTA_MIN));
+  const p = n=>String(n).padStart(2,"0");
+  return `${dt.getUTCFullYear()}${p(dt.getUTCMonth()+1)}${p(dt.getUTCDate())}T${p(dt.getUTCHours())}${p(dt.getUTCMinutes())}00Z`;
+}
+function dtstampUTC(){
+  const d=new Date(); const p=n=>String(n).padStart(2,"0");
+  return `${d.getUTCFullYear()}${p(d.getUTCMonth()+1)}${p(d.getUTCDate())}T${p(d.getUTCHours())}${p(d.getUTCMinutes())}${p(d.getUTCSeconds())}Z`;
+}
+/* Primer día ≥ desdeStr que cae en el día de la semana indicado (1=lunes…6=sábado, como Date#getDay). */
+function primerDia(desdeStr, diaSemanaJS){
+  const [y,mo,d] = desdeStr.split("-").map(Number);
+  const base = new Date(y, mo-1, d);
+  base.setDate(base.getDate() + (diaSemanaJS - base.getDay() + 7) % 7);
+  return {y:base.getFullYear(), mo:base.getMonth()+1, d:base.getDate()};
+}
+function fechaISOLocal(d){
+  const p=n=>String(n).padStart(2,"0");
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;
+}
+function escICS(s){
+  return String(s).replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\n/g,"\\n");
+}
+/* RFC 5545 pide cortar líneas largas a 75 octetos; aquí se corta por
+   caracteres, que alcanza de sobra para los textos cortos de esta página. */
+function plegarICS(linea){
+  if(linea.length<=74) return linea;
+  let out=linea.slice(0,74), resto=linea.slice(74);
+  while(resto.length){ out+="\r\n "+resto.slice(0,73); resto=resto.slice(73); }
+  return out;
+}
+
+const icsAlmacen = {
+  leer(){ try{ return JSON.parse(localStorage.getItem("icsRangoUNAL")||"null"); }catch(e){ return null; } },
+  guardar(v){ try{ localStorage.setItem("icsRangoUNAL", JSON.stringify(v)); }catch(e){} }
+};
+
+function generarICS(desdeStr, hastaStr){
+  const [hy,hmo,hd] = hastaStr.split("-").map(Number);
+  const untilTope = new Date(hy,hmo-1,hd,23,59,0);   // referencia local, solo para comparar
+  const untilICS  = icsUTC(hy,hmo,hd,23*60+59);
+  const lineas = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//horarios_unal//planilla//ES","CALSCALE:GREGORIAN"];
+  let n = 0;
+  for(const k of seleccion){
+    const [cod,grp] = k.split("|");
+    const mat = MATERIAS.get(cod); if(!mat) continue;
+    const g = mat.grupos.get(grp); if(!g) continue;
+    for(const s of g.sesiones){
+      const diaJS = DIA_JS[s.dia], byday = DIA_ICS[s.dia];
+      if(diaJS===undefined || !Number.isFinite(s.ini) || !Number.isFinite(s.fin)) continue;
+      const {y,mo,d} = primerDia(desdeStr, diaJS);
+      if(new Date(y,mo-1,d) > untilTope) continue;    // el rango ni alcanza la primera clase
+      const uid = `${cod}-${grp}-${byday}-${s.ini}-${n++}@horarios-unal`;
+      lineas.push(
+        "BEGIN:VEVENT",
+        `UID:${uid}`,
+        `DTSTAMP:${dtstampUTC()}`,
+        `DTSTART:${icsUTC(y,mo,d,s.ini)}`,
+        `DTEND:${icsUTC(y,mo,d,s.fin)}`,
+        `RRULE:FREQ=WEEKLY;BYDAY=${byday};UNTIL=${untilICS}`,
+        plegarICS(`SUMMARY:${escICS(mat.nombre+" ("+grp+")")}`),
+        plegarICS(`DESCRIPTION:${escICS(cod+" · Grupo "+grp+(g.profesores?" · "+g.profesores:""))}`)
+      );
+      if(s.salon) lineas.push(plegarICS(`LOCATION:${escICS(s.salon)}`));
+      lineas.push("END:VEVENT");
+    }
+  }
+  lineas.push("END:VCALENDAR");
+  return lineas.join("\r\n");
+}
+
+(function exportarICS(){
+  const btn = $("#btnExportarICS"), barra = $("#icsBarra");
+  if(!btn || !barra) return;
+  const guardado = icsAlmacen.leer();
+  const hoy = new Date();
+  $("#icsDesde").value = guardado?.desde || fechaISOLocal(hoy);
+  $("#icsHasta").value = guardado?.hasta || fechaISOLocal(new Date(hoy.getTime()+112*864e5)); // ~16 semanas
+
+  btn.addEventListener("click", ()=>{
+    barra.hidden = !barra.hidden;
+    if(!barra.hidden) evento('abrir_exportar_ics');
+  });
+  $("#icsDescargar").addEventListener("click", ()=>{
+    const meta = $("#icsMeta");
+    if(!seleccion.length){ meta.textContent = "Primero agrega materias a tu horario."; return; }
+    const desde = $("#icsDesde").value, hasta = $("#icsHasta").value;
+    if(!desde || !hasta){ meta.textContent = "Completa las dos fechas."; return; }
+    if(hasta < desde){ meta.textContent = "El último día debe ser posterior al primero."; return; }
+    icsAlmacen.guardar({desde,hasta});
+    const ics = generarICS(desde, hasta);
+    const blob = new Blob([ics], {type:"text/calendar;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a"); a.href = url; a.download = "horario-unal.ics";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 4000);
+    meta.textContent = "Listo — revisa tu carpeta de descargas.";
+    evento('exportar_ics', {materias: new Set(seleccion.map(x=>x.split("|")[0])).size, desde, hasta});
+  });
+})();
 
 function fijarModo(modo){
   modoTend=modo;
