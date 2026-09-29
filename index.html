@@ -797,81 +797,6 @@ section.panel[hidden]{display:none!important}
   }
   body.imprimir-plan .plan-item{break-inside:avoid; page-break-inside:avoid}
 }
-
-/* ===== Mejoras de diseño ===== */
-:root{ --t-min:.7rem; --c-nivel:#7A857D; }
-.malla .caja.comp-P{border-left-color:var(--c-nivel)}
-.malla .caja.ranura.comp-L{border-left-color:#8A4FBF}
-.bloque .etq,.bloque .mono,.malla .cab,.malla .caja .n,.malla .caja .c,.sello,.vel,.dem,
-.gen-mini .mdia,.gen-rejilla .gh,.gen-rejilla .gr,.plan-item .pi-t span,.plan-item .pi-warn,
-.plan-col .pc-cred,.tabs .bdg,.gen-card ul .comp,.gen-card ul .dem,.fam-cab span,.elec-cod{font-size:var(--t-min)}
-.bloque.choque{background-image:repeating-linear-gradient(45deg,transparent 0 6px,rgba(179,55,46,.18) 6px 8px)!important}
-.bloque.choque b::before{content:"⚠ "}
-.btnAdd,.btn-ics,.cmp-btn,.gen-card .usar,.plan-acciones button,.avance-acciones button,
-.gen-opciones button,.snap-barra button,.ics-barra button,.gen-prof-add button{
-  font:600 .78rem "Archivo",sans-serif; padding:6px 12px; min-height:32px; border-radius:var(--radio)}
-@media (pointer:coarse){
-  .btnAdd,.btn-ics,.cmp-btn,.gen-card .usar,.plan-acciones button,.gen-opciones button{min-height:40px}
-  .gen-rejilla .gc{height:26px} .gen-rejilla .gr{line-height:26px}
-}
-.grupo .spark{opacity:0; transition:opacity .15s}
-.grupo:hover .spark,.grupo:focus-within .spark{opacity:1}
-@media (hover:none){ .grupo .spark{opacity:1} }
-@media (min-width:601px){
-  body > header{position:sticky; top:0; z-index:20; padding-top:12px}
-  html{scroll-padding-top:110px}
-}
-@media print{ body > header{position:static} }
-@media (max-width:980px){ #panelHorario{order:-1} #listaMaterias{max-height:60vh} }
-@media (max-width:600px){ h1 small,.estado .mono{display:none} }
-.vacio-guia{margin:16px; padding:22px; border:1.5px dashed var(--cuadricula); border-radius:var(--radio);
-  background:var(--papel); text-align:center; color:var(--tinta-suave); font-size:.9rem}
-.vacio-guia[hidden]{display:none}
-.vacio-guia ol{list-style:none; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:12px 0 0}
-.vacio-guia button{font:600 .8rem "Archivo",sans-serif; padding:8px 14px; cursor:pointer;
-  border:1.5px solid var(--azul); color:var(--azul); background:var(--blanco); border-radius:var(--radio)}
-.vacio-guia button:hover{background:var(--azul-claro)}
-details.gen-prof>summary{cursor:pointer; list-style:none}
-details.gen-prof>summary::-webkit-details-marker{display:none}
-details.gen-prof>summary::before{content:"›"; display:inline-block; margin-right:8px; transition:transform .15s}
-details.gen-prof[open]>summary::before{transform:rotate(90deg)}
-.gen-opciones:has(#btnGenerar){position:sticky; bottom:0; z-index:5; background:var(--blanco)}
-@keyframes sk{to{background-position:-200% 0}}
-#listaMaterias:empty{min-height:220px;
-  background:linear-gradient(90deg,var(--cuadricula) 25%,#EEF2EA 50%,var(--cuadricula) 75%) 0 0/200% 100%;
-  animation:sk 1.2s linear infinite}
-
-/* ===== Mi horario: rediseño ===== */
-.resumen .chip{font-family:"Archivo",sans-serif; font-size:.8rem; font-weight:600; padding:4px 6px 4px 10px}
-.resumen .chip .gr-chip{font:500 .72rem "IBM Plex Mono",monospace; color:var(--tinta-suave)}
-.stats-sem{margin-left:auto; font:500 .75rem "IBM Plex Mono",monospace; color:var(--tinta-suave)}
-.grilla .dia.sin-clases{opacity:.45}
-.grilla .dia.hoy{background:var(--verde); opacity:1}
-.columna.hoy{background-color:rgba(20,122,70,.05)}
-.reglilla span:first-child{transform:translateY(3px)}
-.bloque{border:0; border-left:4px solid var(--c); border-radius:4px; padding:5px 7px;
-  background:color-mix(in srgb, var(--c) 13%, #fff); color:var(--tinta); box-shadow:0 1px 2px rgba(24,39,32,.15)}
-.bloque b{font-size:.78rem; color:var(--tinta)}
-.bloque .etq{color:var(--c); font-weight:700}
-.bloque .hr,.bloque .sl{display:block; font:500 .7rem "IBM Plex Mono",monospace; color:var(--tinta-suave)}
-.bloque:hover{z-index:3; box-shadow:0 4px 14px rgba(24,39,32,.28)}
-
-/* ===== Planear haciendo clic sobre la malla ===== */
-.malla-modo{display:flex; flex-wrap:wrap; gap:8px 10px; align-items:center; padding:10px 16px;
-  border-bottom:1px solid var(--cuadricula); background:var(--papel); font-size:.8rem; color:var(--tinta-suave)}
-.malla-modo button{font:600 .78rem "Archivo",sans-serif; padding:6px 12px; min-height:32px; cursor:pointer;
-  border:1.5px solid var(--cuadricula); background:var(--blanco); color:var(--tinta-suave); border-radius:var(--radio)}
-.malla-modo button.activo{background:var(--tinta); color:var(--papel); border-color:var(--tinta)}
-.malla-modo button[hidden],.malla-modo label[hidden]{display:none}
-.malla-modo select{font:600 .78rem "Archivo",sans-serif; padding:5px 8px; color:var(--tinta);
-  border:2px solid var(--azul); border-radius:var(--radio); background:var(--blanco)}
-.malla-modo .mm-ayuda{flex:1 1 280px; font-size:.78rem}
-.malla.modo-plan{outline:2px dashed var(--plan-act,var(--azul)); outline-offset:-4px}
-.malla.modo-plan .caja{cursor:copy}
-.malla.modo-plan .caja.ok,.malla.modo-plan .caja[disabled]{cursor:not-allowed}
-.malla.modo-plan .caja.plan-ok{box-shadow:inset 0 0 0 1.5px var(--plan-act,var(--azul))}
-.malla.modo-plan .caja.plan-bloq{opacity:.4; cursor:not-allowed}
-#mmAyuda:not(:empty){line-height:1.4}
 </style>
 </head>
 <body>
@@ -885,10 +810,9 @@ details.gen-prof[open]>summary::before{transform:rotate(90deg)}
     </div>
   </div>
   <nav class="tabs" role="tablist" aria-label="Secciones de la página">
-    <button type="button" role="tab" id="tab-horario" data-vista="horario" aria-controls="panelHorario" aria-selected="true">Horario <span class="bdg" id="bdgHorario"></span></button>
-    <button type="button" role="tab" id="tab-plan" data-vista="plan" aria-controls="panelAvance panelPlaneador" aria-selected="false" tabindex="-1">Plan</button>
-    <button type="button" role="tab" id="tab-generador" data-vista="generador" aria-controls="panelGenerador" aria-selected="false" tabindex="-1">Generador horario <span class="bdg" id="bdgGenerador"></span></button>
-    <button type="button" role="tab" id="tab-cupos" data-vista="cupos" aria-controls="panelTendencias" aria-selected="false" tabindex="-1">Tendencias <span class="bdg" id="bdgCupos"></span></button>
+    <button type="button" role="tab" data-vista="horario"   aria-controls="panelHorario panelAvance"    aria-selected="true">Horario <span class="bdg" id="bdgHorario"></span></button>
+    <button type="button" role="tab" data-vista="generador" aria-controls="panelGenerador"  aria-selected="false" tabindex="-1">Generador horario <span class="bdg" id="bdgGenerador"></span></button>
+    <button type="button" role="tab" data-vista="cupos"     aria-controls="panelTendencias" aria-selected="false" tabindex="-1">Tendencias <span class="bdg" id="bdgCupos"></span></button>
   </nav>
 </header>
 
@@ -940,15 +864,7 @@ details.gen-prof[open]>summary::before{transform:rotate(90deg)}
     <div class="resumen" id="chips"></div>
     <div id="avisoConflicto" role="alert"></div>
     <details id="avisoPlan"></details>
-    <div class="grilla-envoltura">
-      <div class="vacio-guia" id="vacioHorario">Tu horario está vacío. Tres formas de empezar:
-        <ol>
-          <li><button type="button" onclick="irA('plan')">1 · Marcar lo que ya aprobé</button></li>
-          <li><button type="button" onclick="irA('generador')">2 · Generar un horario</button></li>
-          <li><button type="button" onclick="document.getElementById('busqueda').focus()">3 · Buscar en el catálogo</button></li>
-        </ol>
-      </div>
-      <div class="grilla" id="grilla"></div></div>
+    <div class="grilla-envoltura"><div class="grilla" id="grilla"></div></div>
     <div id="detalleImpresion">
       <h3>Grupos del horario <span id="metaImpresion"></span></h3>
       <table>
@@ -986,7 +902,8 @@ details.gen-prof[open]>summary::before{transform:rotate(90deg)}
         </div>
       </div>
     </div>
-    <details class="gen-prof" id="genProf"><summary><h3 style="display:inline">Profesores (opcional)</h3></summary>
+    <div class="gen-prof" id="genProf">
+      <h3>Profesores</h3>
       <p class="gen-ayuda">Escribe un nombre y elígelo de la lista. <b>Evitar</b> descarta todos los grupos de ese docente. <b>Priorizar</b> no descarta nada: pone primero los horarios que lo incluyan.</p>
       <div class="gen-prof-cols">
         <div class="gen-prof-col evitar">
@@ -1007,7 +924,8 @@ details.gen-prof[open]>summary::before{transform:rotate(90deg)}
         </div>
       </div>
       <datalist id="listaDocentes"></datalist>
-      <div id="profMsg" role="status"></div></details>
+      <div id="profMsg" role="status"></div>
+    </div>
     <div class="gen-opciones" style="padding:12px 16px; border-top:1px solid var(--cuadricula)">
       <button type="button" id="btnGenerar">Generar horarios</button>
       <label for="genOrden">Ordenar por
@@ -1047,21 +965,13 @@ details.gen-prof[open]>summary::before{transform:rotate(90deg)}
       </select>
       <button type="button" id="btnLimpiarAvance">Limpiar avance</button>
     </div>
-    <div class="malla-modo" id="modoMalla" role="group" aria-label="Qué hace un clic sobre la malla">
-      <span>Al hacer clic en una asignatura:</span>
-      <button type="button" data-mm="aprobar" class="activo">✓ Marcar aprobada</button>
-      <button type="button" data-mm="plan">＋ Planear en un semestre</button>
-      <label id="mmSemWrap" hidden>Semestre <select id="mmSem"></select></label>
-      <button type="button" id="mmNuevo" hidden>+ Semestre</button>
-      <span class="mm-ayuda" id="mmAyuda" role="status"></span>
-    </div>
     <div class="malla" id="malla"></div>
     <div class="leyenda">
       <span><i style="background:var(--verde-claro);border-color:var(--verde)"></i>Aprobada</span>
       <span><i style="background:var(--azul-claro);border-color:var(--azul)"></i>En este horario</span>
       <span><i style="box-shadow:inset 0 0 0 1px var(--verde)"></i>Puedes inscribirla</span>
       <span><i style="opacity:.55"></i>Te falta prerrequisito</span>
-      <span class="mono">Borde: <b style="color:var(--ambar)">■</b> fundamentación · <b style="color:var(--azul)">■</b> disciplinar · <b style="color:#8A4FBF">■</b> libre elección · <b style="color:#7A857D">■</b> nivelación</span>
+      <span class="mono">Borde: <b style="color:var(--ambar)">■</b> fundamentación · <b style="color:var(--azul)">■</b> disciplinar · <b style="color:#00A5E0">■</b> libre elección · <b style="color:#8A4FBF">■</b> nivelación</span>
       <span><i style="border-style:dashed"></i>Casilla flexible (electiva u optativa)</span>
       <span class="mono">Planeada: la etiqueta <b>P1</b>, <b>P2</b>… marca el semestre en «Planear lo que falta».</span>
     </div>
@@ -1071,10 +981,10 @@ details.gen-prof[open]>summary::before{transform:rotate(90deg)}
   <section class="panel" id="panelPlaneador" aria-label="Planear los semestres que faltan">
     <div class="titulo"><h2>Planear lo que falta</h2><span class="dato" id="planResumen"></span></div>
     <p class="gen-ayuda" style="padding:10px 16px 0">
-      Agrega a cada semestre las materias que piensas ver: con el selector de cada columna o con un clic sobre la malla (activa «Planear en un semestre» en «Mi avance en el plan»). El nombre por defecto de cada columna
+      Agrega a cada semestre las materias que piensas ver. El nombre por defecto de cada columna
       es el periodo académico real (partiendo de <span class="mono">2026-2</span>), pero lo puedes
       editar. Si a alguna materia le falta un prerrequisito o créditos que todavía no pusiste antes,
-      no se puede planear (si ya la tienes homologada, márcala como aprobada). Al quitar o mover una materia, las que dependían de ella salen del plan también. Las materias de
+      queda marcada en ámbar (no se bloquea: puede que ya la tengas homologada). Las materias de
       nivelación no aparecen aquí, y en «+ agregar materia…» solo se ofrecen las que ya cumplen
       prerrequisitos con lo que llevas marcado. Cada semestre tiene su color (el puntito de su
       cabecera): en el pensum de arriba las materias planeadas aparecen pintadas con ese color
@@ -1120,7 +1030,7 @@ details.gen-prof[open]>summary::before{transform:rotate(90deg)}
       </div>
       <span class="periodo" id="periodoTend"></span>
     </div>
-    <div class="lienzo"><canvas id="grafico" role="img" aria-label="Gráfica de cupos disponibles en el tiempo"></canvas></div>
+    <div class="lienzo"><canvas id="grafico"></canvas></div>
     <div id="snapPanel" hidden>
       <div class="snap-barra">
         <button type="button" id="snapPrev" title="Snapshot anterior">◀</button>
@@ -1162,7 +1072,7 @@ details.gen-prof[open]>summary::before{transform:rotate(90deg)}
 const $ = s => document.querySelector(s);
 const REPO_RAW = "https://raw.githubusercontent.com/aroberto-ux/horarios_unal/main/";
 const DIAS = ["LUNES","MARTES","MIÉRCOLES","JUEVES","VIERNES","SÁBADO"];
-const PALETA = ["#2B5DA8","#8A4FBF","#0E7C86","#A63D6F","#7A4A21","#3F5B8B","#9C3D9C","#4B6A88"];
+const PALETA = ["#2B5DA8","#147A46","#8A4FBF","#B36F06","#0E7C86","#A63D6F","#5A6B2F","#7A4A21"];
 
 /* Paleta de los semestres del plan futuro. Se usa en dos sitios que deben
    coincidir visualmente:
@@ -2277,28 +2187,21 @@ function alternar(k){
 function alternarAprobada(cod){
   cod = nc(cod);
   const seMarca = !APROBADAS.has(cod);
-  const antesPlan = new Set(invalidosPlan());
   if(APROBADAS.has(cod)) APROBADAS.delete(cod); else APROBADAS.add(cod);
   avanceAlmacen.guardar(APROBADAS);
   if(seMarca){ for(const s of PLAN) s.items = s.items.filter(x=>x!==cod); planAlmacen.guardar(PLAN); }
-  else{ const q = depurarPlan(antesPlan); AVISO_MM = avisoCascada(q); if(q.length) planAlmacen.guardar(PLAN); }
   pintarLista(); pintarHorario(); pintarAvance(); pintarGenLista(); pintarPlaneador();
   evento(seMarca ? 'marcar_aprobada' : 'desmarcar_aprobada', {codigo: cod});
 }
 
 /* ================= Grilla semanal ================= */
-const colorSel = cod => {
-  const orden = [...new Set(seleccion.map(k=>k.split("|")[0]))], i = orden.indexOf(cod);
-  return i < 0 ? colorDe(cod) : PALETA[i % PALETA.length];
-};
-const limpiarSalon = s => String(s||"").replace(/^SAL[OÓ]N DE CLASE\s*/i,"").trim();
 function sesionesSeleccion(){
   const out=[];
   for(const k of seleccion){
     const [c,gn]=k.split("|"); const m=MATERIAS.get(c); if(!m) continue;
     const g=m.grupos.get(gn); if(!g) continue;
     const varias = g.actividades && g.actividades.size>1;
-    for(const s of g.sesiones) out.push({...s, k, nombre:m.nombre, grupo:gn, color:colorSel(c),
+    for(const s of g.sesiones) out.push({...s, k, nombre:m.nombre, grupo:gn, color:colorDe(c),
       etq: (varias || (m.multi && s.act)) ? etiquetaAct(s.act) : ""});
   }
   return out;
@@ -2310,7 +2213,6 @@ function pintarHorario(){
   const cred=[...new Set(seleccion.map(k=>k.split("|")[0]))].reduce((t,c)=>t+Number(MATERIAS.get(c)?.creditos||0),0);
   $("#totalCreditos").textContent=`${cred} créditos`;
   const btnICS = $("#btnExportarICS"); if(btnICS) btnICS.disabled = !seleccion.length;
-  const vg = $("#vacioHorario"); if(vg) vg.hidden = seleccion.length > 0;
 
   // chips
   const chips=$("#chips"); chips.innerHTML="";
@@ -2319,19 +2221,9 @@ function pintarHorario(){
     const [c,g]=k.split("|"); const m=MATERIAS.get(c); if(!m) continue;
     const fam = m.multi ? m.familias.get(m.grupos.get(g)?.fam) : null;
     const chip=document.createElement("span"); chip.className="chip";
-    chip.innerHTML=`<i style="background:${colorSel(c)}"></i>${m.nombre}${fam?` <b>${fam.etiqueta}</b>`:""} <span class="gr-chip">${g}</span><button type="button" aria-label="Quitar ${m.nombre}">✕</button>`;
+    chip.innerHTML=`<i style="background:${colorDe(c)}"></i>${m.nombre}${fam?` <b>${fam.etiqueta}</b>`:""} · ${g}<button type="button" aria-label="Quitar ${m.nombre}">✕</button>`;
     chip.querySelector("button").addEventListener("click",()=>alternar(k));
     chips.appendChild(chip);
-  }
-
-  if(seleccion.length){
-    const combo = seleccion.map(k=>{ const [c,gn]=k.split("|"); return {g:MATERIAS.get(c)?.grupos.get(gn)}; })
-      .filter(e=>e.g && e.g.sesiones.length);
-    if(combo.length){
-      const mt = metricas(combo);
-      chips.insertAdjacentHTML("beforeend",
-        `<span class="stats-sem">${mt.dias} día(s) · ${textoHuecos(mt.huecos)} · entras ${deMin(mt.ini)} · sales ${deMin(mt.fin)}</span>`);
-    }
   }
 
   // conflictos
@@ -2358,29 +2250,26 @@ function pintarHorario(){
   const total=maxH-minH, ALTO=Math.max(440, total/60*44);
 
   const gr=$("#grilla"); gr.innerHTML="";
-  const iHoy = (new Date().getDay()+6)%7;
-  gr.insertAdjacentHTML("beforeend",'<div class="esquina">HORA</div>'+DIAS.map((d,i)=>
-    `<div class="dia${i===iHoy?" hoy":""}${ses.some(s=>s.dia===d)?"":" sin-clases"}">${d.slice(0,3)}</div>`).join(""));
+  gr.insertAdjacentHTML("beforeend",'<div class="esquina">HORA</div>'+DIAS.map(d=>`<div class="dia">${d.slice(0,3)}</div>`).join(""));
 
   const regla=document.createElement("div"); regla.className="reglilla"; regla.style.height=ALTO+"px";
-  for(let h=minH; h<maxH; h+=60){
+  for(let h=minH+60; h<maxH; h+=60){
     const s=document.createElement("span"); s.textContent=deMin(h); s.style.top=((h-minH)/total*100)+"%"; regla.appendChild(s);
   }
   gr.appendChild(regla);
 
   for(const d of DIAS){
-    const col=document.createElement("div"); col.className="columna"+(d===DIAS[(new Date().getDay()+6)%7]?" hoy":"");
+    const col=document.createElement("div"); col.className="columna";
     col.style.height=ALTO+"px";
     col.style.setProperty("--paso-hora",(60/total*ALTO)+"px");
     ses.forEach((s,i)=>{
       if(s.dia!==d) return;
       const b=document.createElement("div"); b.className="bloque"+(choques.has(i)?" choque":"");
-      b.style.top=`calc(${(s.ini-minH)/total*100}% + 1px)`;
-      b.style.height=`calc(${(s.fin-s.ini)/total*100}% - 2px)`;
-      b.style.setProperty("--c", s.color);
+      b.style.top=((s.ini-minH)/total*100)+"%";
+      b.style.height=((s.fin-s.ini)/total*100)+"%";
+      b.style.borderColor=s.color; b.style.background=s.color+"1A"; b.style.color=s.color;
       b.title=`${s.nombre}${s.etq?" · "+s.etq:""} ${s.grupo} · ${deMin(s.ini)}–${deMin(s.fin)}${s.salon?" · "+s.salon:""}`;
-      const gn=(String(s.grupo).match(/^\(([^)]+)\)/)||[])[1], sl=limpiarSalon(s.salon);
-      b.innerHTML=`<b>${s.nombre}</b>${s.etq?`<span class="etq">${s.etq}</span>`:""}<span class="hr">${deMin(s.ini)}–${deMin(s.fin)}</span>${(gn||sl)?`<span class="sl">${gn?"Gr. "+gn:""}${gn&&sl?" · ":""}${sl}</span>`:""}`;
+      b.innerHTML=`<b>${s.nombre}</b>${s.etq?`<span class="etq">${s.etq}</span>`:""}<span class="mono">${deMin(s.ini)}–${deMin(s.fin)}${s.salon?"<br>"+s.salon:""}</span>`;
       col.appendChild(b);
     });
     gr.appendChild(col);
@@ -2537,8 +2426,7 @@ function cajaAsignatura(cod, d, enHorario, planIdx){
     : ev.ca ? "Falta: " + textoCA(ev.ca)
     : "Puedes inscribirla";
   marcarPlanEnCaja(b, planIdx ? planIdx.get(cod) : undefined);
-  marcarDisponibilidadPlan(b, cod);
-  b.addEventListener("click", ()=>clicMalla(cod));
+  b.addEventListener("click", ()=>alternarAprobada(cod));
   return b;
 }
 
@@ -2564,8 +2452,7 @@ function cajaRanura(r, cubiertas, enHorario, planIdx){
       : ev.ca ? "Falta: " + textoCA(ev.ca)
       : r.grupo ? "Se marca sola al aprobar una asignatura del grupo, o márcala a mano"
       : "Márcala cuando apruebes una electiva que ocupe esta casilla";
-    marcarDisponibilidadPlan(b, r.id);
-    b.addEventListener("click", ()=>clicMalla(r.id));
+    b.addEventListener("click", ()=>alternarAprobada(r.id));
   }
   marcarPlanEnCaja(b, planIdx ? planIdx.get(r.id) : undefined);
   return b;
@@ -3924,126 +3811,6 @@ const planAlmacen = {
 };
 let PLAN = planAlmacen.leer();
 
-/* ---- Planear con clics sobre la malla ---- */
-let MODO_MALLA = "aprobar";   // "aprobar" | "plan"
-let SEM_ACTIVO = 0;           // columna del planeador que recibe los clics
-let AVISO_MM = "";
-
-/* ---- Lógica de prerrequisitos del plan ----
-   Una materia solo entra a un semestre si sus prerrequisitos están aprobados
-   o puestos en semestres ANTERIORES (nunca el mismo). Si al quitar o mover
-   algo otra materia pierde su requisito, sale del plan también, en cascada. */
-const invalidosPlan = () => {
-  const out = [];
-  PLAN.forEach((s,i)=>{ for(const id of s.items) if(!evaluarEnPlan(id,i).ok) out.push(id); });
-  return out;
-};
-/* Quita en cascada lo que dejó de cumplir requisitos, salvo lo que ya estaba
-   mal antes de la acción (`previos`): eso lo sigue avisando el planeador. */
-function depurarPlan(previos){
-  const quitadas = [];
-  for(let hayCambio=true; hayCambio;){
-    hayCambio = false;
-    for(let i=0; i<PLAN.length && !hayCambio; i++){
-      for(const id of PLAN[i].items){
-        if(previos.has(id) || evaluarEnPlan(id,i).ok) continue;
-        PLAN[i].items = PLAN[i].items.filter(x=>x!==id);
-        quitadas.push(id); hayCambio = true; break;
-      }
-    }
-  }
-  return quitadas;
-}
-const avisoCascada = q => q.length
-  ? `Se quitaron también del plan por depender de eso: ${q.map(id=>itemPorId(id)?.nom||id).join(", ")}.` : "";
-const textoFalta = (ev, sem) => {
-  const partes = ev.faltan.map(listaOps);
-  if(ev.ca) partes.push(textoCA(ev.ca));
-  const mismo = ev.faltan.filter(ops=>ops.some(o=>sem.items.includes(o)));
-  return partes.join(" y ") + (mismo.length ? `. ${mismo.map(listaOps).join(", ")} está en este mismo semestre: debe cursarse antes` : "");
-};
-
-function quitarDelPlan(id){
-  const antes = new Set(invalidosPlan());
-  for(const s of PLAN) s.items = s.items.filter(x=>x!==id);
-  AVISO_MM = avisoCascada(depurarPlan(antes));
-  planAlmacen.guardar(PLAN); pintarPlaneador();
-}
-function quitarSemestre(i){
-  const antes = new Set(invalidosPlan());
-  PLAN.splice(i,1);
-  if(!PLAN.length) PLAN.push({nombre: etiquetaPeriodo(0), items:[]});
-  AVISO_MM = avisoCascada(depurarPlan(antes));
-  planAlmacen.guardar(PLAN); pintarPlaneador();
-}
-
-function clicMalla(id){
-  AVISO_MM = "";
-  if(MODO_MALLA !== "plan"){ alternarAprobada(id); return; }
-  const it = itemPorId(id);
-  if(!it || APROBADAS.has(id) || esNivelacion(id)) return;
-  if(SEM_ACTIVO >= PLAN.length) SEM_ACTIVO = PLAN.length-1;
-  const sem = PLAN[SEM_ACTIVO];
-  const estaba = sem.items.includes(id);
-  if(!estaba){
-    const ev = evaluarEnPlan(id, SEM_ACTIVO);
-    if(!ev.ok){
-      let desde = -1;
-      for(let i=0;i<PLAN.length;i++) if(evaluarEnPlan(id,i).ok){ desde = i; break; }
-      AVISO_MM = `🔒 ${it.nom} no se puede ver en «${sem.nombre}»: falta ${textoFalta(ev, sem)}.` +
-        (desde>=0 ? ` Sí puedes desde «${PLAN[desde].nombre}».` : " Planea antes lo que le falta.");
-      pintarSelectorMalla();
-      evento('plan_bloqueado_prerrequisito', {id, semestre:SEM_ACTIVO});
-      return;
-    }
-  }
-  const antes = new Set(invalidosPlan());
-  for(const s of PLAN) s.items = s.items.filter(x=>x!==id);   // una materia, un solo semestre
-  if(!estaba) sem.items.push(id);
-  AVISO_MM = avisoCascada(depurarPlan(antes).filter(x=>x!==id));
-  planAlmacen.guardar(PLAN); pintarPlaneador();
-  evento(estaba ? 'quitar_de_plan_desde_malla' : 'planear_desde_malla', {id, semestre:SEM_ACTIVO});
-}
-
-/* En modo planear, cada caja dice si se puede poner en el semestre activo. */
-function marcarDisponibilidadPlan(b, id){
-  if(MODO_MALLA !== "plan" || APROBADAS.has(id) || esNivelacion(id) || !itemPorId(id)) return;
-  const sem = PLAN[SEM_ACTIVO]; if(!sem) return;
-  if(sem.items.includes(id)){ b.title = `En «${sem.nombre}» — clic para quitarla`; return; }
-  const ev = evaluarEnPlan(id, SEM_ACTIVO);
-  if(ev.ok){ b.classList.add("plan-ok"); b.title = `Clic para planearla en «${sem.nombre}»`; }
-  else{ b.classList.add("plan-bloq"); b.title = `No disponible en «${sem.nombre}»: falta ${textoFalta(ev, sem)}`; }
-}
-
-function pintarSelectorMalla(){
-  const cont = $("#modoMalla"); if(!cont) return;
-  if(SEM_ACTIVO >= PLAN.length) SEM_ACTIVO = PLAN.length-1;
-  const plan = MODO_MALLA === "plan";
-  cont.querySelectorAll("[data-mm]").forEach(b=>b.classList.toggle("activo", b.dataset.mm===MODO_MALLA));
-  $("#mmSemWrap").hidden = !plan; $("#mmNuevo").hidden = !plan;
-  const sel = $("#mmSem");
-  sel.innerHTML = PLAN.map((s,i)=>{
-    const cr = s.items.reduce((t,id)=>t+(itemPorId(id)?.cr||0),0);
-    return `<option value="${i}"${i===SEM_ACTIVO?" selected":""}>${esc(s.nombre)} · ${cr}/${topeDe(s)} cr</option>`;
-  }).join("");
-  const color = PALETA_PLAN[SEM_ACTIVO % PALETA_PLAN.length];
-  sel.style.borderColor = color;
-  const m = $("#malla"); m.classList.toggle("modo-plan", plan); m.style.setProperty("--plan-act", color);
-  $("#mmAyuda").textContent = AVISO_MM || (plan
-    ? `Clic en una asignatura para ponerla en «${PLAN[SEM_ACTIVO].nombre}»; otro clic la quita. Solo se pueden planear las que ya cumplen prerrequisitos (con lo aprobado y lo puesto en semestres anteriores); las demás salen atenuadas.`
-    : "Clic en una asignatura para marcarla o desmarcarla como aprobada.");
-}
-document.querySelectorAll("#modoMalla [data-mm]").forEach(b=>b.addEventListener("click", ()=>{
-  MODO_MALLA = b.dataset.mm; AVISO_MM = ""; pintarSelectorMalla(); pintarAvance();
-  evento('cambiar_modo_malla', {modo:MODO_MALLA});
-}));
-$("#mmSem").addEventListener("change", e=>{ SEM_ACTIVO = Number(e.target.value)||0; AVISO_MM = ""; pintarSelectorMalla(); pintarAvance(); });
-$("#mmNuevo").addEventListener("click", ()=>{
-  PLAN.push({nombre: etiquetaPeriodo(PLAN.length), items:[]});
-  SEM_ACTIVO = PLAN.length-1; AVISO_MM = "";
-  planAlmacen.guardar(PLAN); pintarPlaneador();
-});
-
 /* ================= Topes de créditos del planeador =================
    TOPE_PLAN es el tope global; cada semestre puede sobrescribirlo con su
    propio campo `tope`. TOPE_CREDITOS (24) se queda intacto para el aviso del
@@ -4165,7 +3932,7 @@ function pintarPlaneador(){
 
     col.querySelector(".pc-quitar").addEventListener("click", ()=>{
       if(sem.items.length && !confirm("Este semestre tiene materias. ¿Quitarlo de todas formas?")) return;
-      quitarSemestre(i); return;
+      PLAN.splice(i,1);
       if(!PLAN.length) PLAN.push({nombre: etiquetaPeriodo(0), items:[]});
       planAlmacen.guardar(PLAN); pintarPlaneador();
     });
@@ -4181,7 +3948,8 @@ function pintarPlaneador(){
       div.innerHTML = `<span class="pi-t"><b>${esc(it.nom)}</b><span>${it.tipo==="asig"?id+" · ":""}${it.cr} cr</span>${warn}</span>
         <button type="button" class="pi-x" aria-label="Quitar ${esc(it.nom)}">✕</button>`;
       div.querySelector(".pi-x").addEventListener("click", ()=>{
-        quitarDelPlan(id);
+        sem.items = sem.items.filter(x=>x!==id);
+        planAlmacen.guardar(PLAN); pintarPlaneador();
       });
       col.appendChild(div);
     }
@@ -4254,7 +4022,6 @@ function pintarPlaneador(){
   /* Cada vez que el plan cambia, la malla del pensum se repinta para que las
      materias planeadas aparezcan con su color y su etiqueta P1, P2… así el
      usuario ve al instante el efecto de lo que acaba de agregar. */
-  pintarSelectorMalla();
   pintarAvance();
 }
 
@@ -4334,7 +4101,7 @@ $("#btnImprimirPlan").addEventListener("click", ()=>{
     alert("El plan está vacío: agrega al menos una materia antes de imprimir.");
     return;
   }
-  irA("plan");
+  irA("horario");                       // el planeador vive en la vista Horario
   document.body.classList.add("imprimir-plan");
   const tituloOriginal = document.title;
   document.title = `Plan de estudios · ${PLAN.length} semestre(s)`;
@@ -4359,10 +4126,9 @@ pintarPlaneador();
    se retira en las panorámicas (la malla y las gráficas de cupos), que
    agradecen todo el ancho. */
 const VISTAS = {
-  horario:   {paneles:["#panelHorario"],                  lado:true },
-  plan:      {paneles:["#panelAvance","#panelPlaneador"], lado:false},
-  generador: {paneles:["#panelGenerador"],                lado:false},
-  cupos:     {paneles:["#panelTendencias"],               lado:false}
+  horario:   {paneles:["#panelHorario","#panelAvance","#panelPlaneador"], lado:true },
+  generador: {paneles:["#panelGenerador"],              lado:false},
+  cupos:     {paneles:["#panelTendencias"],             lado:false}
 };
 let vistaActual = "horario";
 
@@ -4661,7 +4427,7 @@ $("#btnCopiarEnlace").addEventListener("click", async ()=>{
 function fijarModo(modo){
   modoTend=modo;
   const mapa={mis:"#modoMis", materia:"#modoMateria", doc:"#modoDoc", electivas:"#modoElectivas", snap:"#modoSnap"};
-  for(const [m,sel] of Object.entries(mapa)){ $(sel).classList.toggle("activo", m===modo); $(sel).setAttribute("aria-selected", String(m===modo)); }
+  for(const [m,sel] of Object.entries(mapa)) $(sel).classList.toggle("activo", m===modo);
   $("#selMateria").hidden = (modo!=="materia" && modo!=="doc");
   // Docentes y Electivas son fotos agregadas, no series de tiempo: el
   // selector de rango no aplica ahí. En Snapshots sí, porque acota qué
