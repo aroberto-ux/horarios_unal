@@ -738,6 +738,160 @@ section.panel[hidden]{display:none!important}
 
 /* ---------- Impresión ---------- */
 @page{size:A4 portrait; margin:12mm}
+
+/* =====================================================================
+   REDISEÑO VISUAL (capa de overrides; la lógica no cambia)
+   - Acción = azul · Estado = verde/ámbar/rojo · Marca = tinta
+   ===================================================================== */
+:root{
+  --linea:#DCE4D8;           /* bordes de paneles y controles */
+  --linea-fuerte:#C3CEC6;
+  --radio:8px;
+  --radio-panel:12px;
+  --azul-oscuro:#234C8A;
+  --sombra:0 1px 2px rgba(24,39,32,.05), 0 6px 20px rgba(24,39,32,.05);
+}
+html{font-size:15px}
+body{
+  background:
+    linear-gradient(#EDF1E9 1px, transparent 1px) 0 0/100% 32px,
+    linear-gradient(90deg, #EDF1E9 1px, transparent 1px) 0 0/32px 100%,
+    var(--papel);
+}
+
+/* ---- Cabecera ---- */
+body > header{border-bottom:0; padding-top:24px}
+h1{font-variation-settings:"wdth" 100; font-weight:800; text-transform:none; letter-spacing:-.01em; font-size:clamp(1.7rem,3.8vw,2.5rem); line-height:1.05}
+h1 small{text-transform:none; letter-spacing:.02em; font-size:.86rem; font-weight:500; margin-bottom:6px; color:#A9BDB0}
+.estado{font-size:.8rem; color:#B7C7BC}
+.estado .punto{box-shadow:0 0 0 3px rgba(20,122,70,.25)}
+.estado .punto.err{box-shadow:0 0 0 3px rgba(179,55,46,.3)}
+#btnImprimir{text-transform:none; letter-spacing:0; font:600 .84rem "Archivo",sans-serif; border-radius:var(--radio); padding:8px 14px}
+
+/* ---- Pestañas tipo carpeta: la activa se funde con la hoja ---- */
+.tabs{margin-top:20px; gap:4px}
+.tabs button{text-transform:none; letter-spacing:.005em; font:600 .95rem "Archivo",sans-serif; padding:10px 18px 12px; border-radius:10px 10px 0 0; color:#B7C7BC}
+.tabs button[aria-selected="true"]{background:var(--papel); color:var(--tinta)}
+.tabs button[aria-selected="true"] .bdg{background:var(--azul); color:#fff}
+.tabs .bdg{font-size:.72rem}
+
+/* ---- Paneles ---- */
+section.panel{border:1px solid var(--linea); border-radius:var(--radio-panel); box-shadow:var(--sombra)}
+section.panel > .titulo{padding:14px 18px; border-bottom-color:var(--linea)}
+section.panel > .titulo h2{font-size:1.02rem; font-weight:700; letter-spacing:0; text-transform:none; color:var(--tinta)}
+.panel > .titulo .dato{font-size:.82rem}
+
+/* ---- Tipografía: nada por debajo de ~12px ---- */
+.materia .cod,.materia .cred{font-size:.78rem}
+.materia .nom{font-size:1rem}
+.grupo .g-nom{font-size:.95rem}
+.grupo .g-prof{font-size:.86rem}
+.grupo .g-hor{font-size:.8rem}
+.cupos{font-size:.8rem; padding:3px 10px}
+.vel{font-size:.74rem}
+.fam-cab{font-size:.76rem; letter-spacing:.04em; text-transform:none}
+.fam-cab span{font-size:.74rem}
+.resumen .chip{font-size:.8rem; padding:4px 11px}
+.sello{font-size:.74rem; padding:2px 8px}
+.filtros{font-size:.84rem}
+.snap-meta,.snap-fila .d{font-size:.82rem}
+
+/* ---- Botones: 1 sistema (secundario por defecto) ---- */
+.btnAdd,.btn-ics,.avance-acciones button,.avance-acciones select,.snap-barra button,
+.gen-opciones button,.plan-acciones button,.ics-barra button{
+  min-height:34px; padding:0 14px; border:1px solid var(--linea-fuerte); border-radius:var(--radio);
+  background:var(--blanco); color:var(--tinta); font:600 .85rem "Archivo",sans-serif;
+  text-transform:none; letter-spacing:0; cursor:pointer;
+  transition:background .12s, border-color .12s, color .12s;
+}
+.btnAdd:hover,.btn-ics:hover,.avance-acciones button:hover,.snap-barra button:hover:not(:disabled),
+.gen-opciones button:hover,.plan-acciones button:hover,.ics-barra button:hover{
+  background:var(--papel); border-color:var(--tinta-suave); color:var(--tinta); opacity:1;
+}
+/* primario */
+.btnAdd:not(.quitar),#btnGenerar,#icsDescargar,.plan-acciones .primario{
+  background:var(--azul); border-color:var(--azul); color:#fff;
+}
+.btnAdd:not(.quitar):hover,#btnGenerar:hover,#icsDescargar:hover,.plan-acciones .primario:hover{
+  background:var(--azul-oscuro); border-color:var(--azul-oscuro); color:#fff;
+}
+#btnGenerar{min-height:40px; padding:0 22px; font-size:.95rem}
+/* peligro */
+.btnAdd.quitar{background:var(--blanco); color:var(--rojo); border-color:#E3B9B5}
+.btnAdd.quitar:hover{background:var(--rojo-claro); border-color:var(--rojo); color:var(--rojo)}
+/* chicos */
+.plan button,.elec-ver{min-height:28px; padding:0 11px; border-radius:var(--radio); font:600 .78rem "Archivo",sans-serif}
+.btn-ics{font-family:"Archivo",sans-serif; text-transform:none; letter-spacing:0; font-size:.82rem}
+.btn-ics:disabled{background:var(--papel); color:var(--tinta-suave); border-color:var(--linea)}
+
+/* ---- Inputs ---- */
+.buscador input,.controles-tend select,.snap-barra select,.snap-barra input[type="search"],.filtros select,
+.ics-barra input[type="date"],.controles-tend .fechas input{
+  border:1px solid var(--linea-fuerte); border-radius:var(--radio); min-height:36px;
+}
+.buscador input{font-size:1rem; padding:9px 14px}
+
+/* ---- Grilla semanal: la protagonista ---- */
+.grilla{border:1px solid var(--linea-fuerte); border-radius:10px}
+.grilla .esquina,.grilla .dia{font-family:"Archivo",sans-serif; font-size:.82rem; font-weight:700; letter-spacing:.06em; padding:9px 4px}
+.grilla .dia.hoy{background:var(--azul)}
+.columna.hoy{background-color:rgba(43,93,168,.05)}
+.reglilla span{font-size:.74rem}
+.bloque{
+  border-width:0 0 0 4px; border-style:solid; border-radius:6px; padding:5px 8px;
+  box-shadow:none; font-size:.78rem; line-height:1.3; animation:entra .18s ease-out;
+}
+.bloque b{font-size:.8rem; font-weight:700}
+.bloque .mono{font-size:.72rem; opacity:.9}
+.bloque .etq{font-size:.68rem}
+.bloque.choque{border-left-color:var(--rojo)!important}
+.bloque.fantasma{
+  pointer-events:none; animation:none; z-index:3; opacity:.92;
+  background:repeating-linear-gradient(135deg, rgba(43,93,168,.12) 0 6px, rgba(43,93,168,.04) 6px 12px);
+  border-style:dashed; border-width:1.5px 1.5px 1.5px 4px;
+  box-shadow:0 4px 14px rgba(24,39,32,.15);
+}
+.bloque.fantasma.choque{background:rgba(179,55,46,.12)!important}
+@keyframes entra{from{opacity:0; transform:scale(.97)}to{opacity:1; transform:none}}
+#avisoConflicto{border-left:4px solid var(--rojo); border-radius:var(--radio)}
+
+/* ---- Cupos: píldora + barra de estado ---- */
+.cupos{border:1px solid transparent}
+.cupos.ok{border-color:#BFDDCB} .cupos.pocos{border-color:#EBD2A6} .cupos.cero{border-color:#EBC0BC}
+
+/* ---- Textos de ayuda plegables ---- */
+details.ayuda-plegable summary,details.gen-avanzado summary{
+  cursor:pointer; list-style:none; color:var(--tinta-suave); font-size:.88rem; padding:2px 0;
+}
+details.ayuda-plegable summary::-webkit-details-marker,details.gen-avanzado summary::-webkit-details-marker{display:none}
+details.ayuda-plegable summary::after{content:" — cómo funciona ▾"; color:var(--azul); font-weight:600}
+details.ayuda-plegable[open] summary::after{content:" — ocultar ▴"}
+details.gen-avanzado{flex-basis:100%}
+details.gen-avanzado summary{color:var(--azul); font-weight:600}
+details.gen-avanzado summary::before{content:"+ "}
+details.gen-avanzado[open] summary::before{content:"– "}
+.gen-av-cuerpo{display:flex; flex-wrap:wrap; gap:10px 22px; align-items:center; padding:10px 0 2px}
+.gen-av-cuerpo label[hidden]{display:none}
+
+/* ---- Barra inferior en móvil ---- */
+#barraMovil{display:none}
+@media screen and (max-width:980px){
+  body{padding-bottom:68px}
+  #barraMovil{
+    display:flex; position:fixed; left:0; right:0; bottom:0; z-index:20; gap:8px; align-items:center;
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px)); background:var(--tinta); color:var(--papel);
+    box-shadow:0 -4px 18px rgba(24,39,32,.25);
+  }
+  #barraMovil.oculta{display:none}
+  #barraMovil .bm-cred{flex:1; font:600 .9rem "IBM Plex Mono",monospace}
+  #barraMovil button{min-height:42px; padding:0 16px; border-radius:var(--radio); border:1px solid #52645A; background:none; color:var(--papel); font:600 .9rem "Archivo",sans-serif}
+  #barraMovil button.pri{background:var(--azul); border-color:var(--azul)}
+}
+@media (max-width:600px){
+  .btnAdd,.btn-ics,.gen-opciones button,.plan-acciones button{min-height:42px}
+  .tabs button{font-size:.82rem; padding:9px 11px 11px}
+}
+
 @media print{
   html,body{background:#fff!important}
   body{-webkit-print-color-adjust:exact; print-color-adjust:exact; line-height:1.35}
@@ -802,6 +956,12 @@ section.panel[hidden]{display:none!important}
 </style>
 </head>
 <body>
+
+<div id="barraMovil" role="navigation" aria-label="Accesos rápidos">
+  <span class="bm-cred" id="bmCred">0 créditos</span>
+  <button type="button" data-ir="panelMaterias">Catálogo</button>
+  <button type="button" class="pri" data-ir="panelHorario">Horario</button>
+</div>
 
 <header>
   <div class="head-top">
@@ -939,6 +1099,7 @@ section.panel[hidden]{display:none!important}
           <option value="demanda">grupos que se llenan más rápido</option>
         </select>
       </label>
+      <details class="gen-avanzado"><summary>Más opciones</summary><div class="gen-av-cuerpo">
       <label><input type="checkbox" id="genSoloCupos" checked> Solo grupos con cupos</label>
       <label for="genRelleno">Rellenar huecos con electivas
         <select id="genRelleno">
@@ -949,6 +1110,7 @@ section.panel[hidden]{display:none!important}
         </select>
       </label>
       <label id="lblSinDias" hidden><input type="checkbox" id="genSinDias" checked> sin abrir días nuevos</label>
+      </div></details>
     </div>
     <div id="genEstado"></div>
     <div class="gen-comparar" id="genComparar" hidden></div>
@@ -982,7 +1144,7 @@ section.panel[hidden]{display:none!important}
   <!-- Planeador de semestres futuros -->
   <section class="panel" id="panelPlaneador" aria-label="Planear los semestres que faltan">
     <div class="titulo"><h2>Planear lo que falta</h2><span class="dato" id="planResumen"></span></div>
-    <p class="gen-ayuda" style="padding:10px 16px 0">
+    <details class="ayuda-plegable" style="padding:12px 16px 0"><summary>Agrega a cada semestre las materias que piensas ver</summary><p class="gen-ayuda">
       Agrega a cada semestre las materias que piensas ver. El nombre por defecto de cada columna
       es el periodo académico real (partiendo de <span class="mono">2026-2</span>), pero lo puedes
       editar. Si a alguna materia le falta un prerrequisito o créditos que todavía no pusiste antes,
@@ -991,7 +1153,7 @@ section.panel[hidden]{display:none!important}
       prerrequisitos con lo que llevas marcado. Cada semestre tiene su color (el puntito de su
       cabecera): en el pensum de arriba las materias planeadas aparecen pintadas con ese color
       y la etiqueta <span class="mono">P1</span>, <span class="mono">P2</span>…
-    </p>
+    </p></details>
     <div class="plan-cols" id="planCols"></div>
     <div class="plan-acciones">
       <button type="button" id="btnPlanAuto">Autocompletar</button>
@@ -1073,6 +1235,7 @@ section.panel[hidden]{display:none!important}
 /* ================= Utilidades ================= */
 const $ = s => document.querySelector(s);
 const REPO_RAW = "https://raw.githubusercontent.com/aroberto-ux/horarios_unal/main/";
+const DIA_HOY = ["DOMINGO","LUNES","MARTES","MIÉRCOLES","JUEVES","VIERNES","SÁBADO"][new Date().getDay()];
 const DIAS = ["LUNES","MARTES","MIÉRCOLES","JUEVES","VIERNES","SÁBADO"];
 const PALETA = ["#2B5DA8","#147A46","#8A4FBF","#B36F06","#0E7C86","#A63D6F","#5A6B2F","#7A4A21"];
 
@@ -2250,9 +2413,10 @@ function pintarHorario(){
   for(const s of ses){ minH=Math.min(minH,s.ini); maxH=Math.max(maxH,s.fin); }
   minH=Math.floor(minH/60)*60; maxH=Math.ceil(maxH/60)*60;
   const total=maxH-minH, ALTO=Math.max(440, total/60*44);
+  window._geom={minH,total};
 
   const gr=$("#grilla"); gr.innerHTML="";
-  gr.insertAdjacentHTML("beforeend",'<div class="esquina">HORA</div>'+DIAS.map(d=>`<div class="dia">${d.slice(0,3)}</div>`).join(""));
+  gr.insertAdjacentHTML("beforeend",'<div class="esquina">HORA</div>'+DIAS.map(d=>`<div class="dia${d===DIA_HOY?" hoy":""}">${d.slice(0,3)}</div>`).join(""));
 
   const regla=document.createElement("div"); regla.className="reglilla"; regla.style.height=ALTO+"px";
   for(let h=minH+60; h<maxH; h+=60){
@@ -2261,7 +2425,7 @@ function pintarHorario(){
   gr.appendChild(regla);
 
   for(const d of DIAS){
-    const col=document.createElement("div"); col.className="columna";
+    const col=document.createElement("div"); col.className="columna"+(d===DIA_HOY?" hoy":"");
     col.style.height=ALTO+"px";
     col.style.setProperty("--paso-hora",(60/total*ALTO)+"px");
     ses.forEach((s,i)=>{
@@ -4490,6 +4654,47 @@ $("#btnImprimir").addEventListener("click", ()=>{
   window.print();
 });
 window.addEventListener("afterprint", ()=>{ document.title = TITULO_ORIGINAL; });
+
+
+/* ---------- Vista previa fantasma al pasar el ratón por un grupo ---------- */
+(function(){
+  const lista = $("#listaMaterias");
+  const quitar = ()=> document.querySelectorAll("#grilla .bloque.fantasma").forEach(n=>n.remove());
+  function mostrar(fila){
+    quitar();
+    const k = fila.dataset.k; if(!k || seleccion.includes(k) || !window._geom) return;
+    const [c,g] = k.split("|"); const mat = MATERIAS.get(c); const gr = mat && mat.grupos.get(g); if(!gr) return;
+    const cols = document.querySelectorAll("#grilla .columna"), {minH,total} = window._geom, color = colorDe(c);
+    for(const s of gr.sesiones){
+      const col = cols[DIAS.indexOf(s.dia)]; if(!col) continue;
+      const ini = Math.max(s.ini,minH), fin = Math.min(s.fin,minH+total); if(fin<=ini) continue;
+      const top = (ini-minH)/total*100, h = (fin-ini)/total*100;
+      let choca = false;
+      col.querySelectorAll(".bloque:not(.fantasma)").forEach(b=>{
+        const t = parseFloat(b.style.top), hh = parseFloat(b.style.height);
+        if(top < t+hh && t < top+h) choca = true;
+      });
+      const d = document.createElement("div"); d.className = "bloque fantasma"+(choca?" choque":"");
+      d.style.top = top+"%"; d.style.height = h+"%"; d.style.borderColor = color; d.style.color = color;
+      d.innerHTML = `<b>${mat.nombre}</b><span class="mono">${deMin(s.ini)}–${deMin(s.fin)}</span>`;
+      col.appendChild(d);
+    }
+  }
+  lista.addEventListener("mouseover", e=>{ const f = e.target.closest(".grupo"); if(f) mostrar(f); });
+  lista.addEventListener("mouseout", e=>{ if(!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest(".grupo")) quitar(); });
+})();
+
+/* ---------- Barra inferior móvil ---------- */
+(function(){
+  const bar = $("#barraMovil"), cred = $("#totalCreditos"), ph = $("#panelHorario");
+  const sync = ()=>{ $("#bmCred").textContent = cred.textContent; bar.classList.toggle("oculta", ph.hidden); };
+  new MutationObserver(sync).observe(cred,{childList:true,characterData:true,subtree:true});
+  new MutationObserver(sync).observe(ph,{attributes:true,attributeFilter:["hidden"]});
+  sync();
+  bar.querySelectorAll("[data-ir]").forEach(b=>b.addEventListener("click",()=>{
+    const t = $("#"+b.dataset.ir); if(t && !t.hidden) t.scrollIntoView({behavior:"smooth",block:"start"});
+  }));
+})();
 
 cargarDatos();
 setInterval(cargarDatos, 10*60*1000); // refresca cada 10 minutos sin recargar la página
