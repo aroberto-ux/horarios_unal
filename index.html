@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+}<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -65,6 +65,8 @@ h1{
   font-weight:900; font-size:clamp(1.35rem,3.2vw,2rem);
   letter-spacing:.01em; text-transform:uppercase;
 }
+h1 a.guino{color:transparent; text-decoration:none; margin-left:.35em; padding:0 .4em; font-size:.7em; font-weight:400; cursor:default}
+h1 a.guino:hover{color:#9DB3A5; cursor:pointer}
 h1 small{display:block; font-weight:400; font-size:.72rem; letter-spacing:.28em; color:#9DB3A5; margin-bottom:2px}
 .estado{font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:#C9D6CD; text-align:right}
 .estado .punto{display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--verde); margin-right:6px; vertical-align:middle}
@@ -329,8 +331,6 @@ section.panel{
 
 footer{max-width:1400px; margin:0 auto; padding:10px clamp(12px,3vw,32px) 30px; color:var(--tinta-suave); font-size:.78rem}
 footer a{color:var(--azul)}
-footer a.guino{color:var(--cuadricula); text-decoration:none; font-size:.9rem}
-footer a.guino:hover{color:var(--verde)}
 
 /* ---------- Acciones de cabecera ---------- */
 .head-acciones{display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:flex-end}
@@ -805,7 +805,7 @@ section.panel[hidden]{display:none!important}
 
 <header>
   <div class="head-top">
-    <h1><small>Ingeniería Civil</small>Planilla de horario</h1>
+    <h1><small>Ingeniería Civil</small>Planilla de horario<a class="guino" href="https://www.youtube.com/watch?v=1rxYw7Y45Eo&amp;t=175s" target="_blank" rel="noopener noreferrer" aria-label="Minuto 2:55">♪</a></h1>
     <div class="head-acciones">
       <div class="estado mono" id="estado"><span class="punto"></span>Cargando datos…</div>
       <button id="btnImprimir" type="button" title="Imprime solo el horario; en el diálogo puedes elegir «Guardar como PDF»">Imprimir / PDF</button>
@@ -1067,10 +1067,6 @@ section.panel[hidden]{display:none!important}
   Los prerrequisitos salen de la malla curricular de Ingeniería Civil del 19/04/2016 (Acuerdos 257 de 2008 y 026 de 2015)
   y están transcritos en la constante <span class="mono">PENSUM</span> de este archivo: son una ayuda para ordenar el semestre,
   no una autoridad. Lo que manda es el SIA.
-  <p style="margin-top:6px">
-    <a class="guino" href="https://www.youtube.com/watch?v=1rxYw7Y45Eo&amp;t=175s"
-       target="_blank" rel="noopener noreferrer" title="Minuto 2:55">♪</a>
-  </p>
 </footer>
 
 <script>
