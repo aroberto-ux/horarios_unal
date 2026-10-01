@@ -2136,6 +2136,17 @@ function partirDocentes(txt){
   return (txt||"").split(/\s*[;/]\s*/).map(s=>s.trim()).filter(Boolean);
 }
 
+/* El SIA escribe el nombre del grupo de dos maneras:
+     "(1) Grupo 1"                                     → asignaturas de un componente
+     "(1M) 2015942-1M Aplicaciones de elementos finitos - Magistral"
+   La segunda repite el código y el nombre de la asignatura, que ya están al
+   lado en el chip y en la cabecera de familia. Aquí se reduce a "Grupo 1M". */
+function grupoCorto(g){
+  const s = String(typeof g === "string" ? g : (g?.grupo ?? "")).trim();
+  const m1 = /^\(([A-Za-z0-9]+)\)/.exec(s);
+  return m1 ? `Grupo ${m1[1]}` : s;
+}
+
 function enlacesDocentes(txt){
   const nombres = partirDocentes(txt);
   if(!LOS_ESTUDIANTES || !nombres.length) return esc(txt || "Sin profesor asignado");
@@ -2285,7 +2296,7 @@ function pintarLista(){
       }
       fila.innerHTML=`
         <div>
-          <div class="g-nom">${g.grupo}</div>
+          <div class="g-nom">${grupoCorto(g)}</div>
           <div class="g-prof">${enlacesDocentes(g.profesores)}</div>
           <div class="g-hor">${hor||"Sin horario publicado"}</div>
         </div>
@@ -2466,7 +2477,7 @@ function pintarHorario(){
     const [c,g]=k.split("|"); const m=MATERIAS.get(c); if(!m) continue;
     const fam = m.multi ? m.familias.get(m.grupos.get(g)?.fam) : null;
     const chip=document.createElement("span"); chip.className="chip";
-    chip.innerHTML=`<i style="background:${colorDe(c)}"></i>${m.nombre}${fam?` <b>${fam.etiqueta}</b>`:""} · ${g}<button type="button" aria-label="Quitar ${m.nombre}">✕</button>`;
+    chip.innerHTML=`<i style="background:${colorDe(c)}"></i>${m.nombre}${fam?` <b>${fam.etiqueta}</b>`:""} · ${grupoCorto(g)}<button type="button" aria-label="Quitar ${m.nombre}">✕</button>`;
     chip.querySelector("button").addEventListener("click",()=>alternar(k));
     chips.appendChild(chip);
   }
@@ -2726,7 +2737,7 @@ function pintarDetalleImpresion(){
     const sal=[...new Set(g.sesiones.map(s=>s.salon).filter(Boolean))].join(", ")||"—";
     filas.push({nombre:m.nombre, html:`<tr>
       <td class="mono">${m.codigo}</td><td>${m.nombre}</td>
-      <td class="mono">${m.creditos||"?"}</td><td class="mono">${gn}</td>
+      <td class="mono">${m.creditos||"?"}</td><td class="mono">${grupoCorto(gn)}</td>
       <td>${enlacesDocentes(g.profesores)}</td>
       <td class="mono">${hor}</td><td class="mono">${sal}</td></tr>`});
   }
@@ -3273,7 +3284,7 @@ function tarjetaHorario({combo, m}, n, lo, hi, puestos){
     const estG = stG ? estimarAgotamiento(stG.actual, stG.vel7) : null;
     const ag = estG ? `<span class="vel" title="Cupos tomados en los últimos 7 días">${textoAgotamiento(estG,false)}</span>` : "";
     return `<li${relleno?' class="relleno"':''}><i style="background:${colorDe(mat.codigo)}"></i>`+
-           `<span><b>${mat.nombre}</b>${rl}${et}${g.grupo}${cu}${pf?"<br>"+pf:""}${dm?"<br>"+dm:""}${ag?"<br>"+ag:""}</span></li>`;
+           `<span><b>${mat.nombre}</b>${rl}${et}${grupoCorto(g)}${cu}${pf?"<br>"+pf:""}${dm?"<br>"+dm:""}${ag?"<br>"+ag:""}</span></li>`;
   }).join("");
   art.appendChild(lista);
 
@@ -3339,7 +3350,7 @@ function pintarComparacion(aviso){
   const filasMat = [...mats].map(([cod,nom])=>{
     const cel = datos.map(d=>{
       const es = d.x.combo.filter(e=>e.m.codigo===cod);
-      return `<td>${es.length ? es.map(e=>`${esc(e.g.grupo)}<br><span style="color:var(--tinta-suave)">${esc(e.g.profesores||"Sin profesor")}</span>`).join("<hr>") : "—"}</td>`;
+      return `<td>${es.length ? es.map(e=>`${esc(grupoCorto(e.g))}<br><span style="color:var(--tinta-suave)">${esc(e.g.profesores||"Sin profesor")}</span>`).join("<hr>") : "—"}</td>`;
     });
     const igual = new Set(cel).size===1;
     return `<tr class="${igual?"igual":"dif"}"><th>${esc(nom)}</th>${cel.join("")}</tr>`;
