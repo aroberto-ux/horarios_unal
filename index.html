@@ -1787,6 +1787,8 @@ let HISTORIAL = new Map();  // "codigo|grupo" -> [{t:Date, cupos:Number}]
 let seleccion = almacen.leer(); // ["codigo|grupo", ...]
 let grafico = null;
 let modoTend = "mis";
+/* Texto de búsqueda sin tildes ni mayúsculas: «calculo» encuentra «Cálculo». */
+const normBusqueda = s => (s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/\s+/g," ").trim();
 let ultimaBusqueda = "";   // para no perder el scroll de la lista al repintar
 const ABIERTAS = new Set(); // materias que el usuario dejó desplegadas
 
@@ -2188,7 +2190,7 @@ function sparkline(canvas, datos){
 }
 
 function pintarLista(){
-  const q = $("#busqueda").value.trim().toLowerCase();
+  const q = normBusqueda($("#busqueda").value);
   const cont = $("#listaMaterias");
   const desplazamiento = (q===ultimaBusqueda) ? cont.scrollTop : 0;
   ultimaBusqueda = q;
@@ -2225,7 +2227,7 @@ function pintarLista(){
       if(m.libre && fuente==="plan") continue;
       if(!m.libre && fuente==="libre") continue;
     }
-    const texto=`${m.nombre} ${m.codigo} ${[...m.grupos.values()].map(g=>g.profesores).join(" ")}`.toLowerCase();
+    const texto=normBusqueda(`${m.nombre} ${m.codigo} ${[...m.grupos.values()].map(g=>g.profesores).join(" ")}`);
     if(q && !texto.includes(q)) continue;
     if(m.libre && !fijas.has(m.codigo)){
       if(libresPintadas >= TOPE_LIBRES){ libresOcultas++; continue; }
@@ -3487,7 +3489,7 @@ function agregarProf(tipo){
    justamente el trabajo que se le está delegando a la máquina. */
 function pintarGenLista(){
   const caja = $("#genLista"); if(!caja) return;
-  const q = ($("#genBuscar").value||"").trim().toLowerCase();
+  const q = normBusqueda($("#genBuscar").value);
   caja.innerHTML = "";
   const conLibres = $("#genLibres") ? $("#genLibres").checked : false;
   const items = [...MATERIAS.values()]
@@ -3496,7 +3498,7 @@ function pintarGenLista(){
     // casilla: si no, desaparecerían de la lista pero seguirían contando en el
     // generador, que es la peor combinación posible.
     .filter(m => !m.libre || conLibres || CANDIDATAS.has(m.codigo))
-    .filter(m => !q || `${m.nombre} ${m.codigo}`.toLowerCase().includes(q))
+    .filter(m => !q || normBusqueda(`${m.nombre} ${m.codigo}`).includes(q))
     .sort((a,b)=>{
       // Primero el plan (por semestre) y después las electivas: son el relleno,
       // no el esqueleto del horario.
@@ -3800,9 +3802,9 @@ function pintarElectivasCupos(){
     return;
   }
 
-  const q = ($("#elecBuscar").value || "").trim().toLowerCase();
+  const q = normBusqueda($("#elecBuscar").value);
   let filas = filasElectivas();
-  if(q) filas = filas.filter(f => `${f.m.nombre} ${f.m.codigo}`.toLowerCase().includes(q));
+  if(q) filas = filas.filter(f => normBusqueda(`${f.m.nombre} ${f.m.codigo}`).includes(q));
 
   const dir = ordenElectivas === "desc" ? -1 : 1;
   filas.sort((a,b)=>{
