@@ -519,9 +519,8 @@ footer a{color:var(--azul)}
 .gen-rejilla .gh{background:var(--papel); font-family:"IBM Plex Mono",monospace; font-size:.6rem; font-weight:600;
   text-align:center; padding:3px 0; color:var(--tinta-suave)}
 .gen-rejilla .gr{background:var(--papel); font-family:"IBM Plex Mono",monospace; font-size:.58rem;
-  text-align:right; padding:0 4px; color:var(--tinta-suave); line-height:13px}
-.gen-rejilla .gc{background:var(--blanco); height:13px; border:0; padding:0; cursor:pointer}
-.gen-rejilla .gc.media{box-shadow:inset 0 -1px 0 var(--cuadricula)}
+  text-align:right; padding:0 4px; color:var(--tinta-suave); line-height:26px}
+.gen-rejilla .gc{background:var(--blanco); height:26px; border:0; padding:0; cursor:pointer}
 .gen-rejilla .gc.off{background:repeating-linear-gradient(45deg,#E9D9D6,#E9D9D6 3px,#F5EAE8 3px,#F5EAE8 6px)}
 
 .gen-opciones{display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; margin-top:12px; font-size:.8rem; color:var(--tinta-suave)}
@@ -2984,7 +2983,7 @@ function prepararTendencias(){
    backtracking: en cuanto un grupo choca con lo ya elegido se corta la rama,
    así no hay que enumerar combinaciones imposibles. Las materias con menos
    grupos van primero, que es lo que más poda. */
-const GEN_PASO   = 30;      // resolución de la rejilla de bloqueos, en minutos
+const GEN_PASO   = 60;      // resolución de la rejilla de bloqueos, en minutos (franjas de 1 hora)
 const GEN_DESDE  = 6*60, GEN_HASTA = 22*60;
 const GEN_LIMITE = 400;     // horarios que se guardan como máximo
 const GEN_NODOS  = 400000;  // techo de seguridad para no congelar el navegador
@@ -2997,7 +2996,13 @@ const genAlmacen = {
 };
 const _gen0 = genAlmacen.leer();
 let CANDIDATAS = new Set(_gen0.cand || []);
-let BLOQUEADOS = new Set(_gen0.bloq || []);   // "DIA|minuto"
+/* Las franjas guardadas antes eran de media hora («Lunes|390»). Ahora son de una
+   hora, así que cada una se pasa al inicio de su hora («Lunes|360»): una media
+   hora bloqueada bloquea la hora entera, nunca se libera nada por sorpresa. */
+let BLOQUEADOS = new Set((_gen0.bloq || []).map(f=>{
+  const [d, m] = String(f).split("|"); const n = Number(m);
+  return Number.isFinite(n) ? `${d}|${Math.floor(n/GEN_PASO)*GEN_PASO}` : f;
+}));   // "DIA|minuto"
 /* Preferencias de docente, con el nombre tal cual lo escribe el SIA. Evitar es
    un filtro duro (esos grupos ni entran al producto cartesiano); priorizar es
    solo un criterio de orden, así que nunca deja sin horarios a nadie. */
@@ -3616,10 +3621,10 @@ function pintarRejilla(){
   const g=$("#genRejilla"); if(!g) return;
   g.innerHTML='<div class="gh"></div>'+DIAS.map(d=>`<div class="gh">${d.slice(0,3)}</div>`).join("");
   for(let t=GEN_DESDE; t<GEN_HASTA; t+=GEN_PASO){
-    g.insertAdjacentHTML("beforeend", `<div class="gr">${t%60===0?deMin(t):""}</div>`);
+    g.insertAdjacentHTML("beforeend", `<div class="gr">${deMin(t)}</div>`);
     for(const d of DIAS){
       const b=document.createElement("button");
-      b.type="button"; b.className="gc"+(t%60===30?" media":"")+(BLOQUEADOS.has(franja(d,t))?" off":"");
+      b.type="button"; b.className="gc"+(BLOQUEADOS.has(franja(d,t))?" off":"");
       b.dataset.f=franja(d,t);
       b.setAttribute("aria-label", `${d} ${deMin(t)}`);
       g.appendChild(b);
