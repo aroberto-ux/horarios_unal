@@ -1235,7 +1235,7 @@ details.gen-avanzado[open] summary::before{content:"– "}
       editar. Si a alguna materia le falta un prerrequisito o créditos que todavía no pusiste antes,
       queda marcada en ámbar (no se bloquea: puede que ya la tengas homologada). Las materias de
       nivelación no aparecen aquí, y en «+ agregar materia…» solo se ofrecen las que ya cumplen
-      prerrequisitos con lo que llevas marcado. Cada semestre tiene su color (el puntito de su
+      prerrequisitos con lo que llevas marcado. Los semestres se colorean en degradado según su orden (del primero al último, el puntito de su
       cabecera): en el pensum de arriba las materias planeadas aparecen pintadas con ese color
       y la etiqueta <span class="mono">P1</span>, <span class="mono">P2</span>…
     </p></details>
@@ -1328,10 +1328,30 @@ const PALETA = ["#2B5DA8","#147A46","#8A4FBF","#B36F06","#0E7C86","#A63D6F","#5A
    coincidir visualmente:
      · el puntito de color de la cabecera de cada columna del planeador,
      · el borde derecho y la etiqueta «P1», «P2»… de las cajas de la malla. */
+/* (Ya no se usa: ver colorPlan() más abajo. Se deja por si se quiere volver a colores sueltos.) */
 const PALETA_PLAN = [
   "#2B5DA8", "#147A46", "#8A4FBF", "#B36F06", "#0E7C86", "#A63D6F",
   "#5A6B2F", "#7A4A21", "#4B3B8F", "#0A6E4A", "#B3372E", "#3F5B8B"
 ];
+/* Color del semestre planeado número i (0 = el primero) de un total de n.
+   En vez de un color distinto por semestre, los colores forman un degradado
+   que sigue el orden del plan: del verde del primer semestre al azul del último. El degradado se
+   reparte entre todos los semestres que haya, así que al agregar o quitar
+   uno se reajusta solo. Devuelve un hex (lo necesita aclarar()). */
+const GRADIENTE_PLAN = {h0: 105, h1: 235, s: 78, l0: 38, l1: 40};
+function colorPlan(i, n){
+  if(n == null) n = (typeof PLAN !== "undefined" && PLAN.length) || 1;
+  const t = n > 1 ? Math.min(1, Math.max(0, i / (n - 1))) : 0;
+  const h = ((GRADIENTE_PLAN.h0 + (GRADIENTE_PLAN.h1 - GRADIENTE_PLAN.h0) * t) % 360) / 360;
+  const sa = GRADIENTE_PLAN.s / 100, li = (GRADIENTE_PLAN.l0 + (GRADIENTE_PLAN.l1 - GRADIENTE_PLAN.l0) * t) / 100;
+  const a = sa * Math.min(li, 1 - li);
+  const f = k => {
+    const kk = (k + h * 12) % 12;
+    const v = li - a * Math.max(-1, Math.min(kk - 3, 9 - kk, 1));
+    return Math.round(v * 255).toString(16).padStart(2, "0");
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
+}
 /* Mezcla un hex con blanco. f=0 deja el color tal cual; f=1 lo blanquea. */
 function aclarar(hex, f){
   const h = String(hex).replace("#","");
@@ -2613,10 +2633,10 @@ function pintarAvisosPlan(creditos){
    planeado, para no meter texto largo en una caja de 96px. */
 function marcarPlanEnCaja(b, pi){
   if(pi == null) return;
-  const c = PALETA_PLAN[pi % PALETA_PLAN.length];
+  const c = colorPlan(pi, PLAN.length);
   b.classList.add("en-plan");
   b.style.setProperty("--plan-color", c);
-  b.style.setProperty("--plan-bg", aclarar(c, 0.88));
+  b.style.setProperty("--plan-bg", aclarar(c, 0.78));
   b.dataset.planBadge = `P${pi+1}`;
   b.title = (b.title ? b.title + " · " : "") + `Planeada en ${etiquetaPeriodo(pi)} (semestre ${pi+1} del plan).`;
 }
@@ -2632,6 +2652,7 @@ function pintarAvance(){
      autocompletar) se refleja al instante. */
   const planIdx = new Map();
   PLAN.forEach((sem, i) => sem.items.forEach(id => planIdx.set(id, i)));
+
 
   // Barras por componente
   const barras = $("#barrasAvance");
@@ -4167,8 +4188,7 @@ function pintarPlaneador(){
     /* El puntito de la cabecera lleva el color de este semestre planeado,
        el mismo que usará la malla del pensum para las materias que están
        aquí. Se pasa como variable CSS. */
-    const colorPlan = PALETA_PLAN[i % PALETA_PLAN.length];
-    col.style.setProperty("--plan-color", colorPlan);
+    col.style.setProperty("--plan-color", colorPlan(i, PLAN.length));
 
     col.innerHTML = `<div class="pc-cab">
       <span class="pc-dot" aria-hidden="true" title="Color del semestre planeado"></span>
