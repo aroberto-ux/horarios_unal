@@ -342,12 +342,8 @@ footer a{color:var(--azul)}
 
 /* ---------- Acciones de cabecera ---------- */
 .head-acciones{display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:flex-end}
-#btnImprimir{
-  font:600 .74rem "IBM Plex Mono",monospace; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--papel); background:none; border:1.5px solid #6E8577; border-radius:var(--radio);
-  padding:7px 12px; cursor:pointer;
-}
-#btnImprimir:hover{background:var(--papel); color:var(--tinta); border-color:var(--papel)}
+#btnImprimir{background:var(--azul); color:#fff}
+#btnImprimir:hover{filter:brightness(1.12)}
 
 /* ---------- Detalle que acompaña la hoja impresa ---------- */
 #detalleImpresion{display:none}
@@ -774,7 +770,6 @@ h1 small{text-transform:none; letter-spacing:.02em; font-size:.86rem; font-weigh
 .estado{font-size:.8rem; color:#B7C7BC}
 .estado .punto{box-shadow:0 0 0 3px rgba(20,122,70,.25)}
 .estado .punto.err{box-shadow:0 0 0 3px rgba(179,55,46,.3)}
-#btnImprimir{text-transform:none; letter-spacing:0; font:600 .84rem "Archivo",sans-serif; border-radius:var(--radio); padding:8px 14px}
 
 /* ---- Pestañas tipo carpeta: la activa se funde con la hoja ---- */
 .tabs{margin-top:20px; gap:4px}
@@ -1057,7 +1052,6 @@ details.gen-avanzado[open] summary::before{content:"– "}
     <h1><small>Ingeniería Civil</small>Planilla de horario<a class="guino" href="https://www.youtube.com/watch?v=1rxYw7Y45Eo&amp;t=175s" target="_blank" rel="noopener noreferrer" aria-label="Minuto 2:55">♪</a></h1>
     <div class="head-acciones">
       <div class="estado mono" id="estado"><span class="punto"></span>Cargando datos…</div>
-      <button id="btnImprimir" type="button" title="Imprime solo el horario; en el diálogo puedes elegir «Guardar como PDF»">Imprimir / PDF</button>
     </div>
   </div>
   <nav class="tabs" role="tablist" aria-label="Secciones de la página">
@@ -1100,6 +1094,8 @@ details.gen-avanzado[open] summary::before{content:"– "}
     <div class="titulo"><h2>Mi horario</h2>
       <div class="titulo-acciones">
         <span class="dato" id="totalCreditos">0 créditos</span>
+        <button type="button" id="btnImprimir" class="btn-ics"
+          title="Imprime solo el horario; en el diálogo puedes elegir «Guardar como PDF»">Imprimir / PDF</button>
         <button type="button" id="btnCopiarEnlace" class="btn-ics"
           title="Copia un enlace con tu horario para mandárselo a alguien">Copiar enlace</button>
         <button type="button" id="btnExportarICS" class="btn-ics"
