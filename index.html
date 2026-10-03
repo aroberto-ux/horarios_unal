@@ -2311,7 +2311,7 @@ function pintarLista(){
     div.className="materia"; div.dataset.cod=m.codigo;
     if(ev.estado==="bloqueada") div.classList.add("bloqueada");
     if(ev.estado==="aprobada") div.classList.add("aprobada");
-    if(q || ABIERTAS.has(m.codigo)) div.classList.add("abierta");
+    if(ABIERTAS.has(m.codigo)) div.classList.add("abierta");
 
     const btn=document.createElement("button");
     btn.innerHTML=`<span class="flecha">▸</span><span class="cod">${m.codigo}</span><span class="nom">${m.nombre}</span>${selloDe(ev)}<span class="cred">${m.creditos} cr</span>`;
