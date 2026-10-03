@@ -2559,7 +2559,8 @@ function pintarHorario(){
   pintarAvisosPlan(cred);
 
   // rango horario
-  let minH=7*60, maxH=17*60;
+  // Rango fijo 6:00–21:00; solo se amplía si alguna sesión cae fuera de él.
+  let minH=6*60, maxH=21*60;
   for(const s of ses){ minH=Math.min(minH,s.ini); maxH=Math.max(maxH,s.fin); }
   minH=Math.floor(minH/60)*60; maxH=Math.ceil(maxH/60)*60;
   const total=maxH-minH, ALTO=Math.max(440, total/60*44);
