@@ -1487,7 +1487,7 @@ details.gen-avanzado[open] summary::before{content:"– "}
         Con solo 2 puntos las circunferencias se cruzan en dos lugares y debes marcar cuál es el tuyo; con 3 o más, la
         herramienta lo deduce. Las distancias deben ser horizontales.</p>
       <div class="herr-tabla-w"><table class="herr-tabla dl-tabla">
-        <thead><tr><th>Punto</th><th>X (Este)</th><th>Y (Norte)</th><th>Distancia al delta (m)</th><th title="Cuánto difiere esa distancia de la posición que dan los demás puntos">Desvío</th><th></th></tr></thead>
+        <thead><tr><th>Punto</th><th>X (Este)</th><th>Y (Norte)</th><th>Distancia al delta (m)</th><th title="Cuánto difiere esa distancia de la posición que dan los demás puntos">Desvío</th><th title="Azimut desde el delta calculado hacia cada punto, medido desde el Norte en sentido horario">Azimut del delta al punto</th><th></th></tr></thead>
         <tbody id="dlFilas"></tbody>
       </table></div>
       <div class="herr-acc" style="margin-top:10px">
@@ -4808,8 +4808,9 @@ function dlTabla(foco){
       <td><input data-k="y" inputmode="decimal" value="${p.y}" aria-label="Y de ${p.nombre}"></td>
       <td><input data-k="d" inputmode="decimal" value="${p.d}" aria-label="Distancia de ${p.nombre} al delta"></td>
       <td class="mono" data-res>—</td>
+      <td class="mono" data-az>—</td>
       <td><button type="button" data-del aria-label="Quitar ${p.nombre}">✕</button></td></tr>`).join("")
-    : '<tr><td colspan="6" style="color:var(--tinta-suave); padding:12px">Toca el mapa para marcar tu primer punto conocido.</td></tr>';
+    : '<tr><td colspan="7" style="color:var(--tinta-suave); padding:12px">Toca el mapa para marcar tu primer punto conocido.</td></tr>';
   tb.querySelectorAll("input").forEach(inp=>inp.addEventListener("input",()=>{
     DL.pts[+inp.closest("tr").dataset.i][inp.dataset.k]=inp.value; dlActualizar(); }));
   tb.querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>{
@@ -4866,10 +4867,22 @@ function dlCalcular(){
   out.estado="ok"; return out;
 }
 
+// azimut (desde el Norte, sentido horario) en grados, minutos y segundos
+function dlDMS(a){
+  let t=Math.round(a*3600); t=((t%1296000)+1296000)%1296000;
+  const g=Math.floor(t/3600), m=Math.floor(t%3600/60), sg=t%60;
+  return `${g}°${String(m).padStart(2,"0")}′${String(sg).padStart(2,"0")}″`;
+}
+
 function dlActualizar(){
-  const o=DL.res=dlCalcular(), out=$("#dlResultado");
+  const o=DL.res=dlCalcular(), out=$("#dlResultado"), delta=o.estado==="ok" ? o.R.prom : null;
   document.querySelectorAll("#dlFilas tr[data-i]").forEach(tr=>{
     const p=DL.pts[+tr.dataset.i]; tr.querySelector("[data-res]").textContent = p.dev==null ? "—" : p.dev.toFixed(3)+" m";
+    const ca=tr.querySelector("[data-az]");
+    if(delta && p.dev!=null){
+      const az=((Math.atan2(geoNum(p.x)-delta.x, geoNum(p.y)-delta.y)*180/Math.PI)%360+360)%360;
+      ca.innerHTML=`${dlDMS(az)}<br><small style="color:var(--tinta-suave)">${az.toFixed(4)}°</small>`;
+    } else ca.textContent="—";
     tr.classList.toggle("dl-mala", !!p.flag);
   });
   const vacio=t=>{ out.innerHTML=`<div class="herr-vacio">${t}</div>`; dlDibujar(); };
