@@ -4728,7 +4728,7 @@ function dlAjustarVista(){
 }
 function dlCentrar(x,y,s){ DL.v={x,y,s:s||DL.v.s}; dlDibujar(); }
 function dlZoom(f,px,py){
-  const v=DL.v, ns=Math.min(60,Math.max(Math.min(DL.W/(DL.bb[2]-DL.bb[0]),DL.H/(DL.bb[3]-DL.bb[1]))*0.5, v.s*f));
+  const v=DL.v, ns=Math.min(600,Math.max(Math.min(DL.W/(DL.bb[2]-DL.bb[0]),DL.H/(DL.bb[3]-DL.bb[1]))*0.5, v.s*f));
   px=px??DL.W/2; py=py??DL.H/2;
   const wx=(px-DL.W/2)/v.s+v.x, wy=(DL.H/2-py)/v.s+v.y;      // punto del mundo bajo el cursor
   v.s=ns; v.x=wx-(px-DL.W/2)/ns; v.y=wy-(DL.H/2-py)/ns; dlDibujar();
@@ -4922,10 +4922,11 @@ function dlDibujar(){
   const vx0=v.x-W/2/s, vx1=v.x+W/2/s, vy0=v.y-H/2/s, vy1=v.y+H/2/s;
   const vis=p=>p.x1>=vx0 && p.x0<=vx1 && p.y1>=vy0 && p.y0<=vy1;
   // rejilla de coordenadas planas: el paso se adapta al zoom (~90 px entre líneas)
-  const paso=[1,2,5,10,20,50,100,200,500,1000].find(q=>q*s>=90)||1000;
+  const paso=[0.01,0.02,0.05,0.1,0.2,0.5,1,2,5,10,20,50,100,200,500,1000].find(q=>q*s>=90)||1000;
+  const dec=paso<0.1?2:paso<1?1:0, nx0=Math.ceil(vx0/paso), nx1=Math.floor(vx1/paso), ny0=Math.ceil(vy0/paso), ny1=Math.floor(vy1/paso);
   ctx.lineWidth=1; ctx.strokeStyle="#E6ECE3"; ctx.beginPath();
-  for(let gx=Math.ceil(vx0/paso)*paso; gx<=vx1; gx+=paso){ ctx.moveTo(X(gx),0); ctx.lineTo(X(gx),H); }
-  for(let gy=Math.ceil(vy0/paso)*paso; gy<=vy1; gy+=paso){ ctx.moveTo(0,Y(gy)); ctx.lineTo(W,Y(gy)); }
+  for(let k=nx0;k<=nx1;k++){ const gx=k*paso; ctx.moveTo(X(gx),0); ctx.lineTo(X(gx),H); }
+  for(let k=ny0;k<=ny1;k++){ const gy=k*paso; ctx.moveTo(0,Y(gy)); ctx.lineTo(W,Y(gy)); }
   ctx.stroke();
   const trazo=(lista,cerrar)=>{ ctx.beginPath();
     for(const p of lista){ if(!vis(p)) continue; const f=p.f; ctx.moveTo(X(f[0]),Y(f[1]));
@@ -4966,8 +4967,8 @@ function dlDibujar(){
     ctx.beginPath(); ctx.arc(cx,cy,9,0,6.2832); ctx.fill(); ctx.stroke();
     ctx.fillStyle="#fff"; ctx.font='700 10px "IBM Plex Mono",monospace'; ctx.fillText(p.nombre.replace(/^P/,"").slice(0,3),cx,cy+.5); });
   ctx.font='500 10px "IBM Plex Mono",monospace'; ctx.fillStyle="#5C6B60"; ctx.textAlign="left";
-  ctx.textBaseline="top";    for(let gx=Math.ceil(vx0/paso)*paso; gx<=vx1; gx+=paso) ctx.fillText("E "+gx,X(gx)+3,3);
-  ctx.textBaseline="bottom"; for(let gy=Math.ceil(vy0/paso)*paso; gy<=vy1; gy+=paso) ctx.fillText("N "+gy,4,Y(gy)-2);
+  ctx.textBaseline="top";    for(let k=nx0;k<=nx1;k++){ const gx=k*paso; ctx.fillText("E "+gx.toFixed(dec),X(gx)+3,3); }
+  ctx.textBaseline="bottom"; for(let k=ny0;k<=ny1;k++){ const gy=k*paso; ctx.fillText("N "+gy.toFixed(dec),4,Y(gy)-2); }
   if(DL.hover){ ctx.strokeStyle=DL.hover.snap?"#147A46":"#8a968e"; ctx.lineWidth=1.5; ctx.beginPath(); ctx.arc(X(DL.hover.x),Y(DL.hover.y),6,0,6.2832); ctx.stroke(); }
 }
 
