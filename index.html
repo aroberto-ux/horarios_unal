@@ -1156,6 +1156,40 @@ details.gen-avanzado[open] summary::before{content:"– "}
 .dl-tabla button{border:0; background:none; color:var(--rojo); font-size:1.05rem; cursor:pointer; padding:2px 8px}
 .dl-tabla tr.dl-mala td{background:var(--rojo-claro)}
 .dl-aviso{margin:0 0 12px; padding:10px 12px; border-radius:8px; background:var(--ambar-claro); font-size:.84rem; line-height:1.45}
+.es-lienzo{border:1px solid var(--linea,#DCE4D8); border-radius:10px; background:var(--blanco); margin-bottom:12px; overflow:hidden}
+.es-lienzo svg{display:block; width:100%; height:auto; touch-action:none; cursor:crosshair; user-select:none}
+.es-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px}
+.es-card{border:1px solid var(--linea,#DCE4D8); border-radius:10px; padding:10px}
+.es-card h4{margin:0 0 6px; font:600 .78rem "IBM Plex Mono",monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--tinta-suave)}
+.es-card .herr-acc{margin-top:8px}
+.es-card select{font:.78rem "Archivo",sans-serif; min-height:30px; border:1px solid var(--linea,#DCE4D8); border-radius:5px; background:var(--blanco); color:var(--tinta)}
+.es-card .dl-tabla input{min-width:56px}
+.es-res h4{margin:14px 0 6px; font:600 .8rem "Archivo",sans-serif}
+#esEjemplo{font:.84rem "Archivo",sans-serif; min-height:34px; border:1px solid var(--linea-fuerte,#C3CEC6); border-radius:var(--radio); padding:0 8px; background:var(--blanco)}
+.hm-ctl{display:flex; flex-wrap:wrap; gap:12px 18px; align-items:center; margin-bottom:10px}
+.hm-dias{display:flex; gap:4px; flex-wrap:wrap}
+.hm-dias button,#hmPlay{min-height:34px; min-width:40px; padding:0 10px; border:1px solid var(--linea-fuerte,#C3CEC6); border-radius:8px; background:var(--blanco);
+  color:var(--tinta); font:600 .82rem "Archivo",sans-serif; cursor:pointer}
+.hm-dias button[aria-pressed="true"]{background:var(--tinta); color:var(--papel); border-color:var(--tinta)}
+.hm-hora{display:flex; gap:8px; align-items:center; flex:1 1 260px}
+.hm-hora input[type=range]{flex:1; min-width:120px}
+.hm-hora b{min-width:104px; font-size:.82rem}
+.hm-d{display:grid; gap:3px; font:600 .72rem "Archivo",sans-serif; color:var(--tinta-suave)}
+.hm-d input{width:110px; min-height:32px; font:.82rem "IBM Plex Mono",monospace; border:1px solid var(--linea-fuerte,#C3CEC6); border-radius:var(--radio); padding:0 8px; background:var(--blanco)}
+.hm-grid{display:grid; grid-template-columns:1fr minmax(250px,310px); gap:12px; align-items:start}
+@media (max-width:980px){ .hm-grid{grid-template-columns:1fr} }
+.hm-grid .dl-mapa{margin-bottom:0}
+.hm-lado h4{margin:0 0 6px; font:600 .78rem "IBM Plex Mono",monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--tinta-suave)}
+.hm-lado h4:not(:first-child){margin-top:14px}
+.hm-top{list-style:none; margin:0; padding:0; display:grid; gap:5px}
+.hm-top li{display:grid; grid-template-columns:42px 1fr 44px; gap:6px; align-items:center; font-size:.78rem; position:relative}
+.hm-top .c{font:600 .78rem "IBM Plex Mono",monospace}
+.hm-top .n{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--tinta-suave); position:relative; z-index:1}
+.hm-top .b{text-align:right; font:600 .78rem "IBM Plex Mono",monospace}
+.hm-top i{position:absolute; left:48px; top:0; bottom:0; border-radius:3px; opacity:.28}
+#hmBarras{width:100%; height:auto}
+.hm-sin{margin-top:8px; font-size:.84rem}
+.hm-sin summary{cursor:pointer; font-weight:600}
 </style>
 </head>
 <body>
@@ -1447,6 +1481,11 @@ details.gen-avanzado[open] summary::before{content:"– "}
   <!-- Herramientas -->
   <section class="panel" id="panelHerramientas" aria-label="Herramientas" role="tabpanel" hidden>
     <div class="titulo"><h2>Herramientas</h2><span class="dato">Utilidades para materias que las piden</span></div>
+    <div class="herr-nav" role="tablist" aria-label="Herramientas disponibles">
+      <button type="button" role="tab" data-herr="herrDelta" aria-selected="true">Delta perdido</button>
+      <button type="button" role="tab" data-herr="herrEst" aria-selected="false">Estática</button>
+      <button type="button" role="tab" data-herr="herrCal" aria-selected="false">Mapa de calor</button>
+    </div>
     <div class="herr-tool" id="herrDelta">
       <div class="herr-cab">
         <span class="herr-tag">Topografía · poligonal y radiación</span>
@@ -1495,6 +1534,67 @@ details.gen-avanzado[open] summary::before{content:"– "}
         <button type="button" id="dlBorrar">Quitar todos</button>
       </div>
       <div class="herr-res" id="dlResultado"></div>
+    </div>
+    <div class="herr-tool" id="herrEst" hidden>
+      <div class="herr-cab">
+        <span class="herr-tag">Estática</span>
+        <h3>Estructuras isostáticas</h3>
+        <p class="gen-ayuda">Calcula reacciones en los apoyos y fuerzas en las articulaciones solo con equilibrio estático
+          (inspirada en la calculadora «Estructuras isostáticas» de Anton Valdivia, Jade Hochschule). Define los
+          <b>puntos</b> (doble clic en el dibujo crea uno; arrástralos para moverlos), los <b>cuerpos</b> como lista de puntos
+          (2 puntos = barra de péndulo; un punto en 2 o más cuerpos es una articulación), los <b>apoyos</b> y las <b>cargas</b>.
+          Convención: X a la derecha, Y hacia arriba, momentos positivos antihorarios. Una reacción negativa actúa al contrario
+          del eje; en las barras, N &gt; 0 es tracción y N &lt; 0 compresión. Un momento aplicado en un punto de varios cuerpos
+          se asigna al primero que lo lista.</p>
+      </div>
+      <div class="herr-acc" style="margin-bottom:8px">
+        <select id="esEjemplo" aria-label="Cargar ejemplo"><option value="">Cargar ejemplo…</option>
+          <option value="viga">Viga simplemente apoyada</option><option value="armadura">Armadura triangular</option>
+          <option value="arco">Arco de tres articulaciones</option></select>
+        <button type="button" id="esLimpiar">Limpiar todo</button>
+      </div>
+      <div class="es-lienzo"><svg id="esSvg" viewBox="0 0 760 380" role="img" aria-label="Dibujo de la estructura"></svg></div>
+      <div class="es-grid">
+        <div class="es-card"><h4>Puntos</h4><div class="herr-tabla-w"><table class="herr-tabla dl-tabla"><thead><tr><th>Punto</th><th>X</th><th>Y</th><th></th></tr></thead><tbody id="esPts" data-m="pts"></tbody></table></div>
+          <div class="herr-acc"><button type="button" data-add="pts">+ Punto</button></div></div>
+        <div class="es-card"><h4>Cuerpos</h4><div class="herr-tabla-w"><table class="herr-tabla dl-tabla"><thead><tr><th>#</th><th>Puntos (en orden)</th><th></th></tr></thead><tbody id="esCue" data-m="cuerpos"></tbody></table></div>
+          <div class="herr-acc"><button type="button" data-add="cuerpos">+ Cuerpo</button></div></div>
+        <div class="es-card"><h4>Apoyos</h4><div class="herr-tabla-w"><table class="herr-tabla dl-tabla"><thead><tr><th>Punto</th><th>Tipo</th><th></th></tr></thead><tbody id="esApo" data-m="apoyos"></tbody></table></div>
+          <div class="herr-acc"><button type="button" data-add="apoyos">+ Apoyo</button></div></div>
+        <div class="es-card"><h4>Cargas</h4><div class="herr-tabla-w"><table class="herr-tabla dl-tabla"><thead><tr><th>Punto</th><th>Fx</th><th>Fy</th><th>Momento</th><th></th></tr></thead><tbody id="esCar" data-m="cargas"></tbody></table></div>
+          <div class="herr-acc"><button type="button" data-add="cargas">+ Carga</button></div></div>
+      </div>
+      <div class="herr-res" id="esResultado"></div>
+    </div>
+    <div class="herr-tool" id="herrCal" hidden>
+      <div class="herr-cab">
+        <span class="herr-tag">Campus</span>
+        <h3>Mapa de calor: estudiantes en clase</h3>
+        <p class="gen-ayuda">Estima cuántos estudiantes hay en clase en cada edificio, por día y hora, a partir de
+          <b>horarios.csv</b> (qué grupo tiene clase dónde y cuándo) y del historial de cupos (inscritos = cupo máximo
+          observado − cupos disponibles hoy). Es un modelo de ocupación por horario, no una medición: no ve cafeterías,
+          bibliotecas ni a quien falta a clase, y no incluye libre elección. Abajo se indica qué parte de los datos es medida
+          y qué parte es supuesto.</p>
+      </div>
+      <div class="hm-ctl">
+        <div class="hm-dias" id="hmDias" role="group" aria-label="Día de la semana"></div>
+        <div class="hm-hora"><button type="button" id="hmPlay" aria-label="Reproducir horas">▶</button>
+          <input type="range" id="hmHora" min="6" max="21" step="1" value="8" aria-label="Hora"><b id="hmHoraTxt" class="mono"></b></div>
+        <label class="hm-d">Estudiantes por grupo sin dato medido<input id="hmD" inputmode="numeric" placeholder="auto"></label>
+      </div>
+      <div class="hm-grid">
+        <div class="dl-mapa" id="hmMapa">
+          <canvas id="hmCanvas" role="img" aria-label="Mapa de calor de estudiantes por edificio"></canvas>
+          <div class="dl-zoom"><button type="button" id="hmMas" aria-label="Acercar">+</button><button type="button" id="hmMenos" aria-label="Alejar">−</button><button type="button" id="hmAjustar" aria-label="Ver todo el campus" title="Ver todo">⤢</button></div>
+          <div class="dl-estado" id="hmEstado">Pasa el cursor sobre un edificio</div>
+        </div>
+        <div class="hm-lado">
+          <h4>Edificios más cargados a esta hora</h4><ol id="hmTop" class="hm-top"></ol>
+          <h4>Estudiantes en clase en todo el campus</h4><svg id="hmBarras" viewBox="0 0 300 120" role="img" aria-label="Estudiantes en clase por hora"></svg>
+        </div>
+      </div>
+      <p class="gen-ayuda" id="hmCobertura"></p>
+      <details class="hm-sin"><summary>Clases que no se pudieron ubicar en el mapa</summary><div id="hmSin"></div></details>
     </div>
   </section>
 
@@ -2177,7 +2277,7 @@ function ingerirHorarios(filas, libre=false){
     if(!m.grupos.has(f.grupo)) m.grupos.set(f.grupo,{grupo:f.grupo,profesores:f.profesores,cupos:numCupos(f.cupos_disponibles),sesiones:[],actividades:new Set()});
     const g=m.grupos.get(f.grupo);
     g.actividades.add(f.actividad||"");
-    if(f.dia && f.hora_inicio) g.sesiones.push({dia:f.dia.toUpperCase(),ini:aMin(f.hora_inicio),fin:aMin(f.hora_fin),salon:f.salon_nombre||f.salon||"",act:f.actividad||""});
+    if(f.dia && f.hora_inicio) g.sesiones.push({dia:f.dia.toUpperCase(),ini:aMin(f.hora_inicio),fin:aMin(f.hora_fin),salon:f.salon_nombre||f.salon||"",act:f.actividad||"",ed:f.edificio||"",sc:f.salon||""});
   }
 }
 
@@ -2315,6 +2415,7 @@ async function cargarDatos(){
     $("#conteoMaterias").textContent = textoConteo();
 
     pintarLista(); pintarHorario(); pintarAvance(); pintarCandidatas(); pintarGenLista(); prepararTendencias();
+    hmInvalidar();
     aplicarEnlaceCompartido();
     try{ pintarGrafico(); }catch(e){ msjLienzo("La gráfica falló al dibujarse. Recarga la página para intentar de nuevo."); }
   }catch(e){
@@ -4688,27 +4789,43 @@ function geoCalcular(circ, ref, tol){
    con az medido desde el delta hacia el punto. Se promedian y se mide la dispersión. */
 const DL = {cargado:false, pts:[], n:0, v:{x:0,y:0,s:1}, W:0, H:0, dpr:1, ptrs:new Map(), hover:null, res:null, resalte:null, pendienteAjuste:true};
 
-function dlCargar(){
-  if(DL.cargado){ dlRedim(); return; }
-  DL.cargado=true;
+/* Geometría del plano del campus: se decodifica una sola vez y la comparten las herramientas del mapa. */
+let MAPA = null;
+function mapaGeometria(){
+  if(MAPA) return MAPA;
   const d=JSON.parse($("#datosMapa").textContent), [ox,oy]=d.o;
   const dec=a=>{ const n=a.length>>1, f=new Float64Array(a.length); let x=a[0], y=a[1];
     f[0]=ox+x/100; f[1]=oy+y/100;
     for(let i=1;i<n;i++){ x+=a[2*i]; y+=a[2*i+1]; f[2*i]=ox+x/100; f[2*i+1]=oy+y/100; }
-    let x0=1e12,y0=1e12,x1=-1e12,y1=-1e12;
-    for(let i=0;i<n;i++){ const px=f[2*i], py=f[2*i+1]; if(px<x0)x0=px; if(px>x1)x1=px; if(py<y0)y0=py; if(py>y1)y1=py; }
-    return {f,x0,y0,x1,y1}; };
-  DL.edif=d.edif.map(dec); DL.urb=d.urb.map(dec);
-  DL.lab=d.lab.map(([x,y,t])=>({x:ox+x/100,y:oy+y/100,t,n:d.leg[t]||d.leg[t.replace(/[A-Z]$/,"")]||""}));
+    let x0=1e12,y0=1e12,x1=-1e12,y1=-1e12, A=0;
+    for(let i=0;i<n;i++){ const px=f[2*i], py=f[2*i+1]; if(px<x0)x0=px; if(px>x1)x1=px; if(py<y0)y0=py; if(py>y1)y1=py;
+      const j=(i+1)%n; A+=px*f[2*j+1]-f[2*j]*py; }
+    return {f,x0,y0,x1,y1,area:Math.abs(A)/2}; };
+  const edif=d.edif.map(dec), urb=d.urb.map(dec);
+  const lab=d.lab.map(([x,y,t])=>({x:ox+x/100,y:oy+y/100,t,n:d.leg[t]||d.leg[t.replace(/[A-Z]$/,"")]||"",anillos:[]}));
+  const dentro=(f,px,py)=>{ let c=false; for(let i=0,j=f.length-2;i<f.length;j=i,i+=2){
+    const xi=f[i],yi=f[i+1],xj=f[j],yj=f[j+1];
+    if((yi>py)!==(yj>py) && px<(xj-xi)*(py-yi)/(yj-yi)+xi) c=!c; } return c; };
+  // cada etiqueta de edificio queda asociada a los contornos que la contienen (para pintarlos)
+  for(const l of lab) edif.forEach((r,i)=>{
+    if(r.area>0 && r.area<30000 && l.x>=r.x0 && l.x<=r.x1 && l.y>=r.y0 && l.y<=r.y1 && dentro(r.f,l.x,l.y)) l.anillos.push(i); });
+  let x0=1e12,y0=1e12,x1=-1e12,y1=-1e12;
+  for(const q of edif){ x0=Math.min(x0,q.x0); y0=Math.min(y0,q.y0); x1=Math.max(x1,q.x1); y1=Math.max(y1,q.y1); }
+  return MAPA={d,edif,urb,lab,bb:[x0,y0,x1,y1]};
+}
+
+function dlCargar(){
+  if(DL.cargado){ dlRedim(); return; }
+  DL.cargado=true;
+  const G=mapaGeometria(), d=G.d, [ox,oy]=d.o;
+  DL.edif=G.edif; DL.urb=G.urb; DL.lab=G.lab;
   // índice espacial para ajustar los clics a esquinas y vértices (celdas de 8 m)
   // Vértices reales del dibujo (esquinas, extremos de líneas y arcos), con precisión de milímetro:
   // el ajuste devuelve exactamente las coordenadas del plano, no puntos intermedios de curvas.
   DL.idx=new Map(); { let mx=Math.round(ox*1000);
     for(let i=0;i<d.snap.length;i+=2){ mx+=d.snap[i]; const px=mx/1000, py=oy+d.snap[i+1]/1000;
       const k=Math.floor(px/8)+","+Math.floor(py/8); (DL.idx.get(k)||DL.idx.set(k,[]).get(k)).push(px,py); } }
-  let x0=1e12,y0=1e12,x1=-1e12,y1=-1e12;
-  for(const p of DL.edif){ x0=Math.min(x0,p.x0); y0=Math.min(y0,p.y0); x1=Math.max(x1,p.x1); y1=Math.max(y1,p.y1); }
-  DL.bb=[x0,y0,x1,y1];
+  DL.bb=G.bb;
   $("#dlEdificios").innerHTML=DL.lab.filter(l=>l.n).map(l=>`<option value="${l.t}">${l.t} · ${l.n}</option>`).join("");
   DL.cv=$("#dlCanvas"); DL.ctx=DL.cv.getContext("2d");
   new ResizeObserver(dlRedim).observe($("#dlMapa"));
@@ -4972,6 +5089,421 @@ function dlDibujar(){
   if(DL.hover){ ctx.strokeStyle=DL.hover.snap?"#147A46":"#8a968e"; ctx.lineWidth=1.5; ctx.beginPath(); ctx.arc(X(DL.hover.x),Y(DL.hover.y),6,0,6.2832); ctx.stroke(); }
 }
 
+/* ================= Herramientas · Estática (estructuras isostáticas) =================
+   Cada cuerpo (lista de ≥2 puntos) da 3 ecuaciones de equilibrio. En cada articulación (punto de ≥2 cuerpos)
+   o apoyo hay 2 fuerzas incógnita por cuerpo, y el pasador (sin masa) da 2 ecuaciones más. Las reacciones
+   de apoyo se añaden como incógnitas solo en las direcciones fijadas. El sistema se resuelve por eliminación:
+   rango < incógnitas → indeterminada estática; rango < ecuaciones → indeterminada cinemática (mecanismo). */
+const ES = {pts:[], cuerpos:[], apoyos:[], cargas:[], view:null, drag:null, res:null};
+const ES_TIPOS = {art:{n:"Articulado (fija X y Y)",x:1,y:1,m:0}, rv:{n:"Rodillo vertical (fija Y)",x:0,y:1,m:0},
+  rh:{n:"Rodillo horizontal (fija X)",x:1,y:0,m:0}, emp:{n:"Empotrado (X, Y y giro)",x:1,y:1,m:1}};
+const ES_EJ = {
+  viga:[[["A",0,0],["C",2,0],["B",4,0]],[["A","C","B"]],[["A","art"],["B","rv"]],[["C",0,-10,0]]],
+  armadura:[[["A",0,0],["B",4,0],["C",2,3]],[["A","B"],["B","C"],["A","C"]],[["A","art"],["B","rv"]],[["C",0,-10,0]]],
+  arco:[[["A",0,0],["D",0,3],["C",3,4],["E",6,3],["B",6,0]],[["A","D","C"],["C","E","B"]],[["A","art"],["B","art"]],[["D",6,0,0],["C",0,-12,0]]]
+};
+const esF = v => v==null||!Number.isFinite(v) ? "—" : (Math.abs(v)<5e-9 ? "0" : v.toFixed(3));
+function esNombre(){ const u=new Set(ES.pts.map(p=>p.n));
+  for(let i=0;;i++){ const n=String.fromCharCode(65+i%26)+(i>=26?Math.floor(i/26):""); if(!u.has(n)) return n; } }
+function esEjemplo(k){
+  const [p,c,a,l]=ES_EJ[k];
+  ES.pts=p.map(([n,x,y])=>({n,x:String(x),y:String(y)})); ES.cuerpos=c.map(q=>({l:q.join(" ")}));
+  ES.apoyos=a.map(([p,t])=>({p,t})); ES.cargas=l.map(([p,fx,fy,m])=>({p,fx:String(fx),fy:String(fy),m:String(m)}));
+  ES.view=null; esTablas();
+}
+
+function esRref(M,n){
+  const rows=M.length, piv=[]; let r=0, mx=1; for(const f of M) for(const v of f) mx=Math.max(mx,Math.abs(v));
+  const tol=1e-9*mx;
+  for(let c=0;c<n&&r<rows;c++){
+    let k=r; for(let i=r+1;i<rows;i++) if(Math.abs(M[i][c])>Math.abs(M[k][c])) k=i;
+    if(Math.abs(M[k][c])<=tol) continue;
+    [M[r],M[k]]=[M[k],M[r]]; const d=M[r][c]; for(let j=c;j<=n;j++) M[r][j]/=d;
+    for(let i=0;i<rows;i++) if(i!==r){ const f=M[i][c]; if(f) for(let j=c;j<=n;j++) M[i][j]-=f*M[r][j]; }
+    piv.push(c); r++;
+  }
+  return {rank:r,piv,tol};
+}
+
+function esResolver(){
+  const msgs=[], P=new Map();
+  for(const p of ES.pts){
+    const x=geoNum(p.x), y=geoNum(p.y);
+    if(p.x===""||p.y===""||!Number.isFinite(x)||!Number.isFinite(y)) msgs.push(`El punto ${p.n} no tiene coordenadas válidas.`); else P.set(p.n,{n:p.n,x,y});
+  }
+  const C=[];
+  ES.cuerpos.forEach((c,i)=>{
+    const u=[...new Set(c.l.split(/[\s,;-]+/).filter(n=>P.has(n)))];
+    if(u.length>=2) C.push({i,pts:u}); else if(c.l.trim()) msgs.push(`El cuerpo ${i+1} necesita al menos 2 puntos existentes.`);
+  });
+  if(!C.length) return {estado:"vacio",msgs};
+  const enC=new Map(); C.forEach((c,k)=>c.pts.forEach(n=>{ if(!enC.has(n)) enC.set(n,[]); enC.get(n).push(k); }));
+  const ap=new Map(); for(const a of ES.apoyos) if(P.has(a.p)&&enC.has(a.p)&&ES_TIPOS[a.t]) ap.set(a.p,ES_TIPOS[a.t]);
+  const pin=n=>(enC.get(n)||[]).length>=2 || ap.has(n);
+  const U=[], idx=new Map(), add=(k,d)=>{ idx.set(k,U.length); U.push(d); };
+  C.forEach((c,k)=>c.pts.forEach(n=>{ if(pin(n)){ add(`F${k}|${n}|x`,{}); add(`F${k}|${n}|y`,{}); } }));
+  for(const [n,t] of ap){
+    if(t.x) add(`R|${n}|x`,{}); if(t.y) add(`R|${n}|y`,{});
+    if(t.m){ if(enC.get(n).length===1) add(`M|${n}`,{}); else { msgs.push(`El empotramiento en ${n} se ignora: ese punto une varios cuerpos.`); t.mIgn=true; } }
+  }
+  const L=new Map(), cup=new Map();
+  for(const l of ES.cargas){
+    if(!P.has(l.p)) continue;
+    if(!enC.has(l.p)){ msgs.push(`La carga en ${l.p} se ignora: el punto no pertenece a ningún cuerpo.`); continue; }
+    const a=L.get(l.p)||[0,0]; L.set(l.p,[a[0]+(geoNum(l.fx)||0), a[1]+(geoNum(l.fy)||0)]);
+    const m=geoNum(l.m)||0; if(m) cup.set(l.p,(cup.get(l.p)||0)+m);
+  }
+  let ox=0, oy=0; for(const p of P.values()){ ox+=p.x/P.size; oy+=p.y/P.size; }
+  const nU=U.length, rows=[], row=()=>{ const r=new Array(nU+1).fill(0); rows.push(r); return r; };
+  C.forEach((c,k)=>{
+    const rx=row(), ry=row(), rm=row();
+    for(const n of c.pts){
+      const p=P.get(n), X=p.x-ox, Y=p.y-oy;
+      if(pin(n)){ const ix=idx.get(`F${k}|${n}|x`), iy=idx.get(`F${k}|${n}|y`); rx[ix]+=1; ry[iy]+=1; rm[iy]+=X; rm[ix]-=Y; }
+      else { const f=L.get(n); if(f){ rx[nU]-=f[0]; ry[nU]-=f[1]; rm[nU]-=X*f[1]-Y*f[0]; } }
+      if(cup.has(n) && enC.get(n)[0]===k) rm[nU]-=cup.get(n);
+      if(idx.has(`M|${n}`) && enC.get(n)[0]===k) rm[idx.get(`M|${n}`)]+=1;
+    }
+  });
+  for(const [n,ks] of enC){
+    if(!pin(n)) continue;
+    const rx=row(), ry=row(), f=L.get(n)||[0,0], t=ap.get(n);
+    for(const k of ks){ rx[idx.get(`F${k}|${n}|x`)]-=1; ry[idx.get(`F${k}|${n}|y`)]-=1; }
+    if(t){ if(t.x) rx[idx.get(`R|${n}|x`)]+=1; if(t.y) ry[idx.get(`R|${n}|y`)]+=1; }
+    rx[nU]=-f[0]; ry[nU]=-f[1];
+  }
+  const M=rows.map(r=>r.slice()), {rank,piv,tol}=esRref(M,nU);
+  let consist=true; for(let i=rank;i<M.length;i++) if(Math.abs(M[i][nU])>Math.max(tol,1e-7)*10) consist=false;
+  const out={msgs, nU, nE:rows.length, estatico:nU-rank, cinem:rows.length-rank, consist};
+  if(out.estatico>0){ out.estado="hiper"; return out; }
+  if(out.cinem>0 && !consist){ out.estado="mec"; return out; }
+  const u=new Array(nU).fill(0); piv.forEach((c,i)=>{ u[c]=M[i][nU]; });
+  out.estado=out.cinem>0?"mecOk":"ok"; out.P=P;
+  out.R=[...ap].map(([n,t])=>({n, x:t.x?u[idx.get(`R|${n}|x`)]:null, y:t.y?u[idx.get(`R|${n}|y`)]:null, m:idx.has(`M|${n}`)?u[idx.get(`M|${n}`)]:null}));
+  out.cuerpos=C.map((c,k)=>{
+    const fz=c.pts.filter(pin).map(n=>({n,x:u[idx.get(`F${k}|${n}|x`)],y:u[idx.get(`F${k}|${n}|y`)]}));
+    let N=null;
+    if(c.pts.length===2){
+      const [a,b]=c.pts.map(n=>P.get(n)), Ln=Math.hypot(b.x-a.x,b.y-a.y), e=[(b.x-a.x)/Ln,(b.y-a.y)/Ln];
+      const fa=fz.find(f=>f.n===c.pts[0]), fb=fz.find(f=>f.n===c.pts[1]);
+      if(Ln>0){ if(fa) N=-(fa.x*e[0]+fa.y*e[1]); else if(fb) N=fb.x*e[0]+fb.y*e[1]; }
+    }
+    return {i:c.i, pts:c.pts, fz, N};
+  });
+  out.C=C; return out;
+}
+
+/* ---------- dibujo ---------- */
+function esVista(){
+  const q=ES.pts.map(p=>[geoNum(p.x),geoNum(p.y)]).filter(a=>a.every(Number.isFinite)), W=760, H=380, m=70;
+  if(!q.length) return {W,H,s:40,cx:0,cy:0};
+  const xs=q.map(a=>a[0]), ys=q.map(a=>a[1]), x0=Math.min(...xs), x1=Math.max(...xs), y0=Math.min(...ys), y1=Math.max(...ys);
+  let s=Math.min((W-2*m)/Math.max(x1-x0,1e-9),(H-2*m)/Math.max(y1-y0,1e-9)); if(!Number.isFinite(s)||s>400) s=Math.min(400,40);
+  return {W,H,s,cx:(x0+x1)/2,cy:(y0+y1)/2};
+}
+function esSvg(r){
+  const v=ES.view||(ES.view=esVista()), X=x=>v.W/2+(x-v.cx)*v.s, Y=y=>v.H/2-(y-v.cy)*v.s;
+  const pt=new Map(); for(const p of ES.pts){ const x=geoNum(p.x), y=geoNum(p.y); if(p.x!==""&&p.y!==""&&Number.isFinite(x)&&Number.isFinite(y)) pt.set(p.n,[x,y]); }
+  const flecha=(n,fx,fy,col,txt)=>{
+    const q=pt.get(n); if(!q||!(Math.hypot(fx,fy)>1e-9)) return "";
+    const d=Math.hypot(fx,fy), ux=fx/d, uy=-fy/d, Lg=34+Math.min(26,Math.log10(1+d)*12), px=X(q[0]), py=Y(q[1]), tx=px-ux*Lg, ty=py-uy*Lg;
+    const h=(a)=>`${px-8*(ux*Math.cos(a)-uy*Math.sin(a))},${py-8*(ux*Math.sin(a)+uy*Math.cos(a))}`;
+    return `<g stroke="${col}" fill="none" stroke-width="2"><line x1="${tx}" y1="${ty}" x2="${px}" y2="${py}"/><polyline points="${h(.45)} ${px},${py} ${h(-.45)}"/></g>
+      <text x="${tx-(ux>0?2:-2)}" y="${ty-6}" font-size="11" fill="${col}" text-anchor="${ux>0.3?"end":ux<-0.3?"start":"middle"}" font-family="IBM Plex Mono,monospace">${txt}</text>`;
+  };
+  let g="";
+  (r.C||ES.cuerpos.map((c,i)=>({i,pts:c.l.split(/[\s,;-]+/).filter(n=>pt.has(n))}))).forEach((c,k)=>{
+    const l=c.pts.filter(n=>pt.has(n)); if(l.length<2) return;
+    g+=`<polyline fill="none" stroke="hsl(${(k*70+140)%360} 38% 36%)" stroke-width="${l.length===2?3:5}" stroke-linecap="round" stroke-linejoin="round" points="${l.map(n=>X(pt.get(n)[0])+","+Y(pt.get(n)[1])).join(" ")}"/>`;
+  });
+  for(const a of ES.apoyos){ const q=pt.get(a.p); if(!q) continue; const x=X(q[0]), y=Y(q[1]), c="#2a3b30";
+    if(a.t==="art") g+=`<path d="M${x},${y} l-10,17 h20 z M${x-14},${y+20} h28" fill="#fff" stroke="${c}" stroke-width="1.6"/>`;
+    else if(a.t==="rv") g+=`<path d="M${x},${y} l-9,13 h18 z M${x-14},${y+22} h28" fill="#fff" stroke="${c}" stroke-width="1.6"/><circle cx="${x-4}" cy="${y+17.5}" r="3.5" fill="#fff" stroke="${c}"/><circle cx="${x+4}" cy="${y+17.5}" r="3.5" fill="#fff" stroke="${c}"/>`;
+    else if(a.t==="rh") g+=`<path d="M${x},${y} l-13,-9 v18 z M${x-24},${y-14} v28" fill="#fff" stroke="${c}" stroke-width="1.6"/><circle cx="${x-17.5}" cy="${y-4}" r="3.5" fill="#fff" stroke="${c}"/><circle cx="${x-17.5}" cy="${y+4}" r="3.5" fill="#fff" stroke="${c}"/>`;
+    else g+=`<path d="M${x-6},${y-16} v32 M${x-6},${y-12} l-8,6 M${x-6},${y-4} l-8,6 M${x-6},${y+4} l-8,6 M${x-6},${y+12} l-8,6" stroke="${c}" stroke-width="2.2" fill="none"/>`;
+  }
+  for(const l of ES.cargas){ const fx=geoNum(l.fx)||0, fy=geoNum(l.fy)||0, m=geoNum(l.m)||0;
+    g+=flecha(l.p,fx,fy,"#B3372E",`${esF(Math.hypot(fx,fy))}`);
+    if(m && pt.get(l.p)){ const q=pt.get(l.p), x=X(q[0]), y=Y(q[1]);
+      g+=`<path d="M${x+16},${y} A16,16 0 1 ${m>0?0:1} ${x},${y-16}" fill="none" stroke="#B3372E" stroke-width="2"/><text x="${x+20}" y="${y-18}" font-size="11" fill="#B3372E" font-family="IBM Plex Mono,monospace">M=${esF(m)}</text>`; }
+  }
+  if(r.R) for(const a of r.R){ if(a.x!=null&&Math.abs(a.x)>1e-9) g+=flecha(a.n,a.x,0,"#147A46",`Rx=${esF(a.x)}`); if(a.y!=null&&Math.abs(a.y)>1e-9) g+=flecha(a.n,0,a.y,"#147A46",`Ry=${esF(a.y)}`); }
+  for(const [n,q] of pt) g+=`<circle data-p="${n}" cx="${X(q[0])}" cy="${Y(q[1])}" r="6.5" fill="#fff" stroke="#2a3b30" stroke-width="2" style="cursor:grab"/><text x="${X(q[0])+9}" y="${Y(q[1])-9}" font-size="13" font-weight="700" fill="#2a3b30" font-family="Archivo,sans-serif" pointer-events="none">${n}</text>`;
+  $("#esSvg").innerHTML=g || '<text x="380" y="190" text-anchor="middle" fill="#8a968e" font-family="Archivo,sans-serif">Doble clic para crear el primer punto</text>';
+}
+
+/* ---------- tablas y resultados ---------- */
+function esTablas(){
+  const opt=sel=>ES.pts.map(p=>`<option${p.n===sel?" selected":""}>${p.n}</option>`).join("");
+  const del='<td><button type="button" data-del aria-label="Quitar">✕</button></td>';
+  $("#esPts").innerHTML=ES.pts.map((p,i)=>`<tr data-i="${i}"><td class="mono"><b>${p.n}</b></td><td><input data-k="x" inputmode="decimal" value="${p.x}" aria-label="X de ${p.n}"></td><td><input data-k="y" inputmode="decimal" value="${p.y}" aria-label="Y de ${p.n}"></td>${del}</tr>`).join("");
+  $("#esCue").innerHTML=ES.cuerpos.map((c,i)=>`<tr data-i="${i}"><td class="mono">${i+1}</td><td><input data-k="l" value="${c.l}" placeholder="A B C" aria-label="Puntos del cuerpo ${i+1}"></td>${del}</tr>`).join("");
+  $("#esApo").innerHTML=ES.apoyos.map((a,i)=>`<tr data-i="${i}"><td><select data-k="p" aria-label="Punto del apoyo">${opt(a.p)}</select></td><td><select data-k="t" aria-label="Tipo de apoyo">${Object.entries(ES_TIPOS).map(([k,t])=>`<option value="${k}"${k===a.t?" selected":""}>${t.n}</option>`).join("")}</select></td>${del}</tr>`).join("");
+  $("#esCar").innerHTML=ES.cargas.map((c,i)=>`<tr data-i="${i}"><td><select data-k="p" aria-label="Punto de la carga">${opt(c.p)}</select></td><td><input data-k="fx" inputmode="decimal" value="${c.fx}" aria-label="Fx"></td><td><input data-k="fy" inputmode="decimal" value="${c.fy}" aria-label="Fy"></td><td><input data-k="m" inputmode="decimal" value="${c.m}" aria-label="Momento"></td>${del}</tr>`).join("");
+  esActualizar();
+}
+
+function esActualizar(){
+  const r=ES.res=esResolver(); esSvg(r);
+  const out=$("#esResultado"), tabla=(cab,filas)=>`<div class="herr-tabla-w"><table class="herr-tabla"><thead><tr>${cab.map(c=>`<th>${c}</th>`).join("")}</tr></thead><tbody>${filas.map(f=>`<tr>${f.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  const avisos=(r.msgs||[]).map(m=>`<p class="dl-aviso">${m}</p>`).join("");
+  if(r.estado==="vacio"){ out.innerHTML=avisos+'<div class="herr-vacio">Define al menos un cuerpo con 2 o más puntos, sus apoyos y sus cargas: los resultados aparecerán aquí.</div>'; return; }
+  const gr=`${r.nU} incógnitas y ${r.nE} ecuaciones`;
+  if(r.estado==="hiper"){ out.innerHTML=avisos+`<p class="dl-aviso"><b>Estáticamente indeterminada</b>, grado ${r.estatico} (${gr}): el equilibrio solo no basta para hallar las reacciones.${r.cinem>0?` Además es cinemáticamente indeterminada, grado ${r.cinem}.`:""}</p>`; return; }
+  if(r.estado==="mec"){ out.innerHTML=avisos+`<p class="dl-aviso"><b>Cinemáticamente indeterminada</b>, grado ${r.cinem}, y <b>no puede transferir la carga</b>: con estos apoyos es un mecanismo para estas cargas.</p>`; return; }
+  const bars=r.cuerpos.filter(c=>c.N!=null);
+  out.innerHTML=avisos+(r.estado==="mecOk"?`<p class="dl-aviso"><b>Cinemáticamente indeterminada</b>, grado ${r.cinem}: puede transferir esta carga, pero es posible algún movimiento.</p>`:`<p class="herr-vacio" style="border-style:solid">Estáticamente determinada (${gr}).</p>`)+
+    '<div class="es-res"><h4>Reacciones de apoyo (del apoyo hacia la estructura)</h4>'+
+    tabla(["Punto","Rx","Ry","Momento"],r.R.map(a=>[`<b>${a.n}</b>`,esF(a.x),esF(a.y),esF(a.m)]))+
+    (bars.length?'<h4>Barras (péndulo): fuerza normal</h4>'+tabla(["Barra","N","Estado"],bars.map(c=>[`${c.pts.join("–")}`,esF(c.N),Math.abs(c.N)<5e-9?"sin fuerza":c.N>0?"tracción":"compresión"])):"")+
+    '<h4>Fuerzas sobre cada cuerpo en sus articulaciones y apoyos</h4>'+
+    tabla(["Cuerpo","Punto","Fx","Fy"],r.cuerpos.flatMap(c=>c.fz.map(f=>[c.pts.length===2?`barra ${c.pts.join("–")}`:`${c.i+1} (${c.pts.join(" ")})`,`<b>${f.n}</b>`,esF(f.x),esF(f.y)])))+'</div>';
+}
+
+(function herramientaEstatica(){
+  for(const tb of document.querySelectorAll("#herrEst tbody[data-m]")){
+    tb.addEventListener("input",e=>{ const el=e.target, tr=el.closest("tr"); if(!tr||!el.dataset.k) return;
+      ES[tb.dataset.m][+tr.dataset.i][el.dataset.k]=el.value; esActualizar(); });
+    tb.addEventListener("click",e=>{ const b=e.target.closest("[data-del]"); if(!b) return;
+      const m=tb.dataset.m, i=+b.closest("tr").dataset.i, [q]=ES[m].splice(i,1);
+      if(m==="pts"){ ES.apoyos=ES.apoyos.filter(a=>a.p!==q.n); ES.cargas=ES.cargas.filter(c=>c.p!==q.n);
+        ES.cuerpos.forEach(c=>{ c.l=c.l.split(/[\s,;-]+/).filter(n=>n&&n!==q.n).join(" "); }); }
+      ES.view=null; esTablas(); });
+  }
+  document.querySelectorAll("#herrEst [data-add]").forEach(b=>b.addEventListener("click",()=>{
+    const m=b.dataset.add, p0=ES.pts[0]&&ES.pts[0].n;
+    if(m==="pts") ES.pts.push({n:esNombre(),x:"0",y:"0"});
+    else if(m==="cuerpos") ES.cuerpos.push({l:""});
+    else if(!p0) return;
+    else if(m==="apoyos") ES.apoyos.push({p:p0,t:"art"});
+    else ES.cargas.push({p:p0,fx:"0",fy:"-10",m:"0"});
+    ES.view=null; esTablas(); }));
+  $("#esEjemplo").addEventListener("change",e=>{ if(e.target.value){ esEjemplo(e.target.value); e.target.value=""; } });
+  $("#esLimpiar").addEventListener("click",()=>{ ES.pts=[]; ES.cuerpos=[]; ES.apoyos=[]; ES.cargas=[]; ES.view=null; esTablas(); });
+  // ratón: doble clic crea un punto; arrastrar mueve un punto (con ajuste a una cuadrícula)
+  const svg=$("#esSvg");
+  const mundo=e=>{ const r=svg.getBoundingClientRect(), v=ES.view||esVista();
+    return [v.cx+((e.clientX-r.left)/r.width*v.W-v.W/2)/v.s, v.cy-((e.clientY-r.top)/r.height*v.H-v.H/2)/v.s]; };
+  const snap=x=>{ const v=ES.view||esVista(), st=[0.01,0.05,0.1,0.25,0.5,1,2,5,10,25,50].find(q=>q*v.s>=12)||50; return Math.round(x/st)*st; };
+  const num=x=>String(+x.toFixed(4));
+  svg.addEventListener("pointerdown",e=>{ const c=e.target.closest("[data-p]"); if(!c) return;
+    ES.drag=c.dataset.p; ES.view=ES.view||esVista(); svg.setPointerCapture(e.pointerId); });
+  svg.addEventListener("pointermove",e=>{ if(!ES.drag) return; const [x,y]=mundo(e), p=ES.pts.find(q=>q.n===ES.drag); if(!p) return;
+    p.x=num(snap(x)); p.y=num(snap(y));
+    const tr=$("#esPts").querySelector(`tr[data-i="${ES.pts.indexOf(p)}"]`); if(tr){ tr.querySelector('[data-k="x"]').value=p.x; tr.querySelector('[data-k="y"]').value=p.y; }
+    esActualizar(); });
+  const soltar=()=>{ if(ES.drag){ ES.drag=null; ES.view=null; esActualizar(); } };
+  svg.addEventListener("pointerup",soltar); svg.addEventListener("pointercancel",soltar);
+  svg.addEventListener("dblclick",e=>{ if(e.target.closest("[data-p]")) return; const [x,y]=mundo(e);
+    ES.view=ES.view||esVista(); ES.pts.push({n:esNombre(),x:num(snap(x)),y:num(snap(y))}); esTablas(); });
+  esEjemplo("viga");
+})();
+
+(function navegacionHerramientas(){
+  const bots=[...document.querySelectorAll(".herr-nav button")];
+  bots.forEach(b=>b.addEventListener("click",()=>{
+    bots.forEach(x=>{ const act=x===b; x.setAttribute("aria-selected",act); $("#"+x.dataset.herr).hidden=!act; });
+    if(b.dataset.herr==="herrDelta") dlCargar();
+    if(b.dataset.herr==="herrCal") hmIniciar();
+  }));
+})();
+
+/* ================= Herramientas · Mapa de calor =================
+   Estudiantes en clase por edificio, día y hora. Cada sesión de horarios.csv aporta los inscritos de su grupo
+   a las horas que ocupa (en proporción a los minutos). Inscritos = cupo máximo observado en el historial −
+   cupos disponibles actuales; los grupos sin esa medida (o sin cambio observado) usan un valor supuesto. */
+const HM = {h0:6, h1:21, dia:0, hora:8, Duser:null, datos:null, cargado:false, v:{x:0,y:0,s:1}, W:0, H:0, dpr:1,
+  ptrs:new Map(), timer:null, pendienteAjuste:true, hover:-1};
+const HM_DIAS = ["LUNES","MARTES","MIERCOLES","JUEVES","VIERNES","SABADO","DOMINGO"];
+const HM_ETQ = ["LUN","MAR","MIÉ","JUE","VIE","SÁB","DOM"];
+const HM_LARGO = ["lunes","martes","miércoles","jueves","viernes","sábado","domingo"];
+const hmNorm = t => String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toUpperCase();
+function hmCodigo(s){
+  let m=/^\s*(\d{3}[A-Z]?)\b/.exec(s.ed||""); if(m) return m[1];
+  m=/^(\d{3}[A-Z]?)-/.exec(s.sc||""); return m ? m[1] : null;
+}
+
+function hmCalcular(){
+  const NH=HM.h1-HM.h0+1, cel=new Map(), totAll=new Float64Array(7*NH), totLoc=new Float64Array(7*NH);
+  const etiquetas=new Set(mapaGeometria().lab.map(l=>l.t)), sin=new Map(), conocidos=[];
+  for(const m of MATERIAS.values()){ if(m.libre) continue;
+    for(const g of m.grupos.values()){
+      g._ins=null; const h=HISTORIAL.get(`${m.codigo}|${g.grupo}`);
+      if(h && h.length>1 && g.cupos!=null){
+        let cap=0; for(const p of h) if(p.cupos>cap) cap=p.cupos;
+        const ins=cap-g.cupos; if(ins>0){ g._ins=ins; conocidos.push(ins); }
+      }
+    } }
+  conocidos.sort((a,b)=>a-b);
+  const auto=conocidos.length ? Math.round(conocidos[conocidos.length>>1]) : 25;
+  const D = HM.Duser>0 ? HM.Duser : auto;
+  let ses=0, sesLoc=0, grp=0, grpMed=0;
+  const motivo=(s,cod)=>{
+    if(cod) return "Edificios sin etiqueta en el plano";
+    if(!s.ed && !s.sc) return "Sin aula asignada en el SIA";
+    if(hmNorm(s.ed).includes("ESPACIOS EXTERNOS")) return "Espacios externos (canchas, hospitales, salidas…)";
+    return "Aulas sin número de edificio (otras sedes, aulas modulares, virtuales)";
+  };
+  for(const m of MATERIAS.values()){ if(m.libre) continue;
+    for(const g of m.grupos.values()){
+      if(!g.sesiones.length) continue;
+      grp++; if(g._ins!=null) grpMed++;
+      const n = g._ins!=null ? g._ins : D;
+      for(const s of g.sesiones){
+        const di=HM_DIAS.indexOf(hmNorm(s.dia)); if(di<0 || !(s.fin>s.ini)) continue;
+        ses++;
+        const cod=hmCodigo(s), loc=!!(cod && etiquetas.has(cod));
+        let fila=null;
+        if(loc) sesLoc++;
+        else { const mt=motivo(s,cod); fila=sin.get(mt)||sin.set(mt,{ses:0,eh:0,cods:new Map()}).get(mt); fila.ses++; if(cod) fila.cods.set(cod,(fila.cods.get(cod)||0)+1); }
+        for(let h=HM.h0;h<=HM.h1;h++){
+          const ov=Math.min(s.fin,(h+1)*60)-Math.max(s.ini,h*60); if(ov<=0) continue;
+          const v=n*ov/60, k=di*NH+(h-HM.h0); totAll[k]+=v;
+          if(loc){ totLoc[k]+=v; let a=cel.get(cod); if(!a) cel.set(cod,a=new Float64Array(7*NH)); a[k]+=v; }
+          else fila.eh+=v;   // estudiante-horas
+        }
+      }
+    } }
+  let max=1; for(const a of cel.values()) for(const v of a) if(v>max) max=v;
+  let maxTot=1; for(const v of totAll) if(v>maxTot) maxTot=v;
+  return {cel,NH,max,maxTot,totAll,totLoc,sin,cob:{ses,sesLoc,grp,grpMed,D,auto,conocidos:conocidos.length}};
+}
+
+const HM_ESCALA=[[0,[238,242,232]],[.25,[244,211,94]],[.55,[238,132,52]],[.8,[200,55,45]],[1,[107,26,43]]];
+function hmColor(v){
+  const t=Math.sqrt(Math.max(0,Math.min(1,v/HM.datos.max)));
+  for(let i=1;i<HM_ESCALA.length;i++) if(t<=HM_ESCALA[i][0]){
+    const [t0,c0]=HM_ESCALA[i-1], [t1,c1]=HM_ESCALA[i], f=(t-t0)/(t1-t0);
+    return `rgb(${c0.map((c,j)=>Math.round(c+(c1[j]-c)*f)).join(",")})`; }
+  return "rgb(107,26,43)";
+}
+
+function hmPreparar(){
+  const G=mapaGeometria(), D=HM.datos, k=HM.dia*D.NH+(HM.hora-HM.h0);
+  HM.ring=new Float64Array(G.edif.length);
+  HM.lv=G.lab.map(l=>{ const a=D.cel.get(l.t), v=a?a[k]:0; for(const i of l.anillos) HM.ring[i]+=v; return v; });
+  HM.orden=[...HM.ring.keys()].filter(i=>HM.ring[i]>0).sort((a,b)=>G.edif[b].area-G.edif[a].area);
+  $("#hmHoraTxt").textContent=`${HM_ETQ[HM.dia]} ${String(HM.hora).padStart(2,"0")}:00–${String(HM.hora+1).padStart(2,"0")}:00`;
+  const top=G.lab.map((l,i)=>({l,v:HM.lv[i]})).filter(o=>o.v>=1).sort((a,b)=>b.v-a.v).slice(0,8), mx=top.length?top[0].v:1;
+  $("#hmTop").innerHTML = top.length ? top.map(o=>`<li><span class="c">${o.l.t}</span><span class="n" title="${esc(o.l.n)}">${esc(o.l.n)||"—"}</span><span class="b">${Math.round(o.v)}</span><i style="width:calc((100% - 96px)*${o.v/mx}); background:${hmColor(o.v)}"></i></li>`).join("")
+    : '<li style="display:block;color:var(--tinta-suave)">Sin clases a esta hora.</li>';
+  // barras del día: ubicadas (oscuro) y no ubicadas (claro)
+  let b=""; const w=300/D.NH;
+  for(let i=0;i<D.NH;i++){
+    const all=D.totAll[HM.dia*D.NH+i], loc=D.totLoc[HM.dia*D.NH+i], ha=all/D.maxTot*88, hl=loc/D.maxTot*88, x=i*w+1.5, sel=i===HM.hora-HM.h0;
+    b+=`<rect x="${x}" y="${100-ha}" width="${w-3}" height="${ha}" fill="#C9D4C0"/><rect x="${x}" y="${100-hl}" width="${w-3}" height="${hl}" fill="${sel?"#B3372E":"#2a3b30"}"/>`;
+    if(i%3===0) b+=`<text x="${x+(w-3)/2}" y="113" font-size="9" text-anchor="middle" fill="#5C6B60" font-family="IBM Plex Mono,monospace">${HM.h0+i}</text>`;
+  }
+  $("#hmBarras").innerHTML=b+`<text x="2" y="9" font-size="9" fill="#5C6B60" font-family="IBM Plex Mono,monospace">máx. ${Math.round(D.maxTot)}</text>`;
+}
+
+function hmInformes(){
+  const c=HM.datos.cob, pct=(a,b)=>b?Math.round(100*a/b):0;
+  $("#hmCobertura").innerHTML=`<b>Qué tan medido es esto.</b> ${c.sesLoc} de ${c.ses} sesiones (${pct(c.sesLoc,c.ses)} %) tienen aula en un edificio del mapa. `+
+    `${c.grpMed} de ${c.grp} grupos (${pct(c.grpMed,c.grp)} %) tienen inscritos estimados con el historial de cupos; a los demás se les supone `+
+    `<b>${c.D}</b> estudiantes (${HM.Duser>0?"valor que pusiste":"mediana de los medidos, "+c.conocidos+" grupos"}). Las barras claras de la derecha son estudiantes de clases sin aula ubicada.`;
+  const filas=[...HM.datos.sin].sort((a,b)=>b[1].ses-a[1].ses);
+  $("#hmSin").innerHTML = filas.length ? '<div class="herr-tabla-w"><table class="herr-tabla"><thead><tr><th>Motivo</th><th>Sesiones</th><th>Detalle</th></tr></thead><tbody>'+
+    filas.map(([mt,f])=>`<tr><td style="white-space:normal">${mt}</td><td>${f.ses}</td><td style="white-space:normal">${[...f.cods].sort((a,b)=>b[1]-a[1]).map(([k,n])=>`${k} (${n})`).join(", ")}</td></tr>`).join("")+'</tbody></table></div>'
+    : "Todas las sesiones quedaron ubicadas.";
+}
+
+function hmRedim(){
+  const r=$("#hmMapa").getBoundingClientRect(); if(!HM.cv || r.width<10) return;
+  HM.dpr=window.devicePixelRatio||1; HM.W=r.width; HM.H=r.height;
+  HM.cv.width=Math.round(r.width*HM.dpr); HM.cv.height=Math.round(r.height*HM.dpr);
+  if(HM.pendienteAjuste){ hmAjustarVista(); HM.pendienteAjuste=false; }
+  hmDibujar();
+}
+function hmAjustarVista(){
+  const [x0,y0,x1,y1]=mapaGeometria().bb;
+  HM.v={x:(x0+x1)/2, y:(y0+y1)/2, s:Math.min(HM.W/(x1-x0), HM.H/(y1-y0))*0.96}; hmDibujar();
+}
+function hmZoom(f,px,py){
+  const v=HM.v, [x0,y0,x1,y1]=mapaGeometria().bb, ns=Math.min(40,Math.max(Math.min(HM.W/(x1-x0),HM.H/(y1-y0))*0.5, v.s*f));
+  px=px??HM.W/2; py=py??HM.H/2;
+  const wx=(px-HM.W/2)/v.s+v.x, wy=(HM.H/2-py)/v.s+v.y;
+  v.s=ns; v.x=wx-(px-HM.W/2)/ns; v.y=wy-(HM.H/2-py)/ns; hmDibujar();
+}
+
+function hmDibujar(){
+  if(!HM.ctx || !HM.W || !HM.datos || !HM.ring) return;
+  const ctx=HM.ctx, W=HM.W, H=HM.H, v=HM.v, s=v.s, G=mapaGeometria(), D=HM.datos;
+  ctx.setTransform(HM.dpr,0,0,HM.dpr,0,0); ctx.fillStyle="#FAFBF7"; ctx.fillRect(0,0,W,H);
+  const X=x=>(x-v.x)*s+W/2, Y=y=>H/2-(y-v.y)*s;
+  const vx0=v.x-W/2/s, vx1=v.x+W/2/s, vy0=v.y-H/2/s, vy1=v.y+H/2/s;
+  const vis=p=>p.x1>=vx0 && p.x0<=vx1 && p.y1>=vy0 && p.y0<=vy1;
+  const traza=(lista,cerrar)=>{ ctx.beginPath(); for(const p of lista){ if(!vis(p)) continue; const f=p.f;
+    ctx.moveTo(X(f[0]),Y(f[1])); for(let i=2;i<f.length;i+=2) ctx.lineTo(X(f[i]),Y(f[i+1])); if(cerrar) ctx.closePath(); } };
+  ctx.lineJoin="round"; ctx.lineWidth=0.8; ctx.strokeStyle="#C3CCC5"; traza(G.urb,false); ctx.stroke();
+  traza(G.edif,true); ctx.fillStyle="#E7ECE4"; ctx.fill(); ctx.lineWidth=1; ctx.strokeStyle="#8A998F"; ctx.stroke();
+  for(const i of HM.orden){ const r=G.edif[i]; if(!vis(r)) continue; const f=r.f;
+    ctx.beginPath(); ctx.moveTo(X(f[0]),Y(f[1])); for(let q=2;q<f.length;q+=2) ctx.lineTo(X(f[q]),Y(f[q+1])); ctx.closePath();
+    ctx.fillStyle=hmColor(HM.ring[i]); ctx.fill(); ctx.strokeStyle="#5a4a44"; ctx.lineWidth=1; ctx.stroke(); }
+  ctx.textAlign="center"; ctx.textBaseline="middle";
+  G.lab.forEach((l,i)=>{
+    if(l.x<vx0||l.x>vx1||l.y<vy0||l.y>vy1) return; const val=HM.lv[i], cx=X(l.x), cy=Y(l.y);
+    if(val>0 && !l.anillos.length){ ctx.fillStyle=hmColor(val); ctx.strokeStyle="#5a4a44"; ctx.lineWidth=1; ctx.beginPath(); ctx.arc(cx,cy,5+Math.min(8,Math.sqrt(val)/3),0,6.2832); ctx.fill(); ctx.stroke(); }
+    if(i===HM.hover){ ctx.strokeStyle="#147A46"; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(cx,cy,14,0,6.2832); ctx.stroke(); }
+    if(s>=1 && val>=1){ ctx.font='700 11px "IBM Plex Mono",monospace'; ctx.lineWidth=3; ctx.strokeStyle="#fffc"; ctx.strokeText(Math.round(val),cx,cy); ctx.fillStyle="#2a1a14"; ctx.fillText(Math.round(val),cx,cy); }
+    if(s>=3.5){ ctx.font='600 9px "IBM Plex Mono",monospace'; ctx.fillStyle="#147A46"; ctx.fillText(l.t,cx,cy+(val>=1?12:0)); }
+  });
+  // leyenda
+  const gx=12, gy=H-34, gw=130; const gr=ctx.createLinearGradient(gx,0,gx+gw,0);
+  HM_ESCALA.forEach(([t,c])=>gr.addColorStop(t,`rgb(${c})`)); ctx.fillStyle=gr; ctx.fillRect(gx,gy,gw,8); ctx.strokeStyle="#5a4a44"; ctx.lineWidth=.8; ctx.strokeRect(gx,gy,gw,8);
+  ctx.font='500 10px "IBM Plex Mono",monospace'; ctx.fillStyle="#5C6B60"; ctx.textAlign="left"; ctx.textBaseline="top"; ctx.fillText("0",gx,gy+10);
+  ctx.textAlign="right"; ctx.fillText(Math.round(D.max)+" estudiantes",gx+gw,gy+10);
+}
+
+function hmEventos(){
+  const cv=HM.cv, pos=e=>{ const r=cv.getBoundingClientRect(); return [e.clientX-r.left,e.clientY-r.top]; };
+  cv.addEventListener("pointerdown",e=>{ cv.setPointerCapture(e.pointerId); const [x,y]=pos(e); HM.ptrs.set(e.pointerId,{x,y,x0:x,y0:y,mov:false}); });
+  cv.addEventListener("pointermove",e=>{
+    const [x,y]=pos(e), p=HM.ptrs.get(e.pointerId);
+    if(!p){ // cursor libre: edificio más cercano
+      const G=mapaGeometria(), v=HM.v; let best=-1, bd=18*18;
+      G.lab.forEach((l,i)=>{ const d=((l.x-v.x)*v.s+HM.W/2-x)**2+(HM.H/2-(l.y-v.y)*v.s-y)**2; if(d<bd){bd=d; best=i;} });
+      if(best!==HM.hover){ HM.hover=best; const l=G.lab[best];
+        $("#hmEstado").textContent = best<0 ? "Pasa el cursor sobre un edificio" :
+          `Edificio ${l.t}${l.n?" · "+l.n:""} — ${Math.round(HM.lv[best])} estudiantes (${HM_ETQ[HM.dia]} ${String(HM.hora).padStart(2,"0")}:00)`;
+        hmDibujar(); }
+      return; }
+    if(HM.ptrs.size===2){ const [a,b]=[...HM.ptrs.values()], dOld=Math.hypot(a.x-b.x,a.y-b.y); p.x=x; p.y=y;
+      const dNew=Math.hypot(a.x-b.x,a.y-b.y); if(dOld>0) hmZoom(dNew/dOld,(a.x+b.x)/2,(a.y+b.y)/2); return; }
+    if(!p.mov && Math.hypot(x-p.x0,y-p.y0)<4) return;
+    p.mov=true; HM.v.x-=(x-p.x)/HM.v.s; HM.v.y+=(y-p.y)/HM.v.s; p.x=x; p.y=y; hmDibujar();
+  });
+  const fin=e=>HM.ptrs.delete(e.pointerId);
+  cv.addEventListener("pointerup",fin); cv.addEventListener("pointercancel",fin);
+  cv.addEventListener("wheel",e=>{ e.preventDefault(); const [x,y]=pos(e); hmZoom(Math.exp(-e.deltaY*0.0016),x,y); },{passive:false});
+  $("#hmMas").addEventListener("click",()=>hmZoom(1.5)); $("#hmMenos").addEventListener("click",()=>hmZoom(1/1.5));
+  $("#hmAjustar").addEventListener("click",hmAjustarVista);
+  $("#hmDias").innerHTML=HM_ETQ.map((e,i)=>`<button type="button" data-d="${i}" aria-pressed="${i===HM.dia}">${e}</button>`).join("");
+  $("#hmDias").addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; HM.dia=+b.dataset.d;
+    $("#hmDias").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b)); hmActualizar(); });
+  $("#hmHora").addEventListener("input",e=>{ HM.hora=+e.target.value; hmActualizar(); });
+  $("#hmPlay").addEventListener("click",()=>{
+    if(HM.timer){ clearInterval(HM.timer); HM.timer=null; $("#hmPlay").textContent="▶"; return; }
+    $("#hmPlay").textContent="⏸";
+    HM.timer=setInterval(()=>{ HM.hora = HM.hora>=HM.h1 ? HM.h0 : HM.hora+1; $("#hmHora").value=HM.hora; hmActualizar(); },900); });
+  $("#hmD").addEventListener("change",e=>{ const n=parseInt(e.target.value,10); HM.Duser = n>0 ? n : null; hmInvalidar(); });
+}
+
+function hmActualizar(){
+  if(!MATERIAS.size){ $("#hmCobertura").textContent="Esperando los datos del catálogo…"; return; }
+  if(!HM.datos){ HM.datos=hmCalcular(); $("#hmD").placeholder=`auto (${HM.datos.cob.auto})`; hmInformes(); }
+  hmPreparar(); hmDibujar();
+}
+function hmInvalidar(){ HM.datos=null; if(HM.cargado && !$("#herrCal").hidden) hmActualizar(); }
+function hmIniciar(){
+  if(!HM.cargado){
+    HM.cargado=true; mapaGeometria();
+    HM.cv=$("#hmCanvas"); HM.ctx=HM.cv.getContext("2d");
+    new ResizeObserver(hmRedim).observe($("#hmMapa")); hmEventos();
+  }
+  hmRedim(); hmActualizar();
+}
+
 /* ================= Navegación por pestañas =================
    Una sola vista visible a la vez. El catálogo de asignaturas se queda fijo
    en las vistas donde se usa (armar el horario a mano y elegir candidatas), y
@@ -5004,7 +5536,8 @@ function irA(v, {foco=false, guardar=true}={}){
   }
   // El lienzo de Chart.js mide mal si nace oculto: hay que redibujarlo al mostrarlo
   if(v==="cupos") pintarGrafico();
-  if(v==="herramientas") dlCargar();
+  if(v==="herramientas" && !$("#herrDelta").hidden) dlCargar();
+  if(v==="herramientas" && !$("#herrCal").hidden) hmIniciar();
   actualizarInsignias();
   if(cambioDeVista && typeof gtag === "function"){
     // pageview virtual: cada pestaña se cuenta como una "página" propia
