@@ -1190,6 +1190,10 @@ details.gen-avanzado[open] summary::before{content:"– "}
 #hmBarras{width:100%; height:auto}
 .hm-sin{margin-top:8px; font-size:.84rem}
 .hm-sin summary{cursor:pointer; font-weight:600}
+.mov-h{margin:0 0 6px; font:600 .78rem "IBM Plex Mono",monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--tinta-suave)}
+.mov-ref{margin:0; padding-left:18px; display:grid; gap:6px; font-size:.82rem; line-height:1.4}
+.mov-ref a{color:var(--azul)}
+#herrMov .hm-d select{font:.82rem "Archivo",sans-serif; border:1px solid var(--linea-fuerte,#C3CEC6); border-radius:var(--radio); background:var(--blanco); padding:0 8px}
 </style>
 </head>
 <body>
@@ -1485,6 +1489,7 @@ details.gen-avanzado[open] summary::before{content:"– "}
       <button type="button" role="tab" data-herr="herrDelta" aria-selected="true">Delta perdido</button>
       <button type="button" role="tab" data-herr="herrEst" aria-selected="false">Estática</button>
       <button type="button" role="tab" data-herr="herrCal" aria-selected="false">Mapa de calor</button>
+      <button type="button" role="tab" data-herr="herrMov" aria-selected="false">Movilidad</button>
     </div>
     <div class="herr-tool" id="herrDelta">
       <div class="herr-cab">
@@ -1595,6 +1600,51 @@ details.gen-avanzado[open] summary::before{content:"– "}
       </div>
       <p class="gen-ayuda" id="hmCobertura"></p>
       <details class="hm-sin"><summary>Clases que no se pudieron ubicar en el mapa</summary><div id="hmSin"></div></details>
+    </div>
+    <div class="herr-tool" id="herrMov" hidden>
+      <div class="herr-cab">
+        <span class="herr-tag">Campus</span>
+        <h3>Movilidad: cuánta gente llega, sale y se desplaza</h3>
+        <p class="gen-ayuda">Combina el horario de clases (cuántos estudiantes entran y salen de clase cada hora, según el mapa de calor) con
+          el reparto por modo de transporte que tú ingreses, por ejemplo con los resultados de tu <b>Encuesta de Movilidad UNAL</b>.
+          Responde preguntas como: ¿a qué hora llega más gente al campus?, ¿cuántas personas por hora pueden necesitar TransMilenio
+          en ese pico?, ¿entre qué edificios se mueve la gente al cambio de clase?</p>
+      </div>
+      <div class="hm-ctl">
+        <div class="hm-dias" id="movDias" role="group" aria-label="Día de la semana"></div>
+        <label class="hm-d">Cambio de clase de las<select id="movHora" style="min-height:32px"></select></label>
+        <label class="hm-d">% que pasa directo a otra clase<input id="movFi" inputmode="numeric" value="50"></label>
+      </div>
+      <div class="hm-grid">
+        <div>
+          <h4 class="mov-h">Llegadas y salidas netas por hora</h4>
+          <svg id="movBarras" viewBox="0 0 340 170" role="img" aria-label="Llegadas y salidas netas por hora" style="width:100%;height:auto"></svg>
+          <p class="gen-ayuda" id="movPico"></p>
+        </div>
+        <div class="hm-lado">
+          <h4>Cifras oficiales de referencia</h4>
+          <ul class="mov-ref">
+            <li><b>55.517</b> estudiantes matriculados en la universidad (todas las sedes); 89,5 % de pregrado.</li>
+            <li><b>3.006</b> docentes de planta (todas las sedes).</li>
+            <li>Fuente: portada de <a href="https://estadisticas.unal.edu.co/home/" target="_blank" rel="noopener">estadisticas.unal.edu.co</a>.
+              Las cifras de la <b>Sede Bogotá</b> están en tableros interactivos: <a href="https://planeacion.bogota.unal.edu.co/sede_en_cifras/" target="_blank" rel="noopener">La Sede en Cifras</a>.</li>
+            <li>Contexto de ciudad: en la Encuesta de Movilidad 2019 se estimaron cerca de 13,3 millones de viajes en un día típico en Bogotá, con la bicicleta en 5,6 % (<a href="https://ieu.unal.edu.co/divulgacion-academica/movilidad-y-transporte-en-la-region-de-bogota-cundinamarca-una-vision-de-su-realidad-y-retos-institucionales" target="_blank" rel="noopener">IEU-UNAL</a>). No son cifras del campus.</li>
+          </ul>
+        </div>
+      </div>
+      <h4 class="mov-h" style="margin-top:14px">Cómo llegan: reparto por modo de transporte</h4>
+      <div class="hm-grid">
+        <div class="herr-tabla-w"><table class="herr-tabla dl-tabla"><thead><tr><th>Modo</th><th>%</th><th>Llegadas en el pico</th><th>Salidas en el pico</th><th>Llegadas del día</th></tr></thead><tbody id="movModos"></tbody></table></div>
+        <div class="hm-lado">
+          <h4>Pegar respuestas de la encuesta</h4>
+          <textarea id="movPegar" rows="5" style="width:100%; font:.78rem 'IBM Plex Mono',monospace; border:1px solid var(--linea-fuerte,#C3CEC6); border-radius:var(--radio); padding:6px" placeholder="Una respuesta por línea, p. ej.&#10;TransMilenio&#10;Bicicleta&#10;A pie"></textarea>
+          <div class="herr-acc"><button type="button" id="movCalcPct">Calcular porcentajes</button></div>
+          <p class="gen-ayuda" id="movSuma"></p>
+        </div>
+      </div>
+      <h4 class="mov-h" id="movFlujoT" style="margin-top:14px"></h4>
+      <div id="movFlujos"></div>
+      <p class="gen-ayuda" id="movNota"></p>
     </div>
   </section>
 
@@ -5305,6 +5355,7 @@ function esActualizar(){
     bots.forEach(x=>{ const act=x===b; x.setAttribute("aria-selected",act); $("#"+x.dataset.herr).hidden=!act; });
     if(b.dataset.herr==="herrDelta") dlCargar();
     if(b.dataset.herr==="herrCal") hmIniciar();
+    if(b.dataset.herr==="herrMov") movIniciar();
   }));
 })();
 
@@ -5494,7 +5545,7 @@ function hmActualizar(){
   if(!HM.datos){ HM.datos=hmCalcular(); $("#hmD").placeholder=`auto (${HM.datos.cob.auto})`; hmInformes(); }
   hmPreparar(); hmDibujar();
 }
-function hmInvalidar(){ HM.datos=null; if(HM.cargado && !$("#herrCal").hidden) hmActualizar(); }
+function hmInvalidar(){ HM.datos=null; if(HM.cargado && !$("#herrCal").hidden) hmActualizar(); if(typeof movInvalidar==="function") movInvalidar(); }
 function hmIniciar(){
   if(!HM.cargado){
     HM.cargado=true; mapaGeometria();
@@ -5503,6 +5554,92 @@ function hmIniciar(){
   }
   hmRedim(); hmActualizar();
 }
+
+/* ================= Herramientas · Movilidad =================
+   Llegadas y salidas netas por hora (cambio en estudiantes en clase), reparto por modo de transporte (ingresado por
+   el usuario) y flujos entre edificios al cambio de clase. Los flujos son un modelo: de los que terminan clase en A,
+   una fracción φ pasa directo a otra clase, repartida entre los edificios donde empieza clase en proporción a sus estudiantes. */
+const MOV = {dia:2, hora:10, fi:50, cargado:false, dat:null, pct:{}};
+const MOV_MODOS = [["Caminata",/CAMIN|PIE|PEATON/],["Bicicleta o patineta",/BICI|CICLA|PATIN|SCOOTER/],["TransMilenio",/TRANSMI|\bTM\b/],
+  ["SITP / bus",/SITP|BUS|BUSETA|COLECTIVO|ZONAL|ALIMENTADOR/],["Carro particular",/CARRO|AUTO|VEHICULO|CAMIONETA/],["Moto",/MOTO/],
+  ["Taxi / app",/TAXI|UBER|DIDI|CABIFY|INDRIVE|APP/],["Otro",/./]];
+
+function movDatos(){
+  if(MOV.dat) return MOV.dat;
+  if(!HM.datos) HM.datos=hmCalcular();                     // fija también los inscritos por grupo (g._ins)
+  const D=HM.datos, mk=()=>Array.from({length:7},()=>Array.from({length:25},()=>new Map()));
+  const sale=mk(), entra=mk(), labs=new Set(mapaGeometria().lab.map(l=>l.t));
+  const suma=(m,k,v)=>m.set(k,(m.get(k)||0)+v);
+  for(const m of MATERIAS.values()){ if(m.libre) continue;
+    for(const g of m.grupos.values()){ const n=g._ins!=null?g._ins:D.cob.D;
+      for(const s of g.sesiones){ const di=HM_DIAS.indexOf(hmNorm(s.dia)); if(di<0||!(s.fin>s.ini)) continue;
+        const cod=hmCodigo(s); if(!(cod&&labs.has(cod))) continue;
+        suma(sale[di][Math.min(24,Math.round(s.fin/60))],cod,n); suma(entra[di][Math.min(24,Math.round(s.ini/60))],cod,n); } } }
+  return MOV.dat={sale,entra};
+}
+
+function movSerie(di){
+  const D=HM.datos, NH=D.NH, p=h=>h<HM.h0||h>HM.h1?0:D.totAll[di*NH+(h-HM.h0)], r=[];
+  for(let h=HM.h0;h<=HM.h1+1;h++) r.push({h, lleg:Math.max(0,p(h)-p(h-1)), sal:Math.max(0,p(h-1)-p(h))});
+  return r;
+}
+
+function movActualizar(){
+  if(!MATERIAS.size){ $("#movNota").textContent="Esperando los datos del catálogo…"; return; }
+  const dat=movDatos(), D=HM.datos, serie=movSerie(MOV.dia), g=mapaGeometria();
+  // ---- barras
+  const mx=Math.max(1,...serie.map(o=>Math.max(o.lleg,o.sal))), w=340/serie.length; let b="";
+  serie.forEach((o,i)=>{ const x=i*w+2, hl=o.lleg/mx*70, hs=o.sal/mx*70;
+    b+=`<rect x="${x}" y="${80-hl}" width="${w-4}" height="${hl}" fill="#147A46"/><rect x="${x}" y="80" width="${w-4}" height="${hs}" fill="#B3372E"/>`;
+    if(i%2===0) b+=`<text x="${x+(w-4)/2}" y="165" font-size="9" text-anchor="middle" fill="#5C6B60" font-family="IBM Plex Mono,monospace">${o.h}</text>`; });
+  $("#movBarras").innerHTML=b+`<line x1="0" x2="340" y1="80" y2="80" stroke="#5C6B60" stroke-width=".6"/><text x="2" y="10" font-size="9" fill="#147A46" font-family="IBM Plex Mono,monospace">llegan · máx. ${Math.round(mx)}</text><text x="2" y="160" font-size="9" fill="#B3372E" font-family="IBM Plex Mono,monospace">salen</text>`;
+  const pl=serie.reduce((a,o)=>o.lleg>a.lleg?o:a,serie[0]), ps=serie.reduce((a,o)=>o.sal>a.sal?o:a,serie[0]);
+  const f=h=>String(h).padStart(2,"0")+":00", tot=serie.reduce((t,o)=>t+o.lleg,0);
+  $("#movPico").innerHTML=`Pico de llegadas (${HM_LARGO[MOV.dia]}): <b>${f(pl.h)}</b>, unos <b>${Math.round(pl.lleg)}</b> estudiantes más en clase que la hora anterior. `+
+    `Pico de salidas: <b>${f(ps.h)}</b>, unos <b>${Math.round(ps.sal)}</b>. En el día llegan en total al menos <b>${Math.round(tot)}</b>. `+
+    `Son valores netos (cambio en los que están en clase): subestiman a quien llega y se va en la misma hora.`;
+  // ---- modos
+  const filas=MOV_MODOS.map(([n])=>n), sumaPct=filas.reduce((t,n)=>t+(MOV.pct[n]||0),0);
+  document.querySelectorAll("#movModos tr").forEach(tr=>{ const n=tr.dataset.n, q=(MOV.pct[n]||0)/100;
+    tr.querySelector("[data-a]").textContent=Math.round(pl.lleg*q); tr.querySelector("[data-s]").textContent=Math.round(ps.sal*q); tr.querySelector("[data-d]").textContent=Math.round(tot*q); });
+  $("#movSuma").textContent = sumaPct ? `Suma: ${sumaPct.toFixed(1)} %${Math.abs(sumaPct-100)>1?" (debería ser 100 %)":""}` : "Escribe los porcentajes o pega las respuestas de tu encuesta.";
+  // ---- flujos entre edificios
+  const h=MOV.hora, fi=Math.max(0,Math.min(100,MOV.fi))/100, sa=dat.sale[MOV.dia][h], en=dat.entra[MOV.dia][h];
+  const S=[...sa.values()].reduce((a,v)=>a+v,0), E=[...en.values()].reduce((a,v)=>a+v,0);
+  $("#movFlujoT").textContent=`Principales desplazamientos entre edificios · ${HM_LARGO[MOV.dia]} al cambio de las ${f(h)}`;
+  const nom=c=>{ const l=g.lab.find(x=>x.t===c); return l&&l.n?`${c} · ${l.n}`:c; };
+  if(!S||!E) $("#movFlujos").innerHTML='<div class="herr-vacio">A esa hora no terminan y empiezan clases en edificios ubicados en el mapa.</div>';
+  else{ const T=Math.min(fi*S,E), fl=[];
+    for(const [a,va] of sa) for(const [c,vc] of en) if(a!==c) fl.push([a,c,T*(va/S)*(vc/E)]);
+    fl.sort((x,y)=>y[2]-x[2]);
+    $("#movFlujos").innerHTML='<div class="herr-tabla-w"><table class="herr-tabla"><thead><tr><th>Desde</th><th>Hacia</th><th>Estudiantes</th></tr></thead><tbody>'+
+      fl.slice(0,10).map(([a,c,v])=>`<tr><td style="white-space:normal">${esc(nom(a))}</td><td style="white-space:normal">${esc(nom(c))}</td><td>${Math.round(v)}</td></tr>`).join("")+
+      `</tbody></table></div><p class="gen-ayuda">Salen de clase ${Math.round(S)} estudiantes en edificios del mapa y empiezan ${Math.round(E)}; se supone que el ${Math.round(fi*100)} % de los que salen pasa directo a otra clase.</p>`; }
+  $("#movNota").innerHTML=`<b>Límites.</b> Solo cuenta estudiantes en clase (sin docentes, administrativos ni visitantes), con inscritos medidos en ${D.cob.grpMed} de ${D.cob.grp} grupos y ${D.cob.D} supuestos en el resto; el reparto por modo y el % que pasa directo a otra clase son datos tuyos, no medidos aquí.`;
+}
+
+function movIniciar(){
+  if(!MOV.cargado){
+    MOV.cargado=true;
+    $("#movDias").innerHTML=HM_ETQ.map((e,i)=>`<button type="button" data-d="${i}" aria-pressed="${i===MOV.dia}">${e}</button>`).join("");
+    $("#movDias").addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; MOV.dia=+b.dataset.d;
+      $("#movDias").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b)); movActualizar(); });
+    $("#movHora").innerHTML=Array.from({length:16},(_,i)=>i+7).map(h=>`<option value="${h}"${h===MOV.hora?" selected":""}>${String(h).padStart(2,"0")}:00</option>`).join("");
+    $("#movHora").addEventListener("change",e=>{ MOV.hora=+e.target.value; movActualizar(); });
+    $("#movFi").addEventListener("input",e=>{ const n=parseFloat(e.target.value); MOV.fi=Number.isFinite(n)?n:50; movActualizar(); });
+    $("#movModos").innerHTML=MOV_MODOS.map(([n])=>`<tr data-n="${n}"><td>${n}</td><td><input data-k="${n}" inputmode="decimal" aria-label="Porcentaje ${n}"></td><td class="mono" data-a>—</td><td class="mono" data-s>—</td><td class="mono" data-d>—</td></tr>`).join("");
+    $("#movModos").addEventListener("input",e=>{ const k=e.target.dataset.k; if(!k) return; const v=parseFloat(String(e.target.value).replace(",","."));
+      MOV.pct[k]=Number.isFinite(v)&&v>0?v:0; movActualizar(); });
+    $("#movCalcPct").addEventListener("click",()=>{
+      const lineas=$("#movPegar").value.split(/\r?\n/).map(t=>hmNorm(t).trim()).filter(Boolean); if(!lineas.length) return;
+      const cuenta={}; for(const l of lineas){ const m=MOV_MODOS.find(([,re])=>re.test(l)); cuenta[m[0]]=(cuenta[m[0]]||0)+1; }
+      MOV.pct={}; for(const [n] of MOV_MODOS){ const v=100*(cuenta[n]||0)/lineas.length; MOV.pct[n]=+v.toFixed(1);
+        $("#movModos").querySelector(`input[data-k="${n}"]`).value=v?v.toFixed(1):""; }
+      movActualizar(); });
+  }
+  movActualizar();
+}
+function movInvalidar(){ MOV.dat=null; if(MOV.cargado && !$("#herrMov").hidden) movActualizar(); }
 
 /* ================= Navegación por pestañas =================
    Una sola vista visible a la vez. El catálogo de asignaturas se queda fijo
@@ -5538,6 +5675,7 @@ function irA(v, {foco=false, guardar=true}={}){
   if(v==="cupos") pintarGrafico();
   if(v==="herramientas" && !$("#herrDelta").hidden) dlCargar();
   if(v==="herramientas" && !$("#herrCal").hidden) hmIniciar();
+  if(v==="herramientas" && !$("#herrMov").hidden) movIniciar();
   actualizarInsignias();
   if(cambioDeVista && typeof gtag === "function"){
     // pageview virtual: cada pestaña se cuenta como una "página" propia
