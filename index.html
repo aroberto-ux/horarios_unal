@@ -1194,6 +1194,10 @@ details.gen-avanzado[open] summary::before{content:"– "}
 .mov-ref{margin:0; padding-left:18px; display:grid; gap:6px; font-size:.82rem; line-height:1.4}
 .mov-ref a{color:var(--azul)}
 #herrMov .hm-d select{font:.82rem "Archivo",sans-serif; border:1px solid var(--linea-fuerte,#C3CEC6); border-radius:var(--radio); background:var(--blanco); padding:0 8px}
+.pob-barras{display:grid; gap:5px; margin-bottom:6px}
+.pob-barras div{display:grid; grid-template-columns:150px 1fr 52px; gap:8px; align-items:center; font-size:.8rem; position:relative}
+.pob-barras i{display:block; height:12px; background:var(--verde); border-radius:3px; min-width:1px}
+.pob-barras b{font:600 .78rem "IBM Plex Mono",monospace; text-align:right}
 </style>
 </head>
 <body>
@@ -1490,6 +1494,7 @@ details.gen-avanzado[open] summary::before{content:"– "}
       <button type="button" role="tab" data-herr="herrEst" aria-selected="false">Estática</button>
       <button type="button" role="tab" data-herr="herrCal" aria-selected="false">Mapa de calor</button>
       <button type="button" role="tab" data-herr="herrMov" aria-selected="false">Movilidad</button>
+      <button type="button" role="tab" data-herr="herrPob" aria-selected="false">Población sintética</button>
     </div>
     <div class="herr-tool" id="herrDelta">
       <div class="herr-cab">
@@ -1645,6 +1650,27 @@ details.gen-avanzado[open] summary::before{content:"– "}
       <h4 class="mov-h" id="movFlujoT" style="margin-top:14px"></h4>
       <div id="movFlujos"></div>
       <p class="gen-ayuda" id="movNota"></p>
+    </div>
+    <div class="herr-tool" id="herrPob" hidden>
+      <div class="herr-cab">
+        <span class="herr-tag">Modelo</span>
+        <h3>Población sintética: estudiantes ficticios con horario completo</h3>
+        <p class="gen-ayuda">Genera estudiantes <b>ficticios</b> (no son personas reales ni datos de nadie) para modelar los huecos entre clases y el movimiento
+          dentro del campus. Cada uno cursa las asignaturas de un semestre de un plan: por cada asignatura se elige un grupo al azar, ponderado por
+          los inscritos que le faltan por completar, y se descartan los cruces de horario. Después se <b>rebalancea</b>: los estudiantes de grupos
+          sobrecargados pasan a grupos con déficit de la misma asignatura, si no se cruzan con su horario. Al final se mide qué tan cerca quedó cada
+          grupo de sus inscritos reales. Para Ingeniería Civil usa el pensum de la página; para otras carreras pega su malla abajo.</p>
+      </div>
+      <div class="hm-ctl">
+        <label class="hm-d">Cohorte<select id="pobCoh" style="min-height:32px"></select></label>
+        <label class="hm-d">Estudiantes (auto = mediana)<input id="pobN" inputmode="numeric" placeholder="auto"></label>
+        <label class="hm-d">Semilla<input id="pobSem" inputmode="numeric" value="1"></label>
+        <div class="herr-acc"><button type="button" class="pri" id="pobGen">Generar</button><button type="button" id="pobCsv" disabled>Descargar CSV</button></div>
+      </div>
+      <details class="hm-sin"><summary>Pegar la malla de otra carrera (plan; semestre; código)</summary>
+        <textarea id="pobMalla" rows="4" style="width:100%; font:.78rem 'IBM Plex Mono',monospace; border:1px solid var(--linea-fuerte,#C3CEC6); border-radius:var(--radio); padding:6px; margin-top:6px" placeholder="Ingeniería Mecánica; 1; 1000004&#10;Ingeniería Mecánica; 1; 1000005"></textarea>
+        <div class="herr-acc" style="margin-top:6px"><button type="button" id="pobMallaOk">Usar esta malla</button></div></details>
+      <div id="pobRes" class="herr-res"></div>
     </div>
   </section>
 
@@ -5356,6 +5382,7 @@ function esActualizar(){
     if(b.dataset.herr==="herrDelta") dlCargar();
     if(b.dataset.herr==="herrCal") hmIniciar();
     if(b.dataset.herr==="herrMov") movIniciar();
+    if(b.dataset.herr==="herrPob") pobIniciar();
   }));
 })();
 
@@ -5545,7 +5572,7 @@ function hmActualizar(){
   if(!HM.datos){ HM.datos=hmCalcular(); $("#hmD").placeholder=`auto (${HM.datos.cob.auto})`; hmInformes(); }
   hmPreparar(); hmDibujar();
 }
-function hmInvalidar(){ HM.datos=null; if(HM.cargado && !$("#herrCal").hidden) hmActualizar(); if(typeof movInvalidar==="function") movInvalidar(); }
+function hmInvalidar(){ HM.datos=null; if(HM.cargado && !$("#herrCal").hidden) hmActualizar(); if(typeof movInvalidar==="function") movInvalidar(); if(typeof pobInvalidar==="function") pobInvalidar(); }
 function hmIniciar(){
   if(!HM.cargado){
     HM.cargado=true; mapaGeometria();
@@ -5641,6 +5668,145 @@ function movIniciar(){
 }
 function movInvalidar(){ MOV.dat=null; if(MOV.cargado && !$("#herrMov").hidden) movActualizar(); }
 
+/* ================= Herramientas · Población sintética =================
+   Estudiantes ficticios por cohorte (plan + semestre). Una «unidad» es una asignatura (o un componente, en las
+   multicomponente) de la que el estudiante toma exactamente un grupo. Objetivo de cada grupo = inscritos estimados,
+   escalados si la asignatura es compartida con otros planes (la cohorte solo absorbe una parte). */
+const POB = {malla:"", res:null, cargado:false};
+const pobRnd = sem => { let a=(sem>>>0)||1; return ()=>{ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; };
+const pobChoca = (A,B)=>{ for(const a of A.ses) for(const b of B.ses) if(a.dia===b.dia && a.ini<b.fin && b.ini<a.fin) return true; return false; };
+
+function pobCohortes(){
+  const por=new Map();
+  for(const m of MATERIAS.values()){ if(m.libre) continue; const k=nc(m.codigo), a=por.get(k); if(!a||m.grupos.size>a.grupos.size) por.set(k,m); }
+  const out=[], bySem=new Map();
+  for(const [cod,d] of Object.entries(PENSUM)){ if(d.opt) continue; const m=por.get(cod); if(!m) continue;
+    (bySem.get(d.sem)||bySem.set(d.sem,[]).get(d.sem)).push(m); }
+  for(const [sem,ms] of [...bySem].sort((a,b)=>a[0]-b[0])) out.push({id:`civil-${sem}`,plan:"Ingeniería Civil",sem,mats:ms});
+  for(const l of POB.malla.split(/\r?\n/)){ const t=l.split(/[;\t,]/).map(x=>x.trim()); if(t.length<3) continue;
+    const [plan,sem,cod]=t, m=por.get(nc(cod)); if(!m) continue;
+    const id=`malla-${plan}-${sem}`; let c=out.find(x=>x.id===id); if(!c) out.push(c={id,plan,sem,mats:[]}); if(!c.mats.includes(m)) c.mats.push(m); }
+  return out.filter(c=>c.mats.length);
+}
+
+function pobUnidades(coh){
+  const D=HM.datos.cob.D, U=[];
+  for(const m of coh.mats){
+    const familias = m.multi ? [...m.familias.values()].map(f=>f.grupos) : [[...m.grupos.keys()]];
+    for(const nombres of familias){
+      const grupos=nombres.map(n=>m.grupos.get(n)).filter(g=>g && g.sesiones.length)
+        .map(g=>({g,mat:m,n:g._ins!=null?g._ins:D,a:0,alumnos:new Set(),
+                  ses:g.sesiones.filter(x=>x.fin>x.ini).map(x=>({dia:hmNorm(x.dia),ini:x.ini,fin:x.fin}))}));
+      if(grupos.length) U.push({mat:m,grupos,Ts:grupos.reduce((t,x)=>t+x.n,0)});
+    }
+  }
+  return U;
+}
+
+function pobGenerarCohorte(coh, Nuser, rnd){
+  const U=pobUnidades(coh); if(!U.length) return null;
+  const Ts=U.map(u=>u.Ts).sort((a,b)=>a-b), N=Nuser>0?Nuser:Math.max(1,Math.round(Ts[Ts.length>>1]));
+  for(const u of U){ u.k=u.Ts>N?N/u.Ts:1; u.prob=u.Ts<N?u.Ts/N:1; for(const x of u.grupos) x.t=x.n*u.k; }
+  const orden=[...U].sort((a,b)=>a.grupos.length-b.grupos.length||b.Ts-a.Ts);
+  const E=[]; let omitidas=0;
+  const dispon=(st,u,excluir)=>u.grupos.filter(x=>x!==excluir && !st.el.some(y=>y!==excluir && y.mat!==undefined && pobChoca(x,y)));
+  const asignar=(st,u,x)=>{ x.a++; x.alumnos.add(st); st.el.push(x); st.u.set(u,x); };
+  for(let i=0;i<N;i++){ const st={id:i+1,coh,el:[],u:new Map(),faltan:[]}; E.push(st);
+    for(const u of orden){ if(rnd()>u.prob){ omitidas++; continue; }
+      const c=dispon(st,u); if(!c.length){ st.faltan.push(u); continue; }
+      const w=c.map(x=>Math.max(x.t-x.a,0)+0.02*x.t+1e-6); let r=rnd()*w.reduce((a,b)=>a+b,0), j=0; while(j<c.length-1 && (r-=w[j])>0) j++;
+      asignar(st,u,c[j]); } }
+  // relleno: las asignaturas que quedaron sin grupo por cruces van a grupos con déficit que no choquen
+  for(const st of E) for(const u of [...st.faltan]){ const c=dispon(st,u).filter(x=>x.t-x.a>0.5).sort((a,b)=>(b.t-b.a)-(a.t-a.a));
+    if(c.length){ asignar(st,u,c[0]); st.faltan.splice(st.faltan.indexOf(u),1); } }
+  // rebalanceo: de grupos sobrecargados a grupos con déficit de la misma unidad
+  let iter=0, movidos=0;
+  for(;iter<40;iter++){ let mv=0;
+    for(const u of U){ const sobre=u.grupos.filter(x=>x.a-x.t>0.5);
+      for(const x of sobre){ const lista=[...x.alumnos].sort(()=>rnd()-0.5);
+        for(const st of lista){ if(x.a-x.t<=0.5) break;
+          const c=u.grupos.filter(y=>y!==x && y.t-y.a>0.5 && !st.el.some(z=>z!==x && pobChoca(y,z))).sort((a,b)=>(b.t-b.a)-(a.t-a.a));
+          if(!c.length) continue; const y=c[0];
+          x.a--; x.alumnos.delete(st); st.el.splice(st.el.indexOf(x),1); y.a++; y.alumnos.add(st); st.el.push(y); st.u.set(u,y); mv++; } } }
+    movidos+=mv; if(!mv) break; }
+  return {coh,U,E,N,omitidas,iter,movidos};
+}
+
+function pobMetricas(R){
+  let sAbs=0,sT=0,ok=0,ng=0,sSS=0,sTT=0,tm=0; const filas=[];
+  for(const r of R) for(const u of r.U) for(const x of u.grupos){ const e=x.a-x.t; sAbs+=Math.abs(e); sT+=x.t; ng++; tm+=x.t;
+    if(Math.abs(e)<=Math.max(2,0.1*x.t)) ok++; filas.push({cod:u.mat.codigo,nom:u.mat.nombre,g:x.g.grupo,t:x.t,a:x.a,e}); }
+  const media=tm/Math.max(1,ng); for(const f of filas){ sSS+=(f.a-f.t)**2; sTT+=(f.t-media)**2; }
+  return {err:sT?sAbs/sT:0, ok:ng?ok/ng:0, r2:sTT?1-sSS/sTT:1, ng, filas};
+}
+
+function pobHuecos(R){
+  const hist=[0,0,0,0,0], lim=[0,20,60,120,1e9]; let estud=0, huecosTot=0, minHuecos=0, dias=0, completos=0;
+  for(const r of R) for(const st of r.E){ estud++; if(!st.faltan.length) completos++;
+    const porDia=new Map();
+    for(const x of st.el) for(const s of x.ses){ (porDia.get(s.dia)||porDia.set(s.dia,[]).get(s.dia)).push(s); }
+    for(const l of porDia.values()){ dias++; l.sort((a,b)=>a.ini-b.ini); let fin=l[0].fin;
+      for(let i=1;i<l.length;i++){ const gap=l[i].ini-fin; if(gap>0){ huecosTot++; minHuecos+=gap;
+          const b=gap<=20?1:gap<=60?2:gap<=120?3:4; hist[b]++; } else hist[0]++; fin=Math.max(fin,l[i].fin); } } }
+  return {hist,estud,huecosTot,minHuecos,dias,completos};
+}
+
+function pobIniciar(){
+  if(!POB.cargado){
+    POB.cargado=true;
+    $("#pobGen").addEventListener("click",pobEjecutar);
+    $("#pobMallaOk").addEventListener("click",()=>{ POB.malla=$("#pobMalla").value; pobListar(); });
+    $("#pobCsv").addEventListener("click",pobCsv);
+  }
+  pobListar();
+}
+function pobListar(){
+  if(!MATERIAS.size){ $("#pobRes").innerHTML='<div class="herr-vacio">Esperando los datos del catálogo…</div>'; return; }
+  const cs=pobCohortes(), act=$("#pobCoh").value;
+  $("#pobCoh").innerHTML='<option value="*">Todas las cohortes</option>'+cs.map(c=>`<option value="${c.id}">${c.plan} · ${c.sem===0?"nivelación":"semestre "+c.sem} (${c.mats.length} asignaturas)</option>`).join("");
+  if([...$("#pobCoh").options].some(o=>o.value===act)) $("#pobCoh").value=act;
+}
+function pobInvalidar(){ POB.res=null; if(POB.cargado && !$("#herrPob").hidden) pobListar(); }
+
+function pobEjecutar(){
+  if(!MATERIAS.size) return;
+  if(!HM.datos) HM.datos=hmCalcular();
+  const cs=pobCohortes(), sel=$("#pobCoh").value, lista=sel==="*"?cs:cs.filter(c=>c.id===sel);
+  const N=parseInt($("#pobN").value,10)||0, rnd=pobRnd(parseInt($("#pobSem").value,10)||1);
+  const R=lista.map(c=>pobGenerarCohorte(c,N,rnd)).filter(Boolean);
+  if(!R.length){ $("#pobRes").innerHTML='<div class="herr-vacio">Esa cohorte no tiene asignaturas con grupos y horario.</div>'; return; }
+  POB.res=R; $("#pobCsv").disabled=false;
+  const m=pobMetricas(R), h=pobHuecos(R), pct=v=>(100*v).toFixed(1)+" %", tot=h.hist.reduce((a,b)=>a+b,0)||1;
+  const nombres=["Seguidas (sin hueco)","Hasta 20 min","21–60 min","1–2 h","Más de 2 h"];
+  const peores=[...m.filas].sort((a,b)=>Math.abs(b.e)-Math.abs(a.e)).slice(0,10);
+  $("#pobRes").innerHTML=
+   `<div class="herr-cifras">
+      <div class="herr-cifra dest"><span>Estudiantes ficticios</span><b>${h.estud}</b></div>
+      <div class="herr-cifra"><span>Con horario completo</span><b>${pct(h.completos/h.estud)}</b></div>
+      <div class="herr-cifra"><span>Grupos a ±10 % (o ±2)</span><b>${pct(m.ok)}</b></div>
+      <div class="herr-cifra"><span>Error total</span><b>${pct(m.err)}</b></div>
+      <div class="herr-cifra"><span>R² grupos</span><b>${m.r2.toFixed(3)}</b></div>
+      <div class="herr-cifra"><span>Rebalanceo</span><b style="font-size:.9rem">${R.reduce((t,r)=>t+r.movidos,0)} movidos · ${Math.max(...R.map(r=>r.iter))+1} rondas</b></div></div>
+    <h4 class="mov-h">Huecos entre clases (por día con clase)</h4>
+    <div class="pob-barras">${h.hist.map((v,i)=>`<div><span>${nombres[i]}</span><i style="width:${100*v/tot}%"></i><b>${pct(v/tot)}</b></div>`).join("")}</div>
+    <p class="gen-ayuda">${(h.huecosTot/h.estud).toFixed(1)} huecos por estudiante y semana, ${(h.minHuecos/h.estud/60).toFixed(1)} horas de hueco en total; ${(h.dias/h.estud).toFixed(1)} días con clase.</p>
+    <h4 class="mov-h">Grupos que peor ajustaron</h4>
+    <div class="herr-tabla-w"><table class="herr-tabla"><thead><tr><th>Asignatura</th><th>Grupo</th><th>Objetivo</th><th>Asignados</th><th>Dif.</th></tr></thead><tbody>${
+      peores.map(f=>`<tr><td style="white-space:normal">${esc(f.nom)}</td><td>${esc(f.g)}</td><td>${f.t.toFixed(1)}</td><td>${f.a}</td><td>${f.e>0?"+":""}${f.e.toFixed(1)}</td></tr>`).join("")}</tbody></table></div>
+    <h4 class="mov-h" style="margin-top:12px">Ejemplos de estudiantes ficticios</h4>
+    <div class="gen-ayuda">${R[0].E.slice(0,3).map(st=>`<b>#${st.id}</b> (${esc(st.coh.plan)}, ${st.coh.sem===0?"nivelación":"sem. "+st.coh.sem}): `+
+      st.el.map(x=>esc(x.mat.nombre)+" "+esc(x.g.grupo.replace(/^\(\d+\)\s*/,"")?x.g.grupo:x.g.grupo)).join("; ")).join("<br>")}</div>
+    <p class="gen-ayuda"><b>Cómo leerlo.</b> El tamaño de cada cohorte es la mediana de inscritos de sus asignaturas. En asignaturas compartidas con otros planes el objetivo se escala a lo que la cohorte puede absorber, así que el ajuste compara proporciones entre grupos, no totales. Es un modelo: no sabe quién cursa qué en realidad.</p>`;
+}
+
+function pobCsv(){
+  if(!POB.res) return; const L=["estudiante,plan,semestre,codigo,asignatura,grupo"]; let id=0;
+  for(const r of POB.res) for(const st of r.E){ id++; for(const x of st.el)
+    L.push([`S${id}`,r.coh.plan,r.coh.sem,x.mat.codigo,x.mat.nombre,x.g.grupo].map(v=>/[",\n]/.test(String(v))?`"${String(v).replace(/"/g,'""')}"`:v).join(",")); }
+  const url=URL.createObjectURL(new Blob(["\ufeff"+L.join("\r\n")],{type:"text/csv;charset=utf-8"}));
+  const a=document.createElement("a"); a.href=url; a.download="poblacion_sintetica.csv"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
 /* ================= Navegación por pestañas =================
    Una sola vista visible a la vez. El catálogo de asignaturas se queda fijo
    en las vistas donde se usa (armar el horario a mano y elegir candidatas), y
@@ -5676,6 +5842,7 @@ function irA(v, {foco=false, guardar=true}={}){
   if(v==="herramientas" && !$("#herrDelta").hidden) dlCargar();
   if(v==="herramientas" && !$("#herrCal").hidden) hmIniciar();
   if(v==="herramientas" && !$("#herrMov").hidden) movIniciar();
+  if(v==="herramientas" && !$("#herrPob").hidden) pobIniciar();
   actualizarInsignias();
   if(cambioDeVista && typeof gtag === "function"){
     // pageview virtual: cada pestaña se cuenta como una "página" propia
