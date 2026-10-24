@@ -1359,6 +1359,7 @@ details.gen-avanzado[open] summary::before{content:"– "}
       <label for="genOrden">Ordenar por
         <select id="genOrden">
           <option value="huecos">menos huecos entre clases</option>
+          <option value="mas_huecos">más huecos entre clases</option>
           <option value="dias">menos días en la universidad</option>
           <option value="tarde">empezar lo más tarde posible</option>
           <option value="temprano">terminar lo más temprano posible</option>
@@ -3601,6 +3602,8 @@ function generarHorarios(){
       : ` Ningún horario incluye a los docentes que priorizas (no dictan las materias elegidas o chocan con tus franjas).`;
   }
 
+  if($("#genOrden").value==="mas_huecos")
+    extra += ` Ordenados por más tiempo libre entre clases (suma de los huecos de cada día); a igualdad, los de menos días en la universidad.`;
   if($("#genOrden").value==="demanda"){
     const conDatos = RESULTADOS.filter(c=>demandaCombo(c).n>0).length;
     extra += conDatos
@@ -3631,6 +3634,7 @@ function ordenarResultados(lista){
   const puntos = c => prio.size ? c.filter(e=>!e.relleno && tieneProf(e.g,prio)).length : 0;
   return lista.map(c=>({c, p:puntos(c), m:metricas(c), d:modo==="demanda"?demandaCombo(c):null})).sort((a,b)=>{
     if(b.p!==a.p) return b.p-a.p;
+    if(modo==="mas_huecos") return b.m.huecos-a.m.huecos || a.m.dias-b.m.dias;
     if(modo==="dias")     return a.m.dias-b.m.dias || a.m.huecos-b.m.huecos;
     if(modo==="tarde")    return b.m.ini-a.m.ini   || a.m.huecos-b.m.huecos;
     if(modo==="temprano") return a.m.fin-b.m.fin   || a.m.huecos-b.m.huecos;
