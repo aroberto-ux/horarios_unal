@@ -1496,6 +1496,7 @@ details.gen-avanzado[open] summary::before{content:"– "}
       <button type="button" role="tab" data-herr="herrCal" aria-selected="false">Mapa de calor</button>
       <button type="button" role="tab" data-herr="herrMov" aria-selected="false">Movilidad</button>
       <button type="button" role="tab" data-herr="herrPob" aria-selected="false">Población sintética</button>
+      <button type="button" role="tab" data-herr="herrEnc" aria-selected="false">Encuesta sintética</button>
     </div>
     <div class="herr-tool" id="herrDelta">
       <div class="herr-cab">
@@ -1672,6 +1673,25 @@ details.gen-avanzado[open] summary::before{content:"– "}
         <textarea id="pobMalla" rows="4" style="width:100%; font:.78rem 'IBM Plex Mono',monospace; border:1px solid var(--linea-fuerte,#C3CEC6); border-radius:var(--radio); padding:6px; margin-top:6px" placeholder="Ingeniería Mecánica; 1; 1000004&#10;Ingeniería Mecánica; 1; 1000005"></textarea>
         <div class="herr-acc" style="margin-top:6px"><button type="button" id="pobMallaOk">Usar esta malla</button></div></details>
       <div id="pobRes" class="herr-res"></div>
+    </div>
+    <div class="herr-tool" id="herrEnc" hidden>
+      <div class="herr-cab">
+        <span class="herr-tag">Encuesta UNAL · datos sintéticos</span>
+        <h3>Encuestados ficticios: movilidad sostenible en la UNAL</h3>
+        <p class="gen-ayuda">Simula respuestas de las secciones <b>A</b> (Likert 1–5), <b>B</b> (perfil), <b>C</b> (diario de viajes de ayer, con salto si no viajó y segundo viaje opcional),
+          <b>D</b> (movilidad interna), <b>E</b> (ranking de políticas, sin empates) y <b>F</b> (comentario). Parte del reparto de Bogotá 2023 (OMB: género, estrato, tenencia de vehículos,
+          reparto modal, duraciones, horas pico) y lo adapta a la UNAL: mayoría de pregrado de 16 a 25 años, más peso de estratos 2 y 3, estratos 1–3 con TransMilenio/SITP/bicicleta/caminata y estratos 4–6
+          con más auto y aplicaciones, ida entre 06:00 y 07:30 (o 12:00–13:00), regreso entre 17:00 y 18:00, usuarios de bicicleta de acuerdo con mejorar la infraestructura (A5, A8) y 30 % de las
+          mujeres con viajes de cuidado o menor percepción de seguridad. No son personas reales. La misma semilla produce el mismo resultado.</p>
+      </div>
+      <div class="hm-ctl">
+        <label class="hm-d">Encuestados<input id="encN" inputmode="numeric" value="300"></label>
+        <label class="hm-d">Semilla<input id="encSem" inputmode="numeric" value="1"></label>
+        <label class="hm-d">Valores<select id="encFmt" style="min-height:32px"><option value="lab">Etiquetas (texto)</option><option value="cod">Códigos (A, B, C…)</option></select></label>
+        <label class="hm-d"><span><input type="checkbox" id="encMeta"> Incluir <span class="mono">_meta</span> (modo habitual, estrato real, cuidado)</span></label>
+        <div class="herr-acc"><button type="button" class="pri" id="encGen">Generar</button><button type="button" id="encJson" disabled>Descargar JSON</button><button type="button" id="encCsv" disabled>Descargar CSV</button></div>
+      </div>
+      <div id="encRes" class="herr-res"></div>
     </div>
   </section>
 
@@ -6245,5 +6265,172 @@ try{ if(localStorage.getItem("catalogoOculto") === "1") ocultarCatalogo(true, {g
 cargarDatos();
 setInterval(cargarDatos, 10*60*1000); // refresca cada 10 minutos sin recargar la página
 </script>
+<script>
+/* ================= Herramientas · Encuesta sintética (movilidad UNAL) =================
+   Simula respondientes de la «Encuesta de percepción, actitudes y prioridades frente a la movilidad sostenible en la UNAL».
+   Base: Encuesta de Movilidad Bogotá-Región 2023 (OMB), adaptada a una población universitaria joven. Todo es ficticio. */
+(function(){
+const q=s=>document.querySelector(s);
+const CAT={
+ genero:["Hombre","Mujer","No binario / género diverso","Prefiero no decir"],
+ estrato:["1","2","3","4","5","6","Prefiero no decir"],
+ medios:["Auto","Motocicleta","Bicicleta","Scooter o patineta eléctrica","Ninguna de las anteriores"],
+ dias:["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"],
+ vinc:["Estudiante (pregrado)","Estudiante (posgrado)","Docente","Administrativo/a","Contratista","Personal de apoyo y servicios generales","Vigilancia y seguridad","Visitante","Otro"],
+ adm:["Regular","PAES","PAET","PEAMA"],
+ fac:["Artes","Ciencias","Ciencias Agrarias","Ciencias Económicas","Ciencias Humanas","Derecho, Ciencias Políticas y Sociales","Enfermería","Ingeniería","Medicina","Medicina Veterinaria y Zootecnia","Odontología"],
+ preg:["Ingeniería Agrícola","Ingeniería Civil","Ingeniería de Sistemas y Computación","Ingeniería Eléctrica","Ingeniería Electrónica","Ingeniería Industrial","Ingeniería Mecánica","Ingeniería Mecatrónica","Ingeniería Química"],
+ loc:["Antonio Nariño","Barrios Unidos","Bosa","Chapinero","Ciudad Bolívar","Engativá","Fontibón","Kennedy","La Candelaria","Los Mártires","Puente Aranda","Rafael Uribe Uribe","San Cristóbal","Santa Fe","Suba","Sumapaz","Teusaquillo","Tunjuelito","Usaquén","Usme"],
+ port:["Calle 26 / Carrera 30 (Estación Transmilenio Ciudad Universitaria)","Calle 26 / Avenida El Dorado (Hemeroteca)","Calle 26 / Avenida El Dorado (Portería Peatonal ICA)","Calle 45 / Carrera 30 (Estación Transmilenio U. Nacional)","Calle 53 (Portería Peatonal y Vehicular)","Calle 44 / Carrera 45"],
+ modo:["Transmilenio","SITP","Bicicleta","Caminata","Auto conductor","Auto acompañante","Motocicleta","Bus/Flota","Didi/Uber/Indriver (o demás aplicaciones)","Scooter o patineta eléctrica","Taxi"],
+ sn:["Sí","No"], ob:["Bogotá D.C.","Por fuera de Bogotá D.C."],
+ d1:["Caminata","Bicicleta","Patineta o Scooter","Automóvil","Motocicleta","Otro"],
+ d2:["Menos de 5 minutos","Entre 5 y 10 minutos","Entre 10 y 20 minutos","Más de 20 minutos"],
+ d3:["1 vez al día","2 a 3 veces al día","4 a 5 veces al día","Más de 5 veces al día"]
+};
+const BAR=["Restrepo","7 de Agosto","Bosa Centro","Marly","Ismael Perdomo","Normandía","Modelia","Castilla","Las Aguas","Samper Mendoza","Salazar Gómez","Quiroga","San Blas","La Macarena","Niza","San Juan","La Soledad","Venecia","Cedritos","Usme Centro"];
+const OTROP=["Artes Plásticas","Física","Agronomía","Economía","Psicología","Derecho","Enfermería","","Medicina","Medicina Veterinaria","Odontología"];
+const LOCW=[[1.5,3,8,2,6,11,5,12,.5,1.5,4,4.5,3.5,1.5,12,.05,5,2.5,3,4],[1,5,.5,9,.1,10,6,2,1,1,3,.5,.5,1.5,16,0,12,.2,18,.1]];
+const DF=[.7,.55,1.5,.55,1.5,.95,.95,1.1,.5,.55,.7,1.1,.9,.5,1.25,1.6,.4,1.2,1.2,1.5]; // factor de distancia al campus
+const EST_B=[.1286,.3741,.3149,.0996,.0492,.0337], EST_U=[.12,.40,.33,.09,.04,.02], EST_D=[.05,.2,.35,.2,.13,.07];
+const AU=[.10,.16,.34,.70,.91,1.13], MO=[.20,.20,.19,.12,.11,.19], BI=[.36,.41,.37,.33,.32,.39];
+const BASE=[.19,.139,.073,.2752,.09,.0494,.0731,.017,.035,.01,.0085];            // reparto modal Bogotá 2023 (TP dividido en TM/SITP/flota)
+const DUR=[79,79,32,30,51,51,50,79,45,25,40];                                    // duración media (min), Bogotá 2023
+const PW=[[.42,.04,.04,.42,.04,.04],[.12,.2,.15,.18,.15,.2],[.12,.2,.12,.14,.2,.22],[.08,.05,.03,.04,.6,.2]], PG=[0,1,2,2,3,3,3,1,3,2,3];
+const LK=[["A1",3.5,"s"],["A2",4.0,"t"],["A3",3.9,"t"],["A4",3.0,"s"],["A5",4.2,"t"],["A6",3.7,"t"],["A7",2.9,"s"],["A8",4.0,"t"],["A9",3.5,"t"]];
+const COM=["Faltan ciclorrutas conectadas con las porterías y cicloparqueaderos con vigilancia.","La iluminación de los senderos en la noche es deficiente.","Los cruces cerca de la Calle 26 son peligrosos para los peatones.","Sería útil una app de carro compartido con parqueadero preferencial.","Los horarios de clase se concentran y las porterías se congestionan a las 7:00.","Hay demasiados carros dentro del campus; deberían restringirse.","Me gustaría que Bicirrun llegara hasta dentro del campus.","Más vigilancia en las porterías en horas de la noche, por favor.","Los andenes están en mal estado y no son accesibles.","Es difícil llegar en transporte público desde el sur de la ciudad."];
+
+function rng(s){let a=s>>>0;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+
+function generar(n,seed,opt){
+ const R=rng(seed), U=(a,b)=>a+(b-a)*R(), P=p=>R()<p, cl=(x,a,b)=>Math.min(b,Math.max(a,x)),
+  N=(m,s)=>m+s*Math.sqrt(-2*Math.log(1-R()))*Math.cos(6.28319*R()),
+  W=w=>{const t=w.reduce((a,b)=>a+b,0); let r=R()*t; for(let i=0;i<w.length;i++){ if(w[i]>0&&(r-=w[i])<=0) return i } return w.findIndex(x=>x>0)},
+  L=(c,i)=>opt.cod?String.fromCharCode(65+i):CAT[c][i],
+  hm=m=>{m=Math.round(cl(m,0,1439)); return String(m/60|0).padStart(2,"0")+":"+String(m%60).padStart(2,"0")},
+  dur=(m,df)=>{const mu=DUR[m]*df; return m==2?cl(N(mu,6),20,45):Math.max(8,N(mu,.25*mu))},
+  walkW=df=>df<.6?2.5:df<.75?1:df<1?.25:.03;
+ function elegirModo(est,has,age,df,care,fuera){
+  const hi=est>=3, w=BASE.slice();
+  w[0]*=1.3*(hi?.7:1); w[1]*=hi?.4:1; w[3]*=walkW(df)*(hi?.8:1);
+  w[4]*=hi?6:.8; w[5]*=hi?3.5:.7; w[8]*=hi?3:.5; w[10]*=hi?3:.5;
+  w[2]*=2.2*(hi?.8:1); w[6]*=3; w[9]*=1.5;
+  if(!has.has(0)||age<18) w[4]=0; if(!has.has(1)) w[6]=0; if(!has.has(2)) w[2]=0; if(!has.has(3)) w[9]=0;
+  if(care){w[5]*=2; w[3]*=1.3}
+  if(fuera){w[3]=0; w[2]*=.1; w[9]=0}
+  return W(w);
+ }
+ const locDe=hiE=>W(LOCW[hiE?1:0]);
+ function bloque(c,o){          // un viaje de ida + regreso (campos C1..C14)
+  const b={}, fR=P(.9)?c.fuera:!c.fuera, lR=P(.9)?c.loc:locDe(c.est>=3);
+  b.C1=L("ob",c.fuera?1:0);
+  if(!c.fuera){ b.C2=L("loc",c.loc); if(P(.6)) b.C3=BAR[c.loc]; }
+  b.C4=hm(o.ts); b.C5=hm(o.ts+o.dI); b.C6=L("port",o.pI); b.C7=L("modo",o.mI);
+  b.C8=L("ob",fR?1:0);
+  if(!fR){ b.C9=L("loc",lR); if(P(.6)) b.C10=BAR[lR]; }
+  b.C11=hm(o.tr); b.C12=hm(o.tr+o.dR); b.C13=L("port",o.pR); b.C14=L("modo",o.mR);
+  return b;
+ }
+ const out=[];
+ for(let i=0;i<n;i++){
+  // ---- Perfil (B) ----
+  const v=W([.72,.12,.06,.05,.03,.015,.005]), est0=W(v==2||v==3?EST_D:v==1?EST_U.map((x,k)=>x*[.8,.9,1,1.2,1.4,1.5][k]):EST_U);
+  const g=W([.4675,.5125,.01,.01]), care=g==1&&P(.3);
+  const age=Math.round(v==0?cl(N(21,2.6),16,38):v==1?cl(N(28,4.5),22,50):v==2?cl(N(44,10),27,70):cl(N(40,9),22,65));
+  const hiE=est0>=3, loc=locDe(hiE), fuera=P(.07), df=fuera?1.7:DF[loc], mult=(v==1||v==2)?1.5:1;
+  const has=new Set(); if(P(Math.min(.92,AU[est0]*mult))) has.add(0); if(P(MO[est0])) has.add(1); if(P(Math.min(.9,BI[est0]*1.35))) has.add(2); if(P(.05)) has.add(3);
+  const dias=[0,1,2,3,4].filter(()=>P(v==0?.72:.6)); if(!dias.length) dias.push(W([1,1,1,1,1])); if(P(v==0?.08:.04)) dias.push(5); if(P(.01)) dias.push(6);
+  const fac=W([.08,.15,.06,.09,.12,.08,.03,.22,.07,.04,.03]);
+  const B={B1:L("genero",g),B2:age,B3:P(.02)?L("estrato",6):L("estrato",est0),
+   B4:has.size?[...has].sort().map(k=>L("medios",k)):[L("medios",4)],B5:dias.map(k=>L("dias",k)),B6:L("vinc",v)};
+  if(v<2) B.B7=L("adm",W([.8,.08,.03,.09]));
+  B.B8=P(.04)?null:L("fac",fac);
+  if(v==0&&B.B8){ B.B9=fac==7?L("preg",W([.06,.22,.15,.08,.10,.14,.12,.05,.08])):"Otro: "+OTROP[fac]; }
+  // ---- Modo habitual y viaje de ayer (C) ----
+  const mH=elegirModo(est0,has,age,df,care,fuera), ayer=P(.88)?W([1,1,1,1,1]):5+W([.8,.2]);
+  const C={C0:L("sn",dias.includes(ayer)?0:1)}, meta={estrato:est0+1,modo_habitual:CAT.modo[mH],viaje_cuidado_o_inseguridad:care,dia_ayer:CAT.dias[ayer]};
+  let mI=mH, mR=P(.88)?mH:elegirModo(est0,has,age,df,care,fuera);
+  if(C.C0==L("sn",0)){
+   const est={loc,est:est0,fuera}, dosViajes=P(.12), est_=v<2;
+   const pick=m=>W(PW[PG[m]]);
+   const ts=est_&&P(.24)?cl(N(740,20),720,780):cl(N(est_?410:420,est_?30:35),est_?360:345,est_?450:510);
+   const dI=dur(mI,df);
+   const t1=ts+dI;
+   let tr=dosViajes?cl(N(750,20),705,795):(P(.6)?U(1020,1080):cl(N(1010,120),780,1290));
+   tr=Math.max(tr,t1+(dosViajes?90:120)+(dosViajes?0:U(0,60)));
+   const pI=pick(mI), o={ts,dI,mI,mR,pI,tr,dR:dur(mR,df)*1.1,pR:P(.65)?pI:pick(mR)};
+   Object.assign(C,bloque(est,o)); C.C15=L("sn",dosViajes?0:1);
+   if(dosViajes){
+    const t2=tr+o.dR+U(40,90), mI2=P(.9)?mI:elegirModo(est0,has,age,df,care,fuera), mR2=P(.9)?mR:mI2;
+    const o2={ts:t2,dI:dur(mI2,df),mI:mI2,mR:mR2,pI:pick(mI2),pR:pick(mR2)}; o2.tr=Math.max(U(1020,1140),t2+o2.dI+90); o2.dR=dur(mR2,df)*1.1;
+    C.segundo_viaje=bloque(est,o2);
+   }
+  }
+  // ---- Movilidad interna (D) ----
+  const d1=W(mH==2?[.35,.6,.02,0,0,.03]:mH==4?[.6,0,.02,.35,0,.03]:mH==6?[.55,0,.02,0,.4,.03]:mH==9?[.4,0,.57,0,0,.03]:[.9,.04,.02,0,0,.04]);
+  const D={D1:L("d1",d1),D2:L("d2",W(d1?[.45,.38,.14,.03]:[.25,.4,.27,.08])),D3:L("d3",W(dias.length>=4?[.08,.32,.34,.26]:[.12,.38,.30,.20]))};
+  // ---- Actitudes (A): factor general t + factor de seguridad s ----
+  const efMod={0:.2,1:.1,2:.5,3:.4,4:-.5,5:-.1,6:-.2,7:.1,8:-.2,9:.3,10:-.2}[mH], t=N(.15+efMod,.9), s=N(0,.7)-(care?.9:0);
+  const bici=mH==2||d1==1, A={};
+  for(const [k,m,f] of LK){
+   let x=m+(f=="t"?.6*t:.6*s)+N(0,.75);
+   if(mH==4&&(k=="A3"||k=="A6")) x-=.7; if(mH==4&&k=="A9") x-=.2;
+   if(bici&&(k=="A5"||k=="A8")&&P(.85)) x=P(.55)?5:4;
+   A[k]=cl(Math.round(x),1,5);
+  }
+  // ---- Ranking (E): utilidades con ruido (1 = mayor prioridad) ----
+  const u=[.9+(care?.2:0),.5,0,.2,-.1,.9+(care?.7:0)];
+  if(bici){u[1]+=.8;u[3]+=.4} if(mH==4){u[4]+=.5;u[2]-=.2;u[1]-=.3} if(mH<2){u[2]+=.3;u[5]+=.3}
+  const ord=u.map((x,k)=>[x+N(0,1),k]).sort((a,b)=>b[0]-a[0]), rk={}; ord.forEach(([,k],r)=>rk[k]=r+1); const E={}; for(let k=0;k<6;k++) E["E"+(k+1)]=rk[k];
+  const r={id:"R"+String(i+1).padStart(4,"0"),A,B,C,D,E,F:{F1:P(.12)?COM[W(COM.map(()=>1))]:null}};
+  if(opt.meta) r._meta=meta; out.push(r);
+ }
+ return out;
+}
+
+/* ---- Aplanado a CSV y estadísticas de validación ---- */
+function aplanar(r){const f={id:r.id}; for(const s of "ABCDEF") for(const [k,v] of Object.entries(r[s])){
+  if(k=="segundo_viaje"){ for(const [kk,vv] of Object.entries(v)) f["segundo_viaje_"+kk]=vv; } else f[k]=Array.isArray(v)?v.join("|"):v; }
+  if(r._meta) for(const [k,v] of Object.entries(r._meta)) f["meta_"+k]=v; return f;}
+function csv(D){const cols=[]; const F=D.map(aplanar); F.forEach(f=>Object.keys(f).forEach(k=>{if(!cols.includes(k)) cols.push(k)}));
+  const e=v=>{v=v==null?"":String(v); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
+  return "\ufeff"+[cols.join(","),...F.map(f=>cols.map(c=>e(f[c])).join(","))].join("\r\n");}
+function bajar(txt,nombre,tipo){const url=URL.createObjectURL(new Blob([txt],{type:tipo})), a=document.createElement("a"); a.href=url; a.download=nombre; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000);}
+
+function resumen(D,opt){
+ const pc=x=>(100*x).toFixed(1)+"%", cnt=(arr,f)=>arr.filter(f).length, n=D.length;
+ const cod=(c,v)=>opt.cod?CAT[c][v.charCodeAt(0)-65]:v, tab=(t,cab,fil)=>`<h4 class="mov-h" style="margin-top:12px">${t}</h4><table class="tabla-mini" style="width:100%;border-collapse:collapse;font-size:.8rem"><tr>${cab.map(c=>`<th style="text-align:left;border-bottom:1px solid var(--cuadricula);padding:3px 6px">${c}</th>`).join("")}</tr>${fil.map(f=>"<tr>"+f.map(c=>`<td style="padding:3px 6px;border-bottom:1px solid var(--cuadricula)">${c}</td>`).join("")+"</tr>").join("")}</table>`;
+ const viajes=[]; D.forEach(r=>{ if(r.C.C4){viajes.push([r.C.C7,r.C.C4,r.C.C5]); viajes.push([r.C.C14,r.C.C11,r.C.C12]);}
+   if(r.C.segundo_viaje){const s=r.C.segundo_viaje; viajes.push([s.C7,s.C4,s.C5]); viajes.push([s.C14,s.C11,s.C12]);} });
+ const mn=h=>+h.slice(0,2)*60+ +h.slice(3), nm=m=>cod("modo",m), V=viajes.length||1;
+ const grp={"Transporte público":[0,1,7],"A pie":[3],"Auto":[4,5],"Moto":[6],"Bicicleta":[2],"Taxi / apps":[8,10],"Otros (scooter)":[9]}, REF={"Transporte público":.3468,"A pie":.2752,"Auto":.1394,"Moto":.0731,"Bicicleta":.0730,"Taxi / apps":.0435,"Otros (scooter)":.049};
+ const idx=m=>CAT.modo.indexOf(nm(m));
+ const t1=tab("Reparto modal de los viajes simulados vs. Bogotá 2023",["Modo","Simulado","Bogotá 2023"],Object.entries(grp).map(([k,a])=>[k,pc(viajes.filter(x=>a.includes(idx(x[0]))).length/V),pc(REF[k])]));
+ const dm=CAT.modo.map((m,k)=>{const a=viajes.filter(x=>idx(x[0])==k).map(x=>mn(x[2])-mn(x[1])).filter(x=>x>0); return a.length?[m,a.length,Math.round(a.reduce((s,x)=>s+x,0)/a.length)+" min"]:null}).filter(Boolean);
+ const t2=tab("Duración media por modo (ida y regreso)",["Modo","Viajes","Media"],dm);
+ const mean=f=>(D.reduce((s,r)=>s+f(r),0)/n).toFixed(2);
+ const t3=tab("Actitudes (media Likert 1–5) y ranking (rango medio, 1 = prioridad máxima)",["Ítem","Media"],[...Object.keys(D[0].A).map(k=>[k,mean(r=>r.A[k])]),...Object.keys(D[0].E).map(k=>[k+" (rango)",mean(r=>r.E[k])])]);
+ const gen=CAT.genero.map((x,k)=>[x,pc(cnt(D,r=>cod("genero",r.B.B1)==x)/n)]), esr=CAT.estrato.slice(0,6).map((x,k)=>[x,pc(cnt(D,r=>cod("estrato",r.B.B3)==x)/n),pc(EST_B[k])]);
+ const viajo=cnt(D,r=>r.C.C0==(opt.cod?"A":"Sí")), seg=cnt(D,r=>r.C.segundo_viaje);
+ return `<p class="gen-ayuda"><b>${n}</b> encuestados · ${viajo} viajaron ayer (${pc(viajo/n)}) · ${seg} con segundo viaje · ${viajes.length} viajes en total.</p>`+t1+t2+tab("Estrato (B3) vs. Bogotá 2023",["Estrato","Simulado","Bogotá 2023"],esr)+tab("Género (B1)",["Opción","Simulado"],gen)+t3;
+}
+
+let ULT=null, OPT={};
+const gen=q("#encGen");
+if(gen){
+ const leer=()=>({cod:q("#encFmt").value=="cod",meta:q("#encMeta").checked});
+ gen.addEventListener("click",()=>{
+  const n=cl(parseInt(q("#encN").value)||300,1,5000), sem=parseInt(q("#encSem").value)||1; OPT=leer();
+  ULT=generar(n,sem,OPT); q("#encJson").disabled=q("#encCsv").disabled=false;
+  q("#encRes").innerHTML=resumen(ULT,OPT)+`<h4 class="mov-h" style="margin-top:12px">Ejemplo (JSON)</h4><pre class="mono" style="max-height:320px;overflow:auto;font-size:.72rem;background:var(--blanco);border:1px solid var(--cuadricula);padding:8px;border-radius:var(--radio)">${JSON.stringify(ULT[0],null,1).replace(/&/g,"&amp;").replace(/</g,"&lt;")}</pre>`;
+ });
+ function cl(x,a,b){return Math.min(b,Math.max(a,x))}
+ q("#encJson").addEventListener("click",()=>ULT&&bajar(JSON.stringify(ULT,null,2),"encuesta_unal_sintetica.json","application/json"));
+ q("#encCsv").addEventListener("click",()=>ULT&&bajar(csv(ULT),"encuesta_unal_sintetica.csv","text/csv;charset=utf-8"));
+}
+window.encuestaSintetica={generar,csv};
+})();
+</script>
+
 </body>
 </html>
