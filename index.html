@@ -1682,7 +1682,8 @@ details.gen-avanzado[open] summary::before{content:"– "}
           <b>D</b> (movilidad interna), <b>E</b> (ranking de políticas, sin empates) y <b>F</b> (comentario). Parte del reparto de Bogotá 2023 (OMB: género, estrato, tenencia de vehículos,
           reparto modal, duraciones, horas pico) y lo adapta a la UNAL: mayoría de pregrado de 16 a 25 años, más peso de estratos 2 y 3, estratos 1–3 con TransMilenio/SITP/bicicleta/caminata y estratos 4–6
           con más auto y aplicaciones, ida entre 06:00 y 07:30 (o 12:00–13:00), regreso entre 17:00 y 18:00, usuarios de bicicleta de acuerdo con mejorar la infraestructura (A5, A8) y 30 % de las
-          mujeres con viajes de cuidado o menor percepción de seguridad. No son personas reales. La misma semilla produce el mismo resultado.</p>
+          mujeres con viajes de cuidado o menor percepción de seguridad. Calibrado además con cifras de la sede (matrícula presencial 2024-2, género por nivel y facultad, tipo de admisión, docentes y administrativos de planta) y con la encuesta
+          de la Cámara de Comercio de Bogotá 2024 (seguridad e iluminación como prioridades; las mujeres se sienten menos seguras después de las 4:30 p. m.). No son personas reales. La misma semilla produce el mismo resultado.</p>
       </div>
       <div class="hm-ctl">
         <label class="hm-d">Encuestados<input id="encN" inputmode="numeric" value="300"></label>
@@ -6288,6 +6289,13 @@ const CAT={
  d2:["Menos de 5 minutos","Entre 5 y 10 minutos","Entre 10 y 20 minutos","Más de 20 minutos"],
  d3:["1 vez al día","2 a 3 veces al día","4 a 5 veces al día","Más de 5 veces al día"]
 };
+/* Calibración UNAL Sede Bogotá: matrícula presencial 2024-2 (pregrado 28.064, posgrado 4.785; «La Sede en contexto», Of. Planeación),
+   docentes de planta 2.002 y administrativos de planta 1.498 (presupuesto UNAL 2024). Contratistas, apoyo y vigilancia: SUPUESTOS. */
+const VW=[28064,4785,2002,1498,1200,500,250], VT=VW.reduce((a,b)=>a+b,0);
+/* Proporción de mujeres: pregrado por facultad (Derecho 27,8 %, Enfermería 76,9 %, Medicina 65,2 %: dato oficial; el resto, estimado para cuadrar con 40,0 % global), posgrado 44,6 %, docentes de carrera 30,8 %. */
+const FEM=[.42,.35,.40,.42,.50,.278,.769,.22,.652,.62,.62];
+/* Tipo de admisión (aspirantes 2024-1): regular 77,7 %; especial 22,3 % = PAET 30 %, PEAMA 23,6 %, PAES 4 %, otras 42,4 %. «Otras» no tiene opción en la encuesta y se suma a Regular. */
+const ADM_P=[.777+.223*.424,.223*.04,.223*.30,.223*.236];
 const BAR=["Restrepo","7 de Agosto","Bosa Centro","Marly","Ismael Perdomo","Normandía","Modelia","Castilla","Las Aguas","Samper Mendoza","Salazar Gómez","Quiroga","San Blas","La Macarena","Niza","San Juan","La Soledad","Venecia","Cedritos","Usme Centro"];
 const OTROP=["Artes Plásticas","Física","Agronomía","Economía","Psicología","Derecho","Enfermería","","Medicina","Medicina Veterinaria","Odontología"];
 const LOCW=[[1.5,3,8,2,6,11,5,12,.5,1.5,4,4.5,3.5,1.5,12,.05,5,2.5,3,4],[1,5,.5,9,.1,10,6,2,1,1,3,.5,.5,1.5,16,0,12,.2,18,.1]];
@@ -6334,16 +6342,16 @@ function generar(n,seed,opt){
  const out=[];
  for(let i=0;i<n;i++){
   // ---- Perfil (B) ----
-  const v=W([.72,.12,.06,.05,.03,.015,.005]), est0=W(v==2||v==3?EST_D:v==1?EST_U.map((x,k)=>x*[.8,.9,1,1.2,1.4,1.5][k]):EST_U);
-  const g=W([.4675,.5125,.01,.01]), care=g==1&&P(.3);
+  const v=W(VW), est0=W(v==2||v==3?EST_D:v==1?EST_U.map((x,k)=>x*[.8,.9,1,1.2,1.4,1.5][k]):EST_U);
+  const fac=W([.07,.14,.06,.08,.12,.08,.03,.24,.07,.04,.03]), pF=v==0?FEM[fac]:v==1?.446:v==2?.308:v==5?.55:v==6?.15:.5, uG=R();
+  const g=uG<.002?2:uG<.012?3:P(pF)?1:0, care=g==1&&P(.3);
   const age=Math.round(v==0?cl(N(21,2.6),16,38):v==1?cl(N(28,4.5),22,50):v==2?cl(N(44,10),27,70):cl(N(40,9),22,65));
   const hiE=est0>=3, loc=locDe(hiE), fuera=P(.07), df=fuera?1.7:DF[loc], mult=(v==1||v==2)?1.5:1;
   const has=new Set(); if(P(Math.min(.92,AU[est0]*mult))) has.add(0); if(P(MO[est0])) has.add(1); if(P(Math.min(.9,BI[est0]*1.35))) has.add(2); if(P(.05)) has.add(3);
   const dias=[0,1,2,3,4].filter(()=>P(v==0?.72:.6)); if(!dias.length) dias.push(W([1,1,1,1,1])); if(P(v==0?.08:.04)) dias.push(5); if(P(.01)) dias.push(6);
-  const fac=W([.08,.15,.06,.09,.12,.08,.03,.22,.07,.04,.03]);
   const B={B1:L("genero",g),B2:age,B3:P(.02)?L("estrato",6):L("estrato",est0),
    B4:has.size?[...has].sort().map(k=>L("medios",k)):[L("medios",4)],B5:dias.map(k=>L("dias",k)),B6:L("vinc",v)};
-  if(v<2) B.B7=L("adm",W([.8,.08,.03,.09]));
+  if(v<2) B.B7=L("adm",W(v==0?ADM_P:[.97,.01,.01,.01]));
   B.B8=P(.04)?null:L("fac",fac);
   if(v==0&&B.B8){ B.B9=fac==7?L("preg",W([.06,.22,.15,.08,.10,.14,.12,.05,.08])):"Otro: "+OTROP[fac]; }
   // ---- Modo habitual y viaje de ayer (C) ----
@@ -6370,7 +6378,7 @@ function generar(n,seed,opt){
   const d1=W(mH==2?[.35,.6,.02,0,0,.03]:mH==4?[.6,0,.02,.35,0,.03]:mH==6?[.55,0,.02,0,.4,.03]:mH==9?[.4,0,.57,0,0,.03]:[.9,.04,.02,0,0,.04]);
   const D={D1:L("d1",d1),D2:L("d2",W(d1?[.45,.38,.14,.03]:[.25,.4,.27,.08])),D3:L("d3",W(dias.length>=4?[.08,.32,.34,.26]:[.12,.38,.30,.20]))};
   // ---- Actitudes (A): factor general t + factor de seguridad s ----
-  const efMod={0:.2,1:.1,2:.5,3:.4,4:-.5,5:-.1,6:-.2,7:.1,8:-.2,9:.3,10:-.2}[mH], t=N(.15+efMod,.9), s=N(0,.7)-(care?.9:0);
+  const efMod={0:.2,1:.1,2:.5,3:.4,4:-.5,5:-.1,6:-.2,7:.1,8:-.2,9:.3,10:-.2}[mH], t=N(.15+efMod,.9), s=N(0,.7)-(care?.9:0)-(g==1&&C.C11&&C.C11>="16:30"?.3:0);
   const bici=mH==2||d1==1, A={};
   for(const [k,m,f] of LK){
    let x=m+(f=="t"?.6*t:.6*s)+N(0,.75);
@@ -6379,7 +6387,7 @@ function generar(n,seed,opt){
    A[k]=cl(Math.round(x),1,5);
   }
   // ---- Ranking (E): utilidades con ruido (1 = mayor prioridad) ----
-  const u=[.9+(care?.2:0),.5,0,.2,-.1,.9+(care?.7:0)];
+  const u=[1+(care?.2:0),.5,0,.2,-.1,1.1+(care?.7:0)];
   if(bici){u[1]+=.8;u[3]+=.4} if(mH==4){u[4]+=.5;u[2]-=.2;u[1]-=.3} if(mH<2){u[2]+=.3;u[5]+=.3}
   const ord=u.map((x,k)=>[x+N(0,1),k]).sort((a,b)=>b[0]-a[0]), rk={}; ord.forEach(([,k],r)=>rk[k]=r+1); const E={}; for(let k=0;k<6;k++) E["E"+(k+1)]=rk[k];
   const r={id:"R"+String(i+1).padStart(4,"0"),A,B,C,D,E,F:{F1:P(.12)?COM[W(COM.map(()=>1))]:null}};
@@ -6410,9 +6418,13 @@ function resumen(D,opt){
  const t2=tab("Duración media por modo (ida y regreso)",["Modo","Viajes","Media"],dm);
  const mean=f=>(D.reduce((s,r)=>s+f(r),0)/n).toFixed(2);
  const t3=tab("Actitudes (media Likert 1–5) y ranking (rango medio, 1 = prioridad máxima)",["Ítem","Media"],[...Object.keys(D[0].A).map(k=>[k,mean(r=>r.A[k])]),...Object.keys(D[0].E).map(k=>[k+" (rango)",mean(r=>r.E[k])])]);
- const gen=CAT.genero.map((x,k)=>[x,pc(cnt(D,r=>cod("genero",r.B.B1)==x)/n)]), esr=CAT.estrato.slice(0,6).map((x,k)=>[x,pc(cnt(D,r=>cod("estrato",r.B.B3)==x)/n),pc(EST_B[k])]);
+ const esr=CAT.estrato.slice(0,6).map((x,k)=>[x,pc(cnt(D,r=>cod("estrato",r.B.B3)==x)/n),pc(EST_B[k])]);
+ const mf=f=>{const a=D.filter(f); return a.length?pc(a.filter(r=>cod("genero",r.B.B1)=="Mujer").length/a.length):"–"}, vv=k=>r=>cod("vinc",r.B.B6)==CAT.vinc[k];
+ const pre=D.filter(r=>r.B.B7&&vv(0)(r)), t4=tab("Vinculación (B6) vs. comunidad de la sede",["Tipo","Simulado","Referencia"],CAT.vinc.slice(0,7).map((x,k)=>[x,pc(cnt(D,vv(k))/n),pc(VW[k]/VT)]))
+  +tab("% de mujeres (B1) vs. UNAL Bogotá",["Grupo","Simulado","Referencia"],[["Pregrado",mf(vv(0)),"40,0 %"],["Posgrado",mf(vv(1)),"44,6 %"],["Docentes",mf(vv(2)),"30,8 %"]])
+  +tab("Tipo de admisión (B7, pregrado) vs. aspirantes 2024-1",["Tipo","Simulado","Referencia"],CAT.adm.map((x,k)=>[x,pc(pre.filter(r=>cod("adm",r.B.B7)==x).length/(pre.length||1)),pc(ADM_P[k])]));
  const viajo=cnt(D,r=>r.C.C0==(opt.cod?"A":"Sí")), seg=cnt(D,r=>r.C.segundo_viaje);
- return `<p class="gen-ayuda"><b>${n}</b> encuestados · ${viajo} viajaron ayer (${pc(viajo/n)}) · ${seg} con segundo viaje · ${viajes.length} viajes en total.</p>`+t1+t2+tab("Estrato (B3) vs. Bogotá 2023",["Estrato","Simulado","Bogotá 2023"],esr)+tab("Género (B1)",["Opción","Simulado"],gen)+t3;
+ return `<p class="gen-ayuda"><b>${n}</b> encuestados · ${viajo} viajaron ayer (${pc(viajo/n)}) · ${seg} con segundo viaje · ${viajes.length} viajes en total.</p>`+t1+t2+tab("Estrato (B3) vs. Bogotá 2023",["Estrato","Simulado","Bogotá 2023"],esr)+t4+t3;
 }
 
 let ULT=null, OPT={};
