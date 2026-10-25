@@ -1678,17 +1678,19 @@ details.gen-avanzado[open] summary::before{content:"– "}
       <div class="herr-cab">
         <span class="herr-tag">Encuesta UNAL · datos sintéticos</span>
         <h3>Encuestados ficticios: movilidad sostenible en la UNAL</h3>
-        <p class="gen-ayuda">Simula respuestas de las secciones <b>A</b> (Likert 1–5), <b>B</b> (perfil), <b>C</b> (diario de viajes de ayer, con salto si no viajó y segundo viaje opcional), <b>D</b> (movilidad interna), <b>E</b> (ranking de políticas, sin empates) y <b>F</b> (comentario). El perfil <b>Realista</b> está calibrado con las distribuciones del Excel de encuesta (reparto modal con TransMilenio cerca del 60 %, uso de porterías, llegadas escalonadas durante el día y horas en múltiplos de 5 min, días por semana, escalas Likert, ranking de políticas, movilidad interna y comentarios abiertos) y muestra una <b>tabla de validación contra el Excel</b>. El perfil <b>Poblacional</b> conserva la calibración anterior (Bogotá 2023 y cifras de la sede). El <b>ruido humano</b> añade imperfecciones propias de una encuesta real (barrios mal escritos, horas inconsistentes, comentarios vagos, respuestas repetitivas). No son personas reales. La misma semilla produce el mismo resultado.</p>
+        <p class="gen-ayuda">Simula respuestas de las secciones <b>A</b> (Likert 1–5), <b>B</b> (perfil), <b>C</b> (diario de viajes de ayer, con salto si no viajó, segundo y tercer viaje),
+          <b>D</b> (movilidad interna), <b>E</b> (ranking de políticas, sin empates) y <b>F</b> (comentario). Está <b>calibrada con las respuestas reales de la encuesta aplicada en el campus</b> (583 envíos):
+          vinculación, género por facultad, edad, estrato, vehículos disponibles, días de asistencia, localidad de origen, modo de transporte (según género, estrato, vehículos y cercanía), portería, horas de llegada y regreso,
+          duración por modo, actitudes con sus correlaciones, ranking de políticas y comentarios. Debajo de cada generación verás cuánto se parece a la encuesta real. No son personas reales ni se copian filas. La misma semilla produce el mismo resultado.</p>
       </div>
       <div class="hm-ctl">
         <label class="hm-d">Encuestados<input id="encN" inputmode="numeric" value="300"></label>
         <label class="hm-d">Semilla<input id="encSem" inputmode="numeric" value="1"></label>
         <label class="hm-d">Valores<select id="encFmt" style="min-height:32px"><option value="lab">Etiquetas (texto)</option><option value="cod">Códigos (A, B, C…)</option></select></label>
-        <label class="hm-d">Calibración<select id="encCal" style="min-height:32px"><option value="xl">Realista · ajustada al Excel de encuesta</option><option value="pob">Poblacional UNAL / Bogotá 2023 (original)</option></select></label>
-        <label class="hm-d">Ruido humano<select id="encReal" style="min-height:32px"><option value="0">Ninguno (datos limpios)</option><option value="0.5" selected>Moderado (typos, respuestas vagas)</option><option value="1">Alto (errores de digitación, patrones repetidos)</option></select></label>
-        <label class="hm-d"><span><input type="checkbox" id="encEnvio" checked> Incluir datos de envío (ID, fecha, encuestador)</span></label>
-        <label class="hm-d"><span><input type="checkbox" id="encMeta"> Incluir <span class="mono">_meta</span> (modo habitual, estrato real, cuidado)</span></label>
-        <div class="herr-acc"><button type="button" class="pri" id="encGen">Generar</button><button type="button" id="encJson" disabled>Descargar JSON</button><button type="button" id="encCsv" disabled>Descargar CSV</button><button type="button" id="encXls" disabled>CSV formato Excel (127 col.)</button></div>
+        <label class="hm-d">Escala A<select id="encLik" style="min-height:32px"><option value="num">Número (1–5)</option><option value="txt">Texto (como en el Excel)</option></select></label>
+        <label class="hm-d"><span><input type="checkbox" id="encRuido" checked> Ruido de captura (texto sucio, horas de regreso en 12 h, orden aleatorio)</span></label>
+        <label class="hm-d"><span><input type="checkbox" id="encMeta"> Incluir <span class="mono">_meta</span> (estrato real, modo habitual, encuestador, envío)</span></label>
+        <div class="herr-acc"><button type="button" class="pri" id="encGen">Generar</button><button type="button" id="encJson" disabled>Descargar JSON</button><button type="button" id="encCsv" disabled>Descargar CSV</button></div>
       </div>
       <div id="encRes" class="herr-res"></div>
     </div>
@@ -6267,11 +6269,17 @@ setInterval(cargarDatos, 10*60*1000); // refresca cada 10 minutos sin recargar l
 <script>
 /* ================= Herramientas · Encuesta sintética (movilidad UNAL) =================
    Simula respondientes de la «Encuesta de percepción, actitudes y prioridades frente a la movilidad sostenible en la UNAL».
-   Dos perfiles de calibración:
-   · «xl»  (por defecto): ajustado a las distribuciones de Encuesta_Movilidad_UNAL (Excel de referencia, n=50): reparto modal del campus
-           (TransMilenio ≈ 60 %), porterías, horarios en múltiplos de 5 min con llegadas escalonadas a lo largo del día, días por semana, escalas Likert,
-           ranking de políticas, movilidad interna, comentarios abiertos, etc.
-   · «pob» (original): base Encuesta de Movilidad Bogotá-Región 2023 (OMB) + cifras de la sede (matrícula 2024-2, género, admisión). Todo es ficticio. */
+   v2: calibrada con las respuestas reales de la encuesta aplicada en el campus (583 envíos, 512 con viaje ayer).
+   Todo lo que sale es ficticio: lo que se toma de la encuesta real son distribuciones y relaciones agregadas (CAL), nunca filas.
+   Qué se calibró:
+   · Perfil: vinculación, género (según facultad), edad, estrato (según facultad), medios disponibles (con un factor latente de
+     «hogar con vehículos», que reproduce que quien tiene uno suele tener varios), días de asistencia (patrones reales).
+   · Viaje de ayer: localidad de origen (según estrato), modo (regresión multinomial con género, estrato, vehículos, cercanía,
+     origen fuera de Bogotá y vinculación), portería por modo, hora de llegada, duración por modo y localidad, hora de regreso
+     según la hora de llegada, segundo y tercer viaje.
+   · Actitudes A1–A9: marginales reales + correlaciones entre ítems (cópula gaussiana) + efectos de covariables significativos.
+   · Ranking E1–E6: modelo de utilidad aleatoria (Thurstone) ajustado a los rangos medios y a los efectos de género y vinculación.
+   · Ruido de captura opcional: texto libre «sucio», horas de regreso en formato 12 h (≈16 %), orden aleatorio en multirrespuesta. */
 (function(){
 const q=s=>document.querySelector(s);
 const CAT={
@@ -6279,274 +6287,295 @@ const CAT={
  estrato:["1","2","3","4","5","6","Prefiero no decir"],
  medios:["Auto","Motocicleta","Bicicleta","Scooter o patineta eléctrica","Ninguna de las anteriores"],
  dias:["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"],
- vinc:["Estudiante (pregrado)","Estudiante (posgrado)","Docente","Administrativo/a","Contratista","Personal de apoyo y servicios generales","Vigilancia y seguridad","Visitante","Otro"],
+ vinc:["Estudiante (pregrado)","Estudiante (posgrado)","Docente","Administrativo/a","Contratista","Personal de apoyo y servicios generales","Vigilancia y seguridad","Visitante","Proveedor"],
  adm:["Regular","PAES","PAET","PEAMA"],
  fac:["Artes","Ciencias","Ciencias Agrarias","Ciencias Económicas","Ciencias Humanas","Derecho, Ciencias Políticas y Sociales","Enfermería","Ingeniería","Medicina","Medicina Veterinaria y Zootecnia","Odontología"],
- preg:["Ingeniería Agrícola","Ingeniería Civil","Ingeniería de Sistemas y Computación","Ingeniería Eléctrica","Ingeniería Electrónica","Ingeniería Industrial","Ingeniería Mecánica","Ingeniería Mecatrónica","Ingeniería Química"],
  loc:["Antonio Nariño","Barrios Unidos","Bosa","Chapinero","Ciudad Bolívar","Engativá","Fontibón","Kennedy","La Candelaria","Los Mártires","Puente Aranda","Rafael Uribe Uribe","San Cristóbal","Santa Fe","Suba","Sumapaz","Teusaquillo","Tunjuelito","Usaquén","Usme"],
  port:["Calle 26 / Carrera 30 (Estación Transmilenio Ciudad Universitaria)","Calle 26 / Avenida El Dorado (Hemeroteca)","Calle 26 / Avenida El Dorado (Portería Peatonal ICA)","Calle 45 / Carrera 30 (Estación Transmilenio U. Nacional)","Calle 53 (Portería Peatonal y Vehicular)","Calle 44 / Carrera 45"],
- modo:["Transmilenio","SITP","Bicicleta","Caminata","Auto conductor","Auto acompañante","Motocicleta","Bus/Flota","Didi/Uber/Indriver (o demás aplicaciones)","Scooter o patineta eléctrica","Taxi"],
- sn:["Sí","No"], ob:["Bogotá D.C.","Por fuera de Bogotá D.C."],
- d1:["Caminata","Bicicleta","Patineta o Scooter","Automóvil","Motocicleta","Otro"],
+ modo:["Transmilenio","SITP","Bicicleta","Caminata","Auto conductor","Auto acompañante","Motocicleta","Bus/Flota","Didi/Uber/Indriver (o demás aplicaciones)","Scooter o patineta eléctrica"],
+ sn:["Sí","No"], ob:["Bogotá D.C","Por fuera de Bogotá D.C"],
+ d1:["Caminata","Bicicleta","Patineta o Scooter","Automóvil","Motocicleta","Transmilenio","Silla de ruedas","No utilizo (a pie)"],
  d2:["Menos de 5 minutos","Entre 5 y 10 minutos","Entre 10 y 20 minutos","Más de 20 minutos"],
- d3:["1 vez al día","2 a 3 veces al día","4 a 5 veces al día","Más de 5 veces al día"]
+ d3:["1 vez al día","2 a 3 veces al día","4 a 5 veces al día","Más de 5 veces al día"],
+ lik:["Totalmente en desacuerdo","En desacuerdo","Ni de acuerdo, ni en desacuerdo","De acuerdo","Totalmente de acuerdo"]
 };
-const MUN=["Soacha","Madrid","Funza","Mosquera","Chía","Cota","Facatativá","La Calera","Zipaquirá","Cajicá"], MUNW=[.35,.2,.15,.12,.06,.03,.03,.02,.02,.02];
-const BAR=["Restrepo","7 de Agosto","Bosa Centro","Marly","Ismael Perdomo","Normandía","Modelia","Castilla","Las Aguas","Samper Mendoza","Salazar Gómez","Quiroga","San Blas","La Macarena","Niza","San Juan","La Soledad","Venecia","Cedritos","Usme Centro"];
-const OTROP=["Artes Plásticas","Física","Agronomía","Economía","Psicología","Derecho","Enfermería","","Medicina","Medicina Veterinaria","Odontología"];
-const FEM=[.42,.35,.40,.42,.50,.278,.769,.22,.652,.62,.62];
-const EST_B=[.1286,.3741,.3149,.0996,.0492,.0337], EST_D=[.05,.2,.35,.2,.13,.07];
-const AU=[.10,.16,.34,.70,.91,1.13], MO=[.20,.20,.19,.12,.11,.19], BI=[.36,.41,.37,.33,.32,.39];
-const BASE=[.19,.139,.073,.2752,.09,.0494,.0731,.017,.035,.01,.0085];
-const ADM_P=[.777+.223*.424,.223*.04,.223*.30,.223*.236];
-const VW0=[28064,4785,2002,1498,1200,500,250], VT=VW0.reduce((a,b)=>a+b,0);
-const DF=[.7,.55,1.5,.55,1.5,.95,.95,1.1,.5,.55,.7,1.1,.9,.5,1.25,1.6,.4,1.2,1.2,1.5];
-const NOANS=["Sin comentarios","No","No.","No tengo","Ninguna","Ninguno","Ninguna.","N/A","Nada"];
-const COM=["Faltan ciclorrutas conectadas con las porterías y cicloparqueaderos con vigilancia.","La iluminación de los senderos en la noche es deficiente.","Los cruces cerca de la Calle 26 son peligrosos para los peatones.","Sería útil una app de carro compartido con parqueadero preferencial.","Los horarios de clase se concentran y las porterías se congestionan a las 7:00.","Hay demasiados carros dentro del campus; deberían restringirse.","Me gustaría que Bicirrun llegara hasta dentro del campus.","Más vigilancia en las porterías en horas de la noche, por favor.","Los andenes están en mal estado y no son accesibles.","Es difícil llegar en transporte público desde el sur de la ciudad.",
- "Sería bueno escalonar los horarios para que no coincidan todas las salidas a las 6 pm.","El bus interno del campus pasa muy poco y tarda mucho.","Las bicicletas de Bicirrun casi nunca están disponibles y varias están dañadas.","Transmilenio en la estación U. Nacional se llena muchísimo entre 6 y 7 am.","La encuesta es un poco larga pero está bien.","Faltan cruces peatonales señalizados sobre la Carrera 30.","Más rampas y caminos accesibles para personas con movilidad reducida.","Las vías internas tienen muchos huecos, es peligroso en moto.","El parqueadero se llena antes de las 8 am, toca llegar muy temprano.","Me gustaría que mejoraran la seguridad en la portería de la Calle 53 en la noche."];
-/* ---- Perfil «pob»: calibración original (Bogotá 2023 + cifras de la sede) ---- */
-const POB={x:0, vw:VW0, fac:[.07,.14,.06,.08,.12,.08,.03,.24,.07,.04,.03], estU:[.12,.40,.33,.09,.04,.02], estD:EST_D, adm:ADM_P, femAdj:0, fuera:.07,
- locw:[[1.5,3,8,2,6,11,5,12,.5,1.5,4,4.5,3.5,1.5,12,.05,5,2.5,3,4],[1,5,.5,9,.1,10,6,2,1,1,3,.5,.5,1.5,16,0,12,.2,18,.1]], base:BASE, dur:[79,79,32,30,51,51,50,79,45,25,40],
- pw:[[.42,.04,.04,.42,.04,.04],[.12,.2,.15,.18,.15,.2],[.12,.2,.12,.14,.2,.22],[.08,.05,.03,.04,.6,.2]], pg:[0,1,2,2,3,3,3,1,3,2,3], mismoPort:.65, dos:.12,
- lk:[["A1",3.5,"s"],[ "A2",4.0,"t"],["A3",3.9,"t"],["A4",3.0,"s"],["A5",4.2,"t"],["A6",3.7,"t"],["A7",2.9,"s"],["A8",4.0,"t"],["A9",3.5,"t"]],
- u:[1,.5,0,.2,-.1,1.1], fAU:1, fMO:1, fBI:1.35, pCom:.12 };
-/* ---- Perfil «xl»: calibrado con el Excel (n=50). Ver comentarios por parámetro ---- */
-const XL={x:1, vw:[.77,.03,.10,.06,.02,.02,0], fac:[.01,.14,.01,.08,.02,.32,.01,.33,.02,.01,.06],   // cuotas: Derecho 35 %, Ingeniería 35 %, Ciencias 15 %, Económicas 8 %, Odontología 8 %
- estU:[.10,.28,.44,.10,.03,.05], estD:[.05,.2,.35,.2,.13,.07], adm:[.84,.08,.02,.06], femAdj:.11, fuera:.10,
- locw:[[1,8,3,5,3,10,8,10,1,3,2,1,3,1,28,0,18,1,2,3],[.5,8,0,14,0,6,6,1,1,.5,1,0,0,1,28,0,18,0,15,0]],
- base:[.58,.03,.19,.20,.11,.012,.15,0,.02,.005,.005], dur:[62,56,40,42,40,40,25,52,28,25,28],
- pw:[[.18,.03,.05,.58,.09,.07],[.12,.12,.12,.20,.2,.24],[.12,.08,.10,.16,.24,.30],[.04,.04,.04,.06,.66,.16]], pg:[0,1,2,2,3,3,3,1,2,2,2], mismoPort:.30, dos:.05,
- lk:[["A1",4.27,"s"],["A2",3.7,"t"],["A3",2.3,"t"],["A4",3.1,"s"],["A5",4.0,"t"],["A6",3.45,"t"],["A7",3.3,"s"],["A8",3.15,"t"],["A9",3.65,"t"]],
- u:[1.46,.74,.11,.47,-.6,-.45], fAU:.65, fMO:.2, fBI:.8, pCom:.62 };
-const PERF={xl:XL,pob:POB};
-/* Valores de referencia del Excel (n=50) usados en la tabla de validación */
-const RX={modoI:{"Transmilenio":.61,"Caminata":.20,"Auto conductor":.07,"Bicicleta":.05,"SITP":.02,"Motocicleta":.02,"Didi/Uber/Indriver (o demás aplicaciones)":.02},
- modoR:{"Transmilenio":.52,"Caminata":.20,"SITP":.11,"Auto conductor":.07,"Bicicleta":.05},
- port:[.18,.05,.07,.41,.16,.14], lk:[4.14,3.90,2.50,3.08,4.18,3.62,3.32,3.34,3.80], rk:[1.88,2.84,3.76,3.32,4.80,4.40],
- vinc:[.80,0,.10,.06,.02,.02], est:[.10,.28,.46,.10,0,.04], mujer:.46, viajo:.88, fuera:.11, dias:4.6, auto:.24, bici:.28, moto:.04,
- hIE:515, hIO:426, hRE:961, hRO:841, dTM:70, dCam:24, d3:[.16,.48,.24,.12], d2:[.14,.44,.34,.08] };
-
+const POL=["Mejorar los senderos peatonales, cruces e iluminación dentro del campus.","Ampliar la infraestructura para bicicleta (ciclorrutas y cicloparqueaderos seguros).","Implementar horarios académicos escalonados para reducir la congestión en horas pico.","Mejorar el sistema de bicicletas públicas (Bicirrun) para uso interno en la universidad.","Implementar una aplicación institucional de carro compartido (carpooling) con incentivos y tarifas preferenciales de parqueadero para vehículos con múltiples ocupantes.","Fortalecer la seguridad vial y personal en accesos, porterías y recorridos internos."];
+const LIKQ=["Me siento seguro/a al desplazarme dentro del campus","Prefiero caminar, bicicleta o transporte público","Se debería reducir el uso del vehículo particular","La iluminación y visibilidad son adecuadas","Caminaría o usaría bici con mejor infraestructura","Beneficios de parqueo a vehículos con varios ocupantes","Accesos, cruces y porterías seguros","La infraestructura influye en mi modo de transporte","Compartiría automóvil con incentivos o app"];
+/* ---- Calibración extraída de la encuesta real (ver encabezado). Se regenera con el script de calibración. ---- */
+const CAL={"vinc":[0.88596,0.00936,0.0383,0.01617,0.01957,0.00766,0.01787,0.00255,0.00255],"femfac":[0.4248,0.384,0.4461,0.4876,0.3805,0.4044,0.5764,0.2045,0.4239,0.5264,0.3725],"femvinc":[0.3365,0.1815,0.2142,0.3331,0.2351,0.4997,0.4998,0.2852,0.4281],"gnb":[0.0069,0.0069],"age_pre":[0.0308,0.06322,0.21579,0.18146,0.16811,0.10518,0.07657,0.04224,0.02699,0.02889,0.01745,0.01173,0.0041,0.00219,0.00791,0.0041,0.00219,0.00219,0.00219,0.00029,0.00029,0.00029,0.00219,0.00029,0.00219,0.00029,0.00029,0.00029,0.00029],"age_oth":[[34.8,4.5],[42.0,12.5],[43.2,12.5],[39.5,12.0],[28.2,6.1],[35.3,9.4],[40,10],[40,10]],"est_pre":[0.06072,0.29412,0.44592,0.14611,0.01708,0.00569,0.03036],"est_oth":[0.02857,0.32857,0.27143,0.22857,0.05714,0.07143,0.01429],"est_fac":[[0.0253,0.27255,0.4358,0.24421,0.00712,0.00237,0.01265],[0.05412,0.31312,0.4792,0.13312,0.00657,0.00219,0.01168],[0.09822,0.26854,0.45974,0.10115,0.00928,0.00309,0.05998],[0.06548,0.32396,0.45142,0.1254,0.02068,0.00206,0.011],[0.0551,0.30918,0.48961,0.10552,0.0174,0.00174,0.02145],[0.06765,0.33371,0.40669,0.1664,0.00821,0.00274,0.0146],[0.0345,0.30348,0.45791,0.10574,0.0097,0.00323,0.08543],[0.0636,0.24735,0.45962,0.17481,0.02634,0.00878,0.0195],[0.06454,0.40504,0.37354,0.09504,0.0061,0.00203,0.0537],[0.046,0.31373,0.39842,0.14099,0.01294,0.00431,0.08361],[0.08393,0.27843,0.4716,0.12176,0.01423,0.00474,0.0253]],"fac":[0.06755,0.07707,0.04091,0.08468,0.10942,0.05233,0.03711,0.4177,0.08658,0.01618,0.01047],"prog":[[["Arquitectura",24],["Diseño Industrial",5],["Cine y Televisión",4],["Artes Plásticas",2],["Diseño Gráfico",1]],[["Farmacia",14],["Estadística",7],["Biología",5],["Física",4],["Matemáticas",4],["Química",4],["Ciencias de la Computación",2]],[["Ingeniería Agronómica",21]],[["Economía",17],["Administración de Empresas",16],["Contaduría Pública",11]],[["Trabajo Social",10],["Filología e Idiomas",9],["Psicología",7],["Lingüística",7],["Antropología",7],["Sociología",6],["Filosofía",4],["Geografía",4],["Español y Filología Clásica",2],["Historia",1],["Estudios Literarios",1]],[["Derecho",16],["Ciencias Políticas",11]],[["Enfermería",19]],[["Ingeniería Civil",119],["Ingeniería Agrícola",29],["Ingeniería Química",20],["Ingeniería Eléctrica",12],["Ingeniería Electrónica",12],["Ingeniería Mecánica",12],["Ingeniería de Sistemas y Computación",11],["Ingeniería Mecatrónica",3],["Ingeniería Industrial",2]],[["Medicina",22],["Fisioterapia",11],["Nutrición y Dietética",5],["Terapia Ocupacional",4],["Fonoaudiología",3]],[["Medicina Veterinaria",4],["Zootecnia",4]],[["Odontología",5]]],"adm":[0.85153,0.05651,0.00479,0.08716],"med":{"gam":0.902,"k":[[-0.813,0.869,-0.21,0.485],[-1.352,-0.198,-0.745,0.206],[-0.614,0.192,-0.836,0.202],[-3.847,0.886,-0.24,0.483]]},"dias_pat":[["1111100",344],["1111110",62],["1111000",48],["0111100",44],["1111111",9],["1011100",8],["0111110",7],["1110100",7],["1010100",7],["0101000",6],["0111000",6],["0110100",5],["1010000",4],["1111010",3],["0010100",3],["0101100",3],["0000110",3]],"dias_otros":14,"dias_p":[0.8593,0.9434,0.964,0.94,0.8731,0.1492,0.0154],"ayer_w":[0.1122,0.2211,0.2874,0.369,0.0102],"sub_dow":[0.1134,0.2234,0.2904,0.3729],"sub_hour":[0.0124,0.0107,0.0056,0.0022,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0022,0.0073,0.0073,0.0463,0.0598,0.0751,0.1005,0.1394,0.0768,0.1276,0.1293,0.1073,0.0869],"encuestadores":[44,43,36,29,28,27,26,26,25,25,23,21,20,18,16,15,11,10,9,8,6,6,5,5,5,5,5,5,5,5,4,4,4,4,4,4,3,3,3,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"dispositivos":[36,29,29,28,26,23,22,21,20,20,18,18,16,15,14,11,10,10,9,8,8,8,8,7,7,6,6,6,6,5,5,5,5,4,4,4,4,4,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"p_tr_att":0.9121,"p_tr_noatt":0.3023,"p_fuera":0.0742,"loc_est":[[0.00258,0.01075,0.13953,0.00824,0.0811,0.10783,0.03871,0.09557,0.00038,0.01797,0.00824,0.01829,0.0387,0.01106,0.14898,6e-05,0.15842,0.02802,0.01483,0.07074],[0.03461,0.05341,0.01124,0.01479,0.01683,0.13194,0.05164,0.13829,0.00437,0.02673,0.03512,0.03105,0.01911,0.00081,0.1571,5e-05,0.20133,0.0186,0.03233,0.02064],[0.00432,0.0516,0.01484,0.05579,0.00958,0.09628,0.09835,0.03377,0.00063,0.00484,0.01377,0.00537,0.00589,0.01009,0.1651,0.00011,0.35736,0.00484,0.05842,0.00905]],"mun":[["Soacha",30],["Chía",6],["Madrid",6],["Mosquera",4],["Cajicá",4],["Bojacá",4],["Sopó",4],["Cota",3],["Zipaquirá",3],["Funza",3],["La Calera",3],["Facatativá",2],["Sibaté",2],["Fusagasugá",1]],"barrios":[[["San Antonio",2],["Fraguita",2],["Restrepo",2],["Santander Sur",2],["Villa Mayor",2],["Ciudad Berna",2],["Centro Mayor",1]],[["Simon Bolivar",3],["San Miguel",2],["Alcazares",2],["Modelo Norte",2],["Siete de Agosto",2],["Movistar Arena",2],["Muequeta",2],["San Fernando",2],["Centro de Alto Rendimiento",2],["Escuela Militar",2],["Popular Modeloa",1],["José Joaquín Vargas",1],["Los Andes",1],["Popular Modelo",1],["José Joaquín",1]],[["Laureles",4],["Bosa la Libertad",4],["Porvenir",2],["Bosa Jose Antonio Galan",2],["El Recreo",2],["Bosa San Jose",2],["Bosa Centro",2],["Bosa Holanda",2],["Danubio",2],["Bosa Laureles",2],["San Diego",2],["Bosa el Recreo",2],["Gran Plaza Bosa",2],["Olarte",2],["Jose Antonio Galan?",1],["Bosa",1],["Mi Centro Porvenir",1],["Atalayas",1],["Xd Es Es",1],["Mi Centro",1],["Bosa Atalayas",1],["Atalaya",1]],[["Marly",3],["San Luis",2],["Rosales",2],["Barrio Juan Xxiii",1],["Galerias",1]],[["San Francisco",6],["Candelaria la Nueva",4],["San Francisco Alto",2],["Acacias",2],["Madelena",2],["Lucero Medio",2],["Atlanta",2],["Galicia",2],["Potosi",2],["Santa Viviana",2],["La Estancia",2],["Mexico",1]],[["Gran Granada",7],["Normandía",7],["Villa Luz",5],["Santa Rosita",4],["Villas de Granada",4],["Villa Gladys",4],["Ciudadela Colsubsidio",3],["Garcés Navas",2],["Bachue",2],["Villa Teresita",2],["Bonanza",2],["San Marcos",2],["Supercade Engativá Centro",2],["Quirigüa",2],["Los Pinos Florencia",2],["La Estrada",2],["Álamos",2],["Álamos los Ángeles",2],["Villa del Dorado",2],["La Española",2],["Viña del Mar",2],["San Antonio",1],["Jardín Botánico",1],["Ara Se Tierragrata",1],["Diverplaza",1],["Villla Luz",1],["Nicolás de Federman",1],["Villas del Dorado",1],["Gra Granada",1],["Ara de Tierragrata",1],["Julio Flores",1],["Villa Real",1]],[["Hayuelos",5],["Zona Franca",4],["San Pablo",4],["Ciudad Salitre",4],["Modelia",3],["La Felicidad",3],["C. C. Hayuelos",2],["Centro",2],["Villemar",2],["El Charco",2],["Zona Franca - Fontibon",2],["Carlos Lleras",2],["La Cabaña",2],["Fontibon",2],["Capellania",2],["L Girld",1],["Le Felicidad",1],["La Girlda",1]],[["Marsella",8],["Timiza",8],["Castilla",8],["Roma",6],["Boita",6],["Tierra Buena",4],["Nueva Castilla",4],["Tintal",2],["Nueva Marsella",2],["La Chucua",2],["María Paz",2],["Nueva York",2],["Nueva Alsacia",2],["Britalia",2],["Vision Colombia",2],["Castilla Occidental",2],["Américas Occidental",2],["Villa Alsacia",2],["Las Delicias",2],["Los Andes",1],["Morabia",1],["Lagos de Timizq",1],["Tintal Plaza",1],["Biblioteca Tintal",1],["Bosa",1],["Kennedy Central",1],["Lagos de Timiza",1]],[],[["Santa Isabel",3],["El Vergel",2],["Plaza de Paloquemao",2],["Guatoque Veraguas",2],["Ricaurte",2],["Mall Plaza",2],["Homi",1],["Eduardo Santos",1]],[["Centro Mayor",5],["El Tejar",4],["Galan",2],["Barrio Colón",2],["Santa Matilde",2],["Primavera",1]],[["San Jorge Sur",2],["Los Pijaos",2],["Olaya",2],["Santa Lucía Transmilenio",1],["Barrio Quiroga",1],["Santa Lucía",1]],[["La Victoria",5],["La María",2],["San Martín del Loba",2],["San Martin",1],["Villa de los Altos",1],["Santa Inés",1],["Iglesia de Santa Ines Sur",1],["Sosiego",1],["Villa de los Alpes",1],["Santa Inés Barrio",1],["Santa Ines Sur",1]],[["Las Cruces",2],["Los Laches",2],["La Victoria",2]],[["Compartir",6],["Mazuren",5],["Turingia",5],["Villa Maria",4],["Pinar",4],["Villa Elisa",4],["Almendros",4],["Colina",4],["Campanella",4],["El Poa",3],["La Campiña",3],["Suba Rincon",3],["Colina Campestre",3],["Aures",3],["Villa del Prado",2],["Plaza Imperial",2],["Mirandela",2],["C. C. Imperial",2],["Tibabuyes",2],["Orquídeas",2],["Morato",2],["Toberin",2],["Pinar de Suba",2],["Poa",2],["Suba Salitre",2],["Pontevedra",2],["Bilbao",2],["Victoria Norte",2],["Suba Compartir",2],["Suba Nueva Tibabuyes",2],["San Jose de Bavaria",2],["Costa Azul",2],["Rincón de Santa Ines",2],["Andes Norte",2],["Gaitana",2],["Clínica la Colina",2],["Costa Rica",2],["Las Flores",2],["Suba Pinar",2],["Nueva Zelandia",1],["Cerca C.c Colina Campestre",1],["Las Mercedes",1],["Mazure",1],["Cerca de Plaza Imperial",1],["Britalia Norte",1],["Las Mercdes",1],["Salitre",1],["Cerca A Plaza Imperial",1],["Britalia Nortr",1],["Masuren",1],["Suba la Campiña",1]],[],[["El Recuerdo",24],["Acevedo Tejada",17],["La Soledad",15],["Galerías",11],["Belalcázar",11],["Palermo",6],["Alfonso López",6],["Nicolás de Federman",6],["Quinta Paredes",6],["Soledad",4],["Pablo Sexto",4],["Centro Nariño",4],["Parkway",3],["Corferias",3],["Acevedo Tejado",3],["Quirinal",3],["Iglesia el Recuerdo",2],["Pablo Vi",2],["El Quidinal",2],["Centro Memoria",2],["Ciudad Universitaria",2],["Armenia",2],["Quinta Paredes Barrio",2],["Distrito Grafiti",2],["Azevedo Tejada",2],["Ciudad Salitre",2],["Clínica Palermo",2],["Rafael Núñez",2],["Teusaquillo",2],["Belarcazar",1],["Uriel Guitierrez",1],["Centro Mayor Cc",1],["Accedo Tejada",1],["Cuerna",1],["Modelia",1],["La Soledad, Parkawy",1],["Barrio el Recuerdo",1],["Uriel Gutierrez",1],["Acevedo Tejados",1],["Cc Centro Mayor",1]],[["Tunal",3],["Fatima",2],["Villa Ximena",2],["El Carmen",2],["Cc Tunal",2],["C.c Ciudad Tunal",1],["Centro Mayor Cc",1],["C. C Ciudad Tunal",1]],[["Lijaca",4],["Santa Ana",2],["Codito",2],["Molinos Norte",2],["Mazuren",2],["Buenavista",2],["San Antonio",2],["Cedritos",1],["Toca Rural",1],["Cerditos",1],["Centro Mayor Cc",1]],[["Usme Pueblo",4],["La Picota",3],["Los Olivares",2],["La Regadera",2],["Santa Librada",2],["Usme Centro",2],["Soacha - Ciudad Verde",2],["Porvenir",2],["El Cortijo",1],["La Picota (barrio Danubio)",1]]],"mode_cls":[0,1,2,3,4,5,6,7,8],"mode_int":[3.711,1.353,-0.756,-0.167,-1.086,-2.121,0.297,-1.526,0.295],"mode_coef":[[0.48,-0.557,0.282,-0.431,0.127,-0.429,-2.312,-0.884,0.206,-0.522,0.09],[0.36,-0.525,-0.079,-0.556,-0.09,0.382,-0.854,0.169,0.142,-1.688,-0.034],[-0.726,-0.429,-1.454,-0.622,3.42,0.033,1.056,0.485,0.477,-0.578,-1.034],[0.052,0.59,-0.95,0.056,-0.992,0.542,5.052,1.334,-0.565,-0.742,0.168],[-0.534,0.586,2.207,-0.594,-1.059,-1.201,0.656,-0.338,-0.548,0.026,1.636],[0.334,0.512,3.06,0.369,-0.598,0.385,-0.914,-0.809,1.015,0.162,-0.466],[-0.439,-0.483,-1.327,4.314,-0.474,0.754,-1.079,0.052,0.258,0.146,0.331],[0.278,-0.091,0.179,-1.543,-0.546,-0.12,-0.397,-0.226,-0.234,4.193,-0.292],[0.195,0.397,-1.918,-0.992,0.212,-0.345,-1.208,0.218,-0.751,-0.997,-0.398]],"p_scoot_has":0.143,"ent":[[0.3325,0.0148,0.0882,0.5378,0.014,0.0127],[0.3885,0.0046,0.1495,0.2541,0.1856,0.0177],[0.4197,0.0046,0.087,0.1291,0.2481,0.1115],[0.3791,0.011,0.1518,0.3282,0.0956,0.0343],[0.2018,0.0087,0.0461,0.1841,0.2906,0.2686],[0.2607,0.1263,0.105,0.2429,0.1729,0.0922],[0.0642,0.0311,0.0548,0.1033,0.4339,0.3126],[0.2018,0.0087,0.0461,0.5959,0.0553,0.0922],[0.2451,0.0105,0.1275,0.5093,0.0671,0.0405],[0.2701,0.0164,0.0872,0.3478,0.2155,0.063]],"p_same_port":0.812,"p_same_mode":0.93,"p_same_mode_param":0.83,"p_same_loc":0.956,"p_err_ida":0.0273,"arr":[390,430,340,540,320,530,555,419,840,450,730,760,740,660,540,420,400,430,440,410,540,830,530,425,660,537,420,405,653,590,390,540,520,520,520,425,705,544,400,410,960,660,540,740,400,675,665,660,850,430,720,530,420,492,450,570,420,660,535,415,820,420,540,330,420,420,420,420,880,420,340,435,510,410,840,570,960,560,410,420,836,400,840,400,545,420,480,410,420,530,420,590,570,555,660,835,320,411,420,665,540,415,431,970,820,675,490,420,340,619,663,590,510,410,420,425,505,505,535,435,600,420,402,540,540,540,540,540,510,840,540,540,660,510,420,410,540,420,420,435,420,440,430,425,425,420,410,435,410,600,975,660,420,410,440,660,550,550,520,680,540,840,420,420,423,390,545,410,424,400,425,660,810,420,330,660,400,400,425,420,392,570,410,660,410,520,490,970,400,660,520,504,519,430,340,840,470,415,600,420,423,470,420,470,405,420,420,540,620,540,430,440,775,840,420,430,435,660,500,445,420,400,945,480,660,660,340,420,540,970,420,663,540,1080,630,423,480,420,645,545,690,545,400,530,525,360,410,540,420,660,600,420,470,420,540,835,555,425,520,480,540,550,420,665,410,435,430,780,420,400,540,420,495,534,435,540,540,530,480,660,415,420,540,430,545,430,480,425,420,840,540,382,414,630,1215,420,420,600,420,425,340,540,860,660,480,430,400,420,420,655,500,630,561,730,550,835,390,545,430,410,975,640,510,840,735,410,420,440,350,540,420,465,420,540,960,420,390,540,420,630,405,390,540,1090,420,430,435,645,440,430,415,520,435,420,480,420,380,420,550,675,365,490,530,410,420,630,420,420,465,410,530,410,420,475,600,405,370,375,405,840,400,450,665,540,805,840,510,420,380,435,480,350,665,840,435,540,420,420,345,400,570,420,430,380,415,585,600,664,660,435,595,330,530,660,540,540,600,425,390,550,420,800,420,675,420,665,540,600,545,525,426,765,405,600,503,400,414,660,600,660,440,720,420,700,531,420,680,435,500,510,640,540,420,435,421,579,540,665,660,840,490,415,550,550,500,670,410,470,470,660,420,430,565,565,540,620,435,945,430,540,540,1035,435,430,350,530,420,660,430,530,420,430,410,530,540,535,590,420],"dur":[[4.1,0.378],[4.038,0.592],[3.567,0.623],[2.965,0.589],[3.414,0.578],[3.908,0.3],[3.836,0.5],[4.869,0.3],[3.438,0.423],[2.3,0.3]],"loc_dur":[-0.037,-0.458,0.33,0.001,0.26,-0.124,-0.09,0.106,-0.048,-0.165,-0.055,0.004,0.104,-0.033,0.04,0.0,-0.082,-0.003,0.08,0.242],"fuera_dur":0.46,"ret":[[1020,960,850,845,935,1020,1140,1070,1140,900,860,1020,1090,440,975,960,960,1170,550,1080,530,1090,970,840,1080,1080,1200,1200,1260,1080,1080,900,960,1080,1080,960,930,1020,1080,1020,840,1110,540,780,1295,1120,1005,1020,1020,1050,555,1200,1140,1200,1160,440,840,1210,1140,980,490,1080,785,1080,1205,960,1150,1230,1140,1020,840,1140,1102,1140,570,1045,960,970,840,860,1290,840,1205,840,795,990,1080,1050,1090,870,660,780,720,1100,1080,1170,1140,690,625,1110,960,960,920,615,1090,1020,980,960,965,900,1200,1320,1100,480,780,1140,990,540,1080,1350,1200,780,420,660,1190,1080,1110,1090,1140,1200,960,1150,840,600,1080,1290,1170,1080,1230,1140,570,689,970,450,785,955,1200,1020,1080,1150,960,480,840,990,1210,1080,975,450,900,1120,780,750,690,960,600,1230,600,430,1080,1020,975,730,730,980,780,961,960,960,1110,1220,1040,1080,600,840,1110,1080,780,1110,540,1080,970,870,1020,1200,1080,1090,1035,1320,1320,1365,1300,960,1140,1020,1110,960,960,1140,1040,840,780,780,780,465,1290,820,1080,1080,1290,1230,1080,1080,1050,780,960,1140],[1185,900,900,1010,1200,1080,950,1275,1090,630,780,880,1080,900,670,1140,1185,1260,1260,1080,905,990,1080,1094,960,990,960,1155,1180,1080,780,1230,1180,780,1125,1150,1080,1080,1095,930,1200,1148,1200,1190,1080,840,960,1210,960,1140,960,1090,1200,1260,780,970,1125,780,780,960,970,720,870,1200,930,1095,1080,1050,1080,990,1080,1200,1110,1200,1020,1080,660,1020,1010,990,1230,1140,1140,1080,1020,1020,1260,1080,1170,1200,990,1039,960,1230,1200,1080,960,1090,750,810,1230,945,1170,960,1215,1155,1100,1104,970,1165,1240,1020,660,1260,975,780,950,1200,1140,1110,840,1110,1160,960,827,1140,1140,840,1140,1020,720,1110,1050,1080,1200,1140,1080,1220,970,990,1200,1320,1020,1080,1025,1100,1080,1200,976,870,1030,960,840,1080,1200,1024,1020,1140,1320,1340,960,970,1020,1200,1260,1350,1080,930,975,788,1150,1110,1200,1085,1020],[1140,975,1183,1082,1140,840,1080,960,1200,1200,1190,1080,1080,1020,975,1090,1200,1060,785,1080,1230,1205,1050,1020,1300,790,960,1260,1205,780,990,1175,1200,780,1230,1110,1140,1170,1035,1160,840,840,970,900,970,975,960,1110,1080,860,1230,960,1200,1082,1230,960,1210,1080,1080,1140,1290,1080,1215,1260,1050,1200,960],[1095,1080,1100,1210,1080,1080,1110,1050,1110,1080,1170,1090,1080,1140,1090,1100,960,1281,1115,1200,1200,1200,1200,980,1020,960,1260,1220]],"p_err_ret":0.157,"ret_ratio":[0.065,0.417],"heap":{"s0":0.412,"s30":0.213,"a0":0.378,"d5":0.924},"p_seg":0.0371,"p_ter":0.105,"d1":{"tm":[0.9663,0.0113,0.0037,0.0001,0.004,0.0109,0.0036,0.0],"tp":[0.9904,0.0039,0.0007,0.0007,0.0025,0.0012,0.0003,0.0003],"bici":[0.6853,0.3059,0.0011,0.0011,0.0039,0.0018,0.0004,0.0004],"walk":[0.9859,0.0115,0.0003,0.0003,0.0011,0.0005,0.0001,0.0001],"car":[0.8983,0.0074,0.0014,0.0847,0.0048,0.0023,0.0006,0.0006],"moto":[0.8442,0.0325,0.0005,0.0005,0.1211,0.0008,0.0002,0.0002]},"d2":[[0.0777,0.522,0.3726,0.0277],[0.353,0.4778,0.1152,0.054],[0.202,0.4335,0.2027,0.1619],[0.3448,0.4335,0.2027,0.019],[0.5609,0.2689,0.0946,0.0756],[0.046,0.3371,0.491,0.1259],[0.0827,0.6068,0.2838,0.0267],[0.0827,0.4068,0.4838,0.0267]],"d3":{"pre":[0.0929,0.4722,0.3017,0.1331],"oth":[0.1769,0.5769,0.1154,0.1308]},"lik_marg":[[0.0274,0.0309,0.1286,0.446,0.3671],[0.0343,0.0858,0.1492,0.4443,0.2864],[0.1321,0.2556,0.3756,0.1527,0.084],[0.06,0.2967,0.2419,0.2933,0.1081],[0.0257,0.0377,0.1029,0.4237,0.4099],[0.072,0.1321,0.2933,0.3499,0.1527],[0.0326,0.2144,0.2762,0.4031,0.0738],[0.0532,0.1612,0.211,0.4065,0.1681],[0.0652,0.1424,0.1852,0.4099,0.1973]],"lik_beta":[{"auto":0.427},{"bici":0.559,"walk":0.323},{"staff":0.317,"hasauto":-0.285},{"staff":-0.392},{"hasbici":0.191,"hasmoto":-0.252},{},{"staff":-0.376},{},{"fuera":0.443}],"lik_res_sd":[0.845,0.86,0.892,0.895,0.828,0.903,0.888,0.898,0.886],"lik_sdtot":[0.848,0.874,0.906,0.903,0.838,0.903,0.896,0.898,0.892],"lik_corr":[[1.0,0.247,0.024,0.151,0.243,0.063,0.201,0.064,0.068],[0.247,1.0,0.143,0.029,0.214,0.105,0.022,0.06,0.012],[0.024,0.143,1.0,0.023,0.122,0.276,-0.088,0.119,0.101],[0.151,0.029,0.023,1.0,0.064,0.102,0.297,0.099,0.05],[0.243,0.214,0.122,0.064,1.0,0.138,0.132,0.231,0.186],[0.063,0.105,0.276,0.102,0.138,1.0,0.039,0.103,0.246],[0.201,0.022,-0.088,0.297,0.132,0.039,1.0,0.122,0.102],[0.064,0.06,0.119,0.099,0.231,0.103,0.122,1.0,0.112],[0.068,0.012,0.101,0.05,0.186,0.246,0.102,0.112,1.0]],"rk_real":[1.921,3.063,3.473,3.472,4.861,4.209],"p_lazy":0.0257,"p_comment":0.3431,"p_comment_neg":0.365,"neg_phr":[["no",28],["ninguna",20],["ninguno",14],["sin comentarios",7],["no tengo",3],["nada",0]],"lik_thr":[[-1.629,-1.331,-0.754,0.288],[-1.592,-1.027,-0.537,0.493],[-1.012,-0.258,0.65,1.249],[-1.404,-0.332,0.226,1.117],[-1.633,-1.279,-0.812,0.191],[-1.319,-0.747,-0.006,0.926],[-1.652,-0.613,0.052,1.298],[-1.45,-0.711,-0.169,0.864],[-1.349,-0.727,-0.243,0.759]],"rk_mu":[1.113,0.348,0.049,0.099,-0.984,-0.624],"rk_beta":[{"A4":-0.126,"A9":-0.111},{"fem":-0.275},{"staff":-0.487},{"fem":-0.263},{"A4":0.122,"A9":0.178},{"fem":0.381,"A2":0.085}],"rk_Amean":[4.094,3.863,2.801,3.093,4.154,3.379,3.271,3.475,3.532],"rk_Asd":[0.926,1.034,1.11,1.12,0.934,1.112,0.985,1.108,1.149],"ref":{"gen":[0.6535,0.3328,0.0069,0.0069],"est":[0.0549,0.3019,0.4322,0.1561,0.0189,0.0103,0.0257],"med":[0.3139,0.2144,0.3208,0.0343,0.4134],"ndias":[0.0051,0.0309,0.0446,0.1904,0.6072,0.1063,0.0154],"dias":[0.8593,0.9434,0.964,0.94,0.8731,0.1492,0.0154],"tr":0.8782,"seg":0.0371,"modo":[0.5332,0.0469,0.0469,0.1875,0.0176,0.0176,0.1191,0.0176,0.0117,0.002],"port":[0.3047,0.0176,0.0977,0.3926,0.1172,0.0703],"loc":[0.0168,0.0379,0.0589,0.0211,0.0379,0.1158,0.0568,0.1011,0.0021,0.0189,0.0211,0.0211,0.0232,0.0063,0.1558,0.0,0.2189,0.0189,0.0316,0.0358],"fuera":0.0742,"arr_band":[0.0462,0.4076,0.1426,0.2088,0.1345,0.0602],"dur_med":[60.0,60.0,32.5,20.0,40.0,50.0,50.0,120.0,35.0,null],"dur_n":[266,24,24,91,9,9,59,9,6,1],"d1":[0.9297,0.0292,0.0051,0.0051,0.0189,0.0086,0.0017,0.0017],"d2":[0.1029,0.5094,0.3551,0.0326],"d3":[0.1012,0.4854,0.2813,0.1321],"age":[23.15,7.37],"vinc":[0.8919,0.0086,0.0377,0.0154,0.0189,0.0069,0.0172,0.0017,0.0017],"comment":0.3431,"rk_real":[1.921,3.063,3.473,3.472,4.861,4.209],"lik_mean":[4.094,3.863,2.801,3.093,4.154,3.379,3.271,3.475,3.532],"lik_agree":[0.813,0.7307,0.2367,0.4014,0.8336,0.5026,0.4768,0.5746,0.6072],"lik_dist":[[0.0274,0.0309,0.1286,0.446,0.3671],[0.0343,0.0858,0.1492,0.4443,0.2864],[0.1321,0.2556,0.3756,0.1527,0.084],[0.06,0.2967,0.2419,0.2933,0.1081],[0.0257,0.0377,0.1029,0.4237,0.4099],[0.072,0.1321,0.2933,0.3499,0.1527],[0.0326,0.2144,0.2762,0.4031,0.0738],[0.0532,0.1612,0.211,0.4065,0.1681],[0.0652,0.1424,0.1852,0.4099,0.1973]],"p_same_mode":0.93,"p_err_ret":0.157,"heap":{"s0":0.412,"s30":0.213,"a0":0.378,"d5":0.924},"cross":{"fem_ing":0.1872,"walk_teus":0.875,"moto_hasmoto":0.5377,"moto_nomoto":0.0099,"auto_hi":0.1042,"auto_lo":0.0192,"none_fem":0.5464,"none_masc":0.3491,"a3_hasauto":0.1639,"a3_noauto":0.27,"same_mode":0.9297,"tm_fuera":0.4737,"age_pre":21.2077}}};
+const REFS={Soacha:["Ciudad Verde","San Mateo","Terreros","León XIII","Compartir","Cazucá","San Humberto"],Chía:["Parque principal","Centro de Chía","Fonquetá"],Madrid:["Parque principal","Centro","San Carlos"],Cota:["Parque principal","Vereda La Moya","Centro de Cota"],Mosquera:["Parque principal","Centro de Mosquera","Villa Inés"],Cajicá:["Parque principal","Centro de Cajicá","Capellanía"],Sopó:["Parque principal","Cabaña Alpina","Centro de Sopó"],Zipaquirá:["Parque principal","Centro de Zipaquirá","Terminal"],Funza:["Parque principal","Centro de Funza","Siete Trojes"],Bojacá:["Parque principal","Vereda Bojacá"],Fusagasugá:["Terminal","Parque principal"],Facatativá:["Parque principal","Terminal","Centro"],"La Calera":["Parque principal","Centro de La Calera","Vía a Guasca"],Sibaté:["Parque principal","Centro de Sibaté"],_:["Parque principal","Centro","Terminal"]};
+/* Comentarios (F1): [texto, etiquetas]. Las etiquetas condicionan quién comenta qué (p. ej. quien usa bici habla de bici). */
+const COM=[
+["Mejoren la iluminación de los caminos que van hacia las porterías, en la noche da miedo pasar.","luz seg"],
+["Hay mucha oscuridad en las zonas verdes después de las 6 de la tarde.","luz"],
+["Pongan más lámparas en el sendero que baja hacia la Calle 26.","luz"],
+["El anillo vial tiene muchos huecos, uno en moto tiene que ir esquivándolos.","vial moto"],
+["Los huecos del anillo vial ya son un peligro para las motos y las bicicletas.","vial bici"],
+["Las bicicletas y las motos no respetan el sentido del anillo vial ni a los peatones.","peaton vial"],
+["Bicirrun casi nunca tiene bicicletas disponibles y varias están dañadas.","bici"],
+["Necesitamos más cicloparqueaderos con vigilancia, a uno le da miedo que le roben la bici.","bici seg"],
+["Falta una ciclorruta que llegue hasta adentro del campus desde la Calle 26.","bici"],
+["En la mañana el TransMilenio va imposible de lleno, uno llega tarde a clase.","tm"],
+["Sería bueno tener más rutas de SITP que lleguen a la entrada de la Calle 53.","tm"],
+["Los buses internos hacia el CASE casi no pasan y toca esperar mucho.","buses"],
+["Hay que escalonar los horarios de clase, a las 7 todo el mundo entra al tiempo y se atasca la entrada.","pico"],
+["En hora pico la portería de la Calle 45 es un caos.","pico peaton"],
+["Los cruces peatonales de la Calle 26 son peligrosos, los carros no frenan.","peaton seg"],
+["Deberían poner un semáforo peatonal en la entrada de la Carrera 30.","peaton"],
+["Los torniquetes de salida para carros se quedan dañados casi siempre.","vial"],
+["Muy buena la iniciativa de la encuesta, ojalá tengan en cuenta los resultados.","enc"],
+["La encuesta es un poco larga.","enc"],
+["Reduzcan la cantidad de carros que entran al campus, pasan muy rápido.","carros peaton"],
+["Dejen entrar menos carros particulares y más bien pongan parqueaderos en la periferia.","carros"],
+["Me parece buena idea el carro compartido, yo viajo desde Soacha y conozco compañeros que vienen por la misma vía.","carpool fuera"],
+["Si hubiera una app para compartir carro, yo la usaría.","carpool"],
+["Los andenes están muy deteriorados y las rampas no sirven para sillas de ruedas.","acc"],
+["Falta señalización para personas con discapacidad visual.","acc"],
+["Más vigilancia en las porterías en las noches.","seg"],
+["Cuando salgo tarde de clase me siento inseguro en los alrededores de la Calle 26.","seg luz"],
+["El transporte público desde mi localidad demora mucho; me levanto a las 4 para llegar a las 7.","tm lejos"],
+["Vivo muy lejos y me toca hacer dos transbordos, ojalá hubiera una ruta directa.","tm lejos"],
+["La universidad debería dar más parqueaderos para motos, siempre están llenos.","moto"],
+["Los parqueaderos de motos están llenos desde las 7 y toca dejarlas afuera.","moto"],
+["Deberían arreglar los senderos peatonales, cuando llueve se forman charcos enormes.","peaton"],
+["Mejoren los senderos peatonales y pongan más sombra.","peaton"],
+["El campus es grande y caminar entre edificios toma mucho tiempo, entre clase y clase no alcanza.","peaton"],
+["Faltan más puntos de descanso y de hidratación en los recorridos.","gen"],
+["No tengo queja, la movilidad adentro es tranquila, el problema es afuera.","gen"],
+["Me parece que la movilidad dentro de la universidad es cómoda.","gen"],
+["Los controles de velocidad de los carros dentro del campus casi no existen.","carros seg"],
+["Las ciclorrutas de afuera del campus se acaban de repente, es peligroso llegar en bici.","bici seg"],
+["Ojalá hubiera duchas y casilleros para quienes llegan en bicicleta.","bici"],
+["Los buses de TransMilenio de la Calle 26 pasan llenos y uno no alcanza a subir.","tm"],
+["Con el cambio de horario de las clases se podría descongestionar la mañana.","pico"],
+["Falta información clara de las rutas de bus internas.","buses"],
+["Las bicicletas compartidas deberían funcionar también por la noche.","bici"],
+["El estado de las bicicletas de la universidad es lamentable, frenos malos.","bici"],
+["Cuando llueve las vías internas se inundan y es complicado moverse.","vial peaton"],
+["Deberían hacer campañas de cultura ciudadana para peatones, ciclistas y motociclistas.","gen"],
+["Hay zonas del campus donde el piso está levantado y uno se tropieza.","peaton acc"],
+["Es difícil llegar en transporte público desde Soacha, el trayecto es muy largo.","tm fuera lejos"],
+["Sugiero habilitar una portería exclusiva para bicicletas.","bici pico"]];
+const NEAR=new Set([1,3,8,9,10,13]), FAR=new Set([2,4,7,11,12,17,19]);
+const MGRP=["tm","tp","bici","walk","car","car","moto","tp","tp","tp"];
+const XI={fem:0,hi:1,bici:2,auto:3,moto:4,tm:5,walk:6,fuera:7,staff:8,hasauto:9,hasbici:10,hasmoto:11};
+const sig=z=>1/(1+Math.exp(-z)), cl=(x,a,b)=>Math.min(b,Math.max(a,x));
+function chol(M){const n=M.length,L=M.map(()=>Array(n).fill(0));for(let i=0;i<n;i++)for(let j=0;j<=i;j++){let s=M[i][j];for(let k=0;k<j;k++)s-=L[i][k]*L[j][k];L[i][j]=i==j?Math.sqrt(Math.max(s,1e-9)):s/L[j][j]}return L}
+const CH=chol(CAL.lik_corr);
 function rng(s){let a=s>>>0;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 
 function generar(n,seed,opt){
- opt=opt||{}; const K=PERF[opt.cal]||XL, rr=opt.real==null?.5:opt.real, X=K.x;
- const R=rng(seed), U=(a,b)=>a+(b-a)*R(), P=p=>R()<p, cl=(x,a,b)=>Math.min(b,Math.max(a,x)),
-  N=(m,s)=>m+s*Math.sqrt(-2*Math.log(1-R()))*Math.cos(6.28319*R()),
+ const R=rng(seed), U=(a,b)=>a+(b-a)*R(), P=p=>R()<p,
+  Z=()=>Math.sqrt(-2*Math.log(1-R()))*Math.cos(6.283185307*R()), N=(m,s)=>m+s*Z(),
   W=w=>{const t=w.reduce((a,b)=>a+b,0); let r=R()*t; for(let i=0;i<w.length;i++){ if(w[i]>0&&(r-=w[i])<=0) return i } return w.findIndex(x=>x>0)},
   L=(c,i)=>opt.cod?String.fromCharCode(65+i):CAT[c][i],
-  r5=m=>X?Math.round(m/5)*5:Math.round(m),
-  hm=m=>{if(X&&P(.12*rr)) m=Math.round(m/30)*30; m=Math.round(cl(r5(m),0,1439)); return String(m/60|0).padStart(2,"0")+":"+String(m%60).padStart(2,"0")},
-  dur=(m,df)=>{const mu=K.dur[m]*df; return r5(m==2&&!X?cl(N(mu,6),20,45):Math.max(X?10:8,N(mu,X?.3*mu:.25*mu)))},
-  walkW=df=>X?(df<.6?6:df<.75?2.5:df<1?.6:.06):(df<.6?2.5:df<.75?1:df<1?.25:.03),
-  sinTilde=s=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,""),
-  sucio=s=>{ if(!s||!P(.1*rr)) return s; const u=R(); return u<.3?s.toLowerCase():u<.6?sinTilde(s):u<.8?s.toUpperCase():u<.9?s+" ":["No sé","Centro","x","N/A"][W([1,1,1,1])]; };
- function elegirModo(est,has,age,df,care,fuera,ret,excl){
-  const hi=est>=3, w=K.base.slice();
-  if(X){
-   w[0]*=hi?.65:1.1; w[1]*=hi?.5:1; w[3]*=walkW(df)*(hi?.8:1);
-   w[4]*=hi?5:.6; w[5]*=hi?3:.5; w[8]*=hi?3:.6; w[10]*=hi?3:.5; w[6]*=1.2;
-   if(ret){ w[1]*=8; w[0]*=.8 }
-  } else {
-   w[0]*=1.3*(hi?.7:1); w[1]*=hi?.4:1; w[3]*=walkW(df)*(hi?.8:1);
-   w[4]*=hi?6:.8; w[5]*=hi?3.5:.7; w[8]*=hi?3:.5; w[10]*=hi?3:.5;
-   w[2]*=2.2*(hi?.8:1); w[6]*=3; w[9]*=1.5;
-  }
-  if(!has.has(0)||age<18) w[4]=0; if(!has.has(1)) w[6]=0; if(!has.has(2)) w[2]=0; if(!has.has(3)) w[9]=0;
-  if(care){w[5]*=2; w[3]*=1.3}
-  if(fuera){w[3]=0; w[2]*=.1; w[9]=0; if(X){w[0]*=1.3; w[1]*=2}}
-  if(excl!=null&&w.some((x,k)=>k!=excl&&x>0)) w[excl]=0;
-  return W(w);
- }
- const locDe=hiE=>W(K.locw[hiE?1:0]);
- function bloque(c,o){          // un viaje de ida + regreso (campos C1..C14)
-  const b={}, fR=P(.9)?c.fuera:!c.fuera, lR=P(.9)?c.loc:locDe(c.est>=3);
-  b.C1=L("ob",c.fuera?1:0);
-  if(!c.fuera){ b.C2=L("loc",c.loc); if(P(.6)) b.C3=sucio(BAR[c.loc]); } else b.C2M=MUN[W(MUNW)];
-  b.C4=hm(o.ts); b.C5=hm(o.ts+o.dI); b.C6=L("port",o.pI); b.C7=L("modo",o.mI);
-  if(P(.03*rr)) b.C5=hm(o.ts-U(5,30));                      // error de digitación: llega antes de salir
-  b.C8=L("ob",fR?1:0);
-  if(!fR){ b.C9=L("loc",lR); if(P(.6)) b.C10=sucio(BAR[lR]); } else b.C9M=MUN[W(MUNW)];
-  b.C11=hm(o.tr); b.C12=hm(o.tr+o.dR); b.C13=L("port",o.pR); b.C14=L("modo",o.mR);
-  if(P(.03*rr)) b.C12=hm(o.tr-U(5,30));
+  hm=m=>{m=Math.round(cl(m,0,1439)); return String(m/60|0).padStart(2,"0")+":"+String(m%60).padStart(2,"0")},
+  r5=x=>Math.round(x/5)*5, ruido=!!opt.ruido,
+  ns=s=>{ if(!ruido||!s) return s; const r=R(); if(r<.10) return s.toLowerCase(); if(r<.16) return s.normalize("NFD").replace(/[̀-ͯ]/g,""); if(r<.24) return s+" "; return s },
+  mez=a=>{ if(!ruido||a.length<2||!P(a.every((x,i)=>i==0||x>=a[i-1])?.14:0)) return a; a=a.slice(); for(let i=a.length-1;i>0;i--){const j=(R()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]]} return a },
+  barrio=l=>{ const b=CAL.barrios[l]; return b&&b.length?b[W(b.map(x=>x[1]))][0]:null },
+  mkLugar=(fu,l)=>{ if(fu){ const m=CAL.mun[W(CAL.mun.map(x=>x[1]))][0], rf=REFS[m]||REFS._; return {fu:true,mun:m,ref:rf[(R()*rf.length)|0]} } return {fu:false,loc:l,barrio:P(.995)?barrio(l):null} },
+  durFn=(m,l,fu)=>{ const D=CAL.dur[m]; let mu=D[0]+(m==7||m==9?0:(fu?CAL.fuera_dur:CAL.loc_dur[l])); let d=cl(Math.exp(mu+D[1]*Z()),m==9?5:4,m==7?240:200); return Math.max(m==9?5:3,P(.92)?r5(d):Math.round(d)) };
+ function bloque(o,d,t){          // un viaje de ida + regreso (campos C1..C14)
+  const b={}; b.C1=L("ob",o.fu?1:0);
+  if(!o.fu){ b.C2=L("loc",o.loc); if(o.barrio) b.C3=ns(o.barrio) } else { b.C3_municipio=o.mun; b.C3_referencia=ns(o.ref) }
+  b.C4=hm(t.s); b.C5=hm(t.eA?t.a-720:t.a); b.C6=L("port",t.pI); b.C7=L("modo",t.mI);
+  b.C8=L("ob",d.fu?1:0);
+  if(!d.fu){ b.C9=L("loc",d.loc); if(d.barrio) b.C10=ns(d.barrio) } else { b.C10_municipio=d.mun; b.C10_referencia=ns(d.ref) }
+  b.C11=hm(t.eR?t.rs-720:t.rs); b.C12=hm(t.eR?t.ra-720:t.ra); b.C13=L("port",t.pR); b.C14=L("modo",t.mR);
   return b;
  }
- const out=[], MIX=[[360,.10],[420,.25],[540,.23],[660,.15],[780,.10],[840,.11],[900,.06]];
- let reloj=U(480,600);
+ const out=[], lval=v=>opt.lik=="txt"?CAT.lik[v-1]:v;
  for(let i=0;i<n;i++){
-  // ---- Perfil (B) ----
-  const v=W(K.vw), est0=W(v==2||v==3?K.estD:v==1?K.estU.map((x,k)=>x*[.8,.9,1,1.2,1.4,1.5][k]):K.estU);
-  const fac=W(K.fac), pF=Math.min(.95,(v==0?FEM[fac]:v==1?.446:v==2?.308:v==5?.55:v==6?.15:.5)+K.femAdj), uG=R();
-  const g=uG<.002?2:uG<.012?3:P(pF)?1:0, care=g==1&&P(.3);
-  const age=Math.round(v==0?cl(N(21,2.6),16,38):v==1?cl(N(28,4.5),22,50):v==2?cl(N(44,10),27,70):cl(N(40,9),22,65));
-  const hiE=est0>=3, loc=locDe(hiE), fuera=P(K.fuera), df=fuera?1.7:DF[loc], mult=(v==1||v==2)?1.5:1;
-  const has=new Set(); if(P(Math.min(.92,AU[est0]*K.fAU*mult))) has.add(0); if(P(MO[est0]*K.fMO)) has.add(1); if(P(Math.min(.9,BI[est0]*K.fBI))) has.add(2); if(P(X?.04:.05)) has.add(3);
-  let dias;
-  if(X){ const nd=2+W([.02,.16,.14,.56,.12]); dias=nd==6?[0,1,2,3,4,5]:nd==5?[0,1,2,3,4]:[0,1,2,3,4].map(k=>[R(),k]).sort((a,b)=>a[0]-b[0]).slice(0,nd).map(a=>a[1]).sort(); }
-  else { dias=[0,1,2,3,4].filter(()=>P(v==0?.72:.6)); if(!dias.length) dias.push(W([1,1,1,1,1])); if(P(v==0?.08:.04)) dias.push(5); if(P(.01)) dias.push(6); }
-  const B={B1:L("genero",g),B2:P(.01*rr)?null:age,B3:P(.02)?L("estrato",6):L("estrato",est0),
-   B4:has.size?[...has].sort().map(k=>L("medios",k)):[L("medios",4)],B5:dias.map(k=>L("dias",k)),B6:L("vinc",v)};
-  if(v<2) B.B7=L("adm",W(v==0?K.adm:[.97,.01,.01,.01]));
-  B.B8=P(.04)?null:L("fac",fac);
-  if(v==0&&B.B8){ B.B9=fac==7?L("preg",W([.06,.22,.15,.08,.10,.14,.12,.05,.08])):"Otro: "+OTROP[fac]; }
-  // ---- Modo habitual y viaje de ayer (C) ----
-  const mH=elegirModo(est0,has,age,df,care,fuera,false);
-  const pY=X?(dias.length>=5?.95:dias.length==4?.8:.65):null;
-  let ayer, viajo;
-  if(X){ viajo=P(pY); ayer=viajo?dias[W(dias.map(()=>1))]:W([1,1,1,1,1,.3,.2]); if(!viajo&&dias.includes(ayer)) ayer=dias.includes(5)?6:5; }
-  else { ayer=P(.88)?W([1,1,1,1,1]):5+W([.8,.2]); viajo=dias.includes(ayer); }
-  const C={C0:L("sn",viajo?0:1)}, meta={estrato:est0+1,modo_habitual:CAT.modo[mH],viaje_cuidado_o_inseguridad:care,dia_ayer:CAT.dias[ayer]};
-  let mI=mH, mR=P(X?.8:.88)?mH:elegirModo(est0,has,age,df,care,fuera,true,mH);
+  // ---------- Perfil (B) ----------
+  const v=W(CAL.vinc), pre=v==0, fac=pre?W(CAL.fac):-1;
+  const gnb=CAL.gnb[0]+CAL.gnb[1], pF=Math.min(.95,(pre?CAL.femfac[fac]:CAL.femvinc[v])/(1-gnb)), uG=R();
+  const g=uG<CAL.gnb[0]?2:uG<gnb?3:P(pF)?1:0;
+  const age=pre?17+W(CAL.age_pre):cl(Math.round(N(CAL.age_oth[v-1][0],CAL.age_oth[v-1][1])),18,75);
+  const pe=pre?CAL.est_fac[fac]:CAL.est_oth, ei=W(pe), est0=ei==6?W(pe.slice(0,6))+1:ei+1, hiE=est0>=4;
+  // medios disponibles: factor latente de hogar con vehículos
+  const uH=Z(), has=new Set(), xm=[est0-3,g==1?1:0,pre?0:1];
+  for(let k=0;k<4;k++){ const a=CAL.med.k[k]; if(P(sig(a[0]+a[1]*xm[0]+a[2]*xm[1]+a[3]*xm[2]+CAL.med.gam*uH))) has.add(k) }
+  const hA=has.has(0)?1:0, hM=has.has(1)?1:0, hB=has.has(2)?1:0, hS=has.has(3)?1:0;
+  // días de asistencia: patrones reales y, si no, binomial por día
+  let dset; { const pt=CAL.dias_pat, tot=pt.reduce((s,x)=>s+x[1],0)+CAL.dias_otros, r=R()*tot; let acc=0; dset=null;
+    for(const [k,c] of pt){ acc+=c; if(r<acc){ dset=[...k].map(x=>x=="1"); break } }
+    if(!dset){ dset=CAL.dias_p.map(p=>P(p)); if(!dset.some(Boolean)) dset[W(CAL.dias_p.slice(0,5))]=true } }
+  const dias=[0,1,2,3,4,5,6].filter(k=>dset[k]);
+  const B={B1:L("genero",g),B2:age,B3:L("estrato",ei),
+   B4:mez(has.size?[...has].sort().map(k=>L("medios",k)):[L("medios",4)]),B5:mez(dias.map(k=>L("dias",k))),B6:L("vinc",v)};
+  if(pre){ B.B7=L("adm",W(CAL.adm)); B.B8=L("fac",fac); const pg=CAL.prog[fac]; B.B9=pg.length?pg[W(pg.map(x=>x[1]))][0]:"Otro" }
+  // ---------- Perfil latente de viaje ----------
+  const gi=est0<=2?0:est0==3?1:2, fuera=P(CAL.p_fuera), loc=fuera?-1:W(CAL.loc_est[gi]);
+  const xf=[g==1?1:0,hiE?1:0,hA,hM,hB,hS,loc==16?1:0,NEAR.has(loc)?1:0,FAR.has(loc)?1:0,fuera?1:0,pre?0:1];
+  const modoDe=()=>{ if(hS&&P(CAL.p_scoot_has)) return 9;
+   const z=CAL.mode_cls.map((k,j)=>CAL.mode_int[j]+CAL.mode_coef[j].reduce((s,c,x)=>s+c*xf[x],0)), mx=Math.max(...z), e=z.map(x=>Math.exp(x-mx));
+   return CAL.mode_cls[W(e)] };
+  const mI=modoDe(), mR=P(CAL.p_same_mode_param)?mI:modoDe(), mH=mI;
+  // ---------- Viaje de ayer (C) ----------
+  const ayer=W(CAL.ayer_w), viajo=P(dset[ayer]?CAL.p_tr_att:CAL.p_tr_noatt);
+  const C={C0:L("sn",viajo?0:1)};
   if(viajo){
-   const est={loc,est:est0,fuera}, dosViajes=P(K.dos), est_=v<2;
-   const pick=m=>W(K.pw[K.pg[m]]);
-   let ts, dI=dur(mI,df), arrIda;
-   if(X){ let a=est_?MIX[W(MIX.map(x=>x[1]))][0]-U(5,25):cl(N(470,60),330,620); ts=a-dI; arrIda=ts+dI; }
-   else { ts=est_&&P(.24)?cl(N(740,20),720,780):cl(N(est_?410:420,est_?30:35),est_?360:345,est_?450:510); arrIda=ts+dI; }
-   const t1=ts+dI;
-   let tr;
-   if(X){ tr=est_?cl(.5*(arrIda+N(350,120))+.5*N(1030,100),arrIda+75,1260):cl(N(841,100),arrIda+180,1100); if(dosViajes) tr=Math.max(arrIda+90,cl(N(750,20),705,795)); }
-   else { tr=dosViajes?cl(N(750,20),705,795):(P(.6)?U(1020,1080):cl(N(1010,120),780,1290)); tr=Math.max(tr,t1+(dosViajes?90:120)+(dosViajes?0:U(0,60))); }
-   const pI=pick(mI), o={ts,dI,mI,mR,pI,tr,dR:dur(mR,df)*(X?1.12:1.1),pR:P(K.mismoPort)?pI:pick(mR)};
-   Object.assign(C,bloque(est,o)); C.C15=L("sn",dosViajes?0:1);
-   if(dosViajes){
-    const t2=tr+o.dR+U(40,90), mI2=P(.9)?mI:elegirModo(est0,has,age,df,care,fuera,false), mR2=P(.9)?mR:mI2;
-    const o2={ts:t2,dI:dur(mI2,df),mI:mI2,mR:mR2,pI:pick(mI2),pR:pick(mR2)}; o2.tr=Math.max(U(1020,1140),t2+o2.dI+90); o2.dR=dur(mR2,df)*1.1;
-    C.segundo_viaje=bloque(est,o2);
+   const orig=mkLugar(fuera,loc), pI=W(CAL.ent[mI]);
+   const fR=P(.996)?fuera:!fuera; let dest;
+   if(fR==fuera&&(fuera||P(CAL.p_same_loc))){ dest=Object.assign({},orig); if(!fuera&&P(.15)) dest.barrio=barrio(loc) } else dest=mkLugar(fR,fR?-1:W(CAL.loc_est[gi]));
+   const dosV=P(CAL.p_seg), tresV=dosV&&P(CAL.p_ter);
+   // ida: hora de llegada (empírica) -> salida según duración; regreso: hora empírica según llegada
+   const mk=(mi,mr,pi,pr)=>{
+    const d=durFn(mi,loc,fuera); let dR=mr==mi?d*Math.exp(N(CAL.ret_ratio[0],CAL.ret_ratio[1])):durFn(mr,loc,fuera)*Math.exp(N(0,.2)); dR=cl(dR,3,300); dR=P(.9)?Math.max(5,r5(dR)):Math.round(dR);
+    return {d,dR,mI:mi,mR:mr,pI:pi,pR:pr} };
+   const t1=mk(mI,mR,pI,P(CAL.p_same_port)?pI:W(CAL.ent[mR]));
+   let a=CAL.arr[(R()*CAL.arr.length)|0]; if(P(.08)) a+=r5(N(0,10)); a=cl(a,300,1260);
+   let s=a-t1.d; if(s<240){ s=240+r5(U(0,40)); a=s+t1.d }
+   { const ru=R(), sn=(m,tol)=>{ const x=Math.round(s/m)*m; if(Math.abs(x-s)<=tol&&x<a-3) s=x }; if(ru<.30) sn(60,20); else if(ru<.62) sn(30,14); else if(ru<.70) sn(15,7); }
+   const ar=CAL.ret[a<450?0:a<660?1:a<840?2:3]; let rs=ar[(R()*ar.length)|0]; if(P(.3)) rs+=r5(N(0,10)); if(rs<a+30) rs=a+30+r5(U(0,90));
+   if(dosV) rs=Math.min(a+r5(U(90,330)),840);
+   let ra=Math.min(1439,rs+t1.dR);
+   Object.assign(t1,{s,a,rs,ra,eA:ruido&&s>=720&&P(.22),eR:ruido&&rs>=780&&P(CAL.p_err_ret/.85)});
+   Object.assign(C,bloque(orig,dest,t1)); C.C15=L("sn",dosV?0:1);
+   if(dosV){
+    const mi2=P(.9)?mI:modoDe(), mr2=P(.9)?mR:mi2, t2=mk(mi2,mr2,W(CAL.ent[mi2]),0); t2.pR=P(.7)?t2.pI:W(CAL.ent[mr2]);
+    t2.s=Math.min(1200,ra+r5(U(45,300))); t2.a=t2.s+t2.d; t2.rs=Math.min(1380,t2.a+r5(U(120,330))); t2.ra=Math.min(1439,t2.rs+t2.dR);
+    t2.eA=false; t2.eR=ruido&&t2.rs>=780&&P(CAL.p_err_ret/.85);
+    C.segundo_viaje=bloque(orig,dest,t2); C.segundo_viaje.C15=L("sn",tresV?0:1);
+    if(tresV){
+     const t3=mk(mi2,mr2,W(CAL.ent[mi2]),0); t3.pR=t3.pI; t3.s=Math.min(1300,t2.ra+r5(U(30,150))); t3.a=t3.s+t3.d; t3.rs=Math.min(1400,t3.a+r5(U(60,240))); t3.ra=Math.min(1439,t3.rs+t3.dR); t3.eA=t3.eR=false;
+     C.tercer_viaje=bloque(orig,dest,t3); C.tercer_viaje.C15=L("sn",1);
+    }
    }
   }
-  // ---- Movilidad interna (D) ----
-  let d1=W(mH==2?[.35,.6,.02,0,0,.03]:mH==4?[.6,0,.02,.35,0,.03]:mH==6?[.55,0,.02,0,.4,.03]:mH==9?[.4,0,.57,0,0,.03]:[.9,.04,.02,0,0,.04]);
-  if(d1==1&&!has.has(2)) d1=0;   // sin bicicleta disponible no se mueve en bici dentro del campus
-  const D={D1:L("d1",d1),D2:L("d2",W(X?[.14,.44,.34,.08]:d1?[.45,.38,.14,.03]:[.25,.4,.27,.08])),D3:L("d3",W(X?(dias.length>=5?[.14,.46,.26,.14]:[.2,.5,.2,.1]):dias.length>=4?[.08,.32,.34,.26]:[.12,.38,.30,.20]))};
-  // ---- Actitudes (A): factor general t + factor de seguridad s ----
-  const efMod={0:.2,1:.1,2:.5,3:.4,4:-.5,5:-.1,6:-.2,7:.1,8:-.2,9:.3,10:-.2}[mH], t=N(.15+efMod,.9), s=N(0,.7)-(care?.9:0)-(g==1&&C.C11&&C.C11>="16:30"?.3:0);
-  const bici=mH==2||d1==1, A={}, straight=P(.05*rr), sv=P(.6)?4:3;
-  for(const [k,m,f] of K.lk){
-   let x=m+(f=="t"?.6*t:.6*s)+N(0,.75);
-   if(mH==4&&(k=="A3"||k=="A6")) x-=.7; if(mH==4&&k=="A9") x-=.2;
-   if(bici&&(k=="A5"||k=="A8")&&P(.85)) x=P(.55)?5:4;
-   A[k]=straight?sv:cl(Math.round(x),1,5);
+  // ---------- Movilidad interna (D) ----------
+  const d1=W(CAL.d1[MGRP[mH]]);
+  const D={D1:L("d1",d1),D2:L("d2",W(CAL.d2[d1])),D3:L("d3",W(CAL.d3[pre?"pre":"oth"]))};
+  // ---------- Actitudes (A): cópula gaussiana + covariables ----------
+  const xv=[g==1,hiE,mH==2,mH==4||mH==5,mH==6,mH==0,mH==3,fuera,!pre,hA,hB,hM].map(x=>x?1:0);
+  const eps=Array.from({length:9},Z), A={}, Av=[];
+  for(let k=0;k<9;k++){
+   let e=0; for(let j=0;j<=k;j++) e+=CH[k][j]*eps[j];
+   let z=CAL.lik_res_sd[k]*e; for(const nm in CAL.lik_beta[k]) z+=CAL.lik_beta[k][nm]*xv[XI[nm]];
+   const th=CAL.lik_thr[k]; let c=1; for(const t of th) if(z>t) c++;
+   Av[k]=c; A["A"+(k+1)]=lval(c);
   }
-  // ---- Ranking (E): utilidades con ruido (1 = mayor prioridad) ----
-  const u=K.u.slice(), f=X?.6:1;
-  if(care){u[0]+=.2*f; u[5]+=(X?.5:.7)}
-  if(bici){u[1]+=.8*f;u[3]+=.4*f} if(mH==4){u[4]+=.5*f;u[2]-=.2*f;u[1]-=.3*f} if(mH<2){u[2]+=.3*f;u[5]+=.3*f}
-  const ord=u.map((x,k)=>[x+N(0,1),k]).sort((a,b)=>b[0]-a[0]), rk={}; ord.forEach(([,k],r)=>rk[k]=r+1); const E={}; for(let k=0;k<6;k++) E["E"+(k+1)]=rk[k];
-  // ---- Comentario abierto (F) ----
+  // ---------- Ranking (E): utilidad aleatoria (1 = mayor prioridad) ----------
+  const E={}, rk=[];
+  if(P(CAL.p_lazy)){ for(let k=0;k<6;k++) rk[k]=k+1 }
+  else{
+   const u=CAL.rk_mu.map((m,k)=>{ let x=m; const b=CAL.rk_beta[k];
+    for(const nm in b){ x+=b[nm]*(nm[0]=="A"?(Av[+nm.slice(1)-1]-CAL.rk_Amean[+nm.slice(1)-1])/CAL.rk_Asd[+nm.slice(1)-1]:xv[XI[nm]]) }
+    return x+Z() });
+   u.map((x,k)=>[x,k]).sort((a,b)=>b[0]-a[0]).forEach(([,k],r)=>rk[k]=r+1);
+  }
+  for(let k=0;k<6;k++) E["E"+(k+1)]=rk[k];
+  // ---------- Comentario (F) ----------
   let F1=null;
-  if(X){ const z=R(); if(z<K.pCom){ const sub=R()<.55; F1=sub?COM[W(COM.map(()=>1))]:NOANS[W([3,5,3,2,2,1.5,1,.7,.5])];
-     if(P(.12*rr)) F1=F1.replace(/\.$/,"").toLowerCase(); } }
-  else if(P(K.pCom)) F1=COM[W(COM.map(()=>1))];
+  if(P(CAL.p_comment)){
+   if(P(CAL.p_comment_neg)){ const f=CAL.neg_phr[W(CAL.neg_phr.map(x=>x[1]))][0]; F1=ns(P(.8)?f[0].toUpperCase()+f.slice(1):f) }
+   else{
+    const w=COM.map(([t,tg])=>{ const T=tg.split(" "); let x=1;
+     for(const k of T){ if(k=="luz") x*=1+(Av[3]<=2?2:0)+(g==1?.8:0); if(k=="seg") x*=1+(Av[0]<=3||Av[6]<=2?1.5:0)+(g==1?.8:0);
+      if(k=="bici") x*=1+(mH==2?4:0)+(hB?.6:0); if(k=="moto"||k=="vial") x*=1+(mH==6?2.5:0); if(k=="carros") x*=1+(mH==4||mH==5?1:0);
+      if(k=="carpool") x*=1+(mH==4||mH==5?2:0)+(Av[8]>=4?.8:0); if(k=="tm") x*=1+(mH==0?1.5:0); if(k=="lejos"||k=="fuera") x*=fuera||FAR.has(loc)?3:.5;
+      if(k=="acc") x*=.5; if(k=="enc") x*=.8; if(k=="gen") x*=1.3 }
+     return x });
+    F1=ns(COM[W(w)][0]);
+   }
+  }
   const r={id:"R"+String(i+1).padStart(4,"0"),A,B,C,D,E,F:{F1}};
-  if(opt.envio){ reloj+=-Math.log(1-R())*9; if(reloj>1200) reloj=U(480,540);
-   const idc=()=>Array.from({length:7},()=>"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"[Math.floor(R()*62)]).join(""),
-    d=new Date(Date.UTC(2026,9,20+Math.floor(i/60)%5,0,0,0)+Math.floor(reloj)*60000+Math.floor(R()*60)*1000);
-   r.envio={submission_id:idc(),respondent_id:idc(),submitted_at:d.toISOString().slice(0,19).replace("T"," "),encuestador:"simulado-"+String(1+W([1,1,1,1,1,1])).padStart(2,"0"),acepta:"Acepto"}; }
-  if(opt.meta) r._meta=meta; out.push(r);
+  if(opt.meta){
+   const ie=W(CAL.encuestadores), idv=W(CAL.dispositivos), h=W(CAL.sub_hour), dt=new Date(Date.UTC(2026,9,6+ayer,h,(R()*60)|0,(R()*60)|0));
+   let hs=((idv+1)*2654435761>>>0).toString(36).padStart(7,"0").slice(-7);
+   r._meta={estrato_real:est0,modo_habitual:CAT.modo[mH],dia_ayer:CAT.dias[ayer],encuestador:"enc_"+String(ie+1).padStart(2,"0"),dispositivo:hs,enviado:dt.toISOString().slice(0,19).replace("T"," ")};
+  }
+  out.push(r);
  }
  return out;
 }
 
-/* ---- Aplanado a CSV y estadísticas de validación ---- */
-function aplanar(r){const f={id:r.id}; if(r.envio) for(const [k,v] of Object.entries(r.envio)) f[k]=v; for(const s of "ABCDEF") for(const [k,v] of Object.entries(r[s])){
-  if(k=="segundo_viaje"){ for(const [kk,vv] of Object.entries(v)) f["segundo_viaje_"+kk]=vv; } else f[k]=Array.isArray(v)?v.join("|"):v; }
+/* ---- Aplanado a CSV (columnas en el orden del cuestionario) ---- */
+const BL=["C1","C2","C3","C3_municipio","C3_referencia","C4","C5","C6","C7","C8","C9","C10","C10_municipio","C10_referencia","C11","C12","C13","C14","C15"];
+const ORD=["id",...Array.from({length:9},(_,k)=>"A"+(k+1)),...Array.from({length:9},(_,k)=>"B"+(k+1)),"C0",...BL,...BL.map(k=>"segundo_viaje_"+k),...BL.map(k=>"tercer_viaje_"+k),"D1","D2","D3",...Array.from({length:6},(_,k)=>"E"+(k+1)),"F1"];
+function aplanar(r){const f={id:r.id}; for(const s of "ABCDEF") for(const [k,v] of Object.entries(r[s])){
+  if(k=="segundo_viaje"||k=="tercer_viaje"){ for(const [kk,vv] of Object.entries(v)) f[k+"_"+kk]=vv; } else f[k]=Array.isArray(v)?v.join("|"):v; }
   if(r._meta) for(const [k,v] of Object.entries(r._meta)) f["meta_"+k]=v; return f;}
 function csv(D){const cols=[]; const F=D.map(aplanar); F.forEach(f=>Object.keys(f).forEach(k=>{if(!cols.includes(k)) cols.push(k)}));
+  const rank=k=>{const i=ORD.indexOf(k); return i<0?1e6+cols.indexOf(k):i}; cols.sort((a,b)=>rank(a)-rank(b));
   const e=v=>{v=v==null?"":String(v); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
-  return "\ufeff"+[cols.join(","),...F.map(f=>cols.map(c=>e(f[c])).join(","))].join("\r\n");}
+  return "﻿"+[cols.join(","),...F.map(f=>cols.map(c=>e(f[c])).join(","))].join("\r\n");}
 function bajar(txt,nombre,tipo){const url=URL.createObjectURL(new Blob([txt],{type:tipo})), a=document.createElement("a"); a.href=url; a.download=nombre; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000);}
 
-function resumen(D,opt){
- const pc=x=>(100*x).toFixed(1)+"%", cnt=(arr,f)=>arr.filter(f).length, n=D.length, X=(PERF[opt.cal]||XL).x;
- const cod=(c,v)=>opt.cod&&v!=null?CAT[c][v.charCodeAt(0)-65]:v, hd=(c,cab)=>`<h4 class="mov-h" style="margin-top:12px">${c}</h4>`,
-  tab=(t,cab,fil)=>`<h4 class="mov-h" style="margin-top:12px">${t}</h4><table class="tabla-mini" style="width:100%;border-collapse:collapse;font-size:.8rem"><tr>${cab.map(c=>`<th style="text-align:left;border-bottom:1px solid var(--cuadricula);padding:3px 6px">${c}</th>`).join("")}</tr>${fil.map(f=>"<tr>"+f.map(c=>`<td style="padding:3px 6px;border-bottom:1px solid var(--cuadricula)">${c}</td>`).join("")+"</tr>").join("")}</table>`;
- const viajes=[]; D.forEach(r=>{ if(r.C.C4){viajes.push([r.C.C7,r.C.C4,r.C.C5]); viajes.push([r.C.C14,r.C.C11,r.C.C12]);}
-   if(r.C.segundo_viaje){const s=r.C.segundo_viaje; viajes.push([s.C7,s.C4,s.C5]); viajes.push([s.C14,s.C11,s.C12]);} });
- const mn=h=>+h.slice(0,2)*60+ +h.slice(3), hh=m=>String(m/60|0).padStart(2,"0")+":"+String(Math.round(m%60)).padStart(2,"0"), nm=m=>cod("modo",m), V=viajes.length||1;
- const grp={"Transporte público":[0,1,7],"A pie":[3],"Auto":[4,5],"Moto":[6],"Bicicleta":[2],"Taxi / apps":[8,10],"Otros (scooter)":[9]}, REF={"Transporte público":.3468,"A pie":.2752,"Auto":.1394,"Moto":.0731,"Bicicleta":.0730,"Taxi / apps":.0435,"Otros (scooter)":.049};
- const idx=m=>CAT.modo.indexOf(nm(m));
- const t1=tab("Reparto modal de los viajes simulados vs. Bogotá 2023",["Modo","Simulado","Bogotá 2023"],Object.entries(grp).map(([k,a])=>[k,pc(viajes.filter(x=>a.includes(idx(x[0]))).length/V),pc(REF[k])]));
- const dm=CAT.modo.map((m,k)=>{const a=viajes.filter(x=>idx(x[0])==k).map(x=>mn(x[2])-mn(x[1])).filter(x=>x>0); return a.length?[m,a.length,Math.round(a.reduce((s,x)=>s+x,0)/a.length)+" min"]:null}).filter(Boolean);
- const t2=tab("Duración media por modo (ida y regreso)",["Modo","Viajes","Media"],dm);
- const mean=f=>(D.reduce((s,r)=>s+f(r),0)/n).toFixed(2);
- const t3=tab("Actitudes (media Likert 1–5) y ranking (rango medio, 1 = prioridad máxima)",["Ítem","Media"],[...Object.keys(D[0].A).map(k=>[k,mean(r=>r.A[k])]),...Object.keys(D[0].E).map(k=>[k+" (rango)",mean(r=>r.E[k])])]);
- const esr=CAT.estrato.slice(0,6).map((x,k)=>[x,pc(cnt(D,r=>cod("estrato",r.B.B3)==x)/n),pc(EST_B[k])]);
- const mf=f=>{const a=D.filter(f); return a.length?pc(a.filter(r=>cod("genero",r.B.B1)=="Mujer").length/a.length):"–"}, vv=k=>r=>cod("vinc",r.B.B6)==CAT.vinc[k];
- const pre=D.filter(r=>r.B.B7&&vv(0)(r)), t4=tab("Vinculación (B6) vs. comunidad de la sede",["Tipo","Simulado","Referencia"],CAT.vinc.slice(0,7).map((x,k)=>[x,pc(cnt(D,vv(k))/n),pc(VW0[k]/VT)]))
-  +tab("% de mujeres (B1) vs. UNAL Bogotá",["Grupo","Simulado","Referencia"],[["Pregrado",mf(vv(0)),"40,0 %"],["Posgrado",mf(vv(1)),"44,6 %"],["Docentes",mf(vv(2)),"30,8 %"]])
-  +tab("Tipo de admisión (B7, pregrado) vs. aspirantes 2024-1",["Tipo","Simulado","Referencia"],CAT.adm.map((x,k)=>[x,pc(pre.filter(r=>cod("adm",r.B.B7)==x).length/(pre.length||1)),pc(ADM_P[k])]));
- const viajo=cnt(D,r=>r.C.C0==(opt.cod?"A":"Sí")), seg=cnt(D,r=>r.C.segundo_viaje);
- const cab=`<p class="gen-ayuda"><b>${n}</b> encuestados · ${viajo} viajaron ayer (${pc(viajo/n)}) · ${seg} con segundo viaje · ${viajes.length} viajes en total.</p>`;
- if(!X) return cab+t1+t2+tab("Estrato (B3) vs. Bogotá 2023",["Estrato","Simulado","Bogotá 2023"],esr)+t4+t3;
- /* ---- Validación contra el Excel de referencia (solo perfil «xl») ---- */
- const dl=(a,b,p)=>{const d=a-b; return (d>=0?"+":"")+(p?(100*d).toFixed(1)+" pp":d.toFixed(2))};
- const I=D.filter(r=>r.C.C7), sh=(arr,f)=>arr.filter(f).length/(arr.length||1);
- const rows=[];
- for(const [m,ref] of Object.entries(RX.modoI)){ const s=sh(I,r=>nm(r.C.C7)==m); rows.push(["Ida · "+m.replace(" (o demás aplicaciones)",""),pc(s),pc(ref),dl(s,ref,1)]); }
- for(const [m,ref] of Object.entries(RX.modoR)){ const s=sh(I,r=>nm(r.C.C14)==m); rows.push(["Regreso · "+m,pc(s),pc(ref),dl(s,ref,1)]); }
- CAT.port.forEach((p,k)=>{ const s=sh(I,r=>cod("port",r.C.C6)==p); rows.push(["Entrada · "+p.replace(/\s*\(.*\)/,""),pc(s),pc(RX.port[k]),dl(s,RX.port[k],1)]); });
- const t5=tab("Validación vs. Excel (reparto modal y porterías)",["Variable","Simulado","Excel","Δ"],rows);
- const est=D.filter(r=>r.C.C4&&(cod("vinc",r.B.B6)==CAT.vinc[0]||cod("vinc",r.B.B6)==CAT.vinc[1])), otr=D.filter(r=>r.C.C4&&!est.includes(r));
- const av=(a,f)=>a.length?a.reduce((s,r)=>s+f(r),0)/a.length:NaN;
- const dd=(m,k)=>{const a=I.filter(r=>nm(r.C.C7)==m).map(r=>mn(r.C.C5)-mn(r.C.C4)).filter(x=>x>0); return a.length?a.reduce((s,x)=>s+x,0)/a.length:NaN};
- const dias=av(D,r=>r.B.B5.length), has=(m)=>sh(D,r=>r.B.B4.some(x=>cod("medios",x)==m));
- const f1=[["Mujeres (B1)",pc(sh(D,r=>cod("genero",r.B.B1)=="Mujer")),pc(RX.mujer)],["Viajó ayer (C0)",pc(viajo/n),pc(RX.viajo)],["Origen fuera de Bogotá (C1)",pc(sh(I,r=>r.C.C1==(opt.cod?"B":CAT.ob[1]))),pc(RX.fuera)],
-  ["Días/semana en la U (B5)",dias.toFixed(2),RX.dias.toFixed(2)],["Tiene auto (B4)",pc(has("Auto")),pc(RX.auto)],["Tiene bicicleta (B4)",pc(has("Bicicleta")),pc(RX.bici)],["Tiene moto (B4)",pc(has("Motocicleta")),pc(RX.moto)],
-  ["Hora de salida ida · estudiantes",hh(av(est,r=>mn(r.C.C4))),hh(RX.hIE)],["Hora de salida ida · docentes/admin.",hh(av(otr,r=>mn(r.C.C4))),hh(RX.hIO)],
-  ["Hora de salida regreso · estudiantes",hh(av(est,r=>mn(r.C.C11))),hh(RX.hRE)],["Hora de salida regreso · docentes/admin.",hh(av(otr,r=>mn(r.C.C11))),hh(RX.hRO)],
-  ["Duración ida Transmilenio",Math.round(dd("Transmilenio"))+" min",RX.dTM+" min"],["Duración ida caminata",Math.round(dd("Caminata"))+" min",RX.dCam+" min"]];
- const t6=tab("Validación vs. Excel (perfil y horarios)",["Variable","Simulado","Excel"],f1);
- const ks=Object.keys(D[0].A), kr=Object.keys(D[0].E);
- const f2=[...ks.map((k,j)=>{const s=+mean(r=>r.A[k]); return [k+" (Likert)",s.toFixed(2),RX.lk[j].toFixed(2),dl(s,RX.lk[j])]}),...kr.map((k,j)=>{const s=+mean(r=>r.E[k]); return [k+" (rango)",s.toFixed(2),RX.rk[j].toFixed(2),dl(s,RX.rk[j])]})];
- const t7=tab("Validación vs. Excel (actitudes y ranking)",["Ítem","Simulado","Excel","Δ"],f2);
- const nota=`<p class="gen-ayuda" style="margin-top:8px">Ojo: el Excel tiene solo 50 filas, así que sus porcentajes tienen un margen de error de ±7 pp o más; diferencias pequeñas son ruido muestral, no fallas del simulador.</p>`;
- return cab+t5+t6+t7+nota+t2+t4;
+/* ---- Estadísticas de validación: simulado vs. encuesta real ---- */
+function stats(D,opt){
+ const REF=CAL.ref, n=D.length, cod=(c,v)=>v==null?null:opt.cod?CAT[c][v.charCodeAt(0)-65]:v, num=v=>typeof v=="number"?v:CAT.lik.indexOf(v)+1;
+ const dist=(vals,k)=>{const c=Array(k).fill(0); vals.forEach(i=>{if(i>=0&&i<k)c[i]++}); const t=c.reduce((a,b)=>a+b,0)||1; return c.map(x=>x/t)};
+ const idx=(c,vals)=>dist(vals.map(v=>CAT[c].indexOf(cod(c,v))),CAT[c].length);
+ const T=D.filter(r=>r.C.C4), mn=h=>+h.slice(0,2)*60+ +h.slice(3);
+ const S={};
+ S.vinc=idx("vinc",D.map(r=>r.B.B6)); S.gen=idx("genero",D.map(r=>r.B.B1)); S.est=idx("estrato",D.map(r=>r.B.B3));
+ S.med=["Auto","Motocicleta","Bicicleta","Scooter o patineta eléctrica","Ninguna de las anteriores"].map(m=>D.filter(r=>r.B.B4.some(x=>cod("medios",x)==m)).length/n);
+ S.ndias=dist(D.map(r=>r.B.B5.length-1),7); S.tr=T.length/n; S.seg=T.filter(r=>r.C.segundo_viaje).length/(T.length||1);
+ S.modo=idx("modo",T.map(r=>r.C.C7)); S.port=idx("port",T.map(r=>r.C.C6));
+ const Tb=T.filter(r=>r.C.C2); S.loc=idx("loc",Tb.map(r=>r.C.C2)); S.fuera=T.filter(r=>cod("ob",r.C.C1)==CAT.ob[1]).length/(T.length||1);
+ const ar=T.map(r=>mn(r.C.C5)), bands=[[0,390],[390,450],[450,540],[540,660],[660,840],[840,1500]]; S.arr=bands.map(([a,b])=>ar.filter(x=>x>=a&&x<b).length/(ar.length||1));
+ S.dur=CAT.modo.map((m,k)=>{const x=T.filter(r=>cod("modo",r.C.C7)==m).map(r=>(mn(r.C.C5)-mn(r.C.C4)+1440)%1440).filter(d=>d>=3&&d<=240).sort((a,b)=>a-b); return x.length?x[x.length>>1]:null});
+ S.lik=Array.from({length:9},(_,k)=>dist(D.map(r=>num(r.A["A"+(k+1)])-1),5));
+ S.likm=S.lik.map(p=>p.reduce((s,x,i)=>s+x*(i+1),0)); S.likag=S.lik.map(p=>p[3]+p[4]);
+ S.rk=Array.from({length:6},(_,k)=>D.reduce((s,r)=>s+r.E["E"+(k+1)],0)/n);
+ S.d1=idx("d1",D.map(r=>r.D.D1)); S.d2=idx("d2",D.map(r=>r.D.D2)); S.d3=idx("d3",D.map(r=>r.D.D3));
+ S.com=D.filter(r=>r.F.F1).length/n;
+ const pre=D.filter(r=>cod("vinc",r.B.B6)==CAT.vinc[0]);
+ S.age=pre.reduce((s,r)=>s+r.B.B2,0)/(pre.length||1);
+ const pc=(a,f)=>a.length?a.filter(f).length/a.length:NaN, md=r=>cod("modo",r.C.C7), tieneB4=(r,m)=>r.B.B4.some(x=>cod("medios",x)==m);
+ S.cross={fem_ing:pc(pre.filter(r=>cod("fac",r.B.B8)=="Ingeniería"),r=>cod("genero",r.B.B1)=="Mujer"),
+  walk_teus:pc(Tb.filter(r=>cod("loc",r.C.C2)=="Teusaquillo"),r=>md(r)=="Caminata"),
+  moto_hasmoto:pc(T.filter(r=>tieneB4(r,"Motocicleta")),r=>md(r)=="Motocicleta"), moto_nomoto:pc(T.filter(r=>!tieneB4(r,"Motocicleta")),r=>md(r)=="Motocicleta"),
+  auto_hi:pc(T.filter(r=>["4","5","6"].includes(cod("estrato",r.B.B3))),r=>["Auto conductor","Auto acompañante"].includes(md(r))), auto_lo:pc(T.filter(r=>["1","2","3"].includes(cod("estrato",r.B.B3))),r=>["Auto conductor","Auto acompañante"].includes(md(r))),
+  none_fem:pc(D.filter(r=>cod("genero",r.B.B1)=="Mujer"),r=>tieneB4(r,"Ninguna de las anteriores")), none_masc:pc(D.filter(r=>cod("genero",r.B.B1)=="Hombre"),r=>tieneB4(r,"Ninguna de las anteriores")),
+  a3_hasauto:pc(D.filter(r=>tieneB4(r,"Auto")),r=>num(r.A.A3)>=4), a3_noauto:pc(D.filter(r=>!tieneB4(r,"Auto")),r=>num(r.A.A3)>=4),
+  same_mode:pc(T,r=>cod("modo",r.C.C14)==md(r)), tm_fuera:pc(T.filter(r=>cod("ob",r.C.C1)==CAT.ob[1]),r=>md(r)=="Transmilenio"), age_pre:S.age};
+ return S;
 }
+const tvd=(a,b)=>a.reduce((s,x,i)=>s+Math.abs(x-b[i]),0)/2;
+function resumen(D,opt){
+ const REF=CAL.ref, S=stats(D,opt), n=D.length, pc=x=>x==null||isNaN(x)?"–":(100*x).toFixed(1).replace(".",",")+" %", f1=x=>x==null||isNaN(x)?"–":x.toFixed(2).replace(".",",");
+ const tabla=(cab,fil)=>`<table class="tabla-mini" style="width:100%;border-collapse:collapse;font-size:.8rem"><tr>${cab.map((c,i)=>`<th style="text-align:${i?"right":"left"};border-bottom:1px solid var(--cuadricula);padding:3px 6px">${c}</th>`).join("")}</tr>${fil.map(f=>"<tr>"+f.map((c,i)=>`<td style="text-align:${i?"right":"left"};padding:3px 6px;border-bottom:1px solid var(--cuadricula)">${c}</td>`).join("")+"</tr>").join("")}</table>`;
+ const bloq=(t,ac,html)=>`<details class="hm-sin" style="margin-top:8px"><summary>${t}${ac?` <span class="mono" style="font-size:.72rem;color:var(--tinta-suave)">· ${ac}</span>`:""}</summary>${html}</details>`;
+ const dst=(lab,s,r)=>tabla(["","Simulado","Encuesta real","Dif. (pp)"],lab.map((l,i)=>[l,pc(s[i]),pc(r[i]),((s[i]-r[i])*100).toFixed(1).replace(".",",")]));
+ const L9=CAT.d1; const tv={};
+ tv["Vinculación"]=tvd(S.vinc,REF.vinc); tv["Género"]=tvd(S.gen,REF.gen); tv["Estrato"]=tvd(S.est,REF.est); tv["Días por semana"]=tvd(S.ndias,REF.ndias);
+ tv["Modo de transporte (ida)"]=tvd(S.modo,REF.modo); tv["Portería de ingreso"]=tvd(S.port,REF.port); tv["Localidad de origen"]=tvd(S.loc,REF.loc); tv["Hora de llegada"]=tvd(S.arr,REF.arr_band);
+ tv["Actitudes A1–A9 (promedio de ítems)"]=S.lik.reduce((s,p,k)=>s+tvd(p,REF.lik_dist[k]),0)/9; tv["Movilidad interna D1"]=tvd(S.d1,REF.d1); tv["D2"]=tvd(S.d2,REF.d2); tv["D3"]=tvd(S.d3,REF.d3);
+ const tvs=Object.values(tv), glob=100*(1-tvs.reduce((a,b)=>a+b,0)/tvs.length);
 
-/* ---- Exportación con las 127 columnas del Excel de encuesta (mismo orden y encabezados) ---- */
-const HDR=["Submission ID", "Respondent ID", "Submitted at", "Correo electrónico del encuestador", "Acepta diligenciar el formulario", "Género", "Edad", "Estrato", "¿Cuáles de los siguientes medios de transporte tiene disponibles en su hogar o para su uso habitual?", "¿Cuáles de los siguientes medios de transporte tiene disponibles en su hogar o para su uso habitual? (Auto)", "¿Cuáles de los siguientes medios de transporte tiene disponibles en su hogar o para su uso habitual? (Motocicleta)", "¿Cuáles de los siguientes medios de transporte tiene disponibles en su hogar o para su uso habitual? (Bicicleta)", "¿Cuáles de los siguientes medios de transporte tiene disponibles en su hogar o para su uso habitual? (Scooter o patineta eléctrica)", "¿Cuáles de los siguientes medios de transporte tiene disponibles en su hogar o para su uso habitual? (Ninguna de las anteriores)", "En una semana típica, ¿qué días asiste presencialmente a la Universidad Nacional de Colombia (UNAL)?", "En una semana típica, ¿qué días asiste presencialmente a la Universidad Nacional de Colombia (UNAL)? (Lunes)", "En una semana típica, ¿qué días asiste presencialmente a la Universidad Nacional de Colombia (UNAL)? (Martes)", "En una semana típica, ¿qué días asiste presencialmente a la Universidad Nacional de Colombia (UNAL)? (Miércoles)", "En una semana típica, ¿qué días asiste presencialmente a la Universidad Nacional de Colombia (UNAL)? (Jueves)", "En una semana típica, ¿qué días asiste presencialmente a la Universidad Nacional de Colombia (UNAL)? (Viernes)", "En una semana típica, ¿qué días asiste presencialmente a la Universidad Nacional de Colombia (UNAL)? (Sábado)", "En una semana típica, ¿qué días asiste presencialmente a la Universidad Nacional de Colombia (UNAL)? (Domingo)", "Tipo de vinculación con la Universidad Nacional de Colombia", "Tipo de admisión", "¿A qué facultad pertenece?", "¿A qué Pregrado pertenece?", "¿A qué Pregrado pertenece?.1", "¿A qué Pregrado pertenece?.2", "¿A qué Pregrado pertenece?.3", "¿A qué Pregrado pertenece?.4", "¿A qué Pregrado pertenece?.5", "¿A qué Pregrado pertenece?.6", "¿A qué Pregrado pertenece?.7", "¿A qué Pregrado pertenece?.8", "¿A qué Pregrado pertenece?.9", "¿A qué Pregrado pertenece?.10", "¿AYER viajó a la UNAL?", "¿Desde dónde inició su viaje hacia la UNAL?", "¿Desde qué Localidad inició su viaje a la UNAL?", "¿Desde qué Barrio?", "¿Desde qué Municipio inició su viaje a la UNAL?", "Referencia para lugar de origen", "¿A qué hora inició su viaje de IDA a la UNAL? ", "¿A qué hora llegó a la UNAL? ", "¿Por cuál entrada ingesó?", "¿Qué modo de Transporte principal usó?", "¿Hacia dónde hizo su viaje desde la UNAL?", "¿Hacia qué Localidad hizo su viaje desde la UNAL?", "¿Hacia qué Barrio?", "¿Hacia qué Municipio hizo su viaje desde la UNAL?", "Referencia para lugar de destino", "¿A qué hora inició su viaje de REGRESO desde la UNAL? ", "¿A qué hora llegó a su destino? ", "¿Por cuál entrada egresó?", "¿Qué modo de Transporte principal usó?.1", "¿Realizó un Segundo Viaje?", "¿Desde dónde inició su viaje hacia la UNAL?.1", "¿Desde qué Localidad inició su viaje a la UNAL?.1", "¿Desde qué Barrio?.1", "¿Desde qué Municipio inició su viaje a la UNAL?.1", "Referencia para lugar de origen.1", "¿A qué hora inició su viaje de IDA a la UNAL? .1", "¿A qué hora llegó a la UNAL? .1", "¿Por cuál entrada ingesó?.1", "¿Qué modo de Transporte principal usó?.2", "¿Hacia dónde hizo su viaje desde la UNAL?.1", "¿Hacia qué Localidad hizo su viaje desde la UNAL?.1", "¿Hacia qué Barrio?.1", "¿Hacia qué Municipio hizo su viaje desde la UNAL?.1", "Referencia para lugar de destino.1", "¿A qué hora inició su viaje de REGRESO desde la UNAL? .1", "¿A qué hora llegó a su destino? .1", "¿Por cuál entrada egresó?.1", "¿Qué modo de Transporte principal usó?.3", "¿Realizó un Tercer Viaje?", "¿Desde dónde inició su viaje hacia la UNAL?.2", "¿Desde qué Localidad inició su viaje a la UNAL?.2", "¿Desde qué Barrio?.2", "¿Desde qué Municipio inició su viaje a la UNAL?.2", "Referencia para lugar de origen.2", "¿A qué hora inició su viaje de IDA a la UNAL? .2", "¿A qué hora llegó a la UNAL? .2", "¿Por cuál entrada ingesó?.2", "¿Qué modo de Transporte principal usó?.4", "¿Hacia dónde hizo su viaje desde la UNAL?.2", "¿Hacia qué Localidad hizo su viaje desde la UNAL?.2", "¿Hacia qué Barrio?.2", "¿Hacia qué Municipio hizo su viaje desde la UNAL?.2", "Referencia para lugar de destino.2", "¿A qué hora inició su viaje de REGRESO desde la UNAL? .2", "¿A qué hora llegó a su destino? .2", "¿Por cuál entrada egresó?.2", "¿Qué modo de Transporte principal usó?.5", "¿Realizó un Cuarto Viaje?", "¿Desde dónde inició su viaje hacia la UNAL?.3", "¿Desde qué Localidad inició su viaje a la UNAL?.3", "¿Desde qué Barrio?.3", "¿Desde qué Municipio inició su viaje a la UNAL?.3", "Referencia para lugar de origen.3", "¿A qué hora inició su viaje de IDA a la UNAL? .3", "¿A qué hora llegó a la UNAL? .3", "¿Por cuál entrada ingesó?.3", "¿Qué modo de Transporte principal usó?.6", "¿Hacia dónde hizo su viaje desde la UNAL?.3", "¿Hacia qué Localidad hizo su viaje desde la UNAL?.3", "¿Hacia qué Barrio?.3", "¿Hacia qué Municipio hizo su viaje desde la UNAL?.3", "Referencia para lugar de destino.3", "¿A qué hora inició su viaje de REGRESO desde la UNAL? .3", "¿A qué hora llegó a su destino? .3", "¿Por cuál entrada egresó?.3", "¿Qué modo de Transporte principal usó?.7", "¿Cuál es el principal medio que utiliza para desplazarse dentro del campus de la UNAL?", "¿Cuánto tiempo tarda normalmente en desplazarse dentro del campus de la UNAL?", "¿Con qué frecuencia realiza desplazamientos internos dentro del campus durante un día típico?", "Ordene las siguientes políticas según su prioridad para mejorar la movilidad sostenible en la UNAL", "\"Me siento seguro/a al desplazarme dentro del campus de la UNAL\".", "\"Prefiero caminar, usar bicicleta o transporte público, cuando las condiciones lo permiten\".", "\"Se debería reducir el uso del vehículo particular dentro del campus\".", "\"La iluminación y visibilidad en el campus son adecuadas para moverme con tranquilidad\".", "\"Estaría dispuesto/a a caminar o usar bicicleta dentro del campus si existiera mejor infraestructura\".", "Estaría de acuerdo con otorgar beneficios de estacionamiento (cupos preferenciales o tarifas reducidas) a vehículos con múltiples ocupantes y desincentivar el ingreso de vehículos con un solo ocupante.", "\"Los accesos, cruces y porterías del campus me parecen seguros para peatones y ciclistas\".", "\"La calidad de la infraestructura peatonal y ciclista influye en el modo de transporte que utilizo para desplazarme hacia o dentro del campus\".", "\"Estaría dispuesto/a a compartir automóvil con otros miembros de la comunidad universitaria si existieran incentivos o una aplicación institucional\".", "¿Tiene algún comentario, observación o sugerencia sobre la movilidad dentro o hacia la Universidad Nacional de Colombia, sede Bogotá?", "Origen de los datos"];
-const POL=["Mejorar los senderos peatonales, cruces e iluminación dentro del campus","Ampliar la infraestructura para bicicleta (ciclorrutas y cicloparqueaderos seguros)","Implementar horarios académicos escalonados para reducir la congestión en horas pico","Mejorar el sistema de bicicletas públicas (Bicirrun) para uso interno en la universidad","Implementar una aplicación institucional de carro compartido (carpooling) con incentivos y tarifas preferenciales de parqueadero para vehículos con múltiples ocupantes","Fortalecer la seguridad vial y personal en accesos, porterías y recorridos internos."];
-const LKT=["Totalmente en desacuerdo","En desacuerdo","Ni de acuerdo, ni en desacuerdo","De acuerdo","Totalmente de acuerdo"];
-function filaExcel(r,cod){
- const dec=(c,v)=>cod&&v!=null&&typeof v=="string"&&v.length==1?CAT[c][v.charCodeAt(0)-65]:v, f=new Array(HDR.length).fill(""), B=r.B, C=r.C, env=r.envio||{};
- const ob=v=>v==null?"":dec("ob",v).replace(/\.$/,""), hms=h=>h?h+":00":"";
- f[0]=env.submission_id||""; f[1]=env.respondent_id||""; f[2]=env.submitted_at||""; f[3]=env.encuestador||"simulado"; f[4]="Acepto";
- f[5]=dec("genero",B.B1); f[6]=B.B2==null?"":B.B2; f[7]=dec("estrato",B.B3);
- const med=B.B4.map(x=>dec("medios",x)); f[8]=med.join(", "); CAT.medios.forEach((m,k)=>f[9+k]=med.includes(m)?"True":"False");
- const dd=B.B5.map(x=>dec("dias",x)); f[14]=dd.join(", "); CAT.dias.forEach((m,k)=>f[15+k]=dd.includes(m)?"True":"False");
- f[22]=dec("vinc",B.B6); f[23]=B.B7?dec("adm",B.B7):""; f[24]=B.B8?dec("fac",B.B8):"";
- if(B.B9){ const fi=CAT.fac.indexOf(f[24]); if(fi>=0) f[25+fi]=dec("preg",B.B9).replace(/^Otro: /,""); }
- f[36]=dec("sn",C.C0);
- const blk=(o,i0,flag,nxt)=>{ if(!o) return;
-  f[i0]=ob(o.C1); f[i0+1]=o.C2?dec("loc",o.C2):""; f[i0+2]=o.C3||""; f[i0+3]=o.C2M||""; f[i0+4]=o.C2M?o.C2M+" Centro":"";
-  f[i0+5]=hms(o.C4); f[i0+6]=hms(o.C5); f[i0+7]=dec("port",o.C6); f[i0+8]=dec("modo",o.C7);
-  f[i0+9]=ob(o.C8); f[i0+10]=o.C9?dec("loc",o.C9):""; f[i0+11]=o.C10||""; f[i0+12]=o.C9M||""; f[i0+13]=o.C9M?o.C9M+" Centro":"";
-  f[i0+14]=hms(o.C11); f[i0+15]=hms(o.C12); f[i0+16]=dec("port",o.C13); f[i0+17]=dec("modo",o.C14);
-  if(flag) f[i0+18]=nxt; };
- if(C.C4){ blk(C,37,1,C.segundo_viaje?"Sí":"No"); if(C.segundo_viaje) blk(C.segundo_viaje,56,1,"No"); }
- f[112]=dec("d1",r.D.D1); f[113]=dec("d2",r.D.D2); f[114]=dec("d3",r.D.D3);
- const ord=Object.keys(r.E).sort((a,b)=>r.E[a]-r.E[b]); f[115]=ord.map(k=>POL[+k.slice(1)-1].replace(/\.$/,"")).join(", ");
- Object.keys(r.A).forEach((k,j)=>f[116+j]=LKT[r.A[k]-1]); f[125]=r.F.F1||""; f[126]="SIMULADO (herramienta horarios_unal) - no es una respuesta real";
- return f; }
-function csvExcel(D,cod){
- const e=v=>{v=v==null?"":String(v); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
- return "\ufeff"+[HDR.map(e).join(","),...D.map(r=>filaExcel(r,cod).map(e).join(","))].join("\r\n"); }
+ const cabecera=`<p class="gen-ayuda"><b>${n}</b> encuestados · viajaron ayer ${pc(S.tr)} (real ${pc(REF.tr)}) · segundo viaje ${pc(S.seg)} (real ${pc(REF.seg)}) · comentan ${pc(S.com)} (real ${pc(REF.comment)}).</p>
+  <div style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;margin:6px 0"><span style="font-size:1.5rem;font-weight:700">${glob.toFixed(1).replace(".",",")} %</span><span class="gen-ayuda" style="margin:0">de parecido con la encuesta real (100 % − distancia total promedio entre distribuciones). Con pocos encuestados parte de la diferencia es azar de muestreo: prueba con 3000–5000 para ver la calibración sin ese ruido.</span></div>
+  ${tabla(["Variable","Distancia (TVD)"],Object.entries(tv).map(([k,x])=>[k,pc(x)]))}`;
+ const perfil=bloq("Perfil (B)","vinculación, género, estrato, medios, días",
+   `<h4 class="mov-h" style="margin-top:8px">Vinculación (B6)</h4>${dst(CAT.vinc,S.vinc,REF.vinc)}<h4 class="mov-h" style="margin-top:8px">Género (B1)</h4>${dst(CAT.genero,S.gen,REF.gen)}<h4 class="mov-h" style="margin-top:8px">Estrato (B3)</h4>${dst(CAT.estrato,S.est,REF.est)}<h4 class="mov-h" style="margin-top:8px">Medios disponibles (B4)</h4>${dst(CAT.medios,S.med,REF.med)}<h4 class="mov-h" style="margin-top:8px">Días a la semana (B5)</h4>${dst(["1","2","3","4","5","6","7"],S.ndias,REF.ndias)}<p class="gen-ayuda">Edad media de pregrado: ${f1(S.age)} (real ${f1(REF.age[0])} en toda la muestra).</p>`);
+ const viaje=bloq("Viaje de ayer (C)","modo, portería, localidad, hora de llegada, duración",
+   `<h4 class="mov-h" style="margin-top:8px">Modo principal de ida (C7)</h4>${dst(CAT.modo,S.modo,REF.modo)}<h4 class="mov-h" style="margin-top:8px">Portería de ingreso (C6)</h4>${dst(CAT.port.map(x=>x.replace(/ \(.*/,"")+(x.includes("Transmilenio")?" (TM)":"")),S.port,REF.port)}<h4 class="mov-h" style="margin-top:8px">Localidad de origen (C2)</h4>${dst(CAT.loc,S.loc,REF.loc)}<p class="gen-ayuda">Origen fuera de Bogotá: ${pc(S.fuera)} (real ${pc(REF.fuera)}).</p><h4 class="mov-h" style="margin-top:8px">Hora de llegada a la UNAL (C5)</h4>${dst(["Antes de 6:30","6:30–7:29","7:30–8:59","9:00–10:59","11:00–13:59","14:00 o después"],S.arr,REF.arr_band)}<h4 class="mov-h" style="margin-top:8px">Duración mediana de la ida (min)</h4>${tabla(["Modo","Simulado","Real"],CAT.modo.map((m,k)=>[m,S.dur[k]==null?"–":S.dur[k],REF.dur_med[k]==null?"–":REF.dur_med[k]+` <span style="color:var(--tinta-suave)">(n=${REF.dur_n[k]})</span>`]))}`);
+ const act=bloq("Actitudes (A) y ranking (E)","% de acuerdo y rango medio",
+   tabla(["Ítem","Media sim.","Media real","De acuerdo sim.","De acuerdo real"],S.likm.map((m,k)=>["A"+(k+1)+" · "+LIKQ[k],f1(m),f1(REF.lik_mean[k]),pc(S.likag[k]),pc(REF.lik_agree[k])]))
+   +`<h4 class="mov-h" style="margin-top:8px">Rango medio de cada política (1 = prioridad máxima)</h4>`+tabla(["Política","Simulado","Real"],S.rk.map((m,k)=>["E"+(k+1)+" · "+POL[k].replace(/\(.*?\)/g,"").slice(0,70),f1(m),f1(REF.rk_real[k])])));
+ const interno=bloq("Movilidad interna (D)","",`<h4 class="mov-h" style="margin-top:8px">D1 · medio principal dentro del campus</h4>${dst(CAT.d1,S.d1,REF.d1)}<h4 class="mov-h" style="margin-top:8px">D2 · tiempo</h4>${dst(CAT.d2,S.d2,REF.d2)}<h4 class="mov-h" style="margin-top:8px">D3 · frecuencia diaria</h4>${dst(CAT.d3,S.d3,REF.d3)}`);
+ const NC=[["fem_ing","% de mujeres entre estudiantes de Ingeniería"],["walk_teus","% que camina entre quienes salen de Teusaquillo"],["moto_hasmoto","% en moto entre quienes tienen moto"],["moto_nomoto","% en moto entre quienes no tienen moto"],["auto_hi","% en auto, estratos 4–6"],["auto_lo","% en auto, estratos 1–3"],["none_fem","% sin vehículo disponible, mujeres"],["none_masc","% sin vehículo disponible, hombres"],["a3_hasauto","A3 de acuerdo, con auto en el hogar"],["a3_noauto","A3 de acuerdo, sin auto"],["same_mode","% que regresa en el mismo modo"],["tm_fuera","% en TransMilenio, origen fuera de Bogotá"]];
+ const cruces=bloq("Relaciones entre variables","la parte que más distingue un dato realista de uno al azar",tabla(["Relación","Simulado","Real"],NC.map(([k,t])=>[t,pc(S.cross[k]),pc(REF.cross[k])])));
+ return cabecera+perfil+viaje+act+interno+cruces;
+}
 
 let ULT=null, OPT={};
 const gen=q("#encGen");
 if(gen){
- const leer=()=>({cod:q("#encFmt").value=="cod",meta:q("#encMeta").checked,cal:q("#encCal")?q("#encCal").value:"xl",real:q("#encReal")?+q("#encReal").value:.5,envio:q("#encEnvio")?q("#encEnvio").checked:false});
+ const leer=()=>({cod:q("#encFmt").value=="cod",meta:q("#encMeta").checked,lik:q("#encLik")?q("#encLik").value:"num",ruido:q("#encRuido")?q("#encRuido").checked:false});
  gen.addEventListener("click",()=>{
   const n=cl(parseInt(q("#encN").value)||300,1,5000), sem=parseInt(q("#encSem").value)||1; OPT=leer();
-  ULT=generar(n,sem,OPT); q("#encJson").disabled=q("#encCsv").disabled=false; if(q("#encXls")) q("#encXls").disabled=false;
+  ULT=generar(n,sem,OPT); q("#encJson").disabled=q("#encCsv").disabled=false;
+  const ej=ULT.find(r=>r.C.segundo_viaje)||ULT[0];
   q("#encRes").innerHTML=resumen(ULT,OPT)+`<h4 class="mov-h" style="margin-top:12px">Ejemplo (JSON)</h4><pre class="mono" style="max-height:320px;overflow:auto;font-size:.72rem;background:var(--blanco);border:1px solid var(--cuadricula);padding:8px;border-radius:var(--radio)">${JSON.stringify(ULT[0],null,1).replace(/&/g,"&amp;").replace(/</g,"&lt;")}</pre>`;
  });
- function cl(x,a,b){return Math.min(b,Math.max(a,x))}
  q("#encJson").addEventListener("click",()=>ULT&&bajar(JSON.stringify(ULT,null,2),"encuesta_unal_sintetica.json","application/json"));
- if(q("#encXls")) q("#encXls").addEventListener("click",()=>ULT&&bajar(csvExcel(ULT,OPT.cod),"encuesta_unal_sintetica_formato_excel.csv","text/csv;charset=utf-8"));
  q("#encCsv").addEventListener("click",()=>ULT&&bajar(csv(ULT),"encuesta_unal_sintetica.csv","text/csv;charset=utf-8"));
 }
-window.encuestaSintetica={generar,csv,csvExcel,resumen,PERF};
+window.encuestaSintetica={generar,csv,stats,CAL};
 })();
 </script>
 
