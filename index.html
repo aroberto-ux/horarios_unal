@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ejemplo 2.14 de Mecánica de fluidos (White): presión en un tubo en U con mercurio que rota, con presentación paso a paso y simulación 3D.">
+<meta name="theme-color" content="#1E2A24">
 <title>Ejemplo 2.14 · Presentación y simulación 3D</title>
 
-<!-- Three.js -->
+<!-- Three.js (se carga solo al llegar a la diapositiva de la simulación) -->
 <script type="importmap">
 {
   "imports": {
@@ -19,13 +21,10 @@
 :root{
   --papel:#FAFBF7;
   --tinta:#182720;
-  --tinta-suave:#5C6B60;
+  --tinta-suave:#55645A;
   --verde:#147A46;
   --verde-claro:#E4F2E9;
-  --ambar:#B36F06;
-  --ambar-claro:#F7ECD8;
   --rojo:#B3372E;
-  --rojo-claro:#F8E5E3;
   --azul:#2B5DA8;
   --azul-claro:#E7EEF9;
   --blanco:#FFFFFF;
@@ -36,7 +35,7 @@
   --fuente-mono:ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
 }
 *{box-sizing:border-box; margin:0; padding:0}
-html{font-size:15px; scroll-behavior:smooth}
+html{font-size:15px; scroll-behavior:smooth; -webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important; animation:none!important} }
 
 body{
@@ -53,16 +52,17 @@ body{
   padding:20px clamp(12px,3vw,32px) 40px;
 }
 .mono, code, kbd, samp{font-family:var(--fuente-mono)}
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
 .gen-ayuda{font-size:.84rem; color:var(--tinta-suave); line-height:1.5; margin:.5rem 0 0}
+.gen-ayuda kbd{font-size:.8em; padding:1px 5px; border:1px solid var(--linea-fuerte); border-radius:4px; background:var(--papel)}
+:focus-visible{outline:3px solid #147A4699; outline-offset:2px}
 
 /* Cabecera de la página */
 body > header{
   max-width:1200px; margin:0 auto 16px;
   display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap;
 }
-body > header h1{
-  font-weight:700; font-size:clamp(1.3rem,3vw,1.8rem); letter-spacing:-.01em;
-}
+body > header h1{font-weight:700; font-size:clamp(1.3rem,3vw,1.8rem); letter-spacing:-.01em}
 body > header span{font:500 .84rem var(--fuente-mono); color:var(--tinta-suave)}
 
 section.panel{
@@ -71,7 +71,7 @@ section.panel{
   border-radius:12px; box-shadow:var(--sombra); overflow:hidden;
 }
 .panel > .titulo{
-  display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+  display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap;
   padding:14px 18px; border-bottom:1px solid var(--linea);
 }
 .panel > .titulo h2{font-size:1.02rem; font-weight:700; color:var(--tinta)}
@@ -81,7 +81,7 @@ section.panel{
 .pres-gal{padding:18px; display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px}
 .pres-card{
   text-align:left; border:1px solid var(--linea); border-radius:12px; padding:16px;
-  background:var(--blanco); cursor:pointer; display:grid; gap:6px;
+  background:var(--blanco); cursor:pointer; display:grid; gap:6px; font-family:inherit; color:inherit;
   transition:border-color .12s, background .12s;
 }
 .pres-card:hover{border-color:var(--verde); background:var(--verde-claro)}
@@ -92,190 +92,199 @@ section.panel{
 /* Visor */
 #presVisor{padding:14px 18px 18px}
 .pres-bar{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:10px}
-.pres-bar button,.pres-nav button{
+.pres-bar button,.pres-nav button,.pres-bar select{
   min-height:36px; padding:0 14px; border:1px solid var(--linea-fuerte); border-radius:8px;
   background:var(--blanco); color:var(--tinta); font:600 .84rem var(--fuente-base); cursor:pointer;
   transition:border-color .12s, background .12s;
 }
-.pres-bar button:hover,.pres-nav button:hover:not(:disabled){border-color:var(--tinta-suave); background:var(--papel)}
+.pres-bar select{padding:0 8px; max-width:100%; font-weight:500}
+.pres-bar button:hover,.pres-nav button:hover:not([aria-disabled="true"]),.pres-bar select:hover{border-color:var(--tinta-suave); background:var(--papel)}
 .pres-nav button.pri{background:var(--tinta); color:var(--papel); border-color:var(--tinta)}
-.pres-nav button.pri:hover{background:#0f1a14}
-.pres-nav button:disabled{opacity:.4; cursor:default}
-.pres-tit{font:600 .9rem var(--fuente-base); color:var(--tinta-suave); flex:1}
-.dl-snap{display:flex; gap:6px; align-items:center; font:500 .8rem var(--fuente-base); color:var(--tinta-suave); cursor:pointer}
+.pres-nav button.pri:hover:not([aria-disabled="true"]){background:#0f1a14}
+.pres-nav button[aria-disabled="true"]{opacity:.4; cursor:default}
+.pres-tit{font:600 .9rem var(--fuente-base); color:var(--tinta-suave); flex:1; min-width:140px}
+.dl-snap{display:flex; gap:6px; align-items:center; font:500 .8rem var(--fuente-base); color:var(--tinta-suave); cursor:pointer; min-height:36px}
 
+.pres-stage, .print-slide{--u:1cqw}
 .pres-stage{
   container-type:inline-size; position:relative; width:100%; aspect-ratio:16/9; overflow:hidden;
   background:#fff; border:1px solid var(--linea-fuerte); border-radius:10px; outline:none;
   box-shadow:0 2px 8px rgba(24,39,32,.04);
 }
-.pres-stage:focus-visible{box-shadow:0 0 0 3px #147A4655}
+.pres-stage:focus-visible{box-shadow:0 0 0 3px #147A4666; outline:none}
 .pres-stage:fullscreen{width:min(100vw,calc(100vh*16/9)); height:auto; margin:auto; border:0; border-radius:0}
+@supports not (width:1cqw){ .pres-stage, .print-slide{--u:.6vw} }
 
-/* Base de la diapositiva */
+/* Base de la diapositiva (todas las medidas escalan con --u) */
 .pres-slide{
-  position:absolute; inset:0; padding:3.8cqw 4.8cqw;
-  font:400 2cqw/1.55 var(--fuente-base); color:#1E2A24;
-  display:flex; flex-direction:column; animation:presEntra .22s ease;
+  position:absolute; inset:0; padding:calc(var(--u)*3.8) calc(var(--u)*4.8);
+  font-size:calc(var(--u)*2); line-height:1.55; font-family:var(--fuente-base); color:#1E2A24;
+  display:flex; flex-direction:column; overflow:hidden; animation:presEntra .22s ease;
 }
-@keyframes presEntra{from{opacity:0; transform:translateX(1.5cqw)} to{opacity:1; transform:none}}
-@media (prefers-reduced-motion:reduce){ .pres-slide{animation:none} }
+@keyframes presEntra{from{opacity:0; transform:translateX(calc(var(--u)*1.5))} to{opacity:1; transform:none}}
 
 .pres-slide h2{
-  font:700 3.4cqw/1.1 var(--fuente-base);
+  font-weight:700; font-size:calc(var(--u)*3.4); line-height:1.1; font-family:var(--fuente-base);
   letter-spacing:-.015em;
-  margin:0 0 2cqw;
-  padding-bottom:1.2cqw;
-  border-bottom:.35cqw solid var(--verde);
-  display:flex; flex-direction:column; gap:.3cqw;
+  margin:0 0 calc(var(--u)*2);
+  padding-bottom:calc(var(--u)*1.2);
+  border-bottom:calc(var(--u)*.35) solid var(--verde);
+  display:flex; flex-direction:column; gap:calc(var(--u)*.3);
 }
 .pres-slide h2 small{
-  font:600 1.5cqw var(--fuente-mono); color:var(--tinta-suave);
+  font-weight:600; font-size:max(11px, calc(var(--u)*1.5)); font-family:var(--fuente-mono); color:var(--tinta-suave);
   letter-spacing:.14em; text-transform:uppercase; order:-1;
 }
-
-.pres-slide ul{margin:.4cqw 0; padding-left:2.6cqw; display:grid; gap:1cqw}
+.pres-slide ul{margin:calc(var(--u)*.4) 0; padding-left:calc(var(--u)*2.6); display:grid; gap:calc(var(--u)*1)}
 .pres-slide li::marker{color:var(--verde)}
+.pres-slide .muted{color:var(--tinta-suave)}
 
-.pres-slide .cols{display:grid; grid-template-columns:1fr 1fr; gap:3.5cqw; flex:1; min-height:0; align-items:center}
-.pres-slide .cols.fig{grid-template-columns:1.05fr 1fr}
+.pres-slide .cols{display:grid; grid-template-columns:var(--cols,1fr 1fr); gap:calc(var(--u)*3.5); flex:1; min-height:0; align-items:center}
+.pres-slide .cols.c-tabla{--cols:1.35fr 1fr; align-items:start}
+.pres-slide .cols.c-sim{--cols:1.15fr 1fr; align-items:stretch}
 .pres-fig{width:100%; height:100%; max-height:100%}
 .pres-fig-wrap{height:100%; min-height:0; display:flex; justify-content:center}
+.pres-fig-wrap.sim-wrap{align-items:stretch}
 
 /* Ecuaciones */
 .pres-eq{
   font-family:var(--fuente-base); font-style:italic;
-  font-size:2.5cqw; line-height:1.75; text-align:center;
-  margin:.6cqw 0; color:#1E2A24;
+  font-size:calc(var(--u)*2.5); line-height:1.75; text-align:center;
+  margin:calc(var(--u)*.6) 0; color:#1E2A24;
 }
+.pres-eq.eq-sm{font-size:calc(var(--u)*2.1); margin:calc(var(--u)*.8) 0}
 .pres-eq b{font-style:normal; font-weight:700}
+.pres-eq .eq-tag{font-family:var(--fuente-mono); font-size:max(11px, calc(var(--u)*1.5)); font-style:normal}
 .pres-eq .fr{
   display:inline-flex; flex-direction:column; vertical-align:middle;
-  text-align:center; margin:0 .35cqw; line-height:1.2;
+  text-align:center; margin:0 calc(var(--u)*.35); line-height:1.2;
 }
-.pres-eq .fr i{font-style:italic; padding:0 .5cqw}
-.pres-eq .fr i:first-child{border-bottom:.12cqw solid currentColor}
+.pres-eq .fr i{font-style:italic; padding:0 calc(var(--u)*.5)}
+.pres-eq .fr i:first-child{border-bottom:calc(var(--u)*.12) solid currentColor; border-bottom-width:max(1px, calc(var(--u)*.12))}
 
 /* Banners de resultado */
 .pres-res{
-  margin:1.2cqw auto 0; padding:1.4cqw 2.6cqw;
-  border:.3cqw solid var(--verde); border-radius:1cqw;
+  margin:calc(var(--u)*1.2) auto 0; padding:calc(var(--u)*1.4) calc(var(--u)*2.6);
+  border:max(2px, calc(var(--u)*.3)) solid var(--verde); border-radius:calc(var(--u)*1);
   background:var(--verde-claro);
-  font:700 3cqw var(--fuente-base); letter-spacing:-.01em;
+  font-weight:700; font-size:calc(var(--u)*3); font-family:var(--fuente-base); letter-spacing:-.01em;
   text-align:center; color:#0E4F2E;
 }
+.pres-res.sm{font-size:calc(var(--u)*2.4)}
 .pres-res-mini{
-  margin-top:1.5cqw; padding:.9cqw 1.4cqw;
+  margin-top:calc(var(--u)*1.5); padding:calc(var(--u)*.9) calc(var(--u)*1.4);
   background:var(--verde-claro);
-  border-left:.3cqw solid var(--verde);
-  border-radius:0 .6cqw .6cqw 0;
-  font:700 2.2cqw var(--fuente-base); color:#0E4F2E;
+  border-left:max(3px, calc(var(--u)*.3)) solid var(--verde);
+  border-radius:0 calc(var(--u)*.6) calc(var(--u)*.6) 0;
+  font-weight:700; font-size:calc(var(--u)*2.2); color:#0E4F2E;
 }
 .pres-res-mini sub{font-size:.7em}
 
 .pres-nota-b{
-  margin-top:auto; padding:1cqw 1.5cqw;
-  border-left:.4cqw solid #C24438; background:#FBEAE8;
-  font-size:1.65cqw; border-radius:0 .6cqw .6cqw 0;
+  margin-top:auto; padding:calc(var(--u)*1) calc(var(--u)*1.5);
+  border-left:max(3px, calc(var(--u)*.4)) solid #C24438; background:#FBEAE8;
+  font-size:calc(var(--u)*1.65); border-radius:0 calc(var(--u)*.6) calc(var(--u)*.6) 0;
 }
+.pres-nota-b.info{border-left-color:var(--azul); background:var(--azul-claro)}
+.pres-nota-b.nota-sm{font-size:max(11px, calc(var(--u)*1.4)); margin-top:calc(var(--u)*1.4)}
+.pres-aside{text-align:center; margin-top:calc(var(--u)*1.6); color:var(--tinta-suave)}
+.pres-slide p.lead{font-size:calc(var(--u)*1.95); margin:0 0 calc(var(--u)*1.2)}
+.pres-slide p.sub{font-size:calc(var(--u)*1.8); margin:calc(var(--u)*1.2) 0 0}
+.ref-lnk{color:var(--verde); font-weight:700}
 
 /* Portada */
 .pres-portada{
   justify-content:center;
   background:linear-gradient(135deg,#1E2A24 0%, #2f4a37 100%);
-  color:#FAFBF7; padding:4.2cqw 5.2cqw;
+  color:#FAFBF7; padding:calc(var(--u)*4.2) calc(var(--u)*5.2);
 }
 .pres-portada .k{
-  font:600 1.7cqw var(--fuente-mono);
+  font-weight:600; font-size:max(11px, calc(var(--u)*1.7)); font-family:var(--fuente-mono);
   letter-spacing:.16em; text-transform:uppercase; color:#9be15d;
-  margin:0 0 2cqw;
+  margin:0 0 calc(var(--u)*2);
 }
 .pres-portada h1{
-  font:700 7cqw/1.02 var(--fuente-base);
-  letter-spacing:-.02em; margin:0 0 1.6cqw;
+  font-weight:700; font-size:calc(var(--u)*7); line-height:1.02; font-family:var(--fuente-base);
+  letter-spacing:-.02em; margin:0 0 calc(var(--u)*1.6);
 }
 .pres-portada .portada-sub{
-  font:400 3cqw/1.35 var(--fuente-base);
-  color:#FAFBF7; opacity:.92;
-  max-width:82%; margin:0 0 4cqw;
+  font-size:calc(var(--u)*3); line-height:1.35;
+  color:#FAFBF7; opacity:.95; max-width:82%; margin:0 0 calc(var(--u)*4);
 }
-.pres-portada .portada-meta{display:flex; gap:1.5cqw; align-items:center; margin:0 0 2cqw}
+.pres-portada .portada-meta{display:flex; gap:calc(var(--u)*1.5); align-items:center; margin:0 0 calc(var(--u)*2)}
 .pres-portada .portada-fecha{
-  font:600 2cqw var(--fuente-mono); color:#9be15d;
-  padding:.5cqw 1.4cqw;
-  border:.1cqw solid #9be15d; border-radius:99cqw;
+  font-weight:600; font-size:calc(var(--u)*2); font-family:var(--fuente-mono); color:#9be15d;
+  padding:calc(var(--u)*.5) calc(var(--u)*1.4);
+  border:1px solid #9be15d; border-radius:999px;
 }
 .pres-portada .portada-ref{
-  font:400 1.6cqw/1.6 var(--fuente-base);
-  color:#FAFBF7; opacity:.72; max-width:82%;
+  font-size:max(11px, calc(var(--u)*1.6)); line-height:1.6;
+  color:#FAFBF7; opacity:.8; max-width:82%;
 }
-.pres-portada .portada-ref i{color:#FAFBF7}
 
-/* Tabla Datos */
-.pres-tabla{border-collapse:collapse; width:100%; font-size:1.95cqw}
-.pres-tabla tr{border-bottom:.08cqw solid var(--linea)}
-.pres-tabla tr:first-child{border-top:.12cqw solid var(--linea)}
-.pres-tabla td{padding:.9cqw 1.2cqw; vertical-align:top}
+/* Tabla de datos */
+.pres-tabla{border-collapse:collapse; width:100%; font-size:calc(var(--u)*1.95)}
+.pres-tabla tr{border-bottom:1px solid var(--linea)}
+.pres-tabla tr:first-child{border-top:1px solid var(--linea)}
+.pres-tabla td{padding:calc(var(--u)*.9) calc(var(--u)*1.2); vertical-align:top}
 .pres-tabla td:first-child{color:var(--tinta-suave); width:46%}
-.pres-tabla td:last-child{font-family:var(--fuente-mono); font-size:1.8cqw}
+.pres-tabla td:last-child{font-family:var(--fuente-mono); font-size:calc(var(--u)*1.8)}
 .pres-tabla b{color:var(--tinta)}
 
 /* Tabla 2.1 (libro) */
-.pres-tabla-libro{
-  width:100%; border-collapse:collapse;
-  font:400 1.7cqw/1.35 var(--fuente-base); color:#1E2A24;
-}
+.pres-tabla-libro{width:100%; border-collapse:collapse; font-size:calc(var(--u)*1.7); line-height:1.35; color:#1E2A24}
 .pres-tabla-libro caption{
   caption-side:top; text-align:left;
-  font:600 2cqw/1.3 var(--fuente-base);
-  color:#1E2A24; padding-bottom:1cqw; letter-spacing:-.005em;
-}
-.pres-tabla-libro caption small{
-  display:block; font:500 1.5cqw var(--fuente-mono);
-  color:var(--tinta-suave); margin-top:.3cqw;
+  font-weight:600; font-size:calc(var(--u)*2); line-height:1.3;
+  padding-bottom:calc(var(--u)*1); letter-spacing:-.005em;
 }
 .pres-tabla-libro thead th{
-  background:#EEF2EA; padding:.8cqw 1.1cqw;
-  border-top:.22cqw solid #1E2A24;
-  border-bottom:.12cqw solid #1E2A24;
-  font:700 1.65cqw var(--fuente-base);
+  background:#EEF2EA; padding:calc(var(--u)*.8) calc(var(--u)*1.1);
+  border-top:max(2px, calc(var(--u)*.22)) solid #1E2A24;
+  border-bottom:max(1px, calc(var(--u)*.12)) solid #1E2A24;
+  font-weight:700; font-size:calc(var(--u)*1.65);
   text-align:center; vertical-align:middle;
 }
-.pres-tabla-libro thead th:first-child{text-align:left; vertical-align:bottom}
+.pres-tabla-libro thead th.fl{text-align:left; vertical-align:bottom}
+.pres-tabla-libro thead th.un{font-family:var(--fuente-mono); font-weight:600}
 .pres-tabla-libro thead .sub{
-  display:block; font:500 1.4cqw/1.25 var(--fuente-mono);
-  color:#5C6B60; letter-spacing:.01em; margin-top:.2cqw;
+  display:block; font-weight:500; font-size:max(11px, calc(var(--u)*1.4)); line-height:1.25; font-family:var(--fuente-mono);
+  color:var(--tinta-suave); margin-top:calc(var(--u)*.2);
 }
 .pres-tabla-libro tbody td{
-  padding:.55cqw 1.1cqw;
-  border-bottom:.06cqw solid #E3E8DE;
-  font-family:var(--fuente-mono); text-align:right; font-size:1.65cqw;
+  padding:calc(var(--u)*.55) calc(var(--u)*1.1);
+  border-bottom:1px solid #E3E8DE;
+  font-family:var(--fuente-mono); text-align:right; font-size:calc(var(--u)*1.65);
 }
-.pres-tabla-libro tbody td:first-child{
-  text-align:left; font-family:var(--fuente-base);
-  font-weight:500; font-size:1.7cqw;
-}
-.pres-tabla-libro tbody tr.hg{
-  background:#E4F2E9;
-  box-shadow:inset .25cqw 0 0 var(--verde);
-}
+.pres-tabla-libro tbody td:first-child{text-align:left; font-family:var(--fuente-base); font-weight:500; font-size:calc(var(--u)*1.7)}
+.pres-tabla-libro tbody tr.hg{background:#E4F2E9; box-shadow:inset max(3px, calc(var(--u)*.25)) 0 0 var(--verde)}
 .pres-tabla-libro tbody tr.hg td{font-weight:700; color:#0E4F2E}
-.pres-tabla-libro .pie-tabla{
-  font:500 1.35cqw var(--fuente-mono);
-  color:var(--tinta-suave); margin-top:.7cqw;
+.pres-tabla-libro + .pie-tabla{
+  font-weight:500; font-size:max(11px, calc(var(--u)*1.35)); font-family:var(--fuente-mono);
+  color:var(--tinta-suave); margin-top:calc(var(--u)*.7);
 }
 
-/* Controles simulación */
-.pres-ctl{display:grid; gap:1.2cqw; font-size:1.9cqw}
-.pres-ctl input[type=range]{width:100%; margin-top:.5cqw; accent-color:var(--verde)}
+/* Controles de la simulación */
+.pres-ctl{display:grid; gap:calc(var(--u)*1.2); font-size:calc(var(--u)*1.9); align-content:start}
+.pres-ctl label{display:block}
+.pres-ctl input[type=range]{width:100%; margin-top:calc(var(--u)*.5); accent-color:var(--verde)}
 .pres-ctl .v{
   display:grid; grid-template-columns:1fr auto;
-  border-bottom:.1cqw solid var(--linea);
-  padding:.6cqw 0; align-items:center;
+  border-bottom:1px solid var(--linea);
+  padding:calc(var(--u)*.6) 0; align-items:center;
 }
-.pres-ctl .v b{font-family:var(--fuente-mono); font-size:1.8cqw; color:var(--tinta)}
+.pres-ctl .v b{font-family:var(--fuente-mono); font-size:calc(var(--u)*1.8); color:var(--tinta)}
+.pres-presets{display:flex; flex-wrap:wrap; gap:calc(var(--u)*.8)}
+.pres-presets button{
+  min-height:max(32px, calc(var(--u)*3.4)); padding:0 calc(var(--u)*1.4);
+  border:1px solid var(--linea-fuerte); border-radius:8px; background:var(--blanco); color:var(--tinta);
+  font-weight:600; font-size:max(12px, calc(var(--u)*1.6)); font-family:var(--fuente-base); cursor:pointer;
+}
+.pres-presets button:hover{border-color:var(--tinta-suave); background:var(--papel)}
+.pres-presets button.act{background:var(--verde-claro); border-color:var(--verde); color:#0E4F2E}
+.pres-ctl .gen-ayuda{font-size:max(11px, calc(var(--u)*1.4)); margin-top:calc(var(--u)*.6)}
 
-/* Nav */
+/* Navegación */
 .pres-nav{display:flex; gap:12px; align-items:center; margin-top:12px}
 .pres-prog{flex:1; height:6px; background:var(--linea); border-radius:3px; overflow:hidden}
 .pres-prog i{display:block; height:100%; width:0; background:var(--verde); transition:width .2s}
@@ -284,71 +293,108 @@ section.panel{
   border:1px dashed var(--linea-fuerte); border-radius:10px;
   background:var(--papel); font-size:.9rem; line-height:1.55;
 }
-.pres-notas b{
-  font:700 .72rem var(--fuente-mono);
-  letter-spacing:.1em; text-transform:uppercase; color:var(--tinta-suave);
-}
+.pres-notas b{font:700 .72rem var(--fuente-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--tinta-suave)}
 .pres-ref{
-  margin-top:auto; padding-top:1.5cqw;
-  border-top:.12cqw solid var(--linea);
-  font:400 1.4cqw/1.5 var(--fuente-base); color:var(--tinta-suave);
+  margin-top:auto; padding-top:calc(var(--u)*1.5);
+  border-top:1px solid var(--linea);
+  font-size:max(11px, calc(var(--u)*1.4)); line-height:1.5; color:var(--tinta-suave);
 }
 .pres-ref b{font-weight:700; color:var(--tinta)}
 
 /* Visor 3D */
 .pres-fig-wrap .r3d{
-  position:relative; flex:1 1 auto; width:100%; height:100%; min-height:26cqw;
-  border-radius:1cqw; overflow:hidden; touch-action:none;
+  position:relative; flex:1 1 auto; width:100%; height:100%; min-height:calc(var(--u)*26);
+  border-radius:calc(var(--u)*1); overflow:hidden;
   background:radial-gradient(120% 90% at 50% 6%, #ffffff 0%, #eef3ec 58%, #dfe8dc 100%);
-  border:.12cqw solid #DCE4D8;
+  border:1px solid #DCE4D8;
 }
-.r3d canvas{display:block; width:100%; height:100%; cursor:grab}
+.r3d canvas{position:absolute; inset:0; display:block; width:100%; height:100%; cursor:grab}
 .r3d canvas:active{cursor:grabbing}
 .r3d .r3d-hint{
-  position:absolute; left:1cqw; bottom:.9cqw; pointer-events:none;
-  font:500 1.2cqw var(--fuente-mono); color:#5C6B60;
-  background:#ffffffd6; border:.08cqw solid #DCE4D8; border-radius:.6cqw;
-  padding:.35cqw .8cqw;
+  position:absolute; left:calc(var(--u)*1); bottom:calc(var(--u)*.9); pointer-events:none;
+  font-weight:500; font-size:max(11px, calc(var(--u)*1.2)); font-family:var(--fuente-mono); color:var(--tinta-suave);
+  background:#ffffffe6; border:1px solid #DCE4D8; border-radius:calc(var(--u)*.6);
+  padding:calc(var(--u)*.35) calc(var(--u)*.8);
 }
-.r3d .r3d-err{padding:2cqw; color:#B3372E; font:500 1.6cqw var(--fuente-base)}
+.r3d .r3d-reset{
+  position:absolute; right:calc(var(--u)*1); top:calc(var(--u)*1);
+  min-height:30px; padding:0 10px; border:1px solid var(--linea-fuerte); border-radius:8px;
+  background:#ffffffe6; color:var(--tinta); font:600 max(11px, calc(var(--u)*1.3)) var(--fuente-base); cursor:pointer;
+}
+.r3d .r3d-reset:hover{background:#fff; border-color:var(--tinta-suave)}
+.r3d-fb{display:flex; flex-direction:column; gap:calc(var(--u)*1); width:100%; height:100%; min-height:0}
+.r3d-fb-fig{flex:1 1 auto; min-height:0; display:flex; justify-content:center}
+.r3d-fb-fig .pres-fig{height:100%; width:100%}
+.r3d-err{color:var(--rojo); font-weight:500; font-size:max(12px, calc(var(--u)*1.5)); text-align:center}
 
-/* Enunciado: layout a medida */
+/* Enunciado */
 .cols-enunciado{
-  display:grid; grid-template-columns:1fr 1.15fr;
-  gap:3.5cqw; flex:1; min-height:0; align-items:stretch;
+  display:grid; grid-template-columns:var(--cols,1fr 1.15fr);
+  gap:calc(var(--u)*3.5); flex:1; min-height:0; align-items:stretch;
 }
 .col-enunciado-texto{display:flex; flex-direction:column; min-height:0}
-.col-enunciado-texto ul{font-size:1.95cqw; gap:.9cqw; padding-left:2.4cqw}
+.col-enunciado-texto ul{font-size:calc(var(--u)*1.95); gap:calc(var(--u)*.9); padding-left:calc(var(--u)*2.4)}
 .puntos-clave{
-  margin-top:1.5cqw; display:grid; gap:.9cqw;
-  padding:1.3cqw 1.6cqw; background:#F6F8F3;
-  border-left:.25cqw solid var(--verde);
-  border-radius:0 .5cqw .5cqw 0;
-  font-size:1.7cqw; line-height:1.5;
+  margin-top:calc(var(--u)*1.5); display:grid; gap:calc(var(--u)*.9);
+  padding:calc(var(--u)*1.3) calc(var(--u)*1.6); background:#F6F8F3;
+  border-left:max(3px, calc(var(--u)*.25)) solid var(--verde);
+  border-radius:0 calc(var(--u)*.5) calc(var(--u)*.5) 0;
+  font-size:calc(var(--u)*1.7); line-height:1.5;
 }
-.puntos-clave b{
-  display:inline-block; min-width:1.8cqw;
-  color:var(--verde); font-weight:700; margin-right:.4cqw;
-}
-.col-enunciado-figura{
-  display:flex; flex-direction:column; gap:1cqw;
-  margin:0; min-height:0;
-}
+.puntos-clave b{display:inline-block; min-width:calc(var(--u)*1.8); color:var(--verde); font-weight:700; margin-right:calc(var(--u)*.4)}
+.col-enunciado-figura{display:flex; flex-direction:column; gap:calc(var(--u)*1); margin:0; min-height:0}
 .col-enunciado-figura .pres-fig{flex:1 1 auto; min-height:0}
 .col-enunciado-figura figcaption{
-  font:400 1.4cqw/1.5 var(--fuente-base);
-  color:var(--tinta-suave);
-  border-top:.1cqw solid var(--linea);
-  padding-top:.9cqw;
+  font-size:max(11px, calc(var(--u)*1.4)); line-height:1.5; color:var(--tinta-suave);
+  border-top:1px solid var(--linea); padding-top:calc(var(--u)*.9);
 }
 .col-enunciado-figura figcaption b{color:var(--tinta); font-weight:700}
-
-@supports not (width:1cqw){ .pres-slide{font-size:14px} .pres-slide h2{font-size:22px} }
 
 body > footer{
   max-width:1200px; margin:18px auto 0;
   color:var(--tinta-suave); font-size:.78rem;
   font-family:var(--fuente-mono); line-height:1.6;
+}
+
+/* ===== Pantallas angostas: la diapositiva crece en alto y todo se apila ===== */
+@media (max-width:820px){
+  body{padding:12px 10px 32px}
+  #presVisor{padding:10px 10px 14px}
+  .pres-bar{gap:8px}
+  .pres-tit{flex-basis:100%}
+  .pres-nav button{padding:0 10px}
+  .pres-stage:not(:fullscreen){--u:2.3cqw; aspect-ratio:auto}
+  .pres-stage:not(:fullscreen) .pres-slide{position:relative; inset:auto; padding:5cqw 4.5cqw; overflow:visible}
+  .pres-stage:not(:fullscreen) .pres-portada{min-height:115cqw; padding:7cqw 6cqw}
+  .pres-stage:not(:fullscreen) .pres-portada .portada-sub,
+  .pres-stage:not(:fullscreen) .pres-portada .portada-ref{max-width:100%}
+  .pres-stage:not(:fullscreen) .cols,
+  .pres-stage:not(:fullscreen) .cols-enunciado{--cols:1fr}
+  .pres-stage:not(:fullscreen) .pres-fig{height:auto; max-height:110cqw}
+  .pres-stage:not(:fullscreen) .r3d-fb{height:auto}
+  .pres-stage:not(:fullscreen) .r3d-fb-fig .pres-fig{height:auto; max-height:100cqw}
+  .pres-stage:not(:fullscreen) .pres-eq{overflow-x:auto; overflow-y:hidden}
+  .pres-stage:not(:fullscreen) .pres-nota-b{margin-top:3cqw}
+  .pres-stage:not(:fullscreen) .pres-ref{margin-top:4cqw}
+  .pres-stage:not(:fullscreen) .pres-fig-wrap .r3d{height:80cqw; min-height:0}
+  .pres-stage:not(:fullscreen) .pres-tabla td{padding:1.6cqw 2cqw}
+  .pres-stage:not(:fullscreen) .pres-tabla td:first-child{width:auto}
+}
+
+/* ===== Impresión: todas las diapositivas, una por hoja horizontal ===== */
+#printAll{display:none}
+@page{size:A4 landscape; margin:8mm}
+@media print{
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  body.imprimiendo{background:#fff; padding:0; min-height:0}
+  body.imprimiendo > *:not(#printAll){display:none!important}
+  body.imprimiendo #printAll{display:block}
+  .print-slide{
+    container-type:inline-size; position:relative; width:100%; aspect-ratio:16/9; overflow:hidden;
+    border:1px solid var(--linea-fuerte); break-after:page; break-inside:avoid;
+  }
+  .print-slide:last-child{break-after:auto}
+  .print-slide .pres-slide{animation:none}
 }
 </style>
 </head>
@@ -359,6 +405,9 @@ body > footer{
   <span>Mecánica de fluidos · presentación + simulación 3D</span>
 </header>
 
+<noscript><p style="max-width:1200px;margin:0 auto 12px;padding:12px 14px;border:1px solid #C3CEC6;border-radius:10px;background:#fff">Esta presentación necesita JavaScript para mostrar las diapositivas.</p></noscript>
+
+<main>
 <section class="panel" id="panelPresentaciones" aria-label="Presentaciones">
   <div class="titulo"><h2>Presentaciones</h2><span class="dato">Diapositivas para exponer en clase</span></div>
   <div id="presGaleria" class="pres-gal"></div>
@@ -366,54 +415,65 @@ body > footer{
     <div class="pres-bar">
       <button type="button" id="presVolver">← Presentaciones</button>
       <span id="presTitulo" class="pres-tit"></span>
+      <label class="sr-only" for="presIr">Ir a la diapositiva</label>
+      <select id="presIr"></select>
       <label class="dl-snap"><input type="checkbox" id="presNotasChk"> Notas del orador</label>
+      <button type="button" id="presPrint" title="Abre el diálogo de impresión: elige «Guardar como PDF»">Imprimir / PDF</button>
       <button type="button" id="presFS">Pantalla completa</button>
     </div>
-    <div class="pres-stage" id="presStage" tabindex="0" aria-live="polite"></div>
+    <div class="pres-stage" id="presStage" tabindex="0" role="region" aria-roledescription="diapositiva" aria-label="Diapositiva"></div>
     <div class="pres-nav">
-      <button type="button" id="presPrev">◀ Anterior</button>
-      <div class="pres-prog"><i id="presProg"></i></div>
+      <button type="button" id="presPrev" aria-label="Diapositiva anterior">◀ Anterior</button>
+      <div class="pres-prog" role="progressbar" aria-label="Avance de la presentación" aria-valuemin="1" aria-valuenow="1" aria-valuemax="1"><i id="presProg"></i></div>
       <span id="presCont" class="mono"></span>
-      <button type="button" id="presNext" class="pri">Siguiente ▶</button>
+      <button type="button" id="presNext" class="pri" aria-label="Diapositiva siguiente">Siguiente ▶</button>
     </div>
     <div id="presNotas" class="pres-notas" hidden></div>
-    <p class="gen-ayuda">Atajos: ← → o espacio para cambiar de diapositiva, <b>F</b> pantalla completa, <b>N</b> notas del orador. En el celular, desliza el dedo.</p>
+    <p class="gen-ayuda">Atajos: <kbd>←</kbd> <kbd>→</kbd> o <kbd>espacio</kbd> para cambiar de diapositiva, <kbd>Inicio</kbd>/<kbd>Fin</kbd>, <kbd>F</kbd> pantalla completa, <kbd>N</kbd> notas del orador. En el celular, desliza el dedo. La dirección de la página incluye el número de diapositiva (<span class="mono">#d5</span>), así puedes compartir una en concreto.</p>
   </div>
 </section>
+</main>
 
 <footer>
   Referencia: White, F. M. (2004). <i>Mecánica de fluidos</i> (5.ª ed.). McGraw-Hill Interamericana.<br>
   Tabla 2.1 (peso específico de algunos fluidos comunes), p. 80 — fuente del ρg(Hg) = 846 lbf/ft³ usado en el Ejemplo 2.14.<br>
-  La simulación 3D usa Three.js y se detiene sola al cambiar de diapositiva.
+  La simulación 3D usa Three.js: se carga al llegar a esa diapositiva y se libera al salir de ella.
 </footer>
+
+<div id="presAnuncio" class="sr-only" aria-live="polite"></div>
 
 <script>
 /* ================= Utilidades ================= */
 const $ = s => document.querySelector(s);
-function evento(nombre, params){ if(typeof gtag === "function") gtag('event', nombre, params||{}); }
 const prFr = (a,b)=>`<span class="fr"><i>${a}</i><i>${b}</i></span>`;
+const fmt = (x,d=0)=>x.toFixed(d).replace(".",",");
+const esEstrecho = ()=>matchMedia("(max-width:820px)").matches;
+const sinMov = ()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
 const REF_APA = 'White, F. M. (2004). <i>Mecánica de fluidos</i> (5.ª ed.). McGraw-Hill Interamericana.';
+const FECHA = "30/10/2026";
 
 /* ================= Figura SVG del Ejemplo 2.14 =================
    Tubo en U (R = 10 in, fondo a 30 in bajo B), nivel del líquido en B,
    paraboloide imaginario con vértice a h = Ω²R²/2g bajo B. */
+let FIG_N = 0;
 function presFig(rpm){
+  const id = ++FIG_N, mf = "pf"+id, me = "pe"+id;   // ids únicos: así los marcadores funcionan aunque haya dos figuras en el DOM
   const Rin=10, prof=30, Wr=rpm*Math.PI/30, Rf=10/12, g=32.2, zv=-(Wr*Wr*Rf*Rf/(2*g))*12;
   const sc=6.2, ox=190, oy=12*sc+22, Wd=380, Ht=(12+74)*sc+44, X=x=>ox+x*sc, Z=z=>oy-z*sc, c="#1E2A24";
   const par=[]; for(let i=0;i<=60;i++){ const r=-Rin+2*Rin*i/60; par.push(`${X(r).toFixed(1)},${Z(zv*(1-(r/Rin)**2)).toFixed(1)}`); }
-  const flecha=(x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="1.3" marker-start="url(#pf)" marker-end="url(#pf)"/>`;
+  const flecha=(x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="1.3" marker-start="url(#${mf})" marker-end="url(#${mf})"/>`;
   const ff = `font-family="Helvetica Neue, Helvetica, Arial, sans-serif"`;
-  return `<svg class="pres-fig" viewBox="0 0 ${Wd} ${Ht.toFixed(0)}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tubo en U con mercurio que gira">
-  <defs><marker id="pf" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${c}"/></marker>
-        <marker id="pe" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="${c}"/></marker></defs>
+  return `<svg class="pres-fig" viewBox="0 0 ${Wd} ${Ht.toFixed(0)}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tubo en U con mercurio que gira a ${Math.round(rpm)} rpm">
+  <defs><marker id="${mf}" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${c}"/></marker>
+        <marker id="${me}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="${c}"/></marker></defs>
   <path d="M${X(-Rin)},${Z(10)} L${X(-Rin)},${Z(-prof)} L${X(Rin)},${Z(-prof)} L${X(Rin)},${Z(10)}" fill="none" stroke="${c}" stroke-width="${3*sc}" stroke-linejoin="miter"/>
   <path d="M${X(-Rin)},${Z(10)} L${X(-Rin)},${Z(-prof)} L${X(Rin)},${Z(-prof)} L${X(Rin)},${Z(10)}" fill="none" stroke="#FAFBF7" stroke-width="${2*sc}" stroke-linejoin="miter"/>
   <path d="M${X(-Rin)},${Z(0)} L${X(-Rin)},${Z(-prof)} L${X(Rin)},${Z(-prof)} L${X(Rin)},${Z(0)}" fill="none" stroke="#8fa3b8" stroke-width="${2*sc}" stroke-linejoin="miter"/>
   <line x1="${X(0)}" y1="${Z(12)}" x2="${X(0)}" y2="${Z(-72)}" stroke="#5C6B60" stroke-width="1.2" stroke-dasharray="10 3 2 3"/>
   <line x1="${X(-Rin-6)}" y1="${Z(0)}" x2="${X(Rin+6)}" y2="${Z(0)}" stroke="#2B5DA8" stroke-width="1.4" stroke-dasharray="6 4"/>
   <polyline points="${par.join(" ")}" fill="none" stroke="#C24438" stroke-width="2.2" stroke-dasharray="7 4"/>
-  <line x1="${X(0)}" y1="${Z(0)}" x2="${X(Rin+12)}" y2="${Z(0)}" stroke="${c}" stroke-width="1.3" marker-end="url(#pe)"/><text x="${X(Rin+12)}" y="${Z(0)-6}" font-size="13" font-style="italic" ${ff} fill="${c}">r</text>
-  <line x1="${X(0)}" y1="${Z(0)}" x2="${X(0)}" y2="${Z(12)}" stroke="${c}" stroke-width="1.3" marker-end="url(#pe)"/><text x="${X(0)+6}" y="${Z(12)+8}" font-size="13" font-style="italic" ${ff} fill="${c}">z</text>
+  <line x1="${X(0)}" y1="${Z(0)}" x2="${X(Rin+12)}" y2="${Z(0)}" stroke="${c}" stroke-width="1.3" marker-end="url(#${me})"/><text x="${X(Rin+12)}" y="${Z(0)-6}" font-size="13" font-style="italic" ${ff} fill="${c}">r</text>
+  <line x1="${X(0)}" y1="${Z(0)}" x2="${X(0)}" y2="${Z(12)}" stroke="${c}" stroke-width="1.3" marker-end="url(#${me})"/><text x="${X(0)+6}" y="${Z(12)+8}" font-size="13" font-style="italic" ${ff} fill="${c}">z</text>
   <text x="${X(0)-14}" y="${Z(0)+14}" font-size="12" font-style="italic" ${ff} fill="${c}">O</text>
   ${flecha(X(0),Z(8),X(Rin),Z(8))}<text x="${X(Rin/2)}" y="${Z(8)-5}" font-size="12" text-anchor="middle" ${ff} fill="${c}">R = 10 in</text>
   ${flecha(X(-Rin-9),Z(0),X(-Rin-9),Z(-prof))}<text x="${X(-Rin-9)-6}" y="${Z(-prof/2)}" font-size="12" text-anchor="end" ${ff} fill="${c}">30 in</text>
@@ -421,47 +481,68 @@ function presFig(rpm){
   <circle cx="${X(0)}" cy="${Z(-prof)}" r="4.5" fill="${c}"/><text x="${X(0)+9}" y="${Z(-prof)-7}" font-size="15" font-weight="700" ${ff} fill="${c}">A</text>
   ${rpm>0?`<circle cx="${X(0)}" cy="${Z(zv)}" r="3.5" fill="#C24438"/><text x="${X(0)+8}" y="${Z(zv)+14}" font-size="11" ${ff} fill="#C24438">vértice</text>
   ${flecha(X(Rin+9),Z(0),X(Rin+9),Z(zv))}<text x="${X(Rin+9)+6}" y="${Z(zv/2)}" font-size="12" ${ff} fill="#C24438">h = ${(-zv).toFixed(0)} in</text>`:""}
-  <path d="M${X(-4.5)},${Z(-15)} A${4.5*sc},${1.7*sc} 0 0 1 ${X(4.5)},${Z(-15)}" fill="none" stroke="${c}" stroke-width="2" marker-end="url(#pe)"/>
-  <path d="M${X(4.5)},${Z(-15)} A${4.5*sc},${1.7*sc} 0 0 1 ${X(-4.5)},${Z(-15)}" fill="none" stroke="${c}" stroke-width="2" marker-end="url(#pe)"/>
+  <path d="M${X(-4.5)},${Z(-15)} A${4.5*sc},${1.7*sc} 0 0 1 ${X(4.5)},${Z(-15)}" fill="none" stroke="${c}" stroke-width="2" marker-end="url(#${me})"/>
+  <path d="M${X(4.5)},${Z(-15)} A${4.5*sc},${1.7*sc} 0 0 1 ${X(-4.5)},${Z(-15)}" fill="none" stroke="${c}" stroke-width="2" marker-end="url(#${me})"/>
   <text x="${X(6.5)}" y="${Z(-15)+4}" font-size="16" font-style="italic" ${ff} fill="${c}">Ω</text>
   <text x="${X(-Rin-15)}" y="${Z(-62)}" font-size="11" fill="#C24438" ${ff}>superficie libre imaginaria</text></svg>`;
 }
 
 /* ================= Visor 3D (Three.js) ================= */
-let ROT3D = null;
+let ROT3D = null, THREE_P = null;
+function cargarThree(){
+  if(!THREE_P){
+    THREE_P = Promise.all([import("three"), import("three/addons/controls/OrbitControls.js")])
+      .then(([T,O])=>({THREE:T, OrbitControls:O.OrbitControls}))
+      .catch(e=>{ THREE_P = null; throw e; });
+  }
+  return THREE_P;
+}
+const rot3d = ()=> (ROT3D && ROT3D.cont.isConnected) ? ROT3D : null;
+
+function respaldo3d(cont, msg){
+  const sl = document.getElementById("presRpm");
+  const rpm = sl ? +sl.value : 180;
+  cont.innerHTML = `<div class="r3d-fb"><div class="r3d-fb-fig">${presFig(rpm)}</div><p class="r3d-err" role="status">${msg}</p></div>`;
+}
+
 async function iniciarRot3D(){
   const cont = document.getElementById("presFigSim3d");
-  if(!cont) return;
-  if(ROT3D && ROT3D.cont === cont) return;
+  if(!cont || cont.dataset.listo) return;
+  cont.dataset.listo = "1";
 
-  cont.innerHTML = '<div class="r3d"><canvas></canvas><span class="r3d-hint">Arrastra para girar · rueda para acercar</span></div>';
+  const tactil = matchMedia("(pointer:coarse)").matches;
+  cont.innerHTML = `<div class="r3d" role="img" aria-label="Modelo 3D interactivo del líquido en rotación"><canvas></canvas><span class="r3d-hint">${tactil ? "Desliza para girar · pellizca para acercar" : "Arrastra para girar · rueda para acercar"}</span><button type="button" class="r3d-reset" aria-label="Restablecer la vista 3D">⟲ Vista</button></div>`;
   const wrap = cont.querySelector(".r3d");
   const canvas = wrap.querySelector("canvas");
 
-  let THREE, OrbitControls;
-  try{
-    THREE = await import("three");
-    ({ OrbitControls } = await import("three/addons/controls/OrbitControls.js"));
-  }catch(e){
-    wrap.innerHTML = '<div class="r3d-err">No se pudo cargar el visor 3D (Three.js). Revisa tu conexión y recarga.</div>';
+  let mods;
+  try{ mods = await cargarThree(); }
+  catch(e){
+    if(cont.isConnected) respaldo3d(cont, "No se pudo cargar el visor 3D (necesita conexión a internet). Se muestra el esquema 2D.");
     return;
   }
-  if(!wrap.isConnected) return;
+  if(!wrap.isConnected) return;               // el usuario ya cambió de diapositiva
+  const { THREE, OrbitControls } = mods;
+
+  let renderer;
+  try{ renderer = new THREE.WebGLRenderer({ canvas, antialias:true }); }
+  catch(e){ respaldo3d(cont, "Tu navegador no pudo iniciar WebGL. Se muestra el esquema 2D."); return; }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 
   const R = 10, G = 386.4, H_TUBE = 42;
-  let OMEGA = 18.85;
-
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  const sl = document.getElementById("presRpm");
+  let OMEGA = (sl ? +sl.value : 180) * Math.PI / 30;
+  const GIRO = sinMov() ? 0 : 0.16;
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0xf4f7f1);
 
   const camera = new THREE.PerspectiveCamera(42, 1, 0.5, 2000);
-  camera.position.set(72, 52, 92);
+  const VISTA = { pos:[72,52,92], tgt:[0,2,0] };
+  camera.position.set(...VISTA.pos);
 
   const controls = new OrbitControls(camera, renderer.domElement);
-  controls.target.set(0, 2, 0);
+  controls.target.set(...VISTA.tgt);
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
   controls.minDistance = 34;
@@ -469,17 +550,20 @@ async function iniciarRot3D(){
   controls.enablePan = false;
   controls.maxPolarAngle = Math.PI * 0.92;
   controls.update();
+  // En pantallas táctiles se deja pasar el desplazamiento vertical para no "atrapar" el scroll de la página
+  renderer.domElement.style.touchAction = tactil ? "pan-y" : "none";
+  wrap.querySelector(".r3d-reset").addEventListener("click", ()=>{
+    camera.position.set(...VISTA.pos); controls.target.set(...VISTA.tgt); controls.update();
+  });
 
   scene.add(new THREE.AmbientLight(0xffffff, 0.65));
   const key = new THREE.DirectionalLight(0xffffff, 1.15); key.position.set(40, 90, 50); scene.add(key);
   const fill = new THREE.DirectionalLight(0x9fc2ff, 0.35); fill.position.set(-50, 20, -40); scene.add(fill);
 
-  const tuboGeo = new THREE.CylinderGeometry(R, R, H_TUBE, 72, 1, true);
-  const tuboMat = new THREE.MeshPhysicalMaterial({
-    color:0x8aa89a, metalness:0, roughness:0.28,
-    transparent:true, opacity:0.18, side:THREE.DoubleSide, depthWrite:false
-  });
-  const tubo = new THREE.Mesh(tuboGeo, tuboMat);
+  const tubo = new THREE.Mesh(
+    new THREE.CylinderGeometry(R, R, H_TUBE, 72, 1, true),
+    new THREE.MeshPhysicalMaterial({ color:0x8aa89a, metalness:0, roughness:0.28, transparent:true, opacity:0.18, side:THREE.DoubleSide, depthWrite:false })
+  );
   tubo.position.y = H_TUBE / 2;
   tubo.renderOrder = 1;
   scene.add(tubo);
@@ -500,10 +584,7 @@ async function iniciarRot3D(){
   );
   eje.computeLineDistances();
   scene.add(eje);
-  const cono = new THREE.Mesh(
-    new THREE.ConeGeometry(1.5, 4.2, 18),
-    new THREE.MeshBasicMaterial({ color:0xB3372E })
-  );
+  const cono = new THREE.Mesh(new THREE.ConeGeometry(1.5, 4.2, 18), new THREE.MeshBasicMaterial({ color:0xB3372E }));
   cono.position.y = H_TUBE + 8;
   scene.add(cono);
 
@@ -515,8 +596,8 @@ async function iniciarRot3D(){
     g.fillStyle = color; g.fillText(txt, 64, 34);
     const tex = new THREE.CanvasTexture(c);
     tex.colorSpace = THREE.SRGBColorSpace; tex.minFilter = THREE.LinearFilter;
-    const mat = new THREE.SpriteMaterial({ map:tex, transparent:true, depthTest:false, depthWrite:false });
-    const s = new THREE.Sprite(mat); s.scale.set(7, 3.5, 1);
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map:tex, transparent:true, depthTest:false, depthWrite:false }));
+    s.scale.set(7, 3.5, 1);
     return s;
   }
   const puntoA = new THREE.Mesh(new THREE.SphereGeometry(0.85, 16, 12), new THREE.MeshBasicMaterial({ color:0x1E2A24 }));
@@ -545,12 +626,11 @@ async function iniciarRot3D(){
     scene.add(surf);
   }
 
+  const partGeo = new THREE.SphereGeometry(0.42, 10, 8);
+  const partMat = new THREE.MeshBasicMaterial({ color:0x08306b });
   const particulas = [];
   for(let i = 0; i < 28; i++){
-    const m = new THREE.Mesh(
-      new THREE.SphereGeometry(0.42, 10, 8),
-      new THREE.MeshBasicMaterial({ color:0x08306b })
-    );
+    const m = new THREE.Mesh(partGeo, partMat);
     m.renderOrder = 3;
     scene.add(m);
     particulas.push({ m, r: R*(0.18 + 0.78*Math.random()), th: Math.random()*Math.PI*2 });
@@ -567,18 +647,27 @@ async function iniciarRot3D(){
   ro.observe(wrap);
   medir();
 
+  let parado = false;
+  function detener(){
+    if(parado) return; parado = true;
+    ro.disconnect();
+    try{ controls.dispose(); }catch(_){}
+    scene.traverse(o=>{
+      if(o.geometry) o.geometry.dispose();
+      if(o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach(m=>{ if(m.map) m.map.dispose(); m.dispose(); });
+    });
+    renderer.dispose();
+    try{ renderer.forceContextLoss(); }catch(_){}   // libera el contexto WebGL (los navegadores limitan cuántos pueden coexistir)
+    if(ROT3D && ROT3D.cont === cont) ROT3D = null;
+  }
+
   let ultimo = performance.now();
   function bucle(t){
-    if(!canvas.isConnected){
-      ro.disconnect();
-      try{ controls.dispose(); }catch(_){}
-      renderer.dispose();
-      return;
-    }
+    if(!canvas.isConnected){ detener(); return; }
     const dt = Math.min(0.06, (t - ultimo)/1000); ultimo = t;
     controls.update();
     for(const p of particulas){
-      p.th += OMEGA * dt * 0.16;
+      p.th += OMEGA * dt * GIRO;
       const r = Math.min(p.r, R*0.995);
       p.m.position.set(Math.cos(p.th)*r, zSurf(r, OMEGA) - 0.2, Math.sin(p.th)*r);
     }
@@ -586,34 +675,30 @@ async function iniciarRot3D(){
     requestAnimationFrame(bucle);
   }
 
-  ROT3D = {
-    cont,
-    setOmega(om){ OMEGA = Math.max(0, om); construirSuperficie(OMEGA); }
-  };
+  ROT3D = { cont, setOmega(om){ OMEGA = Math.max(0, om); construirSuperficie(OMEGA); } };
   construirSuperficie(OMEGA);
   requestAnimationFrame(bucle);
 }
 
 /* ================= Diapositivas ================= */
 const PRES = {abierta:null, i:0, listo:false};
-let vistaActual = "presentaciones";
 
 const PRES_LISTA = [{
   id:"e214", materia:"Mecánica de fluidos", titulo:"Ejemplo 2.14 · Tubo en U que rota",
   desc:"Presión en el punto A de un tubo en U con mercurio que gira a 180 rpm, con la Tabla 2.1 (p. 80) como fuente del dato y simulación 3D.",
   slides:[
   /* 1 · Portada */
-  {html:()=>`<div class="pres-slide pres-portada">
+  {t:"Portada", html:()=>`<div class="pres-slide pres-portada">
       <p class="k">Mecánica de fluidos · Fluido como sólido rígido en rotación</p>
       <h1>Ejemplo 2.14</h1>
       <p class="portada-sub">Tubo en U con mercurio que rota: ¿cuánto baja la presión en el punto A?</p>
-      <div class="portada-meta"><span class="portada-fecha">30/10/2026</span></div>
+      <div class="portada-meta"><span class="portada-fecha">${FECHA}</span></div>
       <p class="portada-ref">Referencia: ${REF_APA}<br>Tabla 2.1, p. 80 — peso específico del mercurio.</p>
     </div>`,
    nota:"Preséntate y di de qué trata: un fluido que gira como un sólido rígido, y cómo eso cambia la presión. Menciona la fuente (White, 2004) y que el dato del mercurio sale de la Tabla 2.1, p. 80."},
 
   /* 2 · Enunciado y esquema */
-  {html:()=>`<div class="pres-slide">
+  {t:"Enunciado y esquema", html:()=>`<div class="pres-slide">
       <h2><small>Enunciado y esquema</small>¿Qué se pide?</h2>
       <div class="cols-enunciado">
         <div class="col-enunciado-texto">
@@ -637,11 +722,11 @@ const PRES_LISTA = [{
    nota:"Lee el enunciado y ve señalando la figura: 10 in de radio, 30 in de profundidad, 180 rpm, mercurio y presión atmosférica. El tubo es delgado, así que el nivel en el brazo vertical se queda en B. La parábola roja no es superficie real: es la forma que tendría la superficie libre si el líquido pudiera acomodarse. Su vértice cae por debajo de A: esa es la razón física de que p_A < p_atm."},
 
   /* 3 · Modelo */
-  {html:()=>`<div class="pres-slide">
+  {t:"Modelo: cuerpo rígido en rotación", html:()=>`<div class="pres-slide">
       <h2><small>Modelo</small>Cuerpo rígido en rotación</h2>
       <div class="pres-eq"><b>a</b> = −Ω² r <b>e</b><sub>r</sub></div>
       <div class="pres-eq">∇p = ρ(<b>g</b> − <b>a</b>) &nbsp;⟹&nbsp; ${prFr("∂p","∂r")} = ρΩ²r, &nbsp; ${prFr("∂p","∂z")} = −ρg</div>
-      <div class="pres-eq">p = C − ρ g z + ½ ρ Ω² r² &nbsp;<span style="font-family:var(--fuente-mono); font-size:1.5cqw; font-style:normal">(Ecs. 2.62b y 2.63)</span></div>
+      <div class="pres-eq">p = C − ρ g z + ½ ρ Ω² r² &nbsp;<span class="eq-tag">(Ecs. 2.62b y 2.63)</span></div>
       <ul>
         <li>Las superficies de presión constante son paraboloides: <i>z</i> = cte + Ω²r²/2g.</li>
         <li>Inclinación de la superficie: tan θ = Ω²r / g.</li>
@@ -650,36 +735,34 @@ const PRES_LISTA = [{
    nota:"Cada partícula tiene aceleración centrípeta hacia el eje. Al aplicar la ecuación del movimiento resultan dos derivadas parciales que se integran. C es la constante que hay que fijar con una condición conocida: la presión atmosférica en B."},
 
   /* 4 · Datos */
-  {html:()=>`<div class="pres-slide">
+  {t:"Datos y conversión de unidades", html:()=>`<div class="pres-slide">
       <h2><small>Datos</small>Conversión de unidades</h2>
       <table class="pres-tabla">
-        <tr><td>Velocidad angular</td><td>Ω = 180 rpm · ${prFr("2π rad/rev","60 s/min")} = <b>18.85 rad/s</b></td></tr>
-        <tr><td>Peso específico del Hg <span style="color:var(--verde); font-weight:700">(Tabla 2.1, p. 80 →)</span></td><td>ρg = 846 lbf/ft³ &nbsp;⟹&nbsp; ρ = 846/32.2 = <b>26.3 slug/ft³</b></td></tr>
+        <tr><td>Velocidad angular</td><td>Ω = 180 rpm · ${prFr("2π rad/rev","60 s/min")} = <b>18,85 rad/s</b></td></tr>
+        <tr><td>Peso específico del Hg <span class="ref-lnk">(Tabla 2.1, p. 80 →)</span></td><td>ρg = 846 lbf/ft³ &nbsp;⟹&nbsp; ρ = 846/32,2 = <b>26,3 slug/ft³</b></td></tr>
         <tr><td>Radio</td><td>R = 10 in = <b>10/12 ft</b></td></tr>
-        <tr><td>Profundidad de A</td><td>30 in = <b>2.5 ft</b></td></tr>
+        <tr><td>Profundidad de A</td><td>30 in = <b>2,5 ft</b></td></tr>
         <tr><td>Presión atmosférica</td><td>p<sub>atm</sub> = <b>2116 lbf/ft²</b></td></tr>
-        <tr><td>Inclinación de la superficie</td><td>tan θ = Ω²R/g ≈ 9.2 &nbsp;⟹&nbsp; θ ≈ <b>84°</b></td></tr>
+        <tr><td>Inclinación de la superficie</td><td>tan θ = Ω²R/g ≈ 9,2 &nbsp;⟹&nbsp; θ ≈ <b>84°</b></td></tr>
       </table>
     </div>`,
    nota:"Aquí hay que cuidar las unidades: pasar rpm a rad/s, y obtener la densidad a partir del peso específico dividiendo entre g. El 846 lbf/ft³ sale de la Tabla 2.1 del libro (p. 80), que muestro en la siguiente diapositiva. El ángulo de 84° muestra que la superficie queda casi vertical, pero el tubo es tan delgado que no importa."},
 
   /* 5 · Tabla 2.1 */
-  {html:()=>`<div class="pres-slide">
+  {t:"Tabla 2.1 del libro (p. 80)", html:()=>`<div class="pres-slide">
       <h2><small>Tabla 2.1 · p. 80</small>De dónde sale ρg del mercurio</h2>
-      <div class="cols" style="grid-template-columns:1.35fr 1fr; align-items:start;">
+      <div class="cols c-tabla">
         <div>
           <table class="pres-tabla-libro">
-            <caption>Tabla 2.1. Peso específico de algunos fluidos comunes.
-              <small>ρg a 68 °F = 20 °C</small>
-            </caption>
+            <caption>Tabla 2.1. Peso específico de algunos fluidos comunes.</caption>
             <thead>
               <tr>
-                <th rowspan="2" style="text-align:left; vertical-align:bottom">Fluido</th>
-                <th colspan="2">Peso específico<br><span class="sub">ρg a 68 °F = 20 °C</span></th>
+                <th rowspan="2" class="fl" scope="col">Fluido</th>
+                <th colspan="2" scope="colgroup">Peso específico<span class="sub">ρg a 68 °F = 20 °C</span></th>
               </tr>
               <tr>
-                <th style="font-family:var(--fuente-mono); font-weight:600">lbf/ft³</th>
-                <th style="font-family:var(--fuente-mono); font-weight:600">N/m³</th>
+                <th class="un" scope="col">lbf/ft³</th>
+                <th class="un" scope="col">N/m³</th>
               </tr>
             </thead>
             <tbody>
@@ -696,17 +779,17 @@ const PRES_LISTA = [{
           <p class="pie-tabla">▲ Fila resaltada: el dato usado en el Ejemplo 2.14.</p>
         </div>
         <div>
-          <p style="font-size:1.95cqw; margin:0 0 1.2cqw">El Ejemplo 2.14 usa <b>ρg(Hg) = 846 lbf/ft³</b>. De ahí sale la densidad que entra en la ecuación de presión:</p>
-          <div class="pres-eq" style="font-size:2.1cqw; margin:.8cqw 0">ρ = ${prFr("ρg","g")} = ${prFr("846","32,2")} = <b>26,3 slug/ft³</b></div>
-          <p style="font-size:1.8cqw; margin:1.2cqw 0 0">En SI: ρg = 133.100 N/m³ ⟹ ρ = 133.100/9,81 ≈ <b>13.569 kg/m³</b>, o sea ρ ≈ 13,6 × 10³ kg/m³, el valor habitual del mercurio.</p>
-          <div class="pres-nota-b" style="font-size:1.4cqw; margin-top:1.4cqw">Tabla completa en White (2004), <b>Tabla 2.1, p. 80</b>.</div>
+          <p class="lead">El Ejemplo 2.14 usa <b>ρg(Hg) = 846 lbf/ft³</b>. De ahí sale la densidad que entra en la ecuación de presión:</p>
+          <div class="pres-eq eq-sm">ρ = ${prFr("ρg","g")} = ${prFr("846","32,2")} = <b>26,3 slug/ft³</b></div>
+          <p class="sub">En SI: ρg = 133.100 N/m³ ⟹ ρ = 133.100/9,81 ≈ <b>13.569 kg/m³</b>, o sea ρ ≈ 13,6 × 10³ kg/m³, el valor habitual del mercurio.</p>
+          <div class="pres-nota-b nota-sm">Tabla completa en White (2004), <b>Tabla 2.1, p. 80</b>.</div>
         </div>
       </div>
     </div>`,
    nota:"Enseña la tabla y detente en la fila del mercurio: 846 lbf/ft³ en el sistema inglés y 133.100 N/m³ en el SI. Explica que la densidad que entra en la ecuación de presión se obtiene dividiendo el peso específico entre g; en unidades inglesas eso da 26,3 slug/ft³. En SI, 133.100/9,81 ≈ 13.569 kg/m³, que es el valor clásico del mercurio."},
 
   /* 6 · Hipótesis */
-  {html:()=>`<div class="pres-slide">
+  {t:"Hipótesis y condición de contorno", html:()=>`<div class="pres-slide">
       <h2><small>Hipótesis</small>Origen de coordenadas en el nivel de B</h2>
       <ul>
         <li>El tubo es tan delgado que la superficie libre real <b>permanece aproximadamente al mismo nivel</b> de 30 in (punto B).</li>
@@ -718,30 +801,30 @@ const PRES_LISTA = [{
    nota:"Esta es la hipótesis que justifica el problema: con diámetro despreciable, el nivel del líquido en el brazo vertical no cambia al girar. Eso nos da una presión conocida en B."},
 
   /* 7 · Paso 1 */
-  {html:()=>`<div class="pres-slide">
+  {t:"Paso 1: la constante C", html:()=>`<div class="pres-slide">
       <h2><small>Paso 1</small>Constante C con la condición en B</h2>
       <div class="pres-eq">p<sub>B</sub> = C − 0 + ½ρΩ²R²</div>
-      <div class="pres-eq">2116 = C + ½ (26.3) ${prFr("10","12")}<sup>2</sup> (18.85)<sup>2</sup> &nbsp;=&nbsp; C + 3245</div>
+      <div class="pres-eq">2116 = C + ½ (26,3) ${prFr("10","12")}<sup>2</sup> (18,85)<sup>2</sup> &nbsp;=&nbsp; C + 3245</div>
       <div class="pres-res">C = 2116 − 3245 = −1129 lbf/ft²</div>
     </div>`,
    nota:"Sustituye r = R y z = 0 en la ecuación de presión. El término de rotación vale 3245 lbf/ft². Despeja C: sale negativa, −1129."},
 
   /* 8 · Paso 2 */
-  {html:()=>`<div class="pres-slide">
+  {t:"Paso 2: presión en A", html:()=>`<div class="pres-slide">
       <h2><small>Paso 2</small>Presión en el punto A</h2>
       <div class="pres-eq">(r, z) = (0, −30 in) &nbsp;⟹&nbsp; p<sub>A</sub> = C − ρg·z</div>
       <div class="pres-eq">p<sub>A</sub> = −1129 − (846)(−${prFr("30","12")}) = −1129 + 2115</div>
       <div class="pres-res">p<sub>A</sub> = 986 lbf/ft²</div>
-      <p style="text-align:center; margin-top:1.6cqw; color:var(--tinta-suave)">Menor que la presión atmosférica (2116 lbf/ft²).</p>
+      <p class="pres-aside">Menor que la presión atmosférica (2116 lbf/ft²).</p>
     </div>`,
    nota:"Resultado principal. En el eje r = 0 el término de rotación desaparece, queda C más el efecto de la profundidad. 986 es menos de la mitad de la presión atmosférica: pregunta natural, ¿por qué baja tanto? Se explica en la siguiente diapositiva."},
 
   /* 9 · Verificación */
-  {html:()=>`<div class="pres-slide">
+  {t:"Verificación independiente", html:()=>`<div class="pres-slide">
       <h2><small>Verificación</small>¿Por qué p<sub>A</sub> es menor que p<sub>atm</sub>?</h2>
       <div class="cols">
         <div>
-          <div class="pres-eq">h = ${prFr("Ω²R²","2g")} = ${prFr("(18.85)²(10/12)²","2(32.2)")} ≈ 3.83 ft ≈ <b>46 in</b></div>
+          <div class="pres-eq">h = ${prFr("Ω²R²","2g")} = ${prFr("(18,85)²(10/12)²","2(32,2)")} ≈ 3,83 ft ≈ <b>46 in</b></div>
           <ul>
             <li>Desde B, el paraboloide cae <b>46 in</b>: su vértice queda 16 in <b>por debajo de A</b>.</li>
             <li>Entonces p<sub>A</sub> ≈ p<sub>atm</sub> − 16 inHg.</li>
@@ -750,62 +833,79 @@ const PRES_LISTA = [{
         </div>
         <div class="pres-fig-wrap">${presFig(180)}</div>
       </div>
-      <div class="pres-res" style="font-size:2.4cqw">2116 − 1128 ≈ 988 ≈ 986 lbf/ft² ✓</div>
+      <div class="pres-res sm">2116 − 1128 ≈ 988 ≈ 986 lbf/ft² ✓</div>
     </div>`,
-   nota:"Comprobación independiente: la caída de presión desde B es la altura del paraboloide, h = Ω²R²/2g. Con los números da 3.83 ft; el libro escribe 3.85 ft, ambos son unos 46 in, así que no cambia nada. Como el vértice queda 16 in bajo A, la presión en A es 16 pulgadas de mercurio menor que la atmosférica, y eso concuerda con 986."},
+   nota:"Comprobación independiente: la caída de presión desde B es la altura del paraboloide, h = Ω²R²/2g. Con los números da 3,83 ft; el libro escribe 3,85 ft, ambos son unos 46 in, así que no cambia nada. Como el vértice queda 16 in bajo A, la presión en A es 16 pulgadas de mercurio menor que la atmosférica, y eso concuerda con 986."},
 
   /* 10 · Comparación */
-  {html:()=>`<div class="pres-slide">
+  {t:"Comparación con el reposo", html:()=>`<div class="pres-slide">
       <h2><small>Comparación</small>Efecto de la rotación sobre p<sub>A</sub></h2>
       <div class="pres-eq">En reposo: &nbsp;p<sub>A</sub> = 2116 − 846(−${prFr("30","12")}) = <b>4231 lbf/ft²</b></div>
       <div class="pres-eq">Girando: &nbsp;p<sub>A</sub> = <b>986 lbf/ft²</b> &nbsp;⟹&nbsp; reducción de ${prFr("4231 − 986","4231")} ≈ <b>77 %</b></div>
       <ul>
         <li>Si se gira más rápido, p<sub>A</sub> sigue bajando hasta casi cero y aparece <b>cavitación</b>.</li>
-        <li>Con estos datos, p<sub>A</sub> = 0 cuando Ω ≈ 21.5 rad/s ≈ <b>205 rpm</b> <small style="color:var(--tinta-suave)">(cálculo complementario, no está en el libro)</small>.</li>
+        <li>Con estos datos, p<sub>A</sub> = 0 cuando Ω ≈ 21,5 rad/s ≈ <b>206 rpm</b> <small class="muted">(cálculo complementario, no está en el libro)</small>.</li>
       </ul>
     </div>`,
-   nota:"En reposo la presión en A es 4231, porque soporta los 30 in de mercurio más la atmósfera. Al girar baja al 23 por ciento de ese valor. El dato de 205 rpm lo calculé yo: p_A = 4231 − ½ρΩ²R² y se iguala a cero. Dilo como cálculo complementario por si te preguntan."},
+   nota:"En reposo la presión en A es 4231, porque soporta los 30 in de mercurio más la atmósfera. Al girar baja al 23 por ciento de ese valor. El dato de 206 rpm lo calculé yo: p_A = 4231 − ½ρΩ²R² y se iguala a cero (Ω ≈ 21,5 rad/s). Dilo como cálculo complementario por si te preguntan."},
 
   /* 11 · Simulación 3D */
-  {html:()=>`<div class="pres-slide">
+  {t:"Simulación 3D", html:()=>`<div class="pres-slide">
       <h2><small>Simulación 3D</small>¿Qué pasa si cambia Ω?</h2>
-      <div class="cols" style="grid-template-columns:1.15fr 1fr; align-items:stretch;">
-        <div class="pres-fig-wrap" id="presFigSim3d" style="align-items:stretch"></div>
+      <div class="cols c-sim">
+        <div class="pres-fig-wrap sim-wrap" id="presFigSim3d"></div>
         <div class="pres-ctl">
-          <label style="font-size:1.9cqw">Velocidad de giro: <b id="presRpmTxt">180 rpm</b>
-            <input type="range" id="presRpm" min="0" max="220" step="1" value="180" aria-label="Velocidad de giro en rpm">
+          <label for="presRpm">Velocidad de giro: <b id="presRpmTxt">180 rpm</b>
+            <input type="range" id="presRpm" min="0" max="220" step="1" value="180">
           </label>
-          <div class="v"><span>Ω</span><b id="prW">18.85 rad/s</b></div>
+          <div class="pres-presets" role="group" aria-label="Valores predefinidos de velocidad">
+            <button type="button" data-rpm="0">Reposo</button>
+            <button type="button" data-rpm="180">180 rpm (ejemplo)</button>
+            <button type="button" data-rpm="206">206 rpm (p<sub>A</sub> = 0)</button>
+          </div>
+          <div class="v"><span>Ω</span><b id="prW">18,85 rad/s</b></div>
           <div class="v"><span>Altura del paraboloide h</span><b id="prH">46 in</b></div>
           <div class="v"><span>Presión en A</span><b id="prPA">986 lbf/ft²</b></div>
           <div class="v"><span>Frente a reposo (4231)</span><b id="prPct">23 %</b></div>
-          <div id="prAviso" class="pres-nota-b" style="margin-top:.8cqw">La lámina azul es la superficie libre imaginaria: su vértice cae por debajo de A, y eso explica la presión por debajo de la atmosférica.</div>
-          <p class="gen-ayuda" style="font-size:1.4cqw; margin-top:.6cqw">Arrastra sobre el modelo para girarlo; rueda del ratón para acercarte.</p>
+          <div id="prAviso" class="pres-nota-b info" style="margin-top:0" role="status"></div>
+          <p class="gen-ayuda">Arrastra sobre el modelo para girarlo; rueda del ratón o pellizco para acercarte.</p>
         </div>
       </div>
     </div>`,
-   nota:"Mueve el control en vivo y gira el modelo con el ratón. A 180 rpm aparecen los 986; a 0 rpm el paraboloide se aplana sobre el nivel y la presión vuelve a 4231. A partir de unos 205 rpm la presión en A llega a cero: allí empezaría la cavitación del mercurio.",
+   nota:"Mueve el control en vivo y gira el modelo con el ratón. A 180 rpm aparecen los 986; a 0 rpm el paraboloide se aplana sobre el nivel y la presión vuelve a 4231. A partir de unas 206 rpm la presión en A llega a cero: allí empezaría la cavitación del mercurio. Los botones saltan directo a esos tres casos.",
    init:()=>{
+     const PATM=2116, GAMMA=846, RHO=26.3, RF=10/12, P_REPOSO=PATM+GAMMA*2.5;   // 4231 lbf/ft²
+     const sl = $("#presRpm");
      const f = ()=>{
-       const rpm = +$("#presRpm").value, W = rpm*Math.PI/30, Rf = 10/12;
-       const pa = 4231 - 0.5*26.3*Rf*Rf*W*W;
-       const h = (W*W*Rf*Rf/(2*32.2))*12;
+       const rpm = +sl.value, W = rpm*Math.PI/30;
+       const pa = P_REPOSO - 0.5*RHO*RF*RF*W*W;
+       const h = (W*W*RF*RF/(2*32.2))*12;
        $("#presRpmTxt").textContent = rpm+" rpm";
-       $("#prW").textContent = W.toFixed(2)+" rad/s";
-       $("#prH").textContent = h.toFixed(0)+" in";
-       $("#prPA").textContent = Math.max(pa,0).toFixed(0)+" lbf/ft²";
-       $("#prPct").textContent = ((Math.max(pa,0)/4231)*100).toFixed(0)+" %";
-       $("#prAviso").textContent = pa<=0
-         ? "p_A ≤ 0: el mercurio cavitaría (presión de vapor casi nula)."
-         : "La lámina azul es la superficie libre imaginaria: su vértice cae por debajo de A, y eso explica la presión por debajo de la atmosférica.";
-       if(ROT3D && ROT3D.setOmega) ROT3D.setOmega(W);
+       $("#prW").textContent = fmt(W,2)+" rad/s";
+       $("#prH").textContent = fmt(h)+" in";
+       $("#prPA").textContent = fmt(Math.max(pa,0))+" lbf/ft²";
+       $("#prPct").textContent = fmt(Math.max(pa,0)/P_REPOSO*100)+" %";
+       const av = $("#prAviso");
+       if(pa<=0){
+         av.className = "pres-nota-b";
+         av.innerHTML = "p<sub>A</sub> ≤ 0: el mercurio cavitaría (presión de vapor casi nula).";
+       }else{
+         av.className = "pres-nota-b info";
+         av.innerHTML = "La lámina azul es la superficie libre imaginaria: su vértice cae por debajo de A, y eso explica la presión por debajo de la atmosférica.";
+       }
+       document.querySelectorAll(".pres-presets button").forEach(b=>b.classList.toggle("act", +b.dataset.rpm===rpm));
+       const fb = document.querySelector(".r3d-fb-fig");
+       if(fb) fb.innerHTML = presFig(rpm);
+       const r = rot3d(); if(r) r.setOmega(W);
      };
-     $("#presRpm").addEventListener("input", f); f();
-     iniciarRot3D().then(()=>{ if(ROT3D && ROT3D.setOmega) ROT3D.setOmega((+$("#presRpm").value)*Math.PI/30); });
+     sl.addEventListener("input", f);
+     document.querySelectorAll(".pres-presets button").forEach(b=>b.addEventListener("click",()=>{ sl.value = b.dataset.rpm; f(); }));
+     f();
+     iniciarRot3D();
    }},
 
   /* 12 · Conclusiones */
-  {html:()=>`<div class="pres-slide">
+  {t:"Conclusiones", html:()=>`<div class="pres-slide">
       <h2><small>Conclusiones</small>Lo que hay que recordar</h2>
       <ul>
         <li>Un fluido que rota como sólido rígido tiene <b>aceleración centrípeta a = −Ω²r</b> y superficies de presión constante parabólicas.</li>
@@ -814,10 +914,10 @@ const PRES_LISTA = [{
         <li>Se verifica porque el vértice del paraboloide queda 16 in bajo A (≈ 16 inHg menos).</li>
         <li>A mayor velocidad, p<sub>A</sub> tiende a cero y aparece <b>cavitación</b>.</li>
       </ul>
-      <div class="pres-res" style="font-size:2.4cqw">¿Preguntas?</div>
+      <div class="pres-res sm">¿Preguntas?</div>
       <p class="pres-ref"><b>Referencias:</b> ${REF_APA} Tabla 2.1, p. 80.</p>
     </div>`,
-   nota:"Cierra repitiendo la idea central y el resultado final. Si te preguntan por la diferencia entre 3.85 y 3.83 ft, es redondeo del libro; el resultado de 986 no cambia. El dato del mercurio está en la Tabla 2.1, p. 80."}
+   nota:"Cierra repitiendo la idea central y el resultado final. Si te preguntan por la diferencia entre 3,85 y 3,83 ft, es redondeo del libro; el resultado de 986 no cambia. El dato del mercurio está en la Tabla 2.1, p. 80."}
   ]}];
 
 /* ================= Funciones ================= */
@@ -831,6 +931,7 @@ function presAbrir(i,n=0){
   PRES.abierta=i; PRES.i=n;
   $("#presGaleria").hidden=true; $("#presVisor").hidden=false;
   $("#presTitulo").textContent=PRES_LISTA[i].titulo;
+  $("#presIr").innerHTML = PRES_LISTA[i].slides.map((s,k)=>`<option value="${k}">${k+1}. ${s.t}</option>`).join("");
   presMostrar();
   $("#presStage").focus({preventScroll:true});
 }
@@ -840,48 +941,146 @@ function presMostrar(){
   const d=P.slides[PRES.i];
   $("#presStage").innerHTML=d.html();
   if(d.init) d.init();
+  ajustar();
+  $("#presStage").setAttribute("aria-label", `Diapositiva ${PRES.i+1} de ${n}: ${d.t}`);
+  $("#presAnuncio").textContent=`Diapositiva ${PRES.i+1} de ${n}: ${d.t}`;
   $("#presCont").textContent=`${PRES.i+1} / ${n}`;
   $("#presProg").style.width=((PRES.i+1)/n*100)+"%";
-  $("#presPrev").disabled=PRES.i===0;
-  $("#presNext").disabled=PRES.i===n-1;
+  const pb=$("#presProg").parentElement; pb.setAttribute("aria-valuenow",PRES.i+1); pb.setAttribute("aria-valuemax",n);
+  $("#presPrev").setAttribute("aria-disabled", PRES.i===0);
+  $("#presNext").setAttribute("aria-disabled", PRES.i===n-1);
+  $("#presIr").value=PRES.i;
   $("#presNotas").innerHTML=`<b>Qué decir</b><br>${d.nota||"—"}`;
-  try{ history.replaceState(null,"","#presentaciones"); }catch(_){}
+  if(PRES.i>=7) cargarThree().catch(()=>{});          // precarga el visor 3D unas diapositivas antes de usarlo
+  try{ history.replaceState(null,"","#d"+(PRES.i+1)); }catch(_){}
 }
-const presIr = d => { if(PRES.abierta!=null){ PRES.i+=d; presMostrar(); } };
+const presIr = d => {
+  if(PRES.abierta==null) return;
+  const antes=PRES.i; PRES.i+=d; presMostrar();
+  if(PRES.i!==antes && esEstrecho() && !document.fullscreenElement)
+    $("#presStage").scrollIntoView({block:"start", behavior: sinMov() ? "auto" : "smooth"});
+};
+const presSalta = k => { if(PRES.abierta!=null){ PRES.i=k; presMostrar(); } };
+
+/* Ajuste automático: si el contenido no cabe en el recuadro 16:9 (otra tipografía, otro ancho),
+   se reduce la escala (--u) de esa diapositiva hasta que quepa. Así nada queda cortado. */
+function ajustarSlide(sl){
+  if(!sl) return;
+  sl.style.removeProperty("--u");
+  let k=1;
+  for(let n=0;n<5;n++){
+    if(sl.scrollHeight - sl.clientHeight <= 1) break;
+    k *= Math.max(.8, (sl.clientHeight/sl.scrollHeight)*.985);
+    sl.style.setProperty("--u", `calc(1cqw*${k.toFixed(4)})`);
+  }
+}
+function ajustar(){
+  const sl=document.querySelector("#presStage .pres-slide");
+  if(!sl) return;
+  if(esEstrecho() && !document.fullscreenElement){ sl.style.removeProperty("--u"); return; }   // en móvil la diapositiva crece en alto
+  ajustarSlide(sl);
+}
+
+/* Impresión: todas las diapositivas, una por hoja */
+function construirImpresion(){
+  if(PRES.abierta==null || $("#printAll")) return;
+  const box=document.createElement("div"); box.id="printAll";
+  PRES_LISTA[PRES.abierta].slides.forEach(d=>{
+    const w=document.createElement("div"); w.className="print-slide";
+    w.innerHTML=d.html();
+    const sim=w.querySelector("#presFigSim3d");
+    if(sim){ sim.removeAttribute("id"); sim.innerHTML=presFig(180); }   // sin WebGL en papel: se imprime el esquema 2D a 180 rpm
+    w.querySelectorAll("[id]:not(marker)").forEach(e=>e.removeAttribute("id"));   // ids únicos solo en el DOM vivo (los marcadores SVG conservan el suyo)
+    box.appendChild(w);
+  });
+  document.body.appendChild(box);
+  // Medición fuera de pantalla (en este momento aún rigen los estilos de pantalla) para ajustar cada diapositiva
+  box.style.cssText="display:block;position:absolute;left:-10000px;top:0;width:1100px";
+  box.querySelectorAll(".print-slide").forEach(w=>{
+    w.style.cssText="container-type:inline-size;position:relative;width:100%;aspect-ratio:16/9;overflow:hidden";
+    ajustarSlide(w.querySelector(".pres-slide"));
+    w.removeAttribute("style");
+  });
+  box.removeAttribute("style");
+  document.body.classList.add("imprimiendo");
+}
+function limpiarImpresion(){
+  document.body.classList.remove("imprimiendo");
+  const b=$("#printAll"); if(b) b.remove();
+}
+
 function presIniciar(){
   if(PRES.listo) return; PRES.listo=true; presGaleria();
+  const unica = PRES_LISTA.length===1;
+  if(unica) $("#presVolver").hidden=true;
   $("#presVolver").addEventListener("click",()=>{
     if(document.fullscreenElement) document.exitFullscreen();
     PRES.abierta=null; $("#presVisor").hidden=true; $("#presGaleria").hidden=false;
   });
   $("#presPrev").addEventListener("click",()=>presIr(-1));
   $("#presNext").addEventListener("click",()=>presIr(1));
-  const notas=()=>{ $("#presNotas").hidden=!$("#presNotasChk").checked; };
-  $("#presNotasChk").addEventListener("change",notas); notas();
-  const fs=()=>{
-    const e=$("#presStage");
-    if(document.fullscreenElement) document.exitFullscreen();
-    else if(e.requestFullscreen) e.requestFullscreen();
+  $("#presIr").addEventListener("change",e=>presSalta(+e.target.value));
+
+  const chk=$("#presNotasChk");
+  try{ chk.checked = localStorage.getItem("e214-notas")==="1"; }catch(_){}
+  const notas=()=>{
+    $("#presNotas").hidden=!chk.checked;
+    try{ localStorage.setItem("e214-notas", chk.checked?"1":"0"); }catch(_){}
   };
-  $("#presFS").addEventListener("click",fs);
+  chk.addEventListener("change",notas); notas();
+
+  const st=$("#presStage"), btnFS=$("#presFS");
+  const fs=()=>{
+    if(document.fullscreenElement) document.exitFullscreen();
+    else if(st.requestFullscreen) st.requestFullscreen();
+  };
+  if(!st.requestFullscreen) btnFS.hidden=true;
+  btnFS.addEventListener("click",fs);
+  document.addEventListener("fullscreenchange",()=>{ btnFS.textContent = document.fullscreenElement ? "Salir de pantalla completa" : "Pantalla completa"; });
+
+  new ResizeObserver(()=>ajustar()).observe(st);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(ajustar);
+  $("#presPrint").addEventListener("click",()=>window.print());
+  window.addEventListener("beforeprint",construirImpresion);
+  window.addEventListener("afterprint",limpiarImpresion);
+
   document.addEventListener("keydown",e=>{
-    if(vistaActual!=="presentaciones" || PRES.abierta==null || /INPUT|TEXTAREA|SELECT/.test(e.target.tagName) || e.target.isContentEditable) return;
+    if(PRES.abierta==null || e.ctrlKey || e.metaKey || e.altKey) return;
+    const tag=e.target.tagName;
+    if(/INPUT|TEXTAREA|SELECT/.test(tag) || e.target.isContentEditable) return;
     const k=e.key;
+    if(k===" " && /BUTTON|A/.test(tag)) return;      // el espacio activa el botón enfocado
     if(k==="ArrowRight"||k==="PageDown"||k===" "){ e.preventDefault(); presIr(1); }
     else if(k==="ArrowLeft"||k==="PageUp"){ e.preventDefault(); presIr(-1); }
-    else if(k==="Home"){ PRES.i=0; presMostrar(); }
-    else if(k==="End"){ PRES.i=99; presMostrar(); }
+    else if(k==="Home"){ e.preventDefault(); presSalta(0); }
+    else if(k==="End"){ e.preventDefault(); presSalta(99); }
     else if(k==="f"||k==="F") fs();
-    else if(k==="n"||k==="N"){ $("#presNotasChk").checked=!$("#presNotasChk").checked; notas(); }
+    else if(k==="n"||k==="N"){ chk.checked=!chk.checked; notas(); }
   });
-  let x0=null, y0=null; const st=$("#presStage");
-  st.addEventListener("pointerdown",e=>{ if(e.pointerType!=="mouse"){ x0=e.clientX; y0=e.clientY; } });
+
+  /* Deslizar para cambiar de diapositiva (no en controles ni en el visor 3D) */
+  let x0=null, y0=null;
+  st.addEventListener("pointerdown",e=>{
+    x0=null;
+    if(e.pointerType==="mouse" || e.target.closest("input,button,select,a,.r3d,.pres-eq")) return;
+    x0=e.clientX; y0=e.clientY;
+  });
   st.addEventListener("pointerup",e=>{
     if(x0==null) return; const dx=e.clientX-x0, dy=e.clientY-y0; x0=null;
     if(Math.abs(dx)>50 && Math.abs(dy)<45) presIr(dx<0?1:-1);
   });
+  st.addEventListener("pointercancel",()=>{ x0=null; });
+
+  window.addEventListener("hashchange",()=>{
+    const m=/^#d(\d+)$/.exec(location.hash);
+    if(m && PRES.abierta!=null && +m[1]-1!==PRES.i) presSalta(+m[1]-1);
+  });
 }
 presIniciar();
+{
+  const m=/^#d(\d+)$/.exec(location.hash);
+  if(PRES_LISTA.length===1) presAbrir(0, m ? +m[1]-1 : 0);   // con una sola presentación se abre directamente
+}
 </script>
 </body>
 </html>
