@@ -995,6 +995,57 @@ figure.pres-fig-wrap{margin:0}
   .pres-stage:not(:fullscreen) .pres-portada .portada-ilus{margin-top:6cqw}
   .pres-stage:not(:fullscreen) .pres-portada{padding-bottom:12cqw}
 }
+
+/* Portada con enunciado completo */
+.pres-portada .portada-txt{max-width:calc(var(--u)*51)}
+.pres-portada .k{margin-bottom:calc(var(--u)*1.2)}
+.pres-portada h1{margin-bottom:calc(var(--u)*1.8)}
+.enunciado-card{
+  background:#fff; border:1px solid var(--linea-fuerte); border-left:max(5px, calc(var(--u)*.5)) solid var(--acento);
+  border-radius:calc(var(--u)*.9); box-shadow:var(--sombra-tarjeta); padding:calc(var(--u)*1.3) calc(var(--u)*2) calc(var(--u)*1.5);
+}
+.enunciado-et{display:block; font:700 max(10px, calc(var(--u)*1.25)) var(--fuente-base); letter-spacing:.2em; text-transform:uppercase; color:var(--acento); margin-bottom:calc(var(--u)*.7)}
+.enunciado-card p{font-size:calc(var(--u)*1.85); line-height:1.5; color:#111; margin:0}
+.enunciado-card b{font-weight:700}
+.pres-portada .portada-ilus{margin:0; text-align:center}
+.pres-portada .portada-ilus figcaption{font:700 max(10px, calc(var(--u)*1.25)) var(--fuente-base); letter-spacing:.18em; text-transform:uppercase; color:var(--tinta-suave); margin-top:calc(var(--u)*.4)}
+.pres-portada .portada-ref{font-size:max(10px, calc(var(--u)*1.3)); line-height:1.5}
+.pres-portada .portada-fecha{display:inline-block; margin-right:calc(var(--u)*1); font-size:max(10px, calc(var(--u)*1.35)); letter-spacing:.16em; color:#111}
+@media (max-width:820px){
+  .pres-stage:not(:fullscreen) .pres-portada .portada-txt{max-width:100%}
+  .pres-stage:not(:fullscreen) .enunciado-card p{font-size:calc(var(--u)*1.9)}
+}
+
+/* =====================================================================
+   v6 · procedimientos paso a paso (número · explicación · ecuación)
+   ===================================================================== */
+.calcs{display:flex; flex-direction:column; gap:calc(var(--u)*1.1); flex:1; justify-content:center; min-width:0}
+.calc{
+  display:grid; grid-template-columns:calc(var(--u)*3.2) minmax(0,.8fr) minmax(0,1.5fr); gap:calc(var(--u)*1.4); align-items:center;
+}
+.calc .n{display:grid; place-items:center; width:calc(var(--u)*3.2); height:calc(var(--u)*3.2); border-radius:50%; background:#111; color:#fff; font-weight:700; font-size:calc(var(--u)*1.7)}
+.calc > p{margin:0; font-size:calc(var(--u)*1.6); line-height:1.35; color:#222}
+.calc > p i{font-style:normal; font-weight:700}
+.calc .pres-eq{margin:0; padding:calc(var(--u)*.8) calc(var(--u)*1.4); font-size:calc(var(--u)*2.1); text-align:left; line-height:1.35}
+.calc .pres-eq .eq-tag{position:static; margin-left:calc(var(--u)*1)}
+.calc .pres-eq .fr{vertical-align:middle}
+.calc.res .n{background:var(--lima); color:#111}
+.calc.res .pres-eq{background:#111; color:#fff; border-color:#111; border-left-color:var(--lima); box-shadow:none; font-weight:600}
+.calc.res .pres-eq b{color:var(--lima)}
+.calc.res .pres-eq .fr i:first-child{border-bottom-color:#fff}
+.calcs.stack .calc{grid-template-columns:calc(var(--u)*3.2) 1fr; grid-template-areas:"n p" "n e"; row-gap:calc(var(--u)*.3)}
+.calcs.stack .calc .n{grid-area:n; align-self:start}
+.calcs.stack .calc > p{grid-area:p}
+.calcs.stack .calc .pres-eq{grid-area:e}
+.c-barras .calcs{align-self:center}
+.c-barras .calcs .calc .pres-eq{font-size:calc(var(--u)*2)}
+
+@media (max-width:820px){
+  .pres-stage:not(:fullscreen) .calc{grid-template-columns:calc(var(--u)*3.2) 1fr; grid-template-areas:"n p" "n e"}
+  .pres-stage:not(:fullscreen) .calc .n{grid-area:n; align-self:start}
+  .pres-stage:not(:fullscreen) .calc > p{grid-area:p}
+  .pres-stage:not(:fullscreen) .calc .pres-eq{grid-area:e}
+}
 </style>
 </head>
 <body>
@@ -1322,6 +1373,38 @@ function ilusPortada(){
 </svg>`;
 }
 
+
+/* ================= Filas de cálculo paso a paso ================= */
+const calc = (n, txt, eq, cl="") => `<div class="calc ${cl}"><span class="n">${n}</span><p>${txt}</p><div class="pres-eq">${eq}</div></div>`;
+
+/* ================= Curva p_A frente a la velocidad de giro ================= */
+function curvaPA(){
+  const RHO=26.3, R=10/12, P0=4231, XM=220, YM=4600;
+  const W=420, H=300, L=58, B=44, T=18, Rr=16, pw=W-L-Rr, ph=H-B-T;
+  const X=r=>L+r/XM*pw, Y=p=>T+ph*(1-p/YM);
+  const pA=r=>P0-0.5*RHO*Math.pow(r*Math.PI/30*R,2);
+  const pts=[]; for(let r=0;r<=206;r+=2) pts.push(`${X(r).toFixed(1)},${Y(Math.max(pA(r),0)).toFixed(1)}`);
+  pts.push(`${X(205.65).toFixed(1)},${Y(0).toFixed(1)}`);
+  const ff='font-family="Helvetica Neue, Helvetica, Arial, sans-serif"';
+  const gy=[0,1000,2000,3000,4000].map(v=>`<line x1="${L}" y1="${Y(v)}" x2="${W-Rr}" y2="${Y(v)}" stroke="#E3E0D6" stroke-width="1"/><text x="${L-8}" y="${Y(v)+4}" font-size="11" text-anchor="end" fill="#5E5E58" ${ff}>${v}</text>`).join("");
+  const gx=[0,50,100,150,200].map(v=>`<line x1="${X(v)}" y1="${T+ph}" x2="${X(v)}" y2="${T+ph+5}" stroke="#111"/><text x="${X(v)}" y="${T+ph+18}" font-size="11" text-anchor="middle" fill="#5E5E58" ${ff}>${v}</text>`).join("");
+  return `<figure class="pres-barras" role="img" aria-label="Presión en A en función de las rpm">
+  <figcaption>p<sub>A</sub> según la velocidad · lbf/ft²</figcaption>
+  <svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+    ${gy}${gx}
+    <line x1="${L}" y1="${T+ph}" x2="${W-Rr}" y2="${T+ph}" stroke="#111" stroke-width="1.5"/>
+    <line x1="${L}" y1="${T}" x2="${L}" y2="${T+ph}" stroke="#111" stroke-width="1.5"/>
+    <line x1="${L}" y1="${Y(2116)}" x2="${W-Rr}" y2="${Y(2116)}" stroke="#B3372E" stroke-width="1.6" stroke-dasharray="6 4"/>
+    <text x="${W-Rr-4}" y="${Y(2116)-6}" font-size="11" text-anchor="end" fill="#B3372E" ${ff}>p atm = 2116</text>
+    <polyline points="${pts.join(" ")}" fill="none" stroke="#147A46" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="${X(0)}" cy="${Y(P0)}" r="5" fill="#111"/><text x="${X(0)+14}" y="${Y(P0)-9}" font-size="12" font-weight="700" fill="#111" ${ff}>reposo · 4231</text>
+    <circle cx="${X(180)}" cy="${Y(pA(180))}" r="6" fill="#147A46"/><text x="${X(180)-8}" y="${Y(pA(180))-12}" font-size="12" font-weight="700" text-anchor="end" fill="#0E4F2E" ${ff}>180 rpm · 986</text>
+    <circle cx="${X(205.65)}" cy="${Y(0)}" r="6" fill="#B3372E"/><text x="${X(205.65)}" y="${Y(0)-12}" font-size="12" font-weight="700" text-anchor="end" fill="#B3372E" ${ff}>206 rpm · 0</text>
+    <text x="${L+pw/2}" y="${H-6}" font-size="12" text-anchor="middle" fill="#5E5E58" ${ff}>velocidad de giro (rpm)</text>
+  </svg>
+</figure>`;
+}
+
 /* ================= Diapositivas ================= */
 const PRES = {abierta:null, i:0, listo:false};
 
@@ -1331,16 +1414,18 @@ const PRES_LISTA = [{
   slides:[
   /* 1 · Portada */
   {t:"Portada", html:()=>`<div class="pres-slide pres-portada">
-      <div class="portada-ilus">${ilusPortada()}</div>
+      <figure class="portada-ilus">${ilusPortada()}<figcaption>Figura E2.14</figcaption></figure>
       <div class="portada-txt">
-        <p class="k">Mecánica de fluidos · Fluido como sólido rígido en rotación</p>
+        <p class="k">Mecánica de fluidos · White, cap. 2</p>
         <h1>Ejemplo 2.14</h1>
-        <p class="portada-sub">Tubo en U con mercurio que rota: ¿cuánto baja la presión en el punto A?</p>
-        <div class="portada-meta"><span class="portada-fecha">${FECHA}</span></div>
+        <div class="enunciado-card">
+          <span class="enunciado-et">Enunciado</span>
+          <p>Un tubo en U con un radio de <b>10 in</b> y que contiene mercurio hasta una altura de <b>30 in</b>, gira alrededor de su centro a <b>180 rpm</b> hasta que el fluido alcanza el movimiento como sólido rígido. El diámetro del tubo se considera despreciable. La presión atmosférica es de <b>2116 lbf/ft²</b>. <b>Calcule la presión en el punto A</b> en las condiciones anteriores. Véase la Figura E2.14.</p>
+        </div>
       </div>
-      <p class="portada-ref">Referencia: ${REF_APA}<br>Tabla 2.1, p. 80 — peso específico del mercurio.</p>
+      <p class="portada-ref"><span class="portada-fecha">${FECHA}</span> Referencia: ${REF_APA} Tabla 2.1, p. 80.</p>
     </div>`,
-   nota:"Preséntate y di de qué trata: un fluido que gira como un sólido rígido, y cómo eso cambia la presión. Menciona la fuente (White, 2004) y que el dato del mercurio sale de la Tabla 2.1, p. 80."},
+   nota:"Preséntate y lee el enunciado completo: un tubo en U con mercurio que gira a 180 rpm; hay que calcular la presión en A. Señala en la ilustración los puntos A y B y la superficie libre imaginaria (la parábola verde). Menciona la fuente (White, 2004) y que el dato del mercurio sale de la Tabla 2.1, p. 80."},
 
   /* 2 · Enunciado y esquema */
   {t:"Enunciado y esquema", sec:"Planteamiento", html:()=>`<div class="pres-slide">
@@ -1395,34 +1480,44 @@ const PRES_LISTA = [{
     </div>`,
    nota:"Antes de calcular, muestra el mapa de la solución: cuatro pasos. Insiste en que la única presión que conocemos de entrada es la de B, que está abierto a la atmósfera; con ella se fija la constante C y de ahí sale todo lo demás."},
 
-  /* 4 · Modelo */
-  {t:"Modelo: cuerpo rígido en rotación", sec:"Teoría", html:()=>`<div class="pres-slide">
-      <h2><small>Modelo</small><span>Cuerpo rígido en rotación</span></h2>
-      <div class="pres-eq"><b>a</b> = −Ω² r <b>e</b><sub>r</sub></div>
-      <div class="pres-eq">∇p = ρ(<b>g</b> − <b>a</b>) &nbsp;⟹&nbsp; ${prFr("∂p","∂r")} = ρΩ²r, &nbsp; ${prFr("∂p","∂z")} = −ρg</div>
-      <div class="pres-eq">p = C − ρ g z + ½ ρ Ω² r² &nbsp;<span class="eq-tag">(Ecs. 2.62b y 2.63)</span></div>
-      <ul>
-        <li>Las superficies de presión constante son paraboloides: <i>z</i> = cte + Ω²r²/2g.</li>
-        <li>Inclinación de la superficie: tan θ = Ω²r / g.</li>
-      </ul>
-    </div>`,
-   nota:"Cada partícula tiene aceleración centrípeta hacia el eje. Al aplicar la ecuación del movimiento resultan dos derivadas parciales que se integran. C es la constante que hay que fijar con una condición conocida: la presión atmosférica en B."},
-
-  /* 5 · Datos */
-  {t:"Datos y conversión de unidades", sec:"Datos", html:()=>`<div class="pres-slide">
-      <h2><small>Datos</small><span>Conversión de unidades</span></h2>
-      <div class="datos-grid">
-        <div class="dato clave"><em>Velocidad angular</em><b>Ω = 18,85 rad/s</b><span>180 rpm · ${prFr("2π rad/rev","60 s/min")}</span></div>
-        <div class="dato clave"><em>Densidad del mercurio</em><b>ρ = 26,3 slug/ft³</b><span>ρg = 846 lbf/ft³ <span class="ref-lnk">Tabla 2.1, p. 80</span> ÷ 32,2 ft/s²</span></div>
-        <div class="dato"><em>Radio del tubo</em><b>R = 10/12 ft</b><span>10 in</span></div>
-        <div class="dato"><em>Profundidad de A</em><b>2,5 ft</b><span>30 in bajo el nivel de B</span></div>
-        <div class="dato"><em>Presión atmosférica</em><b>2116 lbf/ft²</b><span>p<sub>atm</sub>, aplicada en B</span></div>
-        <div class="dato"><em>Inclinación de la superficie</em><b>θ ≈ 84°</b><span>tan θ = Ω²R/g ≈ 9,2</span></div>
+  /* 4 · Modelo 1 */
+  {t:"Modelo 1: ecuación del movimiento", sec:"Teoría", html:()=>`<div class="pres-slide">
+      <h2><small>Modelo · 1 de 3</small><span>De Newton a las derivadas parciales</span></h2>
+      <div class="calcs">
+        ${calc(1,`Cada partícula describe una circunferencia de radio <i>r</i> con Ω constante: solo tiene <b>aceleración centrípeta</b>.`,`<b>a</b> = −Ω² r <b>e</b><sub>r</sub>`)}
+        ${calc(2,`Ecuación del movimiento de un fluido sin esfuerzos cortantes (cuerpo rígido).`,`∇p = ρ(<b>g</b> − <b>a</b>)`)}
+        ${calc(3,`La gravedad apunta hacia abajo, <b>g</b> = −g <b>k</b>. Se sustituye <b>g</b> y <b>a</b>.`,`∇p = ρ(−g <b>k</b> + Ω² r <b>e</b><sub>r</sub>)`)}
+        ${calc(4,`Se separan las componentes. Por simetría no hay variación con θ.`,`${prFr("∂p","∂r")} = ρΩ²r, &nbsp; ${prFr("∂p","∂z")} = −ρg, &nbsp; ${prFr("∂p","∂θ")} = 0`,"res")}
       </div>
     </div>`,
-   nota:"Aquí hay que cuidar las unidades: pasar rpm a rad/s, y obtener la densidad a partir del peso específico dividiendo entre g. El 846 lbf/ft³ sale de la Tabla 2.1 del libro (p. 80), que muestro en la siguiente diapositiva. El ángulo de 84° muestra que la superficie queda casi vertical, pero el tubo es tan delgado que no importa."},
+   nota:"Empieza por la física: en rotación rígida las partículas no se mueven unas respecto de otras, así que no hay esfuerzos cortantes y solo importan la presión y la gravedad. La aceleración de cada partícula apunta al eje y vale Ω²r. Se sustituye en ∇p = ρ(g − a): el signo menos de a, que ya es negativo, da un término positivo Ω²r en la dirección radial. Al separar componentes quedan dos ecuaciones: la presión crece hacia afuera (rotación) y decrece hacia arriba (gravedad)."},
 
-  /* 6 · Tabla 2.1 */
+  /* 5 · Modelo 2 */
+  {t:"Modelo 2: integración", sec:"Teoría", html:()=>`<div class="pres-slide">
+      <h2><small>Modelo · 2 de 3</small><span>Integración: p(r, z)</span></h2>
+      <div class="calcs">
+        ${calc(1,`Se integra la ecuación radial respecto de <i>r</i>. En lugar de una constante va una función de <i>z</i>.`,`p = ½ρΩ²r² + f(z)`)}
+        ${calc(2,`Se deriva ese resultado respecto de <i>z</i> y se compara con la ecuación vertical.`,`${prFr("∂p","∂z")} = f′(z) = −ρg`)}
+        ${calc(3,`Se integra f′(z): aparece la constante de integración <b>C</b>.`,`f(z) = −ρg z + C`)}
+        ${calc(4,`Se juntan los dos términos: presión en cualquier punto del fluido <span class="eq-tag">(Ec. 2.62b)</span>.`,`p = C − ρ g z + ½ ρ Ω² r²`,"res")}
+      </div>
+      <div class="pres-nota-b info"><b>C</b> es la constante de integración: se fija con un punto donde la presión se conozca (aquí, el punto B abierto a la atmósfera).</div>
+    </div>`,
+   nota:"Es una integración parcial. Primero en r: ρΩ²r integra a ½ρΩ²r², y la constante de integración puede depender de z. Derivar de nuevo respecto de z y comparar con la ecuación vertical obliga a que esa función sea −ρg z más una verdadera constante, C. El resultado tiene dos partes con significado físico: el término −ρgz es la hidrostática de siempre, y ½ρΩ²r² es el aumento de presión hacia afuera debido a la rotación. C se determinará con una condición de contorno."},
+
+  /* 6 · Modelo 3 */
+  {t:"Modelo 3: superficies de presión constante", sec:"Teoría", html:()=>`<div class="pres-slide">
+      <h2><small>Modelo · 3 de 3</small><span>Superficies de presión constante</span></h2>
+      <div class="calcs">
+        ${calc(1,`En una superficie con p = constante, la variación total de presión es nula: dp = 0.`,`dp = ρΩ²r dr − ρg dz = 0`)}
+        ${calc(2,`Se despeja la pendiente de la superficie en el plano (r, z).`,`${prFr("dz","dr")} = ${prFr("Ω²r","g")} = tan θ`)}
+        ${calc(3,`Se integra: es un <b>paraboloide de revolución</b> con vértice en el eje.`,`z = ${prFr("Ω²r²","2g")} + cte`)}
+        ${calc(4,`Inclinación en el borde del tubo, r = R = 10/12 ft:`,`tan θ = ${prFr("(18,85)²(10/12)","32,2")} = 9,2 &nbsp;⟹&nbsp; θ = arctan 9,2 ≈ 84°`,"res")}
+      </div>
+    </div>`,
+   nota:"Una superficie de presión constante cumple dp = 0, y como conocemos las dos derivadas parciales, dp es la suma de ellas por sus diferenciales. Despejando, la pendiente es Ω²r/g y crece linealmente con r: por eso la superficie es un paraboloide. La superficie libre de un líquido que gira es una de esas superficies. En el borde del tubo la tangente vale 9,2, es decir, unos 84 grados: casi vertical. Eso solo es posible porque el tubo es delgado."},
+
+  /* 7 · Tabla 2.1 */
   {t:"Tabla 2.1 del libro (p. 80)", sec:"Datos", html:()=>`<div class="pres-slide">
       <h2><small>Tabla 2.1 · p. 80</small><span>De dónde sale ρg del mercurio</span></h2>
       <div class="cols c-tabla">
@@ -1462,7 +1557,33 @@ const PRES_LISTA = [{
     </div>`,
    nota:"Enseña la tabla y detente en la fila del mercurio: 846 lbf/ft³ en el sistema inglés y 133.100 N/m³ en el SI. Explica que la densidad que entra en la ecuación de presión se obtiene dividiendo el peso específico entre g; en unidades inglesas eso da 26,3 slug/ft³. En SI, 133.100/9,81 ≈ 13.569 kg/m³, que es el valor clásico del mercurio."},
 
-  /* 7 · Hipótesis */
+  /* 8 · Conversión */
+  {t:"Conversión de unidades paso a paso", sec:"Datos", html:()=>`<div class="pres-slide">
+      <h2><small>Datos</small><span>Conversión de unidades paso a paso</span></h2>
+      <div class="calcs">
+        ${calc(1,`Velocidad angular: rpm → rad/s (1 rev = 2π rad; 1 min = 60 s).`,`Ω = 180 · ${prFr("2π","60")} = ${prFr("1131","60")} = <b>18,85 rad/s</b>`)}
+        ${calc(2,`Densidad: la Tabla 2.1 da el peso específico ρg del mercurio, y ρ = ρg/g.`,`ρ = ${prFr("ρg","g")} = ${prFr("846 lbf/ft³","32,2 ft/s²")} = <b>26,3 slug/ft³</b>`)}
+        ${calc(3,`Longitudes en pies (12 in = 1 ft), porque la presión está en lbf/ft².`,`R = ${prFr("10","12")} = <b>0,833 ft</b>, &nbsp; z<sub>A</sub> = −${prFr("30","12")} = <b>−2,5 ft</b>`)}
+        ${calc(4,`Cantidades que se repetirán en los cálculos.`,`Ω² = (18,85)² = 355,3 rad²/s², &nbsp; R² = (10/12)² = 0,694 ft²`)}
+      </div>
+    </div>`,
+   nota:"Antes de sustituir, ordena las unidades. Primero Ω: 180 vueltas por minuto, cada vuelta son 2π radianes y cada minuto 60 segundos; sale 18,85 rad/s. Segundo la densidad: la tabla da peso específico, ρ por g, así que se divide entre 32,2 y sale 26,3 slug por pie cúbico. Tercero, todo en pies porque la presión se expresa en libras fuerza por pie cuadrado. Calcula una sola vez Ω² y R², que se usan varias veces."},
+
+  /* 9 · Resumen de datos */
+  {t:"Resumen de datos", sec:"Datos", html:()=>`<div class="pres-slide">
+      <h2><small>Datos</small><span>Datos en unidades consistentes</span></h2>
+      <div class="datos-grid">
+        <div class="dato clave"><em>Velocidad angular</em><b>Ω = 18,85 rad/s</b><span>180 rpm · ${prFr("2π rad/rev","60 s/min")}</span></div>
+        <div class="dato clave"><em>Densidad del mercurio</em><b>ρ = 26,3 slug/ft³</b><span>ρg = 846 lbf/ft³ <span class="ref-lnk">Tabla 2.1, p. 80</span> ÷ 32,2 ft/s²</span></div>
+        <div class="dato"><em>Radio del tubo</em><b>R = 10/12 ft</b><span>10 in</span></div>
+        <div class="dato"><em>Profundidad de A</em><b>2,5 ft</b><span>30 in bajo el nivel de B</span></div>
+        <div class="dato"><em>Presión atmosférica</em><b>2116 lbf/ft²</b><span>p<sub>atm</sub>, aplicada en B</span></div>
+        <div class="dato"><em>Inclinación de la superficie</em><b>θ ≈ 84°</b><span>tan θ = Ω²R/g ≈ 9,2</span></div>
+      </div>
+    </div>`,
+   nota:"Resumen de los datos ya convertidos, que se usan en los pasos siguientes: Ω, ρ, R, la profundidad de A, la presión atmosférica y el ángulo de la superficie. Marca en verde los dos que más cuidado exigen: Ω y la densidad."},
+
+  /* 10 · Hipótesis */
   {t:"Hipótesis y condición de contorno", sec:"Resolución", html:()=>`<div class="pres-slide">
       <h2><small>Hipótesis</small><span>Origen de coordenadas en el nivel de B</span></h2>
       <div class="cols c-barras">
@@ -1479,32 +1600,27 @@ const PRES_LISTA = [{
     </div>`,
    nota:"Esta es la hipótesis que justifica el problema: con diámetro despreciable, el nivel del líquido en el brazo vertical no cambia al girar. Eso nos da una presión conocida en B. Señala en la figura el origen de coordenadas O en el nivel de B, sobre el eje, y cómo A queda 30 in más abajo."},
 
-  /* 8 · Paso 1 */
+  /* 11 · Paso 1 */
   {t:"Paso 1: la constante C", sec:"Resolución", html:()=>`<div class="pres-slide">
       <h2><small>Paso 1</small><span>Constante C con la condición en B</span></h2>
-      <div class="cols c-barras">
-        <div class="col-eqs">
-          <div class="pres-eq">p<sub>B</sub> = C − 0 + ½ρΩ²R²</div>
-          <div class="pres-eq">2116 = C + ½ (26,3) ${prFr("10","12")}<sup>2</sup> (18,85)<sup>2</sup> &nbsp;=&nbsp; C + 3245</div>
-          <div class="pres-res">C = −1129 lbf/ft²</div>
-        </div>
-        <div class="pres-chart">${barrasP("Cómo sale C · lbf/ft²",[
-          {et:"p<sub>atm</sub> en B",v:2116,txt:"2116",cl:"b-gris"},
-          {et:"½ρΩ²R²",v:3245,txt:"3245",cl:"b-neg"},
-          {et:"C = 2116 − 3245",v:1129,txt:"−1129",cl:"b-rojo"}])}</div>
+      <div class="calcs">
+        ${calc(1,`Se evalúa la ecuación de presión en B: r = R, z = 0.`,`p<sub>B</sub> = C − ρg(0) + ½ρΩ²R² = C + ½ρΩ²R²`)}
+        ${calc(2,`Condición de contorno: B está abierto a la atmósfera.`,`p<sub>B</sub> = p<sub>atm</sub> = 2116 lbf/ft²`)}
+        ${calc(3,`Término de rotación. Unidades: slug/ft³ · ft² · rad²/s² = lbf/ft².`,`½ρΩ²R² = ½ (26,3) (10/12)<sup>2</sup> (18,85)<sup>2</sup> = ½ (26,3)(0,694)(355,3) = 3245 lbf/ft²`)}
+        ${calc(4,`Se igualan y se despeja C.`,`2116 = C + 3245 &nbsp;⟹&nbsp; <b>C = −1129 lbf/ft²</b>`,"res")}
       </div>
     </div>`,
-   nota:"Sustituye r = R y z = 0 en la ecuación de presión. El término de rotación vale 3245 lbf/ft²: es mayor que la atmosférica, y por eso C sale negativa, −1129. El gráfico lo muestra: la barra negra supera a la gris, y la diferencia roja es C."},
+   nota:"Sustituye r = R y z = 0: el término de gravedad desaparece porque z es cero, y queda C más el término de rotación. En B conocemos la presión: es la atmosférica. Calcula el término de rotación paso a paso: un medio por la densidad, por R cuadrado, por Ω cuadrado; da 3245. Comprueba las unidades, que salen en lbf por pie cuadrado. Como 3245 es mayor que 2116, C sale negativa: −1129."},
 
-  /* 9 · Paso 2 */
+  /* 12 · Paso 2 */
   {t:"Paso 2: presión en A", sec:"Resolución", html:()=>`<div class="pres-slide">
       <h2><small>Paso 2</small><span>Presión en el punto A</span></h2>
       <div class="cols c-barras">
-        <div class="col-eqs">
-          <div class="pres-eq">(r, z) = (0, −30 in) &nbsp;⟹&nbsp; p<sub>A</sub> = C − ρg·z</div>
-          <div class="pres-eq">p<sub>A</sub> = −1129 − (846)(−${prFr("30","12")}) = −1129 + 2115</div>
-          <div class="pres-res">p<sub>A</sub> = 986 lbf/ft²</div>
-          <p class="pres-aside">Menor que la presión atmosférica (2116 lbf/ft²).</p>
+        <div class="calcs stack">
+          ${calc(1,`A está sobre el eje (r = 0) y 30 in bajo el origen.`,`(r, z) = (0, −2,5 ft)`)}
+          ${calc(2,`Con r = 0 el término de rotación se anula.`,`p<sub>A</sub> = C − ρg z + ½ρΩ²(0)² = C − ρg z`)}
+          ${calc(3,`Se sustituyen C, ρg y z.`,`p<sub>A</sub> = −1129 − (846)(−2,5) = −1129 + 2115`)}
+          ${calc(4,`Resultado <span class="eq-tag">Resp.</span>`,`p<sub>A</sub> = <b>986 lbf/ft²</b>`,"res")}
         </div>
         <div class="pres-chart">${barrasP("Presión en A · lbf/ft²",[
           {et:"Atmosférica",v:2116,txt:"2116",cl:"b-gris",sinMarca:true},
@@ -1512,33 +1628,29 @@ const PRES_LISTA = [{
           {et:"Girando<br>180 rpm",v:986,txt:"986",cl:"b-verde"}],2116)}</div>
       </div>
     </div>`,
-   nota:"Resultado principal. En el eje r = 0 el término de rotación desaparece, queda C más el efecto de la profundidad. 986 es menos de la mitad de la presión atmosférica: pregunta natural, ¿por qué baja tanto? Se explica en la siguiente diapositiva."},
+   nota:"A está en el eje, así que r vale cero y el término de rotación desaparece: solo queda C menos ρg por z. Con z = −2,5 pies, el término −ρgz es positivo, 846 por 2,5 igual a 2115. Sumando con C: −1129 + 2115 = 986. El gráfico lo compara con la atmosférica y con la presión en reposo. 986 es menos de la mitad de la atmosférica; la pregunta natural es por qué baja tanto, y se responde en la siguiente diapositiva."},
 
-  /* 10 · Verificación */
+  /* 13 · Verificación */
   {t:"Verificación independiente", sec:"Verificación", html:()=>`<div class="pres-slide">
       <h2><small>Verificación</small><span>¿Por qué p<sub>A</sub> es menor que p<sub>atm</sub>?</span></h2>
-      <div class="cols">
-        <div>
-          <div class="pres-eq">h = ${prFr("Ω²R²","2g")} = ${prFr("(18,85)²(10/12)²","2(32,2)")} <br>≈ 3,83 ft ≈ <b>46 in</b></div>
-          <ul>
-            <li>Desde B, el paraboloide cae <b>46 in</b>: su vértice queda 16 in <b>por debajo de A</b>.</li>
-            <li>Entonces p<sub>A</sub> ≈ p<sub>atm</sub> − 16 inHg.</li>
-            <li>16 in de Hg ⟹ ${prFr("16","12")}(846) ≈ 1128 lbf/ft².</li>
-          </ul>
-        </div>
-        <div class="pres-fig-wrap">${presFig(180,54)}</div>
+      <div class="calcs">
+        ${calc(1,`Altura del paraboloide medida desde B (superficie libre imaginaria).`,`h = ${prFr("Ω²R²","2g")} = ${prFr("(18,85)²(10/12)²","2(32,2)")}`)}
+        ${calc(2,`Se evalúa y se pasa a pulgadas (el libro redondea a 3,85 ft).`,`h = ${prFr("(355,3)(0,694)","64,4")} = 3,83 ft ≈ <b>46 in</b>`)}
+        ${calc(3,`El vértice queda más abajo que A: A está a 30 in de B.`,`46 − 30 = <b>16 in</b> por debajo de A`)}
+        ${calc(4,`Entonces p<sub>A</sub> es 16 inHg menor que la atmosférica.`,`Δp = ${prFr("16","12")}(846) = 1128 lbf/ft²`)}
+        ${calc(5,`Se compara con el resultado del Paso 2.`,`p<sub>A</sub> ≈ 2116 − 1128 = 988 ≈ 986 lbf/ft² ✓`,"res")}
       </div>
-      <div class="pres-res sm">2116 − 1128 ≈ 988 ≈ 986 lbf/ft² ✓</div>
     </div>`,
-   nota:"Comprobación independiente: la caída de presión desde B es la altura del paraboloide, h = Ω²R²/2g. Con los números da 3,83 ft; el libro escribe 3,85 ft, ambos son unos 46 in, así que no cambia nada. Como el vértice queda 16 in bajo A, la presión en A es 16 pulgadas de mercurio menor que la atmosférica, y eso concuerda con 986."},
+   nota:"Comprobación independiente, sin usar C. La caída de presión desde B hasta el vértice del paraboloide es la altura h = Ω²R²/2g, que da 3,83 pies, unas 46 pulgadas; el libro escribe 3,85, es solo redondeo. Como A está a 30 pulgadas de B, el vértice queda 16 pulgadas bajo A. Esa diferencia, expresada como columna de mercurio, es 16/12 por 846, 1128 lbf/ft², y restada de la atmosférica da 988: coincide con 986 salvo por el redondeo. Vuelve a la figura de la diapositiva 2 para señalar el vértice por debajo de A."},
 
-  /* 11 · Comparación */
+  /* 14 · Comparación */
   {t:"Comparación con el reposo", sec:"Análisis", html:()=>`<div class="pres-slide">
       <h2><small>Comparación</small><span>Efecto de la rotación sobre p<sub>A</sub></span></h2>
       <div class="cols c-barras">
-        <div class="col-eqs">
-          <div class="pres-eq">En reposo: &nbsp;p<sub>A</sub> = 2116 − 846(−${prFr("30","12")}) = <b>4231 lbf/ft²</b></div>
-          <div class="pres-eq">Girando: &nbsp;p<sub>A</sub> = <b>986 lbf/ft²</b> &nbsp;⟹&nbsp; reducción de ${prFr("4231 − 986","4231")} ≈ <b>77 %</b></div>
+        <div class="calcs stack">
+          ${calc(1,`En reposo (Ω = 0) solo actúa la hidrostática desde B.`,`p<sub>A</sub> = 2116 − 846(−2,5) = <b>4231 lbf/ft²</b>`)}
+          ${calc(2,`Girando a 180 rpm (resultado del Paso 2).`,`p<sub>A</sub> = <b>986 lbf/ft²</b>`)}
+          ${calc(3,`Reducción relativa de la presión en A.`,`${prFr("4231 − 986","4231")} = 0,77 ≈ <b>77 %</b>`,"res")}
         </div>
         <div class="pres-chart">${barrasP("Presión en A · lbf/ft²",[
           {et:"En reposo",v:4231,txt:"4231",cl:"b-neg"},
@@ -1547,12 +1659,26 @@ const PRES_LISTA = [{
       </div>
       <ul>
         <li>Si se gira más rápido, p<sub>A</sub> sigue bajando hasta casi cero y aparece <b>cavitación</b>.</li>
-        <li>Con estos datos, p<sub>A</sub> = 0 cuando Ω ≈ 21,5 rad/s ≈ <b>206 rpm</b> <small class="muted">(cálculo complementario, no está en el libro)</small>.</li>
       </ul>
     </div>`,
-   nota:"En reposo la presión en A es 4231, porque soporta los 30 in de mercurio más la atmósfera. Al girar baja al 23 por ciento de ese valor. El dato de 206 rpm lo calculé yo: p_A = 4231 − ½ρΩ²R² y se iguala a cero (Ω ≈ 21,5 rad/s). Dilo como cálculo complementario por si te preguntan."},
+   nota:"En reposo no hay rotación y el mercurio solo pesa: 2116 más 846 por 2,5 pies da 4231. Al girar a 180 rpm la presión en A cae a 986: se reduce en 77 por ciento. El gráfico muestra también la atmosférica como referencia: en reposo A está muy por encima de ella y al girar queda por debajo. Si se sigue aumentando la velocidad, la presión seguirá bajando hasta casi cero, y eso lo calculamos en la siguiente diapositiva."},
 
-  /* 12 · Simulación 3D */
+  /* 15 · Velocidad límite */
+  {t:"Velocidad límite (p_A = 0)", sec:"Análisis", html:()=>`<div class="pres-slide">
+      <h2><small>Cálculo complementario</small><span>¿A qué velocidad p<sub>A</sub> llega a cero?</span></h2>
+      <div class="cols c-barras">
+        <div class="calcs stack">
+          ${calc(1,`Con B fijo en p<sub>atm</sub>, la presión en A depende de Ω.`,`p<sub>A</sub> = 4231 − ½ρΩ²R²`)}
+          ${calc(2,`Condición de presión nula y despeje de Ω².`,`Ω² = ${prFr("2(4231)","ρR²")} = ${prFr("8462","(26,3)(0,694)")} = 463`)}
+          ${calc(3,`Raíz cuadrada y conversión a rpm.`,`Ω = 21,5 rad/s &nbsp;⟹&nbsp; ${prFr("21,5 · 60","2π")} ≈ <b>206 rpm</b>`,"res")}
+        </div>
+        <div class="pres-chart">${curvaPA()}</div>
+      </div>
+      <div class="pres-nota-b nota-sm">No está en el libro: es un cálculo propio. En la práctica, con p<sub>A</sub> ≈ 0 el mercurio cavitaría (su presión de vapor es casi nula).</div>
+    </div>`,
+   nota:"Cálculo complementario, no es del libro; dilo así. Con B siempre a la presión atmosférica, la presión en A es 4231 menos el término de rotación. Se iguala a cero, se despeja Ω², que vale 463, y su raíz es 21,5 radianes por segundo, unas 206 rpm. La curva verde muestra cómo cae la presión al aumentar las rpm: el ejemplo a 180 rpm está cerca del final. Más allá de 206 rpm el modelo ya no es válido porque el líquido cavitaría."},
+
+  /* 16 · Simulación 3D */
   {t:"Simulación 3D", sec:"Análisis", html:()=>`<div class="pres-slide">
       <h2><small>Simulación 3D</small><span>¿Qué pasa si cambia Ω?</span></h2>
       <div class="cols c-sim">
@@ -1615,7 +1741,7 @@ const PRES_LISTA = [{
      iniciarRot3D();
    }},
 
-  /* 13 · Errores frecuentes */
+  /* 17 · Errores frecuentes */
   {t:"Errores frecuentes", sec:"Cierre", html:()=>`<div class="pres-slide">
       <h2><small>Cierre</small><span>Errores frecuentes</span></h2>
       <div class="err-grid">
@@ -1627,7 +1753,7 @@ const PRES_LISTA = [{
     </div>`,
    nota:"Cierra con los errores típicos al resolver este tipo de problema. Los tres primeros son de unidades; el cuarto es conceptual: la parábola roja no es la superficie del mercurio, es la superficie libre imaginaria que pasaría por B. Si preguntan por qué sale 32 veces mayor: es el valor de g en ft/s²."},
 
-  /* 14 · Conclusiones */
+  /* 18 · Conclusiones */
   {t:"Conclusiones", sec:"Cierre", html:()=>`<div class="pres-slide">
       <h2><small>Conclusiones</small><span>Lo que hay que recordar</span></h2>
       <div class="cols c-concl">
