@@ -130,11 +130,8 @@ section.panel{
 .pres-portada .k{font:500 1.8cqw "IBM Plex Mono",monospace; letter-spacing:.14em; text-transform:uppercase; color:#9be15d; margin:0 0 1.6cqw}
 .pres-portada h1{font:700 6.4cqw/1.05 "Space Grotesk","Archivo",sans-serif; margin:0 0 1.2cqw}
 .pres-portada h3{font:500 2.8cqw/1.3 "Space Grotesk","Archivo",sans-serif; margin:0 0 3cqw; max-width:80%}
-.pres-portada .who{font-size:2.2cqw; margin:0}
-.pres-portada .src{font-size:1.5cqw; opacity:.7; margin-top:2cqw}
-
-.pres-editable{border-bottom:.2cqw dashed #9be15d88; padding:0 .4cqw; outline:none}
-.pres-editable:focus{background:#ffffff22}
+.pres-portada .who{font-size:2.2cqw; margin:0; font-family:"IBM Plex Mono",monospace; letter-spacing:.04em}
+.pres-portada .src{font-size:1.5cqw; opacity:.78; margin-top:2cqw; line-height:1.5; max-width:85%}
 
 .pres-tabla{border-collapse:collapse; width:100%; font-size:2cqw}
 .pres-tabla td{padding:.7cqw 1.2cqw; border-bottom:.12cqw solid var(--linea);}
@@ -150,6 +147,12 @@ section.panel{
 .pres-prog i{display:block; height:100%; width:0; background:var(--verde); transition:width .2s}
 .pres-notas{margin-top:10px; padding:12px 14px; border:1px dashed var(--linea-fuerte); border-radius:10px; background:var(--papel); font-size:.9rem; line-height:1.5}
 .pres-notas b{font:600 .72rem "IBM Plex Mono",monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--tinta-suave)}
+
+.pres-ref{
+  margin-top:auto; padding-top:1.2cqw; border-top:.12cqw solid var(--linea);
+  font:500 1.3cqw "Archivo",sans-serif; color:var(--tinta-suave); line-height:1.45;
+}
+.pres-ref b{font-weight:700; color:var(--tinta)}
 
 @supports not (width:1cqw){ .pres-slide{font-size:14px} .pres-slide h2{font-size:22px} }
 
@@ -171,7 +174,7 @@ section.panel{
 .r3d .r3d-err{padding:2cqw; color:#B3372E; font:500 1.6cqw "Archivo",sans-serif}
 
 /* Pie */
-body > footer{max-width:1200px; margin:18px auto 0; color:var(--tinta-suave); font-size:.78rem; font-family:"IBM Plex Mono",monospace}
+body > footer{max-width:1200px; margin:18px auto 0; color:var(--tinta-suave); font-size:.78rem; font-family:"IBM Plex Mono",monospace; line-height:1.55}
 </style>
 </head>
 <body>
@@ -202,7 +205,8 @@ body > footer{max-width:1200px; margin:18px auto 0; color:var(--tinta-suave); fo
 </section>
 
 <footer>
-  Problema resuelto del texto del curso (Ejemplo 2.14, figura E2.14). La simulación 3D usa Three.js y se detiene sola al cambiar de diapositiva.
+  Referencia: White, F. M. (2004). <i>Mecánica de fluidos</i> (5.ª ed.). McGraw-Hill Interamericana.<br>
+  La simulación 3D usa Three.js y se detiene sola al cambiar de diapositiva.
 </footer>
 
 <script>
@@ -210,6 +214,7 @@ body > footer{max-width:1200px; margin:18px auto 0; color:var(--tinta-suave); fo
 const $ = s => document.querySelector(s);
 function evento(nombre, params){ if(typeof gtag === "function") gtag('event', nombre, params||{}); }
 const prFr = (a,b)=>`<span class="fr"><i>${a}</i><i>${b}</i></span>`;
+const REF_APA = 'White, F. M. (2004). <i>Mecánica de fluidos</i> (5.ª ed.). McGraw-Hill Interamericana.';
 
 /* ================= Figura SVG del Ejemplo 2.14 =================
    Tubo en U (R = 10 in, fondo a 30 in bajo B), nivel del líquido en B,
@@ -432,17 +437,22 @@ const PRES_LISTA = [{
   id:"e214", materia:"Mecánica de fluidos", titulo:"Ejemplo 2.14 · Tubo en U que rota",
   desc:"Presión en el punto A de un tubo en U con mercurio que gira a 180 rpm, con comprobación y simulación 3D.",
   slides:[
+  /* ==== Portada ==== */
   {html:()=>`<div class="pres-slide pres-portada"><p class="k">Mecánica de fluidos · Fluido como sólido rígido en rotación</p>
       <h1>Ejemplo 2.14</h1><h3>Tubo en U con mercurio que rota: ¿cuánto baja la presión en el punto A?</h3>
-      <p class="who"><span class="pres-editable" contenteditable="true" spellcheck="false" data-key="nombre">Tu nombre</span> · <span class="pres-editable" contenteditable="true" spellcheck="false" data-key="curso">Curso · fecha</span></p>
-      <p class="src">Problema resuelto del texto del curso (Ejemplo 2.14, figura E2.14)</p></div>`,
-   nota:"Preséntate y di de qué trata: un fluido que gira como un sólido rígido, y cómo eso cambia la presión. Haz clic en tu nombre y en el curso para escribirlos; se guardan en este navegador."},
+      <p class="who">30/10/2026</p>
+      <p class="src">Referencia: ${REF_APA}<br>Ejemplo 2.14, figura E2.14.</p></div>`,
+   nota:"Preséntate y di de qué trata: un fluido que gira como un sólido rígido, y cómo eso cambia la presión. Menciona la fuente (White, 2004) y la fecha de la exposición."},
+
+  /* ==== Enunciado ==== */
   {html:()=>`<div class="pres-slide"><h2><small>Enunciado</small>¿Qué se pide?</h2>
       <ul><li>Tubo en U de <b>radio 10 in</b> con <b>mercurio</b> hasta una altura de <b>30 in</b>.</li>
       <li>Gira alrededor de su centro a <b>180 rpm</b> hasta que el fluido se mueve como sólido rígido.</li>
       <li>Diámetro del tubo despreciable; <b>p<sub>atm</sub> = 2116 lbf/ft²</b>.</li></ul>
       <div class="pres-res" style="margin-top:3cqw">Calcular la presión en el punto <b>A</b></div></div>`,
    nota:"Lee el enunciado con calma. Subraya los datos: 10 in, 30 in, 180 rpm, mercurio y presión atmosférica. Lo que se pide es la presión en A, el centro del tramo horizontal."},
+
+  /* ==== Esquema ==== */
   {html:()=>`<div class="pres-slide"><h2><small>Esquema</small>Geometría y puntos clave</h2>
       <div class="cols fig"><div class="pres-fig-wrap">${presFig(180)}</div>
       <ul><li><b>A</b>: centro del tramo horizontal, 30 in bajo el nivel inicial.</li>
@@ -450,6 +460,8 @@ const PRES_LISTA = [{
       <li>Línea azul: nivel de 30 in. Línea roja: <b>superficie libre imaginaria</b> (paraboloide) que pasa por B.</li>
       <li>Su vértice queda <b>por debajo de A</b>: por eso p<sub>A</sub> &lt; p<sub>atm</sub>.</li></ul></div></div>`,
    nota:"Explica la figura: el tubo es delgado, así que el líquido en el brazo vertical se queda en B. La parábola roja no es una superficie real, es la forma que tendría la superficie libre si el líquido pudiera acomodarse. Adelanta que su vértice cae por debajo de A."},
+
+  /* ==== Modelo ==== */
   {html:()=>`<div class="pres-slide"><h2><small>Modelo</small>Cuerpo rígido en rotación</h2>
       <div class="pres-eq"><b>a</b> = −Ω² r <b>e</b><sub>r</sub></div>
       <div class="pres-eq">∇p = ρ(<b>g</b> − <b>a</b>) &nbsp;⟹&nbsp; ${prFr("∂p","∂r")} = ρΩ²r, &nbsp; ${prFr("∂p","∂z")} = −ρg</div>
@@ -457,6 +469,8 @@ const PRES_LISTA = [{
       <ul><li>Las superficies de presión constante son paraboloides: <i>z</i> = cte + Ω²r²/2g.</li>
       <li>Inclinación de la superficie: tan θ = Ω²r / g.</li></ul></div>`,
    nota:"Cada partícula tiene aceleración centrípeta hacia el eje. Al aplicar la ecuación del movimiento resultan dos derivadas parciales que se integran. C es la constante que hay que fijar con una condición conocida: la presión atmosférica en B."},
+
+  /* ==== Datos ==== */
   {html:()=>`<div class="pres-slide"><h2><small>Datos</small>Conversión de unidades</h2>
       <table class="pres-tabla"><tr><td>Velocidad angular</td><td>Ω = 180 rpm · ${prFr("2π rad/rev","60 s/min")} = <b>18.85 rad/s</b></td></tr>
       <tr><td>Peso específico del Hg (Tabla 2.1)</td><td>ρg = 846 lbf/ft³ &nbsp;⟹&nbsp; ρ = 846/32.2 = <b>26.3 slug/ft³</b></td></tr>
@@ -464,23 +478,31 @@ const PRES_LISTA = [{
       <tr><td>Presión atmosférica</td><td>p<sub>atm</sub> = <b>2116 lbf/ft²</b></td></tr>
       <tr><td>Inclinación de la superficie</td><td>tan θ = Ω²R/g ≈ 9.2 &nbsp;⟹&nbsp; θ ≈ <b>84°</b></td></tr></table></div>`,
    nota:"Aquí hay que cuidar las unidades: pasar rpm a rad/s, y obtener la densidad a partir del peso específico dividiendo entre g. El ángulo de 84° muestra que la superficie queda casi vertical, pero el tubo es tan delgado que no importa."},
+
+  /* ==== Hipótesis ==== */
   {html:()=>`<div class="pres-slide"><h2><small>Hipótesis</small>Origen de coordenadas en el nivel de B</h2>
       <ul><li>El tubo es tan delgado que la superficie libre real <b>permanece aproximadamente al mismo nivel</b> de 30 in (punto B).</li>
       <li>Se coloca el origen a esa altura, sobre el eje: <b>B = (r, z) = (10 in, 0)</b> y <b>A = (0, −30 in)</b>.</li>
       <li>Condición de contorno: en B la presión es la atmosférica, <b>p<sub>B</sub> = 2116 lbf/ft²</b>.</li></ul>
       <div class="pres-nota-b">Con la condición en B se determina la constante C de la ecuación de presión.</div></div>`,
    nota:"Esta es la hipótesis que justifica el problema: con diámetro despreciable, el nivel del líquido en el brazo vertical no cambia al girar. Eso nos da una presión conocida en B."},
+
+  /* ==== Paso 1 ==== */
   {html:()=>`<div class="pres-slide"><h2><small>Paso 1</small>Constante C con la condición en B</h2>
       <div class="pres-eq">p<sub>B</sub> = C − 0 + ½ρΩ²R²</div>
       <div class="pres-eq">2116 = C + ½ (26.3) ${prFr("10","12")}<sup>2</sup> (18.85)<sup>2</sup> &nbsp;=&nbsp; C + 3245</div>
       <div class="pres-res">C = 2116 − 3245 = −1129 lbf/ft²</div></div>`,
    nota:"Sustituye r = R y z = 0 en la ecuación de presión. El término de rotación vale 3245 lbf/ft². Despeja C: sale negativa, −1129."},
+
+  /* ==== Paso 2 ==== */
   {html:()=>`<div class="pres-slide"><h2><small>Paso 2</small>Presión en el punto A</h2>
       <div class="pres-eq">(r, z) = (0, −30 in) &nbsp;⟹&nbsp; p<sub>A</sub> = C − ρg·z</div>
       <div class="pres-eq">p<sub>A</sub> = −1129 − (846)(−${prFr("30","12")}) = −1129 + 2115</div>
       <div class="pres-res">p<sub>A</sub> = 986 lbf/ft²</div>
       <p style="text-align:center; margin-top:1.4cqw">Menor que la presión atmosférica (2116 lbf/ft²).</p></div>`,
    nota:"Resultado principal. En el eje r = 0 el término de rotación desaparece, queda C más el efecto de la profundidad. 986 es menos de la mitad de la presión atmosférica: pregunta natural, ¿por qué baja tanto? Se explica en la siguiente diapositiva."},
+
+  /* ==== Verificación ==== */
   {html:()=>`<div class="pres-slide"><h2><small>Verificación</small>¿Por qué p<sub>A</sub> es menor que p<sub>atm</sub>?</h2>
       <div class="cols"><div>
       <div class="pres-eq">h = ${prFr("Ω²R²","2g")} = ${prFr("(18.85)²(10/12)²","2(32.2)")} ≈ 3.83 ft ≈ <b>46 in</b></div>
@@ -490,13 +512,16 @@ const PRES_LISTA = [{
       <div class="pres-fig-wrap">${presFig(180)}</div></div>
       <div class="pres-res" style="font-size:2.4cqw">2116 − 1128 ≈ 988 ≈ 986 lbf/ft² ✓</div></div>`,
    nota:"Comprobación independiente: la caída de presión desde B es la altura del paraboloide, h = Ω²R²/2g. Con los números da 3.83 ft; el libro escribe 3.85 ft, ambos son unos 46 in, así que no cambia nada. Como el vértice queda 16 in bajo A, la presión en A es 16 pulgadas de mercurio menor que la atmosférica, y eso concuerda con 986."},
+
+  /* ==== Comparación ==== */
   {html:()=>`<div class="pres-slide"><h2><small>Comparación</small>Efecto de la rotación sobre p<sub>A</sub></h2>
       <div class="pres-eq">En reposo: &nbsp;p<sub>A</sub> = 2116 − 846(−${prFr("30","12")}) = <b>4231 lbf/ft²</b></div>
       <div class="pres-eq">Girando: &nbsp;p<sub>A</sub> = <b>986 lbf/ft²</b> &nbsp;⟹&nbsp; reducción de ${prFr("4231 − 986","4231")} ≈ <b>77 %</b></div>
       <ul><li>Si se gira más rápido, p<sub>A</sub> sigue bajando hasta casi cero y aparece <b>cavitación</b>.</li>
       <li>Con estos datos, p<sub>A</sub> = 0 cuando Ω ≈ 21.5 rad/s ≈ <b>205 rpm</b> <small>(cálculo complementario, no está en el libro)</small>.</li></ul></div>`,
    nota:"En reposo la presión en A es 4231, porque soporta los 30 in de mercurio más la atmósfera. Al girar baja al 23 por ciento de ese valor. El dato de 205 rpm lo calculé yo: p_A = 4231 − ½ρΩ²R² y se iguala a cero. Dilo como cálculo complementario por si te preguntan."},
-  /* ==== Simulación 3D (Three.js) ==== */
+
+  /* ==== Simulación 3D ==== */
   {html:()=>`<div class="pres-slide"><h2><small>Simulación 3D</small>¿Qué pasa si cambia Ω?</h2>
       <div class="cols fig"><div class="pres-fig-wrap" id="presFigSim3d"></div>
       <div class="pres-ctl"><label>Velocidad de giro: <b id="presRpmTxt">180 rpm</b><input type="range" id="presRpm" min="0" max="220" step="1" value="180" aria-label="Velocidad de giro en rpm"></label>
@@ -523,20 +548,20 @@ const PRES_LISTA = [{
      $("#presRpm").addEventListener("input", f); f();
      iniciarRot3D().then(()=>{ if(ROT3D && ROT3D.setOmega) ROT3D.setOmega((+$("#presRpm").value)*Math.PI/30); });
    }},
+
+  /* ==== Conclusiones ==== */
   {html:()=>`<div class="pres-slide"><h2><small>Conclusiones</small>Lo que hay que recordar</h2>
       <ul><li>Un fluido que rota como sólido rígido tiene <b>aceleración centrípeta a = −Ω²r</b> y superficies de presión constante parabólicas.</li>
       <li>Se integra <b>p = C − ρgz + ½ρΩ²r²</b> y C se fija con la presión atmosférica en B.</li>
       <li>Resultado: <b>p<sub>A</sub> = 986 lbf/ft²</b>, el <b>23 %</b> del valor en reposo (4231 lbf/ft²).</li>
       <li>Se verifica porque el vértice del paraboloide queda 16 in bajo A (≈ 16 inHg menos).</li>
       <li>A mayor velocidad, p<sub>A</sub> tiende a cero y aparece <b>cavitación</b>.</li></ul>
-      <div class="pres-res" style="font-size:2.4cqw">¿Preguntas?</div></div>`,
+      <div class="pres-res" style="font-size:2.4cqw">¿Preguntas?</div>
+      <p class="pres-ref"><b>Referencia:</b> ${REF_APA}</p></div>`,
    nota:"Cierra repitiendo la idea central y el resultado final. Si te preguntan por la diferencia entre 3.85 y 3.83 ft, es redondeo del libro; el resultado de 986 no cambia."}
   ]}];
 
 /* ================= Funciones de la presentación ================= */
-function presGuardar(k,v){ try{ localStorage.setItem("pres_"+k,v); }catch(e){} }
-function presLeer(k){ try{ return localStorage.getItem("pres_"+k); }catch(e){ return null; } }
-
 function presGaleria(){
   $("#presGaleria").innerHTML = PRES_LISTA.map((p,i)=>
     `<button type="button" class="pres-card" data-i="${i}"><span class="tag">${p.materia}</span><b>${p.titulo}</b><span>${p.desc}</span><span>${p.slides.length} diapositivas</span></button>`
@@ -557,11 +582,6 @@ function presMostrar(){
   PRES.i=Math.max(0,Math.min(n-1,PRES.i));
   const d=P.slides[PRES.i];
   $("#presStage").innerHTML=d.html();
-  $("#presStage").querySelectorAll(".pres-editable").forEach(e=>{
-    const v=presLeer(e.dataset.key); if(v) e.textContent=v;
-    e.addEventListener("input",()=>presGuardar(e.dataset.key,e.textContent));
-    e.addEventListener("keydown",ev=>ev.stopPropagation());
-  });
   if(d.init) d.init();
   $("#presCont").textContent=`${PRES.i+1} / ${n}`;
   $("#presProg").style.width=((PRES.i+1)/n*100)+"%";
