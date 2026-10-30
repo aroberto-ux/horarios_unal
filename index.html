@@ -396,6 +396,605 @@ body > footer{
   .print-slide:last-child{break-after:auto}
   .print-slide .pres-slide{animation:none}
 }
+
+/* =====================================================================
+   REFINAMIENTO ESTÉTICO DE LAS DIAPOSITIVAS
+   (capa de estilos adicional: no cambia contenido ni comportamiento)
+   ===================================================================== */
+:root{
+  --verde-osc:#0E4F2E;
+  --verde-vivo:#1F9D5A;
+  --lima:#A8E86A;
+  --noche:#13211A;
+  --papel-2:#F4F8F1;
+  --serif-mate:"Cambria Math", Cambria, "Latin Modern Math", "STIX Two Math", "Times New Roman", Georgia, serif;
+  --fuente-base:"Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+body{
+  background:
+    radial-gradient(1200px 500px at 50% -10%, #E3EFE1 0%, transparent 70%),
+    linear-gradient(#EAF0E6 1px, transparent 1px) 0 0/100% 32px,
+    linear-gradient(90deg, #EAF0E6 1px, transparent 1px) 0 0/32px 100%,
+    var(--papel);
+}
+.pres-stage{
+  border:0; border-radius:16px; background:#fff;
+  box-shadow:0 1px 2px rgba(19,33,26,.08), 0 14px 40px -10px rgba(19,33,26,.28), 0 0 0 1px rgba(19,33,26,.07);
+}
+.pres-stage:fullscreen{border-radius:0; box-shadow:none}
+.pres-nav button.pri{background:var(--verde); border-color:var(--verde)}
+.pres-nav button.pri:hover:not([aria-disabled="true"]){background:var(--verde-osc)}
+.pres-prog{height:5px}
+.pres-prog i{background:linear-gradient(90deg,var(--verde),var(--lima))}
+
+/* ---------- Lienzo de la diapositiva ---------- */
+.pres-slide{
+  background:
+    radial-gradient(60% 50% at 100% 100%, rgba(31,157,90,.07) 0%, transparent 70%),
+    linear-gradient(180deg,#FFFFFF 0%, #FAFCF8 100%);
+  padding:calc(var(--u)*3.6) calc(var(--u)*4.8) calc(var(--u)*3) calc(var(--u)*5.6);
+  letter-spacing:.002em;
+}
+.pres-slide:not(.pres-portada)::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:calc(var(--u)*.9);
+  background:linear-gradient(180deg,var(--verde-vivo) 0%, var(--verde) 55%, var(--verde-osc) 100%);
+  pointer-events:none;
+}
+.pres-slide:not(.pres-portada)::after{
+  content:""; position:absolute; right:calc(var(--u)*-6); top:calc(var(--u)*-6);
+  width:calc(var(--u)*18); height:calc(var(--u)*18); border-radius:50%;
+  background:repeating-radial-gradient(circle, rgba(20,122,70,.10) 0 1px, transparent 1px calc(var(--u)*1.6));
+  pointer-events:none;
+}
+.pres-slide > *{position:relative; z-index:1; animation:presAparece .45s ease both}
+.pres-slide > *:nth-child(2){animation-delay:.05s}
+.pres-slide > *:nth-child(3){animation-delay:.10s}
+.pres-slide > *:nth-child(4){animation-delay:.15s}
+.pres-slide > *:nth-child(5){animation-delay:.20s}
+.pres-slide > *:nth-child(n+6){animation-delay:.25s}
+@keyframes presAparece{from{opacity:0} to{opacity:1}}
+
+/* ---------- Títulos ---------- */
+.pres-slide h2{
+  font-size:calc(var(--u)*3.5); font-weight:800; letter-spacing:-.02em; color:var(--noche);
+  border-bottom:0; padding-bottom:0; margin-bottom:calc(var(--u)*2.2); gap:calc(var(--u)*.7);
+}
+.pres-slide h2::after{
+  content:""; order:3; width:calc(var(--u)*7); height:calc(var(--u)*.4); border-radius:99px;
+  margin-top:calc(var(--u)*.8);
+  background:linear-gradient(90deg,var(--verde),var(--lima));
+}
+.pres-slide h2 small{
+  align-self:flex-start; padding:calc(var(--u)*.35) calc(var(--u)*1.2);
+  background:var(--verde-claro); color:var(--verde-osc); border-radius:99px;
+  font-size:max(11px, calc(var(--u)*1.35)); letter-spacing:.16em;
+}
+
+/* ---------- Listas ---------- */
+.pres-slide ul, .pres-slide .col-enunciado-texto ul{list-style:none; padding-left:0; gap:calc(var(--u)*1.1)}
+.pres-slide li{position:relative; padding-left:calc(var(--u)*2.6)}
+.pres-slide li::before{
+  content:""; position:absolute; left:calc(var(--u)*.4); top:.62em;
+  width:calc(var(--u)*.85); height:calc(var(--u)*.85); border-radius:calc(var(--u)*.2);
+  background:var(--verde); transform:rotate(45deg);
+}
+.pres-slide li b{color:var(--noche)}
+
+/* ---------- Ecuaciones: tarjetas con tipografía matemática ---------- */
+.pres-eq{
+  font-family:var(--serif-mate); font-size:calc(var(--u)*2.7);
+  background:linear-gradient(180deg,#F7FAF4,#F1F6EE);
+  border:1px solid var(--linea); border-left:max(3px, calc(var(--u)*.35)) solid var(--verde);
+  border-radius:calc(var(--u)*.9); padding:calc(var(--u)*.9) calc(var(--u)*2);
+  margin:calc(var(--u)*.9) 0;
+}
+.pres-eq.eq-sm{font-size:calc(var(--u)*2.25)}
+.pres-eq b{font-family:var(--serif-mate)}
+.pres-eq .eq-tag{font-family:var(--fuente-mono); color:var(--tinta-suave); background:#fff; border:1px solid var(--linea); border-radius:99px; padding:0 calc(var(--u)*.8)}
+
+/* ---------- Resultados ---------- */
+.pres-res{
+  background:linear-gradient(135deg,#1F9D5A 0%, #147A46 55%, #0E5C34 100%);
+  color:#fff; border:0; border-radius:calc(var(--u)*1.3);
+  padding:calc(var(--u)*1.5) calc(var(--u)*3);
+  box-shadow:0 calc(var(--u)*.6) calc(var(--u)*2) rgba(20,122,70,.30), inset 0 1px 0 rgba(255,255,255,.25);
+  text-shadow:0 1px 0 rgba(0,0,0,.12);
+}
+.pres-res sub, .pres-res sup{color:inherit}
+.pres-res-mini{
+  background:var(--noche); color:#fff; border-left:0; border-radius:calc(var(--u)*.9);
+  display:inline-block; align-self:flex-start; padding:calc(var(--u)*.9) calc(var(--u)*2);
+}
+.pres-aside{font-style:italic}
+
+/* ---------- Notas y puntos clave ---------- */
+.pres-nota-b{
+  border-radius:calc(var(--u)*.9); border-left-width:max(4px, calc(var(--u)*.45));
+  padding:calc(var(--u)*1.1) calc(var(--u)*1.8); box-shadow:0 1px 0 rgba(19,33,26,.04);
+}
+.puntos-clave{
+  background:#fff; border:1px solid var(--linea); border-left:max(3px, calc(var(--u)*.35)) solid var(--verde);
+  border-radius:calc(var(--u)*.9); box-shadow:0 2px 10px -4px rgba(19,33,26,.12);
+}
+.puntos-clave b{
+  display:inline-grid; place-items:center; width:calc(var(--u)*2.6); height:calc(var(--u)*2.6);
+  min-width:0; margin-right:calc(var(--u)*.8); border-radius:50%;
+  background:var(--noche); color:#fff; font-size:calc(var(--u)*1.5);
+}
+
+/* ---------- Figuras ---------- */
+.col-enunciado-figura, .pres-fig-wrap:not(.sim-wrap){
+  background:#fff; border:1px solid var(--linea); border-radius:calc(var(--u)*1.2);
+  padding:calc(var(--u)*1.3); box-shadow:0 4px 18px -8px rgba(19,33,26,.18);
+}
+.pres-fig-wrap:not(.sim-wrap){align-self:stretch}
+.col-enunciado-figura figcaption{border-top:1px dashed var(--linea-fuerte)}
+
+/* ---------- Tabla de datos ---------- */
+.pres-tabla{border-collapse:separate; border-spacing:0; border:1px solid var(--linea); border-radius:calc(var(--u)*1); overflow:hidden; background:#fff}
+.pres-tabla tr, .pres-tabla tr:first-child{border:0}
+.pres-tabla tr:nth-child(odd){background:#F6F9F3}
+.pres-tabla td{padding:calc(var(--u)*1.1) calc(var(--u)*1.6); border-bottom:1px solid var(--linea)}
+.pres-tabla tr:last-child td{border-bottom:0}
+.pres-tabla td:first-child{color:var(--tinta-suave); font-weight:600; border-right:1px solid var(--linea)}
+.pres-tabla td:last-child{font-family:var(--serif-mate); font-size:calc(var(--u)*2.1)}
+.ref-lnk{background:var(--verde-claro); border-radius:99px; padding:0 calc(var(--u)*.8); font-size:.85em}
+
+/* ---------- Tabla 2.1 del libro ---------- */
+.pres-tabla-libro{border-collapse:separate; border-spacing:0; border:1px solid var(--linea-fuerte); border-radius:calc(var(--u)*1); overflow:hidden; background:#fff}
+.pres-tabla-libro thead th{background:var(--noche); color:#fff; border:0; border-bottom:1px solid #2c3f33}
+.pres-tabla-libro thead th.un{color:var(--lima)}
+.pres-tabla-libro thead .sub{color:#B9CDBF}
+.pres-tabla-libro tbody tr:nth-child(even){background:#F7FAF5}
+.pres-tabla-libro tbody tr.hg{background:linear-gradient(90deg,#CFEBD9,#E4F2E9)}
+.pres-tabla-libro tbody tr:last-child td{border-bottom:0}
+
+/* ---------- Texto de apoyo ---------- */
+.pres-slide p.lead{font-size:calc(var(--u)*2.05); color:var(--noche)}
+.pres-ref{border-top:1px solid var(--linea-fuerte)}
+
+/* ---------- Portada ---------- */
+.pres-portada{
+  background:
+    repeating-radial-gradient(circle at 94% 112%, rgba(168,232,106,.16) 0 1px, transparent 1px calc(var(--u)*3.2)),
+    radial-gradient(70% 90% at 85% 15%, rgba(31,157,90,.45) 0%, transparent 65%),
+    linear-gradient(135deg,#0F1B15 0%, #17301F 55%, #1F4A2E 100%);
+  padding:calc(var(--u)*4.4) calc(var(--u)*6);
+}
+.pres-portada::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:calc(var(--u)*.9);
+  background:linear-gradient(180deg,var(--lima),var(--verde-vivo)); pointer-events:none;
+}
+.pres-portada .k{
+  display:flex; align-items:center; gap:calc(var(--u)*1.2); color:var(--lima);
+}
+.pres-portada .k::before{content:""; width:calc(var(--u)*4); height:calc(var(--u)*.3); border-radius:99px; background:var(--lima)}
+.pres-portada h1{
+  font-size:calc(var(--u)*8.4); font-weight:800; letter-spacing:-.035em; line-height:.98;
+  background:linear-gradient(180deg,#FFFFFF 30%, #CFEFD6 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.pres-portada .portada-sub{font-size:calc(var(--u)*2.9); font-weight:300; color:#E9F4EC; max-width:70%}
+.pres-portada .portada-fecha{background:rgba(168,232,106,.14); color:var(--lima); border-color:rgba(168,232,106,.7)}
+.pres-portada .portada-ref{
+  border-top:1px solid rgba(255,255,255,.18); padding-top:calc(var(--u)*1.4); color:#C9D9CE; opacity:1; max-width:70%;
+}
+
+/* ---------- Simulación: panel de controles ---------- */
+.pres-ctl{
+  background:#fff; border:1px solid var(--linea); border-radius:calc(var(--u)*1.3);
+  padding:calc(var(--u)*1.6) calc(var(--u)*1.8); box-shadow:0 4px 18px -8px rgba(19,33,26,.18);
+}
+.pres-ctl .v{border-bottom:1px dashed var(--linea-fuerte)}
+.pres-ctl .v b{font-family:var(--serif-mate); font-size:calc(var(--u)*2.1); color:var(--verde-osc)}
+.pres-ctl label > b{color:var(--verde-osc)}
+.pres-presets button{border-radius:99px}
+.pres-presets button.act{background:var(--verde); border-color:var(--verde); color:#fff}
+.pres-fig-wrap .r3d{border-radius:calc(var(--u)*1.3); box-shadow:0 4px 18px -8px rgba(19,33,26,.25)}
+.r3d .r3d-hint, .r3d .r3d-reset{border-radius:99px}
+
+/* ---------- Móvil e impresión ---------- */
+@media (max-width:820px){
+  .pres-stage:not(:fullscreen){border-radius:12px}
+  .pres-stage:not(:fullscreen) .pres-slide{padding:5cqw 4.5cqw 5cqw 6cqw}
+  .pres-stage:not(:fullscreen) .pres-portada{padding:7cqw 6cqw 7cqw 7cqw}
+  .pres-stage:not(:fullscreen) .pres-portada h1{font-size:calc(var(--u)*7.4)}
+  .pres-stage:not(:fullscreen) .pres-portada .portada-sub{max-width:100%}
+}
+@media print{
+  .print-slide .pres-slide, .print-slide .pres-slide *{animation:none!important}
+  .print-slide .pres-portada h1{color:#fff; background:none; -webkit-background-clip:border-box; background-clip:border-box}
+}
+
+/* Correcciones: fracciones fuera de .pres-eq (tabla de datos), chip sin salto de línea, nota informativa */
+.pres-slide .fr{display:inline-flex; flex-direction:column; vertical-align:middle; text-align:center; margin:0 calc(var(--u)*.35); line-height:1.2; font-family:var(--serif-mate)}
+.pres-slide .fr i{font-style:italic; padding:0 calc(var(--u)*.5)}
+.pres-slide .fr i:first-child{border-bottom:max(1px, calc(var(--u)*.12)) solid currentColor}
+.ref-lnk{white-space:nowrap}
+.pres-nota-b.nota-sm{border-left-color:var(--azul); background:var(--azul-claro)}
+
+/* =====================================================================
+   ESTILO EDITORIAL · Helvetica
+   (capa final: papel crema, filetes finos, esquinas rectas, un solo acento)
+   ===================================================================== */
+:root{
+  --fuente-base:"Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
+  --fuente-mono:"Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
+  --serif-mate:"Cambria Math", Cambria, "Latin Modern Math", "STIX Two Math", "Times New Roman", Georgia, serif;
+  --papel:#F4F2EC; --crema:#FBFAF6; --tinta:#111111; --tinta-suave:#5E5E58;
+  --linea:#D9D6CC; --linea-fuerte:#B9B5A8; --acento:#147A46; --acento-osc:#0E4F2E;
+}
+body{background:var(--papel); color:var(--tinta); font-family:var(--fuente-base)}
+body > header h1{font-weight:700; letter-spacing:-.025em}
+body > header span, .panel > .titulo .dato{font-family:var(--fuente-base); letter-spacing:.12em; text-transform:uppercase; font-size:.72rem; font-weight:600}
+section.panel, .pres-card, .pres-notas{border-radius:2px; box-shadow:none}
+.pres-bar button,.pres-nav button,.pres-bar select{border-radius:2px; font-weight:600}
+.pres-nav button.pri{background:#111; border-color:#111}
+.pres-nav button.pri:hover:not([aria-disabled="true"]){background:var(--acento-osc)}
+.pres-prog{height:2px; border-radius:0; background:var(--linea)}
+.pres-prog i{background:#111}
+.mono{font-family:var(--fuente-base); letter-spacing:.08em}
+
+/* ---------- Lienzo ---------- */
+.pres-stage{border-radius:2px; box-shadow:0 0 0 1px rgba(17,17,17,.14), 0 18px 40px -22px rgba(17,17,17,.35); background:var(--crema)}
+.pres-stage:fullscreen{border-radius:0; box-shadow:none}
+.pres-slide{
+  background:var(--crema); color:var(--tinta); font-family:var(--fuente-base);
+  padding:calc(var(--u)*4.2) calc(var(--u)*5.2) calc(var(--u)*5.6);
+  line-height:1.5; letter-spacing:0;
+}
+.pres-slide:not(.pres-portada)::before{
+  left:calc(var(--u)*5.2); right:calc(var(--u)*5.2); top:auto; bottom:calc(var(--u)*3.9);
+  width:auto; height:1px; background:#111;
+}
+.pres-slide:not(.pres-portada)::after{display:none}
+
+/* Cabecera y folio al pie (se rellenan desde JS con data-*) */
+.pres-stage::before, .pres-stage::after{
+  position:absolute; z-index:3; bottom:calc(var(--u)*1.7); pointer-events:none;
+  font:600 max(9px, calc(var(--u)*1.2))/1 var(--fuente-base); letter-spacing:.18em; text-transform:uppercase; color:var(--tinta-suave);
+}
+.pres-stage::before{content:attr(data-head); left:calc(var(--u)*5.2)}
+.pres-stage::after{content:attr(data-folio); right:calc(var(--u)*5.2); color:#111}
+
+/* ---------- Títulos ---------- */
+.pres-slide h2{
+  font-size:calc(var(--u)*4); font-weight:700; line-height:1.02; letter-spacing:-.035em; color:#111;
+  margin:0 0 calc(var(--u)*2.4); gap:calc(var(--u)*.9);
+}
+.pres-slide h2::after{display:none}
+.pres-slide h2 small{
+  background:none; padding:0; border-radius:0; color:var(--acento);
+  display:flex; align-items:center; gap:calc(var(--u)*1); align-self:auto;
+  font:700 max(11px, calc(var(--u)*1.35)) var(--fuente-base); letter-spacing:.22em;
+}
+.pres-slide h2 small::before{content:""; width:calc(var(--u)*3.2); height:max(2px, calc(var(--u)*.25)); background:var(--acento)}
+
+/* ---------- Texto y listas ---------- */
+.pres-slide ul, .pres-slide .col-enunciado-texto ul{gap:calc(var(--u)*1.2)}
+.pres-slide li{padding-left:calc(var(--u)*3)}
+.pres-slide li::before{
+  content:"—"; transform:none; background:none; width:auto; height:auto; border-radius:0;
+  left:0; top:0; color:var(--acento); font-weight:700;
+}
+.pres-slide li b{color:#111; font-weight:700}
+.pres-slide p.lead{font-size:calc(var(--u)*2.2); line-height:1.4; color:#111}
+.pres-slide .muted{color:var(--tinta-suave)}
+
+/* ---------- Ecuaciones: centradas entre filetes ---------- */
+.pres-eq{
+  background:none; border:0; border-radius:0; padding:calc(var(--u)*.9) 0;
+  border-top:1px solid var(--linea-fuerte); border-bottom:1px solid var(--linea-fuerte);
+  font-family:var(--serif-mate); font-size:calc(var(--u)*2.7); margin:calc(var(--u)*1) 0; color:#111;
+}
+.pres-eq + .pres-eq{border-top:0; margin-top:0}
+.pres-eq.eq-sm{font-size:calc(var(--u)*2.3)}
+.pres-eq .eq-tag{background:none; border:0; border-radius:0; padding:0; font-family:var(--fuente-base); letter-spacing:.1em; text-transform:uppercase; color:var(--acento); font-weight:700}
+
+/* ---------- Resultados: cita destacada ---------- */
+.pres-res{
+  background:none; color:var(--acento-osc); border:0; border-radius:0; box-shadow:none; text-shadow:none;
+  border-top:max(3px, calc(var(--u)*.35)) solid #111; border-bottom:1px solid #111;
+  padding:calc(var(--u)*1.4) calc(var(--u)*1); font-size:calc(var(--u)*3.6); font-weight:700; letter-spacing:-.025em;
+  align-self:stretch; width:100%;
+}
+.pres-res.sm{font-size:calc(var(--u)*2.8)}
+.pres-res-mini{
+  background:none; color:#111; border-radius:0; border:0; padding:calc(var(--u)*.8) 0 0;
+  border-top:max(2px, calc(var(--u)*.25)) solid #111; font-size:calc(var(--u)*2.4); display:block; align-self:stretch;
+}
+.pres-aside{font-style:normal; font-size:calc(var(--u)*1.8); letter-spacing:.01em}
+
+/* ---------- Notas y puntos clave ---------- */
+.pres-nota-b{border-radius:0; box-shadow:none; background:#EFEDE5; border-left:max(3px, calc(var(--u)*.4)) solid #111; font-size:calc(var(--u)*1.7)}
+.pres-nota-b.info{background:#EAF2EC; border-left-color:var(--acento)}
+.pres-nota-b.nota-sm{background:#EFEDE5; border-left-color:#111}
+.puntos-clave{background:none; border:0; border-top:1px solid #111; border-radius:0; box-shadow:none; padding:calc(var(--u)*1.2) 0 0; gap:calc(var(--u)*1)}
+.puntos-clave b{border-radius:0; background:#111; width:calc(var(--u)*2.4); height:calc(var(--u)*2.4); font-size:calc(var(--u)*1.4); font-family:var(--fuente-base)}
+
+/* ---------- Figuras ---------- */
+.col-enunciado-figura, .pres-fig-wrap:not(.sim-wrap){background:none; border:0; border-top:1px solid #111; border-bottom:1px solid #111; border-radius:0; box-shadow:none; padding:calc(var(--u)*1.2) 0}
+.col-enunciado-figura figcaption{border-top:0; font-size:max(11px, calc(var(--u)*1.35)); color:var(--tinta-suave)}
+
+/* ---------- Tablas ---------- */
+.pres-tabla, .pres-tabla-libro{border:0; border-radius:0; background:none; border-top:max(2px, calc(var(--u)*.22)) solid #111; border-bottom:1px solid #111}
+.pres-tabla tr:nth-child(odd), .pres-tabla-libro tbody tr:nth-child(even){background:none}
+.pres-tabla td{border-bottom:1px solid var(--linea); padding:calc(var(--u)*1.1) calc(var(--u)*1.2)}
+.pres-tabla td:first-child{border-right:0; color:var(--tinta-suave); font-weight:700; text-transform:uppercase; letter-spacing:.1em; font-size:calc(var(--u)*1.35)}
+.pres-tabla td:last-child{font-family:var(--serif-mate); font-size:calc(var(--u)*2.15)}
+.ref-lnk{background:none; padding:0; border-radius:0; text-transform:none; letter-spacing:0; color:var(--acento); font-weight:700; border-bottom:1px solid var(--acento)}
+.pres-tabla-libro{font-family:var(--fuente-base)}
+.pres-tabla-libro thead th{background:none; color:#111; border:0; border-bottom:1px solid #111; text-transform:uppercase; letter-spacing:.08em}
+.pres-tabla-libro thead th.un{color:var(--acento); font-family:var(--fuente-base)}
+.pres-tabla-libro thead .sub{color:var(--tinta-suave); text-transform:none; letter-spacing:0; font-family:var(--fuente-base)}
+.pres-tabla-libro tbody td{font-family:var(--fuente-base); font-variant-numeric:tabular-nums; border-bottom:1px solid var(--linea)}
+.pres-tabla-libro tbody tr.hg{background:#E4EFE7; box-shadow:inset max(3px, calc(var(--u)*.3)) 0 0 var(--acento)}
+.pres-tabla-libro tbody tr.hg td{color:var(--acento-osc)}
+.pres-tabla-libro caption{font-weight:700; letter-spacing:-.01em}
+.pres-tabla-libro + .pie-tabla{font-family:var(--fuente-base); letter-spacing:.04em}
+.pres-ref{border-top:0; font-size:max(11px, calc(var(--u)*1.35))}
+
+/* ---------- Portada editorial ---------- */
+.pres-portada{
+  background:var(--crema); color:#111; justify-content:flex-end;
+  padding:calc(var(--u)*5) calc(var(--u)*5.2) calc(var(--u)*5);
+}
+.pres-portada::before{
+  content:""; position:absolute; left:calc(var(--u)*5.2); top:0; bottom:auto; right:auto;
+  width:calc(var(--u)*13); height:calc(var(--u)*1.6); background:var(--acento);
+}
+.pres-portada::after{
+  content:""; position:absolute; left:calc(var(--u)*5.2); right:calc(var(--u)*5.2); top:calc(var(--u)*5.2);
+  height:max(3px, calc(var(--u)*.35)); background:#111; display:block!important;
+}
+.pres-portada .k{color:var(--acento); font:700 max(11px, calc(var(--u)*1.5)) var(--fuente-base); letter-spacing:.24em; margin:calc(var(--u)*7) 0 calc(var(--u)*1.6)}
+.pres-portada .k::before{background:var(--acento); height:max(2px, calc(var(--u)*.25))}
+.pres-portada h1{
+  background:none; -webkit-background-clip:border-box; background-clip:border-box; color:#111;
+  font-size:calc(var(--u)*11.5); font-weight:700; letter-spacing:-.05em; line-height:.92; margin:0 0 calc(var(--u)*2);
+}
+.pres-portada .portada-sub{color:#222; font-weight:400; font-size:calc(var(--u)*3); line-height:1.25; letter-spacing:-.01em; max-width:68%; margin-bottom:calc(var(--u)*3)}
+.pres-portada .portada-fecha{background:none; color:#111; border:0; border-radius:0; padding:0; font:700 calc(var(--u)*1.7) var(--fuente-base); letter-spacing:.2em}
+.pres-portada .portada-ref{color:var(--tinta-suave); border-top:1px solid #111; padding-top:calc(var(--u)*1.2); max-width:100%; opacity:1}
+.pres-portada > *{z-index:1}
+
+/* ---------- Simulación ---------- */
+.pres-ctl{background:none; border:0; border-radius:0; box-shadow:none; padding:0; border-top:max(2px, calc(var(--u)*.22)) solid #111; padding-top:calc(var(--u)*1.2)}
+.pres-ctl .v{border-bottom:1px solid var(--linea)}
+.pres-ctl .v span{text-transform:uppercase; letter-spacing:.1em; font-size:calc(var(--u)*1.4); font-weight:700; color:var(--tinta-suave)}
+.pres-ctl .v b{font-family:var(--fuente-base); font-variant-numeric:tabular-nums; color:#111; font-size:calc(var(--u)*2)}
+.pres-ctl input[type=range]{accent-color:#111}
+.pres-presets button{border-radius:0; border-color:#111; font-weight:700}
+.pres-presets button.act{background:#111; border-color:#111; color:#fff}
+.pres-fig-wrap .r3d{border-radius:0; box-shadow:none; border:1px solid #111; background:radial-gradient(120% 90% at 50% 6%, #fff 0%, #F1EFE7 70%, #E4E1D6 100%)}
+.r3d .r3d-hint, .r3d .r3d-reset{border-radius:0; font-family:var(--fuente-base)}
+
+/* ---------- Móvil e impresión ---------- */
+@media (max-width:820px){
+  .pres-stage:not(:fullscreen){border-radius:2px}
+  .pres-stage:not(:fullscreen) .pres-slide{padding:6cqw 5cqw 13cqw}
+  .pres-stage:not(:fullscreen) .pres-slide:not(.pres-portada)::before{left:5cqw; right:5cqw; bottom:9cqw}
+  .pres-stage:not(:fullscreen)::before{left:5cqw; bottom:4cqw}
+  .pres-stage:not(:fullscreen)::after{right:5cqw; bottom:4cqw}
+  .pres-stage:not(:fullscreen) .pres-portada{padding:7cqw 5cqw}
+  .pres-stage:not(:fullscreen) .pres-portada h1{font-size:calc(var(--u)*9.5)}
+  .pres-stage:not(:fullscreen) .pres-portada .portada-sub{max-width:100%}
+}
+@media print{
+  .print-slide .pres-slide::before{display:block}
+  .print-slide .pres-portada h1{color:#111}
+}
+
+/* Ajuste de densidad: diapositiva de enunciado */
+.cols-enunciado{align-items:start; gap:calc(var(--u)*4)}
+.col-enunciado-texto ul{font-size:calc(var(--u)*1.8)!important; gap:calc(var(--u)*.7)!important}
+.puntos-clave{font-size:calc(var(--u)*1.55); margin-top:calc(var(--u)*1); padding-top:calc(var(--u)*.9); gap:calc(var(--u)*.6)}
+.col-enunciado-texto .pres-res-mini{font-size:calc(var(--u)*2.1); margin-top:calc(var(--u)*1.1)}
+.col-enunciado-figura .pres-fig{max-height:calc(var(--u)*30)}
+.pres-ctl .v span{text-transform:none; letter-spacing:.02em; font-size:calc(var(--u)*1.7); font-weight:600}
+.cols .pres-eq{font-size:calc(var(--u)*2.15)}
+.pres-eq .eq-tag{text-transform:none; letter-spacing:.04em}
+
+/* =====================================================================
+   REDISEÑO v3 · jerarquía visual, tarjetas, barras, portada ilustrada
+   ===================================================================== */
+:root{--lima:#A8E86A; --sombra-tarjeta:0 1px 0 rgba(17,17,17,.05), 0 10px 22px -14px rgba(17,17,17,.35)}
+
+/* ---------- Jerarquía: kicker > título > tarjeta > resultado ---------- */
+.pres-slide h2{font-size:calc(var(--u)*3.9)}
+.pres-slide h2 small{font-size:max(11px, calc(var(--u)*1.3))}
+.pres-slide ul li{font-size:calc(var(--u)*2)}
+.pres-slide .muted{font-size:.82em}
+
+/* ---------- Ecuaciones en tarjetas ---------- */
+.pres-eq, .pres-eq + .pres-eq{
+  background:#fff; border:1px solid var(--linea-fuerte); border-left:max(5px, calc(var(--u)*.5)) solid var(--acento);
+  border-radius:calc(var(--u)*.9); padding:calc(var(--u)*1.1) calc(var(--u)*2); box-shadow:var(--sombra-tarjeta);
+  margin:calc(var(--u)*.9) 0; position:relative;
+}
+.pres-eq .eq-tag{position:absolute; right:calc(var(--u)*1); top:calc(var(--u)*.6); font-size:max(10px, calc(var(--u)*1.15)); color:var(--tinta-suave)}
+
+/* ---------- Resultado destacado (nivel 1 de la jerarquía) ---------- */
+.pres-res{
+  background:#111; color:#fff; border:0; border-radius:calc(var(--u)*1); text-shadow:none;
+  box-shadow:inset max(6px, calc(var(--u)*.7)) 0 0 var(--lima), 0 14px 26px -16px rgba(17,17,17,.6);
+  padding:calc(var(--u)*1.5) calc(var(--u)*2.4); text-align:center;
+}
+.pres-res.sm{font-size:calc(var(--u)*2.6)}
+.pres-res-mini{
+  background:#111; color:#fff; border:0; border-radius:calc(var(--u)*.9); display:inline-block; align-self:flex-start;
+  padding:calc(var(--u)*.9) calc(var(--u)*2); box-shadow:inset max(5px, calc(var(--u)*.55)) 0 0 var(--lima);
+  padding-left:calc(var(--u)*2.8); font-size:calc(var(--u)*2.2);
+}
+.pres-aside{margin-top:calc(var(--u)*1.2)}
+
+/* ---------- Disposición con gráfico ---------- */
+.pres-slide .cols.c-barras{--cols:1.15fr 1fr; align-items:center}
+.pres-slide .cols.c-concl{--cols:1.3fr 1fr; align-items:center}
+.col-eqs{display:flex; flex-direction:column; justify-content:center}
+.pres-chart{min-width:0}
+
+/* ---------- Gráfico de barras ---------- */
+.pres-barras{
+  margin:0; display:flex; flex-direction:column; gap:calc(var(--u)*1.2);
+  background:#fff; border:1px solid var(--linea-fuerte); border-radius:calc(var(--u)*1);
+  padding:calc(var(--u)*1.5) calc(var(--u)*1.8); box-shadow:var(--sombra-tarjeta);
+}
+.pres-barras figcaption{font:700 max(10px, calc(var(--u)*1.25)) var(--fuente-base); letter-spacing:.14em; text-transform:uppercase; color:var(--tinta-suave); padding-bottom:calc(var(--u)*.7); border-bottom:1px solid var(--linea)}
+.bar-fila{display:grid; grid-template-columns:calc(var(--u)*10.5) 1fr calc(var(--u)*5.6); align-items:center; gap:calc(var(--u)*1)}
+.bar-et{font-size:calc(var(--u)*1.55); line-height:1.15; font-weight:600; color:#111}
+.bar-pista{position:relative; height:calc(var(--u)*3.4); background:#EFEDE5; border-radius:calc(var(--u)*.45)}
+.bar-barra{position:absolute; left:0; top:0; bottom:0; border-radius:calc(var(--u)*.45); transform-origin:left center; transition:width .15s linear; animation:barCrece .8s cubic-bezier(.2,.7,.2,1) both}
+.b-gris{background:#B9B5A8}
+.b-neg{background:#111}
+.b-verde{background:linear-gradient(90deg,#1F9D5A,#147A46)}
+.bar-val{font-size:calc(var(--u)*1.9); font-weight:700; text-align:right; font-variant-numeric:tabular-nums; letter-spacing:-.01em}
+.bar-marca{position:absolute; top:calc(var(--u)*-.6); bottom:calc(var(--u)*-.6); width:0; border-left:max(2px, calc(var(--u)*.22)) dashed #B3372E; z-index:2}
+.bar-leyenda{display:flex; align-items:center; gap:calc(var(--u)*.8); font-size:calc(var(--u)*1.35); color:var(--tinta-suave); padding-top:calc(var(--u)*.2)}
+.bar-leyenda i{display:inline-block; width:0; height:calc(var(--u)*1.6); border-left:max(2px, calc(var(--u)*.22)) dashed #B3372E}
+@keyframes barCrece{from{transform:scaleX(0)}}
+.pres-ctl .pres-barras{padding:calc(var(--u)*1.1) calc(var(--u)*1.4); gap:calc(var(--u)*.8); box-shadow:none}
+.pres-ctl .bar-pista{height:calc(var(--u)*2.4)}
+.pres-ctl .bar-fila{grid-template-columns:calc(var(--u)*7.5) 1fr calc(var(--u)*5)}
+.pres-ctl .bar-et, .pres-ctl .bar-val{font-size:calc(var(--u)*1.45)}
+
+/* ---------- Tarjetas de cifras ---------- */
+.stats{display:grid; gap:calc(var(--u)*1.1)}
+.stat{
+  display:grid; grid-template-columns:auto 1fr; align-items:center; gap:calc(var(--u)*1.6);
+  background:#fff; border:1px solid var(--linea-fuerte); border-left:max(5px, calc(var(--u)*.5)) solid var(--acento);
+  border-radius:calc(var(--u)*.9); padding:calc(var(--u)*1) calc(var(--u)*1.8); box-shadow:var(--sombra-tarjeta);
+}
+.stat b{font-size:calc(var(--u)*4.4); line-height:1; font-weight:700; letter-spacing:-.04em; color:var(--acento-osc); font-variant-numeric:tabular-nums}
+.stat span{font-size:calc(var(--u)*1.6); line-height:1.3; color:var(--tinta-suave)}
+
+/* ---------- Portada con ilustración ---------- */
+.pres-portada .portada-txt{max-width:54%; position:relative; z-index:1}
+.pres-portada .k{margin:0 0 calc(var(--u)*1.6)}
+.pres-portada h1{font-size:calc(var(--u)*9.2)}
+.pres-portada .portada-sub{max-width:100%; font-size:calc(var(--u)*2.6); margin-bottom:calc(var(--u)*2.4)}
+.pres-portada .portada-ilus{position:absolute; right:calc(var(--u)*4.4); top:calc(var(--u)*7.4); width:calc(var(--u)*39); z-index:0}
+.pres-portada .portada-ilus svg{display:block; width:100%; height:auto}
+.pres-portada .portada-ref{max-width:100%}
+
+/* ---------- Pie numerado ---------- */
+.pres-stage::after{font-size:max(10px, calc(var(--u)*1.5)); letter-spacing:.14em; font-weight:700}
+
+@media (max-width:820px){
+  .pres-stage:not(:fullscreen) .cols.c-barras, .pres-stage:not(:fullscreen) .cols.c-concl{--cols:1fr}
+  .pres-stage:not(:fullscreen) .pres-portada .portada-txt{max-width:100%}
+  .pres-stage:not(:fullscreen) .pres-portada .portada-ilus{position:relative; right:auto; top:auto; width:88cqw; margin:0 auto 4cqw; order:-1}
+  .pres-stage:not(:fullscreen) .pres-portada h1{font-size:calc(var(--u)*8)}
+}
+@media print{
+  .print-slide .bar-barra{animation:none!important; transform:none!important}
+}
+
+/* Ajustes finales v3 */
+.pres-portada h1{font-size:calc(var(--u)*8.2); white-space:nowrap}
+.pres-portada .portada-txt{max-width:56%}
+.c-barras .pres-eq{font-size:calc(var(--u)*2.15)}
+.pres-ctl .v{padding:calc(var(--u)*.4) 0}
+.pres-ctl{gap:calc(var(--u)*.9)}
+.r3d-err{font-size:max(11px, calc(var(--u)*1.3))}
+
+/* Fórmulas en letra recta (sin cursiva) */
+.pres-eq, .pres-eq *, .pres-slide .fr, .pres-slide .fr i, .pres-tabla td:last-child, .pres-tabla td:last-child *{font-style:normal!important}
+.pres-slide li i, .pres-slide p i, .pres-slide td i{font-style:normal}
+
+/* =====================================================================
+   v4 · ruta de solución, tarjetas de datos, errores frecuentes
+   ===================================================================== */
+.b-rojo{background:linear-gradient(90deg,#C24438,#B3372E)}
+
+/* Ruta de solución */
+.ruta{display:grid; grid-template-columns:repeat(4,1fr); gap:calc(var(--u)*2.4); margin:calc(var(--u)*.4) 0 calc(var(--u)*2.2); align-items:stretch}
+.paso{
+  position:relative; background:#fff; border:1px solid var(--linea-fuerte); border-top:max(4px, calc(var(--u)*.45)) solid #111;
+  border-radius:calc(var(--u)*.9); padding:calc(var(--u)*1.5) calc(var(--u)*1.6) calc(var(--u)*1.4);
+  box-shadow:var(--sombra-tarjeta); display:flex; flex-direction:column;
+}
+.paso:not(:last-child)::after{
+  content:"›"; position:absolute; right:calc(var(--u)*-2.05); top:50%; margin-top:calc(var(--u)*-1.8);
+  font-size:calc(var(--u)*3.6); line-height:1; font-weight:700; color:var(--acento);
+}
+.paso .n{display:grid; place-items:center; width:calc(var(--u)*3.6); height:calc(var(--u)*3.6); border-radius:50%; background:#111; color:#fff; font-weight:700; font-size:calc(var(--u)*1.9); margin-bottom:calc(var(--u)*1)}
+.paso h3{font-size:calc(var(--u)*2.3); line-height:1.1; letter-spacing:-.02em; margin:0 0 calc(var(--u)*.7); font-weight:700}
+.paso p{font-size:calc(var(--u)*1.55); line-height:1.4; color:var(--tinta-suave); margin:0}
+.paso .f{margin-top:auto; padding-top:calc(var(--u)*1); border-top:1px solid var(--linea); font-family:var(--serif-mate); font-size:calc(var(--u)*1.9); color:#111; font-style:normal}
+.paso p + .f{margin-top:calc(var(--u)*1.2)}
+.paso .f{flex:0 0 auto}
+.paso p{flex:1 1 auto}
+.paso.fin{background:#111; border-color:#111; border-top-color:var(--lima)}
+.paso.fin h3, .paso.fin .f{color:#fff}
+.paso.fin p{color:#C9D1CC}
+.paso.fin .n{background:var(--lima); color:#111}
+.paso.fin .f{border-top-color:#3a4a41; color:var(--lima); font-family:var(--fuente-base); font-weight:700}
+
+/* Tarjetas de datos */
+.datos-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:calc(var(--u)*1.6); align-content:start}
+.dato{
+  background:#fff; border:1px solid var(--linea-fuerte); border-top:max(3px, calc(var(--u)*.35)) solid #111;
+  border-radius:calc(var(--u)*.9); padding:calc(var(--u)*1.3) calc(var(--u)*1.7) calc(var(--u)*1.4); box-shadow:var(--sombra-tarjeta);
+  display:flex; flex-direction:column; gap:calc(var(--u)*.5);
+}
+.dato.clave{border-top-color:var(--acento)}
+.dato em{font:700 max(10px, calc(var(--u)*1.2)) var(--fuente-base); letter-spacing:.14em; text-transform:uppercase; color:var(--tinta-suave); font-style:normal}
+.dato b{font-size:calc(var(--u)*3.1); line-height:1.05; letter-spacing:-.035em; font-weight:700; color:#111; font-variant-numeric:tabular-nums; font-style:normal}
+.dato.clave b{color:var(--acento-osc)}
+.dato span{font-size:calc(var(--u)*1.55); line-height:1.4; color:var(--tinta-suave)}
+.dato .fr{font-family:var(--fuente-base)}
+
+/* Errores frecuentes */
+.err-grid{display:grid; grid-template-columns:1fr 1fr; gap:calc(var(--u)*1.8); flex:1; align-content:start}
+.err{background:#fff; border:1px solid var(--linea-fuerte); border-radius:calc(var(--u)*.9); box-shadow:var(--sombra-tarjeta); overflow:hidden; display:flex; flex-direction:column}
+.err .mal, .err .bien{display:grid; grid-template-columns:calc(var(--u)*2.8) 1fr; gap:calc(var(--u)*.6); align-items:start; padding:calc(var(--u)*1.1) calc(var(--u)*1.6); font-size:calc(var(--u)*1.7); line-height:1.4}
+.err .mal{background:#FBEDEA; color:#7A241D; font-weight:600}
+.err .bien{background:#fff}
+.err b{display:grid; place-items:center; width:calc(var(--u)*2.2); height:calc(var(--u)*2.2); border-radius:50%; font-size:calc(var(--u)*1.35); color:#fff; margin-top:.1em}
+.err .mal b{background:#B3372E}
+.err .bien b{background:var(--acento)}
+
+/* Hipótesis: figura al lado */
+figure.pres-fig-wrap{margin:0}
+.c-barras ul{margin-top:0}
+
+@media (max-width:820px){
+  .pres-stage:not(:fullscreen) .ruta{grid-template-columns:1fr; gap:4cqw}
+  .pres-stage:not(:fullscreen) .paso:not(:last-child)::after{display:none}
+  .pres-stage:not(:fullscreen) .datos-grid, .pres-stage:not(:fullscreen) .err-grid{grid-template-columns:1fr}
+}
+
+/* Ajustes v4 */
+.col-enunciado-figura .pres-fig{max-height:none}
+.col-enunciado-texto ul{font-size:calc(var(--u)*2.05)!important; gap:calc(var(--u)*1)!important}
+.puntos-clave{font-size:calc(var(--u)*1.75)}
+.col-enunciado-texto .pres-res-mini{font-size:calc(var(--u)*2.4)}
+.cols-enunciado{align-items:center}
+.datos-grid{flex:1; align-content:center; gap:calc(var(--u)*2)}
+.dato{padding:calc(var(--u)*1.8) calc(var(--u)*2) calc(var(--u)*1.9); gap:calc(var(--u)*.8)}
+.dato b{font-size:calc(var(--u)*3.5)}
+.dato span{font-size:calc(var(--u)*1.7)}
+.v-grid{display:grid; grid-template-columns:1fr 1fr; gap:0 calc(var(--u)*2)}
+.pres-ctl .v-grid .v{grid-template-columns:1fr; gap:calc(var(--u)*.1); padding:calc(var(--u)*.5) 0}
+.pres-ctl .v-grid .v b{font-size:calc(var(--u)*2.2)}
+
+/* Ajustes v4 (2) */
+.col-enunciado-figura .pres-fig{max-height:calc(var(--u)*31)}
+.r3d-fb-fig .pres-fig{max-height:calc(var(--u)*31)}
+.pres-fig-wrap:not(.sim-wrap) .pres-fig{max-height:calc(var(--u)*27)}
+.datos-grid{grid-template-columns:1fr 1fr; gap:calc(var(--u)*1.6)}
+.dato{padding:calc(var(--u)*1.2) calc(var(--u)*2); gap:calc(var(--u)*.5)}
+.dato b{font-size:calc(var(--u)*3.2)}
+.dato span{font-size:calc(var(--u)*1.6)}
+@media (max-width:820px){ .pres-stage:not(:fullscreen) .datos-grid{grid-template-columns:1fr} }
+
+@media (max-width:820px){
+  .pres-stage:not(:fullscreen) .pres-portada h1{font-size:calc(var(--u)*5.2); white-space:normal}
+  .pres-stage:not(:fullscreen) .pres-portada::after{display:none!important}
+  .pres-stage:not(:fullscreen) .pres-portada .portada-ilus{margin-top:6cqw}
+  .pres-stage:not(:fullscreen) .pres-portada{padding-bottom:12cqw}
+}
 </style>
 </head>
 <body>
@@ -456,10 +1055,10 @@ const FECHA = "30/10/2026";
    Tubo en U (R = 10 in, fondo a 30 in bajo B), nivel del líquido en B,
    paraboloide imaginario con vértice a h = Ω²R²/2g bajo B. */
 let FIG_N = 0;
-function presFig(rpm){
+function presFig(rpm, zmax=74){
   const id = ++FIG_N, mf = "pf"+id, me = "pe"+id;   // ids únicos: así los marcadores funcionan aunque haya dos figuras en el DOM
   const Rin=10, prof=30, Wr=rpm*Math.PI/30, Rf=10/12, g=32.2, zv=-(Wr*Wr*Rf*Rf/(2*g))*12;
-  const sc=6.2, ox=190, oy=12*sc+22, Wd=380, Ht=(12+74)*sc+44, X=x=>ox+x*sc, Z=z=>oy-z*sc, c="#1E2A24";
+  const sc=6.2, ox=190, oy=12*sc+22, Wd=380, Ht=(12+zmax)*sc+44, X=x=>ox+x*sc, Z=z=>oy-z*sc, c="#1E2A24";
   const par=[]; for(let i=0;i<=60;i++){ const r=-Rin+2*Rin*i/60; par.push(`${X(r).toFixed(1)},${Z(zv*(1-(r/Rin)**2)).toFixed(1)}`); }
   const flecha=(x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="1.3" marker-start="url(#${mf})" marker-end="url(#${mf})"/>`;
   const ff = `font-family="Helvetica Neue, Helvetica, Arial, sans-serif"`;
@@ -469,12 +1068,12 @@ function presFig(rpm){
   <path d="M${X(-Rin)},${Z(10)} L${X(-Rin)},${Z(-prof)} L${X(Rin)},${Z(-prof)} L${X(Rin)},${Z(10)}" fill="none" stroke="${c}" stroke-width="${3*sc}" stroke-linejoin="miter"/>
   <path d="M${X(-Rin)},${Z(10)} L${X(-Rin)},${Z(-prof)} L${X(Rin)},${Z(-prof)} L${X(Rin)},${Z(10)}" fill="none" stroke="#FAFBF7" stroke-width="${2*sc}" stroke-linejoin="miter"/>
   <path d="M${X(-Rin)},${Z(0)} L${X(-Rin)},${Z(-prof)} L${X(Rin)},${Z(-prof)} L${X(Rin)},${Z(0)}" fill="none" stroke="#8fa3b8" stroke-width="${2*sc}" stroke-linejoin="miter"/>
-  <line x1="${X(0)}" y1="${Z(12)}" x2="${X(0)}" y2="${Z(-72)}" stroke="#5C6B60" stroke-width="1.2" stroke-dasharray="10 3 2 3"/>
+  <line x1="${X(0)}" y1="${Z(12)}" x2="${X(0)}" y2="${Z(-(zmax-2))}" stroke="#5C6B60" stroke-width="1.2" stroke-dasharray="10 3 2 3"/>
   <line x1="${X(-Rin-6)}" y1="${Z(0)}" x2="${X(Rin+6)}" y2="${Z(0)}" stroke="#2B5DA8" stroke-width="1.4" stroke-dasharray="6 4"/>
   <polyline points="${par.join(" ")}" fill="none" stroke="#C24438" stroke-width="2.2" stroke-dasharray="7 4"/>
-  <line x1="${X(0)}" y1="${Z(0)}" x2="${X(Rin+12)}" y2="${Z(0)}" stroke="${c}" stroke-width="1.3" marker-end="url(#${me})"/><text x="${X(Rin+12)}" y="${Z(0)-6}" font-size="13" font-style="italic" ${ff} fill="${c}">r</text>
-  <line x1="${X(0)}" y1="${Z(0)}" x2="${X(0)}" y2="${Z(12)}" stroke="${c}" stroke-width="1.3" marker-end="url(#${me})"/><text x="${X(0)+6}" y="${Z(12)+8}" font-size="13" font-style="italic" ${ff} fill="${c}">z</text>
-  <text x="${X(0)-14}" y="${Z(0)+14}" font-size="12" font-style="italic" ${ff} fill="${c}">O</text>
+  <line x1="${X(0)}" y1="${Z(0)}" x2="${X(Rin+12)}" y2="${Z(0)}" stroke="${c}" stroke-width="1.3" marker-end="url(#${me})"/><text x="${X(Rin+12)}" y="${Z(0)-6}" font-size="13" font-style="normal" ${ff} fill="${c}">r</text>
+  <line x1="${X(0)}" y1="${Z(0)}" x2="${X(0)}" y2="${Z(12)}" stroke="${c}" stroke-width="1.3" marker-end="url(#${me})"/><text x="${X(0)+6}" y="${Z(12)+8}" font-size="13" font-style="normal" ${ff} fill="${c}">z</text>
+  <text x="${X(0)-14}" y="${Z(0)+14}" font-size="12" font-style="normal" ${ff} fill="${c}">O</text>
   ${flecha(X(0),Z(8),X(Rin),Z(8))}<text x="${X(Rin/2)}" y="${Z(8)-5}" font-size="12" text-anchor="middle" ${ff} fill="${c}">R = 10 in</text>
   ${flecha(X(-Rin-9),Z(0),X(-Rin-9),Z(-prof))}<text x="${X(-Rin-9)-6}" y="${Z(-prof/2)}" font-size="12" text-anchor="end" ${ff} fill="${c}">30 in</text>
   <circle cx="${X(Rin)}" cy="${Z(0)}" r="4.5" fill="${c}"/><text x="${X(Rin)+9}" y="${Z(0)-7}" font-size="15" font-weight="700" ${ff} fill="${c}">B</text>
@@ -483,8 +1082,8 @@ function presFig(rpm){
   ${flecha(X(Rin+9),Z(0),X(Rin+9),Z(zv))}<text x="${X(Rin+9)+6}" y="${Z(zv/2)}" font-size="12" ${ff} fill="#C24438">h = ${(-zv).toFixed(0)} in</text>`:""}
   <path d="M${X(-4.5)},${Z(-15)} A${4.5*sc},${1.7*sc} 0 0 1 ${X(4.5)},${Z(-15)}" fill="none" stroke="${c}" stroke-width="2" marker-end="url(#${me})"/>
   <path d="M${X(4.5)},${Z(-15)} A${4.5*sc},${1.7*sc} 0 0 1 ${X(-4.5)},${Z(-15)}" fill="none" stroke="${c}" stroke-width="2" marker-end="url(#${me})"/>
-  <text x="${X(6.5)}" y="${Z(-15)+4}" font-size="16" font-style="italic" ${ff} fill="${c}">Ω</text>
-  <text x="${X(-Rin-15)}" y="${Z(-62)}" font-size="11" fill="#C24438" ${ff}>superficie libre imaginaria</text></svg>`;
+  <text x="${X(6.5)}" y="${Z(-15)+4}" font-size="16" font-style="normal" ${ff} fill="${c}">Ω</text>
+  <text x="${X(-Rin-15)}" y="${Z(-(zmax-(zmax>60?12:12)))}" font-size="11" fill="#C24438" ${ff}>superficie libre imaginaria</text></svg>`;
 }
 
 /* ================= Visor 3D (Three.js) ================= */
@@ -680,6 +1279,49 @@ async function iniciarRot3D(){
   requestAnimationFrame(bucle);
 }
 
+
+/* ================= Gráfico de barras de presiones ================= */
+const PMAX = 4600;   // lbf/ft² (escala común para comparar)
+function barrasP(titulo, filas, marca){
+  return `<figure class="pres-barras" role="img" aria-label="${titulo}">
+    <figcaption>${titulo}</figcaption>
+    ${filas.map(f=>`<div class="bar-fila">
+      <span class="bar-et">${f.et}</span>
+      <span class="bar-pista">${marca && !f.sinMarca ? `<i class="bar-marca" style="left:${(marca/PMAX*100).toFixed(2)}%"></i>` : ""}<i class="bar-barra ${f.cl}" ${f.k?`data-k="${f.k}"`:""} style="width:${(f.v/PMAX*100).toFixed(2)}%"></i></span>
+      <b class="bar-val" ${f.k?`data-k="${f.k}"`:""}>${f.txt}</b>
+    </div>`).join("")}
+    ${marca ? `<div class="bar-leyenda"><i></i><span>p<sub>atm</sub> = ${marca} lbf/ft²</span></div>` : ""}
+  </figure>`;
+}
+
+/* ================= Ilustración de la portada ================= */
+function ilusPortada(){
+  const c="#111", v="#147A46", lin="#D2CFC3";
+  const anillos=[190,160,130,100,70].map(r=>`<ellipse cx="200" cy="262" rx="${r}" ry="${(r*.26).toFixed(1)}" fill="none" stroke="${lin}" stroke-width="1.2"/>`).join("");
+  return `<svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de un tubo en U con mercurio que gira, con la superficie libre parabólica">
+  <defs>
+    <linearGradient id="ilHg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8FA3B5"/><stop offset=".45" stop-color="#DCE5EC"/><stop offset="1" stop-color="#7F95A8"/></linearGradient>
+    <marker id="ilFl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="${c}"/></marker>
+    <clipPath id="ilCanal"><path d="M96 30 H124 V246 H276 V30 H304 V274 H96 Z"/></clipPath>
+  </defs>
+  ${anillos}
+  <line x1="200" y1="14" x2="200" y2="372" stroke="#5E5E58" stroke-width="1.3" stroke-dasharray="10 3 2 3"/>
+  <path d="M96 30 H124 V246 H276 V30 H304 V274 H96 Z" fill="#fff" stroke="${c}" stroke-width="2.6" stroke-linejoin="round"/>
+  <g clip-path="url(#ilCanal)"><rect x="90" y="110" width="220" height="170" fill="url(#ilHg)"/></g>
+  <path d="M96 30 H124 V246 H276 V30 H304 V274 H96 Z" fill="none" stroke="${c}" stroke-width="2.6" stroke-linejoin="round"/>
+  <line x1="78" y1="110" x2="322" y2="110" stroke="#2B5DA8" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <path d="M110 110 Q200 570 290 110" fill="none" stroke="${v}" stroke-width="3" stroke-dasharray="8 5" stroke-linecap="round"/>
+  <circle cx="200" cy="340" r="4.5" fill="${v}"/>
+  <text x="212" y="344" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="${v}">vértice</text>
+  <circle cx="200" cy="260" r="6" fill="${c}"/>
+  <text x="212" y="256" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="${c}">A</text>
+  <circle cx="290" cy="110" r="6" fill="${c}"/>
+  <text x="312" y="104" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="${c}">B</text>
+  <path d="M142 58 A58 15 0 0 1 258 58" fill="none" stroke="${c}" stroke-width="2.4" marker-end="url(#ilFl)"/>
+  <text x="200" y="36" text-anchor="middle" font-family="Cambria Math, Cambria, Georgia, serif" font-style="normal" font-size="26" fill="${c}">Ω</text>
+</svg>`;
+}
+
 /* ================= Diapositivas ================= */
 const PRES = {abierta:null, i:0, listo:false};
 
@@ -689,17 +1331,20 @@ const PRES_LISTA = [{
   slides:[
   /* 1 · Portada */
   {t:"Portada", html:()=>`<div class="pres-slide pres-portada">
-      <p class="k">Mecánica de fluidos · Fluido como sólido rígido en rotación</p>
-      <h1>Ejemplo 2.14</h1>
-      <p class="portada-sub">Tubo en U con mercurio que rota: ¿cuánto baja la presión en el punto A?</p>
-      <div class="portada-meta"><span class="portada-fecha">${FECHA}</span></div>
+      <div class="portada-ilus">${ilusPortada()}</div>
+      <div class="portada-txt">
+        <p class="k">Mecánica de fluidos · Fluido como sólido rígido en rotación</p>
+        <h1>Ejemplo 2.14</h1>
+        <p class="portada-sub">Tubo en U con mercurio que rota: ¿cuánto baja la presión en el punto A?</p>
+        <div class="portada-meta"><span class="portada-fecha">${FECHA}</span></div>
+      </div>
       <p class="portada-ref">Referencia: ${REF_APA}<br>Tabla 2.1, p. 80 — peso específico del mercurio.</p>
     </div>`,
    nota:"Preséntate y di de qué trata: un fluido que gira como un sólido rígido, y cómo eso cambia la presión. Menciona la fuente (White, 2004) y que el dato del mercurio sale de la Tabla 2.1, p. 80."},
 
   /* 2 · Enunciado y esquema */
-  {t:"Enunciado y esquema", html:()=>`<div class="pres-slide">
-      <h2><small>Enunciado y esquema</small>¿Qué se pide?</h2>
+  {t:"Enunciado y esquema", sec:"Planteamiento", html:()=>`<div class="pres-slide">
+      <h2><small>Enunciado y esquema</small><span>¿Qué se pide?</span></h2>
       <div class="cols-enunciado">
         <div class="col-enunciado-texto">
           <ul>
@@ -714,16 +1359,45 @@ const PRES_LISTA = [{
           <div class="pres-res-mini">Calcular p<sub>A</sub></div>
         </div>
         <figure class="col-enunciado-figura">
-          ${presFig(180)}
+          ${presFig(180,54)}
           <figcaption>Línea azul: nivel de 30 in. Línea roja: <b>superficie libre imaginaria</b> (paraboloide) que pasa por B. Su vértice queda <b>por debajo de A</b>: por eso p<sub>A</sub> &lt; p<sub>atm</sub>.</figcaption>
         </figure>
       </div>
     </div>`,
    nota:"Lee el enunciado y ve señalando la figura: 10 in de radio, 30 in de profundidad, 180 rpm, mercurio y presión atmosférica. El tubo es delgado, así que el nivel en el brazo vertical se queda en B. La parábola roja no es superficie real: es la forma que tendría la superficie libre si el líquido pudiera acomodarse. Su vértice cae por debajo de A: esa es la razón física de que p_A < p_atm."},
 
-  /* 3 · Modelo */
-  {t:"Modelo: cuerpo rígido en rotación", html:()=>`<div class="pres-slide">
-      <h2><small>Modelo</small>Cuerpo rígido en rotación</h2>
+  /* 3 · Ruta de solución */
+  {t:"Ruta de solución", sec:"Planteamiento", html:()=>`<div class="pres-slide">
+      <h2><small>Planteamiento</small><span>Ruta de solución en cuatro pasos</span></h2>
+      <div class="ruta">
+        <div class="paso">
+          <span class="n">1</span><h3>Modelo</h3>
+          <p>El mercurio gira como sólido rígido: la presión crece con la profundidad y con el radio.</p>
+          <div class="f">p = C − ρgz + ½ρΩ²r²</div>
+        </div>
+        <div class="paso">
+          <span class="n">2</span><h3>Datos</h3>
+          <p>Unidades consistentes: Ω en rad/s, ρ en slug/ft³, longitudes en ft.</p>
+          <div class="f">Ω = 18,85 rad/s</div>
+        </div>
+        <div class="paso">
+          <span class="n">3</span><h3>Condición en B</h3>
+          <p>B está abierto a la atmósfera: es el único punto de presión conocida y fija C.</p>
+          <div class="f">p<sub>B</sub> = p<sub>atm</sub></div>
+        </div>
+        <div class="paso fin">
+          <span class="n">4</span><h3>Presión en A</h3>
+          <p>Se evalúa en el eje, r = 0 y z = −30 in, y se verifica con el paraboloide.</p>
+          <div class="f">p<sub>A</sub> = 986 lbf/ft²</div>
+        </div>
+      </div>
+      <div class="pres-nota-b info"><b>Idea clave:</b> basta un punto de presión conocida (B) para fijar toda la distribución de presiones del fluido.</div>
+    </div>`,
+   nota:"Antes de calcular, muestra el mapa de la solución: cuatro pasos. Insiste en que la única presión que conocemos de entrada es la de B, que está abierto a la atmósfera; con ella se fija la constante C y de ahí sale todo lo demás."},
+
+  /* 4 · Modelo */
+  {t:"Modelo: cuerpo rígido en rotación", sec:"Teoría", html:()=>`<div class="pres-slide">
+      <h2><small>Modelo</small><span>Cuerpo rígido en rotación</span></h2>
       <div class="pres-eq"><b>a</b> = −Ω² r <b>e</b><sub>r</sub></div>
       <div class="pres-eq">∇p = ρ(<b>g</b> − <b>a</b>) &nbsp;⟹&nbsp; ${prFr("∂p","∂r")} = ρΩ²r, &nbsp; ${prFr("∂p","∂z")} = −ρg</div>
       <div class="pres-eq">p = C − ρ g z + ½ ρ Ω² r² &nbsp;<span class="eq-tag">(Ecs. 2.62b y 2.63)</span></div>
@@ -734,23 +1408,23 @@ const PRES_LISTA = [{
     </div>`,
    nota:"Cada partícula tiene aceleración centrípeta hacia el eje. Al aplicar la ecuación del movimiento resultan dos derivadas parciales que se integran. C es la constante que hay que fijar con una condición conocida: la presión atmosférica en B."},
 
-  /* 4 · Datos */
-  {t:"Datos y conversión de unidades", html:()=>`<div class="pres-slide">
-      <h2><small>Datos</small>Conversión de unidades</h2>
-      <table class="pres-tabla">
-        <tr><td>Velocidad angular</td><td>Ω = 180 rpm · ${prFr("2π rad/rev","60 s/min")} = <b>18,85 rad/s</b></td></tr>
-        <tr><td>Peso específico del Hg <span class="ref-lnk">(Tabla 2.1, p. 80 →)</span></td><td>ρg = 846 lbf/ft³ &nbsp;⟹&nbsp; ρ = 846/32,2 = <b>26,3 slug/ft³</b></td></tr>
-        <tr><td>Radio</td><td>R = 10 in = <b>10/12 ft</b></td></tr>
-        <tr><td>Profundidad de A</td><td>30 in = <b>2,5 ft</b></td></tr>
-        <tr><td>Presión atmosférica</td><td>p<sub>atm</sub> = <b>2116 lbf/ft²</b></td></tr>
-        <tr><td>Inclinación de la superficie</td><td>tan θ = Ω²R/g ≈ 9,2 &nbsp;⟹&nbsp; θ ≈ <b>84°</b></td></tr>
-      </table>
+  /* 5 · Datos */
+  {t:"Datos y conversión de unidades", sec:"Datos", html:()=>`<div class="pres-slide">
+      <h2><small>Datos</small><span>Conversión de unidades</span></h2>
+      <div class="datos-grid">
+        <div class="dato clave"><em>Velocidad angular</em><b>Ω = 18,85 rad/s</b><span>180 rpm · ${prFr("2π rad/rev","60 s/min")}</span></div>
+        <div class="dato clave"><em>Densidad del mercurio</em><b>ρ = 26,3 slug/ft³</b><span>ρg = 846 lbf/ft³ <span class="ref-lnk">Tabla 2.1, p. 80</span> ÷ 32,2 ft/s²</span></div>
+        <div class="dato"><em>Radio del tubo</em><b>R = 10/12 ft</b><span>10 in</span></div>
+        <div class="dato"><em>Profundidad de A</em><b>2,5 ft</b><span>30 in bajo el nivel de B</span></div>
+        <div class="dato"><em>Presión atmosférica</em><b>2116 lbf/ft²</b><span>p<sub>atm</sub>, aplicada en B</span></div>
+        <div class="dato"><em>Inclinación de la superficie</em><b>θ ≈ 84°</b><span>tan θ = Ω²R/g ≈ 9,2</span></div>
+      </div>
     </div>`,
    nota:"Aquí hay que cuidar las unidades: pasar rpm a rad/s, y obtener la densidad a partir del peso específico dividiendo entre g. El 846 lbf/ft³ sale de la Tabla 2.1 del libro (p. 80), que muestro en la siguiente diapositiva. El ángulo de 84° muestra que la superficie queda casi vertical, pero el tubo es tan delgado que no importa."},
 
-  /* 5 · Tabla 2.1 */
-  {t:"Tabla 2.1 del libro (p. 80)", html:()=>`<div class="pres-slide">
-      <h2><small>Tabla 2.1 · p. 80</small>De dónde sale ρg del mercurio</h2>
+  /* 6 · Tabla 2.1 */
+  {t:"Tabla 2.1 del libro (p. 80)", sec:"Datos", html:()=>`<div class="pres-slide">
+      <h2><small>Tabla 2.1 · p. 80</small><span>De dónde sale ρg del mercurio</span></h2>
       <div class="cols c-tabla">
         <div>
           <table class="pres-tabla-libro">
@@ -788,60 +1462,89 @@ const PRES_LISTA = [{
     </div>`,
    nota:"Enseña la tabla y detente en la fila del mercurio: 846 lbf/ft³ en el sistema inglés y 133.100 N/m³ en el SI. Explica que la densidad que entra en la ecuación de presión se obtiene dividiendo el peso específico entre g; en unidades inglesas eso da 26,3 slug/ft³. En SI, 133.100/9,81 ≈ 13.569 kg/m³, que es el valor clásico del mercurio."},
 
-  /* 6 · Hipótesis */
-  {t:"Hipótesis y condición de contorno", html:()=>`<div class="pres-slide">
-      <h2><small>Hipótesis</small>Origen de coordenadas en el nivel de B</h2>
-      <ul>
-        <li>El tubo es tan delgado que la superficie libre real <b>permanece aproximadamente al mismo nivel</b> de 30 in (punto B).</li>
-        <li>Se coloca el origen a esa altura, sobre el eje: <b>B = (r, z) = (10 in, 0)</b> y <b>A = (0, −30 in)</b>.</li>
-        <li>Condición de contorno: en B la presión es la atmosférica, <b>p<sub>B</sub> = 2116 lbf/ft²</b>.</li>
-      </ul>
-      <div class="pres-nota-b">Con la condición en B se determina la constante C de la ecuación de presión.</div>
+  /* 7 · Hipótesis */
+  {t:"Hipótesis y condición de contorno", sec:"Resolución", html:()=>`<div class="pres-slide">
+      <h2><small>Hipótesis</small><span>Origen de coordenadas en el nivel de B</span></h2>
+      <div class="cols c-barras">
+        <div class="col-eqs">
+          <ul>
+            <li>El tubo es tan delgado que la superficie libre real <b>permanece aproximadamente al mismo nivel</b> de 30 in (punto B).</li>
+            <li>Origen a esa altura, sobre el eje: <b>B = (r, z) = (10 in, 0)</b> y <b>A = (0, −30 in)</b>.</li>
+            <li>Condición de contorno: en B la presión es la atmosférica, <b>p<sub>B</sub> = 2116 lbf/ft²</b>.</li>
+          </ul>
+          <div class="pres-nota-b info">Con la condición en B se determina la constante C de la ecuación de presión.</div>
+        </div>
+        <figure class="pres-fig-wrap">${presFig(180,54)}</figure>
+      </div>
     </div>`,
-   nota:"Esta es la hipótesis que justifica el problema: con diámetro despreciable, el nivel del líquido en el brazo vertical no cambia al girar. Eso nos da una presión conocida en B."},
+   nota:"Esta es la hipótesis que justifica el problema: con diámetro despreciable, el nivel del líquido en el brazo vertical no cambia al girar. Eso nos da una presión conocida en B. Señala en la figura el origen de coordenadas O en el nivel de B, sobre el eje, y cómo A queda 30 in más abajo."},
 
-  /* 7 · Paso 1 */
-  {t:"Paso 1: la constante C", html:()=>`<div class="pres-slide">
-      <h2><small>Paso 1</small>Constante C con la condición en B</h2>
-      <div class="pres-eq">p<sub>B</sub> = C − 0 + ½ρΩ²R²</div>
-      <div class="pres-eq">2116 = C + ½ (26,3) ${prFr("10","12")}<sup>2</sup> (18,85)<sup>2</sup> &nbsp;=&nbsp; C + 3245</div>
-      <div class="pres-res">C = 2116 − 3245 = −1129 lbf/ft²</div>
+  /* 8 · Paso 1 */
+  {t:"Paso 1: la constante C", sec:"Resolución", html:()=>`<div class="pres-slide">
+      <h2><small>Paso 1</small><span>Constante C con la condición en B</span></h2>
+      <div class="cols c-barras">
+        <div class="col-eqs">
+          <div class="pres-eq">p<sub>B</sub> = C − 0 + ½ρΩ²R²</div>
+          <div class="pres-eq">2116 = C + ½ (26,3) ${prFr("10","12")}<sup>2</sup> (18,85)<sup>2</sup> &nbsp;=&nbsp; C + 3245</div>
+          <div class="pres-res">C = −1129 lbf/ft²</div>
+        </div>
+        <div class="pres-chart">${barrasP("Cómo sale C · lbf/ft²",[
+          {et:"p<sub>atm</sub> en B",v:2116,txt:"2116",cl:"b-gris"},
+          {et:"½ρΩ²R²",v:3245,txt:"3245",cl:"b-neg"},
+          {et:"C = 2116 − 3245",v:1129,txt:"−1129",cl:"b-rojo"}])}</div>
+      </div>
     </div>`,
-   nota:"Sustituye r = R y z = 0 en la ecuación de presión. El término de rotación vale 3245 lbf/ft². Despeja C: sale negativa, −1129."},
+   nota:"Sustituye r = R y z = 0 en la ecuación de presión. El término de rotación vale 3245 lbf/ft²: es mayor que la atmosférica, y por eso C sale negativa, −1129. El gráfico lo muestra: la barra negra supera a la gris, y la diferencia roja es C."},
 
-  /* 8 · Paso 2 */
-  {t:"Paso 2: presión en A", html:()=>`<div class="pres-slide">
-      <h2><small>Paso 2</small>Presión en el punto A</h2>
-      <div class="pres-eq">(r, z) = (0, −30 in) &nbsp;⟹&nbsp; p<sub>A</sub> = C − ρg·z</div>
-      <div class="pres-eq">p<sub>A</sub> = −1129 − (846)(−${prFr("30","12")}) = −1129 + 2115</div>
-      <div class="pres-res">p<sub>A</sub> = 986 lbf/ft²</div>
-      <p class="pres-aside">Menor que la presión atmosférica (2116 lbf/ft²).</p>
+  /* 9 · Paso 2 */
+  {t:"Paso 2: presión en A", sec:"Resolución", html:()=>`<div class="pres-slide">
+      <h2><small>Paso 2</small><span>Presión en el punto A</span></h2>
+      <div class="cols c-barras">
+        <div class="col-eqs">
+          <div class="pres-eq">(r, z) = (0, −30 in) &nbsp;⟹&nbsp; p<sub>A</sub> = C − ρg·z</div>
+          <div class="pres-eq">p<sub>A</sub> = −1129 − (846)(−${prFr("30","12")}) = −1129 + 2115</div>
+          <div class="pres-res">p<sub>A</sub> = 986 lbf/ft²</div>
+          <p class="pres-aside">Menor que la presión atmosférica (2116 lbf/ft²).</p>
+        </div>
+        <div class="pres-chart">${barrasP("Presión en A · lbf/ft²",[
+          {et:"Atmosférica",v:2116,txt:"2116",cl:"b-gris",sinMarca:true},
+          {et:"En reposo",v:4231,txt:"4231",cl:"b-neg"},
+          {et:"Girando<br>180 rpm",v:986,txt:"986",cl:"b-verde"}],2116)}</div>
+      </div>
     </div>`,
    nota:"Resultado principal. En el eje r = 0 el término de rotación desaparece, queda C más el efecto de la profundidad. 986 es menos de la mitad de la presión atmosférica: pregunta natural, ¿por qué baja tanto? Se explica en la siguiente diapositiva."},
 
-  /* 9 · Verificación */
-  {t:"Verificación independiente", html:()=>`<div class="pres-slide">
-      <h2><small>Verificación</small>¿Por qué p<sub>A</sub> es menor que p<sub>atm</sub>?</h2>
+  /* 10 · Verificación */
+  {t:"Verificación independiente", sec:"Verificación", html:()=>`<div class="pres-slide">
+      <h2><small>Verificación</small><span>¿Por qué p<sub>A</sub> es menor que p<sub>atm</sub>?</span></h2>
       <div class="cols">
         <div>
-          <div class="pres-eq">h = ${prFr("Ω²R²","2g")} = ${prFr("(18,85)²(10/12)²","2(32,2)")} ≈ 3,83 ft ≈ <b>46 in</b></div>
+          <div class="pres-eq">h = ${prFr("Ω²R²","2g")} = ${prFr("(18,85)²(10/12)²","2(32,2)")} <br>≈ 3,83 ft ≈ <b>46 in</b></div>
           <ul>
             <li>Desde B, el paraboloide cae <b>46 in</b>: su vértice queda 16 in <b>por debajo de A</b>.</li>
             <li>Entonces p<sub>A</sub> ≈ p<sub>atm</sub> − 16 inHg.</li>
             <li>16 in de Hg ⟹ ${prFr("16","12")}(846) ≈ 1128 lbf/ft².</li>
           </ul>
         </div>
-        <div class="pres-fig-wrap">${presFig(180)}</div>
+        <div class="pres-fig-wrap">${presFig(180,54)}</div>
       </div>
       <div class="pres-res sm">2116 − 1128 ≈ 988 ≈ 986 lbf/ft² ✓</div>
     </div>`,
    nota:"Comprobación independiente: la caída de presión desde B es la altura del paraboloide, h = Ω²R²/2g. Con los números da 3,83 ft; el libro escribe 3,85 ft, ambos son unos 46 in, así que no cambia nada. Como el vértice queda 16 in bajo A, la presión en A es 16 pulgadas de mercurio menor que la atmosférica, y eso concuerda con 986."},
 
-  /* 10 · Comparación */
-  {t:"Comparación con el reposo", html:()=>`<div class="pres-slide">
-      <h2><small>Comparación</small>Efecto de la rotación sobre p<sub>A</sub></h2>
-      <div class="pres-eq">En reposo: &nbsp;p<sub>A</sub> = 2116 − 846(−${prFr("30","12")}) = <b>4231 lbf/ft²</b></div>
-      <div class="pres-eq">Girando: &nbsp;p<sub>A</sub> = <b>986 lbf/ft²</b> &nbsp;⟹&nbsp; reducción de ${prFr("4231 − 986","4231")} ≈ <b>77 %</b></div>
+  /* 11 · Comparación */
+  {t:"Comparación con el reposo", sec:"Análisis", html:()=>`<div class="pres-slide">
+      <h2><small>Comparación</small><span>Efecto de la rotación sobre p<sub>A</sub></span></h2>
+      <div class="cols c-barras">
+        <div class="col-eqs">
+          <div class="pres-eq">En reposo: &nbsp;p<sub>A</sub> = 2116 − 846(−${prFr("30","12")}) = <b>4231 lbf/ft²</b></div>
+          <div class="pres-eq">Girando: &nbsp;p<sub>A</sub> = <b>986 lbf/ft²</b> &nbsp;⟹&nbsp; reducción de ${prFr("4231 − 986","4231")} ≈ <b>77 %</b></div>
+        </div>
+        <div class="pres-chart">${barrasP("Presión en A · lbf/ft²",[
+          {et:"En reposo",v:4231,txt:"4231",cl:"b-neg"},
+          {et:"Girando<br>180 rpm",v:986,txt:"986",cl:"b-verde"},
+          {et:"Atmosférica",v:2116,txt:"2116",cl:"b-gris",sinMarca:true}],2116)}</div>
+      </div>
       <ul>
         <li>Si se gira más rápido, p<sub>A</sub> sigue bajando hasta casi cero y aparece <b>cavitación</b>.</li>
         <li>Con estos datos, p<sub>A</sub> = 0 cuando Ω ≈ 21,5 rad/s ≈ <b>206 rpm</b> <small class="muted">(cálculo complementario, no está en el libro)</small>.</li>
@@ -849,9 +1552,9 @@ const PRES_LISTA = [{
     </div>`,
    nota:"En reposo la presión en A es 4231, porque soporta los 30 in de mercurio más la atmósfera. Al girar baja al 23 por ciento de ese valor. El dato de 206 rpm lo calculé yo: p_A = 4231 − ½ρΩ²R² y se iguala a cero (Ω ≈ 21,5 rad/s). Dilo como cálculo complementario por si te preguntan."},
 
-  /* 11 · Simulación 3D */
-  {t:"Simulación 3D", html:()=>`<div class="pres-slide">
-      <h2><small>Simulación 3D</small>¿Qué pasa si cambia Ω?</h2>
+  /* 12 · Simulación 3D */
+  {t:"Simulación 3D", sec:"Análisis", html:()=>`<div class="pres-slide">
+      <h2><small>Simulación 3D</small><span>¿Qué pasa si cambia Ω?</span></h2>
       <div class="cols c-sim">
         <div class="pres-fig-wrap sim-wrap" id="presFigSim3d"></div>
         <div class="pres-ctl">
@@ -863,10 +1566,16 @@ const PRES_LISTA = [{
             <button type="button" data-rpm="180">180 rpm (ejemplo)</button>
             <button type="button" data-rpm="206">206 rpm (p<sub>A</sub> = 0)</button>
           </div>
+          <div class="v-grid">
           <div class="v"><span>Ω</span><b id="prW">18,85 rad/s</b></div>
           <div class="v"><span>Altura del paraboloide h</span><b id="prH">46 in</b></div>
           <div class="v"><span>Presión en A</span><b id="prPA">986 lbf/ft²</b></div>
           <div class="v"><span>Frente a reposo (4231)</span><b id="prPct">23 %</b></div>
+          </div>
+          ${barrasP("Presión en A · lbf/ft²",[
+            {et:"Reposo",v:4231,txt:"4231",cl:"b-neg"},
+            {et:"Atmosf.",v:2116,txt:"2116",cl:"b-gris",sinMarca:true},
+            {et:"Girando",v:986,txt:"986",cl:"b-verde",k:"a"}],2116)}
           <div id="prAviso" class="pres-nota-b info" style="margin-top:0" role="status"></div>
           <p class="gen-ayuda">Arrastra sobre el modelo para girarlo; rueda del ratón o pellizco para acercarte.</p>
         </div>
@@ -885,6 +1594,8 @@ const PRES_LISTA = [{
        $("#prH").textContent = fmt(h)+" in";
        $("#prPA").textContent = fmt(Math.max(pa,0))+" lbf/ft²";
        $("#prPct").textContent = fmt(Math.max(pa,0)/P_REPOSO*100)+" %";
+       const bA=document.querySelector('.bar-barra[data-k="a"]'), bV=document.querySelector('.bar-val[data-k="a"]');
+       if(bA){ bA.style.width=(Math.max(pa,0)/4600*100)+"%"; bV.textContent=fmt(Math.max(pa,0)); }
        const av = $("#prAviso");
        if(pa<=0){
          av.className = "pres-nota-b";
@@ -904,16 +1615,34 @@ const PRES_LISTA = [{
      iniciarRot3D();
    }},
 
-  /* 12 · Conclusiones */
-  {t:"Conclusiones", html:()=>`<div class="pres-slide">
-      <h2><small>Conclusiones</small>Lo que hay que recordar</h2>
-      <ul>
-        <li>Un fluido que rota como sólido rígido tiene <b>aceleración centrípeta a = −Ω²r</b> y superficies de presión constante parabólicas.</li>
-        <li>Se integra <b>p = C − ρgz + ½ρΩ²r²</b> y C se fija con la presión atmosférica en B.</li>
-        <li>Resultado: <b>p<sub>A</sub> = 986 lbf/ft²</b>, el <b>23 %</b> del valor en reposo (4231 lbf/ft²).</li>
-        <li>Se verifica porque el vértice del paraboloide queda 16 in bajo A (≈ 16 inHg menos).</li>
-        <li>A mayor velocidad, p<sub>A</sub> tiende a cero y aparece <b>cavitación</b>.</li>
-      </ul>
+  /* 13 · Errores frecuentes */
+  {t:"Errores frecuentes", sec:"Cierre", html:()=>`<div class="pres-slide">
+      <h2><small>Cierre</small><span>Errores frecuentes</span></h2>
+      <div class="err-grid">
+        <div class="err"><div class="mal"><b>✗</b> Usar ρg = 846 como si fuera ρ.</div><div class="bien"><b>✓</b> ρ = ρg/g = 26,3 slug/ft³; si no, el término de rotación sale 32 veces mayor.</div></div>
+        <div class="err"><div class="mal"><b>✗</b> Dejar Ω en rpm.</div><div class="bien"><b>✓</b> Convertir: Ω = 180 · 2π/60 = 18,85 rad/s.</div></div>
+        <div class="err"><div class="mal"><b>✗</b> Mezclar pulgadas y pies (R = 10, z = −30).</div><div class="bien"><b>✓</b> Todo en pies: R = 10/12 ft y z = −2,5 ft, con la presión en lbf/ft².</div></div>
+        <div class="err"><div class="mal"><b>✗</b> Creer que el mercurio realmente sigue la parábola.</div><div class="bien"><b>✓</b> Es una superficie libre imaginaria: solo sirve de referencia para calcular presiones.</div></div>
+      </div>
+    </div>`,
+   nota:"Cierra con los errores típicos al resolver este tipo de problema. Los tres primeros son de unidades; el cuarto es conceptual: la parábola roja no es la superficie del mercurio, es la superficie libre imaginaria que pasaría por B. Si preguntan por qué sale 32 veces mayor: es el valor de g en ft/s²."},
+
+  /* 14 · Conclusiones */
+  {t:"Conclusiones", sec:"Cierre", html:()=>`<div class="pres-slide">
+      <h2><small>Conclusiones</small><span>Lo que hay que recordar</span></h2>
+      <div class="cols c-concl">
+        <ul>
+          <li>Un fluido que rota como sólido rígido tiene <b>aceleración centrípeta a = −Ω²r</b> y superficies de presión constante parabólicas.</li>
+          <li>Se integra <b>p = C − ρgz + ½ρΩ²r²</b> y C se fija con la presión atmosférica en B.</li>
+          <li>Se verifica porque el vértice del paraboloide queda 16 in bajo A (≈ 16 inHg menos).</li>
+          <li>A mayor velocidad, p<sub>A</sub> tiende a cero y aparece <b>cavitación</b>.</li>
+        </ul>
+        <div class="stats">
+          <div class="stat"><b>986</b><span>lbf/ft² · p<sub>A</sub> girando a 180 rpm</span></div>
+          <div class="stat"><b>23 %</b><span>del valor en reposo (4231 lbf/ft²)</span></div>
+          <div class="stat"><b>≈ 206</b><span>rpm: p<sub>A</sub> = 0 y cavitación</span></div>
+        </div>
+      </div>
       <div class="pres-res sm">¿Preguntas?</div>
       <p class="pres-ref"><b>Referencias:</b> ${REF_APA} Tabla 2.1, p. 80.</p>
     </div>`,
@@ -945,13 +1674,15 @@ function presMostrar(){
   $("#presStage").setAttribute("aria-label", `Diapositiva ${PRES.i+1} de ${n}: ${d.t}`);
   $("#presAnuncio").textContent=`Diapositiva ${PRES.i+1} de ${n}: ${d.t}`;
   $("#presCont").textContent=`${PRES.i+1} / ${n}`;
+  $("#presStage").dataset.head = PRES.i===0 ? "" : "Ejemplo 2.14 · "+(d.sec||"Mecánica de fluidos");
+  $("#presStage").dataset.folio = String(PRES.i+1).padStart(2,"0")+" / "+String(n).padStart(2,"0");
   $("#presProg").style.width=((PRES.i+1)/n*100)+"%";
   const pb=$("#presProg").parentElement; pb.setAttribute("aria-valuenow",PRES.i+1); pb.setAttribute("aria-valuemax",n);
   $("#presPrev").setAttribute("aria-disabled", PRES.i===0);
   $("#presNext").setAttribute("aria-disabled", PRES.i===n-1);
   $("#presIr").value=PRES.i;
   $("#presNotas").innerHTML=`<b>Qué decir</b><br>${d.nota||"—"}`;
-  if(PRES.i>=7) cargarThree().catch(()=>{});          // precarga el visor 3D unas diapositivas antes de usarlo
+  if(PRES.i>=n-7) cargarThree().catch(()=>{});          // precarga el visor 3D unas diapositivas antes de usarlo
   try{ history.replaceState(null,"","#d"+(PRES.i+1)); }catch(_){}
 }
 const presIr = d => {
@@ -967,10 +1698,26 @@ const presSalta = k => { if(PRES.abierta!=null){ PRES.i=k; presMostrar(); } };
 function ajustarSlide(sl){
   if(!sl) return;
   sl.style.removeProperty("--u");
+  const cs=getComputedStyle(sl);
+  const medir=()=>{            // mide el contenido real (no solo scrollHeight) contra el margen inferior reservado al pie
+    const r0=sl.getBoundingClientRect();
+    const top=r0.top+parseFloat(cs.paddingTop), limite=r0.bottom-parseFloat(cs.paddingBottom);
+    let fondo=top;
+    sl.querySelectorAll("*").forEach(e=>{ const r=e.getBoundingClientRect(); if(r.height>0) fondo=Math.max(fondo,r.bottom); });
+    // columnas flexibles: si su contenido se sale de su propia caja, lo cuenta como exceso
+    sl.querySelectorAll(".cols,.cols-enunciado").forEach(c=>{
+      const cb=c.getBoundingClientRect().bottom; let ex=0;
+      c.querySelectorAll("*").forEach(e=>{ const r=e.getBoundingClientRect(); if(r.height>0) ex=Math.max(ex,r.bottom-cb); });
+      if(ex>1) fondo=Math.max(fondo, limite+ex);
+    });
+    return {top, limite, fondo};
+  };
   let k=1;
-  for(let n=0;n<5;n++){
-    if(sl.scrollHeight - sl.clientHeight <= 1) break;
-    k *= Math.max(.8, (sl.clientHeight/sl.scrollHeight)*.985);
+  for(let n=0;n<6;n++){
+    const m=medir();
+    if(m.fondo - m.limite <= 1 && sl.scrollHeight - sl.clientHeight <= 1) break;
+    const ratio=(m.limite-m.top)/Math.max(1,(m.fondo-m.top));
+    k *= Math.max(.8, Math.min(.985, ratio*.985));
     sl.style.setProperty("--u", `calc(1cqw*${k.toFixed(4)})`);
   }
 }
@@ -989,7 +1736,7 @@ function construirImpresion(){
     const w=document.createElement("div"); w.className="print-slide";
     w.innerHTML=d.html();
     const sim=w.querySelector("#presFigSim3d");
-    if(sim){ sim.removeAttribute("id"); sim.innerHTML=presFig(180); }   // sin WebGL en papel: se imprime el esquema 2D a 180 rpm
+    if(sim){ sim.removeAttribute("id"); sim.innerHTML=presFig(180,54); }   // sin WebGL en papel: se imprime el esquema 2D a 180 rpm
     w.querySelectorAll("[id]:not(marker)").forEach(e=>e.removeAttribute("id"));   // ids únicos solo en el DOM vivo (los marcadores SVG conservan el suyo)
     box.appendChild(w);
   });
