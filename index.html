@@ -1046,6 +1046,26 @@ figure.pres-fig-wrap{margin:0}
   .pres-stage:not(:fullscreen) .calc > p{grid-area:p}
   .pres-stage:not(:fullscreen) .calc .pres-eq{grid-area:e}
 }
+
+/* Diapositiva 12: figura + gráfico en la columna derecha */
+.col-fig-barras{display:flex; flex-direction:column; gap:calc(var(--u)*1.2); min-height:0}
+.col-fig-barras .fig-prob{height:auto; flex:0 0 auto; flex-direction:column; align-items:center; gap:calc(var(--u)*.4); padding:calc(var(--u)*.8) 0}
+.col-fig-barras .fig-prob .pres-fig{height:auto; width:100%; max-height:calc(var(--u)*34)}
+.pres-slide .cols.c-barras:has(.col-fig-barras){--cols:1fr 1.3fr; gap:calc(var(--u)*3)}
+.pres-slide .cols.c-barras:has(.fig-alta){--cols:1.1fr 1fr}
+.col-fig-barras .fig-alta .pres-fig{max-height:calc(var(--u)*37)}
+.calcs .pres-barras{margin-top:calc(var(--u)*.6); padding:calc(var(--u)*.7) calc(var(--u)*1.4); gap:calc(var(--u)*.45)}
+.calcs .pres-barras figcaption{display:none}
+.calcs .pres-barras .bar-leyenda{padding:0}
+.calcs .pres-barras .bar-et{line-height:1.05}
+.calcs .pres-barras .bar-pista{height:calc(var(--u)*2.4)}
+.calcs .pres-barras .bar-et, .calcs .pres-barras .bar-val{font-size:calc(var(--u)*1.4)}
+.calcs .pres-barras .bar-fila{grid-template-columns:calc(var(--u)*13) 1fr calc(var(--u)*5)}
+.col-fig-barras .fig-prob figcaption{font-size:max(10px, calc(var(--u)*1.25)); color:var(--tinta-suave)}
+.col-fig-barras .pres-barras{padding:calc(var(--u)*1) calc(var(--u)*1.4); gap:calc(var(--u)*.7)}
+.col-fig-barras .bar-pista{height:calc(var(--u)*2.4)}
+.col-fig-barras .bar-et, .col-fig-barras .bar-val{font-size:calc(var(--u)*1.45)}
+@media (max-width:820px){ .pres-stage:not(:fullscreen) .col-fig-barras .fig-prob .pres-fig{height:auto; width:100%; max-height:90cqw} }
 </style>
 </head>
 <body>
@@ -1106,7 +1126,7 @@ const FECHA = "30/10/2026";
    Tubo en U (R = 10 in, fondo a 30 in bajo B), nivel del líquido en B,
    paraboloide imaginario con vértice a h = Ω²R²/2g bajo B. */
 let FIG_N = 0;
-function presFig(rpm, zmax=74){
+function presFig(rpm, zmax=74, mostrarH=true){
   const id = ++FIG_N, mf = "pf"+id, me = "pe"+id;   // ids únicos: así los marcadores funcionan aunque haya dos figuras en el DOM
   const Rin=10, prof=30, Wr=rpm*Math.PI/30, Rf=10/12, g=32.2, zv=-(Wr*Wr*Rf*Rf/(2*g))*12;
   const sc=6.2, ox=190, oy=12*sc+22, Wd=380, Ht=(12+zmax)*sc+44, X=x=>ox+x*sc, Z=z=>oy-z*sc, c="#1E2A24";
@@ -1130,7 +1150,7 @@ function presFig(rpm, zmax=74){
   <circle cx="${X(Rin)}" cy="${Z(0)}" r="4.5" fill="${c}"/><text x="${X(Rin)+9}" y="${Z(0)-7}" font-size="15" font-weight="700" ${ff} fill="${c}">B</text>
   <circle cx="${X(0)}" cy="${Z(-prof)}" r="4.5" fill="${c}"/><text x="${X(0)+9}" y="${Z(-prof)-7}" font-size="15" font-weight="700" ${ff} fill="${c}">A</text>
   ${rpm>0?`<circle cx="${X(0)}" cy="${Z(zv)}" r="3.5" fill="#C24438"/><text x="${X(0)+8}" y="${Z(zv)+14}" font-size="11" ${ff} fill="#C24438">vértice</text>
-  ${flecha(X(Rin+9),Z(0),X(Rin+9),Z(zv))}<text x="${X(Rin+9)+6}" y="${Z(zv/2)}" font-size="12" ${ff} fill="#C24438">h = ${(-zv).toFixed(0)} in</text>`:""}
+  ${mostrarH?`${flecha(X(Rin+9),Z(0),X(Rin+9),Z(zv))}<text x="${X(Rin+9)+6}" y="${Z(zv/2)}" font-size="12" ${ff} fill="#C24438">h = ${(-zv).toFixed(0)} in</text>`:""}`:""}
   <path d="M${X(-4.5)},${Z(-15)} A${4.5*sc},${1.7*sc} 0 0 1 ${X(4.5)},${Z(-15)}" fill="none" stroke="${c}" stroke-width="2" marker-end="url(#${me})"/>
   <path d="M${X(4.5)},${Z(-15)} A${4.5*sc},${1.7*sc} 0 0 1 ${X(-4.5)},${Z(-15)}" fill="none" stroke="${c}" stroke-width="2" marker-end="url(#${me})"/>
   <text x="${X(6.5)}" y="${Z(-15)+4}" font-size="16" font-style="normal" ${ff} fill="${c}">Ω</text>
@@ -1405,6 +1425,118 @@ function curvaPA(){
 </figure>`;
 }
 
+
+/* ================= Figuras didácticas (diapositivas 4, 5, 6, 11 y 13) ================= */
+const FF_ = 'font-family="Helvetica Neue, Helvetica, Arial, sans-serif"';
+const MAT_ = 'font-family="Cambria Math, Cambria, Georgia, serif"';
+function fl(x1,y1,x2,y2,col="#111",w=2.2,hs=10){
+  const a=Math.atan2(y2-y1,x2-x1), c=Math.cos(a), s=Math.sin(a), bx=x2-hs*c, by=y2-hs*s;
+  return `<line x1="${x1}" y1="${y1}" x2="${bx.toFixed(1)}" y2="${by.toFixed(1)}" stroke="${col}" stroke-width="${w}"/><polygon points="${x2},${y2} ${(bx-hs*.45*s).toFixed(1)},${(by+hs*.45*c).toFixed(1)} ${(bx+hs*.45*s).toFixed(1)},${(by-hs*.45*c).toFixed(1)}" fill="${col}"/>`;
+}
+const tx = (x,y,t,o={}) => `<text x="${x}" y="${y}" font-size="${o.s||13}" ${o.a?`text-anchor="${o.a}"`:""} ${o.w?`font-weight="${o.w}"`:""} fill="${o.c||"#111"}" ${o.m?MAT_:FF_}>${t}</text>`;
+const figCap = (svg,txt) => `<figure class="pres-fig-wrap fig-prob">${svg}<figcaption>${txt}</figcaption></figure>`;
+
+/* Diapositiva 4: aceleración centrípeta y balance de fuerzas */
+function figMovimiento(){
+  const V="#147A46", R="#C24438", B="#2B5DA8";
+  return `<svg class="pres-fig" viewBox="0 0 400 235" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vista superior con la aceleración centrípeta y elemento de fluido con sus fuerzas por unidad de volumen">
+  ${tx(100,18,"Vista superior",{a:"middle",w:700,s:12,c:"#5E5E58"})}
+  ${tx(300,18,"Elemento de fluido",{a:"middle",w:700,s:12,c:"#5E5E58"})}
+  <circle cx="100" cy="120" r="70" fill="none" stroke="#B9B5A8" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <circle cx="100" cy="120" r="4" fill="#111"/>${tx(88,140,"O",{s:12})}
+  <line x1="100" y1="120" x2="160.6" y2="85" stroke="#8a968e" stroke-width="1.4"/>${tx(122,96,"r",{m:1,s:15})}
+  <circle cx="160.6" cy="85" r="6" fill="#111"/>
+  ${fl(160.6,85,128,104,R,2.6)}${tx(104,152,"a = −Ω²r e<tspan font-size='10' dy='3'>r</tspan>",{c:R,w:700,s:12,m:1})}
+  ${fl(160.6,85,188,69,B,2.2)}${tx(190,66,"e<tspan font-size='10' dy='3'>r</tspan>",{c:B,w:700,s:13,m:1})}
+  ${tx(100,213,"Ω ↻ constante: solo hay a centrípeta",{a:"middle",s:11,c:"#5E5E58"})}
+  <rect x="284" y="109" width="32" height="22" fill="#fff" stroke="#111" stroke-width="2"/>
+  ${fl(300,120,300,185,R,2.6)}${tx(307,190,"ρg",{c:R,w:700,s:14,m:1})}
+  ${fl(300,120,240,60,B,2.6)}${tx(222,54,"−∇p",{c:B,w:700,s:14,m:1})}
+  ${fl(300,120,240,120,V,2.6)}${tx(226,136,"ρa",{c:V,w:700,s:14,m:1})}
+  <line x1="300" y1="185" x2="240" y2="125" stroke="#8a968e" stroke-width="1.3" stroke-dasharray="4 3"/>
+  ${tx(300,215,"−∇p + ρg = ρa",{a:"middle",s:14,w:700,m:1})}
+  ${tx(300,230,"la fuerza neta apunta al eje",{a:"middle",s:11,c:"#5E5E58"})}
+</svg>`;
+}
+
+/* Diapositiva 5: cómo cambia la presión con r y con z */
+function figPresion(){
+  const V="#147A46", R="#C24438";
+  return `<svg class="pres-fig" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variación radial parabólica y variación vertical lineal de la presión">
+  ${tx(110,18,"Giro: p crece con r",{a:"middle",w:700,s:12,c:"#5E5E58"})}
+  ${tx(300,18,"Peso: p crece con la profundidad",{a:"middle",w:700,s:12,c:"#5E5E58"})}
+  <line x1="40" y1="190" x2="185" y2="190" stroke="#111" stroke-width="1.6"/><line x1="40" y1="190" x2="40" y2="35" stroke="#111" stroke-width="1.6"/>
+  ${tx(185,206,"r",{a:"end",m:1,s:15})}${tx(30,42,"p",{a:"end",m:1,s:15})}
+  <path d="M40 165 Q 115 165 175 52" fill="none" stroke="${V}" stroke-width="3.2"/>
+  <line x1="40" y1="165" x2="185" y2="165" stroke="#B9B5A8" stroke-dasharray="4 3"/>${tx(46,159,"C",{m:1,s:13,c:"#5E5E58"})}
+  ${tx(52,80,"+ ½ρΩ²r²",{c:V,w:700,s:14,m:1})}
+  ${tx(110,226,"parábola (a r fija crece con Ω²)",{a:"middle",s:11,c:"#5E5E58"})}
+  <line x1="230" y1="190" x2="375" y2="190" stroke="#111" stroke-width="1.6"/><line x1="230" y1="190" x2="230" y2="35" stroke="#111" stroke-width="1.6"/>
+  ${tx(375,206,"p",{a:"end",m:1,s:15})}${tx(220,42,"z",{a:"end",m:1,s:15})}
+  <line x1="244" y1="52" x2="358" y2="178" stroke="${R}" stroke-width="3.2"/>
+  ${tx(262,172,"− ρg z",{c:R,w:700,s:14,m:1})}
+  ${tx(236,112,"z = 0",{s:11,c:"#5E5E58"})}<line x1="230" y1="108" x2="375" y2="108" stroke="#B9B5A8" stroke-dasharray="4 3"/>
+  ${tx(300,226,"recta (más abajo, más presión)",{a:"middle",s:11,c:"#5E5E58"})}
+</svg>`;
+}
+
+/* Diapositiva 6: pendiente de la superficie de presión constante */
+function figParaboloide(){
+  const V="#147A46", R="#C24438", B="#2B5DA8";
+  return `<svg class="pres-fig" viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Perfil parabólico con tangente, ángulo θ y triángulo dr, dz">
+  <line x1="190" y1="22" x2="190" y2="262" stroke="#5C6B60" stroke-width="1.2" stroke-dasharray="10 3 2 3"/>${tx(198,30,"z",{m:1,s:15})}
+  <line x1="60" y1="55" x2="330" y2="55" stroke="${B}" stroke-width="1.4" stroke-dasharray="6 4"/>${tx(62,48,"nivel de B",{s:11,c:B})}
+  <path d="M110 55 Q 190 455 270 55" fill="none" stroke="${V}" stroke-width="3.2"/>
+  <circle cx="190" cy="255" r="4.5" fill="${V}"/>${tx(198,272,"vértice",{s:11,c:V})}
+  <line x1="206" y1="265" x2="270" y2="105" stroke="${R}" stroke-width="2.2"/>
+  <line x1="230" y1="205" x2="300" y2="205" stroke="#8a968e" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <circle cx="230" cy="205" r="5" fill="#111"/>
+  <path d="M258 205 A28 28 0 0 0 241 182" fill="none" stroke="#111" stroke-width="1.8"/>${tx(264,194,"θ",{m:1,s:16,w:700})}
+  <line x1="230" y1="205" x2="270" y2="205" stroke="#111" stroke-width="2.4"/>${tx(244,222,"dr",{m:1,s:14,a:"middle"})}
+  <line x1="270" y1="205" x2="270" y2="105" stroke="#111" stroke-width="2.4"/>${tx(278,160,"dz",{m:1,s:14})}
+  ${tx(190,293,"tan θ = dz/dr = Ω²r/g",{a:"middle",s:14,w:700,m:1})}
+  ${tx(62,170,"superficie de",{s:11,c:V})}${tx(62,184,"presión constante",{s:11,c:V})}
+</svg>`;
+}
+
+/* Diapositiva 11: la constante C sobre la recta numérica */
+function figConstanteC(){
+  const V="#147A46", R="#C24438", X=v=>60+(v+1129)/4374*290;
+  return `<svg class="pres-fig" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Recta numérica: C más el término de rotación da la presión atmosférica">
+  ${tx(200,20,"p<tspan font-size='10' dy='3'>B</tspan><tspan dy='-3'> = C + ½ρΩ²R²</tspan>",{a:"middle",w:700,s:15,m:1})}
+  <line x1="40" y1="130" x2="372" y2="130" stroke="#111" stroke-width="1.8"/>
+  ${[[-1129,"C = −1129",R],[0,"0","#111"],[2116,"p<tspan font-size='10' dy='3'>atm</tspan><tspan dy='-3'> = 2116</tspan>","#111"]].map(([v,t,c])=>`<line x1="${X(v)}" y1="124" x2="${X(v)}" y2="136" stroke="#111" stroke-width="1.8"/>${tx(X(v),154,t,{a:"middle",s:12,w:700,c})}`).join("")}
+  <circle cx="${X(-1129)}" cy="130" r="6" fill="${R}"/><circle cx="${X(2116)}" cy="130" r="6" fill="#111"/>
+  <line x1="${X(-1129)}" y1="124" x2="${X(-1129)}" y2="88" stroke="#B9B5A8" stroke-dasharray="3 3"/><line x1="${X(2116)}" y1="124" x2="${X(2116)}" y2="88" stroke="#B9B5A8" stroke-dasharray="3 3"/>
+  ${fl(X(-1129),92,X(2116),92,V,3,12)}
+  ${tx((X(-1129)+X(2116))/2,80,"+ ½ρΩ²R² = + 3245",{a:"middle",s:14,w:700,c:V,m:1})}
+  ${tx(372,170,"lbf/ft²",{a:"end",s:11,c:"#5E5E58"})}
+  ${tx(200,190,"C es lo que falta para que p<tspan font-size='10' dy='3'>B</tspan><tspan dy='-3'> valga la atmosférica</tspan>",{a:"middle",s:11,c:"#5E5E58"})}
+</svg>`;
+}
+
+/* Diapositiva 13: cotas del paraboloide respecto de A */
+function figVerif(){
+  const V="#147A46", R="#C24438", B="#2B5DA8", k=4.6, yB=40, yA=yB+30*k, yV=yB+46*k, c=2*yV-yB;
+  const dim=(x,y1,y2,t,col,ta)=>`${fl(x,y1,x,y2,col,1.4,7)}${fl(x,y2,x,y1,col,1.4,7)}${tx(ta==="end"?x-6:x+6,(y1+y2)/2+4,t,{s:12,w:700,c:col,a:ta})}`;
+  return `<svg class="pres-fig" viewBox="0 0 380 305" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cotas: A está 30 in bajo B y el vértice 46 in bajo B, es decir 16 in bajo A">
+  <rect x="144" y="${yB}" width="92" height="${yA-yB}" fill="#BFCBD8" opacity=".75"/>
+  <path d="M144 18 V${yA} H236 V18" fill="none" stroke="#111" stroke-width="3"/>
+  <line x1="190" y1="18" x2="190" y2="${yV+24}" stroke="#5C6B60" stroke-width="1.2" stroke-dasharray="10 3 2 3"/>
+  <line x1="95" y1="${yB}" x2="300" y2="${yB}" stroke="${B}" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <line x1="236" y1="${yA}" x2="345" y2="${yA}" stroke="#8a968e" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <line x1="190" y1="${yV}" x2="345" y2="${yV}" stroke="#8a968e" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <path d="M144 ${yB} Q 190 ${c} 236 ${yB}" fill="none" stroke="${R}" stroke-width="2.4" stroke-dasharray="7 4"/>
+  <circle cx="236" cy="${yB}" r="4.5" fill="#111"/>${tx(243,yB-8,"B",{w:700,s:15})}
+  <circle cx="190" cy="${yA}" r="4.5" fill="#111"/>${tx(176,yA-8,"A",{w:700,s:15,a:"end"})}
+  <circle cx="190" cy="${yV}" r="4" fill="${R}"/>${tx(198,yV+16,"vértice",{s:11,c:R})}
+  ${dim(120,yB,yA,"30 in","#111","end")}
+  ${dim(300,yB,yV,"h = 46 in",V,"start")}
+  ${dim(345,yA,yV,"16 in",R,"end")}
+  ${tx(190,296,"Δp = (16/12)(846) = 1128 lbf/ft²",{a:"middle",s:13,w:700,m:1})}
+</svg>`;
+}
+
 /* ================= Diapositivas ================= */
 const PRES = {abierta:null, i:0, listo:false};
 
@@ -1444,7 +1576,7 @@ const PRES_LISTA = [{
           <div class="pres-res-mini">Calcular p<sub>A</sub></div>
         </div>
         <figure class="col-enunciado-figura">
-          ${presFig(180,54)}
+          ${presFig(180,54,false)}
           <figcaption>Línea azul: nivel de 30 in. Línea roja: <b>superficie libre imaginaria</b> (paraboloide) que pasa por B. Su vértice queda <b>por debajo de A</b>: por eso p<sub>A</sub> &lt; p<sub>atm</sub>.</figcaption>
         </figure>
       </div>
@@ -1483,11 +1615,14 @@ const PRES_LISTA = [{
   /* 4 · Modelo 1 */
   {t:"Modelo 1: ecuación del movimiento", sec:"Teoría", html:()=>`<div class="pres-slide">
       <h2><small>Modelo · 1 de 3</small><span>De Newton a las derivadas parciales</span></h2>
-      <div class="calcs">
+      <div class="cols c-barras">
+        <div class="calcs stack">
         ${calc(1,`Cada partícula describe una circunferencia de radio <i>r</i> con Ω constante: solo tiene <b>aceleración centrípeta</b>.`,`<b>a</b> = −Ω² r <b>e</b><sub>r</sub>`)}
         ${calc(2,`Ecuación del movimiento de un fluido sin esfuerzos cortantes (cuerpo rígido).`,`∇p = ρ(<b>g</b> − <b>a</b>)`)}
         ${calc(3,`La gravedad apunta hacia abajo, <b>g</b> = −g <b>k</b>. Se sustituye <b>g</b> y <b>a</b>.`,`∇p = ρ(−g <b>k</b> + Ω² r <b>e</b><sub>r</sub>)`)}
         ${calc(4,`Se separan las componentes. Por simetría no hay variación con θ.`,`${prFr("∂p","∂r")} = ρΩ²r, &nbsp; ${prFr("∂p","∂z")} = −ρg, &nbsp; ${prFr("∂p","∂θ")} = 0`,"res")}
+        </div>
+        <div class="pres-chart col-fig-barras">${figCap(figMovimiento(),"Cada partícula tiene solo aceleración centrípeta; el balance de fuerzas por unidad de volumen la explica.")}</div>
       </div>
     </div>`,
    nota:"Empieza por la física: en rotación rígida las partículas no se mueven unas respecto de otras, así que no hay esfuerzos cortantes y solo importan la presión y la gravedad. La aceleración de cada partícula apunta al eje y vale Ω²r. Se sustituye en ∇p = ρ(g − a): el signo menos de a, que ya es negativo, da un término positivo Ω²r en la dirección radial. Al separar componentes quedan dos ecuaciones: la presión crece hacia afuera (rotación) y decrece hacia arriba (gravedad)."},
@@ -1495,11 +1630,14 @@ const PRES_LISTA = [{
   /* 5 · Modelo 2 */
   {t:"Modelo 2: integración", sec:"Teoría", html:()=>`<div class="pres-slide">
       <h2><small>Modelo · 2 de 3</small><span>Integración: p(r, z)</span></h2>
-      <div class="calcs">
+      <div class="cols c-barras">
+        <div class="calcs stack">
         ${calc(1,`Se integra la ecuación radial respecto de <i>r</i>. En lugar de una constante va una función de <i>z</i>.`,`p = ½ρΩ²r² + f(z)`)}
         ${calc(2,`Se deriva ese resultado respecto de <i>z</i> y se compara con la ecuación vertical.`,`${prFr("∂p","∂z")} = f′(z) = −ρg`)}
         ${calc(3,`Se integra f′(z): aparece la constante de integración <b>C</b>.`,`f(z) = −ρg z + C`)}
         ${calc(4,`Se juntan los dos términos: presión en cualquier punto del fluido <span class="eq-tag">(Ec. 2.62b)</span>.`,`p = C − ρ g z + ½ ρ Ω² r²`,"res")}
+        </div>
+        <div class="pres-chart col-fig-barras">${figCap(figPresion(),"Los dos términos de p = C − ρgz + ½ρΩ²r²: rotación (radial) y peso (vertical).")}</div>
       </div>
       <div class="pres-nota-b info"><b>C</b> es la constante de integración: se fija con un punto donde la presión se conozca (aquí, el punto B abierto a la atmósfera).</div>
     </div>`,
@@ -1508,11 +1646,14 @@ const PRES_LISTA = [{
   /* 6 · Modelo 3 */
   {t:"Modelo 3: superficies de presión constante", sec:"Teoría", html:()=>`<div class="pres-slide">
       <h2><small>Modelo · 3 de 3</small><span>Superficies de presión constante</span></h2>
-      <div class="calcs">
+      <div class="cols c-barras">
+        <div class="calcs stack">
         ${calc(1,`En una superficie con p = constante, la variación total de presión es nula: dp = 0.`,`dp = ρΩ²r dr − ρg dz = 0`)}
         ${calc(2,`Se despeja la pendiente de la superficie en el plano (r, z).`,`${prFr("dz","dr")} = ${prFr("Ω²r","g")} = tan θ`)}
         ${calc(3,`Se integra: es un <b>paraboloide de revolución</b> con vértice en el eje.`,`z = ${prFr("Ω²r²","2g")} + cte`)}
         ${calc(4,`Inclinación en el borde del tubo, r = R = 10/12 ft:`,`tan θ = ${prFr("(18,85)²(10/12)","32,2")} = 9,2 &nbsp;⟹&nbsp; θ = arctan 9,2 ≈ 84°`,"res")}
+        </div>
+        <div class="pres-chart col-fig-barras">${figCap(figParaboloide(),"La pendiente crece con r: la superficie de presión constante es un paraboloide.")}</div>
       </div>
     </div>`,
    nota:"Una superficie de presión constante cumple dp = 0, y como conocemos las dos derivadas parciales, dp es la suma de ellas por sus diferenciales. Despejando, la pendiente es Ω²r/g y crece linealmente con r: por eso la superficie es un paraboloide. La superficie libre de un líquido que gira es una de esas superficies. En el borde del tubo la tangente vale 9,2, es decir, unos 84 grados: casi vertical. Eso solo es posible porque el tubo es delgado."},
@@ -1595,7 +1736,7 @@ const PRES_LISTA = [{
           </ul>
           <div class="pres-nota-b info">Con la condición en B se determina la constante C de la ecuación de presión.</div>
         </div>
-        <figure class="pres-fig-wrap">${presFig(180,54)}</figure>
+        <figure class="pres-fig-wrap">${presFig(180,54,false)}</figure>
       </div>
     </div>`,
    nota:"Esta es la hipótesis que justifica el problema: con diámetro despreciable, el nivel del líquido en el brazo vertical no cambia al girar. Eso nos da una presión conocida en B. Señala en la figura el origen de coordenadas O en el nivel de B, sobre el eje, y cómo A queda 30 in más abajo."},
@@ -1603,11 +1744,14 @@ const PRES_LISTA = [{
   /* 11 · Paso 1 */
   {t:"Paso 1: la constante C", sec:"Resolución", html:()=>`<div class="pres-slide">
       <h2><small>Paso 1</small><span>Constante C con la condición en B</span></h2>
-      <div class="calcs">
+      <div class="cols c-barras">
+        <div class="calcs stack">
         ${calc(1,`Se evalúa la ecuación de presión en B: r = R, z = 0.`,`p<sub>B</sub> = C − ρg(0) + ½ρΩ²R² = C + ½ρΩ²R²`)}
         ${calc(2,`Condición de contorno: B está abierto a la atmósfera.`,`p<sub>B</sub> = p<sub>atm</sub> = 2116 lbf/ft²`)}
         ${calc(3,`Término de rotación. Unidades: slug/ft³ · ft² · rad²/s² = lbf/ft².`,`½ρΩ²R² = ½ (26,3) (10/12)<sup>2</sup> (18,85)<sup>2</sup> = ½ (26,3)(0,694)(355,3) = 3245 lbf/ft²`)}
         ${calc(4,`Se igualan y se despeja C.`,`2116 = C + 3245 &nbsp;⟹&nbsp; <b>C = −1129 lbf/ft²</b>`,"res")}
+        </div>
+        <div class="pres-chart col-fig-barras">${figCap(figConstanteC(),"Con p<sub>B</sub> = p<sub>atm</sub> se despeja C.")}</div>
       </div>
     </div>`,
    nota:"Sustituye r = R y z = 0: el término de gravedad desaparece porque z es cero, y queda C más el término de rotación. En B conocemos la presión: es la atmosférica. Calcula el término de rotación paso a paso: un medio por la densidad, por R cuadrado, por Ω cuadrado; da 3245. Comprueba las unidades, que salen en lbf por pie cuadrado. Como 3245 es mayor que 2116, C sale negativa: −1129."},
@@ -1621,11 +1765,14 @@ const PRES_LISTA = [{
           ${calc(2,`Con r = 0 el término de rotación se anula.`,`p<sub>A</sub> = C − ρg z + ½ρΩ²(0)² = C − ρg z`)}
           ${calc(3,`Se sustituyen C, ρg y z.`,`p<sub>A</sub> = −1129 − (846)(−2,5) = −1129 + 2115`)}
           ${calc(4,`Resultado <span class="eq-tag">Resp.</span>`,`p<sub>A</sub> = <b>986 lbf/ft²</b>`,"res")}
-        </div>
-        <div class="pres-chart">${barrasP("Presión en A · lbf/ft²",[
+          ${barrasP("Presión en A · lbf/ft²",[
           {et:"Atmosférica",v:2116,txt:"2116",cl:"b-gris",sinMarca:true},
           {et:"En reposo",v:4231,txt:"4231",cl:"b-neg"},
-          {et:"Girando<br>180 rpm",v:986,txt:"986",cl:"b-verde"}],2116)}</div>
+          {et:"Girando 180 rpm",v:986,txt:"986",cl:"b-verde"}],2116)}
+        </div>
+        <div class="pres-chart col-fig-barras">
+          <figure class="pres-fig-wrap fig-prob fig-alta">${presFig(180,50,false)}<figcaption>Figura E2.14: A en el eje, 30 in bajo B.</figcaption></figure>
+        </div>
       </div>
     </div>`,
    nota:"A está en el eje, así que r vale cero y el término de rotación desaparece: solo queda C menos ρg por z. Con z = −2,5 pies, el término −ρgz es positivo, 846 por 2,5 igual a 2115. Sumando con C: −1129 + 2115 = 986. El gráfico lo compara con la atmosférica y con la presión en reposo. 986 es menos de la mitad de la atmosférica; la pregunta natural es por qué baja tanto, y se responde en la siguiente diapositiva."},
@@ -1633,12 +1780,15 @@ const PRES_LISTA = [{
   /* 13 · Verificación */
   {t:"Verificación independiente", sec:"Verificación", html:()=>`<div class="pres-slide">
       <h2><small>Verificación</small><span>¿Por qué p<sub>A</sub> es menor que p<sub>atm</sub>?</span></h2>
-      <div class="calcs">
+      <div class="cols c-barras">
+        <div class="calcs stack">
         ${calc(1,`Altura del paraboloide medida desde B (superficie libre imaginaria).`,`h = ${prFr("Ω²R²","2g")} = ${prFr("(18,85)²(10/12)²","2(32,2)")}`)}
         ${calc(2,`Se evalúa y se pasa a pulgadas (el libro redondea a 3,85 ft).`,`h = ${prFr("(355,3)(0,694)","64,4")} = 3,83 ft ≈ <b>46 in</b>`)}
         ${calc(3,`El vértice queda más abajo que A: A está a 30 in de B.`,`46 − 30 = <b>16 in</b> por debajo de A`)}
         ${calc(4,`Entonces p<sub>A</sub> es 16 inHg menor que la atmosférica.`,`Δp = ${prFr("16","12")}(846) = 1128 lbf/ft²`)}
         ${calc(5,`Se compara con el resultado del Paso 2.`,`p<sub>A</sub> ≈ 2116 − 1128 = 988 ≈ 986 lbf/ft² ✓`,"res")}
+        </div>
+        <div class="pres-chart col-fig-barras">${figCap(figVerif(),"El vértice queda 16 in bajo A: la presión en A es 16 inHg menor que la atmosférica.")}</div>
       </div>
     </div>`,
    nota:"Comprobación independiente, sin usar C. La caída de presión desde B hasta el vértice del paraboloide es la altura h = Ω²R²/2g, que da 3,83 pies, unas 46 pulgadas; el libro escribe 3,85, es solo redondeo. Como A está a 30 pulgadas de B, el vértice queda 16 pulgadas bajo A. Esa diferencia, expresada como columna de mercurio, es 16/12 por 846, 1128 lbf/ft², y restada de la atmosférica da 988: coincide con 986 salvo por el redondeo. Vuelve a la figura de la diapositiva 2 para señalar el vértice por debajo de A."},
