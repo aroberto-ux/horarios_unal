@@ -1066,6 +1066,27 @@ figure.pres-fig-wrap{margin:0}
 .col-fig-barras .bar-pista{height:calc(var(--u)*2.4)}
 .col-fig-barras .bar-et, .col-fig-barras .bar-val{font-size:calc(var(--u)*1.45)}
 @media (max-width:820px){ .pres-stage:not(:fullscreen) .col-fig-barras .fig-prob .pres-fig{height:auto; width:100%; max-height:90cqw} }
+
+/* ===== Disposición general v7: menos aire vertical, tipografía mayor ===== */
+.pres-slide{padding:calc(var(--u)*3.1) calc(var(--u)*5.2) calc(var(--u)*5.3)}
+.pres-slide h2{margin:0 0 calc(var(--u)*1.7); font-size:calc(var(--u)*3.7)}
+.pres-slide .cols, .cols-enunciado{align-items:center}
+.calc > p{font-size:calc(var(--u)*1.75)}
+.calc .pres-eq{font-size:calc(var(--u)*2.25)}
+.calcs.stack .calc > p{font-size:calc(var(--u)*1.7)}
+.col-fig-barras .fig-prob figcaption{display:none}
+.col-fig-barras .fig-prob{padding:calc(var(--u)*.4) 0; border-bottom:0}
+.pres-slide ul li{font-size:calc(var(--u)*2.1)}
+.pres-nota-b{font-size:calc(var(--u)*1.75)}
+.pres-ctl{gap:calc(var(--u)*.7)}
+.pres-ctl .gen-ayuda{display:none}
+
+/* Figuras más grandes en enunciado, hipótesis y simulación; portada sin solapes */
+.col-enunciado-figura .pres-fig{max-height:calc(var(--u)*34)}
+.pres-fig-wrap:not(.sim-wrap) .pres-fig{max-height:calc(var(--u)*34)}
+.r3d-fb-fig .pres-fig{max-height:calc(var(--u)*44)}
+.col-fig-barras .fig-alta .pres-fig{max-height:calc(var(--u)*40)}
+.pres-portada .portada-ilus{width:calc(var(--u)*34); top:calc(var(--u)*7)}
 </style>
 </head>
 <body>
@@ -1434,7 +1455,7 @@ function fl(x1,y1,x2,y2,col="#111",w=2.2,hs=10){
   return `<line x1="${x1}" y1="${y1}" x2="${bx.toFixed(1)}" y2="${by.toFixed(1)}" stroke="${col}" stroke-width="${w}"/><polygon points="${x2},${y2} ${(bx-hs*.45*s).toFixed(1)},${(by+hs*.45*c).toFixed(1)} ${(bx+hs*.45*s).toFixed(1)},${(by-hs*.45*c).toFixed(1)}" fill="${col}"/>`;
 }
 const tx = (x,y,t,o={}) => `<text x="${x}" y="${y}" font-size="${o.s||13}" ${o.a?`text-anchor="${o.a}"`:""} ${o.w?`font-weight="${o.w}"`:""} fill="${o.c||"#111"}" ${o.m?MAT_:FF_}>${t}</text>`;
-const figCap = (svg,txt) => `<figure class="pres-fig-wrap fig-prob">${svg}<figcaption>${txt}</figcaption></figure>`;
+const figCap = (svg,txt,extra="") => `<figure class="pres-fig-wrap fig-prob ${extra}">${svg}<figcaption>${txt}</figcaption></figure>`;
 
 /* Diapositiva 4: aceleración centrípeta y balance de fuerzas */
 function figMovimiento(){
@@ -1653,7 +1674,7 @@ const PRES_LISTA = [{
         ${calc(3,`Se integra: es un <b>paraboloide de revolución</b> con vértice en el eje.`,`z = ${prFr("Ω²r²","2g")} + cte`)}
         ${calc(4,`Inclinación en el borde del tubo, r = R = 10/12 ft:`,`tan θ = ${prFr("(18,85)²(10/12)","32,2")} = 9,2 &nbsp;⟹&nbsp; θ = arctan 9,2 ≈ 84°`,"res")}
         </div>
-        <div class="pres-chart col-fig-barras">${figCap(figParaboloide(),"La pendiente crece con r: la superficie de presión constante es un paraboloide.")}</div>
+        <div class="pres-chart col-fig-barras">${figCap(figParaboloide(),"La pendiente crece con r: la superficie de presión constante es un paraboloide.","fig-alta")}</div>
       </div>
     </div>`,
    nota:"Una superficie de presión constante cumple dp = 0, y como conocemos las dos derivadas parciales, dp es la suma de ellas por sus diferenciales. Despejando, la pendiente es Ω²r/g y crece linealmente con r: por eso la superficie es un paraboloide. La superficie libre de un líquido que gira es una de esas superficies. En el borde del tubo la tangente vale 9,2, es decir, unos 84 grados: casi vertical. Eso solo es posible porque el tubo es delgado."},
@@ -1788,7 +1809,7 @@ const PRES_LISTA = [{
         ${calc(4,`Entonces p<sub>A</sub> es 16 inHg menor que la atmosférica.`,`Δp = ${prFr("16","12")}(846) = 1128 lbf/ft²`)}
         ${calc(5,`Se compara con el resultado del Paso 2.`,`p<sub>A</sub> ≈ 2116 − 1128 = 988 ≈ 986 lbf/ft² ✓`,"res")}
         </div>
-        <div class="pres-chart col-fig-barras">${figCap(figVerif(),"El vértice queda 16 in bajo A: la presión en A es 16 inHg menor que la atmosférica.")}</div>
+        <div class="pres-chart col-fig-barras">${figCap(figVerif(),"El vértice queda 16 in bajo A: la presión en A es 16 inHg menor que la atmosférica.","fig-alta")}</div>
       </div>
     </div>`,
    nota:"Comprobación independiente, sin usar C. La caída de presión desde B hasta el vértice del paraboloide es la altura h = Ω²R²/2g, que da 3,83 pies, unas 46 pulgadas; el libro escribe 3,85, es solo redondeo. Como A está a 30 pulgadas de B, el vértice queda 16 pulgadas bajo A. Esa diferencia, expresada como columna de mercurio, es 16/12 por 846, 1128 lbf/ft², y restada de la atmosférica da 988: coincide con 986 salvo por el redondeo. Vuelve a la figura de la diapositiva 2 para señalar el vértice por debajo de A."},
@@ -1988,14 +2009,16 @@ function ajustarSlide(sl){
     });
     return {top, limite, fondo};
   };
-  let k=1;
-  for(let n=0;n<6;n++){
-    const m=medir();
-    if(m.fondo - m.limite <= 1 && sl.scrollHeight - sl.clientHeight <= 1) break;
-    const ratio=(m.limite-m.top)/Math.max(1,(m.fondo-m.top));
-    k *= Math.max(.8, Math.min(.985, ratio*.985));
+  const cabe=k=>{
     sl.style.setProperty("--u", `calc(1cqw*${k.toFixed(4)})`);
-  }
+    const m=medir();
+    return m.fondo - m.limite <= 1 && sl.scrollHeight - sl.clientHeight <= 1;
+  };
+  // Búsqueda binaria: la escala más grande (entre 0,5 y 1,18) con la que todo cabe → sin huecos ni cortes
+  let lo=.5, hi=sl.classList.contains('pres-portada') ? 1 : 1.18;
+  if(cabe(hi)) return;
+  for(let n=0;n<9;n++){ const mid=(lo+hi)/2; if(cabe(mid)) lo=mid; else hi=mid; }
+  cabe(lo);
 }
 function ajustar(){
   const sl=document.querySelector("#presStage .pres-slide");
