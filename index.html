@@ -1888,7 +1888,42 @@ body.imprimiendo #printAll{display:block}
 #panelPresentaciones .pres-stage:not(:fullscreen) .calc > p, #printAll .pres-stage:not(:fullscreen) .calc > p{grid-area:p}
 #panelPresentaciones .pres-stage:not(:fullscreen) .calc .pres-eq, #printAll .pres-stage:not(:fullscreen) .calc .pres-eq{grid-area:e}
 }
-/* PRESENTACION:CSS:fin */</style>
+/* PRESENTACION:CSS:fin */
+/* ---------- Respuestas del libro (sin spoilers) ---------- */
+#panelRespuestas .resp-barra{display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; padding:12px 16px; border-bottom:1px solid var(--cuadricula)}
+#panelRespuestas .resp-barra input[type=search]{flex:1 1 190px; min-width:160px; font:500 .92rem "Archivo",sans-serif; color:var(--tinta);
+  padding:8px 11px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); outline:none}
+#panelRespuestas .resp-barra input[type=search]:focus{border-color:var(--azul); box-shadow:0 0 0 3px var(--azul-claro)}
+#panelRespuestas .resp-barra select{font:600 .85rem "Archivo",sans-serif; padding:8px 10px; border:1.5px solid var(--cuadricula); border-radius:var(--radio); background:var(--papel); color:var(--tinta)}
+#panelRespuestas .resp-btn{font:600 .8rem "Archivo",sans-serif; padding:7px 13px; border:1.5px solid var(--cuadricula); border-radius:99px; background:var(--blanco); color:var(--tinta); cursor:pointer}
+#panelRespuestas .resp-btn:hover{border-color:var(--tinta-suave)}
+#panelRespuestas .resp-prog{font:500 .78rem "IBM Plex Mono",monospace; color:var(--tinta-suave); margin-left:auto}
+#panelRespuestas .resp-aviso{padding:9px 16px; font-size:.82rem; color:var(--tinta-suave); background:var(--papel); border-bottom:1px solid var(--cuadricula)}
+#panelRespuestas .resp-chips{display:flex; flex-wrap:wrap; gap:6px; padding:12px 16px 0}
+#panelRespuestas .resp-chip{font:600 .78rem "Archivo",sans-serif; padding:6px 12px; border:1.5px solid var(--cuadricula); border-radius:99px; background:var(--blanco); color:var(--tinta-suave); cursor:pointer}
+#panelRespuestas .resp-chip[aria-pressed="true"]{background:var(--tinta); border-color:var(--tinta); color:var(--papel)}
+#panelRespuestas .resp-sec{padding:18px 16px 6px}
+#panelRespuestas .resp-sec h3{font:700 .8rem "Archivo",sans-serif; letter-spacing:.14em; text-transform:uppercase; color:var(--tinta-suave); margin-bottom:10px; display:flex; gap:10px; align-items:baseline}
+#panelRespuestas .resp-sec h3 b{font-family:"IBM Plex Mono",monospace; color:var(--azul); letter-spacing:0}
+#panelRespuestas .resp-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:10px; padding-bottom:10px}
+#panelRespuestas .resp-card{border:1.5px solid var(--cuadricula); border-radius:8px; background:var(--blanco); padding:10px 12px 12px; display:flex; flex-direction:column; gap:8px}
+#panelRespuestas .resp-card.hecho{background:var(--verde-claro); border-color:#BFDDCB}
+#panelRespuestas .resp-cab{display:flex; justify-content:space-between; align-items:center; gap:8px}
+#panelRespuestas .resp-num{font:600 1rem "IBM Plex Mono",monospace; color:var(--tinta)}
+#panelRespuestas .resp-ok{display:inline-flex; gap:5px; align-items:center; font-size:.74rem; color:var(--tinta-suave); cursor:pointer; user-select:none}
+#panelRespuestas .resp-part{display:flex; gap:9px; align-items:baseline; width:100%; text-align:left; font:inherit; cursor:pointer;
+  background:var(--papel); border:1px dashed #C3CEC6; border-radius:6px; padding:7px 10px; color:var(--tinta)}
+#panelRespuestas .resp-part:hover{border-color:var(--azul); background:var(--azul-claro)}
+#panelRespuestas .resp-part:focus-visible,#panelRespuestas .resp-btn:focus-visible,#panelRespuestas .resp-chip:focus-visible{outline:2px solid var(--azul); outline-offset:2px}
+#panelRespuestas .resp-lbl{font:600 .8rem "IBM Plex Mono",monospace; color:var(--azul); min-width:1.6em}
+#panelRespuestas .resp-vel{font-size:.78rem; color:var(--tinta-suave); letter-spacing:.04em}
+#panelRespuestas .resp-part.on{background:var(--blanco); border:1px solid var(--azul); cursor:pointer}
+#panelRespuestas .resp-val{font:500 .9rem/1.45 "IBM Plex Mono",monospace; overflow-wrap:anywhere; animation:respIn .18s ease-out}
+@keyframes respIn{from{opacity:0; transform:translateY(-3px)}to{opacity:1; transform:none}}
+#panelRespuestas .resp-todo{align-self:flex-start; font:600 .72rem "Archivo",sans-serif; color:var(--tinta-suave); background:none; border:0; padding:2px 0; cursor:pointer; text-decoration:underline}
+#panelRespuestas .resp-todo:hover{color:var(--tinta)}
+#panelRespuestas .resp-vacio{padding:28px 16px; color:var(--tinta-suave); text-align:center}
+</style>
 <!--PRESENTACION:IMPORTMAP:ini-->
 <script type="importmap">
 {
@@ -1921,6 +1956,7 @@ body.imprimiendo #printAll{display:block}
     <button type="button" role="tab" data-vista="cupos"     aria-controls="panelTendencias" aria-selected="false" tabindex="-1">Tendencias <span class="bdg" id="bdgCupos"></span></button>
     <button type="button" role="tab" data-vista="herramientas" aria-controls="panelHerramientas" aria-selected="false" tabindex="-1">Herramientas</button>
     <button type="button" role="tab" data-vista="presentaciones" aria-controls="panelPresentaciones" aria-selected="false" tabindex="-1">Presentaciones</button>
+    <button type="button" role="tab" data-vista="respuestas" aria-controls="panelRespuestas" aria-selected="false" tabindex="-1">Respuestas</button>
   </nav>
 </header>
 
@@ -2410,6 +2446,20 @@ body.imprimiendo #printAll{display:block}
 <!--/PRIVADO:herrPob-->
     </div>
   </section>
+  <!--RESPUESTAS:ini-->
+<section class="panel" id="panelRespuestas" aria-label="Respuestas del libro de mecánica de sólidos" role="tabpanel" hidden>
+  <div class="titulo"><h2>Respuestas del libro</h2><span class="dato">Mecánica de sólidos · sin spoilers</span></div>
+  <div class="resp-barra">
+    <input type="search" id="respBuscar" placeholder="Ir al problema (ej. 1.4 o 1.5.7)" aria-label="Buscar problema">
+    <select id="respCap" aria-label="Capítulo"></select>
+    <button type="button" class="resp-btn" id="respOcultar">Ocultar todo</button>
+    <span class="resp-prog" id="respProg"></span>
+  </div>
+  <div class="resp-aviso">Cada respuesta está oculta hasta que la toques. Marca «resuelto» para llevar tu avance (se guarda en este navegador).</div>
+  <div class="resp-chips" id="respChips" role="group" aria-label="Filtrar por sección"></div>
+  <div id="respLista"></div>
+</section>
+  <!--RESPUESTAS:fin-->
   <!--PRESENTACION:ini-->
 <section class="panel" id="panelPresentaciones" aria-label="Presentaciones" role="tabpanel" hidden>
   <div class="titulo"><h2>Presentaciones</h2><span class="dato">Diapositivas para exponer en clase</span></div>
@@ -7622,6 +7672,151 @@ function privAbrir(id,fn){ const f=privFn(fn); if(f) f(); else privCompuerta(id,
 // en la versión cifrada las funciones no existen todavía: se marcan las pestañas con candado
 if(!window.hmIniciar && document.getElementById("privadoCifrado")) privCandados(false);
 
+
+/* ================= Respuestas del libro (sin spoilers) =================
+   Para añadir otro capítulo: agrega un objeto a RESP_DATA. Cada problema es
+   [número, "(a) ...|(b) ..."]; usa _{x} para subíndice y ^{x} para superíndice. */
+const RESP_DATA = [
+ {id:"1", titulo:"Capítulo 1 · Tensión, compresión y cortante", secciones:[
+  {id:"1.2", titulo:"Esfuerzo normal y deformación unitaria normal", p:[
+   ["1.2.1","(a) σ_{AB} = 1443 psi|(b) P_{2} = 1487.5 lbs|(c) t_{BC} = 0.5 in"],
+   ["1.2.2","(a) σ = 65 MPa|(b) ε = 4.652 × 10^{−4}"],
+   ["1.2.3","(a) R_{B} = 127.3 lb (en voladizo), 191.3 lb (frenos en V); σ_{c} = 204 psi (en voladizo), 306 psi (frenos en V)|(b) σ_{cable} = 26,946 psi (los dos)"],
+   ["1.2.4","(a) δ = 0.220 mm|(b) P = 34.6 kN"],
+   ["1.2.5","(a) σ_{C} = 2.128 ksi; x_{C} = 19.22 in, y_{C} = 19.22 in"],
+   ["1.2.6","σ_{t} = 133 MPa"],
+   ["1.2.7","σ_{1} = 25.5 ksi; σ_{2} = 35.8 ksi"],
+   ["1.2.8","σ_{c} = 5.21 MPa"],
+   ["1.2.9","(a) T = 184 lb, σ = 10.8 ksi|(b) ε_{cable} = 5 × 10^{−4}"],
+   ["1.2.10","(a) T = 819 N, σ = 74.5 MPa|(b) ε_{cable} = 4.923 × 10^{−4}"],
+   ["1.2.11","(a) T_{1} = 5877 lb, T_{2} = 4679 lb, T_{3} = 7159 lb|(b) σ_{1} = 49 ksi, σ_{2} = 39 ksi, σ_{3} = 60 ksi"],
+   ["1.2.12","(a) σ_{x} = γω^{2}(L^{2} − x^{2})/2g|(b) σ_{máx} = γω^{2}L^{2}/2g"],
+   ["1.2.13","(a) T_{AB} = 1620 lb, T_{BC} = 1536 lb, T_{CD} = 1640 lb|(b) σ_{AB} = 13,501 psi, σ_{BC} = 12,799 psi, σ_{CD} = 13,667 psi"],
+   ["1.2.14","(a) T_{AQ} = T_{BQ} = 50.5 kN|(b) σ = 166 MPa"]]},
+  {id:"1.3", titulo:"Propiedades mecánicas de los materiales", p:[
+   ["1.3.1","(a) L_{máx} = 11,800 ft|(b) L_{máx} = 13,500 ft"],
+   ["1.3.2","(a) L_{máx} = 7900 m|(b) L_{máx} = 8330 m"],
+   ["1.3.3","Porcentaje de alargamiento = 6.5, 24.0, 39.0; Porcentaje de reducción = 8.1, 37.9, 74.9; Frágil, dúctil, dúctil"],
+   ["1.3.4","11.9 × 10^{3} m; 12.7 × 10^{3} m; 6.1 × 10^{3} m; 6.5 × 10^{3} m; 23.9 × 10^{3} m"],
+   ["1.3.5","σ ≈ 31 ksi"],
+   ["1.3.6","σ_{pl} ≈ 47 MPa, Pendiente ≈ 2.4 GPa, σ_{Y} ≈ 53 MPa; Frágil"],
+   ["1.3.7","σ_{pl} ≈ 65,000 psi, Pendiente ≈ 30 × 10^{6} psi, σ_{Y} ≈ 69,000 psi, σ_{U} ≈ 113,000 psi; Alargamiento = 6%, Reducción = 31%"]]},
+  {id:"1.4", titulo:"Elasticidad, plasticidad y termofluencia", p:[
+   ["1.4.1","0.13 in más larga"],
+   ["1.4.2","4.0 mm más larga"],
+   ["1.4.3","(a) 2.809 in|(b) 31.8 ksi"],
+   ["1.4.4","(a) 2.966 mm|(b) 180 MPa"],
+   ["1.4.5","(b) 0.71 in|(c) 0.58 in|(d) 49 ksi"]]},
+  {id:"1.5", titulo:"Elasticidad lineal, ley de Hooke y relación de Poisson", p:[
+   ["1.5.1","P_{máx} = 157 k"],
+   ["1.5.2","P = 27.4 kN (tensión)"],
+   ["1.5.3","P = −15.708 kips"],
+   ["1.5.4","ΔL = 1.886 mm; porcentaje de decremento en área de sección transversal = 0.072%"],
+   ["1.5.5","Δd = −1.56 × 10^{−4} in, P = 2.154 kips"],
+   ["1.5.6","(a) E = 104 GPa|(b) ν = 0.34"],
+   ["1.5.7","(a) Δd_{BC(interior)} = 8 × 10^{−4} in|(b) ν_{latón} = 0.34|(c) Δt_{AB} = 2.732 × 10^{−4} in, Δd_{AB(interior)} = 1.366 × 10^{−4} in"],
+   ["1.5.8","ΔV = 9789 mm^{3}"]]},
+  {id:"1.6", titulo:"Esfuerzo cortante y deformación unitaria cortante", p:[
+   ["1.6.1","σ_{b} = 7.04 ksi, τ_{prom} = 10.756 ksi"],
+   ["1.6.2","σ_{b} = 139.86 MPa; P_{últ} = 144.45 kN"],
+   ["1.6.3","(a) τ = 12.732 ksi|(b) σ_{bf} = 20 ksi; σ_{bg} = 26.667 ksi"],
+   ["1.6.4","(a) A_{x} = 254.6 N, A_{y} = 1072 N, B_{x} = −254.6 N|(b) A_{resultante} = 1101.8 N|(c) τ = 5.48 MPa, σ_{b} = 6.886 MPa"],
+   ["1.6.5","(a) τ_{máx} = 2979 psi|(b) σ_{bmáx} = 936 psi"],
+   ["1.6.6","T_{1} = 13.176 kN, T_{2} = 10.772 kN, τ_{1prom} = 25.888 MPa, τ_{2prom} = 21.166 MPa, σ_{b1} = 7.32 MPa, σ_{b2} = 5.985 MPa"],
+   ["1.6.7","(a) Resultante = 1097 lb|(b) σ_{b} = 4999 psi|(c) τ_{tuerca} = 2793 psi, τ_{pl} = 609 psi"],
+   ["1.6.8","G = 2.5 MPa"],
+   ["1.6.9","(a) γ_{prom} = 0.004|(b) V = 89.6 k"],
+   ["1.6.10","(a) γ_{prom} = 0.50|(b) δ = 4.50 mm"],
+   ["1.6.11","(a) τ_{prom} = 6050 psi|(b) σ_{b} = 9500 psi"],
+   ["1.6.12","τ_{prom} = 42.9 MPa"],
+   ["1.6.13","(a) A_{x} = 0, A_{y} = 170 lb, M_{A} = 4585 in-lb|(b) B_{x} = 253.6 lb, B_{y} = 160 lb, B_{res} = 299.8 lb, C_{x} = −B_{x}"]]}
+ ]}
+];
+const respEstado = {cap:0, sec:"todas", q:"", listo:false, hechos:new Set()};
+function respFmt(t){
+  return t.replace(/&/g,"&amp;").replace(/</g,"&lt;")
+          .replace(/_\{([^}]*)\}/g,"<sub>$1</sub>").replace(/\^\{([^}]*)\}/g,"<sup>$1</sup>");
+}
+function respParseParts(s){
+  return s.split("|").map(x=>{ const m=x.match(/^\(([a-z])\)\s*(.*)$/); return m?{l:"("+m[1]+")",t:m[2]}:{l:"",t:x}; });
+}
+function respGuardar(){ try{ localStorage.setItem("respResueltos", JSON.stringify([...respEstado.hechos])); }catch(e){} }
+function respProgreso(){
+  const cap = RESP_DATA[respEstado.cap]; let tot=0, ok=0;
+  cap.secciones.forEach(s=>s.p.forEach(([n])=>{ tot++; if(respEstado.hechos.has(n)) ok++; }));
+  document.getElementById("respProg").textContent = ok+" / "+tot+" resueltos";
+}
+function respPintar(){
+  const cap = RESP_DATA[respEstado.cap], q = respEstado.q.trim().toLowerCase();
+  const chips = document.getElementById("respChips");
+  chips.innerHTML = "";
+  [{id:"todas",titulo:"Todas"}, ...cap.secciones].forEach(s=>{
+    const b = document.createElement("button"); b.type="button"; b.className="resp-chip";
+    b.textContent = s.id==="todas" ? "Todas" : s.id;
+    if(s.titulo && s.id!=="todas") b.title = s.titulo;
+    b.setAttribute("aria-pressed", String(respEstado.sec===s.id));
+    b.addEventListener("click", ()=>{ respEstado.sec=s.id; respPintar(); });
+    chips.appendChild(b);
+  });
+  const cont = document.getElementById("respLista"); cont.innerHTML = "";
+  let visibles = 0;
+  cap.secciones.forEach(sec=>{
+    if(respEstado.sec!=="todas" && respEstado.sec!==sec.id) return;
+    const probs = sec.p.filter(([n])=> !q || n===q || n.startsWith(q) || n.startsWith(q+"."));
+    if(!probs.length) return;
+    const wrap = document.createElement("div"); wrap.className="resp-sec";
+    wrap.innerHTML = `<h3><b>${sec.id}</b><span>${respFmt(sec.titulo)}</span></h3><div class="resp-grid"></div>`;
+    const grid = wrap.querySelector(".resp-grid");
+    probs.forEach(([num, raw])=>{
+      visibles++;
+      const partes = respParseParts(raw);
+      const card = document.createElement("article"); card.className="resp-card"+(respEstado.hechos.has(num)?" hecho":"");
+      card.innerHTML = `<div class="resp-cab"><span class="resp-num">${num}</span>
+        <label class="resp-ok"><input type="checkbox" ${respEstado.hechos.has(num)?"checked":""}> resuelto</label></div>`;
+      const btns = partes.map(p=>{
+        const b = document.createElement("button"); b.type="button"; b.className="resp-part"; b.setAttribute("aria-expanded","false");
+        const pon = ()=>{ b.classList.remove("on"); b.setAttribute("aria-expanded","false");
+          b.innerHTML = `${p.l?`<span class="resp-lbl">${p.l}</span>`:""}<span class="resp-vel">Toca para ver la respuesta</span>`;
+          b.setAttribute("aria-label", (p.l?"Inciso "+p.l.slice(1,2)+": ":"")+"mostrar respuesta del problema "+num); };
+        const abre = ()=>{ b.classList.add("on"); b.setAttribute("aria-expanded","true");
+          b.innerHTML = `${p.l?`<span class="resp-lbl">${p.l}</span>`:""}<span class="resp-val">${respFmt(p.t)}</span>`; b.removeAttribute("aria-label"); };
+        pon();
+        b.addEventListener("click", ()=> b.classList.contains("on") ? pon() : abre());
+        b._abre=abre; b._pon=pon;
+        card.appendChild(b); return b;
+      });
+      if(btns.length>1){
+        const t = document.createElement("button"); t.type="button"; t.className="resp-todo"; t.textContent="Mostrar todos los incisos";
+        t.addEventListener("click", ()=>{
+          const todosAbiertos = btns.every(b=>b.classList.contains("on"));
+          btns.forEach(b=> todosAbiertos ? b._pon() : b._abre());
+          t.textContent = todosAbiertos ? "Mostrar todos los incisos" : "Ocultar todos los incisos";
+        });
+        card.appendChild(t);
+      }
+      card.querySelector("input").addEventListener("change", e=>{
+        if(e.target.checked) respEstado.hechos.add(num); else respEstado.hechos.delete(num);
+        card.classList.toggle("hecho", e.target.checked); respGuardar(); respProgreso();
+      });
+      grid.appendChild(card);
+    });
+    cont.appendChild(wrap);
+  });
+  if(!visibles) cont.innerHTML = '<p class="resp-vacio">No hay ningún problema que coincida con «'+respFmt(respEstado.q)+'».</p>';
+  respProgreso();
+}
+function respIniciar(){
+  if(respEstado.listo){ return; }
+  respEstado.listo = true;
+  try{ respEstado.hechos = new Set(JSON.parse(localStorage.getItem("respResueltos")||"[]")); }catch(e){}
+  const sel = document.getElementById("respCap");
+  RESP_DATA.forEach((c,i)=>{ const o=document.createElement("option"); o.value=i; o.textContent=c.titulo; sel.appendChild(o); });
+  sel.addEventListener("change", ()=>{ respEstado.cap=Number(sel.value); respEstado.sec="todas"; respPintar(); });
+  document.getElementById("respBuscar").addEventListener("input", e=>{ respEstado.q=e.target.value; respPintar(); });
+  document.getElementById("respOcultar").addEventListener("click", respPintar);
+  respPintar();
+}
+
 /* ================= Navegación por pestañas =================
    Una sola vista visible a la vez. El catálogo de asignaturas se queda fijo
    en las vistas donde se usa (armar el horario a mano y elegir candidatas), y
@@ -7632,7 +7827,8 @@ const VISTAS = {
   generador: {paneles:["#panelGenerador"],              lado:false},
   cupos:     {paneles:["#panelTendencias"],             lado:false},
   herramientas: {paneles:["#panelHerramientas"],         lado:false},
-  presentaciones: {paneles:["#panelPresentaciones"],     lado:false}
+  presentaciones: {paneles:["#panelPresentaciones"],     lado:false},
+  respuestas: {paneles:["#panelRespuestas"],              lado:false}
 };
 let vistaActual = "horario";
 
@@ -7657,6 +7853,7 @@ function irA(v, {foco=false, guardar=true}={}){
   // El lienzo de Chart.js mide mal si nace oculto: hay que redibujarlo al mostrarlo
   if(v==="cupos") pintarGrafico();
   if(v==="presentaciones") presIniciar();
+  if(v==="respuestas") respIniciar();
   if(v==="herramientas" && !$("#herrDelta").hidden) dlCargar();
   if(v==="herramientas" && !$("#herrCal").hidden) privAbrir("herrCal","hmIniciar");
   if(v==="herramientas" && !$("#herrMov").hidden) privAbrir("herrMov","movIniciar");
